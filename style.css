@@ -11,22 +11,15 @@
 
 */
 
+@import "./css/base.css";
+@import "./css/main-menu.css";
 /*************************
 *
 * SPECIFIC SITE CSS
 *
 *************************/
 
-header.fixed-bottom {
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-    background: white;
-    min-height: 100px;
-    bottom: 0;
-    left: 0;
-    border-top: 5px solid red;
-}
+
 
 
 

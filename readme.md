@@ -6,3 +6,7 @@
 
 ### Resources Used:
 [Feather Icons](https://feathericons.com/)
+
+## Command Line Instructions
+
+Browser-sync: browser-sync https://artezpress.local:8890/ -w --files "**/*" --tunnel 'artezpress-peek'

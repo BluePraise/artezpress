@@ -1,0 +1,45 @@
+.fixed-bottom {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    background: transparent;
+    min-height: 100px;
+    bottom: 0;
+    left: 0;
+}
+
+.main-menu {
+    padding: 50px;
+}
+
+.main-menu .flex-container {
+    justify-content: space-between;
+}
+
+.menu-misc a {
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.language-toggle {
+    margin-right: 110px;
+}
+
+.btn.shopping-cart {
+    position: relative;
+    z-index: 2;
+    background-color: black;
+    color: white;
+}
+
+.cart-counter {
+    position: absolute;
+    z-index: 3;
+    top: -10px;
+    background: red;
+    border-radius: 50%;
+    font-size: 13px;
+    padding: 2px 10px;
+    left: 90px;
+    color: black;
+}
