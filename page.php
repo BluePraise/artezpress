@@ -12,7 +12,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area container">
+	<div id="primary" class="container-xs">
 		<main id="main" class="site-main" role="main">
 
 			<?php

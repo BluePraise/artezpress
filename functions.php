@@ -40,6 +40,7 @@ if (!function_exists("parent_function_name")) {
 * Mini cart with total counter not total price
 *
 */
+add_filter( 'woocommerce_add_to_cart_fragments', 'add_to_cart_fragment', 10, 1 );
 
 function add_to_cart_fragment( $fragments ) {
 

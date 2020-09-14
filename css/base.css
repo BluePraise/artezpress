@@ -384,6 +384,11 @@ input[type="checkbox"] {
     margin: 0 auto;
 }
 
+.container-xs {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
 .btn {
     padding: 10px 40px;
     border-radius: 30px;
