@@ -1,32 +1,19 @@
-$(document).ready(function() {
-
-    feather.replace();
-
-    updatecart = function (qty) {
-        let currentVal;
-        let data;
-        let item_hash;
-        let request;
-        
-        currentVal = void 0;
-        data = void 0;
-        item_hash = void 0;
-        currentVal = parseFloat(qty);
-        request = $.ajax({
-            url: 'ajax_object.ajax_url',
-            method: 'POST',
-            data: {
-                quantity: currentVal,
-                action: 'update_my_cart'
-            },
-            dataType: 'html'
-        });
-        request.done(function (msg) {
-            alert('cart update ');
-        });
-        request.fail(function (jqXHR, textStatus) {
-            alert('Request failed: ' + textStatus);
-        });
-    }; 
+jQuery(document).ready(function ($) {
+	// Menu button
+	const body = $("body");
+	$(".js-toggle-menu").on("mouseenter", function () {
+		if (!body.hasClass("menu-open")) {
+			body.addClass("menu-open");
+		}
+	}).on("click", function (event) {
+		event.preventDefault();
+		if (body.hasClass("menu-open")) {
+			// Hide menu
+			body.removeClass("menu-open");
+		} else {
+			// Show menu
+			body.addClass("menu-open");
+		}
+	})
 
 });

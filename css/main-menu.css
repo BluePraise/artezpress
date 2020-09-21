@@ -7,7 +7,7 @@
 
 .fixed-bottom {
     position: fixed;
-    width: 100%;
+    width: 100vw;
     z-index: 1;
     background: transparent;
     min-height: 100px;
@@ -21,10 +21,31 @@
 }
 
 .main-menu-surface {
-    display: none;
+    opacity: 0;
+    transition: all 400ms;
     background-color: white;
     position: absolute;
-    top: -300px;
+    min-width: 100%;
+    top: -260px;
+    z-index: 100;
+}
+
+.menu-open .main-menu-surface {
+    opacity: 1;
+}
+
+.menu-open .main-menu-bar {
+    background-color: white;
+}
+
+body.menu-open {
+    overflow-y: hidden;
+}
+
+.menu-open .site-main {
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+    transition: all 500ms;
 }
 
 .main-menu-bar {
@@ -85,6 +106,11 @@
     color: black;
 }
 
+.logo {
+    position: relative;
+    display: block;
+}
+
 .logo a {
     display: inline-block;
     text-decoration: none;
@@ -101,6 +127,10 @@
 .logo a img {
     width: 150px;
     height: 45px;
+}
+
+.logo:hover .main-menu-surface {
+    display: block !important;
 }
 
 .page-list {

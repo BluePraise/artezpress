@@ -2,9 +2,7 @@
 	 get_template_part( 'head' );
 ?>
 <div class="main-menu-container fixed-bottom">
-
-	<nav class="main-menu-bar">
-		<div class="main-menu-surface">
+	<div class="main-menu-surface">
 			<div class="flex-container">
 				<div class="nav-column">
 					<div class="search">Search</div>
@@ -42,8 +40,10 @@
 				<div class="mini-cart"></div>
 			</div>
 		</div>
+	<nav class="main-menu-bar">
+		
 		<div class="flex-container">
-			<div class="logo">
+			<div class="logo js-toggle-menu">
 				<a href="#" title="Menu Toggle" role="link" tabindex="0"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/logo.svg" alt="logo Artez Press"></a>
 			</div>
 			

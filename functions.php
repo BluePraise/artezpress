@@ -36,7 +36,7 @@ add_action( 'wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999 );
 function artezpress_style() {
     wp_register_style( 'artezpress-style', get_stylesheet_directory_uri() . '/style.css' );
     wp_enqueue_style ( 'artezpress-style' );
-    wp_enqueue_script( 'artezpress-script', get_stylesheet_directory_uri() . '/scripts/script.js', [], null, true );
+    wp_enqueue_script( 'artezpress-script', get_stylesheet_directory_uri() . '/js/script.js', [], null, true );
 }
 
 add_action( 'wp_enqueue_scripts', 'artezpress_style' );
