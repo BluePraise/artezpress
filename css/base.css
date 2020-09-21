@@ -1,3 +1,24 @@
+@font-face {
+    font-family: 'Lars';
+    src: url('./../assets/fonts/Lars-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lars';
+    src: url('./../assets/fonts/Lars-RegularItalic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'LarsExtended';
+    src: url('./../assets/fonts/Lars-MediumExtended.otf') format('opentype');
+    font-weight: 500;
+    font-style: italic;
+}
+
 html,
 body {
     border: none;
@@ -65,6 +86,7 @@ blockquote::after {
 
 html {
     scroll-behavior: smooth;
+    font-size: 10px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -74,17 +96,23 @@ html {
 }
 
 body {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-kerning: normal;
+    font-kerning: normal;
+    font-feature-settings: “kern” on, ”kern”, “ss01”, “ss03”;
+    letter-spacing: 0.02rem;
     text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    color: #000;
     width: 100%;
     height: 100%;
-    font-family: sans-serif;
-}
+    font-family: 'Lars', Helvetica, Arial, sans-serif;
+    font-size: 1.7rem;
+    line-height: 2.3rem;
+    /* font: 400 1.7rem/2.3rem “Lars”, Helvetica, Arial, sans-serif; */
+    /* font-size: 17px; */
+    /* line-height: 23px; */
 
-html,
-body {}
+}
 
 header {}
 
@@ -116,20 +144,67 @@ h4,
 h5,
 h6 {}
 
-h1 {}
+h1,
+.h1 {
+    font-family: 'LarsExtended', Helvetica, Arial, sans-serif;
+    font-size: 14rem;
+    line-height: 14rem;
+    font-weight: 500;
+    /* font: 500 14rem/14rem “LarsExtended”, Helvetica, Arial, sans-serif; */
+    /* font-size: 140px; */
+    letter-spacing: 0rem;
+    text-align: center;
 
-h2 {}
+}
 
-h3 {}
+h2,
+.h2 {
+    font-family: 'LarsExtended', Helvetica, Arial, sans-serif;
+    font-size: 3.5rem;
+    line-height: 4.8rem;
+    font-weight: 500;
+    /* font: 500 3.5rem/4.8rem “LarsExtended”, Helvetica, Arial, sans-serif; */
+    letter-spacing: 0rem;
+    text-align: center;
+}
 
-h4 {}
+h2.highlight-item__title-author {
+    text-align: left;
+}
 
-h5 {}
+h3,
+.h3 {
+    font-family: 'Lars', Helvetica, Arial, sans-serif;
+    font-size: 3.5rem;
+    line-height: 4.8rem;
+    font-weight: 400;
+    /* font: 400 3.5rem/4.8rem “Lars”, Helvetica, Arial, sans-serif; */
+    letter-spacing: 0rem;
+    text-align: center;
+}
+
+h4,
+.h4 {
+    font-family: 'Lars', Helvetica, Arial, sans-serif;
+    font-size: 2.2rem;
+    line-height: 3.1rem;
+    /* font: 400 2.2rem/3.1rem “Lars”, Helvetica, Arial, sans-serif; */
+    text-align: center;
+}
+
+h5,
+.h5 {
+    font-family: 'Lars', Helvetica, Arial, sans-serif;
+    font-size: 3.5rem;
+    line-height: 4.8rem;
+    font-weight: 400;
+    /* font: 400 3.5rem/4.8rem “Lars”, Helvetica, Arial, sans-serif; */
+    text-align: center;
+}
 
 a {
     color: black;
-    text-decoration: underline;
-    font-weight: 600;
+    text-decoration: none;
 }
 
 blockquote {}
@@ -190,6 +265,10 @@ video {
 iframe {
     display: block;
     max-width: 100%;
+}
+
+ul li a {
+    display: inline-block;
 }
 
 
@@ -277,12 +356,12 @@ iframe {
 
 figcaption,
 .wp-caption-text {
-    color: #6d6d6d;
+    /* color: #6d6d6d;
     display: block;
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.2;
-    margin-top: 1.5rem;
+    margin-top: 1.5rem; */
 }
 
 figcaption a,
@@ -390,11 +469,22 @@ input[type="checkbox"] {
 }
 
 .btn {
-    padding: 10px 40px;
-    border-radius: 30px;
     text-decoration: none;
+}
+.show {
+    display: block !important;
 }
 
 .hide {
     display: none;
+}
+
+ul.horizontal-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.horizontal-list li {
+    display: inline-block;
 }

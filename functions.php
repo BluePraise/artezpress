@@ -17,12 +17,35 @@
 // add_action( 'wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999 );
 
 /**
- * Dequeue the Storefront Parent theme core CSS
+ * Dequeue a lot of css
  */
 function sf_child_theme_dequeue_style() {
     wp_dequeue_style( 'storefront-style' );
-    wp_dequeue_style( 'storefront-woocommerce-style' );
+    wp_deregister_style( 'storefront-style' );
+    wp_dequeue_style( 'storefront-fonts' );
+    wp_deregister_style( 'storefront-fonts' );
+    
+    // storefront-jetpack-widgets-css
+    wp_dequeue_style( 'storefront-jetpack-widgets' );
+    wp_deregister_style( 'storefront-jetpack-widgets' );
+    
+    wp_deregister_style( 'storefront-woocommerce-style' );
 }
+add_action( 'wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999 );
+
+function artezpress_style() {
+    wp_register_style( 'artezpress-style', get_stylesheet_directory_uri() . '/style.css' );
+    wp_enqueue_style ( 'artezpress-style' );
+    wp_enqueue_script( 'artezpress-script', get_stylesheet_directory_uri() . '/scripts/script.js', [], null, true );
+}
+
+add_action( 'wp_enqueue_scripts', 'artezpress_style' );
+
+// function artezpress_script() {
+    
+// }
+
+// add_action( 'wp_enqueue_scripts', 'artezpress_script' );
 
 /**
  * Note: DO NOT! alter or remove the code above this text and only add your custom PHP functions below this text.
