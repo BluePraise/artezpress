@@ -34,30 +34,12 @@ function sf_child_theme_dequeue_style() {
 add_action( 'wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999 );
 
 function artezpress_style() {
-    wp_register_style( 'artezpress-style', get_stylesheet_directory_uri() . '/style.css' );
+    wp_register_style( 'artezpress-style', get_theme_file_uri() . '/style.css' );
     wp_enqueue_style ( 'artezpress-style' );
-    wp_enqueue_script( 'artezpress-script', get_stylesheet_directory_uri() . '/js/script.js', [], null, true );
+    wp_enqueue_script( 'artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true );
 }
 
 add_action( 'wp_enqueue_scripts', 'artezpress_style' );
-
-// function artezpress_script() {
-    
-// }
-
-// add_action( 'wp_enqueue_scripts', 'artezpress_script' );
-
-/**
- * Note: DO NOT! alter or remove the code above this text and only add your custom PHP functions below this text.
- */
-
-/*
-if (!function_exists("parent_function_name")) {
-    parent_function_name() {
-         ...
-    } 
-}
-*/
 
 /* 
 * Mini cart with total counter not total price
@@ -78,6 +60,17 @@ function add_to_cart_fragment( $fragments ) {
     }
     
     return $fragments;
-    
 
+}
+
+
+if ( ! function_exists( 'woocommerce_widget_shopping_cart_subtotal' ) ) {
+	/**
+	 * Output to view cart subtotal.
+	 *
+	 * @since 3.7.0
+	 */
+	function woocommerce_widget_shopping_cart_subtotal() {
+		echo '<span>' . esc_html__( 'Total:', 'artezpress' ) . '</span> ' . WC()->cart->get_cart_subtotal(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
 }

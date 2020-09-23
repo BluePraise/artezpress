@@ -37,7 +37,8 @@
 					<div class="part-of">ArtEZ Press is a part of <br>ArtEZ University of the Arts</div>
 
 				</div>
-				<div class="mini-cart"></div>
+				<div class="mini-cart-total"><?php woocommerce_mini_cart(); ?></div>
+
 			</div>
 		</div>
 	<nav class="main-menu-bar">

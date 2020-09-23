@@ -25,7 +25,7 @@
     transition: all 400ms;
     background-color: white;
     position: absolute;
-    min-width: 100%;
+    width: 97.4vw;
     top: -260px;
     z-index: 100;
 }
@@ -101,7 +101,7 @@ body.menu-open {
     background: red;
     border-radius: 50%;
     font-size: 13px;
-    padding: 2px 10px;
+    padding: 0px 11px;
     left: 90px;
     color: black;
 }

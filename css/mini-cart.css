@@ -1,0 +1,48 @@
+.mini-cart-total {
+    display: inline-flex;
+    flex-direction: column;
+    flex-grow: 2;
+}
+
+.woocommerce-mini-cart.cart_list {
+    list-style: none;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.remove_from_cart_button,
+.quantity {
+    display: inline-block !important;
+}
+
+.quantity {
+    margin-left: 10px;
+    line-height: 1.6;
+    vertical-align: top;
+}
+
+a.remove::before {
+    display: inline-block;
+    content: 'x';
+    font-family: 'Lars', Arial, Helvetica, sans-serif;
+    color: #000;
+    /* -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    line-height: inherit;
+    vertical-align: baseline;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    line-height: 1.618;
+    text-indent: 0;
+    text-align: center; */
+}
