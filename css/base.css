@@ -98,7 +98,7 @@ html {
 body {
     -webkit-font-kerning: normal;
     font-kerning: normal;
-    font-feature-settings: "kern" on, "kern", "ss01";
+    font-feature-settings: "kern"on, "kern", "ss01";
     letter-spacing: 0.02rem;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -214,6 +214,11 @@ strong {}
 
 i {}
 
+.page-title {
+    display: block;
+    margin: 80px 0;
+}
+
 
 
 /* Clearing ---------------------------------- */
@@ -311,6 +316,21 @@ ul li a {
     top: 5px;
     width: auto;
     z-index: 100000;
+}
+
+/****
+*
+* Form Control
+*  
+*/
+
+button[type=submit]:focus {
+    outline: none;
+} 
+button[type=submit]:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
 }
 
 /*************************
@@ -455,12 +475,16 @@ input[type="checkbox"] {
 
 .mast-foot {}
 
+.grid-container {
+    display: grid;
+}
+
 .flex-container {
     display: flex;
 }
 
 .container {
-    max-width: 1140px;
+    max-width: 1040px;
     margin: 0 auto;
 }
 

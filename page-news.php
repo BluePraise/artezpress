@@ -5,16 +5,14 @@
 
 
 <main id="site-content container" role="main">
-    <h3 class="page-title"><?php echo the_title(); ?></h3>
+    <h2 class="page-title"><?php echo the_title(); ?></h2>
     <?php
-        if ( have_posts() ) :
-
-            while ( have_posts() ) : the_post();
-
-
-            endwhile;
-        endif;
-        ?>
+        if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+        <div class="news-item">
+            <h3 class="post-title"><?php echo the_title(); ?></h3>
+            <p class="small-text"><?php the_excerpt(); ?>Test</p>
+        </div>
+        <?php endwhile; endif; ?>
 
 </main>
 

@@ -34,7 +34,7 @@
 						<li><a href="<?php echo site_url("/privacy-policy"); ?>">Data Protection</a></li>
 						<li><a href="<?php echo site_url("/news"); ?>">Imprint</a></li>
 					</ul>
-					<div class="part-of">ArtEZ Press is a part of <br>ArtEZ University of the Arts</div>
+					<div class="part-of">ArtEZ Press is part of <br>ArtEZ University of the Arts</div>
 
 				</div>
 				<div class="mini-cart-total"><?php woocommerce_mini_cart(); ?></div>

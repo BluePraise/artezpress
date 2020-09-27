@@ -41,6 +41,16 @@ function artezpress_style() {
 
 add_action( 'wp_enqueue_scripts', 'artezpress_style' );
 
+
+function add_class_to_excerpt ( $post_excerpt ) {
+    $post_excerpt = '<p class="news-excerpt small-text">' . $post_excerpt . '</p>';
+    return $post_excerpt;
+}
+add_filter( 'get_the_excerpt', 'add_class_to_excerpt' );
+
+
+/* Woocommerce filters */
+
 /* 
 * Mini cart with total counter not total price
 *

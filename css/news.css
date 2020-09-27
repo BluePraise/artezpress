@@ -1,0 +1,57 @@
+.news .grid-container {
+    /* grid-template-columns: auto auto;
+    grid-gap: 50px; */
+}
+
+/* https://tobiasahlin.com/blog/masonry-with-css/ */
+
+.news .flex-container {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 600px;
+}
+
+/* Force new columns */
+.news .flex-container::before,
+.news .flex-container::after {
+    content: "";
+    flex-basis: 100%;
+    width: 0;
+    order: 2;
+}
+
+.news-item {
+    width: 48%;
+    margin-bottom: 5%;
+}
+
+/* Re-order items into 2 rows */
+.news-item:nth-child(2n+1) {
+    order: 1;
+}
+
+.news-item:nth-child(2n) {
+    order: 2;
+}
+
+.news-date{
+    margin-bottom: 40px;
+}
+
+.post-title {
+    margin-bottom: 40px;
+}
+
+.news-thumbnail {
+    padding: 40px;
+}
+
+a.news-read-more {
+    display: inline-block;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid black;
+}
+
+a.news-read-more:hover {
+    cursor: pointer;
+}

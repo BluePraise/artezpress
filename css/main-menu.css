@@ -1,5 +1,5 @@
 .main-menu-container {
-    padding: 50px;
+    padding: 20px 50px;
     font-family: 'Lars', Helvetica, Arial, sans-serif;
     font-size: 2rem;
     line-height: 2.8rem;
@@ -17,7 +17,7 @@
 
 .main-menu-surface,
 .main-menu-bar {
-    padding: 20px 0;
+    padding: 20px 0px;
 }
 
 .main-menu-surface {
@@ -26,7 +26,7 @@
     background-color: white;
     position: absolute;
     width: 97.4vw;
-    top: -260px;
+    top: -300px;
     z-index: 100;
 }
 
@@ -57,6 +57,7 @@ body.menu-open {
 }
 
 .nav-column {
+    width: 25%;
     margin-right: 50px;
 }
 
@@ -71,6 +72,16 @@ body.menu-open {
     margin-bottom: 20px;
 }
 
+.newsletter input[type=text] {
+    height: 45px;
+    padding: 0 3px;
+    font-family: 'Lars', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+.newsletter input[type=text]:focus {
+    outline: 1px solid yellow;
+} 
 .social-menu ul li {
     display: inline-block;
 }
@@ -146,7 +157,7 @@ body.menu-open {
 
 
 .newsletter p {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 
