@@ -82,3 +82,7 @@ a.news-read-more:hover {
 .container.single-news {
     padding-top: 50px;
 }
+
+.post-container p {
+    margin: 20px 0;
+}
