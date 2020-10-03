@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
-<main id="site-content" class="container" role="main">
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/css/news.css">
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/css/news.css">
+<main id="site-content" class="container single-news" role="main">
     <a class="back-to-news" href="<?php echo site_url("/news"); ?>" role="link">x</a>
     <div class="post-container">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>

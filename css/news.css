@@ -54,8 +54,9 @@ a.news-read-more:hover {
 /* single php */
 
 .post-container {
-    width: 650px;
+    max-width: 650px;
     margin: 0 auto;
+    padding-bottom: 150px;
 }
 
 .post-container .news-date,
@@ -67,10 +68,17 @@ a.news-read-more:hover {
 .back-to-news {
     background: black;
     color: white;
-    padding: 10px 21px;
-    border-radius: 60px;
-    font-size: 30px;
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-size: 22px;
+    display: table-cell;
+    line-height: 22px;
+    font-weight: 100;
+    font-family: sans-serif;
+    width: 44px;
+    height: 44px;
 }
-.single .site-content {
-    margin-top: 50px;
+
+.container.single-news {
+    padding-top: 50px;
 }
