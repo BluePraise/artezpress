@@ -20,7 +20,10 @@ get_header(); ?>
 		<p>This is where the handshake goes</p>
 	</div>
 
-	<?php get_template_part( 'content', 'temp' ) ?>
+	<?php 
+		get_template_part( 'content', 'temp' );
+		do_action( 'homepage' );
+	?>
 
 
 	</main><!-- #main -->

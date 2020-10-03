@@ -84,3 +84,4 @@ if ( ! function_exists( 'woocommerce_widget_shopping_cart_subtotal' ) ) {
 		echo '<span>' . esc_html__( 'Total:', 'artezpress' ) . '</span> ' . WC()->cart->get_cart_subtotal(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
+

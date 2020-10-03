@@ -1,0 +1,18 @@
+ul.products,
+ul.page-numbers {
+    list-style: none;
+}
+
+.products.flex-container {
+    flex-wrap: wrap;
+    margin-top: 50px;
+    margin-bottom: 200px;
+}
+
+.product {
+    width: 20%;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 0 20px;
+}

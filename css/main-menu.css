@@ -8,7 +8,7 @@
 .fixed-bottom {
     position: fixed;
     width: 100vw;
-    z-index: 1;
+    z-index: -10;
     background: transparent;
     min-height: 100px;
     bottom: 0;
@@ -21,21 +21,26 @@
 }
 
 .main-menu-surface {
-    opacity: 0;
+    display: none;
     transition: all 400ms;
     background-color: white;
     position: absolute;
     width: 97.4vw;
     top: -300px;
-    z-index: 100;
+    z-index: -2;
 }
 
 .menu-open .main-menu-surface {
-    opacity: 1;
+    display: block;
+    z-index: 100;
 }
 
 .menu-open .main-menu-bar {
     background-color: white;
+}
+
+.menu-open .fixed-bottom {
+    z-index: 1;
 }
 
 body.menu-open {
@@ -81,7 +86,8 @@ body.menu-open {
 
 .newsletter input[type=text]:focus {
     outline: 1px solid yellow;
-} 
+}
+
 .social-menu ul li {
     display: inline-block;
 }

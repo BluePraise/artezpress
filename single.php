@@ -1,18 +1,20 @@
 <?php get_header(); ?>
 
-
-<main id="site-content" role="main">
-
-    <?php
-        if ( have_posts() ) :
-
-            while ( have_posts() ) : the_post();
-
-
-            endwhile;
-        endif;
-        ?>
-
+<main id="site-content" class="container" role="main">
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/css/news.css">
+    <a class="back-to-news" href="<?php echo site_url("/news"); ?>" role="link">x</a>
+    <div class="post-container">
+        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+            <?php if( has_post_thumbnail() ): ?>
+                <figure class="news-thumbnail">
+                    <?php the_post_thumbnail(); ?>
+                </figure>
+            <?php endif; ?>
+            <p class="news-date small-text"><?php echo the_date( "d F Y" )?></p>
+            <h3><?php the_title(); ?></h3>
+            <p><?php the_content(); ?></p>
+        <?php endwhile; endif; ?>
+    </div>
 </main>
 
 
