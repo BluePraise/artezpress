@@ -9,10 +9,45 @@ ul.page-numbers {
     margin-bottom: 200px;
 }
 
-.product {
+ul.products li {
     width: 20%;
     margin-bottom: 20px;
     margin-left: 30px;
     margin-right: 30px;
     padding: 0 20px;
+}
+
+h3.single-product-title {
+    margin-bottom: 30px;
+}
+
+.product_meta {
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+.product_meta h5 {
+    display: block;
+    margin-bottom: 30px;
+}
+
+.product_meta .flex-container .col_left,
+.product_meta .flex-container .col_right {
+    width: 50%;
+}
+
+.product_meta .block {
+    margin-bottom: 40px;
+}
+
+.label-header,
+.display-block {
+    display: block;
+}
+
+.single-product-author,
+.woocommerce-product-details__short-description p {
+    font-family: 'Lars', Helvetica, Arial, sans-serif;
+    font-size: 2.1rem;
+    line-height: 3rem;
 }

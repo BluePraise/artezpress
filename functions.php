@@ -93,3 +93,20 @@ function artezpress_gutenberg_css(){
 	add_editor_style( 'style-editor.css' ); // tries to include style-editor.css directly from your theme folder
  
 }
+
+add_action( 'artezpress_before_single_product_summary', 'woocommerce_show_product_images', 20 );
+
+
+add_filter('acf/settings/save_json', 'my_acf_json_save_point');
+ 
+function my_acf_json_save_point( $path ) {
+    
+    // update path
+    $path = get_stylesheet_directory() . '/my-custom-folder';
+    
+    
+    // return
+    return $path;
+    
+}
+ 
