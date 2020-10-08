@@ -1,40 +1,27 @@
-/* https://tobiasahlin.com/blog/masonry-with-css/ */
 
-/* Force new columns */
-/* .news .flex-container::before,
-.news .flex-container::after {
-    content: "";
-    flex-basis: 100%;
-    width: 0;
-    order: 2;
-} */
-
+.news .page-title {
+    margin-bottom: 64px;
+}
 .news-item {
     width: 520px;
-    margin-bottom: 5%;
+    margin-bottom: 70px;
 }
 
-/* Re-order items into 2 rows */
-/* .news-item:nth-child(2n+1) {
-    order: 1;
+.news-date {
+    margin: 0;
 }
 
-.news-item:nth-child(2n) {
-    order: 2;
-} */
-
-.news-date,
 .post-title {
     margin-bottom: 40px;
 }
 
 .news-thumbnail {
-    padding: 0 20px;
+    padding: 40px 32px;
 }
 
 a.news-read-more {
     display: inline-block;
-    margin: 40px 0 20px;
+    margin: 32px 0 0px;
     border-bottom: 1px solid black;
 }
 
