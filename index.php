@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
-
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/css/news.css">
 <main id="site-content" class="container news" role="main">
     <h2 class="page-title">News</h2>
-    <div class="flex-container">
+    <div class="grid">
         <?php
             if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
             <div class="news-item">

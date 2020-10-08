@@ -16,4 +16,11 @@ jQuery(document).ready(function ($) {
 		}
 	})
 
+	$(".grid").masonry({
+		// options
+		itemSelector: ".news-item",
+		columnWidth: 520,
+		gutter: 32,
+	});
+
 });
