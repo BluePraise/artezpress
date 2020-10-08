@@ -25,34 +25,33 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li <?php wc_product_class( '', $product ); ?>>
+<div <?php wc_product_class( '', $product ); ?>>
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
 	 *
 	 * @hooked woocommerce_template_loop_product_link_open - 10
 	 */
-	do_action( 'woocommerce_before_shop_loop_item' );
-
+	// do_action( 'woocommerce_before_shop_loop_item' );
+	woocommerce_template_loop_product_link_open();
 	/**
 	 * Hook: woocommerce_before_shop_loop_item_title.
 	 *
 	 * @hooked woocommerce_show_product_loop_sale_flash - 10
 	 * @hooked woocommerce_template_loop_product_thumbnail - 10
 	 */
-	do_action( 'woocommerce_before_shop_loop_item_title' );
-
+	// do_action( 'woocommerce_before_shop_loop_item_title' );
+	woocommerce_template_loop_product_thumbnail();
 	/**
 	 * Hook: woocommerce_shop_loop_item_title.
 	 *
 	 * @hooked woocommerce_template_loop_product_title - 10
 	 */
 	?>
-	<h5>
-		<?php echo get_the_title(); ?>
-	</h5>
+	<h4><?php echo get_the_title(); ?></h4>
 	<p class="single-product-author"><?php echo $author ?></p>
 	<?php 
+	woocommerce_template_loop_product_link_close();
 	/**
 	 * Hook: woocommerce_after_shop_loop_item_title.
 	 *
@@ -69,4 +68,4 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 */
 	// do_action( 'woocommerce_after_shop_loop_item' );
 	?>
-</li>
+</div>

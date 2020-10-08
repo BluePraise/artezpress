@@ -51,7 +51,7 @@
 			
 			<div class="menu-misc">
 				<a class="language-toggle" href="#" role="link">English</a>
-				<a class="btn shopping-cart" href="<?php echo wc_get_cart_url(); ?>">
+				<a class="btn white-on-black" href="<?php echo wc_get_cart_url(); ?>">
 					<span class="cart-label">Cart</span>
 					<span class="cart-counter"></span>
 				</a>

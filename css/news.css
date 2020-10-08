@@ -29,10 +29,7 @@
     order: 2;
 }
 
-.news-date {
-    margin-bottom: 40px;
-}
-
+.news-date,
 .post-title {
     margin-bottom: 40px;
 }
@@ -54,7 +51,7 @@ a.news-read-more:hover {
 /* single php */
 
 .post-container {
-    max-width: 650px;
+    max-width: 770px;
     margin: 0 auto;
     padding-bottom: 150px;
 }

@@ -10,7 +10,7 @@
                     <?php the_post_thumbnail(); ?>
                 </figure>
             <?php endif; ?>
-            <p class="news-date small-text"><?php echo the_date( "d F Y" )?></p>
+            <p class="news-date"><?php echo the_date( "d F Y" )?></p>
             <h3><?php the_title(); ?></h3>
             <p><?php the_content(); ?></p>
         <?php endwhile; endif; ?>

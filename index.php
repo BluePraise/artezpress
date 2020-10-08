@@ -14,8 +14,8 @@
                           <?php the_post_thumbnail(); ?>
                     </figure>
                 <?php endif; ?>
-                <h3 class="post-title"><?php echo the_title(); ?></h3>
-                <p class="small-text"><?php the_excerpt(); ?></p>
+                <h4 class="post-title"><?php the_title(); ?></h4>
+                <p><?php the_excerpt(); ?></p>
                 <a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">Read More</a>
             </div>
             <?php endwhile; endif; ?>

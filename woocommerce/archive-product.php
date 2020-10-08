@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/css/store.css">
-<main class="site-main container-xl" role="main">
+<main class="site-main products flex-container" role="main">
     <?php woocommerce_product_loop_start(); ?>
 		<?php if ( wc_get_loop_prop( 'total' ) ) : ?>
 			<?php while ( have_posts() ) : ?>

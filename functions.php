@@ -46,7 +46,7 @@ function add_class_to_excerpt ( $post_excerpt ) {
     $post_excerpt = '<p class="news-excerpt small-text">' . $post_excerpt . '</p>';
     return $post_excerpt;
 }
-add_filter( 'get_the_excerpt', 'add_class_to_excerpt' );
+// add_filter( 'get_the_excerpt', 'add_class_to_excerpt' );
 
 
 /* Woocommerce filters */

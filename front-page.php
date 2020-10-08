@@ -18,9 +18,9 @@ get_header(); ?>
 	<main class="site-main container" role="main">
 	<div class="handshake">
 		<p>This is where the handshake goes</p>
-		<a href="<?php echo site_url("/"); ?>winkel">Go to shop (this is temporary - meant as easy access)</a>
+		<a href="<?php echo site_url("/"); ?>books">Go to shop (this is temporary - meant as easy access)</a>
 	</div>
 		<?php get_template_part( 'content','temp' ); ?>
+		
 	</main><!-- #main -->
-<?php
-get_footer();
+<?php get_footer(); ?>
