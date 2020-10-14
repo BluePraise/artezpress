@@ -1,22 +1,22 @@
-
 .news .page-title {
-    margin-bottom: 64px;
+    margin-bottom: 80px;
 }
+
 .news-item {
     width: 520px;
     margin-bottom: 70px;
 }
 
 .news-date {
-    margin: 0;
+    margin-bottom: 30px;
 }
 
 .post-title {
-    margin-bottom: 40px;
+    margin: 40px 0;
 }
 
 .news-thumbnail {
-    padding: 40px 32px;
+    padding: 0 20px;
 }
 
 a.news-read-more {
@@ -31,16 +31,13 @@ a.news-read-more:hover {
 
 /* single php */
 
-.post-container {
-    max-width: 770px;
-    margin: 0 auto;
-    padding-bottom: 150px;
+.post-container h3 {
+    margin-top: 48px;
+    margin-bottom: 60px;
 }
 
-.post-container .news-date,
-.post-container .news-thumbnail,
-.post-container h3 {
-    margin-bottom: 40px;
+.post-container .news-thumbnail {
+    margin-bottom: 80px;
 }
 
 .back-to-news {
@@ -58,7 +55,7 @@ a.news-read-more:hover {
 }
 
 .container.single-news {
-    padding-top: 50px;
+    margin-top: 60px;
 }
 
 .post-container p {

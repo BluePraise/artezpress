@@ -109,4 +109,17 @@ function my_acf_json_save_point( $path ) {
     return $path;
     
 }
+
+/**
+ * Fix for Popup Maker Gutenberg compatibility
+ * Need to strip out comments, blank lines and empty paragraph tags
+ */
+add_filter( 'pum_popup_content', 'veer_popup_maker_gutenburg_compat' );
+
+function veer_popup_maker_gutenburg_compat($content) {
+	$content = preg_replace('!/\*.*?\*/!s', '', $content); // empty lines
+	$content = preg_replace('/<!--(.|\s)*?-->/', '', $content); // block editor comments
+	$content = preg_replace('/<p[^>]*><\\/p[^>]*>/', '', $content); // empty p tags
+	return $content;
+} 
  

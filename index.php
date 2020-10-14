@@ -8,7 +8,7 @@
         <?php
             if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
             <div class="news-item">
-                <p class="news-date small-text"><?php echo the_date( "d F Y" )?></p>
+                <div class="news-date small-text"><?php echo the_date( "d F Y" )?></div>
                 <?php if( has_post_thumbnail() ): ?>
                     <figure class="news-thumbnail">
                           <?php the_post_thumbnail(); ?>

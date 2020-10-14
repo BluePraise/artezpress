@@ -32,7 +32,7 @@ global $product;
 		$authors 		 = get_field('author');
 		$edition 		 = get_field('edition');
 		$dimensions      = get_field('dimensions');
-		$size      		 = get_field('size');
+		$pages      		 = get_field('pages');
 		$illustration    = get_field('illustrations');
 		$design    		 = get_field('design');
 		$language    	 = get_field('language');
@@ -60,15 +60,15 @@ global $product;
 		<div class="col_right">
 			<div class="block">
 				<span class="label-header">Pages</span>
-				<span><?php echo $size; ?></span>
+				<span><?php echo $pages; ?>p.</span>
 			</div>
 			<div class="block">
 				<span class="label-header">Dimensions</span>
-				<span><?php echo $dimensions; ?></span>
+				<span><?php echo $dimensions['width']; ?>x<?php echo $dimensions['length']; ?>cm</span>
 			</div>
 			<div class="block">
 				<span class="label-header">Illustrations</span>
-				<span><?php echo $illustration; ?></span>
+				<span>ca. <?php echo $illustration['amount']; ?> <?php echo $illustration['type']; ?> ills.</span>
 			</div>
 			<div class="block">
 				<span class="label-header">Binding</span>

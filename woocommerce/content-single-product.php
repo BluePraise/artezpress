@@ -33,11 +33,12 @@ if ( post_password_required() ) {
 }
 ?>
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/css/store.css">
-<main id="product-<?php the_ID(); ?>" <?php wc_product_class( 'container-xs', $product ); ?>>
+<main id="product-<?php the_ID(); ?>" <?php wc_product_class( 'container', $product ); ?>>
 
 	<?php woocommerce_show_product_images(); ?>
-	<h3 class="single-product-title"><?php the_title(); ?></h3>
-	<div class="summary entry-summary">
+	<div class="post-container">
+		<h3 class="single-product-title"><?php the_title(); ?></h3>
+		<div class="summary entry-summary">
 		<?php
 		/**
 		 * Hook: woocommerce_single_product_summary.
@@ -61,11 +62,13 @@ if ( post_password_required() ) {
 		<?php endif; ?>
 			
 		<?php woocommerce_template_single_meta(); ?>
-		
+
+	</div>	
 	</div>
 	<?php woocommerce_upsell_display(); ?>
 	<?php woocommerce_output_related_products(); ?>
 	<h5>Related News</h5>
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/css/news.css">
 	<?php
 		/** 
 		 * Related News 
@@ -77,7 +80,7 @@ if ( post_password_required() ) {
 
 				// Setup this post for WP functions (variable must be named $post).
 				setup_postdata($post); ?>
-				<li class="col-2">
+				<li class="news-item">
 					<p class="news-date small-text"><?php echo the_date( "d F Y" )?></p>
 					<a href="<?php the_permalink(); ?>">
 						<?php if( has_post_thumbnail() ): ?>
