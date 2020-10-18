@@ -65,43 +65,41 @@ if ( post_password_required() ) {
 
 	</div>	
 	</div>
-	<?php woocommerce_upsell_display(); ?>
-	<?php woocommerce_output_related_products(); ?>
-	<h5>Related News</h5>
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/css/news.css">
-	<?php
-		/** 
-		 * Related News 
-		*/
-		$related_news = get_field('related_news');
-		if( $related_news ): ?>
-    		<ul class="related-news d-h flex-container">
-    			<?php foreach( $related_news as $post ): 
+	<section class="related-news">
+		<h5 class="section-title">Related News</h5>
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/css/news.css">
+		<?php
+			/** 
+			 * Related News 
+			*/
+			$related_news = get_field('related_news');
+			if( $related_news ): ?>
+				<ul class="d-h flex-container">
+					<?php foreach( $related_news as $post ): 
 
-				// Setup this post for WP functions (variable must be named $post).
-				setup_postdata($post); ?>
-				<li class="news-item">
-					<p class="news-date small-text"><?php echo the_date( "d F Y" )?></p>
-					<a href="<?php the_permalink(); ?>">
-						<?php if( has_post_thumbnail() ): ?>
-                    		<figure class="news-thumbnail">
-                          		<?php the_post_thumbnail(); ?>
-                    		</figure>
-                		<?php endif; ?>
-						<h5 class="post-title"><?php the_title(); ?></h5>
-					</a>
-					<p><?php the_excerpt(); ?></p>
-					<a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">Read More</a>
-					
-				</li>
-			<?php endforeach; ?>
-			</ul>
-			<?php 
-			// Reset the global post object so that the rest of the page works correctly.
-			wp_reset_postdata(); ?>
-		<?php endif; ?>
-
-	
+					// Setup this post for WP functions (variable must be named $post).
+					setup_postdata($post); ?>
+					<li class="news-item">
+						<p class="news-date small-text"><?php echo the_date( "d F Y" )?></p>
+						<a href="<?php the_permalink(); ?>">
+							<?php if( has_post_thumbnail() ): ?>
+								<figure class="news-thumbnail">
+									<?php the_post_thumbnail(); ?>
+								</figure>
+							<?php endif; ?>
+							<h5 class="post-title"><?php the_title(); ?></h5>
+						</a>
+						<p><?php the_excerpt(); ?></p>
+						<a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">Read More</a>
+						
+					</li>
+				<?php endforeach; ?>
+				</ul>
+				<?php 
+				// Reset the global post object so that the rest of the page works correctly.
+				wp_reset_postdata(); ?>
+			<?php endif; ?>
+	</section>						
+		<?php woocommerce_output_related_products(); ?>
 </main>
 
-<?php do_action( 'woocommerce_after_single_product' ); ?>

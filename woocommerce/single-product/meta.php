@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 ?>
 <div class="product_meta">
-	<h5>Colophon and Specs</h5>
+	<h5 class="section-title">Colophon and Specs</h5>
 
 
 	<?php do_action( 'woocommerce_product_meta_start' ); ?>

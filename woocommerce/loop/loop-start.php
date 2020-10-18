@@ -21,5 +21,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <?php if (is_product()): ?>
-	<div class="product-single flex-container">
+	<div class="product-display flex-container">
 <?php endif; ?>

@@ -3,8 +3,8 @@
 }
 
 .news-item {
-    width: 520px;
-    margin-bottom: 70px;
+    max-width: 522px;
+    margin-bottom: 80px;
 }
 
 .news-date {

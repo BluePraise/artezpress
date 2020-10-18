@@ -5,19 +5,21 @@ ul.page-numbers {
 
 .products.flex-container {
     justify-content: space-between;
-    flex-wrap: wrap;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 200px;
-    max-width: 1072px;
 }
 
-.products .product {
+.products .product,
+.product-display .product {
     width: 244px;
-    margin-bottom: 60px;
+    margin-bottom: 64px;
 }
 
+.product-display .product {
+    margin-left: 32px;
+}
 
+.product-display .product:first-child {
+    margin-left: 0;
+} 
 .woocommerce-loop-product__link {
     display: block;
 }
@@ -31,7 +33,7 @@ ul.page-numbers {
 .woocommerce-loop-product__link h4 {
     margin-top: 32px;
     margin-bottom: 32px;
-} 
+}
 
 
 h3.single-product-title {
@@ -40,11 +42,6 @@ h3.single-product-title {
 
 .product_meta {
     margin-top: 100px;
-    margin-bottom: 30px;
-}
-
-.product_meta h5 {
-    display: block;
     margin-bottom: 30px;
 }
 
