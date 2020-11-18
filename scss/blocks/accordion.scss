@@ -1,18 +1,22 @@
 .accordion-toggle {
     font-family: $default-font;
-    background-color: #eee;
-    color: #444;
+    background-color: #fff;
     cursor: pointer;
-    padding: 18px;
     width: 100%;
-    text-align: left;
     border: none;
     outline: none;
     transition: 0.4s;
 }
 
+.ui-accordion {
+    p {
+        display: block;
+        margin-left: 36px;
+    }
+}
+
 .accordion-toggle:hover {
-    background-color: #ccc;
+    background-color: #ffffff;
 }
 
 .panel {
@@ -20,4 +24,8 @@
     background-color: white;
     display: none;
     overflow: hidden;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 10px 0;
+
 }
