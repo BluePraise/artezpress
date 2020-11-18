@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/css/news.css">
 <main id="site-content" class="container-xl single-news" role="main">
     <a class="back-to-news" href="<?php echo site_url("/news"); ?>" role="link">x</a>
     <div class="post-container">

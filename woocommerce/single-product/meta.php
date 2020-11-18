@@ -32,10 +32,12 @@ global $product;
 		$authors 		 = get_field('author');
 		$edition 		 = get_field('edition');
 		$dimensions      = get_field('dimensions');
-		$pages      		 = get_field('pages');
+		$pages      	 = get_field('pages');
 		$illustration    = get_field('illustrations');
 		$design    		 = get_field('design');
 		$language    	 = get_field('language');
+		$nur    	 	 = get_field('nur');
+		$photography     = get_field('photography');
 	
 	?>
 	<div class="flex-container">

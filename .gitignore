@@ -9,3 +9,6 @@ scripts/masonry.html
 scripts/script.js
 scripts/masonry.html
 scripts/script.js
+node_modules/
+gulpfile-min.js
+package-lock.json

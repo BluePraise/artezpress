@@ -49,6 +49,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 */
 	?>
 	<h4><?php echo get_the_title(); ?></h4>
+
 	<p class="single-product-author"><?php echo $author ?></p>
 	<?php 
 	woocommerce_template_loop_product_link_close();

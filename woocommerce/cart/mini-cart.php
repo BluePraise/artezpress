@@ -22,7 +22,6 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_before_mini_cart' ); ?>
 
 <?php if ( ! WC()->cart->is_empty() ) : ?>
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/css/mini-cart.css">
     <span class="mini-cart-greeting">Hi,</span>
     <div class="mini-cart-counter">You have 2 items in your cart</div>
 	<ul class="woocommerce-mini-cart cart_list product_list_widget <?php echo esc_attr( $args['list_class'] ); ?>">

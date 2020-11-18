@@ -17,8 +17,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
-global $product;
+global $product, $post;
 $author = get_field('author');
+$language = get_field('language');
 
 /**
  * Hook: woocommerce_before_single_product.
@@ -55,12 +56,28 @@ if ( post_password_required() ) {
 		
 		?>
 		<p class="single-product-author">By <?php echo $author?></p>
-		<?php woocommerce_template_single_excerpt(); ?>
-		
-		<?php if ( $price_html = $product->get_price_html() ) : ?>
-			<span class="price btn white-on-black	"><?php echo $price_html; ?></span>
-		<?php endif; ?>
-			
+		<?php woocommerce_template_single_add_to_cart(); ?>
+		<div class="block__price price">
+			<?php
+				$child = $product->get_children();
+				if ($child > 1 ):
+
+					foreach($child as $child_id): 
+
+						$post_object    = get_post( $child_id );
+						$child_product  = wc_get_product( $child_id );
+						$child_price    = $child_product->get_price_html();
+						$language 		= $child_product->get_attribute('language');?>
+
+						<!-- <span class="btn white-on-black"><?php //echo $child_price ?></span> -->
+						<button type="submit" class=" btn white-on-black single_add_to_cart_button alt"><?php echo $child_price; ?></button>
+					<?php endforeach;
+				else: ?>
+
+				<span class="something btn white-on-black"><?php echo $price_html; ?></span>
+				
+			<?php endif; ?>
+		</div>
 		<?php woocommerce_template_single_meta(); ?>
 
 	</div>	

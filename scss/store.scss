@@ -13,13 +13,14 @@ ul.page-numbers {
     margin-bottom: 64px;
 }
 
-.product-display .product {
+.related-products .product-display .product {
     margin-left: 32px;
 }
 
-.product-display .product:first-child {
+.related-products .product-display .product:first-child {
     margin-left: 0;
-} 
+}
+
 .woocommerce-loop-product__link {
     display: block;
 }

@@ -36,6 +36,15 @@ add_action( 'wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999 );
 function artezpress_style() {
     wp_register_style( 'artezpress-style', get_theme_file_uri() . '/style.css' );
     wp_enqueue_style ( 'artezpress-style' );
+    wp_enqueue_script( 'jquery');
+    if ( is_page()) {
+        wp_enqueue_script( 'jquery-ui');
+        wp_enqueue_script( 'jquery-ui-accordion');
+        wp_register_style( 'jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui' );
+    }
+    if (is_page('news') || is_singular() ) {
+        wp_enqueue_script( 'masonry');
+    }
     wp_enqueue_script( 'artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true );
 }
 
@@ -96,25 +105,72 @@ function artezpress_gutenberg_css(){
 
 add_action( 'artezpress_before_single_product_summary', 'woocommerce_show_product_images', 20 );
 
-
-add_filter('acf/settings/save_json', 'my_acf_json_save_point');
  
 function my_acf_json_save_point( $path ) {
     
     // update path
-    $path = get_stylesheet_directory() . '/my-custom-folder';
+    $path = get_stylesheet_directory() . '/acf-json';
     
     
     // return
     return $path;
     
 }
+add_filter('acf/settings/save_json', 'my_acf_json_save_point');
 
 /**
  * Fix for Popup Maker Gutenberg compatibility
  * Need to strip out comments, blank lines and empty paragraph tags
  */
 add_filter( 'pum_popup_content', 'veer_popup_maker_gutenburg_compat' );
+
+function my_acf_admin_head() {
+?>
+<style type="text/css">
+
+    .postbox-header h2.hndle {
+        font-family: 'Lars';
+    }
+    .display-block {
+        display: block;
+    }
+
+    .acf-flexible-content .layout .acf-fc-layout-handle {
+        /*background-color: #00B8E4;*/
+        background-color: #202428;
+        color: #eee;
+    }
+
+    .acf-repeater.-row > table > tbody > tr > td,
+    .acf-repeater.-block > table > tbody > tr > td {
+        border-top: 2px solid #202428;
+    }
+
+    .acf-repeater .acf-row-handle {
+        vertical-align: top !important;
+        padding-top: 16px;
+    }
+
+    .acf-repeater .acf-row-handle span {
+        font-size: 20px;
+        font-weight: bold;
+        color: #202428;
+    }
+
+    .imageUpload img {
+        width: 75px;
+    }
+
+    .acf-repeater .acf-row-handle .acf-icon.-minus {
+        top: 30px;
+    }
+
+</style>
+<?php
+}
+
+add_action('acf/input/admin_head', 'my_acf_admin_head');
+
 
 function veer_popup_maker_gutenburg_compat($content) {
 	$content = preg_replace('!/\*.*?\*/!s', '', $content); // empty lines

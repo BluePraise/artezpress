@@ -1,20 +1,35 @@
+/*
+    Theme Name: ArtEzPress
+    Author: Magalie Chetrit
+    Author URI: https://magalielinda.me/
+    Description: Child Theme of Storefront
+    Version: 0.0
+    License: No License
+    License URI: #
+*/
+
+$default-font : 'Lars',
+Helvetica,
+Arial,
+sans-serif;
+
 @font-face {
     font-family: 'Lars';
-    src: url('./../assets/fonts/Lars-Regular.otf') format('opentype');
+    src: url('/wp-content/themes/artezpress/assets/fonts/Lars-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Lars';
-    src: url('./../assets/fonts/Lars-RegularItalic.otf') format('opentype');
+    src: url('/wp-content/themes/artezpress/assets/fonts/Lars-RegularItalic.otf') format('opentype');
     font-weight: 400;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'LarsExtended';
-    src: url('./../assets/fonts/Lars-MediumExtended.otf') format('opentype');
+    src: url('/wp-content/themes/artezpress/assets/fonts/Lars-MediumExtended.otf') format('opentype');
     font-weight: 500;
     font-style: italic;
 }
@@ -513,8 +528,8 @@ input[type="checkbox"] {
     margin: 36px auto;
 }
 
-.post-container {
-    /* max-width: 768px; */
+.post-container,
+.content-container {
     max-width: 770px;
     margin: 0 auto;
     padding-bottom: 80px;
