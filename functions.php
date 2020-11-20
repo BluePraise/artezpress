@@ -39,6 +39,8 @@ function artezpress_style() {
     wp_enqueue_script( 'jquery');
     if ( is_page()) {
         wp_enqueue_script( 'jquery-ui');
+        wp_enqueue_script( 'owl-slider', get_theme_file_uri() . '/js/owl.slider.js');
+        wp_enqueue_script( 'jquery-ui-slider');
         wp_enqueue_script( 'jquery-ui-accordion');
         wp_register_style( 'jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui' );
     }

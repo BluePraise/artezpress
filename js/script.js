@@ -31,17 +31,15 @@ jQuery(document).ready(function ($) {
 		icons: icons,
 		heightStyle: "content",
 		animate: 200
-	})
-	// toggleButton.on("click", function () {
-	// 	$(".js-toggle-accordion").accordion("option", {
-	// 		icons: icons,
-	// 		header: "button",
-	// 		icons: icons,
-	// 		heightStyle: "content",
-	// 		animate: 200,
-	// 	});
-    // });
-    
+	});
+
+	$(".owl-carousel").owlCarousel({
+		items: 1,
+		loop: true,
+		autoplay: true,
+		dotsEach: true,
+		lazyLoad: true,
+	});
 
 	$(".grid").masonry({
 		// options

@@ -212,6 +212,11 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"
+            },
+            {
+                "param": "page_template",
+                "operator": "!=",
+                "value": "template-homepage.php"
             }
         ]
     ],
@@ -239,5 +244,5 @@
         }
     },
     "acfe_note": "",
-    "modified": 1605731846
+    "modified": 1605814116
 }

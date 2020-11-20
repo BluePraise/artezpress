@@ -16,10 +16,14 @@ get_header(); ?>
 
 	
 	<main class="site-main container" role="main">
-	<div class="handshake">
-		<p>This is where the handshake goes</p>
+	<div class="hero handshake">
+		
 	</div>
-
+	<section class="features">
+		<div class="owl-carousel">
+			<?php get_template_part('blocks/slider'); ?>
+		</div>
+	</section>
 	<?php 
 		get_template_part( 'content', 'temp' );
 		do_action( 'homepage' );
