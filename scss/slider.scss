@@ -245,4 +245,8 @@
         margin: 0 12px;
 
     }
+    button.owl-dot:focus {
+        outline: none;
+        border: 0;
+    }
 }

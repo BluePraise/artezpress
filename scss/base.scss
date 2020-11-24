@@ -121,6 +121,7 @@ body {
     color: #000;
     width: 100%;
     height: 140vh;
+    overflow-x: hidden;
     /* i don't know if this will work on every page,
     but it's here because of the fixed bottom causing a z-index overlap. 
     It's not possible to click on anything underneath it. */

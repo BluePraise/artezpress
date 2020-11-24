@@ -1,0 +1,1 @@
+<h1>ArtEZ Press</h1>

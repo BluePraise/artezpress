@@ -103,6 +103,7 @@ body {
   color: #000;
   width: 100%;
   height: 140vh;
+  overflow-x: hidden;
   /* i don't know if this will work on every page,
     but it's here because of the fixed bottom causing a z-index overlap. 
     It's not possible to click on anything underneath it. */
@@ -388,6 +389,22 @@ input[type="checkbox"] {
 * SPECIFIC SITE CSS
 *
 *************************/
+.hero {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./assets/img/bg/bg_de_nieuwe_man_1.jpg);
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: cover;
+  z-index: -11;
+  position: relative; }
+  .hero:before {
+    content: '';
+    display: block; }
+
 .features .carousel-container {
   width: calc(100%/3);
   position: relative; }
@@ -481,7 +498,6 @@ ul.horizontal-list li {
   max-width: 1076px; }
 
 .main-menu-container {
-  padding: 20px 50px;
   font-family: 'Lars', Helvetica, Arial, sans-serif;
   font-size: 2rem;
   line-height: 2.8rem; }
@@ -489,24 +505,26 @@ ul.horizontal-list li {
 .fixed-bottom {
   position: fixed;
   width: 100vw;
-  z-index: -10;
+  z-index: 10;
   background: transparent;
   min-height: 100px;
-  bottom: 0;
+  bottom: -8px;
   left: 0; }
 
 .main-menu-surface,
 .main-menu-bar {
-  padding: 20px 0px; }
+  padding: 20px 36px; }
 
 .main-menu-surface {
   display: none;
   transition: all 400ms;
   background-color: white;
   position: absolute;
-  width: 97.4vw;
-  top: -300px;
-  z-index: -2; }
+  width: 100vw;
+  left: 0;
+  top: -359px;
+  z-index: -2;
+  padding: 48px 36px; }
 
 .menu-open .main-menu-surface {
   display: block;
@@ -527,7 +545,8 @@ body.menu-open {
   transition: all 500ms; }
 
 .main-menu-bar {
-  background-color: transparent; }
+  background-color: transparent;
+  width: 100vw; }
 
 .main-menu-bar .flex-container {
   justify-content: space-between; }
@@ -915,6 +934,9 @@ a.news-read-more:hover {
     border: 2px solid white;
     background-color: #fff;
     margin: 0 12px; }
+  .owl-dots button.owl-dot:focus {
+    outline: none;
+    border: 0; }
 
 ul.products,
 ul.page-numbers {
