@@ -13,22 +13,30 @@
  */
 
 get_header(); ?>
-
 	
-	<main class="site-main container" role="main">
-	<div class="hero handshake">
+	<main class="site-main" role="main">
+		<div class="hero handshake">
 		
-	</div>
-	<section class="features">
-		<div class="owl-carousel">
-			<?php get_template_part('blocks/slider'); ?>
 		</div>
-	</section>
+		<section class="features flex-container">
+		
+		<?php 
+			if (have_rows('feature_sliders')) :
+				while (have_rows('feature_sliders')) : the_row(); 
+				
+				get_template_part('blocks/frontpage/slider/slider','left');
+				get_template_part('blocks/frontpage/slider/slider','middle');
+				get_template_part('blocks/frontpage/slider/slider','right');
+				
+			endwhile;
+		endif;    
+		?>
+		
+		</section>
 	<?php 
 		get_template_part( 'content', 'temp' );
 		do_action( 'homepage' );
 	?>
-
 
 	</main><!-- #main -->
 <?php

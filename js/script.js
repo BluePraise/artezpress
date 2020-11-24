@@ -37,7 +37,7 @@ jQuery(document).ready(function ($) {
 		items: 1,
 		loop: true,
 		autoplay: true,
-		dotsEach: true,
+		dots: true,
 		lazyLoad: true,
 	});
 
@@ -47,6 +47,10 @@ jQuery(document).ready(function ($) {
 		columnWidth: 520,
 		gutter: 32,
 	});
+	
+	//https://stackoverflow.com/questions/11867545/change-text-color-based-on-brightness-of-the-covered-background-area
 
+
+	$(".colour-effect").colourBrightness();
 
 });

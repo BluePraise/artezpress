@@ -13,6 +13,8 @@ Helvetica,
 Arial,
 sans-serif;
 
+$default-container-width: 1076px;
+
 @font-face {
     font-family: 'Lars';
     src: url('/wp-content/themes/artezpress/assets/fonts/Lars-Regular.otf') format('opentype');
@@ -248,7 +250,15 @@ i {}
 
 .content .page p {}
 
+// Dark text
+.light {
+    color: #000;
+}
 
+// Light text
+.dark {
+    color: #fff;
+}
 
 /* Clearing ---------------------------------- */
 
@@ -500,97 +510,3 @@ input[type="checkbox"] {
 * SPECIFIC SITE CSS
 *
 *************************/
-
-.mast-head main.content--container {}
-
-.mast-foot {}
-
-.grid-container {
-    display: grid;
-}
-
-.flex-container {
-    display: flex;
-}
-
-.container {
-    max-width: 1076px;
-    margin: 60px auto;
-}
-
-.container-xs {
-    max-width: 960px;
-    margin: 0 auto;
-}
-
-.container-xl {
-    max-width: 1610px;
-    margin: 36px auto;
-}
-
-.post-container,
-.content-container {
-    max-width: 770px;
-    margin: 0 auto;
-    padding-bottom: 80px;
-}
-
-.btn {
-    text-decoration: none;
-}
-
-.btn.white-on-black {
-    position: relative;
-    z-index: 2;
-    background-color: black;
-    color: white;
-    padding: 10px 40px;
-    border-radius: 30px;
-}
-
-.display-block,
-.show {
-    display: block !important;
-}
-
-.hide {
-    display: none;
-}
-
-ul.d-h,
-ul.horizontal-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-ul.horizontal-list li {
-    display: inline-block;
-}
-
-.d-h.flex-container {
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.d-h .col-1 {
-    width: 60px;
-    margin-right: 32px;
-}
-
-.d-h .col-2 {
-    width: 152px;
-    margin-right: 32px;
-}
-
-
-.d-h .col-3 {
-    width: 244px;
-}
-
-.product-display {
-    flex-wrap: wrap;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1076px;
-}

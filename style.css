@@ -186,6 +186,12 @@ a {
   text-edge: cap alphabetic;
   leading-trim: both; }
 
+.light {
+  color: #000; }
+
+.dark {
+  color: #fff; }
+
 /* Clearing ---------------------------------- */
 .group::after,
 .entry-content::after {
@@ -382,6 +388,26 @@ input[type="checkbox"] {
 * SPECIFIC SITE CSS
 *
 *************************/
+.features .carousel-container {
+  width: calc(100%/3);
+  position: relative; }
+  .features .carousel-container h2 {
+    display: block;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    text-align: center;
+    top: 60px;
+    color: white;
+    text-shadow: 1px 1px 4px #3e3e3e; }
+  .features .carousel-container h3.slider-item-title {
+    position: absolute;
+    z-index: 2;
+    bottom: 70px;
+    padding-left: 36px; }
+  .features .carousel-container .owl-carousel .owl-item {
+    max-height: 770px; }
+
 .grid-container {
   display: grid; }
 
@@ -868,6 +894,27 @@ a.news-read-more:hover {
   z-index: 1;
   height: 100%;
   width: 100%; }
+
+.owl-dots {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center; }
+  .owl-dots button.owl-dot span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50px;
+    border: 2px solid white;
+    margin: 0 12px; }
+  .owl-dots button.owl-dot.active span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50px;
+    border: 2px solid white;
+    background-color: #fff;
+    margin: 0 12px; }
 
 ul.products,
 ul.page-numbers {

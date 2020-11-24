@@ -15,7 +15,3 @@ if (get_row_layout() == 'layout_block_toggle'): ?>
         <?php endwhile; endif;?>
     </div>
 <?php endif; ?>
-
-
-
-

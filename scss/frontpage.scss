@@ -1,0 +1,27 @@
+.features .carousel-container {
+    width: calc(100%/3);
+    position: relative;
+
+    h2 {
+        display: block;
+        position: absolute;
+        width: 100%;
+        z-index: 2;
+        text-align: center;
+        top: 60px;
+        color: white;
+        text-shadow: 1px 1px 4px #3e3e3e;
+    }
+
+    h3.slider-item-title {
+        position: absolute;
+        z-index: 2;
+        bottom: 70px;
+        padding-left: 36px;
+        // text-shadow: 1px 1px 4px #3e3e3e;
+    }
+
+    .owl-carousel .owl-item  {
+        max-height: 770px;
+    }
+}
