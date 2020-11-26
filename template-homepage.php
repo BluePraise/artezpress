@@ -33,11 +33,62 @@ get_header(); ?>
 		?>
 		
 		</section>
-	<?php 
-		get_template_part( 'content', 'temp' );
-		do_action( 'homepage' );
-	?>
+	
+		<section class="featured-books flex-container ">
+			<h2 class="featured-title">Books</h2>
+			<div class="full-width products">
+    			<?php
+        		$args = array(
+						'post_type' => 'product',
+						'posts_per_page' => 6,
+						);
+					$loop = new WP_Query( $args );
+					if ( $loop->have_posts() ) {
+						while ( $loop->have_posts() ) : $loop->the_post();
+							wc_get_template_part( 'content', 'product' );
+						endwhile;
+					} else {
+						echo __( 'No products found' );
+					}
+					wp_reset_postdata();
+				?>
+			</div><!--/.products-->
+			<a class="btn black-on-white" href="<?php echo esc_url( '/books' ); ?>">See All Books</a>
+			
+		</section><!-- #main -->
+	
+		<section class="latest-news container">
+			<h2 class="featured-title">News</h2>
+			<div class="grid">
+    			<?php
+        		$args = array(
+						'post_type' => 'post',
+						'posts_per_page' => 6,
+						);
+					$loop = new WP_Query( $args );
+					if ( $loop->have_posts() ) {
+						while ( $loop->have_posts() ) : $loop->the_post(); ?>
+							<div class="news-item">
+								<p class="news-date"><?php echo the_date( "d F Y" )?></p>
+								<?php if( has_post_thumbnail() ): ?>
+								<figure class="news-thumbnail">
+									<?php the_post_thumbnail(); ?>
+								</figure>
+            					<?php endif; ?>
+            					<h3 class="post-title"><?php echo the_title(); ?></h3>
+            					<p class="small-text"><?php the_excerpt(); ?>Test</p>
+        					</div>
+					<?php 
+							endwhile;
+					} else {
+						echo __( 'No products found' );
+					}
+					wp_reset_postdata();
+				?>
+			</div><!--/.grid-->
+			<a class="btn black-on-white" href="<?php echo esc_url( '/news' ); ?>">See All News</a>
+			
+		</section><!-- #main -->
 
 	</main><!-- #main -->
-<?php
-get_footer();
+<?php get_footer(); ?>

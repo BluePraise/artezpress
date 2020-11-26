@@ -37,17 +37,13 @@ function artezpress_style() {
     wp_register_style( 'artezpress-style', get_theme_file_uri() . '/style.css' );
     wp_enqueue_style ( 'artezpress-style' );
     wp_enqueue_script( 'jquery');
-    wp_enqueue_script( 'colour-detector', get_theme_file_uri() . '/js/colourBrightness.min.js');
+    wp_enqueue_script( 'jquery-ui');
+    // wp_enqueue_script( 'colour-detector', get_theme_file_uri() . '/js/colourBrightness.min.js');
+    wp_enqueue_script( 'masonry');
     wp_enqueue_script( 'owl-slider', get_theme_file_uri() . '/js/owl.slider.js');
-    if ( is_page()) {
-        wp_enqueue_script( 'jquery-ui');
-        wp_enqueue_script( 'jquery-ui-slider');
-        wp_enqueue_script( 'jquery-ui-accordion');
-        wp_register_style( 'jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui' );
-    }
-    if (is_page('news') || is_singular() ) {
-        wp_enqueue_script( 'masonry');
-    }
+    wp_enqueue_script( 'jquery-ui-accordion');
+    wp_enqueue_script( 'jquery-ui-slider');
+    wp_register_style( 'jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui' );
     wp_enqueue_script( 'artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true );
 }
 

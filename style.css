@@ -183,9 +183,8 @@ a {
 .page-title {
   display: block; }
 
-#site-content p {
-  text-edge: cap alphabetic;
-  leading-trim: both; }
+.featured-title {
+  margin-bottom: 64px; }
 
 .light {
   color: #000; }
@@ -425,6 +424,26 @@ input[type="checkbox"] {
   .features .carousel-container .owl-carousel .owl-item {
     max-height: 770px; }
 
+.featured-books {
+  flex-direction: column;
+  margin: 80px 36px; }
+  .featured-books .products {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 40px; }
+  .featured-books .btn.black-on-white {
+    display: inline-block;
+    align-self: center; }
+
+.home .latest-news {
+  text-align: center; }
+  .home .latest-news .btn {
+    display: inline-block;
+    align-self: center;
+    margin-top: 40px;
+    margin-bottom: 160px; }
+
 .grid-container {
   display: grid; }
 
@@ -450,15 +469,30 @@ input[type="checkbox"] {
   padding-bottom: 80px; }
 
 .btn {
-  text-decoration: none; }
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 40px;
+  border-radius: 30px; }
 
 .btn.white-on-black {
   position: relative;
   z-index: 2;
   background-color: black;
   color: white;
-  padding: 10px 40px;
-  border-radius: 30px; }
+  border: 2px solid transparent; }
+  .btn.white-on-black:hover {
+    border: 2px solid black;
+    background-color: #fff;
+    color: black; }
+
+.btn.black-on-white {
+  border: 2px solid black;
+  background-color: white;
+  color: black; }
+  .btn.black-on-white:hover {
+    border: 2px solid #fff;
+    background-color: #000;
+    color: white; }
 
 .display-block,
 .show {
@@ -731,6 +765,10 @@ a.news-read-more:hover {
 
 .post-container p {
   margin: 20px 0; }
+
+/* frontpage php */
+.home .latest-news .news-item p, .home .latest-news .news-item h3 {
+  text-align: left; }
 
 /**
  * Owl Carousel v2.3.4

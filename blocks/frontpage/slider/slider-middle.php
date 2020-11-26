@@ -10,6 +10,7 @@
                     <div class="slider-item-middle">
                         <img class="slider-img" src="<?php echo esc_url( $slider_image ); ?>" alt="<?php echo $slider_title; ?>">
                         <h3 class="slider-item-title colour-effect"><?php echo $slider_title; ?></h3>
+                        <a href="<?php the_permalink(); ?>">Read More</a>
                     </div>
     <?php
             endwhile;

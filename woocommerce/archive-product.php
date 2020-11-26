@@ -10,6 +10,6 @@
 			<?php endwhile; ?>
 		<?php endif; ?>
 
-		<?php woocommerce_product_loop_end(); ?>
+	<?php woocommerce_product_loop_end(); ?>
 </main><!-- #main -->
 <?php get_footer(); ?>

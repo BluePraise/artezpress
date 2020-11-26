@@ -61,3 +61,12 @@ a.news-read-more:hover {
 .post-container p {
     margin: 20px 0;
 }
+
+/* frontpage php */
+
+// bit of a hack but time flies
+.home .latest-news .news-item {
+    p, h3 {
+        text-align: left;
+    }
+}

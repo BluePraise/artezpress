@@ -244,9 +244,13 @@ i {}
     display: block;
 }
 
-#site-content p {
-    text-edge: cap alphabetic;
-    leading-trim: both;
+#site-content p {}
+//     text-edge: cap alphabetic;
+//     leading-trim: both;
+// }
+
+.featured-title {
+    margin-bottom: 64px;
 }
 
 .content .page p {}

@@ -46,3 +46,31 @@
         max-height: 770px;
     }
 }
+
+.featured-books {
+    flex-direction: column;
+    margin: 80px 36px;
+
+    .products {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 40px;
+    }
+
+    .btn.black-on-white {
+        display: inline-block;
+        align-self: center;
+    }
+}
+
+.home .latest-news {
+    text-align: center;
+
+    .btn {
+        display: inline-block;
+        align-self: center;
+        margin-top: 40px;
+        margin-bottom: 160px;
+    }
+}

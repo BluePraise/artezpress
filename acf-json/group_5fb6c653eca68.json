@@ -22,7 +22,7 @@
             "sub_fields": [
                 {
                     "key": "field_5fb6c65ccf51a",
-                    "label": "Left",
+                    "label": "Coming Soon",
                     "name": "",
                     "type": "tab",
                     "instructions": "",
@@ -109,7 +109,7 @@
                 },
                 {
                     "key": "field_5fb6c793eae13",
-                    "label": "Middle",
+                    "label": "New Releases",
                     "name": "",
                     "type": "tab",
                     "instructions": "",
@@ -191,12 +191,40 @@
                             "max_height": "",
                             "max_size": "",
                             "mime_types": ""
+                        },
+                        {
+                            "key": "field_5fbe5018bfd39",
+                            "label": "",
+                            "name": "",
+                            "type": "post_object",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_permissions": "",
+                            "post_type": [
+                                "product"
+                            ],
+                            "taxonomy": "",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "return_format": "id",
+                            "save_custom": 0,
+                            "save_post_status": "publish",
+                            "acfe_bidirectional": {
+                                "acfe_bidirectional_enabled": "0"
+                            },
+                            "ui": 1
                         }
                     ]
                 },
                 {
                     "key": "field_5fb6c90337783",
-                    "label": "Right",
+                    "label": "The Backlog",
                     "name": "",
                     "type": "tab",
                     "instructions": "",
@@ -317,5 +345,5 @@
         }
     },
     "acfe_note": "",
-    "modified": 1605902407
+    "modified": 1606307936
 }
