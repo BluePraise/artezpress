@@ -15,9 +15,8 @@
 get_header(); ?>
 	
 	<main class="site-main" role="main">
-		<div class="hero handshake">
-			<?php get_template_part('blocks/frontpage/handshake/index'); ?>
-		</div>
+		
+		<?php get_template_part('blocks/frontpage/handshake/index'); ?>
 		<section class="features flex-container">
 		
 		<?php 
