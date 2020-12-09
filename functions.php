@@ -174,4 +174,10 @@ function veer_popup_maker_gutenburg_compat($content) {
 	$content = preg_replace('/<p[^>]*><\\/p[^>]*>/', '', $content); // empty p tags
 	return $content;
 } 
- 
+
+function my_get_the_product_thumbnail_url( $size = 'shop_catalog' ) {
+  global $post;
+  $image_size = apply_filters( 'single_product_archive_thumbnail_size', $size );
+  return get_the_post_thumbnail_url( $post->ID, $image_size );
+}
+
