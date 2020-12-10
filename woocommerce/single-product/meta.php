@@ -22,60 +22,114 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 ?>
 <div class="product_meta">
-	<h5 class="section-title">Colophon and Specs</h5>
-
+	<h5 class="section-title"><?php _e('Colophon and Specs'); ?></h5>
 
 	<?php do_action( 'woocommerce_product_meta_start' ); ?>
-	<?php 
-		$publishing_date = get_field('publishing_date');
-		$isbn 			 = get_field('isbn');
+	<?php
+		// VALUES FOR LEFT COL
+		$publishing_year = get_field('publishing_year');
 		$authors 		 = get_field('author');
 		$edition 		 = get_field('edition');
-		$dimensions      = get_field('dimensions');
-		$pages      	 = get_field('pages');
-		$illustration    = get_field('illustrations');
 		$design    		 = get_field('design');
 		$language    	 = get_field('language');
 		$nur    	 	 = get_field('nur');
 		$photography     = get_field('photography');
+		// VALUES FOR RIGHT COL
+		$series     	 = get_field('series');
+		$pages      	 = get_field('pages');
+		$dimensions      = get_field('dimensions');
+		$illustration    = get_field('illustrations');
+		$binding    	 = get_field('binding');
+		$paper    	 	 = get_field('paper');
 	
 	?>
 	<div class="flex-container">
 		<div class="col_left">
+
 			<div class="block">
-				<span><?php echo $publishing_date ?>, <?php echo $language ?></span>
-				<span class="display-block"><?php echo $isbn ?></span>
+				<span class="colophon-value"><?php echo $publishing_year ?>, <?php echo $language ?></span>
 				<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
-					<span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
+					<span class="sku_wrapper"><?php esc_html_e( 'ISBN', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
 				<?php endif; ?>
+				<span class="colophon-value">NUR <?php echo $nur; ?></span>
 			</div>
+			
 			<div class="block">
-				<span class="label-header">Author</span>
+				<span class="label-header"><?php esc_html_e('author'); ?></span>
 				<span><?php echo $authors; ?></span>
 			</div>		
+			
+
+		<?php if ( $design['designer'] ) : ?>	
+
 			<div class="block">
-				<span class="label-header">Design</span>
-				<span><?php echo $design; ?></span>
+				<span class="label-header"><?php esc_html_e('Design'); ?></span>
+				<span><?php echo $design['designer']; ?></span>
 			</div>
-		</div>
+		
+		<?php endif; ?>
+
+		<?php if ( $design['photography'] ) : ?>	
+
+			<div class="block">
+				<span class="label-header"><?php esc_html_e('Photography'); ?></span>
+				<span><?php echo $design['photography']; ?></span>
+			</div>
+		
+		<?php endif; ?>
+		<?php if ( $design['photography'] ) : ?>	
+
+			<div class="block">
+				<span class="label-header"><?php esc_html_e('Photography'); ?></span>
+				<span><?php echo $design['photography']; ?></span>
+			</div>
+		
+		<?php endif; ?>
+
+
+
+		</div><?php // END OF .COL_LEFT ?>
 
 		<div class="col_right">
-			<div class="block">
-				<span class="label-header">Pages</span>
-				<span><?php echo $pages; ?>p.</span>
-			</div>
-			<div class="block">
-				<span class="label-header">Dimensions</span>
-				<span><?php echo $dimensions['width']; ?>x<?php echo $dimensions['length']; ?>cm</span>
-			</div>
-			<div class="block">
-				<span class="label-header">Illustrations</span>
-				<span>ca. <?php echo $illustration['amount']; ?> <?php echo $illustration['type']; ?> ills.</span>
-			</div>
-			<div class="block">
-				<span class="label-header">Binding</span>
-				<span><?php echo $edition; ?></span>
-			</div>
+			<?php if ( $series ) : ?>	
+
+				<div class="block">
+					<span class="label-header"><?php esc_html_e('Series'); ?></span>
+					<span><?php echo $series; ?></span>
+				</div>
+		
+			<?php endif; ?>
+			
+			<?php if ( $pages ) : ?>	
+
+				<div class="block">
+					<span class="label-header"><?php esc_html_e('Pages'); ?></span>
+					<span><?php echo $pages; ?> p.</span>
+				</div>
+		
+			<?php endif; ?>
+
+			<?php if ( $dimensions ) : ?>
+				<div class="block">
+					<span class="label-header"><?php esc_html_e('Dimensions'); ?></span>
+					<span><?php echo $dimensions['width']; ?> x <?php echo $dimensions['length']; ?> cm</span>
+				</div>
+			<?php endif; ?>
+			
+			<?php if ( $illustration ) : ?>
+				<div class="block">
+					<span class="label-header"><?php esc_html_e('Illustrations'); ?></span>
+					<span>ca. <?php //echo $illustration['amount']; ?> <?php //echo $illustration['type']; ?> ills.</span>
+				</div>
+			<?php endif; ?>
+			
+			<?php if ( $binding ) : ?>
+				<div class="block">
+					<span class="label-header"><?php esc_html_e('Binding'); ?></span>
+					<span><?php echo $binding; ?></span>
+				</div>
+			<?php endif; ?>
+	
 		</div>
 	</div>
 
