@@ -40,7 +40,7 @@ global $product;
 		$dimensions      = get_field('dimensions');
 		$illustration    = get_field('illustrations');
 		$binding    	 = get_field('binding');
-		$paper    	 	 = get_field('paper');
+		$paper_type    	 = get_field('paper_type');
 	
 	?>
 	<div class="flex-container">
@@ -55,7 +55,7 @@ global $product;
 			</div>
 			
 			<div class="block">
-				<span class="label-header"><?php esc_html_e('author'); ?></span>
+				<span class="label-header"><?php esc_html_e('Author'); ?></span>
 				<span><?php echo $authors; ?></span>
 			</div>		
 			
@@ -116,11 +116,28 @@ global $product;
 				</div>
 			<?php endif; ?>
 			
-			<?php if ( $illustration ) : ?>
+			<?php 
+					if ( $illustration['amount'] ) :
+					$field 		= get_field('illustrations'); 
+					$choices  	= $field['illustration_type'];
+			?>			
 				<div class="block">
+
 					<span class="label-header"><?php esc_html_e('Illustrations'); ?></span>
-					<span>ca. <?php //echo $illustration['amount']; ?> <?php //echo $illustration['type']; ?> ills.</span>
+					<span>ca. <?php echo $illustration['amount']; ?> 
+					<span>
+						<?php 
+							if (count($choices) > 2 ) :
+								foreach( $choices as $choice ):
+						?>	
+									<span><?php echo $choice; ?></span>
+								<?php endforeach; else: ?>	
+								<span><?php esc_html_e('b/w and colour');?> </span>
+						<?php endif; ?>	
+						
+					ills.</span>
 				</div>
+
 			<?php endif; ?>
 			
 			<?php if ( $binding ) : ?>
@@ -129,6 +146,14 @@ global $product;
 					<span><?php echo $binding; ?></span>
 				</div>
 			<?php endif; ?>
+			
+			<div class="block">
+				<span class="label-header"><?php esc_html_e('Paper Stocks'); ?></span>
+				<?php if( have_rows('paper_type') ) : while( have_rows('paper_type') ) : the_row(); ?>	
+					<?php $paper_stock = get_sub_field('paper_stock'); ?>
+					<span class="colophon-value"><?php echo $paper_stock; ?></span>
+				<?php endwhile; endif; ?>
+			</div>
 	
 		</div>
 	</div>
