@@ -9,22 +9,22 @@
     License URI: #
 */
 @font-face {
-  @font-face {
-    font-family: 'Lars';
-    src: url("/wp-content/themes/artezpress/assets/fonts/Lars-Regular.otf") format("opentype");
-    font-weight: 400;
-    font-style: normal; }
-  @font-face {
-    font-family: 'Lars';
-    src: url("/wp-content/themes/artezpress/assets/fonts/Lars-RegularItalic.otf") format("opentype");
-    font-weight: 400;
-    font-style: italic; }
-  @font-face {
-    font-family: 'LarsExtended';
-    src: url("/wp-content/themes/artezpress/assets/fonts/Lars-MediumExtended.otf") format("opentype");
-    font-weight: 500;
-    font-style: italic; }
+  font-family: 'Lars';
+  src: url("./assets/fonts/Lars-Regular.otf") format("opentype");
+  font-weight: 400;
   font-style: normal; }
+
+@font-face {
+  font-family: 'Lars';
+  src: url("./assets/fonts/Lars-RegularItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'LarsExtended';
+  src: url("./assets/fonts/Lars-MediumExtended.otf") format("opentype");
+  font-weight: 500;
+  font-style: bold; }
 
 html,
 body {
@@ -122,7 +122,7 @@ body {
 *************************/
 h1,
 .h1 {
-  font-family: 'LarsExtended';
+  font-family: "LarsExtended";
   font-size: 14rem;
   line-height: 14rem;
   font-weight: 500;
@@ -422,6 +422,10 @@ input[type="checkbox"] {
     color: white; }
   .features .carousel-container .owl-carousel .owl-item {
     max-height: 770px; }
+  .features .carousel-container .slider-item-left {
+    background-color: black; }
+    .features .carousel-container .slider-item-left .slider-img {
+      opacity: 0%; }
 
 .featured-books {
   flex-direction: column;
@@ -442,6 +446,9 @@ input[type="checkbox"] {
     align-self: center;
     margin-top: 40px;
     margin-bottom: 160px; }
+
+.display-block {
+  display: block; }
 
 .grid-container {
   display: grid; }
@@ -1020,7 +1027,7 @@ h3.single-product-title {
   margin-bottom: 40px; }
 
 .label-header,
-.display-block {
+.colophon-value {
   display: block; }
 
 .single-product-author {

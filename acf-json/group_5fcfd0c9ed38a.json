@@ -70,7 +70,7 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Front Page Blocks",
-    "acfe_display_title": "",
+    "acfe_display_title": "Frontpage",
     "acfe_autosync": [
         "json"
     ],
@@ -78,12 +78,7 @@
         "superadmin"
     ],
     "acfe_form": 0,
-    "acfe_meta": {
-        "acfcloneindex": {
-            "acfe_meta_key": "",
-            "acfe_meta_value": ""
-        }
-    },
+    "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1607455701
+    "modified": 1607600285
 }

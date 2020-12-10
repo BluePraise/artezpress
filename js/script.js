@@ -51,6 +51,4 @@ jQuery(document).ready(function ($) {
 	//https://stackoverflow.com/questions/11867545/change-text-color-based-on-brightness-of-the-covered-background-area
 
 
-	// $(".colour-effect").colourBrightness();
-
 });

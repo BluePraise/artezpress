@@ -15,32 +15,30 @@ sans-serif;
 
 $default-container-width: 1076px;
 
+
 @font-face {
-    @font-face {
-        font-family: 'Lars';
-        src: url("/wp-content/themes/artezpress/assets/fonts/Lars-Regular.otf") format("opentype");
-        font-weight: 400;
-        font-style: normal;
-    }
-
-
-
-    @font-face {
-        font-family: 'Lars';
-        src: url('/wp-content/themes/artezpress/assets/fonts/Lars-RegularItalic.otf') format('opentype');
-        font-weight: 400;
-        font-style: italic;
-    }
-
-    @font-face {
-        font-family: 'LarsExtended';
-        src: url("/wp-content/themes/artezpress/assets/fonts/Lars-MediumExtended.otf") format("opentype");
-        font-weight: 500;
-        font-style: italic;
-    }
-
+    font-family: 'Lars';
+    src: url("./assets/fonts/Lars-Regular.otf") format("opentype");
+    font-weight: 400;
     font-style: normal;
 }
+
+
+
+@font-face {
+    font-family: 'Lars';
+    src: url('./assets/fonts/Lars-RegularItalic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'LarsExtended';
+    src: url("./assets/fonts/Lars-MediumExtended.otf") format("opentype");
+    font-weight: 500;
+    font-style: bold;
+}
+
 
 
 html,
@@ -174,7 +172,7 @@ h6 {}
 
 h1,
 .h1 {
-    font-family: 'LarsExtended';
+    font-family: "LarsExtended";
     font-size: 14rem;
     line-height: 14rem;
     font-weight: 500;

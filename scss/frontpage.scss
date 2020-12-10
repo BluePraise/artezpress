@@ -44,6 +44,13 @@
     .owl-carousel .owl-item {
         max-height: 770px;
     }
+
+    .slider-item-left {
+        background-color: black;
+        .slider-img {
+            opacity: 0%;
+        }
+    }
 }
 
 .featured-books {

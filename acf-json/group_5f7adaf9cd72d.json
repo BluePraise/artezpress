@@ -8,7 +8,7 @@
             "name": "author",
             "type": "textarea",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -21,10 +21,7 @@
             "maxlength": "",
             "rows": 4,
             "new_lines": "",
-            "acfe_textarea_code": 0,
-            "acfe_settings": "",
-            "acfe_validate": "",
-            "acfe_form": true
+            "acfe_textarea_code": 0
         },
         {
             "key": "field_5f7adc764fcea",
@@ -44,10 +41,7 @@
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "maxlength": "",
-            "acfe_settings": "",
-            "acfe_validate": "",
-            "acfe_form": true
+            "maxlength": ""
         },
         {
             "key": "field_5f7f05119f04e",
@@ -68,30 +62,7 @@
             "maxlength": "",
             "rows": "",
             "new_lines": "",
-            "acfe_textarea_code": 0,
-            "acfe_form": true
-        },
-        {
-            "key": "field_5f7f05357531a",
-            "label": "Paper Stocks",
-            "name": "paper_stocks",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "acfe_permissions": "",
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "",
-            "acfe_textarea_code": 0,
-            "acfe_form": true
+            "acfe_textarea_code": 0
         },
         {
             "key": "field_5f9580ff0cc90",
@@ -106,7 +77,11 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_permissions": "",
+            "acfe_permissions": [
+                "administrator",
+                "editor",
+                "superadmin"
+            ],
             "layout": "table",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
@@ -125,15 +100,16 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_permissions": "",
+                    "acfe_permissions": [
+                        "administrator",
+                        "editor",
+                        "superadmin"
+                    ],
                     "default_value": "",
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": "",
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "acfe_form": true
+                    "maxlength": ""
                 },
                 {
                     "key": "field_5f7f04f438d4b",
@@ -148,17 +124,19 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_permissions": "",
+                    "acfe_permissions": [
+                        "administrator",
+                        "editor",
+                        "superadmin"
+                    ],
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
                     "rows": "",
                     "new_lines": "",
-                    "acfe_textarea_code": 0,
-                    "acfe_form": true
+                    "acfe_textarea_code": 0
                 }
-            ],
-            "acfe_form": true
+            ]
         }
     ],
     "location": [
@@ -188,14 +166,13 @@
     "acfe_autosync": [
         "json"
     ],
-    "acfe_permissions": "",
-    "acfe_form": 1,
-    "acfe_meta": {
-        "acfcloneindex": {
-            "acfe_meta_key": "",
-            "acfe_meta_value": ""
-        }
-    },
+    "acfe_permissions": [
+        "administrator",
+        "editor",
+        "superadmin"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1603634778
+    "modified": 1607602581
 }
