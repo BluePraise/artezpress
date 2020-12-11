@@ -18,8 +18,10 @@
 defined( 'ABSPATH' ) || exit;
 
 global $product, $post;
-$author = get_field('author');
-$language = get_field('language');
+$author 	 = get_field('author');
+$language 	 = get_field('language');
+$description = get_field('description');
+
 
 /**
  * Hook: woocommerce_before_single_product.
@@ -56,7 +58,10 @@ if ( post_password_required() ) {
 		
 		?>
 		<p class="single-product-author">By <?php echo $author?></p>
-		<?php woocommerce_template_single_add_to_cart(); ?>
+		<div class="single-product-description">
+			<?php echo $description; ?>
+		</div>
+		<?php //woocommerce_template_single_add_to_cart(); ?>
 		<div class="block__price price">
 			<?php
 				$child = $product->get_children();

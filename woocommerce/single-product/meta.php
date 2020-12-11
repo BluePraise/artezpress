@@ -28,10 +28,11 @@ global $product;
 	<?php
 		// VALUES FOR LEFT COL
 		$publishing_year = get_field('publishing_year');
-		$authors 		 = get_field('author');
-		$edition 		 = get_field('edition');
-		$design    		 = get_field('design');
 		$language    	 = get_field('language');
+		$authors 		 = get_field('author');
+		$editions 		 = get_field('additional_editions');
+		$related		 = $editions['related_edition'];
+		$design    		 = get_field('design');
 		$nur    	 	 = get_field('nur');
 		$photography     = get_field('photography');
 		// VALUES FOR RIGHT COL
@@ -51,9 +52,28 @@ global $product;
 				<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
 					<span class="sku_wrapper"><?php esc_html_e( 'ISBN', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
 				<?php endif; ?>
+				<?php if( $editions ): ?>
+					<span class="colophon-value"><?php echo $editions['type_of_edition']; ?></span>
+					<?php  
+							
+							if ( $editions ): 
+								
+								foreach( $related as $r ):
+									// get the ID of the related product
+									$related_product_ID = $r->ID;
+									$related_product = wc_get_product( $related_product_ID );
+									$related_product_sku = $related_product->get_sku();
+									$permalink = get_permalink($related_product_ID);
+									echo('ISBN ' . $related_product_sku );
+								endforeach;
+
+							endif;
+						?>
+				<?php endif; ?>
+
 				<span class="colophon-value">NUR <?php echo $nur; ?></span>
 			</div>
-			
+
 			<div class="block">
 				<span class="label-header"><?php esc_html_e('Author'); ?></span>
 				<span><?php echo $authors; ?></span>
@@ -155,7 +175,7 @@ global $product;
 				<?php endwhile; endif; ?>
 			</div>
 	
-		</div>
+		</div><?php // END OF .COL_RIGHT ?>
 	</div>
 
 	
