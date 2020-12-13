@@ -6,17 +6,39 @@
     border: none;
     outline: none;
     transition: 0.4s;
-}
 
-.ui-accordion {
     p {
-        display: block;
-        margin-left: 36px;
-    }
-}
+        display: inline-flex;
 
-.accordion-toggle:hover {
-    background-color: #ffffff;
+        .icons {
+            display: inline-block;
+            margin-right: 22px;
+            width: 17px;
+            height: 23px;
+            font-size: 17px;
+            line-height: 23px;
+
+            &.minus {
+                content: url("./assets/icons/minus.svg");
+            }
+
+            &.plus {
+                content: url("./assets/icons/plus.svg");
+            }
+        }
+
+    }
+
+    .dashicons {
+        margin-right: 22px;
+        width: 17px;
+        font-size: 17px;
+        line-height: 25px;
+    }
+
+    &:hover {
+        background-color: #ffffff;
+    }
 }
 
 .panel {
@@ -28,4 +50,21 @@
     border-bottom: 1px solid black;
     padding: 10px 0;
 
+}
+
+//jquery native
+
+.ui-accordion .ui-accordion-header {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    margin: 2px 0 0 0;
+    padding: 0;
+    font-size: 100%;
+}
+
+.ui-accordion .ui-accordion-content {
+    padding: 1em 2.2em;
+    border-top: 0;
+    overflow: auto;
 }

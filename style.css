@@ -1071,13 +1071,26 @@ a.news-read-more:hover {
   border: none;
   outline: none;
   transition: 0.4s; }
-
-.ui-accordion p {
-  display: block;
-  margin-left: 36px; }
-
-.accordion-toggle:hover {
-  background-color: #ffffff; }
+  .accordion-toggle p {
+    display: inline-flex; }
+    .accordion-toggle p .icons {
+      display: inline-block;
+      margin-right: 22px;
+      width: 17px;
+      height: 23px;
+      font-size: 17px;
+      line-height: 23px; }
+      .accordion-toggle p .icons.minus {
+        content: url("./assets/icons/minus.svg"); }
+      .accordion-toggle p .icons.plus {
+        content: url("./assets/icons/plus.svg"); }
+  .accordion-toggle .dashicons {
+    margin-right: 22px;
+    width: 17px;
+    font-size: 17px;
+    line-height: 25px; }
+  .accordion-toggle:hover {
+    background-color: #ffffff; }
 
 .panel {
   padding: 0 18px;
@@ -1087,6 +1100,19 @@ a.news-read-more:hover {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   padding: 10px 0; }
+
+.ui-accordion .ui-accordion-header {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  margin: 2px 0 0 0;
+  padding: 0;
+  font-size: 100%; }
+
+.ui-accordion .ui-accordion-content {
+  padding: 1em 2.2em;
+  border-top: 0;
+  overflow: auto; }
 
 .section-title {
   display: block;

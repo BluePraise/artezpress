@@ -33,6 +33,7 @@ function sf_child_theme_dequeue_style() {
 }
 add_action( 'wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999 );
 
+
 function artezpress_style() {
     wp_register_style( 'artezpress-style', get_theme_file_uri() . '/style.css' );
     wp_enqueue_style ( 'artezpress-style' );
@@ -48,6 +49,7 @@ function artezpress_style() {
 }
 
 add_action( 'wp_enqueue_scripts', 'artezpress_style' );
+
 
 
 function add_class_to_excerpt ( $post_excerpt ) {

@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-
+	
 	// Menu button
 	const body = $("body");
 	$(".js-toggle-menu").on("mouseenter", function () {
@@ -17,21 +17,27 @@ jQuery(document).ready(function ($) {
 		}
 	})
 
-	// Accordion Toggle
-	var icons = {
-		header: "ui-icon-plus",
-		activeHeader: "ui-icon-minus",
-	};
-	// var toggleButton = $('.accordion-toggle');
+
 
 	$(".js-toggle-accordion").accordion({
-		icons: { "header": "ui-icon-plus", "activeHeader": "ui-icon-minus" },
 		collapsible: true,
 		header: "button",
-		icons: icons,
 		heightStyle: "content",
 		animate: 200
 	});
+
+	var icons = $('.icons');
+
+	$(".accordion-toggle")
+		.on("click", function () {
+			if ($(".accordion-toggle").hasClass("ui-state-active")) {
+				icons.removeClass('minus');
+				icons.addClass("plus");
+			} else {
+				icons.removeClass("plus");
+				icons.addClass("minus");
+			}
+		});
 
 	$(".owl-carousel").owlCarousel({
 		items: 1,
