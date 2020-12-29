@@ -217,8 +217,9 @@
                 "id": ""
             },
             "acfe_permissions": [
+                "administrator",
                 "editor",
-                "superadmin"
+                "super_admin"
             ],
             "choices": {
                 "2000": "2000",
@@ -354,9 +355,14 @@
     "acfe_autosync": [
         "json"
     ],
-    "acfe_permissions": "",
+    "acfe_permissions": [
+        "administrator",
+        "editor",
+        "shop_manager",
+        "super_admin"
+    ],
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1607615107
+    "modified": 1608145857
 }

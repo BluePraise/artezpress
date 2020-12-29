@@ -35,13 +35,14 @@ add_action( 'wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999 );
 
 
 function artezpress_style() {
-    wp_register_style( 'artezpress-style', get_theme_file_uri() . '/style.css' );
-    wp_enqueue_style ( 'artezpress-style' );
+    wp_register_style( 'artezpress-css', get_theme_file_uri() . '/style.css' );
     wp_enqueue_script( 'jquery');
     wp_enqueue_script( 'jquery-ui');
+    wp_enqueue_script( 'waypoints', get_theme_file_uri() . '/js/jquery.waypoints.min.js', [], null, true );
+    // wp_enqueue_script( 'waypoints', get_theme_file_uri() . '/js/waypoints.debug.js', [], null, true );
     // wp_enqueue_script( 'colour-detector', get_theme_file_uri() . '/js/colourBrightness.min.js');
     wp_enqueue_script( 'masonry');
-    wp_enqueue_script( 'owl-slider', get_theme_file_uri() . '/js/owl.slider.js');
+    wp_enqueue_script( 'owl-slider', get_theme_file_uri() . '/js/owl.slider.js', [], null, true );
     wp_enqueue_script( 'jquery-ui-accordion');
     wp_enqueue_script( 'jquery-ui-slider');
     wp_register_style( 'jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui' );
@@ -57,6 +58,20 @@ function add_class_to_excerpt ( $post_excerpt ) {
     return $post_excerpt;
 }
 // add_filter( 'get_the_excerpt', 'add_class_to_excerpt' );
+
+
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Hero Images',
+		'menu_title'	=> 'Hero Images',
+		'menu_slug' 	=> 'hero-img',
+        'capability'	=> 'edit_posts',
+        'position'      => '9',
+		'redirect'		=> false
+	));
+	
+}
 
 
 /* Woocommerce filters */

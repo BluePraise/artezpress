@@ -31,7 +31,7 @@ global $product;
 		$language    	 = get_field('language');
 		$authors 		 = get_field('author');
 		$editions 		 = get_field('additional_editions');
-		$related		 = $editions['related_edition'];
+
 		$design    		 = get_field('design');
 		$nur    	 	 = get_field('nur');
 		$photography     = get_field('photography');
@@ -57,15 +57,21 @@ global $product;
 					<?php  
 							
 							if ( $editions ): 
-								
-								foreach( $related as $r ):
-									// get the ID of the related product
-									$related_product_ID = $r->ID;
-									$related_product = wc_get_product( $related_product_ID );
-									$related_product_sku = $related_product->get_sku();
-									$permalink = get_permalink($related_product_ID);
-									echo('ISBN ' . $related_product_sku );
-								endforeach;
+								$related		 = $editions['related_edition'];
+								if ( $related ) :
+									foreach( $related as $r ):
+										// get the ID of the related product
+										$related_product_ID = $r->ID;
+										$related_product = wc_get_product( $related_product_ID );
+										$related_product_sku = $related_product->get_sku();
+										$permalink = get_permalink($related_product_ID);
+										$price = wc_price($related_product->get_price());
+										echo('ISBN ' . $related_product_sku );
+										echo ($price);
+									endforeach;
+								endif;
+							else: 
+								echo "nothing";
 
 							endif;
 						?>

@@ -20,6 +20,7 @@
 .features .carousel-container {
     width: calc(100%/3);
     position: relative;
+    z-index: 0;
 
     h2 {
         display: block;

@@ -15,7 +15,12 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_permissions": "",
+            "acfe_permissions": [
+                "administrator",
+                "editor",
+                "shop_manager",
+                "super_admin"
+            ],
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
@@ -36,7 +41,8 @@
                     "acfe_permissions": [
                         "administrator",
                         "editor",
-                        "superadmin"
+                        "shop_manager",
+                        "super_admin"
                     ],
                     "default_value": "",
                     "placeholder": "Edition name",
@@ -60,7 +66,8 @@
                     "acfe_permissions": [
                         "administrator",
                         "editor",
-                        "superadmin"
+                        "shop_manager",
+                        "super_admin"
                     ],
                     "post_type": [
                         "product",
@@ -102,9 +109,14 @@
     "acfe_autosync": [
         "json"
     ],
-    "acfe_permissions": "",
+    "acfe_permissions": [
+        "administrator",
+        "editor",
+        "shop_manager",
+        "super_admin"
+    ],
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1607624234
+    "modified": 1608145058
 }
