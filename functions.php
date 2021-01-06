@@ -73,7 +73,6 @@ if( function_exists('acf_add_options_page') ) {
 	
 }
 
-
 /* Woocommerce filters */
 
 /* 
@@ -110,14 +109,14 @@ if ( ! function_exists( 'woocommerce_widget_shopping_cart_subtotal' ) ) {
 	}
 }
 
-add_action( 'after_setup_theme', 'artezpress_theme_setup' );
+
  
 function artezpress_theme_setup(){
     add_image_size( 'feature-slider-size', 1120, true , array( 'center', 'center' ));
 	add_theme_support( 'editor-styles' ); // if you don't add this line, your stylesheet won't be added
 	add_editor_style( 'style-editor.css' ); // tries to include style-editor.css directly from your theme folder
- 
 }
+add_action( 'after_setup_theme', 'artezpress_theme_setup' );
 
 add_action( 'artezpress_before_single_product_summary', 'woocommerce_show_product_images', 20 );
  
