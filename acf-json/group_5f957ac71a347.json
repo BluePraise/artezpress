@@ -3,26 +3,6 @@
     "title": "Book Attributes",
     "fields": [
         {
-            "key": "field_5f7aeb026c0f3",
-            "label": "ISBN",
-            "name": "isbn",
-            "type": "text",
-            "instructions": "*Numbers only",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "acfe_permissions": "",
-            "default_value": "",
-            "placeholder": "000-00-00000-00-0",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
             "key": "field_5f7ef9668d48b",
             "label": "NUR",
             "name": "nur",
@@ -41,51 +21,6 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
-        },
-        {
-            "key": "field_5f8c6555339b4",
-            "label": "Publishing Year",
-            "name": "publishing_year",
-            "type": "select",
-            "instructions": "Select the year of publishing",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "acfe_permissions": "",
-            "choices": {
-                "2000": "2000",
-                "2001": "2001",
-                "2002": "2002",
-                "2003": "2003",
-                "2004": "2004",
-                "2005": "2005",
-                "2006": "2006",
-                "2007": "2007",
-                "2008": "2008",
-                "2009": "2009",
-                "2010": "2010",
-                "2011": "2011",
-                "2012": "2012",
-                "2013": "2013",
-                "2014": "2014",
-                "2015": "2015",
-                "2016": "2016",
-                "2017": "2017",
-                "2018": "2018",
-                "2019": "2019",
-                "2020": "2020"
-            },
-            "default_value": 2020,
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
         },
         {
             "key": "field_5f7adcd25d716",
@@ -186,7 +121,11 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_permissions": "",
+            "acfe_permissions": [
+                "administrator",
+                "editor",
+                "superadmin"
+            ],
             "layout": "table",
             "acfe_seamless_style": 1,
             "acfe_group_modal": 0,
@@ -215,10 +154,10 @@
                 },
                 {
                     "key": "field_5f7f02eb78fd5",
-                    "label": "Type",
+                    "label": "",
                     "name": "illustration_type",
                     "type": "checkbox",
-                    "instructions": "",
+                    "instructions": "Select one or both",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -226,7 +165,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_permissions": "",
+                    "acfe_permissions": [
+                        "administrator",
+                        "editor",
+                        "superadmin"
+                    ],
                     "choices": {
                         "color": "color",
                         "b\/w": "b\/w"
@@ -237,6 +180,126 @@
                     "toggle": 0,
                     "return_format": "value",
                     "save_custom": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5fd211b60dbc4",
+            "label": "Binding",
+            "name": "binding",
+            "type": "text",
+            "instructions": "Paperback, hardcover, etc?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": "",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5f8c6555339b4",
+            "label": "Publishing Year",
+            "name": "publishing_year",
+            "type": "select",
+            "instructions": "Select the year of publishing",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": [
+                "administrator",
+                "editor",
+                "super_admin"
+            ],
+            "choices": {
+                "2000": "2000",
+                "2001": "2001",
+                "2002": "2002",
+                "2003": "2003",
+                "2004": "2004",
+                "2005": "2005",
+                "2006": "2006",
+                "2007": "2007",
+                "2008": "2008",
+                "2009": "2009",
+                "2010": "2010",
+                "2011": "2011",
+                "2012": "2012",
+                "2013": "2013",
+                "2014": "2014",
+                "2015": "2015",
+                "2016": "2016",
+                "2017": "2017",
+                "2018": "2018",
+                "2019": "2019",
+                "2020": "2020"
+            },
+            "default_value": 2020,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5f7f05357531a",
+            "label": "Paper Type",
+            "name": "paper_type",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": [
+                "administrator",
+                "editor",
+                "superadmin"
+            ],
+            "acfe_repeater_stylised_button": 0,
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add paper types",
+            "sub_fields": [
+                {
+                    "key": "field_5fd21df1536c0",
+                    "label": "Paper Stocks",
+                    "name": "paper_stock",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_permissions": [
+                        "administrator",
+                        "editor",
+                        "superadmin"
+                    ],
+                    "default_value": "",
+                    "placeholder": "Paper name, 00gr",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         },
@@ -280,26 +343,26 @@
             }
         ]
     ],
-    "menu_order": 0,
-    "position": "side",
-    "style": "seamless",
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Attributes Shown in Sidebar of Admin",
+    "description": "Book Attributes",
     "acfe_display_title": "",
     "acfe_autosync": [
         "json"
     ],
-    "acfe_permissions": "",
+    "acfe_permissions": [
+        "administrator",
+        "editor",
+        "shop_manager",
+        "super_admin"
+    ],
     "acfe_form": 0,
-    "acfe_meta": {
-        "acfcloneindex": {
-            "acfe_meta_key": "",
-            "acfe_meta_value": ""
-        }
-    },
+    "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1603634814
+    "modified": 1608145857
 }

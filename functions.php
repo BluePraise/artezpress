@@ -33,14 +33,16 @@ function sf_child_theme_dequeue_style() {
 }
 add_action( 'wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999 );
 
+
 function artezpress_style() {
-    wp_register_style( 'artezpress-style', get_theme_file_uri() . '/style.css' );
-    wp_enqueue_style ( 'artezpress-style' );
+    wp_register_style( 'artezpress-css', get_theme_file_uri() . '/style.css' );
     wp_enqueue_script( 'jquery');
     wp_enqueue_script( 'jquery-ui');
+    wp_enqueue_script( 'waypoints', get_theme_file_uri() . '/js/jquery.waypoints.min.js', [], null, true );
+    // wp_enqueue_script( 'waypoints', get_theme_file_uri() . '/js/waypoints.debug.js', [], null, true );
     // wp_enqueue_script( 'colour-detector', get_theme_file_uri() . '/js/colourBrightness.min.js');
     wp_enqueue_script( 'masonry');
-    wp_enqueue_script( 'owl-slider', get_theme_file_uri() . '/js/owl.slider.js');
+    wp_enqueue_script( 'owl-slider', get_theme_file_uri() . '/js/owl.slider.js', [], null, true );
     wp_enqueue_script( 'jquery-ui-accordion');
     wp_enqueue_script( 'jquery-ui-slider');
     wp_register_style( 'jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui' );
@@ -50,12 +52,26 @@ function artezpress_style() {
 add_action( 'wp_enqueue_scripts', 'artezpress_style' );
 
 
+
 function add_class_to_excerpt ( $post_excerpt ) {
     $post_excerpt = '<p class="news-excerpt small-text">' . $post_excerpt . '</p>';
     return $post_excerpt;
 }
 // add_filter( 'get_the_excerpt', 'add_class_to_excerpt' );
 
+
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Hero Images',
+		'menu_title'	=> 'Hero Images',
+		'menu_slug' 	=> 'hero-img',
+        'capability'	=> 'edit_posts',
+        'position'      => '9',
+		'redirect'		=> false
+	));
+	
+}
 
 /* Woocommerce filters */
 
@@ -93,14 +109,14 @@ if ( ! function_exists( 'woocommerce_widget_shopping_cart_subtotal' ) ) {
 	}
 }
 
-add_action( 'after_setup_theme', 'artezpress_theme_setup' );
+
  
 function artezpress_theme_setup(){
     add_image_size( 'feature-slider-size', 1120, true , array( 'center', 'center' ));
 	add_theme_support( 'editor-styles' ); // if you don't add this line, your stylesheet won't be added
 	add_editor_style( 'style-editor.css' ); // tries to include style-editor.css directly from your theme folder
- 
 }
+add_action( 'after_setup_theme', 'artezpress_theme_setup' );
 
 add_action( 'artezpress_before_single_product_summary', 'woocommerce_show_product_images', 20 );
  
@@ -174,4 +190,10 @@ function veer_popup_maker_gutenburg_compat($content) {
 	$content = preg_replace('/<p[^>]*><\\/p[^>]*>/', '', $content); // empty p tags
 	return $content;
 } 
- 
+
+function my_get_the_product_thumbnail_url( $size = 'shop_catalog' ) {
+  global $post;
+  $image_size = apply_filters( 'single_product_archive_thumbnail_size', $size );
+  return get_the_post_thumbnail_url( $post->ID, $image_size );
+}
+

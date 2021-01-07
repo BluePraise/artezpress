@@ -317,7 +317,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "template-homepage.php"
+                "value": "front-page-.php"
             }
         ]
     ],
@@ -332,18 +332,13 @@
     ],
     "active": true,
     "description": "",
-    "acfe_display_title": "",
+    "acfe_display_title": "Unused for now",
     "acfe_autosync": [
         "json"
     ],
     "acfe_permissions": "",
     "acfe_form": 0,
-    "acfe_meta": {
-        "acfcloneindex": {
-            "acfe_meta_key": "",
-            "acfe_meta_value": ""
-        }
-    },
+    "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1606307936
+    "modified": 1607600315
 }

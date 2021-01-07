@@ -1,13 +1,45 @@
 {
     "key": "group_5fcbe9e1e0080",
-    "title": "Product Settings",
+    "title": "Product Publishing Settings",
     "fields": [
         {
             "key": "field_5fcbea5328e37",
             "label": "Add to Coming Soon",
             "name": "add_coming_soon",
-            "type": "checkbox",
+            "type": "true_false",
             "instructions": "Do you want to add this to the coming soon slider in the frontpage?",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5fd1233961154",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": [
+                "administrator",
+                "editor",
+                "superadmin"
+            ],
+            "message": "Show in Coming Soon Slider",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5fd1233961154",
+            "label": "Add to New Releases",
+            "name": "add_new_releases",
+            "type": "true_false",
+            "instructions": "Do you want to add this to the New Releases slider in the frontpage?",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -15,18 +47,40 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_permissions": "",
-            "choices": {
-                "Add to `Coming Soon` in Frontpage": "Add to `Coming Soon` in Frontpage"
-            },
-            "allow_custom": 0,
-            "default_value": [
-                "no: No"
+            "acfe_permissions": [
+                "administrator",
+                "editor",
+                "superadmin"
             ],
-            "layout": "vertical",
-            "toggle": 0,
-            "return_format": "value",
-            "save_custom": 0
+            "message": "Add to New Releases",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5fd123667ff38",
+            "label": "Add to Backlog Slider",
+            "name": "add_backlog",
+            "type": "true_false",
+            "instructions": "Do you want to add this to the Backlog slider in the frontpage?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": [
+                "administrator",
+                "editor",
+                "superadmin"
+            ],
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -46,18 +100,16 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "acfe_display_title": "",
+    "acfe_display_title": "Frontpage",
     "acfe_autosync": [
         "json"
     ],
-    "acfe_permissions": "",
+    "acfe_permissions": [
+        "editor",
+        "superadmin"
+    ],
     "acfe_form": 0,
-    "acfe_meta": {
-        "acfcloneindex": {
-            "acfe_meta_key": "",
-            "acfe_meta_value": ""
-        }
-    },
+    "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1607452638
+    "modified": 1607600269
 }

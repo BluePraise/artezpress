@@ -3,12 +3,29 @@
     "title": "Colophon",
     "fields": [
         {
+            "key": "field_5fd2409786984",
+            "label": "(Column 6\/12)",
+            "name": "",
+            "type": "acfe_column",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": "",
+            "columns": "6\/12",
+            "endpoint": 0
+        },
+        {
             "key": "field_5f7adc2a6b0d9",
             "label": "Author(s)",
             "name": "author",
             "type": "textarea",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -21,10 +38,28 @@
             "maxlength": "",
             "rows": 4,
             "new_lines": "",
-            "acfe_textarea_code": 0,
-            "acfe_settings": "",
-            "acfe_validate": "",
-            "acfe_form": true
+            "acfe_textarea_code": 0
+        },
+        {
+            "key": "field_5f7f05119f04e",
+            "label": "Co-publishers",
+            "name": "co_publishers",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": "",
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "",
+            "acfe_textarea_code": 0
         },
         {
             "key": "field_5f7adc764fcea",
@@ -44,54 +79,7 @@
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "maxlength": "",
-            "acfe_settings": "",
-            "acfe_validate": "",
-            "acfe_form": true
-        },
-        {
-            "key": "field_5f7f05119f04e",
-            "label": "Co-publishers",
-            "name": "co_publishers",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "acfe_permissions": "",
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "",
-            "acfe_textarea_code": 0,
-            "acfe_form": true
-        },
-        {
-            "key": "field_5f7f05357531a",
-            "label": "Paper Stocks",
-            "name": "paper_stocks",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "acfe_permissions": "",
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "",
-            "acfe_textarea_code": 0,
-            "acfe_form": true
+            "maxlength": ""
         },
         {
             "key": "field_5f9580ff0cc90",
@@ -106,7 +94,11 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_permissions": "",
+            "acfe_permissions": [
+                "administrator",
+                "editor",
+                "superadmin"
+            ],
             "layout": "table",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
@@ -125,15 +117,16 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_permissions": "",
+                    "acfe_permissions": [
+                        "administrator",
+                        "editor",
+                        "superadmin"
+                    ],
                     "default_value": "",
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": "",
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "acfe_form": true
+                    "maxlength": ""
                 },
                 {
                     "key": "field_5f7f04f438d4b",
@@ -148,17 +141,57 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_permissions": "",
+                    "acfe_permissions": [
+                        "administrator",
+                        "editor",
+                        "superadmin"
+                    ],
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
                     "rows": "",
                     "new_lines": "",
-                    "acfe_textarea_code": 0,
-                    "acfe_form": true
+                    "acfe_textarea_code": 0
                 }
-            ],
-            "acfe_form": true
+            ]
+        },
+        {
+            "key": "field_5fd240c4b19c5",
+            "label": "(Column 6\/12)",
+            "name": "",
+            "type": "acfe_column",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": "",
+            "columns": "6\/12",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5fd24174201c3",
+            "label": "Description",
+            "name": "description",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": "",
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 35,
+            "new_lines": "wpautop",
+            "acfe_textarea_code": 0
         }
     ],
     "location": [
@@ -171,11 +204,14 @@
         ]
     ],
     "menu_order": 0,
-    "position": "side",
+    "position": "acf_after_title",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "field",
     "hide_on_screen": [
+        "block_editor",
+        "the_content",
+        "excerpt",
         "discussion",
         "comments",
         "format",
@@ -188,14 +224,13 @@
     "acfe_autosync": [
         "json"
     ],
-    "acfe_permissions": "",
-    "acfe_form": 1,
-    "acfe_meta": {
-        "acfcloneindex": {
-            "acfe_meta_key": "",
-            "acfe_meta_value": ""
-        }
-    },
+    "acfe_permissions": [
+        "administrator",
+        "editor",
+        "superadmin"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1603634778
+    "modified": 1607628100
 }

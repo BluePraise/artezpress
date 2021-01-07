@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-
+		
 	// Menu button
 	const body = $("body");
 	$(".js-toggle-menu").on("mouseenter", function () {
@@ -17,21 +17,36 @@ jQuery(document).ready(function ($) {
 		}
 	})
 
-	// Accordion Toggle
-	var icons = {
-		header: "ui-icon-plus",
-		activeHeader: "ui-icon-minus",
-	};
-	// var toggleButton = $('.accordion-toggle');
+	$(".bg-overlay").on("click", function () { 
+		if (body.hasClass("menu-open")) {
+			// Hide menu
+			body.removeClass("menu-open");
+		} else {
+			// Show menu
+			body.addClass("menu-open");
+		}
+	});
+	
 
 	$(".js-toggle-accordion").accordion({
-		icons: { "header": "ui-icon-plus", "activeHeader": "ui-icon-minus" },
 		collapsible: true,
 		header: "button",
-		icons: icons,
 		heightStyle: "content",
 		animate: 200
 	});
+
+	var icons = $('.icons');
+
+	$(".accordion-toggle")
+		.on("click", function () {
+			if ($(".accordion-toggle").hasClass("ui-state-active")) {
+				icons.removeClass('minus');
+				icons.addClass("plus");
+			} else {
+				icons.removeClass("plus");
+				icons.addClass("minus");
+			}
+		});
 
 	$(".owl-carousel").owlCarousel({
 		items: 1,
@@ -47,10 +62,21 @@ jQuery(document).ready(function ($) {
 		columnWidth: 520,
 		gutter: 32,
 	});
+
+	$(".wp-end-of-page").waypoint({
+		// element: document.getElementById("basic-waypoint"),
+		handler: function (direction) {
+			console.log("client height");
+			if (direction === "down") {
+				$(".main-menu-container").css({ opacity: 0 });
+			} else {
+				$(".main-menu-container").css({ opacity: 1 });
+			}
+		},
+		offset: "80%"
+	});
 	
 	//https://stackoverflow.com/questions/11867545/change-text-color-based-on-brightness-of-the-covered-background-area
 
-
-	// $(".colour-effect").colourBrightness();
 
 });

@@ -15,7 +15,7 @@
 get_header(); ?>
 	
 	<main class="site-main" role="main">
-		
+
 		<?php get_template_part('blocks/frontpage/handshake/index'); ?>
 		<section class="features flex-container">
 		
@@ -75,7 +75,7 @@ get_header(); ?>
 								</figure>
             					<?php endif; ?>
             					<h3 class="post-title"><?php echo the_title(); ?></h3>
-            					<p class="small-text"><?php the_excerpt(); ?>Test</p>
+            					<p class="small-text"><?php the_excerpt(); ?>Read More</p>
         					</div>
 					<?php 
 							endwhile;

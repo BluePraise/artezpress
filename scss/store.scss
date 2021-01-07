@@ -36,6 +36,9 @@ ul.page-numbers {
     margin-bottom: 32px;
 }
 
+.woocommerce-product-gallery__trigger {
+    display: none;
+}
 
 h3.single-product-title {
     margin-bottom: 30px;
@@ -51,12 +54,16 @@ h3.single-product-title {
     width: 50%;
 }
 
+.product_meta .flex-container .col_left {
+    margin-right: 54px;
+}
+
 .product_meta .block {
     margin-bottom: 40px;
 }
 
 .label-header,
-.display-block {
+.colophon-value {
     display: block;
 }
 
@@ -72,9 +79,13 @@ h3.single-product-title {
     line-height: 3rem;
 }
 
-/* temp hack: will be fixed */
+.woocommerce-product-gallery__image a,
 .woocommerce-product-gallery__image a img {
-    width: 40%;
+    display: block;
+}
+
+.woocommerce-product-gallery__image a img {
+    margin: 0 auto;
 }
 
 span.price {

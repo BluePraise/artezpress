@@ -6,7 +6,7 @@ if (get_row_layout() == 'layout_block_toggle'): ?>
                 $title = get_sub_field('toggle_title');
                 $toggle_content = get_sub_field('toggle_content'); ?>
                 <button class="accordion-toggle">
-                    <p><?php echo $title; ?></p>
+                   <p><span class="icons"></span><?php echo $title; ?></p>
                 </button>
                 <div class="panel">
                     <?php echo $toggle_content; ?>
