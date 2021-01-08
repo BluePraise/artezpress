@@ -51,7 +51,7 @@
 				</div>
 				<ul class="page-list">
 					<li><a href="<?php echo site_url("/contact"); ?>">Contact</a></li>
-					<li><a href="<?php echo site_url("/how-can-we-help"); ?>">How Can We Help?</a></li>
+					<li><a href="<?php echo site_url("/frequently-asked-questions"); ?>">FAQ</a></li>
 					<li><a href="<?php echo site_url("/privacy-policy"); ?>">Data Protection</a></li>
 					<li><a href="<?php echo site_url("/news"); ?>">Imprint</a></li>
 				</ul>
