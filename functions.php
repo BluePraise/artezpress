@@ -35,7 +35,8 @@ add_action( 'wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999 );
 
 
 function artezpress_style() {
-    wp_register_style( 'artezpress-css', get_theme_file_uri() . '/style.css' );
+    wp_register_style( 'artezpress-css', get_stylesheet_directory_uri() . '/style.css' );
+    wp_enqueue_style( 'artezpress-css' );
     wp_enqueue_script( 'jquery');
     wp_enqueue_script( 'jquery-ui');
     wp_enqueue_script( 'waypoints', get_theme_file_uri() . '/js/jquery.waypoints.min.js', [], null, true );
@@ -197,3 +198,33 @@ function my_get_the_product_thumbnail_url( $size = 'shop_catalog' ) {
   return get_the_post_thumbnail_url( $post->ID, $image_size );
 }
 
+function artezpress_nav() {
+    wp_nav_menu(array(
+        'theme_location' => 'header-menu',
+        'menu' => '',
+        'container' => 'div',
+        'container_class' => 'navbar-collapse',
+        'container_id' => 'navbarNavDropdown',
+        'menu_class' => 'nav-item',
+        'menu_id' => '',
+        'echo' => true,
+        'fallback_cb' => 'wp_page_menu',
+        'before' => '',
+        'after' => '',
+        'link_before' => '',
+        'link_after' => '',
+        'items_wrap' => '<ul class="navbar-nav ml-auto">%3$s</ul>',
+        'depth' => 0,
+        'walker' => ''
+    ));
+}
+
+function register_nav() {
+    register_nav_menus(array(
+        'header-menu' => esc_html('Header Menu', 'artezpress') // Main Navigation
+        // 'extra-menu'   => esc_html( 'Extra Menu', 'rentj' )
+    ));
+}
+
+// Add Menu
+add_action('init', 'register_nav');
