@@ -29,6 +29,7 @@ jQuery(document).ready(function ($) {
 	
 
 	$(".js-toggle-accordion").accordion({
+		active: 0,
 		collapsible: true,
 		header: "button",
 		heightStyle: "content",
@@ -36,17 +37,18 @@ jQuery(document).ready(function ($) {
 	});
 
 	var icons = $('.icons');
+	console.log(icons);
 
 	$(".accordion-toggle")
 		.on("click", function () {
-			if ($(".accordion-toggle").hasClass("ui-state-active")) {
-				icons.removeClass('minus');
-				icons.addClass("plus");
+			if ( $(".icons").hasClass("plus") ) {
+				$(this).addClass("test");
 			} else {
-				icons.removeClass("plus");
-				icons.addClass("minus");
+				this.removeClass("minus");
+				this.addClass("plus");
 			}
 		});
+
 
 	$(".owl-carousel").owlCarousel({
 		items: 1,

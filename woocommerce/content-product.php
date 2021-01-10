@@ -51,7 +51,14 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	<h4><?php echo get_the_title(); ?></h4>
 
 	<p class="single-product-author"><?php echo $author ?></p>
-	
+  <?php
+    global $products;
+    $product_id = $product->id;
+    if ($product_tags = get_the_term_list($product_id, 'product_tag', '', ',' )) {
+      echo '<p class="single-product-tags">'. __( "Tags: ", "your_theme_slug" ) . $product_tags . '<p>';
+    }
+  ?>
+
 
 	<?php 
 	woocommerce_template_loop_product_link_close();

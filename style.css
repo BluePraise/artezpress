@@ -12,21 +12,21 @@
 
 */
 @font-face {
-  font-family: 'Lars';
+  font-family: "Lars";
   src: url("./assets/fonts/Lars-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Lars';
+  font-family: "Lars";
   src: url("./assets/fonts/Lars-RegularItalic.otf") format("opentype");
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'LarsExtended';
+  font-family: "LarsExtended";
   src: url("./assets/fonts/Lars-MediumExtended.otf") format("opentype");
   font-weight: 500;
   font-style: bold;
@@ -109,7 +109,7 @@ body {
   z-index: 0;
   -webkit-font-kerning: normal;
   font-kerning: normal;
-  font-feature-settings: "kern"on, "kern", "ss01";
+  font-feature-settings: "kern" on, "kern", "ss01";
   letter-spacing: 0.05rem;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -120,7 +120,7 @@ body {
   /* i don't know if this will work on every page,
     but it's here because of the fixed bottom causing a z-index overlap.
     It's not possible to click on anything underneath it. */
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-family: "Lars", Helvetica, Arial, sans-serif;
   font-size: 17px;
   line-height: 23px;
   transition: all 500ms;
@@ -148,7 +148,7 @@ h1,
 
 h2,
 .h2 {
-  font-family: 'LarsExtended', Helvetica, Arial, sans-serif;
+  font-family: "LarsExtended", Helvetica, Arial, sans-serif;
   font-size: 3.5rem;
   line-height: 4.8rem;
   font-weight: 500;
@@ -163,7 +163,7 @@ h2.highlight-item__title-author {
 
 h3,
 .h3 {
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-family: "Lars", Helvetica, Arial, sans-serif;
   font-size: 3.5rem;
   line-height: 4.8rem;
   font-weight: 400;
@@ -174,7 +174,7 @@ h3,
 
 h4,
 .h4 {
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-family: "Lars", Helvetica, Arial, sans-serif;
   font-size: 2.2rem;
   line-height: 3.1rem;
   font-weight: 400;
@@ -184,7 +184,7 @@ h4,
 
 h5,
 .h5 {
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-family: "Lars", Helvetica, Arial, sans-serif;
   font-size: 2.1rem;
   line-height: 3rem;
   font-weight: 400;
@@ -307,11 +307,11 @@ ul li a {
 * Form Control
 *
 */
-button[type=submit]:focus {
+button[type="submit"]:focus {
   outline: none;
 }
 
-button[type=submit]:hover {
+button[type="submit"]:hover {
   cursor: pointer;
   background-color: black;
   color: white;
@@ -410,7 +410,7 @@ label {
 }
 
 label.inline,
-input[type="checkbox"]+label {
+input[type="checkbox"] + label {
   display: inline;
   font-weight: 400;
   margin-left: 5px;
@@ -454,12 +454,12 @@ input[type="checkbox"] {
 }
 
 .hero:before {
-  content: '';
+  content: "";
   display: block;
 }
 
 .features .carousel-container {
-  width: calc(100%/3);
+  width: calc(100% / 3);
   position: relative;
   z-index: 0;
 }
@@ -640,7 +640,7 @@ ul.horizontal-list li {
 }
 
 .main-menu-container {
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-family: "Lars", Helvetica, Arial, sans-serif;
   font-size: 2rem;
   line-height: 2.8rem;
 }
@@ -727,14 +727,14 @@ body.menu-open {
   margin-bottom: 20px;
 }
 
-.newsletter input[type=text] {
+.newsletter input[type="text"] {
   height: 45px;
   padding: 0 3px;
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-family: "Lars", Helvetica, Arial, sans-serif;
   font-size: 16px;
 }
 
-.newsletter input[type=text]:focus {
+.newsletter input[type="text"]:focus {
   outline: 1px solid yellow;
 }
 
@@ -816,7 +816,7 @@ body.menu-open {
   margin-bottom: 10px;
 }
 
-.newsletter>input[type=text] {
+.newsletter > input[type="text"] {
   border-top: none;
   border-left: none;
   border-right: none;
@@ -824,7 +824,7 @@ body.menu-open {
 }
 
 .newsletter .btn-reg {
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-family: "Lars", Helvetica, Arial, sans-serif;
   font-size: 2rem;
   line-height: 2.8rem;
   margin-left: 10px;
@@ -869,8 +869,8 @@ body.menu-open {
 
 a.remove::before {
   display: inline-block;
-  content: 'x';
-  font-family: 'Lars', Arial, Helvetica, sans-serif;
+  content: "x";
+  font-family: "Lars", Arial, Helvetica, sans-serif;
   color: #000;
   font-weight: 200;
 }
@@ -1099,12 +1099,12 @@ a.news-read-more:hover {
 }
 
 .owl-height {
-  transition: height .5s ease-in-out;
+  transition: height 0.5s ease-in-out;
 }
 
 .owl-carousel .owl-item .owl-lazy {
   opacity: 0;
-  transition: opacity .4s ease;
+  transition: opacity 0.4s ease;
 }
 
 .owl-carousel .owl-item .owl-lazy:not([src]),
@@ -1134,7 +1134,7 @@ a.news-read-more:hover {
   cursor: pointer;
   z-index: 1;
   -webkit-backface-visibility: hidden;
-  transition: transform .1s ease;
+  transition: transform 0.1s ease;
 }
 
 .owl-carousel .owl-video-play-icon:hover {
@@ -1153,7 +1153,7 @@ a.news-read-more:hover {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
-  transition: opacity .4s ease;
+  transition: opacity 0.4s ease;
 }
 
 .owl-carousel .owl-video-frame {
@@ -1222,7 +1222,7 @@ ul.page-numbers {
 }
 
 .products .product .single-product-author {
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-family: "Lars", Helvetica, Arial, sans-serif;
   font-size: 1.7rem;
   line-height: 2.3rem;
 }
@@ -1269,7 +1269,7 @@ h3.single-product-title {
 
 .single-product-author,
 .woocommerce-product-details__short-description p {
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-family: "Lars", Helvetica, Arial, sans-serif;
   font-size: 2.1rem;
   line-height: 3rem;
 }
@@ -1379,4 +1379,28 @@ a.news-read-more:hover {
   display: block;
   margin-top: 36px;
   margin-bottom: 36px;
+}
+
+.loading {
+  position: relative;
+}
+
+.loading::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+}
+
+.loading::after {
+  content: "loading...";
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
 }
