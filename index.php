@@ -13,7 +13,7 @@
                     </figure>
                 <?php endif; ?>
                 <h4 class="post-title"><?php the_title(); ?></h4>
-                <p class="small-text news-item-excerpt)"><?php the_excerpt(); ?></p>
+                <p class="small-text news-item-excerpt"><?php the_excerpt(); ?></p>
                 <a class="small text news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">Read More</a>
             </div>
             <?php endwhile; endif; ?>
