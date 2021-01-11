@@ -62,6 +62,10 @@ function add_class_to_excerpt ( $post_excerpt ) {
     return $post_excerpt;
 }
 // add_filter( 'get_the_excerpt', 'add_class_to_excerpt' );
+function ap_excerpt_more( $more ) {
+    return ' ...';
+}
+add_filter( 'excerpt_more', 'ap_excerpt_more' );
 
 
 if( function_exists('acf_add_options_page') ) {
