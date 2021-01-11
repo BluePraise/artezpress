@@ -49,6 +49,7 @@ function artezpress_style() {
     wp_enqueue_script( 'jquery-ui-accordion');
     wp_enqueue_script( 'jquery-ui-slider');
     wp_register_style( 'jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui' );
+    wp_enqueue_script( 'totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true  );
     wp_enqueue_script( 'artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true );
 }
 
@@ -230,3 +231,22 @@ function register_nav() {
 
 // Add Menu
 add_action('init', 'register_nav');
+
+function ap_aspect_ratio_filter( $class ) {
+
+  $id   = get_post_thumbnail_id( $post->ID );
+  $img  = wp_get_attachment_image_src( );
+
+  $width = $img[1];
+  $height = $img[2];
+    
+        if ($width < $height):
+            return $class . 'attachment-is-portrait';
+            // the_post_thumbnail($size, array( 'class'  => "attachment-".$size." size-".$size." attachment-is-landscape"));
+        // else: 
+        //     the_post_thumbnail($size, array( 'class'  => "attachment-".$size." size-".$size." ") ); 
+        endif;
+}
+
+add_filter( 'get_image_tag_class', 'ap_aspect_ratio_filter', 10, 4);
+
