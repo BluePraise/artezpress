@@ -1,0 +1,65 @@
+/* TABLE OF CONTENTS
+
+1. base
+===========
+_ Variables
+_ Base HTML
+_ Reset
+_ Typography
+_ Icons and Images
+_ Mixins
+_ Helpers
+_ index.scss
+
+
+2. structure
+===========
+_ Layout
+_ Grid
+_ index.scss
+
+
+3. page elements
+================
+_ header (header.php)
+_ footer
+_ main-menu
+_ buttons
+
+
+4. blocks (modules or objects)
+===========
+_ accordion
+_ section-title 
+_ media
+_ book-reference
+_ hero (frontpage)
+__ index.scss
+
+
+5. store
+===========
+_ product
+_ overview page
+_ cart
+
+__ index.scss
+
+
+6. sitewide (anything else: pages, news)
+===========
+_ news
+_ pages
+_ general
+_ frontpage
+
+*/
+
+
+
+@import 'base/index.scss';
+@import 'structure/index.scss';
+@import 'page-elements/index.scss';
+@import 'blocks/index.scss';
+@import 'store/index.scss';
+@import 'site/index.scss';

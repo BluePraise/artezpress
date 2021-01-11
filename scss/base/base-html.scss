@@ -1,0 +1,107 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+address,
+big,
+cite,
+code,
+em,
+font,
+img,
+small,
+strike,
+sub,
+sup,
+li,
+ol,
+ul,
+fieldset,
+form,
+label,
+legend,
+button,
+table,
+caption,
+tr,
+th,
+td {
+    line-height: inherit;
+    text-align: inherit;
+}
+
+blockquote::before,
+blockquote::after {
+    content: "";
+}
+
+*,
+*:after,
+*:before {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+
+html {
+    scroll-behavior: smooth;
+    font-size: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+body {
+    position: relative;
+    z-index: 0;
+    -webkit-font-kerning: normal;
+    font-kerning: normal;
+    font-feature-settings: "kern"on, "kern", "ss01";
+    letter-spacing: 0.02rem;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    color: #000;
+    width: 100%;
+    height: 140vh;
+    overflow-x: hidden;
+    /* i don't know if this will work on every page,
+    but it's here because of the fixed bottom causing a z-index overlap. 
+    It's not possible to click on anything underneath it. */
+    font-family: 'Lars', Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 23px;
+    transition: all 500ms;
+    /* font: 400 1.7rem/2.3rem “Lars”, Helvetica, Arial, sans-serif; */
+    /* font-size: 17px; */
+    /* line-height: 23px; */
+
+}
+
+header {}
+
+main {}
+
+section {}
+
+aside {}
+
+footer {}
+
+ul {}
+
+ol {}
+
+li {}
+
+ul li a {
+    display: inline-block;
+}

@@ -1,21 +1,3 @@
-.hero {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // background-image: url(./assets/img/bg_alexander_van_slobbe_2.jpg);
-    background-repeat: no-repeat;
-    background-position: top left;
-    background-size: cover;
-    z-index: -11;
-    position: relative;
-
-    &:before {
-        content: '';
-        display: block;
-    }
-}
 
 .features .carousel-container {
     width: calc(100%/3);
