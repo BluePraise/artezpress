@@ -29,6 +29,7 @@ jQuery(document).ready(function ($) {
 	
 
 	$(".js-toggle-accordion").accordion({
+		active: 0,
 		collapsible: true,
 		header: "button",
 		heightStyle: "content",
@@ -39,14 +40,22 @@ jQuery(document).ready(function ($) {
 
 	$(".accordion-toggle")
 		.on("click", function () {
-			if ($(".accordion-toggle").hasClass("ui-state-active")) {
-				icons.removeClass('minus');
-				icons.addClass("plus");
-			} else {
-				icons.removeClass("plus");
-				icons.addClass("minus");
+			// find the current icons class.
+			var thi$ = $(this).find(".icons");
+			//if this span has a plus icon
+			if (thi$.hasClass("plus")) {
+				// add another class
+				thi$.addClass("minus");
+				// and remove the plus class
+				thi$.removeClass("plus");
+				// $(this).removeClass("plus");
+			}
+			else { 
+				thi$.removeClass("minus");
+				thi$.addClass("plus");
 			}
 		});
+
 
 	$(".owl-carousel").owlCarousel({
 		items: 1,

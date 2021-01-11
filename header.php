@@ -34,7 +34,7 @@
 					<li><a href="<?php echo site_url("/news"); ?>">About ArtEZ Press</a></li>
 				</ul>
 				<div class="newsletter">
-					<p class="large-text">Subscribe to our newsletter</p>
+					<span>Subscribe to our newsletter</span>
 					<input type="text" />
 					<button type="submit" class="btn btn-reg">OK</button>
 
@@ -51,7 +51,7 @@
 				</div>
 				<ul class="page-list">
 					<li><a href="<?php echo site_url("/contact"); ?>">Contact</a></li>
-					<li><a href="<?php echo site_url("/frequently-asked-questions"); ?>">FAQ</a></li>
+					<li><a href="<?php echo site_url("/frequently-asked-questions"); ?>"></a></li>
 					<li><a href="<?php echo site_url("/privacy-policy"); ?>">Data Protection</a></li>
 					<li><a href="<?php echo site_url("/news"); ?>">Imprint</a></li>
 				</ul>
