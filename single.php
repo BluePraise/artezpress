@@ -1,7 +1,9 @@
 <?php get_header(); ?>
 
 <main id="site-content" class="container-xl single-news" role="main">
-    <a class="back-to-news" href="<?php echo site_url("/news"); ?>" role="link">x</a>
+    <a class="back-to-news" href="<?php echo site_url("/news"); ?>" role="link">
+        <img src="<?php echo get_stylesheet_directory_uri( ) ?>/assets/icons/btn_close.svg" alt="Close article and go back to news">
+    </a>
     <div class="post-container">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
             <?php if( has_post_thumbnail() ): ?>
