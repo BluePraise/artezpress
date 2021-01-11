@@ -2,7 +2,7 @@
 
 <main id="site-content" class="container news" role="main">
     <h2 class="page-title">News</h2>
-    <div class="grid">
+    <div class="news-grid grid">
         <?php
             if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
             <div class="news-item">
@@ -13,8 +13,8 @@
                     </figure>
                 <?php endif; ?>
                 <h4 class="post-title"><?php the_title(); ?></h4>
-                <p><?php the_excerpt(); ?></p>
-                <a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">Read More</a>
+                <p class="small-text news-item-excerpt)"><?php the_excerpt(); ?></p>
+                <a class="small text news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">Read More</a>
             </div>
             <?php endwhile; endif; ?>
     </div>
