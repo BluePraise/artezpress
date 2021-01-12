@@ -44,7 +44,12 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_permissions": "",
+            "acfe_permissions": [
+                "administrator",
+                "editor",
+                "shop_manager",
+                "super_admin"
+            ],
             "layouts": {
                 "layout_5fb5394692b23": {
                     "key": "layout_5fb5394692b23",
@@ -65,7 +70,12 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "acfe_permissions": "",
+                            "acfe_permissions": [
+                                "administrator",
+                                "editor",
+                                "shop_manager",
+                                "super_admin"
+                            ],
                             "acfe_repeater_stylised_button": 1,
                             "collapsed": "field_5fb5808fe6fbd",
                             "min": 0,
@@ -86,7 +96,12 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "acfe_permissions": "",
+                                    "acfe_permissions": [
+                                        "administrator",
+                                        "editor",
+                                        "shop_manager",
+                                        "super_admin"
+                                    ],
                                     "default_value": "",
                                     "placeholder": "",
                                     "prepend": "",
@@ -106,7 +121,12 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "acfe_permissions": "",
+                                    "acfe_permissions": [
+                                        "administrator",
+                                        "editor",
+                                        "shop_manager",
+                                        "super_admin"
+                                    ],
                                     "default_value": "",
                                     "tabs": "all",
                                     "toolbar": "basic",
@@ -145,7 +165,37 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "acfe_permissions": "",
+                            "acfe_permissions": [
+                                "administrator",
+                                "editor",
+                                "shop_manager",
+                                "super_admin"
+                            ],
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_5ffdebe6a0844",
+                            "label": "Content Editor (copy)",
+                            "name": "content_editor_copy",
+                            "type": "wysiwyg",
+                            "instructions": "Regular Text Editor",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_permissions": [
+                                "administrator",
+                                "editor",
+                                "shop_manager",
+                                "super_admin"
+                            ],
                             "default_value": "",
                             "tabs": "all",
                             "toolbar": "full",
@@ -182,7 +232,12 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "acfe_permissions": "",
+                            "acfe_permissions": [
+                                "administrator",
+                                "editor",
+                                "shop_manager",
+                                "super_admin"
+                            ],
                             "default_value": "",
                             "placeholder": "",
                             "prepend": "",
@@ -235,9 +290,14 @@
     "acfe_autosync": [
         "json"
     ],
-    "acfe_permissions": "",
+    "acfe_permissions": [
+        "administrator",
+        "editor",
+        "shop_manager",
+        "super_admin"
+    ],
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1607604848
+    "modified": 1610476526
 }
