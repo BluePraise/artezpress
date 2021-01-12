@@ -32,7 +32,6 @@ function sf_child_theme_dequeue_style()
 
 	wp_deregister_style('storefront-woocommerce-style');
 }
-
 add_action('wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999);
 
 
@@ -40,6 +39,8 @@ function artezpress_style()
 {
 	wp_register_style('artezpress-css', get_stylesheet_directory_uri() . '/style.css');
 	wp_enqueue_style('artezpress-css');
+	wp_register_style('app-css', get_stylesheet_directory_uri() . '/assets/css/app.css');
+	wp_enqueue_style('app-css');
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui');
 	wp_enqueue_script('waypoints', get_theme_file_uri() . '/js/jquery.waypoints.min.js', [], null, true);
@@ -50,6 +51,7 @@ function artezpress_style()
 	wp_enqueue_script('jquery-ui-accordion');
 	wp_enqueue_script('jquery-ui-slider');
 	wp_register_style('jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui');
+	wp_enqueue_script('totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true);
 	wp_enqueue_script('artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true);
 }
 
@@ -63,6 +65,11 @@ function add_class_to_excerpt($post_excerpt)
 }
 
 // add_filter( 'get_the_excerpt', 'add_class_to_excerpt' );
+function ap_excerpt_more($more)
+{
+	return ' ...';
+}
+add_filter('excerpt_more', 'ap_excerpt_more');
 
 
 if (function_exists('acf_add_options_page')) {
@@ -75,12 +82,11 @@ if (function_exists('acf_add_options_page')) {
 		'position' => '9',
 		'redirect' => false
 	));
-
 }
 
 /* Woocommerce filters */
 
-/* 
+/*
 * Mini cart with total counter not total price
 *
 */
@@ -99,7 +105,6 @@ function add_to_cart_fragment($fragments)
 	}
 
 	return $fragments;
-
 }
 
 
@@ -134,7 +139,6 @@ function my_acf_json_save_point($path)
 
 	// return
 	return $path;
-
 }
 
 add_filter('acf/settings/save_json', 'my_acf_json_save_point');
@@ -147,48 +151,46 @@ add_filter('pum_popup_content', 'veer_popup_maker_gutenburg_compat');
 
 function my_acf_admin_head()
 {
-	?>
-  <style type="text/css">
+?>
+	<style type="text/css">
+		.postbox-header h2.hndle {
+			font-family: 'Lars';
+		}
 
-      .postbox-header h2.hndle {
-          font-family: 'Lars';
-      }
+		.display-block {
+			display: block;
+		}
 
-      .display-block {
-          display: block;
-      }
+		.acf-flexible-content .layout .acf-fc-layout-handle {
+			/*background-color: #00B8E4;*/
+			background-color: #202428;
+			color: #eee;
+		}
 
-      .acf-flexible-content .layout .acf-fc-layout-handle {
-          /*background-color: #00B8E4;*/
-          background-color: #202428;
-          color: #eee;
-      }
+		.acf-repeater.-row>table>tbody>tr>td,
+		.acf-repeater.-block>table>tbody>tr>td {
+			border-top: 2px solid #202428;
+		}
 
-      .acf-repeater.-row > table > tbody > tr > td,
-      .acf-repeater.-block > table > tbody > tr > td {
-          border-top: 2px solid #202428;
-      }
+		.acf-repeater .acf-row-handle {
+			vertical-align: top !important;
+			padding-top: 16px;
+		}
 
-      .acf-repeater .acf-row-handle {
-          vertical-align: top !important;
-          padding-top: 16px;
-      }
+		.acf-repeater .acf-row-handle span {
+			font-size: 20px;
+			font-weight: bold;
+			color: #202428;
+		}
 
-      .acf-repeater .acf-row-handle span {
-          font-size: 20px;
-          font-weight: bold;
-          color: #202428;
-      }
+		.imageUpload img {
+			width: 75px;
+		}
 
-      .imageUpload img {
-          width: 75px;
-      }
-
-      .acf-repeater .acf-row-handle .acf-icon.-minus {
-          top: 30px;
-      }
-
-  </style>
+		.acf-repeater .acf-row-handle .acf-icon.-minus {
+			top: 30px;
+		}
+	</style>
 	<?php
 }
 
@@ -308,7 +310,7 @@ function ajax_filter_get_posts($taxonomy)
 				'taxonomy' => 'product_tag',
 				'field' => 'slug',
 				'terms' => $taxonomy
-//              'terms' => implode(',', $taxonomy),
+				//              'terms' => implode(',', $taxonomy),
 			]
 		]
 	];
@@ -326,34 +328,56 @@ function ajax_filter_get_posts($taxonomy)
 		while ($query->have_posts()) {
 			$query->the_post();
 			wc_get_template_part('content', 'product');
-      $authors[] = explode(',', get_field('author'));
-      if (strlen(get_field('publishing_year'))) {
-	      $years[] = get_field('publishing_year');
-      }
-    }
-	  $authors = array_unique(array_flatten($authors), SORT_REGULAR);
-	  $years = array_unique($years, SORT_REGULAR);
+			$authors[] = explode(',', get_field('author'));
+			if (strlen(get_field('publishing_year'))) {
+				$years[] = get_field('publishing_year');
+			}
+		}
+		$authors = array_unique(array_flatten($authors), SORT_REGULAR);
+		$years = array_unique($years, SORT_REGULAR);
 	?>
 
-    <ul class="hidden-filter-authors">
-		<?php foreach ($authors as $author) : ?>
-      <li><a href=""><?= $author ?></a></li>
-		<?php endforeach; ?>
-    </ul>
-    <?php if (count($years)): ?>
-      <ul class="hidden-filter-years">
-      <?php foreach ($years as $year) : ?>
-            <li><a href=""><?= $year ?></a></li>
-      <?php endforeach; ?>
-      </ul>
-    <?php endif;
+		<ul class="hidden-filter-authors">
+			<?php foreach ($authors as $author) : ?>
+				<li><a href=""><?= $author ?></a></li>
+			<?php endforeach; ?>
+		</ul>
+		<?php if (count($years)) : ?>
+			<ul class="hidden-filter-years">
+				<?php foreach ($years as $year) : ?>
+					<li><a href=""><?= $year ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+<?php endif;
 
-  else:
-	  echo '<h2>No posts found</h2>';
-  endif;
+	else :
+		echo '<h2>No posts found</h2>';
+	endif;
 
 	die();
 }
 
 add_action('wp_ajax_filter_posts', 'ajax_filter_get_posts');
 add_action('wp_ajax_nopriv_filter_posts', 'ajax_filter_get_posts');
+// Add Menu
+
+add_action('init', 'register_nav');
+
+function ap_aspect_ratio_filter($class)
+{
+
+	$id   = get_post_thumbnail_id($post->ID);
+	$img  = wp_get_attachment_image_src();
+
+	$width = $img[1];
+	$height = $img[2];
+
+	if ($width < $height) :
+		return $class . 'attachment-is-portrait';
+	// the_post_thumbnail($size, array( 'class'  => "attachment-".$size." size-".$size." attachment-is-landscape"));
+	// else:
+	//     the_post_thumbnail($size, array( 'class'  => "attachment-".$size." size-".$size." ") );
+	endif;
+}
+
+add_filter('get_image_tag_class', 'ap_aspect_ratio_filter', 10, 4);

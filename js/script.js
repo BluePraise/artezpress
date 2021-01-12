@@ -40,11 +40,18 @@ jQuery(document).ready(function ($) {
   console.log(icons);
 
   $(".accordion-toggle").on("click", function () {
-    if ($(".icons").hasClass("plus")) {
-      $(this).addClass("test");
+    // find the current icons class.
+    var thi$ = $(this).find(".icons");
+    //if this span has a plus icon
+    if (thi$.hasClass("plus")) {
+      // add another class
+      thi$.addClass("minus");
+      // and remove the plus class
+      thi$.removeClass("plus");
+      // $(this).removeClass("plus");
     } else {
-      this.removeClass("minus");
-      this.addClass("plus");
+      thi$.removeClass("minus");
+      thi$.addClass("plus");
     }
   });
 
