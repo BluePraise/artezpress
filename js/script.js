@@ -85,9 +85,19 @@ jQuery(document).ready(function ($) {
 
   //https://stackoverflow.com/questions/11867545/change-text-color-based-on-brightness-of-the-covered-background-area
 
+  $(".js-filter-collapse").click(function (e) {
+    $(this).toggleClass("active");
+  });
+
   var productList = $(".product");
   var tags = [];
   var filters = [];
+
+  $(".js-reset-filters").click(function (e) {
+    filters = [];
+    productList.show();
+    $(".js-filter-item").removeClass("active");
+  });
 
   $(".js-filter-item").click(function (e) {
     e.preventDefault();
@@ -96,65 +106,21 @@ jQuery(document).ready(function ($) {
       $filter = $this.data("filter"),
       $filterTag = $this.data("tag");
 
-    if ($filterTag) {
-      tags.push($filterTag);
+    $this.addClass("active");
+    if (filters.indexOf($filter) !== -1) {
+      return;
+    }
+    filters.push($filter);
+
+    if ($filter) {
       productList.each(function () {
         var $this = $(this);
-        var prodTags = $this.data("tags") || "";
-        if (prodTags.indexOf($filterTag) === -1) {
-          if (tags.every((i) => !prodTags.includes(i))) {
+        if ($this.data("filters").indexOf($filter) === -1) {
+          if (filters.every((i) => !$this.data("filters").includes(i))) {
             $this.hide();
           }
         } else {
           $this.show();
-        }
-      });
-      $productsContainer.find(".product:visible").each(function () {
-        var prod = $(this);
-        // filters.push();
-        // if (tags.every((i) => !prodTags.includes(i))) {
-        // }
-        $(".js-filter-item").each(function () {
-          var filter = $(this),
-            dataFilter = filter.data("filter"),
-            prodCat = prod.data("category"),
-            prodYear = prod.data("year"),
-            prodAuthor = prod.data("author");
-
-          console.log(filter, dataFilter);
-
-          if (
-            (dataFilter && prodCat && prodCat.indexOf(dataFilter) === -1) ||
-            (dataFilter &&
-              prodYear &&
-              String(prodYear).indexOf(dataFilter) === -1) ||
-            (dataFilter && prodAuthor && prodAuthor.indexOf(dataFilter) === -1)
-          ) {
-            filter.closest("li").hide();
-          } else {
-            filter.closest("li").show();
-          }
-        });
-      });
-    } else if ($filter) {
-      productList.each(function () {
-        var $this = $(this);
-        if ($this.data("year").indexOf($filter) === -1) {
-          $this.hide();
-        }
-      });
-    } else if ($filter) {
-      productList.each(function () {
-        var $this = $(this);
-        if ($this.data("category").indexOf($filter) === -1) {
-          $this.hide();
-        }
-      });
-    } else if ($filter) {
-      productList.each(function () {
-        var $this = $(this);
-        if ($this.data("author").indexOf($filter) === -1) {
-          $this.hide();
         }
       });
     }
