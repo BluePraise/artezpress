@@ -106,11 +106,21 @@ jQuery(document).ready(function ($) {
       $filter = $this.data("filter"),
       $filterTag = $this.data("tag");
 
-    $this.addClass("active");
-    if (filters.indexOf($filter) !== -1) {
+    $this.toggleClass("active");
+    if (filters.indexOf($filter) === -1) {
+      filters.push($filter);
+    } else {
+      filters = filters.filter((f) => f !== $filter);
+      productList.each(function () {
+        if ($(this).data("filters").indexOf($filter) !== -1) {
+          $(this).hide();
+        }
+      });
+      if (!filters.length) {
+        $(".js-reset-filters").click();
+      }
       return;
     }
-    filters.push($filter);
 
     if ($filter) {
       productList.each(function () {
