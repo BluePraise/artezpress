@@ -13,3 +13,4 @@ node_modules/
 gulpfile-min.js
 package-lock.json
 js/waypoints.debug.js
+*.map
