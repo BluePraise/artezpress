@@ -88,6 +88,58 @@
                     "acfe_flexible_render_script": false,
                     "acfe_flexible_settings": false,
                     "acfe_flexible_settings_size": "medium"
+                },
+                "layout_5ffe24565da6d": {
+                    "key": "layout_5ffe24565da6d",
+                    "name": "video_module",
+                    "label": "Video Module",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ffe24645da6e",
+                            "label": "Add Video URL",
+                            "name": "video_url",
+                            "type": "oembed",
+                            "instructions": "It is sufficient to paste the URL from Youtube or Vimeo",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "width": "",
+                            "height": ""
+                        },
+                        {
+                            "key": "field_5ffe24fa2a82e",
+                            "label": "Add a caption",
+                            "name": "video_caption",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "Add a caption to your video",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_thumbnail": false,
+                    "acfe_flexible_category": false,
+                    "acfe_flexible_render_template": false,
+                    "acfe_flexible_render_style": false,
+                    "acfe_flexible_render_script": false,
+                    "acfe_flexible_settings": false,
+                    "acfe_flexible_settings_size": "medium"
                 }
             },
             "button_label": "Add Module",
@@ -119,5 +171,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1610484555
+    "modified": 1610491173
 }
