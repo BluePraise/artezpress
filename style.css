@@ -1404,3 +1404,7 @@ a.news-read-more:hover {
   transform: translate(-50%, -50%);
   font-size: 30px;
 }
+
+.hidden-filter-authors {
+  display: none;
+}

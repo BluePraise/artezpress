@@ -244,6 +244,28 @@ function register_nav()
 add_action('init', 'register_nav');
 
 
+
+if (!function_exists('array_flatten_iterator')) {
+	function array_flatten_iterator(array $array)
+	{
+		foreach ($array as $value) {
+			if (is_array($value)) {
+				yield from array_flatten_iterator($value);
+			} else {
+				yield $value;
+			}
+		}
+	}
+}
+
+if (!function_exists('array_flatten')) {
+	function array_flatten(array $array)
+	{
+		return iterator_to_array(array_flatten_iterator($array), false);
+	}
+}
+
+
 function ajax_filter_posts_scripts()
 {
 	// Enqueue script
@@ -278,37 +300,57 @@ function ajax_filter_get_posts($taxonomy)
 	$taxonomy = json_decode(stripslashes($_POST['taxonomy']));
 
 	// WP Query
-		$args = [
-			'post_type' => 'product',
-			'posts_per_page' => -1,
+	$args = [
+		'post_type' => 'product',
+		'posts_per_page' => -1,
 		'tax_query' => [
-          [
-            'taxonomy' => 'product_tag',
-            'field' => 'slug',
-            'terms' => $taxonomy
+			[
+				'taxonomy' => 'product_tag',
+				'field' => 'slug',
+				'terms' => $taxonomy
 //              'terms' => implode(',', $taxonomy),
-          ]
-        ]
-    ];
+			]
+		]
+	];
 
 	// If taxonomy is not set, remove key from array and get all posts
 	if (!$taxonomy) {
-			unset($args['tax_query']);
+		unset($args['tax_query']);
 	}
 
 	$query = new WP_Query($args);
+	$authors = [];
+	$years = [];
 
-	if ($query->have_posts()):
-		while ($query->have_posts()):
+	if ($query->have_posts()) :
+		while ($query->have_posts()) {
 			$query->the_post();
-      wc_get_template_part('content', 'product');
-		?>
+			wc_get_template_part('content', 'product');
+      $authors[] = explode(',', get_field('author'));
+      if (strlen(get_field('publishing_year'))) {
+	      $years[] = get_field('publishing_year');
+      }
+    }
+	  $authors = array_unique(array_flatten($authors), SORT_REGULAR);
+	  $years = array_unique($years, SORT_REGULAR);
+	?>
 
-	<?php endwhile; ?>
-	<?php else: ?>
-      <h2>No posts found</h2>
-	<?php
-	endif;
+    <ul class="hidden-filter-authors">
+		<?php foreach ($authors as $author) : ?>
+      <li><a href=""><?= $author ?></a></li>
+		<?php endforeach; ?>
+    </ul>
+    <?php if (count($years)): ?>
+      <ul class="hidden-filter-years">
+      <?php foreach ($years as $year) : ?>
+            <li><a href=""><?= $year ?></a></li>
+      <?php endforeach; ?>
+      </ul>
+    <?php endif;
+
+  else:
+	  echo '<h2>No posts found</h2>';
+  endif;
 
 	die();
 }

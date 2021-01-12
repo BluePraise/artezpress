@@ -30,6 +30,9 @@ jQuery(document).ready(function ($) {
                 if (response) {
                     $(".js-products-container").html(response);
                     $(".js-loading-container").removeClass("loading");
+
+                    $('.js-filter-authors').html($('.hidden-filter-authors').html());
+                    $('.js-filter-years').html($('.hidden-filter-years').html());
                 }
             },
         });
