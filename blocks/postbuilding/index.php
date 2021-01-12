@@ -13,24 +13,33 @@ if( have_rows('post_building_modules') ):
             
             // var_dump($book_reference);
             ?>
-            <img src="<?php  echo $image[0]; ?>" data-id="<?php echo $loop->post->ID; ?>">            
-            <h3><?php echo $book_title; ?></h3>
-            <a href="<?php echo $book_url; ?>">Read More</a>
-        <?php endif; 
 
-        if( get_row_layout() == 'video_module' ):
-            $video_url      = get_sub_field('video_url');
-            $video_caption  = get_sub_field('video_caption');
-            ?>
-            
-            <?php if ($video_url): ?>
-                <div class="video-container"><?php echo $video_url; ?></div>
-            <?php endif; ?>
+            <div class="content-container">
+                <img src="<?php  echo $image[0]; ?>" data-id="<?php echo $loop->post->ID; ?>">            
+                <h3><?php echo $book_title; ?></h3>
+                <a href="<?php echo $book_url; ?>" alt="go to <?php echo $book_title ?>">Read More</a>
+            </div>
+        <?php  
+            elseif( get_row_layout() == 'video_module' ):
+                $video_url      = get_sub_field('video_url');
+                $video_caption  = get_sub_field('video_caption');
+                
+                if ($video_url): ?>
+                    <div class="video-container"><?php echo $video_url; ?></div>
+                <?php endif; 
 
-            <?php if ($video_caption): ?>
-                <p><?php echo $video_caption; ?></p>
-            <?php endif; ?>
-        <?php endif; 
+                if ($video_caption): ?>
+                    <figcaption><?php echo $video_caption; ?></figcaption>
+                <?php endif;
+             
+            elseif( get_row_layout() == 'news_content_module' ):
+                $news_content      = get_sub_field('news_content');
+                
+                if ($news_content): ?>
+                    <div class="post-container"><?php echo $news_content; ?></div>
+                <?php endif;
+
+            endif; 
 
         // // Case: Download layout.
         // elseif( get_row_layout() == 'download' ): 

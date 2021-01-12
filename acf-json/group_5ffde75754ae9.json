@@ -33,7 +33,7 @@
             "acfe_flexible_layouts_state": "",
             "acfe_flexible_layouts_remove_collapse": 0,
             "key": "field_5ffde81547902",
-            "label": "Post Building Modules",
+            "label": "News Building Modules",
             "name": "post_building_modules",
             "type": "flexible_content",
             "instructions": "",
@@ -45,6 +45,43 @@
                 "id": ""
             },
             "layouts": {
+                "layout_5ffe2e0b4ef52": {
+                    "key": "layout_5ffe2e0b4ef52",
+                    "name": "news_content_module",
+                    "label": "News Content Module",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ffe2e194ef53",
+                            "label": "News Content",
+                            "name": "news_content",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "basic",
+                            "media_upload": 0,
+                            "delay": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_thumbnail": false,
+                    "acfe_flexible_category": false,
+                    "acfe_flexible_render_template": false,
+                    "acfe_flexible_render_style": false,
+                    "acfe_flexible_render_script": false,
+                    "acfe_flexible_settings": false,
+                    "acfe_flexible_settings_size": "medium"
+                },
+
                 "layout_5ffde8ef8c706": {
                     "key": "layout_5ffde8ef8c706",
                     "name": "book_reference_module",
@@ -108,8 +145,8 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "width": "",
-                            "height": ""
+                            "width": 1076,
+                            "height": 605
                         },
                         {
                             "key": "field_5ffe24fa2a82e",
@@ -171,5 +208,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1610491173
+    "modified": 1610494499
 }
