@@ -1,37 +1,37 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-blockquote,
-address,
-big,
-cite,
-code,
-em,
-font,
-img,
-small,
-strike,
-sub,
-sup,
-li,
-ol,
-ul,
-fieldset,
-form,
-label,
-legend,
-button,
-table,
-caption,
-tr,
-th,
-td {
-    line-height: inherit;
-    text-align: inherit;
-}
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6,
+// blockquote,
+// address,
+// big,
+// cite,
+// code,
+// em,
+// font,
+// img,
+// small,
+// strike,
+// sub,
+// sup,
+// li,
+// ol,
+// ul,
+// fieldset,
+// form,
+// label,
+// legend,
+// button,
+// table,
+// caption,
+// tr,
+// th,
+// td {
+//     line-height: inherit;
+//     text-align: inherit;
+// }
 
 blockquote::before,
 blockquote::after {
@@ -74,7 +74,7 @@ body {
     height: 140vh;
     overflow-x: hidden;
     /* i don't know if this will work on every page,
-    but it's here because of the fixed bottom causing a z-index overlap. 
+    but it's here because of the fixed bottom causing a z-index overlap.
     It's not possible to click on anything underneath it. */
     font-family: 'Lars', Helvetica, Arial, sans-serif;
     font-size: 17px;
