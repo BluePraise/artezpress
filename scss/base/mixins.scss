@@ -1,0 +1,62 @@
+// MIXINS
+
+
+// Typography
+
+@mixin largeText {
+	font: 400 2.1rem/3rem 'Lars',Helvetica,Arial,sans-serif;
+}
+
+@mixin menuText {
+	font: 400 2rem/2.8rem 'Lars',Helvetica,Arial,sans-serif;
+}
+
+@mixin smallText {
+	font: 400 1.7rem/2.3rem 'Lars',Helvetica,Arial,sans-serif;
+}
+
+
+// Underline
+
+@mixin undelineText {
+  padding-bottom: 0;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.1rem;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, currentColor 6%, rgba(0, 0, 0, 0) 6%);
+  }
+}
+
+
+// Buttons
+
+@mixin clearButton($rad, $padH, $padW) {
+  background: transparent;
+  border: $border;
+  border-radius: $rad;
+  text-decoration: none;
+  padding: $padH $padW;
+
+  &:hover {
+    opacity: $hoverOpacity;
+  }
+}
+
+@mixin darkButton($rad, $padH, $padW) {
+  background: $black;
+  border: 2px solid $black;
+  border-radius: $rad;
+  text-decoration: none;
+  padding: $padH $padW;
+  color: $white;
+
+  &:hover {
+    opacity: $hoverOpacity;
+  }
+}

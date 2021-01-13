@@ -4,9 +4,31 @@
 //  All variables for the entire site
 //  Fonts
 //  Colors
+//  Borders
 //  Container sizes
 //  anything else
 // =========================================
-$default-font : 'Lars', Helvetica, Arial, sans-serif;
+
+//  All variables for the entire site
+
+
+//  Fonts
+
+$default-font: 'Lars', Helvetica, Arial, sans-serif;
+
+//  Colors
+
+$white: rgb(255,255,255);
+$black: rgb(0,0,0);
+$greyTransparent: rgba(242,242,242,.9);
+$hoverOpacity: 0.35;
+
+// Borders
+
+$border: 2px solid currentColor;
+
+//  Container sizes
 
 $default-container-width: 1076px;
+
+//  anything else
