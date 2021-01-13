@@ -1,17 +1,16 @@
-
 // Menu Blocks
 .main-menu-container {
   @include menuText;
 }
 
 .fixed-bottom {
-    position: fixed;
-    width: 100vw;
-    z-index: 1;
-    background: transparent;
-    min-height: 100px;
-    bottom: 0;
-    left: 0;
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
+  background: transparent;
+  min-height: 100px;
+  bottom: 0;
+  left: 0;
 }
 
 .main-menu-bar {
@@ -42,7 +41,7 @@
     width: 100%;
     height: 1.6rem;
     top: -1.6rem;
-    background-image: linear-gradient(to bottom, rgba(242,242,242, 0) 0%, rgba(242,242,242, 0.013) 8.1%, rgba(242,242,242, 0.049) 15.5%, rgba(242,242,242, 0.104) 22.5%, rgba(242,242,242, 0.175) 29%, rgba(242,242,242, 0.259) 35.3%, rgba(242,242,242, 0.352) 41.2%, rgba(242,242,242, 0.45) 47.1%, rgba(242,242,242, 0.55) 52.9%, rgba(242,242,242, 0.648) 58.8%, rgba(242,242,242, 0.741) 64.7%, rgba(242,242,242, 0.825) 71%, rgba(242,242,242, 0.896) 77.5%, rgba(242,242,242, 0.9) 84.5%, rgba(242,242,242, 0.9) 100%);
+    background-image: linear-gradient(to bottom, rgba(242, 242, 242, 0) 0%, rgba(242, 242, 242, 0.013) 8.1%, rgba(242, 242, 242, 0.049) 15.5%, rgba(242, 242, 242, 0.104) 22.5%, rgba(242, 242, 242, 0.175) 29%, rgba(242, 242, 242, 0.259) 35.3%, rgba(242, 242, 242, 0.352) 41.2%, rgba(242, 242, 242, 0.45) 47.1%, rgba(242, 242, 242, 0.55) 52.9%, rgba(242, 242, 242, 0.648) 58.8%, rgba(242, 242, 242, 0.741) 64.7%, rgba(242, 242, 242, 0.825) 71%, rgba(242, 242, 242, 0.896) 77.5%, rgba(242, 242, 242, 0.9) 84.5%, rgba(242, 242, 242, 0.9) 100%);
     background-size: 100% 100%;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -50,74 +49,74 @@
 }
 
 .menu-open .main-menu-surface {
-    display: block;
+  display: block;
 }
 
 body.menu-open {
-    overflow-y: hidden;
+  overflow-y: hidden;
 }
 
 
 // Background Iamges
 .menu-open .bg-overlay {
-    position: fixed;
-    z-index: 50;
-    height: 100vh;
-    width: 100vw;
-    left: 0;
-    bottom: 0;
-    background-size: cover;
+  position: fixed;
+  z-index: 50;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  bottom: 0;
+  background-size: cover;
 }
 
 
 .main-menu-bar .flex-container {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .nav-column {
-    width: 25%;
-    margin-right: 50px;
+  width: 25%;
+  margin-right: 50px;
 }
 
 .search,
 .social-menu {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .btn.shopping-cart {
-    position: relative;
-    z-index: 2;
-    background-color: black;
-    color: white;
-    padding: 10px 40px;
-    border-radius: 30px;
+  position: relative;
+  z-index: 2;
+  background-color: black;
+  color: white;
+  padding: 10px 40px;
+  border-radius: 30px;
 }
 
 .cart-counter {
-    position: absolute;
-    z-index: 3;
-    top: -10px;
-    background: red;
-    border-radius: 50%;
-    font-size: 13px;
-    padding: 0px 11px;
-    left: 90px;
-    color: black;
+  position: absolute;
+  z-index: 3;
+  top: -10px;
+  background: red;
+  border-radius: 50%;
+  font-size: 13px;
+  padding: 0px 11px;
+  left: 90px;
+  color: black;
 }
 
 .logo:hover .main-menu-surface {
-    display: block !important;
+  display: block !important;
 }
 
 .page-list {
-    list-style: none;
-    margin: 0 0 20px 0;
-    padding: 0;
+  list-style: none;
+  margin: 0 0 20px 0;
+  padding: 0;
 }
 
 .page-list li a {
-    display: inline-block;
-    /* font: 400 2rem/2.8rem $default-font; */
+  display: inline-block;
+  /* font: 400 2rem/2.8rem $default-font; */
 }
 
 
@@ -125,9 +124,9 @@ body.menu-open {
 
 //footer
 .bottom-menu-bar {
-    margin: 60px 0;
-    padding: 0px 0px;
-    justify-content: space-between;
+  margin: 60px 0;
+  padding: 0px 0px;
+  justify-content: space-between;
 }
 
 // Logo Menu Buttons
@@ -135,24 +134,50 @@ body.menu-open {
   position: relative;
   display: block;
   width: 150px;
+
   a {
     text-decoration: none;
+
     img {
-        width: 150px;
-        padding: 0.7rem 0;
+      width: 150px;
+      padding: 0.7rem 0;
     }
   }
 }
 
 // Language Toggle
 .language-toggle {
+  position: relative;
   display: inline-block;
   width: 12rem;
   margin-right: 3.2rem;
+  list-style: none;
+
+  .drop-block__link {
+    position: absolute;
+  }
+
+  .active {
+    bottom: 0;
+  }
+
+  .inactive {
+    display: none;
+    color: #bbb;
+    bottom: 30px;
+
+    &:hover {
+      color: $black
+    }
+  }
+
+  &:hover .inactive {
+    display: block;
+  }
 }
 
-
 // Newsletter registration
+
 .newsletter {
   input[type=text] {
     height: 45px;
@@ -174,11 +199,11 @@ body.menu-open {
 
 // Social buttons
 .social-menu ul li {
-    display: inline-block;
+  display: inline-block;
 }
 
 .social-menu ul li a {
-    width: 20px;
-    height: 20px;
-    margin-right: 16px;
+  width: 20px;
+  height: 20px;
+  margin-right: 16px;
 }

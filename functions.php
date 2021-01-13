@@ -363,6 +363,8 @@ add_action('wp_ajax_nopriv_filter_posts', 'ajax_filter_get_posts');
 
 add_action('init', 'register_nav');
 
+// this function add a class based on the orientation of the image
+
 function add_orientation_class( $attr, $attachment ) {
 
     $metadata = get_post_meta( $attachment->ID, '_wp_attachment_metadata', true);
@@ -388,3 +390,6 @@ function add_orientation_class( $attr, $attachment ) {
 }
 
 add_filter( 'wp_get_attachment_image_attributes', 'add_orientation_class', 10, 2 );
+
+
+

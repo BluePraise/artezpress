@@ -4,7 +4,7 @@
 	$rand_row = $rows[ array_rand( $rows ) ];
 	$rand_row_image = $rand_row['bg_images_uploaded']; // get the sub field value
 ?>
-<div class="main-menu-container fixed-bottom">
+<header class="main-menu-container fixed-bottom">
 		<div class="bg-overlay" style="background-image: url(<?php echo $rand_row_image; ?>);"></div>
 	<nav class="main-menu-bar">
 		
@@ -17,7 +17,23 @@
 			
 			
 			<div class="menu-misc">
-				<a class="language-toggle" href="#" role="link">English</a>
+				<ul class="language-toggle js-language-toggle">
+					<?php $langs_array = pll_the_languages( array( 'dropdown' => 0, 'raw' => 1 ) ); ?>
+
+						<?php if ($langs_array) : ?>
+						<li class="lang-item">
+							<?php foreach ($langs_array as $lang) : ?>
+								<a href="<?php echo $lang['url']; ?>" class="drop-block__link <?php if($lang['current_lang']): ?>active<?php else:?>inactive<?php endif; ?>">
+									<?php echo $lang['name']; ?>
+								</a>
+							<?php endforeach; ?>
+						</li>
+					<?php endif; ?>
+                </ul>
+				</ul>	
+
+
+
 				<a class="btn white-on-black cart-ban" href="<?php echo wc_get_cart_url(); ?>">
 					<span class="cart-label">Cart</span>
 					<span class="cart-counter"></span>
@@ -66,4 +82,4 @@
 
 	</div>		
 		
-</div>
+</header>

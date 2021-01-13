@@ -1194,9 +1194,23 @@ body.menu-open {
       padding: 0.7rem 0; }
 
 .language-toggle {
+  position: relative;
   display: inline-block;
   width: 12rem;
-  margin-right: 3.2rem; }
+  margin-right: 3.2rem;
+  list-style: none; }
+  .language-toggle .drop-block__link {
+    position: absolute; }
+  .language-toggle .active {
+    bottom: 0; }
+  .language-toggle .inactive {
+    display: none;
+    color: #bbb;
+    bottom: 30px; }
+    .language-toggle .inactive:hover {
+      color: black; }
+  .language-toggle:hover .inactive {
+    display: block; }
 
 .newsletter input[type=text] {
   height: 45px;
