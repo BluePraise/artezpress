@@ -7,10 +7,10 @@
 .fixed-bottom {
     position: fixed;
     width: 100vw;
-    z-index: 10;
+    z-index: 1;
     background: transparent;
     min-height: 100px;
-    bottom: 0px;
+    bottom: 0;
     left: 0;
 }
 
@@ -18,7 +18,9 @@
   position: fixed;
   bottom: 0;
   left: 0;
+  width: 100vw;
   padding: 3.6rem;
+  background-color: transparent;
   z-index: 101;
 }
 
@@ -51,6 +53,12 @@
     display: block;
 }
 
+body.menu-open {
+    overflow-y: hidden;
+}
+
+
+// Background Iamges
 .menu-open .bg-overlay {
     position: fixed;
     z-index: 50;
@@ -61,18 +69,6 @@
     background-size: cover;
 }
 
-.menu-open .fixed-bottom {
-    z-index: 1;
-}
-
-body.menu-open {
-    overflow-y: hidden;
-}
-
-.main-menu-bar {
-    background-color: transparent;
-    width: 100vw;
-}
 
 .main-menu-bar .flex-container {
     justify-content: space-between;

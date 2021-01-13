@@ -393,9 +393,9 @@ input[type="checkbox"] { -webkit-appearance: none; -moz-appearance: none; positi
 
 .main-menu-container { font: 400 2rem/2.8rem 'Lars',Helvetica,Arial,sans-serif; }
 
-.fixed-bottom { position: fixed; width: 100vw; z-index: 10; background: transparent; min-height: 100px; bottom: 0px; left: 0; }
+.fixed-bottom { position: fixed; width: 100vw; z-index: 1; background: transparent; min-height: 100px; bottom: 0; left: 0; }
 
-.main-menu-bar { position: fixed; bottom: 0; left: 0; padding: 3.6rem; z-index: 101; }
+.main-menu-bar { position: fixed; bottom: 0; left: 0; width: 100vw; padding: 3.6rem; background-color: transparent; z-index: 101; }
 
 .main-menu-surface { display: none; transition: all 400ms; position: absolute; width: 100vw; left: 0; bottom: 0; padding: 4rem 3.6rem 12.8rem 3.6rem; z-index: 100; background-color: rgba(242, 242, 242, 0.9); }
 
@@ -403,13 +403,9 @@ input[type="checkbox"] { -webkit-appearance: none; -moz-appearance: none; positi
 
 .menu-open .main-menu-surface { display: block; }
 
-.menu-open .bg-overlay { position: fixed; z-index: 50; height: 100vh; width: 100vw; left: 0; bottom: 0; background-size: cover; }
-
-.menu-open .fixed-bottom { z-index: 1; }
-
 body.menu-open { overflow-y: hidden; }
 
-.main-menu-bar { background-color: transparent; width: 100vw; }
+.menu-open .bg-overlay { position: fixed; z-index: 50; height: 100vh; width: 100vw; left: 0; bottom: 0; background-size: cover; }
 
 .main-menu-bar .flex-container { justify-content: space-between; }
 
