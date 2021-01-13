@@ -363,21 +363,28 @@ add_action('wp_ajax_nopriv_filter_posts', 'ajax_filter_get_posts');
 
 add_action('init', 'register_nav');
 
-function ap_aspect_ratio_filter($class)
-{
+function add_orientation_class( $attr, $attachment ) {
 
-	$id   = get_post_thumbnail_id($post->ID);
-	$img  = wp_get_attachment_image_src();
+    $metadata = get_post_meta( $attachment->ID, '_wp_attachment_metadata', true);
 
-	$width = $img[1];
-	$height = $img[2];
+    // Sanity check: we need both width and height to add the orientation class. If either are missing, we should return the attributes.
+    if ( empty($metadata['width']) || empty($metadata['height'])) {
+        return $attr;
+    }
 
-	if ($width < $height) :
-		return $class . 'attachment-is-portrait';
-	// the_post_thumbnail($size, array( 'class'  => "attachment-".$size." size-".$size." attachment-is-landscape"));
-	// else:
-	//     the_post_thumbnail($size, array( 'class'  => "attachment-".$size." size-".$size." ") );
-	endif;
+    // Sanity check x2: class should be set by now, but another filter could have cleared it out.
+    if ( !isset($metadata['class'])) {
+        $metadata['class'] = '';
+    }
+
+    if ( $metadata['width'] > $metadata['height'] ) { // If width is greater than height, the image is a landscape image.
+        $attr['class'] .= ' attachment-is-landscape';
+    } else { // If not, it's a portrait image.
+        $attr['class'] .= ' attachment-is-portrait';
+    }
+
+    // Return the attributes.
+    return $attr;
 }
 
-add_filter('get_image_tag_class', 'ap_aspect_ratio_filter', 10, 4);
+add_filter( 'wp_get_attachment_image_attributes', 'add_orientation_class', 10, 2 );
