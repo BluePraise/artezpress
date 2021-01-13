@@ -30,7 +30,7 @@ if (empty($product) || !$product->is_visible()) {
 	return;
 }
 ?>
-<div <?php wc_product_class('', $product); ?> data-filters="<?= $cats ?> <?= $author ?> year-<?= $year ?> <?= $tags ?>">
+<div <?php wc_product_class('', $product); ?> data-filters="<?= $cats ?> <?= $author ?> year-<?= $year ?> <?= $tags ?>" data-search="<?= get_the_title() ?> <?= $cats ?> <?= $tags ?> <?= $author ?> <?= get_field('design')['designer'] ?>">
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.

@@ -135,4 +135,30 @@ jQuery(document).ready(function ($) {
       });
     }
   });
+
+  $(".js-main-search").on("submit", function (e) {
+    e.preventDefault();
+    var $this = $(this),
+      search = $this.find("input[type=search]").val().toLowerCase();
+
+    if (search) {
+      productList.each(function () {
+        var product = $(this);
+        if (product.data("search").toLowerCase().indexOf(search) === -1) {
+          product.hide();
+        } else {
+          product.show();
+        }
+      });
+      if (!productList.is(":visible")) {
+        $(".products__not-found").show();
+      } else {
+        $(".products__not-found").hide();
+      }
+    } else {
+      if (!filters.length) {
+        productList.show();
+      }
+    }
+  });
 });
