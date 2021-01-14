@@ -10,6 +10,10 @@
     display: flex;
 }
 
+.justify-center {
+    justify-content: center;
+}
+
 .container {
     max-width: $default-container-width;
     margin: 60px auto;

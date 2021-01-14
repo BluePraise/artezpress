@@ -817,6 +817,9 @@ input[type="checkbox"] {
 .flex-container {
   display: flex; }
 
+.justify-center {
+  justify-content: center; }
+
 .container {
   max-width: 1076px;
   margin: 60px auto; }
@@ -1431,6 +1434,10 @@ a.news-read-more:hover {
 .related-news .news-date {
   margin-bottom: 20px; }
 
+.products__not-found {
+  flex: 1 100%;
+  text-align: center; }
+
 .loading {
   position: relative; }
   .loading::before {
@@ -1454,23 +1461,47 @@ a.news-read-more:hover {
   display: none; }
 
 .filter-tags {
-  margin-bottom: 20px;
-  margin-top: 20px; }
+  padding-bottom: 20px;
+  padding-top: 20px;
+  position: relative; }
+  .filter-tags__inner {
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+    max-width: 1076px; }
+  .filter-tags:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+    width: 3em;
+    pointer-events: none; }
   .filter-tags__item {
     border: 1px solid black;
     border-radius: 30px;
     font-size: 15px;
     padding: 5.5px 15px;
     margin-right: 8px;
-    text-align: center; }
+    text-align: center;
+    flex-shrink: 0; }
     .filter-tags__item.active {
       background: black;
       color: white; }
+  .filter-tags__next {
+    background: none;
+    border: none;
+    position: absolute;
+    right: -3em;
+    top: calc(50% - 14px); }
 
 .sidebar-filters {
   width: 270px;
   padding-left: 6px;
-  padding-right: 6px; }
+  padding-right: 6px;
+  padding-top: 20px; }
   .sidebar-filters__title,
   .sidebar-filters li {
     font-size: 20px;
@@ -1491,6 +1522,21 @@ a.news-read-more:hover {
       display: none; }
   .sidebar-filters__item:not(.active) {
     opacity: 0.35; }
+
+.main-search {
+  padding-top: 20px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto; }
+  .main-search__input {
+    border: none;
+    font-size: 35px;
+    line-height: 48px;
+    flex: 1 auto; }
+  .main-search button {
+    appearance: none;
+    background: none;
+    border: none; }
 
 .features .carousel-container {
   width: calc(100%/3);

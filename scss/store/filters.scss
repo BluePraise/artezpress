@@ -26,8 +26,26 @@
 }
 
 .filter-tags {
-  margin-bottom: 20px;
-  margin-top: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  position: relative;
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+    max-width: 1076px;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    background: linear-gradient(to right, rgba(white, 0), rgba(white, 1));
+    width: 3em;
+    pointer-events: none;
+  }
   &__item {
     border: 1px solid black;
     border-radius: 30px;
@@ -35,10 +53,18 @@
     padding: 5.5px 15px;
     margin-right: 8px;
     text-align: center;
+    flex-shrink: 0;
     &.active {
       background: black;
       color: white;
     }
+  }
+  &__next {
+      background: none;
+      border: none;
+      position: absolute;
+      right: -3em;
+      top: calc(50% - 14px);
   }
 }
 
@@ -46,6 +72,7 @@
   width: 270px;
   padding-left: 6px;
   padding-right: 6px;
+  padding-top: 20px;
   &__title,
   li {
     font-size: 20px;
@@ -77,5 +104,23 @@
     &:not(.active) {
       opacity: 0.35;
     }
+  }
+}
+
+.main-search {
+  padding-top: 20px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  &__input {
+    border: none;
+    font-size: 35px;
+    line-height: 48px;
+    flex: 1 auto;
+  }
+  button {
+    appearance: none;
+    background: none;
+    border: none;
   }
 }
