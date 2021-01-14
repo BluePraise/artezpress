@@ -389,4 +389,4 @@ function add_orientation_class( $attr, $attachment ) {
     return $attr;
 }
 
-add_filter( 'wp_get_attachment_image_attributes', 'add_orientation_class', 10, 2 );
+// add_filter( 'wp_get_attachment_image_attributes', 'add_orientation_class', 10, 2 );
