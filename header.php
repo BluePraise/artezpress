@@ -19,8 +19,6 @@
 			<div class="menu-misc">
 				<?php get_template_part('inc/templateparts/language', 'toggle'); ?>	
 
-
-
 				<a class="btn white-on-black cart-ban" href="<?php echo wc_get_cart_url(); ?>">
 					<span class="cart-label">Cart</span>
 					<span class="cart-counter"></span>
