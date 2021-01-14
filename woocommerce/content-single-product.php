@@ -92,7 +92,6 @@ if (post_password_required()) {
 	</div>
 	<section class="related-news">
 		<h5 class="section-title">Related News</h5>
-		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/css/news.css">
 		<?php
 		/**
 		 * Related News

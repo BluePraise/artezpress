@@ -1,5 +1,6 @@
-<footer class="mast-footer wp-end-of-page">
-    <div class="flex-container">
+<footer class="mast-footer">
+<?php if (is_front_page(  )): ?>
+    <div class="flex-container wp-end-of-page">
         <div class="nav-column">
             <div class="search">Search</div>
             <ul class="page-list">
@@ -9,7 +10,7 @@
                 <li><a href="<?php echo site_url("/news"); ?>">About ArtEZ Press</a></li>
             </ul>
             <div class="newsletter">
-                <p class="large-text">Subscribe to our newsletter</p>
+                <span>Subscribe to our newsletter</span>
                 <input type="text" />
                 <button type="submit" class="btn btn-reg">OK</button>
 
@@ -54,10 +55,10 @@
 		
 	</nav>
 
+<?php endif; ?>
 </footer>
 
-
         <?php wp_footer(); ?>
-        <script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+        <!-- <script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script> -->
     </body>
 </html>
