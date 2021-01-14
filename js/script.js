@@ -1,6 +1,10 @@
 jQuery(document).ready(function ($) {
+
+  
   // Menu button
   const body = $("body");
+  const t = $(".js-toggle-menu"),
+		    m = $(".main-menu-surface");
   $(".js-toggle-menu")
     .on("mouseenter", function () {
       if (!body.hasClass("menu-open")) {
@@ -11,10 +15,9 @@ jQuery(document).ready(function ($) {
       event.preventDefault();
       if (body.hasClass("menu-open")) {
         // Hide menu
-        body.removeClass("menu-open");
-      } else {
-        // Show menu
-        body.addClass("menu-open");
+        body.toggleClass("menu-open");
+        m.delay(0).fadeToggle(200, "swing");
+        
       }
     });
 
