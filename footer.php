@@ -46,6 +46,7 @@
 			
 			
 			<div class="menu-misc">
+                <?php get_template_part('inc/templateparts/language', 'toggle'); ?>	
 				<a class="language-toggle" href="#" role="link">English</a>
 				<a class="btn white-on-black" href="<?php echo wc_get_cart_url(); ?>">
 					<span class="cart-label">Cart</span>
