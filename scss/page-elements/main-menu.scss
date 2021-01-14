@@ -1,5 +1,6 @@
 // Menu Blocks
-.main-menu-container {
+.main-menu-container,
+.mast-footer {
   @include menuText;
 }
 
@@ -13,27 +14,37 @@
   left: 0;
 }
 
-.main-menu-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+.main-menu-bar,
+.bottom-menu-bar {
   width: 100vw;
   padding: 3.6rem;
   background-color: transparent;
   z-index: 101;
 }
 
-.main-menu-surface {
-  display: none;
-  transition: all 400ms;
-  position: absolute;
-  width: 100vw;
-  left: 0;
+.main-menu-bar {
+  position: fixed;
   bottom: 0;
-  padding: 4rem 3.6rem 12.8rem 3.6rem;
-  z-index: 100;
-  background-color: $greyTransparent;
+  left: 0;
+}
+.bottom-menu-bar {
+  position: absolute;
+  bottom: 0;
+}
 
+.main-menu-bar,
+.mast-footer {
+  .flex-container {
+    justify-content: space-between;
+  }
+}
+
+.main-menu-surface,
+.wp-end-of-page {
+  position: relative;
+  width: 100vw;
+  padding: 4rem 3.6rem 12.8rem 3.6rem;
+  background-color: $greyTransparent;
   &::before {
     content: ' ';
     position: absolute;
@@ -48,6 +59,14 @@
   }
 }
 
+.main-menu-surface {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
 .menu-open .main-menu-surface {
   display: block;
 }
@@ -57,7 +76,7 @@ body.menu-open {
 }
 
 
-// Background Iamges
+// Background Images
 .menu-open .bg-overlay {
   position: fixed;
   z-index: 50;
@@ -69,20 +88,20 @@ body.menu-open {
 }
 
 
-.main-menu-bar .flex-container {
-  justify-content: space-between;
+
+// Main Menu Bar Elements
+
+// Logo Menu Button
+.logo {
+  align-self: flex-end;
+
+  svg {
+    width: 15rem;
+    height: 3.6rem;
+  }
 }
 
-.nav-column {
-  width: 25%;
-  margin-right: 50px;
-}
-
-.search,
-.social-menu {
-  margin-bottom: 20px;
-}
-
+// Cart Button
 .btn.shopping-cart {
   position: relative;
   z-index: 2;
@@ -104,47 +123,6 @@ body.menu-open {
   color: black;
 }
 
-.logo:hover .main-menu-surface {
-  display: block !important;
-}
-
-.page-list {
-  list-style: none;
-  margin: 0 0 20px 0;
-  padding: 0;
-}
-
-.page-list li a {
-  display: inline-block;
-  /* font: 400 2rem/2.8rem $default-font; */
-}
-
-
-
-
-//footer
-.bottom-menu-bar {
-  margin: 60px 0;
-  padding: 0px 0px;
-  justify-content: space-between;
-}
-
-// Logo Menu Buttons
-.logo {
-  position: relative;
-  display: block;
-  width: 150px;
-
-  a {
-    text-decoration: none;
-
-    img {
-      width: 150px;
-      padding: 0.7rem 0;
-    }
-  }
-}
-
 // Language Toggle
 .language-toggle {
   position: relative;
@@ -153,35 +131,49 @@ body.menu-open {
   margin-right: 3.2rem;
   list-style: none;
 
-  .drop-block__link {
-    position: absolute;
-  }
-
-  .active {
-    bottom: 0;
+  .lang-item {
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   .inactive {
     display: none;
-    color: #bbb;
-    bottom: 30px;
-
+    opacity: $inactiveOpacity;
     &:hover {
-      color: $black
+      opacity: $activeOpacity;
     }
   }
-
   &:hover .inactive {
     display: block;
   }
 }
 
-// Newsletter registration
 
+// Menu Surface Elements
+
+.main-menu-surface {
+  .grid-container {
+    @include grid(4, 1fr, 3.6rem, 3.2rem);
+  }
+}
+
+// Buttons List
+.search,
+.social-menu,
+.page-list {
+  margin-bottom: 2.8rem;
+}
+
+.page-list li a {
+  display: inline-block;
+}
+
+// Newsletter registration
 .newsletter {
   input[type=text] {
     height: 45px;
-    width: 75%;
+    width: calc(100% - 7.2rem);
+    max-width: 32rem;
     background: transparent;
     border-top: none;
     border-right: none;
@@ -198,12 +190,15 @@ body.menu-open {
 }
 
 // Social buttons
-.social-menu ul li {
-  display: inline-block;
-}
-
-.social-menu ul li a {
-  width: 20px;
-  height: 20px;
-  margin-right: 16px;
+.social-menu ul {
+  line-height: 0;
+  li {
+    display: inline-block;
+    a {
+      width: 2.2rem;
+      height: 2.8rem;
+      padding: .3rem 0;
+      margin-right: 1.6rem;
+    }
+  }
 }

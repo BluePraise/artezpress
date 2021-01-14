@@ -1,7 +1,5 @@
 .mini-cart-total {
-    display: inline-flex;
-    flex-direction: column;
-    flex-grow: 2;
+    grid-column: 3 / span 2;
 }
 
 .woocommerce-mini-cart.cart_list {
@@ -12,7 +10,7 @@
 
 .mini-cart-counter {
     margin-bottom: 50px;
-} 
+}
 
 
 .remove_from_cart_button,

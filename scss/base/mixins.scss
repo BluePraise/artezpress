@@ -1,5 +1,14 @@
 // MIXINS
 
+// Grids
+
+@mixin grid($cols, $fr, $rgap, $cgap) {
+  display: grid;
+  grid-template-columns: repeat($cols, $fr);
+  grid-row-gap: $rgap;
+  grid-column-gap: $cgap;
+}
+
 
 // Typography
 
