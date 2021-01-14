@@ -128,6 +128,10 @@
     font-size: 35px;
     line-height: 48px;
     flex: 1 auto;
+    &::-webkit-input-placeholder {
+        text-align: center;
+        color: black;
+    }
   }
   button {
     appearance: none;

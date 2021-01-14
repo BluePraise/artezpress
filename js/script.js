@@ -167,7 +167,7 @@ jQuery(document).ready(function ($) {
     var hideOnScroll = $(".js-hide-onscroll");
     var showOnScroll = $(".js-show-onscroll");
 
-    if (scroll >= 50) {
+    if (scroll >= 10) {
       hideOnScroll.removeClass("shown").addClass("hidden");
       showOnScroll.removeClass("hidden").addClass("shown");
     } else {

@@ -1579,6 +1579,9 @@ a.news-read-more:hover {
     font-size: 35px;
     line-height: 48px;
     flex: 1 auto; }
+    .main-search__input::-webkit-input-placeholder {
+      text-align: center;
+      color: black; }
   .main-search button {
     appearance: none;
     background: none;
