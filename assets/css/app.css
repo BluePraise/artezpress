@@ -1498,6 +1498,12 @@ a.news-read-more:hover {
 .hidden-filter-authors {
   display: none; }
 
+.search-and-tags {
+  width: 1076px; }
+
+.site-main.products {
+  margin-top: 9em; }
+
 .filter-tags {
   padding-bottom: 20px;
   padding-top: 20px;
@@ -1532,7 +1538,7 @@ a.news-read-more:hover {
     background: none;
     border: none;
     position: absolute;
-    right: -3em;
+    right: -1em;
     top: calc(50% - 14px); }
 
 .sidebar-filters {
@@ -1540,6 +1546,8 @@ a.news-read-more:hover {
   padding-left: 6px;
   padding-right: 6px;
   padding-top: 20px; }
+  .sidebar-filters__in {
+    margin-top: 2em; }
   .sidebar-filters__title,
   .sidebar-filters li {
     font-size: 20px;
@@ -1575,6 +1583,33 @@ a.news-read-more:hover {
     appearance: none;
     background: none;
     border: none; }
+
+.js-hide-onscroll {
+  position: fixed;
+  top: 1em;
+  background: white;
+  transition: all .5s ease-in; }
+  .js-hide-onscroll.hidden {
+    opacity: 0;
+    visibility: hidden; }
+  .js-hide-onscroll.shown {
+    opacity: 1;
+    visibility: visible; }
+
+.js-show-onscroll {
+  transition: all .5s ease-in; }
+  .js-show-onscroll.hidden {
+    opacity: 0;
+    visibility: hidden; }
+  .js-show-onscroll.shown {
+    opacity: 1;
+    visibility: visible; }
+
+.fixed-search-toggle {
+  position: fixed;
+  display: flex;
+  opacity: 0;
+  cursor: pointer; }
 
 .features .carousel-container {
   width: calc(100%/3);

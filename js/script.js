@@ -161,4 +161,23 @@ jQuery(document).ready(function ($) {
       }
     }
   });
+
+  $(window).on("scroll", function () {
+    var scroll = $(this).scrollTop();
+    var hideOnScroll = $(".js-hide-onscroll");
+    var showOnScroll = $(".js-show-onscroll");
+
+    if (scroll >= 50) {
+      hideOnScroll.removeClass("shown").addClass("hidden");
+      showOnScroll.removeClass("hidden").addClass("shown");
+    } else {
+      hideOnScroll.removeClass("hidden").addClass("shown");
+      showOnScroll.removeClass("shown").addClass("hidden");
+    }
+  });
+
+  $(".js-search-toggle").click(function () {
+    $(".js-hide-onscroll").removeClass("hidden").addClass("shown");
+    $(".js-show-onscroll").removeClass("shown").addClass("hidden");
+  });
 });

@@ -6,7 +6,7 @@
   </div>
 
   <div class="js-loading-container">
-    <div class="">
+    <div class="js-hide-onscroll search-and-tags">
       <form class="flex-container main-search js-main-search">
         <button>
           <svg width="25px" height="25px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
