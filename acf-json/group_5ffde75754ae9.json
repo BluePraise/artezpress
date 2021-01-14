@@ -48,12 +48,12 @@
                 "layout_5ffe2e0b4ef52": {
                     "key": "layout_5ffe2e0b4ef52",
                     "name": "news_content_module",
-                    "label": "News Content Module",
+                    "label": "Text Module",
                     "display": "row",
                     "sub_fields": [
                         {
                             "key": "field_5ffe2e194ef53",
-                            "label": "News Content",
+                            "label": "Text Content",
                             "name": "news_content",
                             "type": "wysiwyg",
                             "instructions": "",
@@ -68,7 +68,8 @@
                             "tabs": "all",
                             "toolbar": "basic",
                             "media_upload": 0,
-                            "delay": 0
+                            "delay": 0,
+                            "translations": "translate"
                         }
                     ],
                     "min": "",
@@ -81,7 +82,6 @@
                     "acfe_flexible_settings": false,
                     "acfe_flexible_settings_size": "medium"
                 },
-
                 "layout_5ffde8ef8c706": {
                     "key": "layout_5ffde8ef8c706",
                     "name": "book_reference_module",
@@ -208,5 +208,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1610494499
+    "modified": 1610638066
 }
