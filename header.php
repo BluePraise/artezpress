@@ -5,7 +5,21 @@
 	$rand_row_image = $rand_row['bg_images_uploaded']; // get the sub field value
 ?>
 <header class="main-menu-container fixed-bottom">
+
+	<div class="js-menu" style="display: none;">
 		<div class="bg-overlay" style="background-image: url(<?php echo $rand_row_image; ?>);"></div>
+		<div class="main-menu-surface">
+			<div class="grid-container">
+				<?php get_template_part( 'inc/templateparts/nav', 'pages' ); ?>
+				<div class="mini-cart-column">
+					<div class="mini-cart-total"><?php woocommerce_mini_cart(); ?></div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
 	<nav class="main-menu-bar">
 
 		<div class="flex-container">
@@ -19,7 +33,7 @@
 			<div class="menu-misc">
 				<?php get_template_part('inc/templateparts/language', 'toggle'); ?>	
 
-				<a class="btn white-on-black cart-ban" href="<?php echo wc_get_cart_url(); ?>">
+				<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
 					<span class="cart-label">Cart</span>
 					<span class="cart-counter"></span>
 				</a>

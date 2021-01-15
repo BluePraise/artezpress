@@ -204,7 +204,9 @@ ul li a { display: inline-block; }
 * MEDIA
 *
 *************************/
-svg, img, embed, object { display: block; height: auto; max-width: 100%; }
+svg, embed, object { display: block; height: auto; width: 100%; }
+
+img { aspect-ratio: attr(width)/attr(height); height: auto; width: 100%; }
 
 figure { display: block; margin: 0; }
 
@@ -298,13 +300,15 @@ input[type="checkbox"] { -webkit-appearance: none; -moz-appearance: none; positi
 
 .btn { display: inline-block; text-decoration: none; }
 
-.btn.white-on-black { position: relative; z-index: 2; background: black; border: 2px solid black; border-radius: 100px; text-decoration: none; padding: 0.2rem 3.1rem; color: white; }
+.btn.white-on-black { position: relative; background: black; border: 2px solid black; border-radius: 100px; text-decoration: none; padding: 0.2rem 3.1rem; color: white; }
 
 .btn.white-on-black:hover { opacity: 0.5; }
 
 .btn.black-on-white { border: 2px solid black; background-color: white; color: black; }
 
 .btn.black-on-white:hover { border: 2px solid #fff; background-color: #000; color: white; }
+
+.cart-counter { position: absolute; z-index: 3; top: -10px; background: red; border-radius: 50%; font-size: 13px; padding: 0px 11px; left: 90px; color: black; }
 
 /** Owl Carousel v2.3.4 Copyright 2013-2018 David Deutsch Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE */
 .owl-carousel, .owl-carousel .owl-item { -webkit-tap-highlight-color: transparent; position: relative; }
@@ -391,7 +395,7 @@ input[type="checkbox"] { -webkit-appearance: none; -moz-appearance: none; positi
 
 .fixed-bottom { position: fixed; width: 100vw; z-index: 1; background: transparent; min-height: 100px; bottom: 0; left: 0; }
 
-.main-menu-bar, .bottom-menu-bar { width: 100vw; padding: 3.6rem; background-color: transparent; z-index: 101; }
+.main-menu-bar, .bottom-menu-bar { width: 100vw; padding: 3.6rem; background-color: transparent; }
 
 .main-menu-bar { position: fixed; bottom: 0; left: 0; }
 
@@ -403,21 +407,13 @@ input[type="checkbox"] { -webkit-appearance: none; -moz-appearance: none; positi
 
 .main-menu-surface::before, .wp-end-of-page::before { content: ' '; position: absolute; left: 0; width: 100%; height: 1.6rem; top: -1.6rem; background-image: linear-gradient(to bottom, rgba(242, 242, 242, 0) 0%, rgba(242, 242, 242, 0.013) 8.1%, rgba(242, 242, 242, 0.049) 15.5%, rgba(242, 242, 242, 0.104) 22.5%, rgba(242, 242, 242, 0.175) 29%, rgba(242, 242, 242, 0.259) 35.3%, rgba(242, 242, 242, 0.352) 41.2%, rgba(242, 242, 242, 0.45) 47.1%, rgba(242, 242, 242, 0.55) 52.9%, rgba(242, 242, 242, 0.648) 58.8%, rgba(242, 242, 242, 0.741) 64.7%, rgba(242, 242, 242, 0.825) 71%, rgba(242, 242, 242, 0.896) 77.5%, rgba(242, 242, 242, 0.9) 84.5%, rgba(242, 242, 242, 0.9) 100%); background-size: 100% 100%; background-position: bottom; background-repeat: no-repeat; }
 
-.main-menu-surface { display: none; position: absolute; left: 0; bottom: 0; z-index: 100; }
+.main-menu-surface { position: absolute; left: 0; bottom: 0; }
 
-.menu-open .main-menu-surface { display: block; }
-
-body.menu-open { overflow-y: hidden; }
-
-.menu-open .bg-overlay { position: fixed; z-index: 50; height: 100vh; width: 100vw; left: 0; bottom: 0; background-size: cover; }
+.bg-overlay { position: fixed; height: 100vh; width: 100vw; left: 0; bottom: 0; background-size: cover; background-position: center center; opacity: .85; }
 
 .logo { align-self: flex-end; }
 
 .logo svg { width: 15rem; height: 3.6rem; }
-
-.btn.shopping-cart { position: relative; z-index: 2; background-color: black; color: white; padding: 10px 40px; border-radius: 30px; }
-
-.cart-counter { position: absolute; z-index: 3; top: -10px; background: red; border-radius: 50%; font-size: 13px; padding: 0px 11px; left: 90px; color: black; }
 
 .language-toggle { position: relative; display: inline-block; width: 12rem; margin-right: 3.2rem; list-style: none; }
 
@@ -431,9 +427,13 @@ body.menu-open { overflow-y: hidden; }
 
 .main-menu-surface .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); grid-row-gap: 3.6rem; grid-column-gap: 3.2rem; }
 
+.mini-cart-column { grid-column: 3 / span 2; }
+
 .search, .social-menu, .page-list { margin-bottom: 2.8rem; }
 
 .page-list li a { display: inline-block; }
+
+.newsletter span { display: block; }
 
 .newsletter input[type=text] { height: 45px; width: calc(100% - 7.2rem); max-width: 32rem; background: transparent; border-top: none; border-right: none; border-left: none; border-bottom: 2px solid currentColor; font-family: "Lars", Helvetica, Arial, sans-serif; margin-right: 1rem; }
 
@@ -446,6 +446,16 @@ body.menu-open { overflow-y: hidden; }
 .social-menu ul li { display: inline-block; }
 
 .social-menu ul li a { width: 2.2rem; height: 2.8rem; padding: .3rem 0; margin-right: 1.6rem; }
+
+.menu-open { overflow-y: hidden; }
+
+.menu-open .js-menu { display: block; }
+
+main { will-change: filter; transition: -webkit-filter 200ms ease-in-out; transition: filter 200ms ease-in-out; transition: filter 200ms ease-in-out, -webkit-filter 200ms ease-in-out; }
+
+main.blur { -webkit-filter: blur(0.2rem); filter: blur(0.2rem); }
+
+header { will-change: opacity; transition: opacity 100ms ease-in-out; }
 
 .accordion-toggle { font-family: "Lars", Helvetica, Arial, sans-serif; background-color: #fff; cursor: pointer; width: 100%; border: none; outline: none; transition: 0.4s; }
 
@@ -472,8 +482,6 @@ body.menu-open { overflow-y: hidden; }
 .hero:before { content: ''; display: block; }
 
 .section-title { display: block; margin-top: 36px; margin-bottom: 36px; }
-
-.mini-cart-total { grid-column: 3 / span 2; }
 
 .woocommerce-mini-cart.cart_list { list-style: none; display: inline-flex; flex-direction: column; }
 
