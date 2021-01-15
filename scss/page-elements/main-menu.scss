@@ -1,4 +1,18 @@
-// Menu Blocks
+// -----------------------------
+// MAIN MENU
+// - Menu blacks (header + footer)
+// - Main Menu Bar Elements
+// - Menu surface elements
+// - Transition effects
+// -----------------------------
+
+
+
+// -----------------------------
+// Menu blacks (header + footer)
+// -----------------------------
+
+// main-menu bar
 .main-menu-container,
 .mast-footer {
   @include menuText;
@@ -19,7 +33,6 @@
   width: 100vw;
   padding: 3.6rem;
   background-color: transparent;
-  z-index: 101;
 }
 
 .main-menu-bar {
@@ -39,6 +52,7 @@
   }
 }
 
+//menu surface
 .main-menu-surface,
 .wp-end-of-page {
   position: relative;
@@ -60,36 +74,27 @@
 }
 
 .main-menu-surface {
-  display: none;
   position: absolute;
   left: 0;
   bottom: 0;
-  z-index: 100;
 }
-
-.menu-open .main-menu-surface {
-  display: block;
-}
-
-body.menu-open {
-  overflow-y: hidden;
-}
-
 
 // Background Images
-.menu-open .bg-overlay {
+.bg-overlay {
   position: fixed;
-  z-index: 50;
   height: 100vh;
   width: 100vw;
   left: 0;
   bottom: 0;
   background-size: cover;
+  background-position: center center;
+  opacity: .85;
 }
 
 
-
+// -----------------------------
 // Main Menu Bar Elements
+// -----------------------------
 
 // Logo Menu Button
 .logo {
@@ -101,27 +106,7 @@ body.menu-open {
   }
 }
 
-// Cart Button
-.btn.shopping-cart {
-  position: relative;
-  z-index: 2;
-  background-color: black;
-  color: white;
-  padding: 10px 40px;
-  border-radius: 30px;
-}
-
-.cart-counter {
-  position: absolute;
-  z-index: 3;
-  top: -10px;
-  background: red;
-  border-radius: 50%;
-  font-size: 13px;
-  padding: 0px 11px;
-  left: 90px;
-  color: black;
-}
+// Cart Button (see buttons.scss)
 
 // Language Toggle
 .language-toggle {
@@ -149,12 +134,19 @@ body.menu-open {
 }
 
 
-// Menu Surface Elements
+// -----------------------------
+// Menu surface elements
+// -----------------------------
 
+// Layout
 .main-menu-surface {
   .grid-container {
     @include grid(4, 1fr, 3.6rem, 3.2rem);
   }
+}
+
+.mini-cart-column {
+  grid-column: 3 / span 2;
 }
 
 // Buttons List
@@ -170,6 +162,9 @@ body.menu-open {
 
 // Newsletter registration
 .newsletter {
+  span { // subscribe text
+    display: block;
+  }
   input[type=text] {
     height: 45px;
     width: calc(100% - 7.2rem);
@@ -201,4 +196,32 @@ body.menu-open {
       margin-right: 1.6rem;
     }
   }
+}
+
+// -----------------------------
+// Transition effects
+// -----------------------------
+
+// Menu Open
+.menu-open {
+  overflow-y: hidden;
+
+  .js-menu {
+    display: block;
+  }
+}
+
+main {
+  will-change: filter;
+  transition: filter 200ms ease-in-out;
+
+  &.blur {
+    filter: blur(.2rem);
+  }
+}
+
+// Header meets footer
+header {
+  will-change: opacity;
+  transition: opacity 100ms ease-in-out;
 }

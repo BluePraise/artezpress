@@ -5,7 +5,53 @@
 	$rand_row_image = $rand_row['bg_images_uploaded']; // get the sub field value
 ?>
 <header class="main-menu-container fixed-bottom">
+
+	<div class="js-menu" style="display: none;">
 		<div class="bg-overlay" style="background-image: url(<?php echo $rand_row_image; ?>);"></div>
+		<div class="main-menu-surface">
+			<div class="grid-container">
+				<div class="nav-column">
+					<div class="search">Search</div>
+					<ul class="page-list">
+						<li><a href="<?php echo site_url("/"); ?>">Home</a></li>
+						<li><a href="<?php echo site_url("/books"); ?>">Books</a></li>
+						<li><a href="<?php echo site_url("/news"); ?>">News</a></li>
+						<li><a href="<?php echo site_url("/news"); ?>">About ArtEZ Press</a></li>
+					</ul>
+					<div class="newsletter">
+						<span>Subscribe to our newsletter</span>
+						<input type="text" />
+						<button type="submit" class="btn btn-reg">OK</button>
+
+					</div>
+				</div>
+				<div class="nav-column">
+					<div class="social-menu">
+						<ul class="horizontal-list">
+							<li>
+							<a href="#" alt="link to facebook"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_fb.svg" alt="Facebook Icon"></a>
+							<a href="#"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_ig.svg" alt="Instagram Icon"></a>
+							<a href="#"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_tw.svg" alt="Twitter Icon"></a>
+						</li></ul>
+					</div>
+					<ul class="page-list">
+						<li><a href="<?php echo site_url("/contact"); ?>">Contact</a></li>
+						<li><a href="<?php echo site_url("/frequently-asked-questions"); ?>"></a></li>
+						<li><a href="<?php echo site_url("/privacy-policy"); ?>">Data Protection</a></li>
+						<li><a href="<?php echo site_url("/news"); ?>">Imprint</a></li>
+					</ul>
+					<div class="part-of">ArtEZ Press is part of <br>ArtEZ University of the Arts</div>
+
+				</div>
+				<div class="mini-cart-column">
+					<div class="mini-cart-total"><?php woocommerce_mini_cart(); ?></div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
 	<nav class="main-menu-bar">
 
 		<div class="flex-container">
@@ -29,57 +75,17 @@
 							<?php endforeach; ?>
 						</li>
 					<?php endif; ?>
-                </ul>
+								</ul>
 				</ul>
 
 
 
-				<a class="btn white-on-black cart-ban" href="<?php echo wc_get_cart_url(); ?>">
+				<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
 					<span class="cart-label">Cart</span>
 					<span class="cart-counter"></span>
 				</a>
 			</div>
 		</div>
 	</nav>
-	<div class="main-menu-surface">
-		<div class="grid-container">
-			<div class="nav-column">
-				<div class="search">Search</div>
-				<ul class="page-list">
-					<li><a href="<?php echo site_url("/"); ?>">Home</a></li>
-					<li><a href="<?php echo site_url("/books"); ?>">Books</a></li>
-					<li><a href="<?php echo site_url("/news"); ?>">News</a></li>
-					<li><a href="<?php echo site_url("/news"); ?>">About ArtEZ Press</a></li>
-				</ul>
-				<div class="newsletter">
-					<span>Subscribe to our newsletter</span>
-					<input type="text" />
-					<button type="submit" class="btn btn-reg">OK</button>
-
-				</div>
-			</div>
-			<div class="nav-column">
-				<div class="social-menu">
-					<ul class="horizontal-list">
-						<li>
-						<a href="#" alt="link to facebook"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_fb.svg" alt="Facebook Icon"></a>
-						<a href="#"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_ig.svg" alt="Instagram Icon"></a>
-						<a href="#"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_tw.svg" alt="Twitter Icon"></a>
-					</li></ul>
-				</div>
-				<ul class="page-list">
-					<li><a href="<?php echo site_url("/contact"); ?>">Contact</a></li>
-					<li><a href="<?php echo site_url("/frequently-asked-questions"); ?>"></a></li>
-					<li><a href="<?php echo site_url("/privacy-policy"); ?>">Data Protection</a></li>
-					<li><a href="<?php echo site_url("/news"); ?>">Imprint</a></li>
-				</ul>
-				<div class="part-of">ArtEZ Press is part of <br>ArtEZ University of the Arts</div>
-
-			</div>
-			<div class="mini-cart-total"><?php woocommerce_mini_cart(); ?></div>
-
-		</div>
-
-	</div>
 
 </header>

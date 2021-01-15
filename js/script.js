@@ -1,32 +1,60 @@
 jQuery(document).ready(function ($) {
 	// Menu button
-	const body = $("body");
+
+	const body = $("body"),
+				main = $("main"),
+				menu = $('.js-menu');
+
 	$(".js-toggle-menu")
 		.on("mouseenter", function () {
 			if (!body.hasClass("menu-open")) {
 				body.addClass("menu-open");
+				main.addClass("blur");
+				menu.delay(0).fadeToggle(100, "swing");
 			}
 		})
 		.on("click", function (event) {
 			event.preventDefault();
-			if (body.hasClass("menu-open")) {
-				// Hide menu
-				body.removeClass("menu-open");
-			} else {
-				// Show menu
-				body.addClass("menu-open");
-			}
+			body.toggleClass("menu-open");
+			main.toggleClass("blur");
+			menu.delay(0).fadeToggle(100, "swing");
 		});
 
-	$(".bg-overlay").on("click", function () {
+	$(".bg-overlay").on("mouseenter", function () {
 		if (body.hasClass("menu-open")) {
-			// Hide menu
 			body.removeClass("menu-open");
-		} else {
-			// Show menu
-			body.addClass("menu-open");
+			main.toggleClass("blur");
+			menu.delay(0).fadeToggle(100, "swing");
 		}
 	});
+
+	// const body = $("body");
+	// $(".js-toggle-menu")
+	// 	.on("mouseenter", function () {
+	// 		if (!body.hasClass("menu-open")) {
+	// 			body.addClass("menu-open");
+	// 		}
+	// 	})
+	// 	.on("click", function (event) {
+	// 		event.preventDefault();
+	// 		if (body.hasClass("menu-open")) {
+	// 			// Hide menu
+	// 			body.removeClass("menu-open");
+	// 		} else {
+	// 			// Show menu
+	// 			body.addClass("menu-open");
+	// 		}
+	// 	});
+	//
+	// $(".bg-overlay").on("click", function () {
+	// 	if (body.hasClass("menu-open")) {
+	// 		// Hide menu
+	// 		body.removeClass("menu-open");
+	// 	} else {
+	// 		// Show menu
+	// 		body.addClass("menu-open");
+	// 	}
+	// });
 
 	// END OF Language Menu Toggle
 
@@ -82,7 +110,7 @@ jQuery(document).ready(function ($) {
 				$(".main-menu-container").css({ opacity: 1 });
 			}
 		},
-		offset: "80%",
+		offset: "95%",
 	});
 
 	//https://stackoverflow.com/questions/11867545/change-text-color-based-on-brightness-of-the-covered-background-area
