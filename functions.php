@@ -58,6 +58,28 @@ function artezpress_style()
 add_action('wp_enqueue_scripts', 'artezpress_style');
 
 
+
+function ajax_filter_posts_scripts()
+{
+	// Enqueue script
+	wp_register_script(
+		'afp_script',
+		get_stylesheet_directory_uri() . '/js/ajax-filter.js',
+		false,
+		null,
+		false
+	);
+	wp_enqueue_script('afp_script');
+
+	wp_localize_script('afp_script', 'afp_vars', array(
+		'afp_nonce' => wp_create_nonce('afp_nonce'), // Create nonce which we later will use to verify AJAX request
+		'afp_ajax_url' => admin_url('admin-ajax.php')
+	));
+}
+
+add_action('wp_enqueue_scripts', 'ajax_filter_posts_scripts', 100);
+
+
 function add_class_to_excerpt($post_excerpt)
 {
 	$post_excerpt = '<p class="news-excerpt small-text">' . $post_excerpt . '</p>';
@@ -83,43 +105,6 @@ if (function_exists('acf_add_options_page')) {
 		'redirect' => false
 	));
 }
-
-/* Woocommerce filters */
-
-/*
-* Mini cart with total counter not total price
-*
-*/
-add_filter('woocommerce_add_to_cart_fragments', 'add_to_cart_fragment', 10, 1);
-
-function add_to_cart_fragment($fragments)
-{
-
-	global $woocommerce;
-	$count = $woocommerce->cart->cart_contents_count;
-
-	if ($count > 0) {
-		$fragments['.cart-counter'] = '<span class="cart-counter">' . $count . '</span>';
-	} else {
-		$fragments['.cart-counter'] = '<span class="cart-counter hide">' . $count . '</span>';
-	}
-
-	return $fragments;
-}
-
-
-if (!function_exists('woocommerce_widget_shopping_cart_subtotal')) {
-	/**
-	 * Output to view cart subtotal.
-	 *
-	 * @since 3.7.0
-	 */
-	function woocommerce_widget_shopping_cart_subtotal()
-	{
-		echo '<span>' . esc_html__('Total:', 'artezpress') . '</span> ' . WC()->cart->get_cart_subtotal(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	}
-}
-
 
 function artezpress_theme_setup()
 {
@@ -205,46 +190,56 @@ function veer_popup_maker_gutenburg_compat($content)
 	return $content;
 }
 
-function my_get_the_product_thumbnail_url($size = 'shop_catalog')
+
+/**********************************
+*
+* All WooCommerce Functions
+* 
+**********************************/
+
+
+
+/* Woocommerce filters */
+
+/*
+* Mini cart with total counter not total price
+*
+*/
+
+function add_to_cart_fragment($fragments)
 {
-	global $post;
-	$image_size = apply_filters('single_product_archive_thumbnail_size', $size);
-	return get_the_post_thumbnail_url($post->ID, $image_size);
+
+	global $woocommerce;
+	$count = $woocommerce->cart->cart_contents_count;
+
+	if ($count > 0) {
+		$fragments['.cart-counter'] = '<span class="cart-counter">' . $count . '</span>';
+	} else {
+		$fragments['.cart-counter'] = '<span class="cart-counter hide">' . $count . '</span>';
+	}
+
+	return $fragments;
 }
+add_filter('woocommerce_add_to_cart_fragments', 'add_to_cart_fragment', 10, 1);
 
-function artezpress_nav()
-{
-	wp_nav_menu(array(
-		'theme_location' => 'header-menu',
-		'menu' => '',
-		'container' => 'div',
-		'container_class' => 'navbar-collapse',
-		'container_id' => 'navbarNavDropdown',
-		'menu_class' => 'nav-item',
-		'menu_id' => '',
-		'echo' => true,
-		'fallback_cb' => 'wp_page_menu',
-		'before' => '',
-		'after' => '',
-		'link_before' => '',
-		'link_after' => '',
-		'items_wrap' => '<ul class="navbar-nav ml-auto">%3$s</ul>',
-		'depth' => 0,
-		'walker' => ''
-	));
+//Turn off irritating zoom hover effect 
+function remove_image_zoom_support() {
+    remove_theme_support( 'wc-product-gallery-zoom' );
 }
+add_action( 'wp', 'remove_image_zoom_support', 100 );
 
-function register_nav()
-{
-	register_nav_menus(array(
-		'header-menu' => esc_html('Header Menu', 'artezpress') // Main Navigation
-		// 'extra-menu'   => esc_html( 'Extra Menu', 'rentj' )
-	));
+
+if (!function_exists('woocommerce_widget_shopping_cart_subtotal')) {
+	/**
+	 * Output to view cart subtotal.
+	 *
+	 * @since 3.7.0
+	 */
+	function woocommerce_widget_shopping_cart_subtotal()
+	{
+		echo '<span>' . esc_html__('Total:', 'artezpress') . '</span> ' . WC()->cart->get_cart_subtotal(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
 }
-
-// Add Menu
-add_action('init', 'register_nav');
-
 
 
 if (!function_exists('array_flatten_iterator')) {
@@ -267,26 +262,6 @@ if (!function_exists('array_flatten')) {
 	}
 }
 
-
-function ajax_filter_posts_scripts()
-{
-	// Enqueue script
-	wp_register_script(
-		'afp_script',
-		get_stylesheet_directory_uri() . '/js/ajax-filter.js',
-		false,
-		null,
-		false
-	);
-	wp_enqueue_script('afp_script');
-
-	wp_localize_script('afp_script', 'afp_vars', array(
-		'afp_nonce' => wp_create_nonce('afp_nonce'), // Create nonce which we later will use to verify AJAX request
-		'afp_ajax_url' => admin_url('admin-ajax.php')
-	));
-}
-
-add_action('wp_enqueue_scripts', 'ajax_filter_posts_scripts', 100);
 
 // Script for getting posts
 function ajax_filter_get_posts($taxonomy)
@@ -359,34 +334,47 @@ function ajax_filter_get_posts($taxonomy)
 
 add_action('wp_ajax_filter_posts', 'ajax_filter_get_posts');
 add_action('wp_ajax_nopriv_filter_posts', 'ajax_filter_get_posts');
-// Add Menu
 
-add_action('init', 'register_nav');
+// I've turned this off for now, because I only needed this for the index.php and not everywhere.
+// add_filter( 'wp_get_attachment_image_attributes', 'add_orientation_class', 10, 2 );
 
-// this function add a class based on the orientation of the image
 
-function add_orientation_class( $attr, $attachment ) {
+// A function to change the text on the single shop file.
+function availability_filter_func($availability) {
+	$availability['availability'] = str_ireplace('Out of stock', 'Out of Print', $availability['availability']);
+	return $availability;
+}
+add_filter('woocommerce_get_availability', 'availability_filter_func');
 
-    $metadata = get_post_meta( $attachment->ID, '_wp_attachment_metadata', true);
+// display an 'Out of Stock' label on archive pages
+// Turned it off because I don't know if I need it right now.
 
-    // Sanity check: we need both width and height to add the orientation class. If either are missing, we should return the attributes.
-    if ( empty($metadata['width']) || empty($metadata['height'])) {
-        return $attr;
-    }
 
-    // Sanity check x2: class should be set by now, but another filter could have cleared it out.
-    if ( !isset($metadata['class'])) {
-        $metadata['class'] = '';
-    }
-
-    if ( $metadata['width'] > $metadata['height'] ) { // If width is greater than height, the image is a landscape image.
-        $attr['class'] .= ' attachment-is-landscape';
-    } else { // If not, it's a portrait image.
-        $attr['class'] .= ' attachment-is-portrait';
-    }
-
-    // Return the attributes.
-    return $attr;
+function my_get_the_product_thumbnail_url($size = 'shop_catalog')
+{
+	global $post;
+	$image_size = apply_filters('single_product_archive_thumbnail_size', $size);
+	return get_the_post_thumbnail_url($post->ID, $image_size);
 }
 
-add_filter( 'wp_get_attachment_image_attributes', 'add_orientation_class', 10, 2 );
+// function mode_theme_update_mini_cart() {
+//     echo wc_get_template( 'cart/mini-cart.php' );
+//     die();
+// }
+// add_filter( 'wp_ajax_nopriv_mode_theme_update_mini_cart', 'mode_theme_update_mini_cart' );
+// add_filter( 'wp_ajax_mode_theme_update_mini_cart', 'mode_theme_update_mini_cart' );
+
+// add_action( 'template_redirect', 'quadlayers_add_to_cart_programmatically' );
+   
+// function quadlayers_add_to_cart_programmatically() {
+ 
+//    $product_id = 1326;
+ 
+//    $product_cart_id = WC()->cart->generate_cart_id( $product_id );
+   
+//    if(!WC()->cart->find_product_in_cart( $product_cart_id )) {
+//        WC()->cart->add_to_cart( $product_id);
+//        wc_print_notice( 'Product ID ' . $product_id . ' is in the Cart!', 'notice' );
+//    }
+ 
+// }

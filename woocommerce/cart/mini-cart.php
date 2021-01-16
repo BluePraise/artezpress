@@ -16,18 +16,27 @@
  * @package WooCommerce\Templates
  * @version 3.7.0
  */
-
 defined( 'ABSPATH' ) || exit;
 
 do_action( 'woocommerce_before_mini_cart' ); ?>
+<?php 
+	global $woocommerce;
+	$count = $woocommerce->cart->cart_contents_count;
+?>
 
-<?php if ( ! WC()->cart->is_empty() ) : ?>
-	<?php if (is_user_logged_in()): ?>
-		<span class="mini-cart-greeting">Hi, This still needs to be done</span>
+<?php if (is_user_logged_in()): 
+		$current_user = wp_get_current_user(); 
+		// var_dump($current_user);
+		$name = $current_user->display_name;
+	?>
+		<span class="mini-cart-greeting">Hi, <?php echo $name; ?></span>
 	<?php else:  ?>
 		<span class="mini-cart-greeting">Hi</span>
-	<?php endif; ?>	
-    <div class="mini-cart-counter">You have 2 items in your cart</div>
+<?php endif; ?>
+
+<?php if ( ! WC()->cart->is_empty() ) : ?>
+		
+    <div class="mini-cart-counter">You have <?php echo $count ?> items in your cart</div>
 	<ul class="woocommerce-mini-cart cart_list product_list_widget <?php echo esc_attr( $args['list_class'] ); ?>">
 		<?php
 		do_action( 'woocommerce_before_mini_cart_contents' );

@@ -599,12 +599,16 @@ ul li a {
 *
 *************************/
 svg,
-img,
 embed,
 object {
   display: block;
   height: auto;
-  max-width: 100%; }
+  width: 100%; }
+
+img {
+  aspect-ratio: attr(width)/attr(height);
+  height: auto;
+  width: 100%; }
 
 figure {
   display: block;
@@ -846,7 +850,6 @@ input[type="checkbox"] {
 
 .btn.white-on-black {
   position: relative;
-  z-index: 2;
   background: black;
   border: 2px solid black;
   border-radius: 100px;
@@ -864,6 +867,17 @@ input[type="checkbox"] {
     border: 2px solid #fff;
     background-color: #000;
     color: white; }
+
+.cart-counter {
+  position: absolute;
+  z-index: 3;
+  top: -10px;
+  background: red;
+  border-radius: 50%;
+  font-size: 13px;
+  padding: 0px 11px;
+  left: 90px;
+  color: black; }
 
 /**
  * Owl Carousel v2.3.4
@@ -1078,7 +1092,7 @@ input[type="checkbox"] {
 .fixed-bottom {
   position: fixed;
   width: 100vw;
-  z-index: 1;
+  z-index: 2;
   background: transparent;
   min-height: 100px;
   bottom: 0;
@@ -1088,8 +1102,7 @@ input[type="checkbox"] {
 .bottom-menu-bar {
   width: 100vw;
   padding: 3.6rem;
-  background-color: transparent;
-  z-index: 101; }
+  background-color: transparent; }
 
 .main-menu-bar {
   position: fixed;
@@ -1112,7 +1125,7 @@ input[type="checkbox"] {
   background-color: rgba(242, 242, 242, 0.9); }
   .main-menu-surface::before,
   .wp-end-of-page::before {
-    content: ' ';
+    content: " ";
     position: absolute;
     left: 0;
     width: 100%;
@@ -1124,51 +1137,25 @@ input[type="checkbox"] {
     background-repeat: no-repeat; }
 
 .main-menu-surface {
-  display: none;
   position: absolute;
   left: 0;
-  bottom: 0;
-  z-index: 100; }
+  bottom: 0; }
 
-.menu-open .main-menu-surface {
-  display: block; }
-
-body.menu-open {
-  overflow-y: hidden; }
-
-.menu-open .bg-overlay {
+.bg-overlay {
   position: fixed;
-  z-index: 50;
   height: 100vh;
   width: 100vw;
   left: 0;
   bottom: 0;
-  background-size: cover; }
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.85; }
 
 .logo {
   align-self: flex-end; }
   .logo svg {
     width: 15rem;
     height: 3.6rem; }
-
-.btn.shopping-cart {
-  position: relative;
-  z-index: 2;
-  background-color: black;
-  color: white;
-  padding: 10px 40px;
-  border-radius: 30px; }
-
-.cart-counter {
-  position: absolute;
-  z-index: 3;
-  top: -10px;
-  background: red;
-  border-radius: 50%;
-  font-size: 13px;
-  padding: 0px 11px;
-  left: 90px;
-  color: black; }
 
 .language-toggle {
   position: relative;
@@ -1193,6 +1180,9 @@ body.menu-open {
   grid-row-gap: 3.6rem;
   grid-column-gap: 3.2rem; }
 
+.mini-cart-column {
+  grid-column: 3 / span 2; }
+
 .search,
 .social-menu,
 .page-list {
@@ -1201,7 +1191,10 @@ body.menu-open {
 .page-list li a {
   display: inline-block; }
 
-.newsletter input[type=text] {
+.newsletter span {
+  display: block; }
+
+.newsletter input[type="text"] {
   height: 45px;
   width: calc(100% - 7.2rem);
   max-width: 32rem;
@@ -1230,8 +1223,23 @@ body.menu-open {
     .social-menu ul li a {
       width: 2.2rem;
       height: 2.8rem;
-      padding: .3rem 0;
+      padding: 0.3rem 0;
       margin-right: 1.6rem; }
+
+.menu-open {
+  overflow-y: hidden; }
+  .menu-open .js-menu {
+    display: block; }
+
+main {
+  will-change: filter;
+  transition: filter 200ms ease-in-out; }
+  main.blur {
+    filter: blur(0.2rem); }
+
+header {
+  will-change: opacity;
+  transition: opacity 100ms ease-in-out; }
 
 .accordion-toggle {
   font-family: "Lars", Helvetica, Arial, sans-serif;
@@ -1303,9 +1311,6 @@ body.menu-open {
   display: block;
   margin-top: 36px;
   margin-bottom: 36px; }
-
-.mini-cart-total {
-  grid-column: 3 / span 2; }
 
 .woocommerce-mini-cart.cart_list {
   list-style: none;
@@ -1454,24 +1459,20 @@ a.news-read-more:hover {
   margin-top: 9em; }
 
 .filter-tags {
-  padding-bottom: 20px;
-  padding-top: 20px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
   position: relative; }
   .filter-tags__inner {
-    display: flex;
-    align-items: flex-start;
     overflow: hidden;
     max-width: 1076px; }
-  .filter-tags:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
-    width: 3em;
-    pointer-events: none; }
+  .filter-tags__list {
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0.05, 0, 0, 1);
+    will-change: transform;
+    display: flex;
+    align-items: flex-start;
+    white-space: nowrap; }
   .filter-tags__item {
     border: 1px solid black;
     border-radius: 30px;
@@ -1483,12 +1484,38 @@ a.news-read-more:hover {
     .filter-tags__item.active {
       background: black;
       color: white; }
-  .filter-tags__next {
-    background: none;
-    border: none;
+  .filter-tags__prev, .filter-tags__next {
     position: absolute;
-    right: -1em;
-    top: calc(50% - 14px); }
+    top: 0;
+    height: 100%;
+    z-index: 2000;
+    display: flex;
+    flex-direction: row;
+    justify-content: center; }
+    .filter-tags__prev::before, .filter-tags__prev::after, .filter-tags__next::before, .filter-tags__next::after {
+      height: 100%;
+      width: 50px;
+      content: "";
+      pointer-events: none; }
+    .filter-tags__prev button, .filter-tags__next button {
+      background: white;
+      border: none;
+      height: 100%; }
+  .filter-tags__prev {
+    left: 0;
+    display: none; }
+    .filter-tags__prev::before {
+      content: none; }
+    .filter-tags__prev::after {
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.98) 20%, rgba(255, 255, 255, 0) 80%); }
+    .filter-tags__prev button {
+      transform: rotate(180deg); }
+  .filter-tags__next {
+    right: -1em; }
+    .filter-tags__next::after {
+      content: none; }
+    .filter-tags__next::before {
+      background: linear-gradient(to left, rgba(255, 255, 255, 0.98) 20%, rgba(255, 255, 255, 0) 80%); }
 
 .sidebar-filters {
   width: 270px;
@@ -1504,7 +1531,8 @@ a.news-read-more:hover {
     cursor: pointer;
     margin-bottom: 10px; }
   .sidebar-filters__title {
-    margin-bottom: 36px; }
+    margin-bottom: 36px;
+    text-align: left; }
   .sidebar-filters ul {
     padding-left: 20px; }
   .sidebar-filters__name {
@@ -1538,9 +1566,10 @@ a.news-read-more:hover {
 
 .js-hide-onscroll {
   position: fixed;
+  z-index: 1;
   top: 1em;
   background: white;
-  transition: all .5s ease-in; }
+  transition: all 0.3s ease-in; }
   .js-hide-onscroll.hidden {
     opacity: 0;
     visibility: hidden; }
@@ -1548,18 +1577,25 @@ a.news-read-more:hover {
     opacity: 1;
     visibility: visible; }
 
-.js-show-onscroll.hidden {
-  opacity: 0;
-  visibility: hidden; }
-
-.js-show-onscroll.shown {
-  opacity: 1;
-  visibility: visible; }
+.js-show-onscroll {
+  transition: all 0.3s ease-in; }
+  .js-show-onscroll.hidden {
+    opacity: 0;
+    visibility: hidden; }
+  .js-show-onscroll.shown {
+    opacity: 1;
+    visibility: visible; }
 
 .fixed-search-toggle {
   position: fixed;
-  display: none;
+  display: flex;
+  opacity: 0;
   cursor: pointer; }
+  .fixed-search-toggle svg {
+    margin-right: 10px; }
+
+.btn span.edition-language {
+  margin-right: 16px; }
 
 .features .carousel-container {
   width: calc(100%/3);
