@@ -1,22 +1,12 @@
 .btn {
     display: inline-block;
     text-decoration: none;
-    padding: 10px 40px;
-    border-radius: 30px;
 }
 
 .btn.white-on-black {
-    position: relative;
-    z-index: 2;
-    background-color: black;
-    color: white;
-    border: 2px solid transparent;
-
-    &:hover {
-        border: 2px solid black;    
-        background-color: #fff;
-        color: black;
-    }
+  position: relative;
+  z-index: 2;
+  @include darkButton(100px, .2rem, 3.1rem);
 }
 
 .btn.black-on-white {

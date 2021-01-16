@@ -9,6 +9,7 @@
                 <div class="news-date small-text"><?php echo the_date( "d F Y" )?></div>
                 <?php if( has_post_thumbnail() ): ?>
                     <figure class="news-thumbnail">
+
                           <?php the_post_thumbnail(); ?>
                     </figure>
                 <?php endif; ?>
