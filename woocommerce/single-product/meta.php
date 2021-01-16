@@ -67,7 +67,7 @@ global $product;
 										$permalink = get_permalink($related_product_ID);
 										$price = wc_price($related_product->get_price());
 										echo('ISBN ' . $related_product_sku );
-										echo ($price);
+										
 									endforeach;
 								endif;
 							else: 

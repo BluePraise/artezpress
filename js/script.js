@@ -28,36 +28,6 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	// const body = $("body");
-	// $(".js-toggle-menu")
-	// 	.on("mouseenter", function () {
-	// 		if (!body.hasClass("menu-open")) {
-	// 			body.addClass("menu-open");
-	// 		}
-	// 	})
-	// 	.on("click", function (event) {
-	// 		event.preventDefault();
-	// 		if (body.hasClass("menu-open")) {
-	// 			// Hide menu
-	// 			body.removeClass("menu-open");
-	// 		} else {
-	// 			// Show menu
-	// 			body.addClass("menu-open");
-	// 		}
-	// 	});
-	//
-	// $(".bg-overlay").on("click", function () {
-	// 	if (body.hasClass("menu-open")) {
-	// 		// Hide menu
-	// 		body.removeClass("menu-open");
-	// 	} else {
-	// 		// Show menu
-	// 		body.addClass("menu-open");
-	// 	}
-	// });
-
-	// END OF Language Menu Toggle
-
 	$(".js-toggle-accordion").accordion({
 		active: 0,
 		collapsible: true,
@@ -199,3 +169,18 @@ then close all select boxes: */
 		}
 	});
 });
+
+// Define the PHP function to call from here
+// Update Mini Cart
+
+//  var data = {
+//    'action': 'mode_theme_update_mini_cart'
+//  };
+//  $.post(
+//    woocommerce_params.ajax_url, // The AJAX URL
+//    data, // Send our PHP function
+//    function(response){
+//      $('#mode-mini-cart').html(response); // Repopulate the specific element with the new content
+//    }
+//  );
+// Close anon function.

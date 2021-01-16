@@ -19,10 +19,11 @@
 defined('ABSPATH') || exit;
 
 global $product, $post;
-$author 	 = get_field('author');
-$language 	 = get_field('language');
-$description = get_field('description');
-
+$author 	 	 		= get_field('author');
+$language 	 	 		= get_field('language');
+$description 	 		= get_field('description');
+$additional_editions	= get_field('additional_editions');
+$type_of_edition 		= $additional_editions['type_of_edition'];
 
 /**
  * Hook: woocommerce_before_single_product.
@@ -36,7 +37,6 @@ if (post_password_required()) {
 	return;
 }
 ?>
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/css/store.css">
 <main id="product-<?php the_ID(); ?>" <?php wc_product_class('container', $product); ?>>
 
 	<?php woocommerce_show_product_images(); ?>
@@ -62,32 +62,43 @@ if (post_password_required()) {
 			<div class="single-product-description">
 				<?php echo $description; ?>
 			</div>
-			<?php //woocommerce_template_single_add_to_cart(); 
-			?>
 			<div class="block__price price">
-				<?php
-				$child = $product->get_children();
-				if ($child > 1) :
+				<?php 
+					if ( $additional_editions ): 
+						$related		 = $additional_editions['related_edition'];
+						if ( $related ) :
+							foreach( $related as $r ):
+								// get the ID of the related product
+								$related_product_ID = $r->ID;
+								$related_product = wc_get_product( $related_product_ID );
+								$related_permalink = get_permalink($related_product_ID);
+								$related_price = wc_price($related_product->get_price());?>
+								<?php if ( $product->is_in_stock() ) : ?>
+									<form class="cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>		
+										<button type="submit" name="add-to-cart" value="<?php echo $related_product_ID ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo $type_of_edition; ?></span><?php echo $related_price; ?></button>
+									</form>
+								<?php else: ?>
+									<p>Out of Print</p>
+								<?php endif; ?>
+							<?php endforeach;
+						endif;
+					else: ?>
+						
 
-					foreach ($child as $child_id) :
+					<?php endif; ?>
+					
 
-						$post_object    = get_post($child_id);
-						$child_product  = wc_get_product($child_id);
-						$child_price    = $child_product->get_price_html();
-						$language 		= $child_product->get_attribute('language'); ?>
+					<?php if ( $product->is_in_stock() ) : ?>
+						<form class="cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
+							<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo$language; ?></span><?php woocommerce_template_single_price(); ?></button>
+						</form>
+					<?php else: ?>
+						<p>Out of Print</p>
+					<?php endif; ?>
 
-						<!-- <span class="btn white-on-black"><?php //echo $child_price 
-																?></span> -->
-						<button type="submit" class=" btn white-on-black single_add_to_cart_button alt"><?php echo $child_price; ?></button>
-					<?php endforeach;
-				else : ?>
 
-					<span class="something btn white-on-black"><?php echo $price_html; ?></span>
-
-				<?php endif; ?>
 			</div>
 			<?php woocommerce_template_single_meta(); ?>
-
 		</div>
 	</div>
 	<section class="related-news">

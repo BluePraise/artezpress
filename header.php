@@ -33,8 +33,15 @@
 				<?php get_template_part('inc/templateparts/language', 'toggle'); ?>	
 
 				<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
+
 					<span class="cart-label">Cart</span>
-					<span class="cart-counter"></span>
+
+					<?php 
+						global $woocommerce;
+						$count = $woocommerce->cart->cart_contents_count; ?>
+
+						<span class="cart-counter"><?php  echo $count; ?></span>
+						
 				</a>
 			</div>
 		</div>
