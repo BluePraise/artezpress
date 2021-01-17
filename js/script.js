@@ -274,40 +274,45 @@ then close all select boxes: */
     containerWidthDiff: tags.scrollWidth - tagsContainer.clientWidth,
   };
 
-  function getOffset(offset) {
-    return Math.min(Math.max(offset, 0), tagsProps.containerWidthDiff);
-  }
-
-  function setButtonsState() {
-    tagsProps.atStart = 0 >= tagsProps.offset;
-    tagsProps.atEnd =
-      tagsProps.offset >= tagsProps.containerWidthDiff && !tagsProps.atStart;
-    tagsProps.offset = getOffset(tagsProps.offset);
-
-    $(".js-tags-next").closest(".filter-tags__next").css("display", "flex");
-    $(".js-tags-prev").closest(".filter-tags__prev").css("display", "flex");
-    if (tagsProps.atEnd) {
-      $(".js-tags-next").closest(".filter-tags__next").hide();
-      $(".js-tags-next").closest(".filter-tags__prev").css("display", "flex");
+  if (tagsProps.containerWidthDiff <= 0) {
+    $(".js-tags-next").closest(".filter-tags__next").hide();
+    $(".js-tags-prev").closest(".filter-tags__prev").hide();
+  } else {
+    function getOffset(offset) {
+      return Math.min(Math.max(offset, 0), tagsProps.containerWidthDiff);
     }
-    if (tagsProps.atStart) {
-      $(".js-tags-prev").closest(".filter-tags__prev").hide();
+
+    function setButtonsState() {
+      tagsProps.atStart = 0 >= tagsProps.offset;
+      tagsProps.atEnd =
+        tagsProps.offset >= tagsProps.containerWidthDiff && !tagsProps.atStart;
+      tagsProps.offset = getOffset(tagsProps.offset);
+
       $(".js-tags-next").closest(".filter-tags__next").css("display", "flex");
+      $(".js-tags-prev").closest(".filter-tags__prev").css("display", "flex");
+      if (tagsProps.atEnd) {
+        $(".js-tags-next").closest(".filter-tags__next").hide();
+        $(".js-tags-next").closest(".filter-tags__prev").css("display", "flex");
+      }
+      if (tagsProps.atStart) {
+        $(".js-tags-prev").closest(".filter-tags__prev").hide();
+        $(".js-tags-next").closest(".filter-tags__next").css("display", "flex");
+      }
     }
+
+    setButtonsState();
+
+    $(".js-tags-prev").click(function () {
+      tagsProps.offset = getOffset(tagsProps.offset - 320);
+      $(".js-tags").css("transform", "translateX(-" + tagsProps.offset + "px)");
+      setButtonsState();
+    });
+    $(".js-tags-next").click(function () {
+      tagsProps.offset = getOffset(tagsProps.offset + 320);
+      $(".js-tags").css("transform", "translateX(-" + tagsProps.offset + "px)");
+      setButtonsState();
+    });
   }
-
-  setButtonsState();
-
-  $(".js-tags-prev").click(function () {
-    tagsProps.offset = getOffset(tagsProps.offset - 320);
-    $(".js-tags").css("transform", "translateX(-" + tagsProps.offset + "px)");
-    setButtonsState();
-  });
-  $(".js-tags-next").click(function () {
-    tagsProps.offset = getOffset(tagsProps.offset + 320);
-    $(".js-tags").css("transform", "translateX(-" + tagsProps.offset + "px)");
-    setButtonsState();
-  });
 });
 
 // Define the PHP function to call from here
