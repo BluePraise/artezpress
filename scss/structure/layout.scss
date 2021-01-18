@@ -1,15 +1,33 @@
 
+// Main Large container
+
+.container {
+    max-width: $default-container-width;
+    margin: 5.4rem auto;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+}
+
+// News grid
+
+.news-item {
+  @media (min-width: 768px) {
+    width: calc(50%);
+  }
+
+  @media (max-width: 767px) {
+    width: calc(100%);
+  }
+}
+
+
+
 .grid-container {
     display: grid;
 }
 
 .flex-container {
     display: flex;
-}
-
-.container {
-    max-width: $default-container-width;
-    margin: 60px auto;
 }
 
 .container-xs {

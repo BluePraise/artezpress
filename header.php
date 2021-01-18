@@ -20,7 +20,7 @@
 					</ul>
 					<div class="newsletter">
 						<span>Subscribe to our newsletter</span>
-						<input type="text" />
+						<input type="email">
 						<button type="submit" class="btn btn-reg">OK</button>
 
 					</div>

@@ -13,26 +13,26 @@
  */
 
 get_header(); ?>
-	
+
 	<main class="site-main" role="main">
 
 		<?php get_template_part('blocks/frontpage/handshake/index'); ?>
 		<section class="features flex-container">
-		
-		<?php 
+
+		<?php
 			if (have_rows('feature_sliders')) :
-				while (have_rows('feature_sliders')) : the_row(); 
-				
+				while (have_rows('feature_sliders')) : the_row();
+
 				get_template_part('blocks/frontpage/slider/slider','left');
 				get_template_part('blocks/frontpage/slider/slider','middle');
 				get_template_part('blocks/frontpage/slider/slider','right');
-				
+
 			endwhile;
-		endif;    
+		endif;
 		?>
-		
+
 		</section>
-	
+
 		<section class="featured-books flex-container ">
 			<h2 class="featured-title">Books</h2>
 			<div class="full-width products">
@@ -53,12 +53,12 @@ get_header(); ?>
 				?>
 			</div><!--/.products-->
 			<a class="btn black-on-white" href="<?php echo site_url( '/books/'); ?>">See All Books</a>
-			
+
 		</section><!-- #main -->
-	
+
 		<section class="latest-news container">
 			<h2 class="featured-title">News</h2>
-			<div class="grid">
+			<div class="grid news-grid">
     			<?php
         		$args = array(
 						'post_type' => 'post',
@@ -74,10 +74,10 @@ get_header(); ?>
 									<?php the_post_thumbnail(); ?>
 								</figure>
             					<?php endif; ?>
-            					<h3 class="post-title"><?php echo the_title(); ?></h3>
+            					<h4 class="post-title"><?php echo the_title(); ?></h4>
             					<p class="small-text"><?php the_excerpt(); ?>Read More</p>
         					</div>
-					<?php 
+					<?php
 							endwhile;
 					} else {
 						echo __( 'No products found' );
@@ -86,7 +86,7 @@ get_header(); ?>
 				?>
 			</div><!--/.grid-->
 			<a class="btn black-on-white" href="<?php echo esc_url( '/news' ); ?>">See All News</a>
-			
+
 		</section><!-- #main -->
 
 	</main><!-- #main -->

@@ -93,7 +93,7 @@ audio:not([controls]) { display: none; height: 0; }
 html { font-size: 100%; /* 1 */ -webkit-text-size-adjust: 100%; /* 2 */ -ms-text-size-adjust: 100%; /* 2 */ }
 
 /** Address `outline` inconsistency between Chrome and other browsers. */
-a:focus { outline: thin dotted; }
+a:focus { outline: 0; }
 
 /** Improve readability when focused and also mouse hovered in all browsers. */
 a:active, a:hover { outline: 0; }
@@ -249,12 +249,8 @@ ul.horizontal-list li { display: inline-block; }
 /****
 *
 * Form Control
-*  
+*
 */
-button[type=submit]:focus { outline: none; }
-
-button[type=submit]:hover { cursor: pointer; background-color: black; color: white; }
-
 /*************************
 *
 * WordPress
@@ -284,11 +280,15 @@ label.inline, input[type="checkbox"] + label { display: inline; font-weight: 400
 
 input[type="checkbox"] { -webkit-appearance: none; -moz-appearance: none; position: relative; top: 2px; display: inline-block; margin: 0; width: 40px; min-width: 40px; height: 40px; background: #fff; border-radius: 0; border-style: solid; border-width: 1px; border-color: #dcd7ca; box-shadow: none; cursor: pointer; }
 
+.container { max-width: 1140px; margin: 5.4rem auto; padding-left: 1.6rem; padding-right: 1.6rem; }
+
+@media (min-width: 768px) { .news-item { width: calc(50%); } }
+
+@media (max-width: 767px) { .news-item { width: calc(100%); } }
+
 .grid-container { display: grid; }
 
 .flex-container { display: flex; }
-
-.container { max-width: 1076px; margin: 60px auto; }
 
 .container-xs { max-width: 960px; margin: 0 auto; }
 
@@ -395,7 +395,7 @@ input[type="checkbox"] { -webkit-appearance: none; -moz-appearance: none; positi
 
 .fixed-bottom { position: fixed; width: 100vw; z-index: 1; background: transparent; min-height: 100px; bottom: 0; left: 0; }
 
-.main-menu-bar, .bottom-menu-bar { width: 100vw; padding: 3.6rem; background-color: transparent; }
+.main-menu-bar, .bottom-menu-bar { width: 100vw; padding: 3.6rem 3.2rem; background-color: transparent; }
 
 .main-menu-bar { position: fixed; bottom: 0; left: 0; }
 
@@ -403,7 +403,7 @@ input[type="checkbox"] { -webkit-appearance: none; -moz-appearance: none; positi
 
 .main-menu-bar .flex-container, .mast-footer .flex-container { justify-content: space-between; }
 
-.main-menu-surface, .wp-end-of-page { position: relative; width: 100vw; padding: 4rem 3.6rem 12.8rem 3.6rem; background-color: rgba(242, 242, 242, 0.9); }
+.main-menu-surface, .wp-end-of-page { position: relative; width: 100vw; padding: 4rem 3.2rem 12.8rem 3.2rem; background-color: rgba(242, 242, 242, 0.9); }
 
 .main-menu-surface::before, .wp-end-of-page::before { content: ' '; position: absolute; left: 0; width: 100%; height: 1.6rem; top: -1.6rem; background-image: linear-gradient(to bottom, rgba(242, 242, 242, 0) 0%, rgba(242, 242, 242, 0.013) 8.1%, rgba(242, 242, 242, 0.049) 15.5%, rgba(242, 242, 242, 0.104) 22.5%, rgba(242, 242, 242, 0.175) 29%, rgba(242, 242, 242, 0.259) 35.3%, rgba(242, 242, 242, 0.352) 41.2%, rgba(242, 242, 242, 0.45) 47.1%, rgba(242, 242, 242, 0.55) 52.9%, rgba(242, 242, 242, 0.648) 58.8%, rgba(242, 242, 242, 0.741) 64.7%, rgba(242, 242, 242, 0.825) 71%, rgba(242, 242, 242, 0.896) 77.5%, rgba(242, 242, 242, 0.9) 84.5%, rgba(242, 242, 242, 0.9) 100%); background-size: 100% 100%; background-position: bottom; background-repeat: no-repeat; }
 
@@ -435,7 +435,7 @@ input[type="checkbox"] { -webkit-appearance: none; -moz-appearance: none; positi
 
 .newsletter span { display: block; }
 
-.newsletter input[type=text] { height: 45px; width: calc(100% - 7.2rem); max-width: 32rem; background: transparent; border-top: none; border-right: none; border-left: none; border-bottom: 2px solid currentColor; font-family: "Lars", Helvetica, Arial, sans-serif; margin-right: 1rem; }
+.newsletter input[type=email] { height: 45px; width: calc(100% - 7.2rem); max-width: 32rem; background: transparent; border-top: none; border-right: none; border-left: none; border-bottom: 2px solid currentColor; font-family: "Lars", Helvetica, Arial, sans-serif; margin-right: 1rem; }
 
 .newsletter .btn-reg { background: transparent; border: 2px solid currentColor; border-radius: 7px; text-decoration: none; padding: 4px 8px; font: 400 2rem/2.8rem 'Lars',Helvetica,Arial,sans-serif; }
 
@@ -591,27 +591,24 @@ a.news-read-more:hover { cursor: pointer; }
 
 .featured-books .btn.black-on-white { display: inline-block; align-self: center; }
 
-.home .latest-news { text-align: center; }
-
-.home .latest-news .btn { display: inline-block; align-self: center; margin-top: 40px; margin-bottom: 160px; }
-
-.page-title { display: block; }
+.page-title { display: block; padding-right: 1.6rem; padding-left: 1.6rem; }
 
 .featured-title { margin-bottom: 64px; }
 
-.news .page-title { margin-bottom: 80px; }
+.news .page-title { margin-bottom: 6.4rem; }
 
-.news-item { max-width: 522px; margin-bottom: 80px; }
+/* This should be similiar on all pages that have a page-title */
+.news-grid .news-item { padding-left: 1.6rem; padding-right: 1.6rem; margin-bottom: 8rem; }
 
-.news-date { margin-bottom: 30px; }
+.news-grid .news-date { margin-bottom: 2.4rem; }
 
-.post-title { margin: 40px 0; }
+.news-grid .post-title { padding: 0 4rem; margin-bottom: 2.4rem; }
 
-.news-thumbnail { padding: 0 20px; }
+.news-grid .news-thumbnail { padding: 0 2rem; margin-bottom: 3.2rem; }
 
-a.news-read-more { display: inline-block; margin: 32px 0 0px; border-bottom: 1px solid black; }
+.news-grid .news-read-more { display: inline-block; margin-top: 2.4rem; border-bottom: 1px solid currentColor; }
 
-a.news-read-more:hover { cursor: pointer; }
+.news-grid .news-read-more:hover { opacity: 0.5; }
 
 /* single php */
 .post-container h3 { margin-top: 48px; margin-bottom: 60px; }
@@ -625,5 +622,4 @@ a.news-read-more:hover { cursor: pointer; }
 .post-container p { margin: 20px 0; }
 
 /* frontpage php */
-.home .latest-news .news-item p, .home .latest-news .news-item h3 { text-align: left; }
 /*# sourceMappingURL=app.css.map */
