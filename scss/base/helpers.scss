@@ -2,40 +2,44 @@
 
 .display-block,
 .show {
-    display: block !important;
+  display: block !important;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 ul.d-h,
 ul.horizontal-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 ul.horizontal-list li {
-    display: inline-block;
+  display: inline-block;
 }
 
 .d-h.flex-container {
-    justify-content: space-between;
-    flex-wrap: wrap;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .d-h .col-1 {
-    width: 60px;
-    margin-right: 32px;
+  width: 60px;
+  margin-right: 32px;
 }
 
 .d-h .col-2 {
-    width: 152px;
-    margin-right: 32px;
+  width: 152px;
+  margin-right: 32px;
 }
 
-
 .d-h .col-3 {
-    width: 244px;
+  width: 244px;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }

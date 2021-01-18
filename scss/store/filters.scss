@@ -30,7 +30,7 @@
 }
 
 .site-main.products {
-  margin-top: 9em;
+  margin-top: 185px;
 }
 
 .filter-tags {
@@ -123,8 +123,10 @@
   padding-left: 6px;
   padding-right: 6px;
   padding-top: 20px;
+  position: fixed;
   &__in {
-    margin-top: 2em;
+    margin-top: 1em;
+    width: 270px;
   }
   &__title,
   li {
@@ -181,6 +183,10 @@
     background: none;
     border: none;
   }
+  svg {
+    width: auto;
+    height: auto;
+  }
 }
 
 .js-hide-onscroll {
@@ -192,6 +198,7 @@
   &.hidden {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
   }
 
   &.shown {
@@ -205,6 +212,7 @@
   &.hidden {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
   }
   &.shown {
     opacity: 1;
@@ -213,11 +221,21 @@
 }
 
 .fixed-search-toggle {
-  position: fixed;
+  position: absolute;
   display: flex;
   opacity: 0;
   cursor: pointer;
   svg {
     margin-right: 10px;
+    width: auto;
+    height: auto;
+  }
+}
+
+.products-container {
+  margin-left: 270px;
+  @media (min-width: 1441px) {
+    margin-left: auto;
+    margin-right: auto;
   }
 }

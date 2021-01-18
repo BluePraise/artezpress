@@ -167,57 +167,6 @@ then close all select boxes: */
     }
   });
 
-  $(".js-filter-collapse").click(function (e) {
-    $(this).toggleClass("active");
-  });
-
-  var productList = $(".product");
-  var tags = [];
-  var filters = [];
-
-  $(".js-reset-filters").click(function (e) {
-    filters = [];
-    productList.show();
-    $(".js-filter-item").removeClass("active");
-  });
-
-  $(".js-filter-item").click(function (e) {
-    e.preventDefault();
-    var $this = $(this),
-      $productsContainer = $(".products"),
-      $filter = $this.data("filter"),
-      $filterTag = $this.data("tag");
-
-    $this.toggleClass("active");
-    if (filters.indexOf($filter) === -1) {
-      filters.push($filter);
-    } else {
-      filters = filters.filter((f) => f !== $filter);
-      productList.each(function () {
-        if ($(this).data("filters").indexOf($filter) !== -1) {
-          $(this).hide();
-        }
-      });
-      if (!filters.length) {
-        $(".js-reset-filters").click();
-      }
-      return;
-    }
-
-    if ($filter) {
-      productList.each(function () {
-        var $this = $(this);
-        if ($this.data("filters").indexOf($filter) === -1) {
-          if (filters.every((i) => !$this.data("filters").includes(i))) {
-            $this.hide();
-          }
-        } else {
-          $this.show();
-        }
-      });
-    }
-  });
-
   $(".js-main-search").on("submit", function (e) {
     e.preventDefault();
     var $this = $(this),
