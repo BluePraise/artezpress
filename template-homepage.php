@@ -67,16 +67,7 @@ get_header(); ?>
 					$loop = new WP_Query( $args );
 					if ( $loop->have_posts() ) {
 						while ( $loop->have_posts() ) : $loop->the_post(); ?>
-							<div class="news-item">
-								<p class="news-date"><?php echo the_date( "d F Y" )?></p>
-								<?php if( has_post_thumbnail() ): ?>
-								<figure class="news-thumbnail">
-									<?php the_post_thumbnail(); ?>
-								</figure>
-            					<?php endif; ?>
-            					<h3 class="post-title"><?php echo the_title(); ?></h3>
-            					<p class="small-text"><?php the_excerpt(); ?>Read More</p>
-        					</div>
+							<?php get_template_part('inc/templateparts/news', 'excerpt'); ?>	
 					<?php 
 							endwhile;
 					} else {
