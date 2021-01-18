@@ -234,6 +234,8 @@
 
 .products-container {
   margin-left: 270px;
+  width: 100%;
+  max-width: 1076px;
   @media (min-width: 1441px) {
     margin-left: auto;
     margin-right: auto;
