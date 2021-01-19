@@ -197,8 +197,6 @@ input[type=search]::-webkit-search-results-decoration {
 input[type=search] {
   -webkit-appearance: none;
   -moz-appearance: none;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
   box-sizing: content-box; }
 
 textarea {
@@ -392,8 +390,6 @@ input[type="radio"] {
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box; }
 
@@ -461,6 +457,81 @@ textarea {
   background: #ccc;
   color: #000;
   padding: 0.2em 0; }
+
+blockquote::before,
+blockquote::after {
+  content: ""; }
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 10px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto; } }
+
+body {
+  position: relative;
+  z-index: 0;
+  -webkit-font-kerning: normal;
+  font-kerning: normal;
+  font-feature-settings: "kern"on, "kern", "ss01";
+  letter-spacing: 0.02rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color: black;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  /* i don't know if this will work on every page,
+    but it's here because of the fixed bottom causing a z-index overlap.
+    It's not possible to click on anything underneath it. */
+  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-size: 1.7rem;
+  line-height: 2.3rem;
+  transition: all 500ms;
+  /* font: 400 1.7rem/2.3rem “Lars”, Helvetica, Arial, sans-serif; */
+  /* font-size: 17px; */
+  /* line-height: 23px; */ }
+
+ul li a {
+  display: inline-block; }
+
+/*************************
+*
+* MEDIA
+*
+*************************/
+svg,
+embed,
+object {
+  display: block;
+  height: auto;
+  width: 100%; }
+
+img {
+  aspect-ratio: attr(width)/attr(height);
+  height: auto;
+  width: 100%; }
+
+figure {
+  display: block;
+  margin: 0; }
+
+video {
+  display: block; }
+
+iframe {
+  display: block;
+  max-width: 100%; }
 
 @font-face {
   font-family: 'Lars';
@@ -544,82 +615,6 @@ h5,
 a {
   color: black;
   text-decoration: none; }
-
-blockquote::before,
-blockquote::after {
-  content: ""; }
-
-*,
-*:after,
-*:before {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  text-rendering: optimizeLegibility; }
-
-html {
-  scroll-behavior: smooth;
-  font-size: 10px; }
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto; } }
-
-body {
-  position: relative;
-  z-index: 0;
-  -webkit-font-kerning: normal;
-  font-kerning: normal;
-  font-feature-settings: "kern"on, "kern", "ss01";
-  letter-spacing: 0.02rem;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  color: black;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  /* i don't know if this will work on every page,
-    but it's here because of the fixed bottom causing a z-index overlap.
-    It's not possible to click on anything underneath it. */
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
-  font-size: 1.7rem;
-  line-height: 2.3rem;
-  transition: all 500ms;
-  /* font: 400 1.7rem/2.3rem “Lars”, Helvetica, Arial, sans-serif; */
-  /* font-size: 17px; */
-  /* line-height: 23px; */ }
-
-ul li a {
-  display: inline-block; }
-
-/*************************
-*
-* MEDIA
-*
-*************************/
-svg,
-embed,
-object {
-  display: block;
-  height: auto;
-  width: 100%; }
-
-img {
-  aspect-ratio: attr(width)/attr(height);
-  height: auto;
-  width: 100%; }
-
-figure {
-  display: block;
-  margin: 0; }
-
-video {
-  display: block; }
-
-iframe {
-  display: block;
-  max-width: 100%; }
 
 .display-block,
 .show {
@@ -714,7 +709,8 @@ ul.horizontal-list li {
 /* Accessibility Settings -------------------- */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0s !important;
+    -webkit-animation-duration: 0s !important;
+            animation-duration: 0s !important;
     transition-duration: 0s !important; } }
 
 /* Clearing ---------------------------------- */
@@ -866,7 +862,15 @@ input[type="checkbox"] {
 .btn.black-on-white {
   border: 2px solid black;
   background-color: white;
-  color: black; }
+  color: black;
+  background: black;
+  border: 2px solid black;
+  border-radius: 100px;
+  text-decoration: none;
+  padding: 0.2rem 3.1rem;
+  color: white; }
+  .btn.black-on-white:hover {
+    opacity: 0.5; }
   .btn.black-on-white:hover {
     border: 2px solid #fff;
     background-color: #000;
@@ -900,7 +904,6 @@ input[type="checkbox"] {
 
 .owl-carousel .owl-stage {
   position: relative;
-  -ms-touch-action: pan-Y;
   touch-action: manipulation;
   -moz-backface-visibility: hidden; }
 
@@ -949,7 +952,6 @@ input[type="checkbox"] {
 .owl-carousel .owl-nav .owl-prev {
   cursor: pointer;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
@@ -974,7 +976,6 @@ input[type="checkbox"] {
   visibility: hidden; }
 
 .owl-carousel.owl-drag .owl-item {
-  -ms-touch-action: pan-y;
   touch-action: pan-y;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -983,6 +984,7 @@ input[type="checkbox"] {
 
 .owl-carousel.owl-grab {
   cursor: move;
+  cursor: -webkit-grab;
   cursor: grab; }
 
 .owl-carousel.owl-rtl {
@@ -992,8 +994,10 @@ input[type="checkbox"] {
   float: right; }
 
 .owl-carousel .animated {
-  animation-duration: 1s;
-  animation-fill-mode: both; }
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both; }
 
 .owl-carousel .owl-animated-in {
   z-index: 0; }
@@ -1002,7 +1006,14 @@ input[type="checkbox"] {
   z-index: 1; }
 
 .owl-carousel .fadeOut {
-  animation-name: fadeOut; }
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut; }
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
 
 @keyframes fadeOut {
   0% {
@@ -1044,7 +1055,6 @@ input[type="checkbox"] {
   transition: transform .1s ease; }
 
 .owl-carousel .owl-video-play-icon:hover {
-  -ms-transform: scale(1.3, 1.3);
   transform: scale(1.3, 1.3); }
 
 .owl-carousel .owl-video-playing .owl-video-play-icon,
@@ -1237,13 +1247,23 @@ input[type="checkbox"] {
 
 main {
   will-change: filter;
-  transition: filter 200ms ease-in-out; }
+  transition: -webkit-filter 200ms ease-in-out;
+  transition: filter 200ms ease-in-out;
+  transition: filter 200ms ease-in-out, -webkit-filter 200ms ease-in-out; }
   main.blur {
-    filter: blur(0.2rem); }
+    -webkit-filter: blur(0.2rem);
+            filter: blur(0.2rem); }
 
 header {
   will-change: opacity;
   transition: opacity 100ms ease-in-out; }
+
+.large-text p {
+  font: 400 2.1rem/3rem 'Lars',Helvetica,Arial,sans-serif; }
+
+.page-default h2 {
+  margin-top: 60px;
+  margin-bottom: 80px; }
 
 .accordion-toggle {
   font-family: "Lars", Helvetica, Arial, sans-serif;
@@ -1566,7 +1586,9 @@ a.news-read-more:hover {
       text-align: center;
       color: black; }
   .main-search button {
-    appearance: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
     background: none;
     border: none; }
   .main-search svg {
@@ -1615,7 +1637,6 @@ a.news-read-more:hover {
     .products-container {
       margin-left: auto;
       margin-right: auto; } }
-
 .btn span.edition-language {
   margin-right: 16px; }
 
@@ -1652,9 +1673,16 @@ a.news-read-more:hover {
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 40px; }
-  .featured-books .btn.black-on-white {
+  .featured-books .btn.btn-reg {
     display: inline-block;
-    align-self: center; }
+    align-self: center;
+    background: transparent;
+    border: 2px solid currentColor;
+    border-radius: 100px;
+    text-decoration: none;
+    padding: 1rem 3.1rem; }
+    .featured-books .btn.btn-reg:hover {
+      opacity: 0.5; }
 
 .home .latest-news {
   text-align: center; }
@@ -1715,3 +1743,4 @@ a.news-read-more:hover {
 /* frontpage php */
 .home .latest-news .news-item p, .home .latest-news .news-item h3 {
   text-align: left; }
+/*# sourceMappingURL=app.css.map */
