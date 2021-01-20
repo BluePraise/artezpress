@@ -52,7 +52,7 @@ get_header(); ?>
 					wp_reset_postdata();
 				?>
 			</div><!--/.products-->
-			<a class="btn black-on-white" href="<?php echo site_url( '/books/'); ?>">See All Books</a>
+			<a class="btn btn-reg" href="<?php echo site_url( '/books/'); ?>">See All Books</a>
 			
 		</section><!-- #main -->
 	

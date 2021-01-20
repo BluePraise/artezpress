@@ -66,27 +66,29 @@ if (post_password_required()) {
 				<?php 
 					if ( $additional_editions ): 
 						$related		 = $additional_editions['related_edition'];
-						if ( $related ) :
-							foreach( $related as $r ):
+						if ( $related ) : ?>
+							<form class="cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>		
+							<?php 
+								foreach( $related as $r ):
 								// get the ID of the related product
 								$related_product_ID = $r->ID;
 								$related_product = wc_get_product( $related_product_ID );
 								$related_permalink = get_permalink($related_product_ID);
 								$related_price = wc_price($related_product->get_price());?>
 								<?php if ( $product->is_in_stock() ) : ?>
-									<form class="cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>		
-										<button type="submit" name="add-to-cart" value="<?php echo $related_product_ID ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo $type_of_edition; ?></span><?php echo $related_price; ?></button>
-									</form>
+									<p>Related Product</p>
+									<button type="submit" name="add-to-cart" value="<?php echo $related_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo $type_of_edition; ?></span><?php echo $related_price; ?></button>
 								<?php else: ?>
 									<p>Out of Print</p>
 								<?php endif; ?>
-							<?php endforeach;
+							<?php endforeach; ?>
+							</form>
+					<?php 		
 						endif;
 					else: ?>
 						
 
 					<?php endif; ?>
-					
 
 					<?php if ( $product->is_in_stock() ) : ?>
 						<form class="cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
@@ -113,22 +115,10 @@ if (post_password_required()) {
 				<?php foreach ($related_news as $post) :
 
 					// Setup this post for WP functions (variable must be named $post).
-					setup_postdata($post); ?>
-					<li class="news-item">
-						<p class="news-date small-text"><?php echo the_date("d F Y") ?></p>
-						<a href="<?php the_permalink(); ?>">
-							<?php if (has_post_thumbnail()) : ?>
-								<figure class="news-thumbnail">
-									<?php the_post_thumbnail(); ?>
-								</figure>
-							<?php endif; ?>
-							<h5 class="post-title"><?php the_title(); ?></h5>
-						</a>
-						<p><?php the_excerpt(); ?></p>
-						<a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">Read More</a>
-
-					</li>
-				<?php endforeach; ?>
+					setup_postdata($post);
+					get_template_part('inc/templateparts/news', 'excerpt'); 
+				
+				endforeach; ?>
 			</ul>
 			<?php
 			// Reset the global post object so that the rest of the page works correctly.
