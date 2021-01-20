@@ -176,31 +176,6 @@
                             "toolbar": "full",
                             "media_upload": 1,
                             "delay": 0
-                        },
-                        {
-                            "key": "field_5ffdebe6a0844",
-                            "label": "Content Editor (copy)",
-                            "name": "content_editor_copy",
-                            "type": "wysiwyg",
-                            "instructions": "Regular Text Editor",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "acfe_permissions": [
-                                "administrator",
-                                "editor",
-                                "shop_manager",
-                                "super_admin"
-                            ],
-                            "default_value": "",
-                            "tabs": "all",
-                            "toolbar": "full",
-                            "media_upload": 1,
-                            "delay": 0
                         }
                     ],
                     "min": "",
@@ -272,6 +247,11 @@
                 "param": "page_template",
                 "operator": "!=",
                 "value": "template-homepage.php"
+            },
+            {
+                "param": "page",
+                "operator": "!=",
+                "value": "39"
             }
         ]
     ],
@@ -299,5 +279,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1610476526
+    "modified": 1611133407
 }

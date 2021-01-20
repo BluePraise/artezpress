@@ -1258,13 +1258,6 @@ header {
   will-change: opacity;
   transition: opacity 100ms ease-in-out; }
 
-.large-text p {
-  font: 400 2.1rem/3rem 'Lars',Helvetica,Arial,sans-serif; }
-
-.page-default h2 {
-  margin-top: 60px;
-  margin-bottom: 80px; }
-
 .accordion-toggle {
   font-family: "Lars", Helvetica, Arial, sans-serif;
   background-color: #fff;
@@ -1743,4 +1736,11 @@ a.news-read-more:hover {
 /* frontpage php */
 .home .latest-news .news-item p, .home .latest-news .news-item h3 {
   text-align: left; }
+
+.large-text p {
+  font: 400 2.1rem/3rem 'Lars',Helvetica,Arial,sans-serif; }
+
+.page-default h2 {
+  margin-top: 60px;
+  margin-bottom: 80px; }
 /*# sourceMappingURL=app.css.map */

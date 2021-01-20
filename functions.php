@@ -102,8 +102,22 @@ if (function_exists('acf_add_options_page')) {
 function artezpress_theme_setup()
 {
 	add_image_size('feature-slider-size', 1120, true, array('center', 'center'));
-	add_theme_support('editor-styles'); // if you don't add this line, your stylesheet won't be added
 	add_editor_style('style-editor.css'); // tries to include style-editor.css directly from your theme folder
+	
+	add_theme_support('editor-styles'); // if you don't add this line, your stylesheet won't be added
+	add_theme_support( 'woocommerce', array(
+		'thumbnail_image_width' => 150,
+		'single_image_width'    => 300,
+
+        'product_grid'          => array(
+            'default_rows'    => 5,
+            'min_rows'        => 2,
+            'max_rows'        => 30,
+            'default_columns' => 4,
+            'min_columns'     => 4,
+            'max_columns'     => 4,
+        ),) );
+
 }
 
 add_action('after_setup_theme', 'artezpress_theme_setup');
