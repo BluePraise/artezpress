@@ -385,3 +385,16 @@ function my_get_the_product_thumbnail_url($size = 'shop_catalog')
 //    }
  
 // }
+
+//Prevent Add to cart on reload
+
+add_action( 'woocommerce_add_to_cart_redirect', 'prevent_duplicate_products_redirect' );
+function prevent_duplicate_products_redirect( $url = false ) {
+  // if another plugin gets here first, let it keep the URL
+  if( !empty( $url ) ) {
+    return $url;
+  }
+  // redirect back to the original page, without the 'add-to-cart' parameter.
+  // we add the 'get_bloginfo' part so it saves a redirect on https:// sites.
+  return get_bloginfo( 'wpurl' ).add_query_arg( array(), remove_query_arg( 'add-to-cart' ) );
+} 
