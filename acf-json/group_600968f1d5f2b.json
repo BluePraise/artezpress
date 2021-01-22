@@ -1,6 +1,6 @@
 {
     "key": "group_600968f1d5f2b",
-    "title": "Select Background Color",
+    "title": "Single Product Background and text Color",
     "fields": [
         {
             "key": "field_60096900acb40",
@@ -75,7 +75,7 @@
         },
         {
             "key": "field_600a9407f762b",
-            "label": "Custom Color",
+            "label": "Custom Background Color",
             "name": "custom_color",
             "type": "color_picker",
             "instructions": "",
@@ -87,6 +87,30 @@
                 "id": "artz-custom-color"
             },
             "default_value": ""
+        },
+        {
+            "key": "field_600acb6670993",
+            "label": "Text color",
+            "name": "text_color",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "#000": "Black",
+                "#fff": "White"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
         }
     ],
     "location": [
@@ -113,5 +137,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1611306646
+    "modified": 1611320262
 }
