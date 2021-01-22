@@ -1,0 +1,117 @@
+{
+    "key": "group_600968f1d5f2b",
+    "title": "Select Background Color",
+    "fields": [
+        {
+            "key": "field_60096900acb40",
+            "label": "Upload Image",
+            "name": "upload_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "upload_image",
+                "id": ""
+            },
+            "uploader": "wp",
+            "acfe_thumbnail": 0,
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_600972bcac37d",
+            "label": "Process image Button",
+            "name": "process_image",
+            "type": "acfe_button",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "button_value": "Get Colors",
+            "button_type": "button",
+            "button_class": "button button-secondary",
+            "button_id": "",
+            "button_before": "",
+            "button_after": "<table id=\"table\" class=\"image_color_swa\" style=\"display:none\">\r\n\t\t\t\t<tbody><\/tbody>\r\n<\/table>\r\n<style>\r\n\t\t\t\ttable#table > tbody {\r\n    display: grid;\r\n    grid-column-gap: 21px;\r\n    grid-template-columns: auto auto auto auto auto;\r\n}\r\n\t\t\t\ttable#table {\r\n    margin-top: 16px;\r\n}\r\n\t\t\t\ttable#table > tbody > tr > td:first-child {\r\n    border-radius: 50px;\r\n\t\t\t\tdisplay: block;\r\n\t\t\t\tmargin: 0 auto;\r\n\t\t\t\theight: 40px;\r\n    width: 40px;\r\n}\r\n\t\t\t\t\r\n<\/style>",
+            "button_ajax": 1
+        },
+        {
+            "key": "field_6009a1f610c17",
+            "label": "Black\/White",
+            "name": "blackwhite",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "artz-bw"
+            },
+            "choices": {
+                "#000": "Black",
+                "#fff": "White"
+            },
+            "allow_null": 1,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_600a9407f762b",
+            "label": "Custom Color",
+            "name": "custom_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "artz-custom-color"
+            },
+            "default_value": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ]
+    ],
+    "menu_order": 5,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1611306646
+}

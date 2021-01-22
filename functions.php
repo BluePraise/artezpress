@@ -254,3 +254,27 @@ function ap_aspect_ratio_filter( $class ) {
 
 add_filter( 'get_image_tag_class', 'ap_aspect_ratio_filter', 10, 4);
 
+// enqueue js for color extractor
+add_action('acf/input/admin_enqueue_scripts', 'my_acf_admin_enqueue_scripts');
+	function my_acf_admin_enqueue_scripts() {
+		wp_enqueue_script( 'image-process-js', get_stylesheet_directory_uri() . '/js/image-process.js', false, '1.0.0' );
+    }
+    
+// Ajax function for color extractor 
+    add_action( 'wp_ajax_extract_colors', 'extract_colors' );	
+	function extract_colors () {
+		
+		include_once("inc/colors.inc.php");
+		$ex=new GetMostCommonColors();
+		$attachment_id = $_POST['image_url'];
+		$attachment_path = wp_get_original_image_path( $attachment_id );
+		$colors = $ex->Get_Color($attachment_path, "5");
+		
+		
+		//var_dump($colors);
+		
+		wp_send_json_success( $colors );
+		die();
+		
+	}
+	
