@@ -4,3 +4,14 @@
 .btn span.edition-language {
     margin-right: 16px;
 }
+
+.block__price .btn:first-child {
+    margin-bottom: 12px;
+}
+
+// Added because WooCommerce adds a p wrapper around 
+// price output. No time to investigate an elegant solution
+// at the moment.
+.block__price .single_add_to_cart_button p.price {
+    display: inline-block;
+}

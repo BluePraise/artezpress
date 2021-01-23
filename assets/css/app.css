@@ -845,11 +845,11 @@ input[type="checkbox"] {
   max-width: 1076px; }
 
 .btn {
+  position: relative;
   display: inline-block;
   text-decoration: none; }
 
 .btn.white-on-black {
-  position: relative;
   background: black;
   border: 2px solid black;
   border-radius: 100px;
@@ -860,15 +860,11 @@ input[type="checkbox"] {
     opacity: 0.5; }
 
 .btn.black-on-white {
-  border: 2px solid black;
-  background-color: white;
-  color: black;
-  background: black;
-  border: 2px solid black;
+  background: transparent;
+  border: 2px solid currentColor;
   border-radius: 100px;
   text-decoration: none;
-  padding: 0.2rem 3.1rem;
-  color: white; }
+  padding: 0.2rem 3.1rem; }
   .btn.black-on-white:hover {
     opacity: 0.5; }
   .btn.black-on-white:hover {
@@ -1633,6 +1629,12 @@ a.news-read-more:hover {
 .btn span.edition-language {
   margin-right: 16px; }
 
+.block__price .btn:first-child {
+  margin-bottom: 12px; }
+
+.block__price .single_add_to_cart_button p.price {
+  display: inline-block; }
+
 .features .carousel-container {
   width: calc(100%/3);
   position: relative;
@@ -1730,7 +1732,7 @@ a.news-read-more:hover {
 .container.single-news {
   margin-top: 60px; }
 
-.post-container p {
+.news-content .post-container p {
   margin: 20px 0; }
 
 /* frontpage php */
