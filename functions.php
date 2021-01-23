@@ -277,4 +277,21 @@ add_action('acf/input/admin_enqueue_scripts', 'my_acf_admin_enqueue_scripts');
 		die();
 		
 	}
-	 
+     
+    function wpse39446_modify_featured_image_labels( $labels ) {
+        $labels->featured_image = __( 'Book Cover', 'artezpress' );
+        $labels->set_featured_image = __( 'Set Book Cover', 'artezpress' );
+        $labels->remove_featured_image = __( 'Remove Book Cover', 'artezpress' );
+        $labels->use_featured_image = __( 'Use as Book Cover', 'artezpress' );
+        
+        return $labels;
+      }
+      add_filter( 'post_type_labels_product', 'wpse39446_modify_featured_image_labels', 10, 1 );
+
+      function change_meta_box_titles() {
+        global $wp_meta_boxes; // array of defined meta boxes
+        // cycle through the array, change the titles you want
+
+        $wp_meta_boxes['product']['side']['low']['woocommerce-product-images']['title'] = "Book Inner pages";
+    }
+    add_action('add_meta_boxes', 'change_meta_box_titles', 999);
