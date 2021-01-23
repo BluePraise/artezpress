@@ -38,6 +38,7 @@
   bottom: 0;
   left: 0;
 }
+
 .bottom-menu-bar {
   position: absolute;
   bottom: 0;
@@ -47,6 +48,7 @@
 .mast-footer {
   .flex-container {
     justify-content: space-between;
+    align-items: flex-end;
   }
 }
 
@@ -57,6 +59,7 @@
   width: 100vw;
   padding: 4rem 3.6rem 12.8rem 3.6rem;
   background-color: $greyTransparent;
+
   &::before {
     content: " ";
     position: absolute;
@@ -64,24 +67,22 @@
     width: 100%;
     height: 1.6rem;
     top: -1.6rem;
-    background-image: linear-gradient(
-      to bottom,
-      rgba(242, 242, 242, 0) 0%,
-      rgba(242, 242, 242, 0.013) 8.1%,
-      rgba(242, 242, 242, 0.049) 15.5%,
-      rgba(242, 242, 242, 0.104) 22.5%,
-      rgba(242, 242, 242, 0.175) 29%,
-      rgba(242, 242, 242, 0.259) 35.3%,
-      rgba(242, 242, 242, 0.352) 41.2%,
-      rgba(242, 242, 242, 0.45) 47.1%,
-      rgba(242, 242, 242, 0.55) 52.9%,
-      rgba(242, 242, 242, 0.648) 58.8%,
-      rgba(242, 242, 242, 0.741) 64.7%,
-      rgba(242, 242, 242, 0.825) 71%,
-      rgba(242, 242, 242, 0.896) 77.5%,
-      rgba(242, 242, 242, 0.9) 84.5%,
-      rgba(242, 242, 242, 0.9) 100%
-    );
+    background-image: linear-gradient(to bottom,
+        rgba(242, 242, 242, 0) 0%,
+        rgba(242, 242, 242, 0.013) 8.1%,
+        rgba(242, 242, 242, 0.049) 15.5%,
+        rgba(242, 242, 242, 0.104) 22.5%,
+        rgba(242, 242, 242, 0.175) 29%,
+        rgba(242, 242, 242, 0.259) 35.3%,
+        rgba(242, 242, 242, 0.352) 41.2%,
+        rgba(242, 242, 242, 0.45) 47.1%,
+        rgba(242, 242, 242, 0.55) 52.9%,
+        rgba(242, 242, 242, 0.648) 58.8%,
+        rgba(242, 242, 242, 0.741) 64.7%,
+        rgba(242, 242, 242, 0.825) 71%,
+        rgba(242, 242, 242, 0.896) 77.5%,
+        rgba(242, 242, 242, 0.9) 84.5%,
+        rgba(242, 242, 242, 0.9) 100%);
     background-size: 100% 100%;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -138,10 +139,12 @@
   .inactive {
     display: none;
     opacity: $inactiveOpacity;
+
     &:hover {
       opacity: $activeOpacity;
     }
   }
+
   &:hover .inactive {
     display: block;
   }
@@ -179,6 +182,7 @@
     // subscribe text
     display: block;
   }
+
   input[type="text"] {
     height: 45px;
     width: calc(100% - 7.2rem);
@@ -201,8 +205,10 @@
 // Social buttons
 .social-menu ul {
   line-height: 0;
+
   li {
     display: inline-block;
+
     a {
       width: 2.2rem;
       height: 2.8rem;

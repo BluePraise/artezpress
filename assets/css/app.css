@@ -1125,7 +1125,8 @@ input[type="checkbox"] {
 
 .main-menu-bar .flex-container,
 .mast-footer .flex-container {
-  justify-content: space-between; }
+  justify-content: space-between;
+  align-items: flex-end; }
 
 .main-menu-surface,
 .wp-end-of-page {
