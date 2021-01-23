@@ -1,2 +1,6 @@
-// Any css that is different from product.scss on the product single page
-// can go here
+// if Store.css is not sufficient this is
+// Where the deviating styles for the book items go
+
+.btn span.edition-language {
+    margin-right: 16px;
+}
