@@ -44,8 +44,6 @@ function artezpress_style()
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui');
 	wp_enqueue_script('waypoints', get_theme_file_uri() . '/js/jquery.waypoints.min.js', [], null, true);
-	// wp_enqueue_script( 'waypoints', get_theme_file_uri() . '/js/waypoints.debug.js', [], null, true );
-	// wp_enqueue_script( 'colour-detector', get_theme_file_uri() . '/js/colourBrightness.min.js');
 	wp_enqueue_script('masonry');
 	wp_enqueue_script('owl-slider', get_theme_file_uri() . '/js/owl.slider.js', [], null, true);
 	wp_enqueue_script('jquery-ui-accordion');
@@ -342,8 +340,6 @@ function ajax_filter_get_posts($taxonomy)
 add_action('wp_ajax_filter_posts', 'ajax_filter_get_posts');
 add_action('wp_ajax_nopriv_filter_posts', 'ajax_filter_get_posts');
 
-// I've turned this off for now, because I only needed this for the index.php and not everywhere.
-// add_filter( 'wp_get_attachment_image_attributes', 'add_orientation_class', 10, 2 );
 
 
 // A function to change the text on the single shop file.
@@ -353,35 +349,27 @@ function availability_filter_func($availability) {
 }
 add_filter('woocommerce_get_availability', 'availability_filter_func');
 
-// display an 'Out of Stock' label on archive pages
-// Turned it off because I don't know if I need it right now.
-
-
-function my_get_the_product_thumbnail_url($size = 'shop_catalog')
-{
-	global $post;
-	$image_size = apply_filters('single_product_archive_thumbnail_size', $size);
-	return get_the_post_thumbnail_url($post->ID, $image_size);
+// enqueue js for color extractor
+function my_acf_admin_enqueue_scripts() {
+	wp_enqueue_script( 'image-process-js', get_stylesheet_directory_uri() . '/js/image-process.js', false, '1.0.0' );
 }
-
-// function mode_theme_update_mini_cart() {
-//     echo wc_get_template( 'cart/mini-cart.php' );
-//     die();
-// }
-// add_filter( 'wp_ajax_nopriv_mode_theme_update_mini_cart', 'mode_theme_update_mini_cart' );
-// add_filter( 'wp_ajax_mode_theme_update_mini_cart', 'mode_theme_update_mini_cart' );
-
-// add_action( 'template_redirect', 'quadlayers_add_to_cart_programmatically' );
-   
-// function quadlayers_add_to_cart_programmatically() {
- 
-//    $product_id = 1326;
- 
-//    $product_cart_id = WC()->cart->generate_cart_id( $product_id );
-   
-//    if(!WC()->cart->find_product_in_cart( $product_cart_id )) {
-//        WC()->cart->add_to_cart( $product_id);
-//        wc_print_notice( 'Product ID ' . $product_id . ' is in the Cart!', 'notice' );
-//    }
- 
-// }
+add_action('acf/input/admin_enqueue_scripts', 'my_acf_admin_enqueue_scripts');
+    
+// Ajax function for color extractor 
+    add_action( 'wp_ajax_extract_colors', 'extract_colors' );	
+	function extract_colors () {
+		
+		include_once("inc/colors.inc.php");
+		$ex=new GetMostCommonColors();
+		$attachment_id = $_POST['image_url'];
+		$attachment_path = wp_get_original_image_path( $attachment_id );
+		$colors = $ex->Get_Color($attachment_path, "5");
+		
+		
+		//var_dump($colors);
+		
+		wp_send_json_success( $colors );
+		die();
+		
+	}
+	 
