@@ -29,14 +29,11 @@ jQuery(document).ready(function ($) {
 	
 
 	$(".js-toggle-accordion").accordion({
-		active: 0,
-		collapsible: true,
 		header: "button",
 		heightStyle: "content",
 		animate: 200
 	});
 
-	var icons = $('.icons');
 
 	$(".accordion-toggle")
 		.on("click", function () {
