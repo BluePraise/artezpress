@@ -353,23 +353,38 @@ add_filter('woocommerce_get_availability', 'availability_filter_func');
 function my_acf_admin_enqueue_scripts() {
 	wp_enqueue_script( 'image-process-js', get_stylesheet_directory_uri() . '/js/image-process.js', false, '1.0.0' );
 }
-add_action('acf/input/admin_enqueue_scripts', 'my_acf_admin_enqueue_scripts');
-    
-// Ajax function for color extractor 
-    add_action( 'wp_ajax_extract_colors', 'extract_colors' );	
-	function extract_colors () {
-		
-		include_once("inc/colors.inc.php");
-		$ex=new GetMostCommonColors();
-		$attachment_id = $_POST['image_url'];
-		$attachment_path = wp_get_original_image_path( $attachment_id );
-		$colors = $ex->Get_Color($attachment_path, "5");
-		
-		
-		//var_dump($colors);
-		
-		wp_send_json_success( $colors );
-		die();
-		
-	}
-	 
+
+// function mode_theme_update_mini_cart() {
+//     echo wc_get_template( 'cart/mini-cart.php' );
+//     die();
+// }
+// add_filter( 'wp_ajax_nopriv_mode_theme_update_mini_cart', 'mode_theme_update_mini_cart' );
+// add_filter( 'wp_ajax_mode_theme_update_mini_cart', 'mode_theme_update_mini_cart' );
+
+// add_action( 'template_redirect', 'quadlayers_add_to_cart_programmatically' );
+   
+// function quadlayers_add_to_cart_programmatically() {
+ 
+//    $product_id = 1326;
+ 
+//    $product_cart_id = WC()->cart->generate_cart_id( $product_id );
+   
+//    if(!WC()->cart->find_product_in_cart( $product_cart_id )) {
+//        WC()->cart->add_to_cart( $product_id);
+//        wc_print_notice( 'Product ID ' . $product_id . ' is in the Cart!', 'notice' );
+//    }
+ 
+// }
+
+//Prevent Add to cart on reload
+
+add_action( 'woocommerce_add_to_cart_redirect', 'prevent_duplicate_products_redirect' );
+function prevent_duplicate_products_redirect( $url = false ) {
+  // if another plugin gets here first, let it keep the URL
+  if( !empty( $url ) ) {
+    return $url;
+  }
+  // redirect back to the original page, without the 'add-to-cart' parameter.
+  // we add the 'get_bloginfo' part so it saves a redirect on https:// sites.
+  return get_bloginfo( 'wpurl' ).add_query_arg( array(), remove_query_arg( 'add-to-cart' ) );
+} 
