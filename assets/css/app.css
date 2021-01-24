@@ -814,6 +814,10 @@ input[type="checkbox"] {
 .flex-container {
   display: flex; }
 
+.flex-col {
+  display: inline-flex;
+  flex-direction: column; }
+
 .justify-center {
   justify-content: center; }
 
@@ -1639,6 +1643,21 @@ a.news-read-more:hover {
 
 .block__price .single_add_to_cart_button p.price {
   display: inline-block; }
+
+.shop_table .woocommerce-cart-form__cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid black; }
+  .shop_table .woocommerce-cart-form__cart-item .product-thumbnail {
+    margin-right: 30px; }
+  .shop_table .woocommerce-cart-form__cart-item .quantity input {
+    width: 50px;
+    border: none;
+    outline: none; }
+  .shop_table .woocommerce-cart-form__cart-item .product-remove .label-remove {
+    font: 400 1.7rem/2.3rem 'Lars',Helvetica,Arial,sans-serif; }
 
 .features .carousel-container {
   width: calc(100%/3);

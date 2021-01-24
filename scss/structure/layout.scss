@@ -7,6 +7,11 @@
     display: flex;
 }
 
+.flex-col {
+    display: inline-flex;
+    flex-direction: column;
+}
+
 .justify-center {
     justify-content: center;
 }

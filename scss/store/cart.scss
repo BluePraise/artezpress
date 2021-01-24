@@ -1,0 +1,21 @@
+.shop_table .woocommerce-cart-form__cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid $black;
+
+    .product-thumbnail {
+        margin-right: 30px;
+    }
+
+    .quantity input {
+        width: 50px;
+        border: none;
+        outline: none;
+    }
+
+    .product-remove .label-remove {
+        @include smallText;
+    }
+}
