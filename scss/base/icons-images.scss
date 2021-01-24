@@ -8,21 +8,24 @@
 
 
 svg,
-img,
 embed,
 object {
     display: block;
     height: auto;
-    max-width: 100%;
+    width: 100%;
 }
 
 svg,
 img {
-    max-width: 100%;
-    height: auto;
+  // max-width: 100%;
+  // height: auto;
 }
 
-img {}
+img {
+  aspect-ratio: attr(width) / attr(height);
+  height: auto;
+  width: 100%;
+}
 
 svg {}
 

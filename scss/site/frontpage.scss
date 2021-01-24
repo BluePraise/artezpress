@@ -1,4 +1,3 @@
-
 .features .carousel-container {
     width: calc(100%/3);
     position: relative;
@@ -30,6 +29,7 @@
 
     .slider-item-left {
         background-color: black;
+
         .slider-img {
             opacity: 0%;
         }
@@ -47,9 +47,10 @@
         margin-bottom: 40px;
     }
 
-    .btn.black-on-white {
+    .btn.btn-reg {
         display: inline-block;
         align-self: center;
+        @include clearButton(100px, 1rem, 3.1rem);
     }
 }
 

@@ -1,204 +1,247 @@
-.main-menu-container {
-    font-family: 'Lars', Helvetica, Arial, sans-serif;
-    font-size: 2rem;
-    line-height: 2.8rem;
+// -----------------------------
+// MAIN MENU
+// - Menu blacks (header + footer)
+// - Main Menu Bar Elements
+// - Menu surface elements
+// - Transition effects
+// -----------------------------
+
+// -----------------------------
+// Menu blacks (header + footer)
+// -----------------------------
+
+// main-menu bar
+.main-menu-container,
+.mast-footer {
+  @include menuText;
 }
 
 .fixed-bottom {
-    position: fixed;
-    width: 100vw;
-    z-index: 10;
-    background: transparent;
-    min-height: 100px;
-    bottom: 0px;
-    left: 0;
+  position: fixed;
+  width: 100vw;
+  z-index: 2;
+  background: transparent;
+  min-height: 100px;
+  bottom: 0;
+  left: 0;
 }
 
-.main-menu-surface,
+.main-menu-bar,
+.bottom-menu-bar {
+  width: 100vw;
+  padding: 3.6rem;
+  background-color: transparent;
+}
+
 .main-menu-bar {
-    padding: 20px 36px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
+.bottom-menu-bar {
+  position: absolute;
+  bottom: 0;
+}
+
+.main-menu-bar,
+.mast-footer {
+  .flex-container {
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+//menu surface
+.main-menu-surface,
+.wp-end-of-page {
+  position: relative;
+  width: 100vw;
+  padding: 4rem 3.6rem 12.8rem 3.6rem;
+  background-color: $greyTransparent;
+
+  &::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1.6rem;
+    top: -1.6rem;
+    background-image: linear-gradient(to bottom,
+        rgba(242, 242, 242, 0) 0%,
+        rgba(242, 242, 242, 0.013) 8.1%,
+        rgba(242, 242, 242, 0.049) 15.5%,
+        rgba(242, 242, 242, 0.104) 22.5%,
+        rgba(242, 242, 242, 0.175) 29%,
+        rgba(242, 242, 242, 0.259) 35.3%,
+        rgba(242, 242, 242, 0.352) 41.2%,
+        rgba(242, 242, 242, 0.45) 47.1%,
+        rgba(242, 242, 242, 0.55) 52.9%,
+        rgba(242, 242, 242, 0.648) 58.8%,
+        rgba(242, 242, 242, 0.741) 64.7%,
+        rgba(242, 242, 242, 0.825) 71%,
+        rgba(242, 242, 242, 0.896) 77.5%,
+        rgba(242, 242, 242, 0.9) 84.5%,
+        rgba(242, 242, 242, 0.9) 100%);
+    background-size: 100% 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+}
 
 .main-menu-surface {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+// Background Images
+.bg-overlay {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.85;
+}
+
+// -----------------------------
+// Main Menu Bar Elements
+// -----------------------------
+
+// Logo Menu Button
+.logo {
+  align-self: flex-end;
+
+  svg {
+    width: 15rem;
+    height: 3.6rem;
+  }
+}
+
+// Cart Button (see buttons.scss)
+
+// Language Toggle
+.language-toggle {
+  position: relative;
+  display: inline-block;
+  width: 12rem;
+  margin-right: 3.2rem;
+  list-style: none;
+
+  .lang-item {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .inactive {
     display: none;
-    transition: all 400ms;
-    background-color: rgba(255, 255, 255, 0.9);
-    position: absolute;
-    width: 100vw;
-    left: 0;
-    bottom: 92px;
-    z-index: -2;
-    padding: 48px 36px;
-}
+    opacity: $inactiveOpacity;
 
-.menu-open .main-menu-surface {
+    &:hover {
+      opacity: $activeOpacity;
+    }
+  }
+
+  &:hover .inactive {
     display: block;
-    z-index: 100;
+  }
 }
 
-.menu-open .bg-overlay {
-    position: fixed;
-    z-index: 50;
-    height: 100vh;
-    width: 100vw;
-    left: 0;
-    bottom: 0;
+// -----------------------------
+// Menu surface elements
+// -----------------------------
+
+// Layout
+.main-menu-surface {
+  .grid-container {
+    @include grid(4, 1fr, 3.6rem, 3.2rem);
+  }
 }
 
-.menu-open .main-menu-bar {
-    background-color: rgba(255, 255, 255, 0.9);
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    z-index: 100;
+.mini-cart-column {
+  grid-column: 3 / span 2;
 }
 
-.menu-open .fixed-bottom {
-    z-index: 1;
-}
-
-body.menu-open {
-    overflow-y: hidden;
-}
-
-.main-menu-bar {
-    background-color: transparent;
-    width: 100vw;
-}
-
-.main-menu-bar .flex-container {
-    justify-content: space-between;
-}
-
-.nav-column {
-    width: 25%;
-    margin-right: 50px;
-}
-
-.menu-misc a {
-    font-weight: 400;
-    text-decoration: none;
-}
-
+// Buttons List
 .search,
 .social-menu,
-.newsletter p {
-    margin-bottom: 20px;
-}
-
-.newsletter input[type=text] {
-    height: 45px;
-    padding: 0 3px;
-    font-family: 'Lars', Helvetica, Arial, sans-serif;
-    font-size: 16px;
-}
-
-.newsletter input[type=text]:focus {
-    outline: 1px solid yellow;
-}
-
-.social-menu ul li {
-    display: inline-block;
-}
-
-.social-menu ul li a {
-    width: 20px;
-    height: 20px;
-    margin-right: 16px;
-}
-
-.language-toggle {
-    margin-right: 110px;
-}
-
-.btn.shopping-cart {
-    position: relative;
-    z-index: 2;
-    background-color: black;
-    color: white;
-    padding: 10px 40px;
-    border-radius: 30px;
-}
-
-.cart-counter {
-    position: absolute;
-    z-index: 3;
-    top: -10px;
-    background: red;
-    border-radius: 50%;
-    font-size: 13px;
-    padding: 0px 11px;
-    left: 90px;
-    color: black;
-}
-
-.logo {
-    position: relative;
-    display: block;
-}
-
-.logo a {
-    display: inline-block;
-    text-decoration: none;
-}
-
-.logo a:hover {
-    cursor: pointer;
-    transition: all 400ms ease-in;
-}
-
-.logo a:focus {
-    outline: none;
-}
-
-.logo a img {
-    width: 150px;
-    height: 45px;
-}
-
-.logo:hover .main-menu-surface {
-    display: block !important;
-}
-
 .page-list {
-    list-style: none;
-    margin: 0 0 20px 0;
-    padding: 0;
+  margin-bottom: 2.8rem;
 }
 
 .page-list li a {
-    display: inline-block;
-    /* font: 400 2rem/2.8rem 'Lars', Helvetica, Arial, sans-serif; */
+  display: inline-block;
 }
 
+// Newsletter registration
+.newsletter {
+  span {
+    // subscribe text
+    display: block;
+  }
 
-.newsletter p {
-    margin-bottom: 10px;
-}
-
-
-.newsletter>input[type=text] {
+  input[type="text"] {
+    height: 45px;
+    width: calc(100% - 7.2rem);
+    max-width: 32rem;
+    background: transparent;
     border-top: none;
-    border-left: none;
     border-right: none;
-    width: 260px;
+    border-left: none;
+    border-bottom: $border;
+    font-family: $default-font;
+    margin-right: 1rem;
+  }
+
+  .btn-reg {
+    @include clearButton(7px, 4px, 8px);
+    @include menuText;
+  }
 }
 
-.newsletter .btn-reg {
-    font-family: 'Lars', Helvetica, Arial, sans-serif;
-    font-size: 2rem;
-    line-height: 2.8rem;
-    margin-left: 10px;
-    border-radius: 7px;
-    background-color: transparent;
-    border: 1px solid black;
-    padding: 4px 8px;
+// Social buttons
+.social-menu ul {
+  line-height: 0;
+
+  li {
+    display: inline-block;
+
+    a {
+      width: 2.2rem;
+      height: 2.8rem;
+      padding: 0.3rem 0;
+      margin-right: 1.6rem;
+    }
+  }
 }
 
-//footer
-.bottom-menu-bar {
-    margin: 60px 0;
-    padding: 0px 0px;
-    justify-content: space-between;
+// -----------------------------
+// Transition effects
+// -----------------------------
+
+// Menu Open
+.menu-open {
+  overflow-y: hidden;
+
+  .js-menu {
+    display: block;
+  }
+}
+
+main {
+  will-change: filter;
+  transition: filter 200ms ease-in-out;
+
+  &.blur {
+    filter: blur(0.2rem);
+  }
+}
+
+// Header meets footer
+header {
+  will-change: opacity;
+  transition: opacity 100ms ease-in-out;
 }

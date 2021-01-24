@@ -1,0 +1,8 @@
+.large-text p {
+    @include largeText;
+}
+
+.page-default h2 {
+    margin-top: 60px;
+    margin-bottom: 80px;
+}

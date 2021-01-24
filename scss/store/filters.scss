@@ -1,0 +1,243 @@
+.loading {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  &::after {
+    content: "loading...";
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+  }
+}
+
+.hidden-filter-authors {
+  display: none;
+}
+
+.search-and-tags {
+  width: 1076px;
+}
+
+.site-main.products {
+  margin-top: 185px;
+}
+
+.filter-tags {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  position: relative;
+  &__inner {
+    overflow: hidden;
+    max-width: 1076px;
+  }
+  &__list {
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0.05, 0, 0, 1);
+    will-change: transform;
+    display: flex;
+    align-items: flex-start;
+    white-space: nowrap;
+  }
+  &__item {
+    border: 1px solid black;
+    border-radius: 30px;
+    font-size: 15px;
+    padding: 5.5px 15px;
+    margin-right: 8px;
+    text-align: center;
+    flex-shrink: 0;
+    &.active {
+      background: black;
+      color: white;
+    }
+  }
+  &__prev,
+  &__next {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: 2000;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    &::before,
+    &::after {
+      height: 100%;
+      width: 50px;
+      content: "";
+      pointer-events: none;
+    }
+    button {
+      background: white;
+      border: none;
+      height: 100%;
+    }
+  }
+  &__prev {
+    left: 0;
+    display: none;
+    &::before {
+      content: none;
+    }
+    &::after {
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.98) 20%,
+        rgba(255, 255, 255, 0) 80%
+      );
+    }
+    button {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__next {
+    &::after {
+      content: none;
+    }
+    &::before {
+      background: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0.98) 20%,
+        rgba(255, 255, 255, 0) 80%
+      );
+    }
+    right: -1em;
+  }
+}
+
+.sidebar-filters {
+  width: 270px;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 20px;
+  position: fixed;
+  &__in {
+    margin-top: 1em;
+    width: 270px;
+  }
+  &__title,
+  li {
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  &__title {
+    margin-bottom: 36px;
+    text-align: left;
+  }
+  ul {
+    padding-left: 20px;
+  }
+  &__name {
+    margin-left: -18px;
+    &::before {
+      content: "– ";
+    }
+    &:not(.active) {
+      &::before {
+        content: "+ ";
+      }
+      ~ li {
+        display: none;
+      }
+    }
+  }
+  &__item {
+    &:not(.active) {
+      opacity: 0.35;
+    }
+  }
+}
+
+.main-search {
+  padding-top: 20px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  &__input {
+    border: none;
+    font-size: 35px;
+    line-height: 48px;
+    flex: 1 auto;
+    &::-webkit-input-placeholder {
+      text-align: center;
+      color: black;
+    }
+  }
+  button {
+    appearance: none;
+    background: none;
+    border: none;
+  }
+  svg {
+    width: auto;
+    height: auto;
+  }
+}
+
+.js-hide-onscroll {
+  position: fixed;
+  z-index: 1;
+  top: 1em;
+  background: white;
+  transition: all 0.3s ease-in;
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  &.shown {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.js-show-onscroll {
+  transition: all 0.3s ease-in;
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  &.shown {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.fixed-search-toggle {
+  position: absolute;
+  display: flex;
+  opacity: 0;
+  cursor: pointer;
+  svg {
+    margin-right: 10px;
+    width: auto;
+    height: auto;
+  }
+}
+
+.products-container {
+  margin-left: 270px;
+  width: 100%;
+  max-width: 1076px;
+  @media (min-width: 1441px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

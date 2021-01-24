@@ -1,32 +1,35 @@
 .btn {
-    display: inline-block;
-    text-decoration: none;
-    padding: 10px 40px;
-    border-radius: 30px;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
 }
 
 .btn.white-on-black {
-    position: relative;
-    z-index: 2;
-    background-color: black;
-    color: white;
-    border: 2px solid transparent;
-
-    &:hover {
-        border: 2px solid black;    
-        background-color: #fff;
-        color: black;
-    }
+  @include darkButton(100px, .2rem, 3.1rem);
 }
 
 .btn.black-on-white {
-    border: 2px solid black;
-    background-color: white;
-    color: black;
+  @include clearButton(100px, .2rem, 3.1rem);
 
-    &:hover {
-        border: 2px solid #fff;
-        background-color: #000;
-        color: white;
-    }
+  &:hover {
+    border: 2px solid #fff;
+    background-color: #000;
+    color: white;
+  }
+}
+
+span.btn:hover {
+  cursor: not-allowed;
+}
+
+.cart-counter {
+  position: absolute;
+  z-index: 3;
+  top: -10px;
+  background: red;
+  border-radius: 50%;
+  font-size: 13px;
+  padding: 0px 11px;
+  left: 90px;
+  color: black;
 }

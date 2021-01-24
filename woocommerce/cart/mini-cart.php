@@ -16,14 +16,27 @@
  * @package WooCommerce\Templates
  * @version 3.7.0
  */
-
 defined( 'ABSPATH' ) || exit;
 
 do_action( 'woocommerce_before_mini_cart' ); ?>
+<?php 
+	global $woocommerce;
+	$count = $woocommerce->cart->cart_contents_count;
+?>
+
+<?php if (is_user_logged_in()): 
+		$current_user = wp_get_current_user(); 
+		// var_dump($current_user);
+		$name = $current_user->display_name;
+	?>
+		<span class="mini-cart-greeting">Hi, <?php echo $name; ?></span>
+	<?php else:  ?>
+		<span class="mini-cart-greeting">Hi</span>
+<?php endif; ?>
 
 <?php if ( ! WC()->cart->is_empty() ) : ?>
-    <span class="mini-cart-greeting">Hi,</span>
-    <div class="mini-cart-counter">You have 2 items in your cart</div>
+		
+    <div class="mini-cart-counter">You have <?php echo $count ?> items in your cart</div>
 	<ul class="woocommerce-mini-cart cart_list product_list_widget <?php echo esc_attr( $args['list_class'] ); ?>">
 		<?php
 		do_action( 'woocommerce_before_mini_cart_contents' );
@@ -75,9 +88,16 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 	</p>
 
 
+	<?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
+
+	<p class="woocommerce-mini-cart__buttons buttons"><?php do_action( 'woocommerce_widget_shopping_cart_buttons' ); ?></p>
+
+	<?php do_action( 'woocommerce_widget_shopping_cart_after_buttons' ); ?>
+
+
 <?php else : ?>
 
-	<p class="woocommerce-mini-cart__empty-message"><?php esc_html_e( 'There are no products in the cart.', 'artezpress' ); ?></p>
+	<p class="woocommerce-mini-cart__empty-message"><?php esc_html_e( 'There are no items in the cart.', 'artezpress' ); ?></p>
 
 <?php endif; ?>
 

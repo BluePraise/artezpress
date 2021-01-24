@@ -116,3 +116,10 @@ a.news-read-more:hover {
 .related-news .news-date {
     margin-bottom: 20px;
 }
+
+.products {
+    &__not-found {
+        flex: 1 100%;
+        text-align: center;
+    }
+}

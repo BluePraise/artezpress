@@ -13,9 +13,9 @@ gulp.task("scss", () => {
 });
 
 gulp.task("watch", () => {
-	gulp.watch("scss/**/*.scss", (done) => {
-		gulp.series(["scss"])(done);
-	});
+  gulp.watch("scss/**/*.scss", (done) => {
+    gulp.series(["scss"])(done);
+  });
 });
 
 gulp.task("default", gulp.series("scss"));

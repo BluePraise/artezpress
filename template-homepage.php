@@ -52,12 +52,12 @@ get_header(); ?>
 					wp_reset_postdata();
 				?>
 			</div><!--/.products-->
-			<a class="btn black-on-white" href="<?php echo site_url( '/books/'); ?>">See All Books</a>
+			<a class="btn btn-reg" href="<?php echo site_url( '/books/'); ?>">See All Books</a>
 			
 		</section><!-- #main -->
 	
 		<section class="latest-news container">
-			<h2 class="featured-title">News</h2>
+			<h2 class="featured-title"><?php _e('News')?></h2>
 			<div class="grid">
     			<?php
         		$args = array(
@@ -67,16 +67,7 @@ get_header(); ?>
 					$loop = new WP_Query( $args );
 					if ( $loop->have_posts() ) {
 						while ( $loop->have_posts() ) : $loop->the_post(); ?>
-							<div class="news-item">
-								<p class="news-date"><?php echo the_date( "d F Y" )?></p>
-								<?php if( has_post_thumbnail() ): ?>
-								<figure class="news-thumbnail">
-									<?php the_post_thumbnail(); ?>
-								</figure>
-            					<?php endif; ?>
-            					<h3 class="post-title"><?php echo the_title(); ?></h3>
-            					<p class="small-text"><?php the_excerpt(); ?>Read More</p>
-        					</div>
+							<?php get_template_part('inc/templateparts/news', 'excerpt'); ?>	
 					<?php 
 							endwhile;
 					} else {
@@ -85,7 +76,7 @@ get_header(); ?>
 					wp_reset_postdata();
 				?>
 			</div><!--/.grid-->
-			<a class="btn black-on-white" href="<?php echo esc_url( '/news' ); ?>">See All News</a>
+			<a class="btn black-on-white" href="<?php echo esc_url( '/news' ); ?>"><?php _e('See All News'); ?></a>
 			
 		</section><!-- #main -->
 

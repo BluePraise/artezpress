@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying product content within loops
  *
@@ -15,17 +16,22 @@
  * @version 3.6.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 global $product;
 $author = get_field('author');
+$year = get_field('publishing_year');
+
+$cats = implode(',', wc_get_product_taxonomy_class($product->get_category_ids(), 'product_cat'));
+$tags = implode(',', wc_get_product_taxonomy_class($product->get_tag_ids(), 'product_tag'));
+$design = get_field('design');
 
 // Ensure visibility.
-if ( empty( $product ) || ! $product->is_visible() ) {
+if (empty($product) || !$product->is_visible()) {
 	return;
 }
 ?>
-<div <?php wc_product_class( '', $product ); ?>>
+<div <?php wc_product_class('', $product); ?> data-filters="<?= $cats ?> <?= $author ?> year-<?= $year ?> <?= $tags ?>" data-search="<?= get_the_title() ?> <?= $cats ?> <?= $tags ?> <?= $author ?> <?= $design && is_array($design) ? $design['designer'] : '' ?>">
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
@@ -51,9 +57,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	<h4><?php echo get_the_title(); ?></h4>
 
 	<p class="single-product-author"><?php echo $author ?></p>
-	
 
-	<?php 
+
+	<?php
 	woocommerce_template_loop_product_link_close();
 	/**
 	 * Hook: woocommerce_after_shop_loop_item_title.
