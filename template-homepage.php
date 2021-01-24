@@ -57,7 +57,7 @@ get_header(); ?>
 		</section><!-- #main -->
 	
 		<section class="latest-news container">
-			<h2 class="featured-title">News</h2>
+			<h2 class="featured-title"><?php _e('News')?></h2>
 			<div class="grid">
     			<?php
         		$args = array(
@@ -76,7 +76,7 @@ get_header(); ?>
 					wp_reset_postdata();
 				?>
 			</div><!--/.grid-->
-			<a class="btn black-on-white" href="<?php echo esc_url( '/news' ); ?>">See All News</a>
+			<a class="btn black-on-white" href="<?php echo esc_url( '/news' ); ?>"><?php _e('See All News'); ?></a>
 			
 		</section><!-- #main -->
 

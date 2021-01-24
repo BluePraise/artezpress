@@ -18,6 +18,10 @@
   }
 }
 
+span.btn:hover {
+  cursor: not-allowed;
+}
+
 .cart-counter {
   position: absolute;
   z-index: 3;

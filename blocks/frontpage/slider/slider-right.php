@@ -26,7 +26,7 @@ $loop = new WP_Query($args); ?>
         while ( $loop->have_posts() ) : $loop->the_post(); ?>
         
              <div class="slider-item-right">
-                <img class="slider-img" src="<?php echo my_get_the_product_thumbnail_url(); ?>" alt="<?php echo the_title(); ?>">
+                <img class="slider-img" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php echo the_title(); ?>">
                 <h3 class="slider-item-title colour-effect"><?php echo the_title(); ?></h3>
                 <a href="<?php the_permalink(); ?>">Read More</a>
             </div>
