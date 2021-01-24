@@ -1262,56 +1262,52 @@ header {
   will-change: opacity;
   transition: opacity 100ms ease-in-out; }
 
+.accordion-content-container {
+  margin-bottom: 32px; }
+
 .accordion-toggle {
   font-family: "Lars", Helvetica, Arial, sans-serif;
   background-color: #fff;
-  cursor: pointer;
   width: 100%;
   border: none;
   outline: none;
-  transition: 0.4s; }
+  padding-left: 0;
+  padding-right: 0;
+  transition: padding 0.4s ease-in; }
   .accordion-toggle p {
-    display: inline-flex; }
-    .accordion-toggle p .icons {
-      display: inline-block;
-      margin-right: 22px;
-      width: 17px;
-      height: 23px;
-      font-size: 17px;
-      line-height: 23px; }
-      .accordion-toggle p .icons.minus {
-        content: url("./assets/icons/minus.svg"); }
-      .accordion-toggle p .icons.plus {
-        content: url("./assets/icons/plus.svg"); }
-  .accordion-toggle .dashicons {
-    margin-right: 22px;
-    width: 17px;
-    font-size: 17px;
-    line-height: 25px; }
+    text-align: left; }
+  .accordion-toggle .icons {
+    display: inline-block;
+    margin-right: 17px;
+    width: 14px;
+    line-height: 23px;
+    content: url(../../assets/icons/plus.svg); }
   .accordion-toggle:hover {
-    background-color: #ffffff; }
+    background-color: #ffffff;
+    cursor: pointer; }
+
+.accordion-toggle.active {
+  padding-bottom: 32px; }
+  .accordion-toggle.active .icons {
+    content: url(../../assets/icons/minus.svg); }
 
 .panel {
-  padding: 0 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 0;
+  opacity: 0;
+  padding: 0 0 0 32px;
   background-color: white;
-  display: none;
   overflow: hidden;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  padding: 10px 0; }
+  transition: all 0.2s ease-in-out; }
+  .panel p {
+    line-height: 32px; }
 
-.ui-accordion .ui-accordion-header {
-  display: block;
-  cursor: pointer;
-  position: relative;
-  margin: 2px 0 0 0;
-  padding: 0;
-  font-size: 100%; }
-
-.ui-accordion .ui-accordion-content {
-  padding: 1em 2.2em;
-  border-top: 0;
-  overflow: auto; }
+.panel.open {
+  opacity: 1;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black; }
 
 .hero {
   height: 100vh;

@@ -30,28 +30,32 @@ jQuery(document).ready(function ($) {
 
 	// END OF Language Menu Toggle
 
-	$(".js-toggle-accordion").accordion({
-		header: "button",
-		heightStyle: "content",
-		animate: 200,
-	});
+	// ACCORDION TOGGLE
+	var acc 	= document.getElementsByClassName("accordion-toggle");
+	var i;
 
-	$(".accordion-toggle").on("click", function () {
-		// find the current icons class.
-		var thi$ = $(this).find(".icons");
-		//if this span has a plus icon
-		if (thi$.hasClass("plus")) {
-			// add another class
-			thi$.addClass("minus");
-			// and remove the plus class
-			thi$.removeClass("plus");
-			// $(this).removeClass("plus");
-		} else {
-			thi$.removeClass("minus");
-			thi$.addClass("plus");
-		}
-	});
+	for (i = 0; i < acc.length; i++) {
+		acc[i].addEventListener("click", function () {
+			this.classList.toggle("active");
+			var panel = this.nextElementSibling;
+			var panelP = panel.firstElementChild;
+			if (panel.style.height) {
+				panelP.style.height = null;
+				panel.style.height = null;
+				panel.classList.toggle("open");
+			} else {
+				panel.style.height = panelP.scrollHeight + 64 + "px";
+				panelP.style.height = panelP.clientHeight + "px";
+				setTimeout(() => {
+					panel.classList.toggle("open");
+				}, 100);
+			}
+		});
+	}
 
+
+              
+              
 	$(".owl-carousel").owlCarousel({
 		items: 1,
 		loop: true,
