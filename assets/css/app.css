@@ -605,7 +605,6 @@ h5,
   /* font: 400 3.5rem/4.8rem “Lars”, Helvetica, Arial, sans-serif; */
   text-align: center; }
 
-.page-title,
 .section-title {
   display: block;
   margin-bottom: 40px; }
@@ -1697,7 +1696,9 @@ a.news-read-more:hover {
     margin-bottom: 160px; }
 
 .page-title {
-  display: block; }
+  display: block;
+  margin-top: 60px;
+  margin-bottom: 80px; }
 
 .featured-title {
   margin-bottom: 64px; }
