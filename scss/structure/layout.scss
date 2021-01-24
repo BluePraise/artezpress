@@ -40,3 +40,13 @@
     margin-right: auto;
     max-width: 1076px;
 }
+
+// used in 2 col content editor on default pages
+.content__left,
+.content__right {
+    width: 353px;
+}
+
+.content__left {
+    margin-right: 32px;
+}

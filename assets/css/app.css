@@ -495,12 +495,9 @@ body {
     but it's here because of the fixed bottom causing a z-index overlap.
     It's not possible to click on anything underneath it. */
   font-family: 'Lars', Helvetica, Arial, sans-serif;
-  font-size: 1.7rem;
-  line-height: 2.3rem;
-  transition: all 500ms;
-  /* font: 400 1.7rem/2.3rem “Lars”, Helvetica, Arial, sans-serif; */
-  /* font-size: 17px; */
-  /* line-height: 23px; */ }
+  font-size: 21px;
+  line-height: 30px;
+  transition: all 500ms; }
 
 ul li a {
   display: inline-block; }
@@ -843,6 +840,13 @@ input[type="checkbox"] {
   margin-left: auto;
   margin-right: auto;
   max-width: 1076px; }
+
+.content__left,
+.content__right {
+  width: 353px; }
+
+.content__left {
+  margin-right: 32px; }
 
 .btn {
   position: relative;

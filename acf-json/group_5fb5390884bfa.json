@@ -149,7 +149,7 @@
                 "layout_5fb53d63c6616": {
                     "key": "layout_5fb53d63c6616",
                     "name": "default_content",
-                    "label": "Add Content",
+                    "label": "Add 1 Col Content",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -176,6 +176,93 @@
                             "toolbar": "full",
                             "media_upload": 1,
                             "delay": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_thumbnail": false,
+                    "acfe_flexible_category": false,
+                    "acfe_flexible_render_template": false,
+                    "acfe_flexible_render_style": false,
+                    "acfe_flexible_render_script": false,
+                    "acfe_flexible_settings": false,
+                    "acfe_flexible_settings_size": "medium"
+                },
+                "layout_600d4fd1462d4": {
+                    "key": "layout_600d4fd1462d4",
+                    "name": "content_in_two_columns",
+                    "label": "Add 2 Col Content",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_600d4fef462d5",
+                            "label": "Left Column",
+                            "name": "left_column",
+                            "type": "column",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "column-type": "1_2"
+                        },
+                        {
+                            "key": "field_600d5016462d7",
+                            "label": "Left Column",
+                            "name": "content_to_the_left",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "basic",
+                            "media_upload": 1,
+                            "delay": 0,
+                            "translations": "translate"
+                        },
+                        {
+                            "key": "field_600d4fff462d6",
+                            "label": "Right Column",
+                            "name": "",
+                            "type": "column",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "column-type": "1_2"
+                        },
+                        {
+                            "key": "field_600d5033462d8",
+                            "label": "Right Column",
+                            "name": "content_to_the_right",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "basic",
+                            "media_upload": 1,
+                            "delay": 0,
+                            "translations": "translate"
                         }
                     ],
                     "min": "",
@@ -279,5 +366,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1611133407
+    "modified": 1611485478
 }

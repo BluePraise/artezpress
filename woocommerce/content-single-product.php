@@ -68,7 +68,7 @@ if (post_password_required()) {
 
 					
 	<section class="related-news">
-		<h5 class="section-title">Related News</h5>
+		<h5 class="section-title"><?php _e('Related News'); ?></h5>
 		<?php
 		/**
 		 * Related News
@@ -79,15 +79,28 @@ if (post_password_required()) {
 				<?php foreach ($related_news as $post) :
 
 					// Setup this post for WP functions (variable must be named $post).
-					setup_postdata($post);
-					get_template_part('inc/templateparts/news', 'excerpt'); 
-				
-				endforeach; ?>
-			</ul>
-			<?php
-			// Reset the global post object so that the rest of the page works correctly.
-			wp_reset_postdata(); ?>
-		<?php endif; ?>
-	</section>
-	<?php woocommerce_output_related_products(); ?>
+					setup_postdata($post); ?>
+					<li class="news-item">
+						<p class="news-date small-text"><?php echo the_date( "d F Y" )?></p>
+						<a href="<?php the_permalink(); ?>">
+							<?php if( has_post_thumbnail() ): ?>
+								<figure class="news-thumbnail">
+									<?php the_post_thumbnail(); ?>
+								</figure>
+							<?php endif; ?>
+							<h5 class="post-title"><?php the_title(); ?></h5>
+						</a>
+						<p><?php the_excerpt(); ?></p>
+						<a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link"><?php _e('Read More'); ?></a>
+						
+					</li>
+				<?php endforeach; ?>
+				</ul>
+				<?php 
+				// Reset the global post object so that the rest of the page works correctly.
+				wp_reset_postdata(); ?>
+			<?php endif; ?>
+	</section>						
+		<?php woocommerce_output_related_products(); ?>
 </main>
+
