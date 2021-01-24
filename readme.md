@@ -29,7 +29,8 @@ alignments or line-heights.
 [Github Generatepress](https://github.com/tomusborne/generatepress)
 
 ### Resources Used:
-
+Waypoints
+Flickity
 
 ## Command Line Instructions
 
