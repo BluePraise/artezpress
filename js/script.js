@@ -15,7 +15,9 @@ jQuery(document).ready(function($) {
         })
         .on("click", function(event) {
             event.preventDefault();
-            artez_ajax_menu();
+            if (body.hasClass("menu-open")) {
+                artez_ajax_menu();
+            }
             body.toggleClass("menu-open");
             main.toggleClass("blur");
             menu.delay(0).fadeToggle(100, "swing");
