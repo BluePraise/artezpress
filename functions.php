@@ -49,8 +49,16 @@ function artezpress_style()
 	wp_enqueue_script('jquery-ui-accordion');
 	wp_enqueue_script('jquery-ui-slider');
 	wp_register_style('jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui');
-	wp_enqueue_script('totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true);
-	wp_enqueue_script('artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true);
+    wp_enqueue_script('totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true);
+    $ajax_url = admin_url( 'admin-ajax.php' );
+    
+    wp_enqueue_script('artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true);
+    wp_localize_script( 'artezpress-script', 'artez_object', 
+		  	array( 
+                'ajax_url' => $ajax_url,
+                'nonce' => wp_create_nonce('ajax-nonce')
+			) 
+		  );
 }
 
 add_action('wp_enqueue_scripts', 'artezpress_style');
@@ -442,3 +450,15 @@ add_filter( 'body_class',function($classes){
 }
    return $classes;
 });
+
+add_action('wp_ajax_artez_random_bg', 'artez_random_bg');
+add_action('wp_ajax_nopriv_artez_random_bg', 'artez_random_bg');
+
+function artez_random_bg() {
+
+    $rows = get_field('hero_imgs', 'option'); // get all the rows
+	$rand_row = $rows[ array_rand( $rows ) ];
+    echo $rand_row['bg_images_uploaded'];
+    wp_die();
+}
+
