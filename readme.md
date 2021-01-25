@@ -13,15 +13,23 @@ It also runs on the WP 5.6. You'll need scss to compile scss. A minimalist gulpf
 
 ## SCSS Instructions and Information
 
-`.d-h` stands for "Display Horizontal"
+### structure
 
-### Titles
+`.d-h` stands for "Display Horizontal"
+grid container
+
+### Typography
+Contains H1, H2, H3, H4, H5 and all the styling
+In site specific pages you can use the class name to give it padding and margin
+
 The main reason I've made different titles is because they all have different margins,
 alignments or line-heights.
 `h2.page-title` are for the (default) pages
 `h2.feature-titles`
 `.section-titles`
 `.page-default h2`  
+
+
 
 
 

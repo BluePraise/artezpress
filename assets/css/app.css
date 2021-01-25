@@ -1771,4 +1771,10 @@ a.news-read-more:hover {
 .page-default h2 {
   margin-top: 60px;
   margin-bottom: 80px; }
+
+.page-default .grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  grid-row-gap: 0;
+  grid-column-gap: 3.2rem; }
 /*# sourceMappingURL=app.css.map */

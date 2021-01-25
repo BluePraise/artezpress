@@ -11,7 +11,6 @@ if( have_rows('post_building_modules') ):
             $book_url       = get_permalink( $book_id );
             $image          = wp_get_attachment_image_src( get_post_thumbnail_id( $book_id ));
             
-            // var_dump($book_reference);
             ?>
 
             <div class="content-container">

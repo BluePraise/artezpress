@@ -14,6 +14,7 @@
             <p class="news-date large-text"><?php echo the_date( "d F Y" )?></p>
             <h3><?php the_title(); ?></h3>
             <div class="news-content large-text">
+                <?php the_content(); ?>
                 <?php get_template_part('blocks/postbuilding/index'); ?>
             </div>
         <?php endwhile; endif; ?>

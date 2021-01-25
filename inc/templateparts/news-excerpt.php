@@ -17,5 +17,5 @@
     <?php endif; ?>
     <h4 class="post-title"><?php the_title(); ?></h4>
     <p class="small-text news-item-excerpt"><?php echo wp_strip_all_tags( get_the_excerpt(), true ); ?></p>
-    <a class="small text news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">Read More</a>
+    <a class="small-text news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">Read More</a>
 </div>
