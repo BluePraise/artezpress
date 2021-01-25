@@ -456,7 +456,7 @@ add_action('wp_ajax_nopriv_artez_random_bg', 'artez_random_bg');
 
 function artez_random_bg() {
 
-    $rows = get_field('hero_imgs', 'option'); // get all the rows
+    $rows = get_field('hero_bg_imgs', 'option'); // get all the rows
 	$rand_row = $rows[ array_rand( $rows ) ];
     echo $rand_row['bg_images_uploaded'];
     wp_die();

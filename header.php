@@ -1,8 +1,9 @@
 <?php
 	get_template_part( 'head' );
-	$rows = get_field('hero_imgs', 'option'); // get all the rows
-	$rand_row = $rows[ array_rand( $rows ) ];
-	$rand_row_image = $rand_row['bg_images_uploaded']; // get the sub field value
+	 $rows = get_field('hero_bg_imgs', 'option'); // get all the rows 
+	 $rand_row = $rows[ array_rand( $rows ) ];
+	 $rand_row_image = $rand_row['bg_images_uploaded']; // get the sub field value 
+	
 	if(is_product()) {
 		global $post;
 		$id = $post->ID;
