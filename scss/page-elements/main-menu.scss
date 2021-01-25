@@ -29,7 +29,7 @@
 .main-menu-bar,
 .bottom-menu-bar {
   width: 100vw;
-  padding: 3.6rem;
+  padding: 3.6rem 3.2rem;
   background-color: transparent;
 }
 
@@ -57,7 +57,7 @@
 .wp-end-of-page {
   position: relative;
   width: 100vw;
-  padding: 4rem 3.6rem 12.8rem 3.6rem;
+  padding: 4rem 3.2rem 12.8rem 3.2rem;
   background-color: $greyTransparent;
 
   &::before {
@@ -182,8 +182,7 @@
     // subscribe text
     display: block;
   }
-
-  input[type="text"] {
+  input[type=email] {
     height: 45px;
     width: calc(100% - 7.2rem);
     max-width: 32rem;

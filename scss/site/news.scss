@@ -1,33 +1,48 @@
+
+// News archive grid
+
 .news .page-title {
-    margin-bottom: 80px;
-}
+    margin-bottom: 6.4rem;
+} /* This should be similiar on all pages that have a page-title */
 
-.news-item {
-    max-width: 522px;
-    margin-bottom: 80px;
-}
 
-.news-date {
-    margin-bottom: 30px;
-}
 
-.post-title {
-    margin: 40px 0;
-}
+// News card
 
-.news-thumbnail {
-    padding: 0 20px;
-}
+.news-grid {
 
-a.news-read-more {
+  .news-item {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    margin-bottom: 8rem;
+  }
+
+  .news-date {
+    margin-bottom: 2.4rem;
+  }
+
+  .post-title {
+    padding: 0 4rem;
+    margin-bottom: 2.4rem;
+  }
+
+  .news-thumbnail {
+    padding: 0 2rem;
+    margin-bottom: 3.2rem;
+  }
+
+  .news-read-more {
     display: inline-block;
-    margin: 32px 0 0px;
-    border-bottom: 1px solid black;
+    margin-top: 2.4rem;
+    border-bottom: 1px solid currentColor;
+
+    &:hover {
+      opacity: $hoverOpacity;
+    }
+  }
+
 }
 
-a.news-read-more:hover {
-    cursor: pointer;
-}
 
 /* single php */
 
@@ -54,10 +69,4 @@ a.news-read-more:hover {
 }
 
 /* frontpage php */
-
-// bit of a hack but time flies
-.home .latest-news .news-item {
-    p, h3 {
-        text-align: left;
-    }
-}
+// gets styles now from .news-grid

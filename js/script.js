@@ -67,8 +67,10 @@ jQuery(document).ready(function ($) {
 	$(".grid").masonry({
 		// options
 		itemSelector: ".news-item",
-		columnWidth: 520,
-		gutter: 32,
+		percentPosition: true,
+		// horizontalOrder: true,
+		// gutter: 32
+		// columnWidth: 520,
 	});
 
 	$(".wp-end-of-page").waypoint({
@@ -81,7 +83,7 @@ jQuery(document).ready(function ($) {
 				$(".main-menu-container").css({ opacity: 1 });
 			}
 		},
-		offset: "80%",
+		offset: "96.66%",
 	});
 
 	//https://stackoverflow.com/questions/11867545/change-text-color-based-on-brightness-of-the-covered-background-area
