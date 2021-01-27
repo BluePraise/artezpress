@@ -4,18 +4,34 @@
     margin-bottom: 30px;
     padding-bottom: 30px;
     border-bottom: 2px solid $black;
-
     .product-thumbnail {
         margin-right: 30px;
     }
-
     .quantity input {
-        width: 50px;
+        width: 40px;
         border: none;
         outline: none;
+        text-align: center;
     }
-
+    .quantity input::-webkit-outer-spin-button,
+    .quantity input::-webkit-inner-spin-button {
+        display: none;
+        margin: 0;
+    }
+    .quantity input.qty {
+        appearance: textfield;
+        -webkit-appearance: none;
+        -moz-appearance: textfield;
+    }
     .product-remove .label-remove {
         @include smallText;
+    }
+    .flex-col {
+        flex-basis: 130px;
+        text-align: right;
+    }
+    .product-quantity {
+        flex-basis: 150px;
+        margin-left: auto;
     }
 }
