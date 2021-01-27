@@ -15,7 +15,7 @@
                 </figure>
         <?php endif; ?>
     <?php endif; ?>
-    <h4 class="news-title refresh4"><?php the_title(); ?></h4>
+    <h4 class="news-title"><?php the_title(); ?></h4>
     <?php if( have_rows('post_building_modules') ):
         while ( have_rows('post_building_modules') ) : the_row();
 
@@ -24,12 +24,13 @@
                 
             if ($news_content): 
                 //https://wordpress.stackexchange.com/questions/325271/generate-a-excerpt-from-an-acf-wysiwyg-field
-                
                 if( !empty( $news_content ) ):
                     $trimmed_content = wp_trim_words($news_content);
                     $clean_excerpt = apply_filters('the_excerpt', $trimmed_content);
+
                     // needs a custom class .news-item-excerpt
-                    echo $clean_excerpt;
+                    echo '<p class="news-item-excerpt">'. $clean_excerpt .'</p>';
+                
                 endif;
             endif;
         endif;
