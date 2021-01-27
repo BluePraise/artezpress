@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ArtEzPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 10:24+0000\n"
+"POT-Creation-Date: 2021-01-27 11:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -96,14 +96,16 @@ msgid ""
 msgstr ""
 
 msgid "News"
-msgstr "Nieuws"
+msgstr ""
 
 msgid "See All News"
-msgstr "Bekijk al het nieuws"
+msgstr ""
 
 msgid "Books"
-msgstr "Boeken"
-
+msgstr ""
 
 msgid "See All Books"
-msgstr "Bekijk alle boeken"
+msgstr ""
+
+msgid "Cart"
+msgstr ""
