@@ -7,11 +7,11 @@
 	if(is_product()) {
 		global $post;
 		$id = $post->ID;
-		 $single_product_bg = get_field('custom_color', $id);
-		 $single_product_text_color = get_field('text_color', $id);
+		$single_product_bg = get_field('custom_color', $id);
+		$single_product_text_color = get_field('text_color', $id);
 		?>
 		<style>
-			body.single-product {background-color: <?php echo $single_product_bg; ?>;}
+			body.single-product { background-color: <?php echo $single_product_bg; ?>;}
 			body.single-product.artz-white-text .post-container, body.single-product.artz-white-text .related-news, body.single-product.artz-white-text .related-products, body.single-product.artz-white-text h4, body.single-product.artz-white-text .single-product-author, body.single-product.artz-white-text .language-toggle .lang-item a {color: #fff !important;}
 			body.single-product.artz-white-text .white-on-black {
 				color: #000 !important;
@@ -29,39 +29,7 @@
 		<div class="bg-overlay" style="background-image: url(<?php echo $rand_row_image; ?>);"></div>
 		<div class="main-menu-surface">
 			<div class="grid-container">
-				<div class="nav-column">
-					<div class="search">Search</div>
-					<ul class="page-list">
-						<li><a href="<?php echo site_url("/"); ?>">Home</a></li>
-						<li><a href="<?php echo site_url("/books"); ?>">Books</a></li>
-						<li><a href="<?php echo site_url("/news"); ?>">News</a></li>
-						<li><a href="<?php echo site_url("/news"); ?>">About ArtEZ Press</a></li>
-					</ul>
-					<div class="newsletter">
-						<span>Subscribe to our newsletter</span>
-						<input type="email">
-						<button type="submit" class="btn btn-reg">OK</button>
-
-					</div>
-				</div>
-				<div class="nav-column">
-					<div class="social-menu">
-						<ul class="horizontal-list">
-							<li>
-							<a href="#" alt="link to facebook"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_fb.svg" alt="Facebook Icon"></a>
-							<a href="#"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_ig.svg" alt="Instagram Icon"></a>
-							<a href="#"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_tw.svg" alt="Twitter Icon"></a>
-						</li></ul>
-					</div>
-					<ul class="page-list">
-						<li><a href="<?php echo site_url("/contact"); ?>">Contact</a></li>
-						<li><a href="<?php echo site_url("/frequently-asked-questions"); ?>"></a></li>
-						<li><a href="<?php echo site_url("/privacy-policy"); ?>">Data Protection</a></li>
-						<li><a href="<?php echo site_url("/news"); ?>">Imprint</a></li>
-					</ul>
-					<div class="part-of">ArtEZ Press is part of <br>ArtEZ University of the Arts</div>
-
-				</div>
+				<?php get_template_part( 'inc/templateparts/nav', 'pages' ); ?>
 				<div class="mini-cart-column">
 					<div class="mini-cart-total"><?php woocommerce_mini_cart(); ?></div>
 				</div>
@@ -112,7 +80,7 @@
 								<button type="submit" name="add-to-cart" value="<?php echo $related_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo $language; ?></span><?php echo $related_price; ?></button>
 							</form>		
 							<?php else: ?>
-								<span class="btn white-on-black">Out of Print</span>
+								<span class="btn white-on-black"><?php _e('Out of Print', 'storefront'); ?>/span>
 							<?php endif; ?>
 
 						<?php endforeach;?>
@@ -124,7 +92,7 @@
 						<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $the_product_ID ); ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo $language; ?></span><?php echo $product_price; ?></button>
 					</form>	
 					<?php else: ?>
-						<span class="btn white-on-black">Out of Print</span>
+						<span class="btn white-on-black">O<?php _e('Out of Print', 'storefront'); ?></span>
 					<?php endif; ?>								
 					<?php wp_reset_query(); ?>	
 				</div> <!-- .end of block__price -->
@@ -135,7 +103,7 @@
 
 				<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
 
-					<span class="cart-label">Cart</span>
+					<span class="cart-label"><?php _e('Cart', 'storefront'); ?></span>
 
 					<?php 
 						global $woocommerce;

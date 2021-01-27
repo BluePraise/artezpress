@@ -28,6 +28,7 @@
                 if( !empty( $news_content ) ):
                     $trimmed_content = wp_trim_words($news_content);
                     $clean_excerpt = apply_filters('the_excerpt', $trimmed_content);
+                    // needs a custom class .news-item-excerpt
                     echo $clean_excerpt;
                 endif;
             endif;
