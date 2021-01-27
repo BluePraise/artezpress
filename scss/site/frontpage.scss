@@ -38,9 +38,11 @@
 
 .featured-books {
     flex-direction: column;
+    align-items: center;
     margin: 80px 36px;
 
     .products {
+        width: 100%;
         display: inline-flex;
         flex-direction: row;
         justify-content: space-between;
