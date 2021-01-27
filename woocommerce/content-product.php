@@ -56,7 +56,7 @@ if (empty($product) || !$product->is_visible()) {
 	?>
 	<h4><?php echo get_the_title(); ?></h4>
 
-	<p class="single-product-author"><?php echo $author ?></p>
+	<p class="single-product-author"><?php echo wp_trim_words($author, 20, '...'); ?></p>
 
 
 	<?php
