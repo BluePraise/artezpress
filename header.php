@@ -1,8 +1,9 @@
 <?php
 	get_template_part( 'head' );
-	$rows = get_field('hero_imgs', 'option'); // get all the rows
-	$rand_row = $rows[ array_rand( $rows ) ];
-	$rand_row_image = $rand_row['bg_images_uploaded']; // get the sub field value
+	 $rows = get_field('hero_bg_imgs', 'option'); // get all the rows 
+	 $rand_row = $rows[ array_rand( $rows ) ];
+	 $rand_row_image = $rand_row['bg_images_uploaded']; // get the sub field value 
+	
 	if(is_product()) {
 		global $post;
 		$id = $post->ID;
@@ -10,9 +11,12 @@
 		 $single_product_text_color = get_field('text_color', $id);
 		?>
 		<style>
-			
 			body.single-product {background-color: <?php echo $single_product_bg; ?>;}
-			body.single-product .entry-summary {color: <?php echo $single_product_text_color; ?>;}
+			body.single-product.artz-white-text .post-container, body.single-product.artz-white-text .related-news, body.single-product.artz-white-text .related-products, body.single-product.artz-white-text h4, body.single-product.artz-white-text .single-product-author, body.single-product.artz-white-text .language-toggle .lang-item a {color: #fff !important;}
+			body.single-product.artz-white-text .white-on-black {
+				color: #000 !important;
+				background: #fff !important;
+			}
 		</style>
 		
 		<?php

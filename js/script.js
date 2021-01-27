@@ -27,11 +27,10 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-
 	// END OF Language Menu Toggle
 
 	// ACCORDION TOGGLE
-	var acc 	= document.getElementsByClassName("accordion-toggle");
+	var acc = document.getElementsByClassName("accordion-toggle");
 	var i;
 
 	for (i = 0; i < acc.length; i++) {
@@ -53,9 +52,6 @@ jQuery(document).ready(function ($) {
 		});
 	}
 
-
-              
-              
 	$(".owl-carousel").owlCarousel({
 		items: 1,
 		loop: true,
@@ -67,10 +63,8 @@ jQuery(document).ready(function ($) {
 	$(".grid").masonry({
 		// options
 		itemSelector: ".news-item",
-		percentPosition: true,
-		// horizontalOrder: true,
-		// gutter: 32
-		// columnWidth: 520,
+		columnWidth: 520,
+		gutter: 32,
 	});
 
 	$(".wp-end-of-page").waypoint({
@@ -83,7 +77,7 @@ jQuery(document).ready(function ($) {
 				$(".main-menu-container").css({ opacity: 1 });
 			}
 		},
-		offset: "96.66%",
+		offset: "80%",
 	});
 
 	//https://stackoverflow.com/questions/11867545/change-text-color-based-on-brightness-of-the-covered-background-area

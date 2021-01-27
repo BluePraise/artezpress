@@ -3,6 +3,23 @@
     "title": "Background Images on Front Page",
     "fields": [
         {
+            "key": "field_5fd65a9f72f0a",
+            "label": "Background Images",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
             "key": "field_5fcfd0ef6d1ab",
             "label": "Hero Background Images",
             "name": "hero_bg_imgs",
@@ -23,6 +40,29 @@
             "layout": "table",
             "button_label": "Add Images",
             "sub_fields": [
+                {
+                    "key": "field_600ecdf939dd2",
+                    "label": "Hero Area",
+                    "name": "hero_area",
+                    "type": "checkbox",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "1": "Yes"
+                    },
+                    "allow_custom": 0,
+                    "default_value": [],
+                    "layout": "vertical",
+                    "toggle": 0,
+                    "return_format": "value",
+                    "save_custom": 0
+                },
                 {
                     "key": "field_5fcfd1646d1ac",
                     "label": "Upload Background Images",
@@ -56,9 +96,16 @@
     "location": [
         [
             {
-                "param": "page_type",
+                "param": "page_template",
                 "operator": "==",
-                "value": "front_page"
+                "value": "template-homepage.php"
+            }
+        ],
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "hero-img"
             }
         ]
     ],
@@ -67,19 +114,7 @@
     "style": "default",
     "label_placement": "left",
     "instruction_placement": "label",
-    "hide_on_screen": [
-        "block_editor",
-        "the_content",
-        "excerpt",
-        "discussion",
-        "comments",
-        "slug",
-        "author",
-        "format",
-        "categories",
-        "tags",
-        "send-trackbacks"
-    ],
+    "hide_on_screen": "",
     "active": true,
     "description": "Front Page Blocks",
     "acfe_display_title": "Frontpage",
@@ -88,10 +123,11 @@
     ],
     "acfe_permissions": [
         "administrator",
-        "super_admin"
+        "editor",
+        "shop_manager"
     ],
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1609273990
+    "modified": 1611583024
 }

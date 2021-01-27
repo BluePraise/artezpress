@@ -49,8 +49,16 @@ function artezpress_style()
 	wp_enqueue_script('jquery-ui-accordion');
 	wp_enqueue_script('jquery-ui-slider');
 	wp_register_style('jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui');
-	wp_enqueue_script('totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true);
-	wp_enqueue_script('artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true);
+    wp_enqueue_script('totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true);
+    $ajax_url = admin_url( 'admin-ajax.php' );
+    
+    wp_enqueue_script('artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true);
+    wp_localize_script( 'artezpress-script', 'artez_object', 
+		  	array( 
+                'ajax_url' => $ajax_url,
+                'nonce' => wp_create_nonce('ajax-nonce')
+			) 
+		  );
 }
 
 add_action('wp_enqueue_scripts', 'artezpress_style');
@@ -354,9 +362,47 @@ function availability_filter_func($availability) {
 add_filter('woocommerce_get_availability', 'availability_filter_func');
 
 // enqueue js for color extractor
-function my_acf_admin_enqueue_scripts() {
-	wp_enqueue_script( 'image-process-js', get_stylesheet_directory_uri() . '/js/image-process.js', false, '1.0.0' );
-}
+add_action('acf/input/admin_enqueue_scripts', 'my_acf_admin_enqueue_scripts');
+	function my_acf_admin_enqueue_scripts() {
+		wp_enqueue_script( 'image-process-js', get_stylesheet_directory_uri() . '/js/image-process.js', false, '1.0.0' );
+    }
+    
+// Ajax function for color extractor 
+    add_action( 'wp_ajax_extract_colors', 'extract_colors' );	
+	function extract_colors () {
+		
+		include_once("inc/colors.inc.php");
+		$ex=new GetMostCommonColors();
+		$attachment_id = $_POST['image_url'];
+		$attachment_path = wp_get_original_image_path( $attachment_id );
+		$colors = $ex->Get_Color($attachment_path, "5");
+		
+		
+		//var_dump($colors);
+		
+		wp_send_json_success( $colors );
+		die();
+		
+	}
+     
+    function wpse39446_modify_featured_image_labels( $labels ) {
+        $labels->featured_image = __( 'Book Cover', 'artezpress' );
+        $labels->set_featured_image = __( 'Set Book Cover', 'artezpress' );
+        $labels->remove_featured_image = __( 'Remove Book Cover', 'artezpress' );
+        $labels->use_featured_image = __( 'Use as Book Cover', 'artezpress' );
+        
+        return $labels;
+      }
+      add_filter( 'post_type_labels_product', 'wpse39446_modify_featured_image_labels', 10, 1 );
+
+      function change_meta_box_titles() {
+        global $wp_meta_boxes; // array of defined meta boxes
+        // cycle through the array, change the titles you want
+
+        $wp_meta_boxes['product']['side']['low']['woocommerce-product-images']['title'] = "Book Inner pages";
+    }
+    add_action('add_meta_boxes', 'change_meta_box_titles', 999);
+
 
 // function mode_theme_update_mini_cart() {
 //     echo wc_get_template( 'cart/mini-cart.php' );
@@ -392,3 +438,31 @@ function prevent_duplicate_products_redirect( $url = false ) {
   // we add the 'get_bloginfo' part so it saves a redirect on https:// sites.
   return get_bloginfo( 'wpurl' ).add_query_arg( array(), remove_query_arg( 'add-to-cart' ) );
 } 
+
+
+
+add_filter( 'body_class',function($classes){
+    global $post;
+    $id = $post->ID;
+    if(is_product()) {
+
+    $single_product_text_color = get_field('text_color', $id);
+    
+   if($single_product_text_color == "#fff") {
+       $classes[] = 'artz-white-text';	
+   }
+}
+   return $classes;
+});
+
+add_action('wp_ajax_artez_random_bg', 'artez_random_bg');
+add_action('wp_ajax_nopriv_artez_random_bg', 'artez_random_bg');
+
+function artez_random_bg() {
+
+    $rows = get_field('hero_bg_imgs', 'option'); // get all the rows
+	$rand_row = $rows[ array_rand( $rows ) ];
+    echo $rand_row['bg_images_uploaded'];
+    wp_die();
+}
+
