@@ -11,7 +11,7 @@
         text-align: center;
         top: 60px;
         color: white;
-        // text-shadow: 1px 1px 4px #3e3e3e;
+        
     }
 
     h3.slider-item-title {
@@ -20,7 +20,7 @@
         bottom: 70px;
         padding-left: 36px;
         color: white;
-        // text-shadow: 1px 1px 4px #3e3e3e;
+        
     }
 
     .owl-carousel .owl-item {
@@ -52,4 +52,8 @@
         align-self: center;
         @include clearButton(100px, 1rem, 3.1rem);
     }
+}
+
+.latest-news {
+    text-align: center;
 }

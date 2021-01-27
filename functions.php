@@ -122,6 +122,10 @@ add_action('after_setup_theme', 'artezpress_theme_setup');
 
 add_action('artezpress_before_single_product_summary', 'woocommerce_show_product_images', 20);
 
+/***
+ * ACF CUSTOMIZATION
+ */
+
 function my_acf_json_save_point($path)
 {
 	// update path

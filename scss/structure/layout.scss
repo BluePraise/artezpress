@@ -8,20 +8,6 @@
     padding-right: 1.6rem;
 }
 
-// News grid
-
-.news-item {
-  @media (min-width: 768px) {
-    width: calc(50%);
-  }
-
-  @media (max-width: 767px) {
-    width: calc(100%);
-  }
-}
-
-
-
 .grid-container {
     display: grid;
 }

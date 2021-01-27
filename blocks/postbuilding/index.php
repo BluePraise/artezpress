@@ -13,11 +13,16 @@ if( have_rows('post_building_modules') ):
             
             ?>
 
-            <div class="content-container">
-                <img src="<?php  echo $image[0]; ?>" data-id="<?php echo $loop->post->ID; ?>">            
+            <?php // book reference odule ?>
+            <?php if(is_single()): ?>
+                <div class="book-reference content-container">
+                <figure><img src="<?php  echo $image[0]; ?>"/></figure>
                 <h3><?php echo $book_title; ?></h3>
-                <a href="<?php echo $book_url; ?>" alt="go to <?php echo $book_title ?>">Read More</a>
-            </div>
+                    <a href="<?php echo $book_url; ?>" alt="go to <?php echo $book_title ?>">Read More</a>
+                </div>
+            <?php endif; ?>
+
+
         <?php  
             elseif( get_row_layout() == 'video_module' ):
                 $video_url      = get_sub_field('video_url');
@@ -35,7 +40,7 @@ if( have_rows('post_building_modules') ):
                 $news_content      = get_sub_field('news_content');
                 
                 if ($news_content): ?>
-                    <div class="post-container"><?php echo $news_content; ?></div>
+                    <div class="news-container"><?php echo $news_content; ?></div>
                 <?php endif;
 
             endif; 

@@ -75,27 +75,15 @@ if (post_password_required()) {
 		 */
 		$related_news = get_field('related_news');
 		if ($related_news) : ?>
-			<ul class="d-h flex-container">
+			<div class="flex-container news-grid">
 				<?php foreach ($related_news as $post) :
 
 					// Setup this post for WP functions (variable must be named $post).
-					setup_postdata($post); ?>
-					<li class="news-item">
-						<p class="news-date small-text"><?php echo the_date( "d F Y" )?></p>
-						<a href="<?php the_permalink(); ?>">
-							<?php if( has_post_thumbnail() ): ?>
-								<figure class="news-thumbnail">
-									<?php the_post_thumbnail(); ?>
-								</figure>
-							<?php endif; ?>
-							<h5 class="post-title"><?php the_title(); ?></h5>
-						</a>
-						<p><?php the_excerpt(); ?></p>
-						<a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link"><?php _e('Read More'); ?></a>
-						
-					</li>
+					setup_postdata($post); 
+					// get the "news snippet" as amir calls it.
+					get_template_part('inc/templateparts/news', 'excerpt'); ?>
 				<?php endforeach; ?>
-				</ul>
+				</div>
 				<?php 
 				// Reset the global post object so that the rest of the page works correctly.
 				wp_reset_postdata(); ?>

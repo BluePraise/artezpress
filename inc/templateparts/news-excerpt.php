@@ -1,10 +1,10 @@
 <div class="news-item">
-    <div class="news-date small-text"><?php echo the_date( "d F Y" )?></div>
+    <div class="news-date"><?php echo the_date( "d F Y" )?></div>
     <?php if( has_post_thumbnail() ): 
             $tn_id      = get_post_thumbnail_id( $post->ID );
             $imgmeta    = wp_get_attachment_metadata( $tn_id );
-            // $width  = $img[1];
-            // $height = $img[2];
+            
+            
             if ($imgmeta['width'] < $imgmeta['height']): ?>
                 <figure class="news-thumbnail attachment-is-portrait">
                     <?php the_post_thumbnail(); ?>
@@ -15,7 +15,28 @@
                 </figure>
         <?php endif; ?>
     <?php endif; ?>
-    <h4 class="post-title"><?php the_title(); ?></h4>
-    <p class="small-text news-item-excerpt"><?php echo wp_strip_all_tags( get_the_excerpt(), true ); ?></p>
-    <a class="small-text news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">Read More</a>
+    <h4 class="news-title refresh4"><?php the_title(); ?></h4>
+    <?php if( have_rows('post_building_modules') ):
+        while ( have_rows('post_building_modules') ) : the_row();
+
+        if( get_row_layout() == 'news_content_module' ):
+            $news_content      = get_sub_field('news_content');
+                
+            if ($news_content): 
+                //https://wordpress.stackexchange.com/questions/325271/generate-a-excerpt-from-an-acf-wysiwyg-field
+                
+                if( !empty( $news_content ) ):
+                    $trimmed_content = wp_trim_words($news_content);
+                    $clean_excerpt = apply_filters('the_excerpt', $trimmed_content);
+                    echo $clean_excerpt;
+                endif;
+            endif;
+        endif;
+        endwhile; endif 
+    ?>
+
+
+    <a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">Read More</a>
 </div>
+
+

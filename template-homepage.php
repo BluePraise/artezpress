@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-	<main class="site-main" role="main">
+	<main class="site-main test" role="main">
 
 		<?php get_template_part('blocks/frontpage/handshake/index'); ?>
 		<section class="features flex-container">
@@ -57,10 +57,9 @@ get_header(); ?>
 		</section><!-- #main -->
 
 		<section class="latest-news container">
+			
 			<h2 class="featured-title"><?php _e('News')?></h2>
-			<div class="grid">
-			<h2 class="featured-title">News</h2>
-			<div class="grid news-grid">
+			<div class="flex-container news-grid">
     			<?php
         		$args = array(
 						'post_type' => 'post',
@@ -69,25 +68,18 @@ get_header(); ?>
 					$loop = new WP_Query( $args );
 					if ( $loop->have_posts() ) {
 						while ( $loop->have_posts() ) : $loop->the_post(); ?>
-							<div class="news-item">
-								<p class="news-date"><?php echo the_date( "d F Y" )?></p>
-								<?php if( has_post_thumbnail() ): ?>
-								<figure class="news-thumbnail">
-									<?php the_post_thumbnail(); ?>
-								</figure>
-            					<?php endif; ?>
-            					<h4 class="post-title"><?php echo the_title(); ?></h4>
-            					<p class="small-text"><?php the_excerpt(); ?>Read More</p>
-        					</div>
-					<?php
-							endwhile;
-					} else {
-						echo __( 'No products found' );
+							<?php get_template_part('inc/templateparts/news', 'excerpt'); ?>
+							
+					<?php endwhile; ?>
+						</div><!--/.news-grid-->
+						<a class="btn black-on-white" href="<?php echo esc_url( '/news' ); ?>"><?php _e('See All News'); ?></a>
+					<?php } else {
+						echo __( '<p>Currently there is no news.</p>' ); ?>
+						</div><!--/.new-grid-->
+					<?php 
 					}
 					wp_reset_postdata();
 				?>
-			</div><!--/.grid-->
-			<a class="btn black-on-white" href="<?php echo esc_url( '/news' ); ?>"><?php _e('See All News'); ?></a>
 			
 
 		</section><!-- #main -->

@@ -1,27 +1,48 @@
+// all styling for news grid
+// News grid
+
+.news-item {
+  @media (min-width: 768px) {
+
+    width: calc(50%);
+  }
+
+  @media (max-width: 767px) {
+    width: calc(100%);
+  }
+}
+
+
 
 // News archive grid
 
 .news .page-title {
-    margin-bottom: 6.4rem;
-} /* This should be similiar on all pages that have a page-title */
+  margin-bottom: 6.4rem;
+}
+
+/* This should be similiar on all pages that have a page-title */
 
 
 
 // News card
 
 .news-grid {
+  flex-wrap: wrap;
+  justify-content: space-between;
 
   .news-item {
+    text-align: left;
     padding-left: 1.6rem;
     padding-right: 1.6rem;
     margin-bottom: 8rem;
   }
 
   .news-date {
+    @include smallText;
     margin-bottom: 2.4rem;
   }
 
-  .post-title {
+  .news-title {
     padding: 0 4rem;
     margin-bottom: 2.4rem;
   }
@@ -31,7 +52,13 @@
     margin-bottom: 3.2rem;
   }
 
+  .news-item-excerpt {
+    @include smallText;
+    text-align: left;
+  }
+
   .news-read-more {
+    @include smallText;
     display: inline-block;
     margin-top: 2.4rem;
     border-bottom: 1px solid currentColor;
@@ -47,25 +74,25 @@
 /* single php */
 
 .post-container h3 {
-    margin-top: 48px;
-    margin-bottom: 60px;
+  margin-top: 48px;
+  margin-bottom: 60px;
 }
 
 .post-container .news-thumbnail {
-    margin-bottom: 80px;
+  margin-bottom: 80px;
 }
 
 .back-to-news img {
-    width: 44px;
-    height: 44px;
+  width: 44px;
+  height: 44px;
 }
 
 .container.single-news {
-    margin-top: 60px;
+  margin-top: 60px;
 }
 
 .news-content .post-container p {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 /* frontpage php */
