@@ -21,11 +21,34 @@ jQuery(document).ready(function ($) {
 
 	$(".bg-overlay").on("mouseenter", function () {
 		if (body.hasClass("menu-open")) {
+			artez_ajax_menu();
 			body.removeClass("menu-open");
 			main.toggleClass("blur");
 			menu.delay(0).fadeToggle(100, "swing");
 		}
 	});
+
+	function artez_ajax_menu() {
+		jQuery.ajax({
+			type: "POST",
+			url: artez_object.ajax_url,
+			data: {
+				action: "artez_random_bg",
+				nonce: artez_object.nonce,
+			},
+			success: function (response) {
+				// console.log(response);
+				jQuery(".bg-overlay").css(
+					"background-image",
+					"url(" + response + ")"
+				);
+			},
+			error: function (e) {
+				alert("Error on closing menu");
+			},
+		});
+	}
+
 
 	// END OF Language Menu Toggle
 
