@@ -38,7 +38,7 @@
     ?>
 
 
-    <a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">Read More</a>
+    <a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link"><?php _e('Read More', 'artezpress');?></a>
 </div>
 
 
