@@ -14,7 +14,7 @@ if (!isset($content_width)) {
 	$content_width = 1076;
 }
 
-// add_action( 'wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999 );
+load_theme_textdomain( 'artezpress', get_template_directory() . '/languages' );
 
 /**
  * Dequeue a lot of css

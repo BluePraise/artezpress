@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main id="site-content" class="container news" role="main">
-    <h2 class="page-title">News</h2>
+    <h2 class="page-title"><?php _e('News', 'storefront'); ?></h2>
     <div class="news-grid grid">
         <?php
             if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>

@@ -34,7 +34,7 @@ get_header(); ?>
 		</section>
 
 		<section class="featured-books flex-container ">
-			<h2 class="featured-title">Books</h2>
+			<h2 class="featured-title"><?php _e('Books', 'storefront'); ?></h2>
 			<div class="full-width products">
     			<?php
         		$args = array(
@@ -47,18 +47,18 @@ get_header(); ?>
 							wc_get_template_part( 'content', 'product' );
 						endwhile;
 					} else {
-						echo __( 'No products found' );
+						echo __( 'No products found', 'storefront' );
 					}
 					wp_reset_postdata();
 				?>
 			</div><!--/.products-->
-			<a class="btn black-on-white" href="<?php echo site_url( '/books/'); ?>"><?php _e('See All Books'); ?></a>
+			<a class="btn black-on-white" href="<?php echo site_url( '/books/'); ?>"><?php _e('See All Books', 'storefront'); ?></a>
 
 		</section><!-- #main -->
 
 		<section class="latest-news container">
 			
-			<h2 class="featured-title"><?php _e('News')?></h2>
+			<h2 class="featured-title"><?php _e('News', 'storefront'); ?></h2>
 			<div class="flex-container news-grid">
     			<?php
         		$args = array(
@@ -72,9 +72,9 @@ get_header(); ?>
 							
 					<?php endwhile; ?>
 						</div><!--/.news-grid-->
-						<a class="btn black-on-white" href="<?php echo esc_url( '/news' ); ?>"><?php _e('See All News'); ?></a>
+						<a class="btn black-on-white" href="<?php echo esc_url( '/news' ); ?>"><?php _e('See All News', 'storefront'); ?></a>
 					<?php } else {
-						echo __( '<p>Currently there is no news.</p>' ); ?>
+						echo __( '<p>Currently there is no news.</p>', 'storefront' ); ?>
 						</div><!--/.new-grid-->
 					<?php 
 					}

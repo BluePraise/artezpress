@@ -68,7 +68,7 @@ if (post_password_required()) {
 
 					
 	<section class="related-news">
-		<h5 class="section-title"><?php _e('Related News'); ?></h5>
+		<h5 class="section-title"><?php _e('Related News', 'storefront'); ?></h5>
 		<?php
 		/**
 		 * Related News
