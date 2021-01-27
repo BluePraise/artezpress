@@ -111,6 +111,7 @@ if (function_exists('acf_add_options_page')) {
 function artezpress_theme_setup()
 {
 	add_image_size('feature-slider-size', 1120, true, array('center', 'center'));
+	add_image_size( 'cart-thumb', 125, 177, true ); // 100 wide and 100 high
 	add_editor_style('style-editor.css'); // tries to include style-editor.css directly from your theme folder
 	
 	add_theme_support('editor-styles'); // if you don't add this line, your stylesheet won't be added

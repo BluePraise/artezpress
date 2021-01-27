@@ -26,5 +26,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-sass": "^4.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "node-sass": "^5.0.0"
+  }
 }
