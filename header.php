@@ -85,8 +85,6 @@
 							<form class="cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', get_permalink($related_product_ID) ) ); ?>" method="post" enctype='multipart/form-data'>
 								<button type="submit" name="add-to-cart" value="<?php echo $related_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo $language; ?></span><?php echo $related_price; ?></button>
 							</form>		
-							<?php else: ?>
-								<span class="btn white-on-black"><?php _e('Out of Print', 'storefront'); ?>/span>
 							<?php endif; ?>
 
 						<?php endforeach;?>
@@ -98,7 +96,7 @@
 						<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $the_product_ID ); ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo $language; ?></span><?php echo $product_price; ?></button>
 					</form>	
 					<?php else: ?>
-						<span class="btn white-on-black">O<?php _e('Out of Print', 'storefront'); ?></span>
+						<span class="btn white-on-black"><?php _e('Out of Print', 'artezpress'); ?></span>
 					<?php endif; ?>								
 					<?php wp_reset_query(); ?>	
 				</div> <!-- .end of block__price -->
