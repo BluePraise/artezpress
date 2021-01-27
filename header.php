@@ -12,7 +12,13 @@
 		?>
 		<style>
 			body.single-product { background-color: <?php echo $single_product_bg; ?>;}
-			body.single-product.artz-white-text .post-container, body.single-product.artz-white-text .related-news, body.single-product.artz-white-text .related-products, body.single-product.artz-white-text h4, body.single-product.artz-white-text .single-product-author, body.single-product.artz-white-text .language-toggle .lang-item a {color: #fff !important;}
+			body.single-product.artz-white-text .post-container, 
+			body.single-product.artz-white-text .related-news, body.single-product.artz-white-text .related-products, 
+			body.single-product.artz-white-text h4, 
+			body.single-product.artz-white-text .single-product-author,
+			body.single-product.artz-white-text .single-product-author,
+			body.single-product.artz-white-text a.news-read-more, 
+			body.single-product.artz-white-text .language-toggle .lang-item a {color: #fff !important;}
 			body.single-product.artz-white-text .white-on-black {
 				color: #000 !important;
 				background: #fff !important;
@@ -103,7 +109,7 @@
 
 				<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
 
-					<span class="cart-label"><?php _e('Cart', 'storefront'); ?></span>
+					<span class="cart-label"><?php _e('Cart', 'artezpress'); ?></span>
 
 					<?php 
 						global $woocommerce;
