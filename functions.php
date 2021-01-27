@@ -14,7 +14,10 @@ if (!isset($content_width)) {
 	$content_width = 1076;
 }
 
-load_theme_textdomain( 'artezpress', get_template_directory() . '/languages' );
+add_action( 'after_setup_theme', 'load_child_language' );
+function load_child_language() {
+        load_child_theme_textdomain( 'artezpress', get_stylesheet_directory() . '/languages' ); 
+}
 
 /**
  * Dequeue a lot of css

@@ -9,8 +9,8 @@
         <li><a href="<?php echo site_url("/about"); ?>" title="About ArtEZPress"><?php _e('About', 'artezpress');?> ArtEZ Press</a></li>
     </ul>
     <div class="newsletter">
-        <span>Subscribe to our newsletter</span>
-        <input type="text" />
+        <span><?php _e('Subscribe To Our Newsletter', 'artezpress'); ?></span>
+        <input type="email" />
         <button type="submit" class="btn btn-reg">OK</button>
     </div>
 </div>
