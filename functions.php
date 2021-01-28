@@ -34,6 +34,7 @@ function sf_child_theme_dequeue_style()
 	wp_deregister_style('storefront-jetpack-widgets');
 
 	wp_deregister_style('storefront-woocommerce-style');
+
 }
 add_action('wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999);
 
@@ -63,8 +64,9 @@ function artezpress_style()
 			) 
 		  );
 }
-
 add_action('wp_enqueue_scripts', 'artezpress_style');
+
+
 
 
 
@@ -408,27 +410,6 @@ add_action('acf/input/admin_enqueue_scripts', 'my_acf_admin_enqueue_scripts');
     add_action('add_meta_boxes', 'change_meta_box_titles', 999);
 
 
-// function mode_theme_update_mini_cart() {
-//     echo wc_get_template( 'cart/mini-cart.php' );
-//     die();
-// }
-// add_filter( 'wp_ajax_nopriv_mode_theme_update_mini_cart', 'mode_theme_update_mini_cart' );
-// add_filter( 'wp_ajax_mode_theme_update_mini_cart', 'mode_theme_update_mini_cart' );
-
-// add_action( 'template_redirect', 'quadlayers_add_to_cart_programmatically' );
-   
-// function quadlayers_add_to_cart_programmatically() {
- 
-//    $product_id = 1326;
- 
-//    $product_cart_id = WC()->cart->generate_cart_id( $product_id );
-   
-//    if(!WC()->cart->find_product_in_cart( $product_cart_id )) {
-//        WC()->cart->add_to_cart( $product_id);
-//        wc_print_notice( 'Product ID ' . $product_id . ' is in the Cart!', 'notice' );
-//    }
- 
-// }
 
 //Prevent Add to cart on reload
 

@@ -14,9 +14,15 @@ It also runs on the WP 5.6. You'll need scss to compile scss. A minimalist gulpf
 ## SCSS Instructions and Information
 
 ### structure
-
+Found in `layout.scss`
 `.d-h` stands for "Display Horizontal"
-grid container
+`grid container`
+
+- `container` = 107.6rem (1076px)
+- `container-xs` = 77rem (770px)
+- `container-s` = 96rem (960px)
+- `container-xl` = 161rem (1610px)
+
 
 ### Typography
 Contains H1, H2, H3, H4, H5 and all the styling

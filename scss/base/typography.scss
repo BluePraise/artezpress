@@ -6,7 +6,9 @@
 
 @font-face {
     font-family: 'Lars';
-    src: url("../../assets/fonts/Lars-Regular.otf") format("opentype");
+    src: url("../../assets/fonts/Lars-Regular.otf") format("opentype"),
+        url("../../assets/fonts/Lars-RegularWeb.woff") format("woff"),
+        url("../../assets/fonts/Lars-RegularWeb.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
 }

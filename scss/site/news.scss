@@ -22,77 +22,150 @@
 
 /* This should be similiar on all pages that have a page-title */
 
-
-
 // News card
 
 .news-grid {
   flex-wrap: wrap;
   justify-content: space-between;
-
-  .news-item {
-    text-align: left;
-    padding-left: 1.6rem;
-    padding-right: 1.6rem;
-    margin-bottom: 8rem;
-  }
-
-  .news-date {
-    @include smallText;
-    margin-bottom: 2.4rem;
-  }
-
-  .news-title {
-    padding: 0 4rem;
-    margin-bottom: 2.4rem;
-  }
-
-  .news-thumbnail {
-    padding: 0 2rem;
-    margin-bottom: 3.2rem;
-  }
-
-  .news-item-excerpt {
-    @include smallText;
-    text-align: left;
-  }
-
-  .news-read-more {
-    @include smallText;
-    display: inline-block;
-    margin-top: 2.4rem;
-    border-bottom: 1px solid currentColor;
-
-    &:hover {
-      opacity: $hoverOpacity;
-    }
-  }
-
 }
 
+.news-item {
+  text-align: left;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+  margin-bottom: 8rem;
+}
+
+.news-date {
+  @include smallText;
+  margin-bottom: 2.4rem;
+}
+
+.news-title {
+  padding: 0 4rem;
+  margin-bottom: 2.4rem;
+}
+
+.news-thumbnail {
+  padding: 0 2rem;
+  margin-bottom: 3.2rem;
+}
+
+.news-item-excerpt {
+  @include smallText;
+  text-align: left;
+}
+
+a.news-read-more {
+  @include smallText;
+  display: inline-block;
+  margin: 2.4rem 0 3.2rem 0;
+  border-bottom: 1px solid currentColor;
+
+  &:hover {
+    cursor: pointer;
+    opacity: $hoverOpacity;
+  }
+}
 
 /* single php */
 
-.post-container h3 {
-  margin-top: 48px;
-  margin-bottom: 60px;
+.news-item__single .content-container {
+  padding-bottom: 0;
 }
 
-.post-container .news-thumbnail {
-  margin-bottom: 80px;
+
+h3.news-title__single {
+  margin-top: 4.8rem;
+  margin-bottom: 6rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+.news-item__single .news-thumbnail {
+  margin-bottom: 8rem;
 }
 
 .back-to-news img {
-  width: 44px;
-  height: 44px;
+  width: 4.4rem;
+  height: 4.4rem;
 }
 
-.container.single-news {
-  margin-top: 60px;
+.container.news-item__single {
+  margin-top: 6rem;
 }
 
-.news-content .post-container p {
-  margin: 20px 0;
+// NEWS MODULES
+// all these modules also have a classname which they share:
+// .news-module-container so any common classes can also
+// be set on that class.
+
+.news-content__single .news-text {
+  max-width: 77rem;
+  margin: 2rem auto;
+  padding-bottom: 6rem;
+
+  &:first-child {
+    // this substracts an additional 2rems to the bottom of 
+    // this module. I've left this here in case you wanted to 
+    // try out some new spacinds
+    margin: 0 auto 0rem auto;
+  }
+
+  // all the anchorlinks get an underline
+  a {
+    @include undelineText;
+  }
+
+  // spacing for all the p tags
+  p {
+    margin-bottom: 2.4rem;
+
+    // but not the last child
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.news-item__single .book-reference {
+  margin-bottom: 8rem;
+
+  figure {
+    margin-bottom: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 52.2rem;
+    height: auto;
+
+    img {
+      filter: grayscale(100%);
+      transition: all 400ms ease-in;
+      @include boxShadow;
+    }
+
+    &:hover {
+      img {
+        filter: grayscale(0%);
+      }
+    }
+  }
+
+  h5 {
+    margin-bottom: 4rem;
+  }
+
+}
+
+.video-container {
+  margin: 8rem 0;
+}
+
+.news-video-caption {
+  @include smallText;
+  text-align: center;
+  margin: 2.4rem 0;
 }
 
 /* frontpage php */
