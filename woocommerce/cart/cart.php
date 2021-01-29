@@ -122,7 +122,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				}
 			}
 			?>
-
+</ul>
 			<?php do_action( 'woocommerce_cart_contents' ); ?>
 
 
@@ -139,27 +139,30 @@ do_action( 'woocommerce_before_cart' ); ?>
 					do_action( 'woocommerce_cart_collaterals' );
 				?>
 			</div>
-
-			<li>
+			
+		
 				
 
 					<?php if ( wc_coupons_enabled() ) { ?>
 						<div class="coupon">
-							<label for="coupon_code"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?></button>
+							<div class="coupon_code_area">
+							<!-- <label for="coupon_code"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>  -->
+							<input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Have a discount code?', 'woocommerce' ); ?>" /> <button type="submit" class="button coupon-apply" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Enter', 'woocommerce' ); ?></button>
 							<?php do_action( 'woocommerce_cart_coupon' ); ?>
+						</div>
+						<div class="coupon-help"> ArtEZ students and staffare eligible for a discount</div>
 						</div>
 					<?php } ?>
 
-					<button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
-
+					
 					<?php do_action( 'woocommerce_cart_actions' ); ?>
 
 					<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
-			</li>
+			
 
 			<?php do_action( 'woocommerce_after_cart_contents' ); ?>
 		
-	</ul>
+	
 	<?php do_action( 'woocommerce_after_cart_table' ); ?>
 </form>
 

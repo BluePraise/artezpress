@@ -467,3 +467,19 @@ function artez_random_bg() {
     wp_die();
 }
 
+// Removes cross-sell products from cart page
+
+remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+
+function filter_woocommerce_cart_totals_coupon_html($coupon_html, $coupon, $discount_amount_html ) {
+	if ( is_string( $coupon ) ) {
+		$coupon = new WC_Coupon( $coupon );
+	}
+
+	$coupon_html          = $discount_amount_html . ' <a href="' . esc_url( add_query_arg( 'remove_coupon', rawurlencode( $coupon->get_code() ),  wc_get_cart_url() ) ) . '" class="woocommerce-remove-coupon" data-coupon="' . esc_attr( $coupon->get_code() ) . '">' . __( 'Remove', 'woocommerce' ) . '</a>';
+
+	return $coupon_html;
+	
+}
+
+add_filter( 'woocommerce_cart_totals_coupon_html', 'filter_woocommerce_cart_totals_coupon_html', 10, 3 );

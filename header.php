@@ -99,19 +99,24 @@
 			<?php endif; ?>
 			
 			<div class="menu-misc">
-				<?php get_template_part('inc/templateparts/language', 'toggle'); ?>	
+				<?php get_template_part('inc/templateparts/language', 'toggle');
 
-				<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
-
-					<span class="cart-label"><?php _e('Cart', 'storefront'); ?></span>
+					if(is_cart()) { 
+						do_action( 'woocommerce_proceed_to_checkout' ); 
+					}	
+					
+					else { ?>
+								<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
+								<span class="cart-label"><?php _e('Cart', 'storefront'); ?></span>
 
 					<?php 
 						global $woocommerce;
 						$count = $woocommerce->cart->cart_contents_count; ?>
 
 						<span class="cart-counter"><?php  echo $count; ?></span>
-						
-				</a>
+						</a>
+						<?php } ?>
+			
 			</div>
 		</div>
 	</nav>
