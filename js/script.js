@@ -130,11 +130,9 @@ jQuery(document).ready(function($) {
         lazyLoad: true,
     });
 
-    $(".grid").masonry({
+    $(".news-grid").masonry({
         // options
         itemSelector: ".news-item",
-        columnWidth: 520,
-        gutter: 32,
     });
 
     $(".wp-end-of-page").waypoint({

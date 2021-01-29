@@ -22,7 +22,8 @@ img {
 }
 
 img {
-  aspect-ratio: attr(width) / attr(height);
+  // this causes an error in Chrome
+  // aspect-ratio: attr(width) / attr(height);
   height: auto;
   width: 100%;
 }
