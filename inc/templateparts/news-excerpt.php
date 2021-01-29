@@ -15,7 +15,7 @@
                 </figure>
         <?php endif; ?>
     <?php endif; ?>
-    <h4 class="news-title"><?php the_title(); ?></h4>
+    <h4 class="news-title news-title__excerpt"><?php the_title(); ?></h4>
     <?php if( have_rows('post_building_modules') ):
         while ( have_rows('post_building_modules') ) : the_row();
 
@@ -29,7 +29,7 @@
                     $clean_excerpt = apply_filters('the_excerpt', $trimmed_content);
 
                     // needs a custom class .news-item-excerpt
-                    echo '<p class="news-item-excerpt">'. $clean_excerpt .'</p>';
+                    echo '<p class="news-item-excerpt">'. $trimmed_content .'</p>';
                 
                 endif;
             endif;

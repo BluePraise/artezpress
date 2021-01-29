@@ -24,7 +24,9 @@
 
 /* This should be similiar on all pages that have a page-title */
 
-// News card
+// News card and excerpt
+// News excerpt snippet can be found in 
+// inc/templateparts/news-excerpt
 
 .news-grid {
     flex-wrap: wrap;
@@ -52,6 +54,10 @@
     padding: 0 2rem;
     margin-bottom: 3.2rem;
 }
+
+.news-title-excerpt {
+    margin-bottom: 4rem;
+} 
 
 .news-item-excerpt {
     @include smallText;
@@ -95,8 +101,8 @@ a.news-read-more {
 
 .news-content__single .news-text {
     max-width: 77rem;
-	margin: 2rem auto;
-	padding-bottom: 4rem;
+    margin: 2rem auto;
+    padding-bottom: 4rem;
 
     &:first-child {
         // this substracts an additional 2rems to the bottom of 
