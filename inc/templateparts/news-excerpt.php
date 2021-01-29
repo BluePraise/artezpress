@@ -15,7 +15,7 @@
                 </figure>
         <?php endif; ?>
     <?php endif; ?>
-    <h4 class="news-title news-title__excerpt"><?php the_title(); ?></h4>
+    <h4 class="news-title news-title-excerpt"><?php the_title(); ?></h4>
     <?php if( have_rows('post_building_modules') ):
         while ( have_rows('post_building_modules') ) : the_row();
 
