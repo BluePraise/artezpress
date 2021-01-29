@@ -1,0 +1,118 @@
+.woocommerce-checkout-review-order-table {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    th {
+        display: block;
+    }
+    .cart-subtotal,
+    .order-total,
+    .shipping-checkout {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 2px solid;
+        padding: 10px;
+        font-size: 16px;
+    }
+    .cart-subtotal {
+        border-top: 2px solid;
+    }
+    .back-to-cart {
+        padding: 10px;
+        display: block;
+        font-size: 16px;
+    }
+}
+
+.woocommerce-form-login-toggle {
+    width: 46%;
+    .woocommerce-info {
+        font-size: 16px;
+        border-bottom: 2px solid;
+        padding: 5px 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+form.checkout.woocommerce-checkout {
+    .input-text {
+        border: 0;
+        border-bottom: 2px solid;
+        font-size: 16px;
+        width: 100%;
+        padding: 10px;
+    }
+    ul.woocommerce-error {
+        font-size: 16px;
+        padding-left: 10px;
+    }
+    .woocommerce-billing-fields label,
+    .woocommerce-shipping-fields__field-wrapper label {
+        display: none;
+    }
+    .form-row {
+        margin: 10px 0;
+    }
+    div#customer_details {
+        display: flex;
+        justify-content: space-between;
+        .col-1 {
+            flex: 0 0 48%;
+            padding-right: 2%
+        }
+        .col-2 {
+            flex: 0 0 50%;
+            padding-left: 0%
+        }
+        .select2-container--default {
+            width: 100%;
+            border-bottom: 2px solid !important;
+            padding-bottom: 10px;
+            font-size: 16px;
+        }
+        .select2-container--default span.select2-selection {
+            border-radius: 0 !important;
+            border: 0px !important;
+        }
+        .radio-toggle {
+            text-align: left;
+        }
+        .radio-toggle .woocommerce-form__label {
+            margin-bottom: 0px;
+        }
+        input#ship-to-different-address-checkbox {
+            height: 0;
+        }
+        .shipping_address {
+            margin-top: -20px;
+        }
+        h3#ship-to-different-address,
+        #artez-payment {
+            border-bottom: 2px solid;
+            font-size: 16px;
+            text-align: left;
+        }
+        .radio-toggle {
+            padding: 0px 0 10px;
+        }
+        .radio-toggle>label,
+        li.wc_payment_method {
+            line-height: 3;
+            border-bottom: 2px solid;
+            padding-left: 10px;
+        }
+        .payment_box {
+            font-size: 16px;
+            line-height: 1.4;
+            padding-left: 30px;
+            color: #333;
+            padding-bottom: 20px;
+        }
+        .woocommerce-privacy-policy-text {
+            font-size: 16px;
+            line-height: 1.4;
+            padding-bottom: 20px;
+        }
+    }
+}

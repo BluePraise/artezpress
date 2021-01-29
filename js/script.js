@@ -1,5 +1,40 @@
 jQuery(document).ready(function($) {
 
+    //checkout page shipping address toggle
+
+    jQuery(document).ready(function($) {
+        $('.radio-toggle .input-radio').change(function() {
+            var curval = ($(this).val() === '0') ? true : false;
+            $('#ship-to-different-address-checkbox').prop('checked', curval);
+            $('#ship-to-different-address-checkbox').trigger('click');
+        });
+    });
+
+    // header menu overlap menu fix
+
+    var head_menu = $('header.fixed-bottom');
+    var menuTimeout = null;
+
+    // $(window).on('mousemove', mouseMoveHandler);
+
+    function mouseMoveHandler(e) {
+        if (e.pageX < 20 || head_menu.is(':hover')) {
+            // Show the menu if mouse is within 20 pixels
+            // from the left or we are hovering over it
+            console.log('fire 1');
+            clearTimeout(menuTimeout);
+            menuTimeout = null;
+            $("header.fixed-bottom").css("z-index", 2);
+        } else if (menuTimeout === null) {
+            // Hide the menu if the mouse is further than 20 pixels
+            // from the left and it is not hovering over the menu
+            // and we aren't already scheduled to hide it
+            console.log('fire 2');
+            menuTimeout = setTimeout(function() {
+                $("header.fixed-bottom").css("z-index", 0)
+            }, 000);
+        }
+    }
 
     // cart Quantity JS
 

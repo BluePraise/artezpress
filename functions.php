@@ -483,3 +483,25 @@ function filter_woocommerce_cart_totals_coupon_html($coupon_html, $coupon, $disc
 }
 
 add_filter( 'woocommerce_cart_totals_coupon_html', 'filter_woocommerce_cart_totals_coupon_html', 10, 3 );
+
+remove_action("woocommerce_before_checkout_form", "woocommerce_checkout_coupon_form", 10);
+remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+add_action( 'woocommerce_before_checkout_billing_form', 'woocommerce_checkout_login_form', 10 );
+remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+add_action( 'woocommerce_checkout_order_payment', 'woocommerce_checkout_payment', 20 );
+
+
+add_action("woocommerce_review_order_after_order_total", function(){
+	$out = "<a class='back-to-cart' href='".wc_get_cart_url()."'>Modify Cart</a>";
+	echo $out;
+});
+
+// Hook in
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+
+// Our hooked in function - $fields is passed via the filter!
+function custom_override_checkout_fields( $fields ) {
+unset($fields['order']['order_comments']);
+
+return $fields;
+}

@@ -1,0 +1,89 @@
+/* Clearing ---------------------------------- */
+.group::after,
+.entry-content::after {
+  clear: both;
+  content: "";
+  display: block; }
+
+/****
+*
+* Form Control
+*
+*/
+/*************************
+*
+* WordPress
+*
+*************************/
+figcaption,
+.wp-caption-text {
+  /* color: #6d6d6d;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-top: 1.5rem; */ }
+
+figcaption a,
+.wp-caption-text a {
+  color: inherit; }
+
+blockquote.instagram-media,
+iframe.instagram-media {
+  margin: auto !important; }
+
+/* GALLERIES */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3em 0 3em -0.8em;
+  width: calc(100% + 1.6em); }
+
+.gallery-item {
+  margin: 0.8em 0;
+  padding: 0 0.8em;
+  width: 100%; }
+
+.gallery-caption {
+  display: block;
+  margin-top: 0.8em; }
+
+/* Inputs ------------------------------------ */
+fieldset {
+  border: 0.2rem solid #dcd7ca;
+  padding: 2rem; }
+
+legend {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0 5px; }
+
+label {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 5px 0; }
+
+label.inline,
+input[type="checkbox"] + label {
+  display: inline;
+  font-weight: 400;
+  margin-left: 5px; }
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  margin: 0;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dcd7ca;
+  box-shadow: none;
+  cursor: pointer; }
