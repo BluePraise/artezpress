@@ -34,9 +34,9 @@ if( have_rows('post_building_modules') ):
                 $video_caption  = get_sub_field('video_caption');
                 
                 if ($video_url): ?>
-                    <div class="video-container"><?php echo $video_url; ?>
+                    <div class="video-container news-module-container"><?php echo $video_url; ?>
                     <?php if ($video_caption): ?>
-                        <figcaption class="news-video-caption news-module-container"><?php echo $video_caption; ?></figcaption>
+                        <figcaption class="news-video-caption"><?php echo $video_caption; ?></figcaption>
                     <?php endif; ?>
                     </div>
                 <?php endif; 

@@ -23,12 +23,6 @@
 .justify-center {
     justify-content: center;
 }
-
-.container {
-    max-width: $default-container-width;
-    margin: 60px auto;
-}
-
 .container-xs,
 .post-container,
 .content-container {
@@ -42,9 +36,10 @@
     margin: 0 auto;
 }
 
+// I took off the margin: 3.6rem auto to control
+// margin for the news items
 .container-xl {
     max-width: 161rem;
-    margin: 3.6rem auto;
 }
 
 // aligns all the products in a row of six

@@ -9,7 +9,7 @@
                 <?php get_template_part('inc/templateparts/news', 'thumbnail'); ?>
                 <div class="content-container">
                     <p class="news-date"><?php echo the_date( "d F Y" )?></p>
-                    <h3 class="news-title__single"><?php the_title(); ?></h3>
+                    <h3 class="news-title"><?php the_title(); ?></h3>
                 </div>
                     <div class="news-content__single">
                         <?php get_template_part('blocks/postbuilding/index'); ?>
