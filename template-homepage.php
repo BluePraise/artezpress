@@ -9,7 +9,7 @@
  *
  * Template name: Homepage
  *
- * @package storefront
+ * @package artezpress
  */
 
 get_header(); ?>
@@ -34,7 +34,7 @@ get_header(); ?>
 		</section>
 
 		<section class="featured-books flex-container ">
-			<h2 class="featured-title"><?php _e('Books', 'storefront'); ?></h2>
+			<h2 class="featured-title"><?php _e('Books', 'artezpress'); ?></h2>
 			<div class="full-width products">
     			<?php
         		$args = array(
@@ -52,14 +52,14 @@ get_header(); ?>
 					wp_reset_postdata();
 				?>
 			</div><!--/.products-->
-			<a class="btn black-on-white" href="<?php echo site_url( '/books/'); ?>"><?php _e('See All Books', 'storefront'); ?></a>
+			<a class="btn black-on-white" href="<?php echo site_url( '/books/'); ?>"><?php _e('See All Books', 'artezpress'); ?></a>
 
 		</section><!-- #main -->
 
 		<section class="latest-news container">
 			
-			<h2 class="featured-title"><?php _e('News', 'storefront'); ?></h2>
-			<div class="flex-container news-grid">
+			<h2 class="featured-title"><?php _e('News', 'artezpress'); ?></h2>
+			<div class="flex-container news-grid-masonry">
     			<?php
         		$args = array(
 						'post_type' => 'post',
@@ -72,9 +72,9 @@ get_header(); ?>
 							
 					<?php endwhile; ?>
 						</div><!--/.news-grid-->
-						<a class="btn black-on-white" href="<?php echo esc_url( '/news' ); ?>"><?php _e('See All News', 'storefront'); ?></a>
+						<a class="btn black-on-white" href="<?php echo esc_url( '/news' ); ?>"><?php _e('See All News', 'artezpress'); ?></a>
 					<?php } else {
-						echo __( '<p>Currently there is no news.</p>', 'storefront' ); ?>
+						echo __( '<p>Currently there is no news.</p>', 'artezpress' ); ?>
 						</div><!--/.new-grid-->
 					<?php 
 					}

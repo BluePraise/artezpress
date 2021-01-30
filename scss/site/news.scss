@@ -1,98 +1,182 @@
 // all styling for news grid
 // News grid
 
-.news-item {
-  @media (min-width: 768px) {
-
-    width: calc(50%);
-  }
-
-  @media (max-width: 767px) {
-    width: calc(100%);
-  }
+.container-xl.single-news {
+    margin: 6rem auto;
 }
 
+.news-item {
+    @media (min-width: 768px) {
 
+        width: calc(50%);
+    }
+
+    @media (max-width: 767px) {
+        width: calc(100%);
+    }
+}
 
 // News archive grid
 
 .news .page-title {
-  margin-bottom: 6.4rem;
+    margin-bottom: 6.4rem;
+}
+
+.nav-links {
+    text-align: center;
+}
+
+.page-numbers {
+    margin-right: 30px;
+
+    &.current {
+        color: rgba(0, 0, 0, 0.4);
+    }
 }
 
 /* This should be similiar on all pages that have a page-title */
 
-
-
-// News card
+// News card and excerpt
+// News excerpt snippet can be found in 
+// inc/templateparts/news-excerpt
 
 .news-grid {
-  flex-wrap: wrap;
-  justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
-  .news-item {
+.news-item {
     text-align: left;
     padding-left: 1.6rem;
     padding-right: 1.6rem;
     margin-bottom: 8rem;
-  }
+}
 
-  .news-date {
+.news-date {
     @include smallText;
-    margin-bottom: 2.4rem;
-  }
+    margin-bottom: 4.8rem;
+}
 
-  .news-title {
+.news-date-excerpt {
+    margin-bottom: 3.2rem;
+}
+
+.news-title {
     padding: 0 4rem;
-    margin-bottom: 2.4rem;
-  }
+    margin-bottom: 6rem;
+}
 
-  .news-thumbnail {
+.news-thumbnail {
     padding: 0 2rem;
     margin-bottom: 3.2rem;
-  }
+}
 
-  .news-item-excerpt {
+.news-title-excerpt {
+    margin-bottom: 4rem;
+}
+
+.news-item-excerpt {
     @include smallText;
     text-align: left;
-  }
+    margin-bottom: 3.2rem;
+}
 
-  .news-read-more {
+a.news-read-more {
     @include smallText;
     display: inline-block;
-    margin-top: 2.4rem;
     border-bottom: 1px solid currentColor;
 
     &:hover {
-      opacity: $hoverOpacity;
+        cursor: pointer;
+        opacity: $hoverOpacity;
     }
-  }
-
 }
-
 
 /* single php */
-
-.post-container h3 {
-  margin-top: 48px;
-  margin-bottom: 60px;
+.container.news-item__single {
+    margin: 0 auto;
 }
 
-.post-container .news-thumbnail {
-  margin-bottom: 80px;
+.news-item__single .content-container {
+    padding-bottom: 0;
 }
 
-.back-to-news img {
-  width: 44px;
-  height: 44px;
+.news-item__single .news-thumbnail {
+    margin-bottom: 8rem;
 }
 
-.container.single-news {
-  margin-top: 60px;
+
+// NEWS MODULES
+// all these modules also have a classname which they share:
+// .news-module-container so any common classes can also
+// be set on that class.
+
+.news-content__single .news-text {
+    max-width: 77rem;
+    margin: 2rem auto;
+    padding-bottom: 4rem;
+
+    &:first-child {
+        // this substracts an additional 2rems to the bottom of 
+        // this module. I've left this here in case you wanted to 
+        // try out some new spacinds
+        margin: 0 auto 0rem auto;
+    }
+
+    // all the anchorlinks get an underline
+    a {
+        @include undelineText;
+    }
+
+    // spacing for all the p tags
+    p {
+        margin-bottom: 2.4rem;
+
+        // but not the last child
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
 }
 
-.news-content .post-container p {
-  margin: 20px 0;
+.news-item__single .book-reference {
+    margin-bottom: 8rem;
+
+    figure {
+        margin-bottom: 4rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        max-width: 52.2rem;
+        height: auto;
+
+        img {
+            filter: grayscale(100%);
+            transition: all 400ms ease-in;
+            @include boxShadow;
+        }
+
+        &:hover {
+            img {
+                filter: grayscale(0%);
+            }
+        }
+    }
+
+    h5 {
+        margin-bottom: 4rem;
+    }
+
+}
+
+.video-container {
+    margin: 8rem 0;
+}
+
+.news-video-caption {
+    @include smallText;
+    text-align: center;
+    margin: 2.4rem 0;
 }
 
 /* frontpage php */

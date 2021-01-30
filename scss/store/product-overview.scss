@@ -6,18 +6,26 @@ ul.page-numbers {
     list-style: none;
 }
 
-.products.flex-container {
+.product-display {
     justify-content: space-between;
 }
 
 .products .product,
 .product-display .product {
-    width: 244px;
-    margin-bottom: 64px;
+    // 1076 (container width) / 4 (amount of books) = 269
+    // 269-32 (gutter width) = 237 per book 
+    width: 23.7rem;
+    // if it's rem do we still need the margin-right?
+    margin-right: 3.2rem;
+    margin-bottom: 6.4rem;
+
+    &:last-child {
+        margin-left: 0;
+    }
 }
 
 .related-products .product-display .product {
-    margin-left: 32px;
+    margin-left: 3.2rem;
 }
 
 .related-products .product-display .product:first-child {
@@ -35,86 +43,12 @@ ul.page-numbers {
 }
 
 .woocommerce-loop-product__link h4 {
-    margin-top: 32px;
-    margin-bottom: 32px;
+    margin-top: 3.2rem;
+    margin-bottom: 3.2rem;
 }
 
 .woocommerce-product-gallery__trigger {
     display: none;
-}
-
-h3.single-product-title {
-    margin-bottom: 30px;
-}
-
-.product_meta {
-    margin-top: 100px;
-    margin-bottom: 30px;
-}
-
-.product_meta .flex-container .col_left,
-.product_meta .flex-container .col_right {
-    width: 50%;
-}
-
-.product_meta .flex-container .col_left {
-    margin-right: 54px;
-}
-
-.product_meta .block {
-    margin-bottom: 40px;
-}
-
-.label-header,
-.colophon-value {
-    display: block;
-}
-
-
-.single-product-author {
-    margin-bottom: 36px;
-}
-
-.single-product-author,
-.woocommerce-product-details__short-description p {
-    font-family: 'Lars', Helvetica, Arial, sans-serif;
-    font-size: 2.1rem;
-    line-height: 3rem;
-}
-
-.woocommerce-product-gallery__image a,
-.woocommerce-product-gallery__image a img {
-    display: block;
-}
-
-.woocommerce-product-gallery__image a img {
-    margin: 0 auto;
-}
-
-span.price {
-    position: fixed !important;
-    left: 40px;
-    bottom: 100px;
-    font-weight: 600;
-}
-
-.related-news h5.post-title {
-    margin-bottom: 40px;
-}
-
-
-a.news-read-more {
-    display: inline-block;
-    margin: 40px 0 20px;
-    border-bottom: 1px solid black;
-}
-
-a.news-read-more:hover {
-    cursor: pointer;
-}
-
-.related-news .news-date {
-    margin-bottom: 20px;
 }
 
 .products {

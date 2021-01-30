@@ -34,16 +34,16 @@ if ( $related_products ) : ?>
 			?>
 			<h5 class="section-title"><?php echo esc_html( $heading ); ?></h5>
 		<?php endif; ?>
-		
+			<?php include get_theme_file_path('/inc/filter-tags.php'); ?>
 		<?php woocommerce_product_loop_start(); ?>
-
+		
 			<?php foreach ( $related_products as $related_product ) : ?>
 
 					<?php
 					$post_object = get_post( $related_product->get_id() );
 
 					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
-
+					
 					wc_get_template_part( 'content', 'product' );
 
 
@@ -57,5 +57,4 @@ if ( $related_products ) : ?>
 	</section>
 	<?php
 endif;
-
 wp_reset_postdata();

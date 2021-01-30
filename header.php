@@ -12,7 +12,13 @@
 		?>
 		<style>
 			body.single-product { background-color: <?php echo $single_product_bg; ?>;}
-			body.single-product.artz-white-text .post-container, body.single-product.artz-white-text .related-news, body.single-product.artz-white-text .related-products, body.single-product.artz-white-text h4, body.single-product.artz-white-text .single-product-author, body.single-product.artz-white-text .language-toggle .lang-item a {color: #fff !important;}
+			body.single-product.artz-white-text .post-container, 
+			body.single-product.artz-white-text .related-news, body.single-product.artz-white-text .related-products, 
+			body.single-product.artz-white-text h4, 
+			body.single-product.artz-white-text .single-product-author,
+			body.single-product.artz-white-text .single-product-author,
+			body.single-product.artz-white-text a.news-read-more, 
+			body.single-product.artz-white-text .language-toggle .lang-item a {color: #fff !important;}
 			body.single-product.artz-white-text .white-on-black {
 				color: #000 !important;
 				background: #fff !important;
@@ -79,8 +85,6 @@
 							<form class="cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', get_permalink($related_product_ID) ) ); ?>" method="post" enctype='multipart/form-data'>
 								<button type="submit" name="add-to-cart" value="<?php echo $related_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo $language; ?></span><?php echo $related_price; ?></button>
 							</form>		
-							<?php else: ?>
-								<span class="btn white-on-black"><?php _e('Out of Print', 'storefront'); ?>/span>
 							<?php endif; ?>
 
 						<?php endforeach;?>
@@ -92,7 +96,7 @@
 						<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $the_product_ID ); ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo $language; ?></span><?php echo $product_price; ?></button>
 					</form>	
 					<?php else: ?>
-						<span class="btn white-on-black">O<?php _e('Out of Print', 'storefront'); ?></span>
+						<span class="btn white-on-black"><?php _e('Out of Print', 'artezpress'); ?></span>
 					<?php endif; ?>								
 					<?php wp_reset_query(); ?>	
 				</div> <!-- .end of block__price -->
@@ -110,8 +114,10 @@
 					}
 					
 					else { ?>
-								<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
-								<span class="cart-label"><?php _e('Cart', 'storefront'); ?></span>
+							
+				<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
+
+					<span class="cart-label"><?php _e('Cart', 'artezpress'); ?></span>
 
 					<?php 
 						global $woocommerce;

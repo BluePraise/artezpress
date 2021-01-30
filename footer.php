@@ -17,7 +17,7 @@
 				<div class="flex-container">
                 	<?php get_template_part('inc/templateparts/language', 'toggle'); ?>	
 					<a class="btn white-on-black" href="<?php echo wc_get_cart_url(); ?>">
-						<span class="cart-label"><?php _e('Cart', 'storefront'); ?></span>
+						<span class="cart-label"><?php _e('Cart', 'artezpress'); ?></span>
 						<span class="cart-counter"></span>
 					</a>
 				</div>

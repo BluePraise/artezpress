@@ -14,6 +14,6 @@ gulpfile-min.js
 package-lock.json
 js/waypoints.debug.js
 *.map
-assets/css/app.css.map
-assets/css/app.css
+app.css.map
+app.css
 js/script-min.js

@@ -7,5 +7,21 @@
 }
 
 .featured-title {
-    margin-bottom: 64px;
+    margin-bottom: 6.4rem;
+}
+
+.section-title {
+    display: block;
+    margin-bottom: 4rem;
+}
+
+// used in news single
+// used in book single
+a.go-back {
+    display: block;
+
+    img {
+        width: 4.4rem;
+        height: 4.4rem;
+    }
 }

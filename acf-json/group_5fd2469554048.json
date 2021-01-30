@@ -86,6 +86,26 @@
                     }
                 }
             ]
+        },
+        {
+            "key": "field_60154d1865a00",
+            "label": "Display Availability Block",
+            "name": "display_availability_block",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Also available in the Dutch edition In en uit de mode and in an English ebook",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0,
+            "translations": "translate"
         }
     ],
     "location": [
@@ -118,5 +138,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1608145058
+    "modified": 1612008831
 }

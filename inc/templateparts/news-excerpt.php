@@ -1,5 +1,8 @@
+<?php if(!is_singular()): ?>
+    <div class="grid-sizer"></div>
+<?php endif; ?>
 <div class="news-item">
-    <div class="news-date"><?php echo the_date( "d F Y" )?></div>
+    <div class="news-date-excerpt"><?php echo the_date( "d F Y" )?></div>
     <?php if( has_post_thumbnail() ): 
             $tn_id      = get_post_thumbnail_id( $post->ID );
             $imgmeta    = wp_get_attachment_metadata( $tn_id );
@@ -15,7 +18,7 @@
                 </figure>
         <?php endif; ?>
     <?php endif; ?>
-    <h4 class="news-title"><?php the_title(); ?></h4>
+    <h4 class="news-title news-title-excerpt"><?php the_title(); ?></h4>
     <?php if( have_rows('post_building_modules') ):
         while ( have_rows('post_building_modules') ) : the_row();
 
@@ -29,7 +32,7 @@
                     $clean_excerpt = apply_filters('the_excerpt', $trimmed_content);
 
                     // needs a custom class .news-item-excerpt
-                    echo '<p class="news-item-excerpt">'. $clean_excerpt .'</p>';
+                    echo '<p class="news-item-excerpt">'. $trimmed_content .'</p>';
                 
                 endif;
             endif;
@@ -38,7 +41,7 @@
     ?>
 
 
-    <a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">Read More</a>
+    <a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link"><?php _e('Read More', 'artezpress');?></a>
 </div>
 
 

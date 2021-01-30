@@ -21,8 +21,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 ?>
-<div class="product_meta">
-	<h5 class="section-title"><?php _e('Colophon and Specs'); ?></h5>
+<div class="book-item-meta product_meta">
+	<h5 class="section-title"><?php _e('Colophon and Specifications'); ?></h5>
 
 	<?php do_action( 'woocommerce_product_meta_start' ); ?>
 	<?php
@@ -174,8 +174,9 @@ global $product;
 			<?php endif; ?>
 			
 			<div class="block">
-				<span class="label-header"><?php esc_html_e('Paper Stocks'); ?></span>
-				<?php if( have_rows('paper_type') ) : while( have_rows('paper_type') ) : the_row(); ?>	
+				<?php if( have_rows('paper_type') ): ?>
+					<span class="label-header"><?php esc_html_e('Paper Stocks'); ?></span>
+				<?php while( have_rows('paper_type') ) : the_row(); ?>	
 					<?php $paper_stock = get_sub_field('paper_stock'); ?>
 					<span class="colophon-value"><?php echo $paper_stock; ?></span>
 				<?php endwhile; endif; ?>
