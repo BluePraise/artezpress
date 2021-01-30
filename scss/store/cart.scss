@@ -4,13 +4,16 @@
     margin-bottom: 30px;
     padding-bottom: 30px;
     border-bottom: 2px solid $black;
+
     .product-thumbnail {
         margin-right: 25px;
         flex-basis: 125px;
     }
+
     .product-thumbnail img {
         width: 125px;
     }
+
     .quantity input {
         width: 25px;
         border: none;
@@ -18,26 +21,31 @@
         text-align: center;
         background: transparent;
     }
+
     .quantity input::-webkit-outer-spin-button,
     .quantity input::-webkit-inner-spin-button {
         display: none;
         margin: 0;
     }
+
     .quantity input.qty {
         appearance: textfield;
         -webkit-appearance: none;
         -moz-appearance: textfield;
     }
+
     .product-remove .label-remove {
         @include smallText;
     }
+
     .flex-col {
         text-align: right;
-        flex: 0 0 130px;
+        flex: 0 0 13rem;
     }
+
     .product-quantity {
         margin-left: auto;
-        flex: 0 0 120px;
+        flex: 0 0 12rem;
         text-align: right;
     }
 }
@@ -46,63 +54,78 @@
     .cart_totals .shop_table.shop_table_responsive {
         width: 100%;
         border-bottom: 2px solid;
-        padding-bottom: 20px;
+        padding-bottom: 2rem;
     }
+
     .cart-subtotal {
         display: flex;
         justify-content: space-between;
     }
+
     .update-cart {
         margin-left: auto;
-        flex: 0 0 125px;
+        flex: 0 0 15.5rem;
     }
+
     .subtotal-value {
-        flex: 0 0 80px;
+        flex: 0 0 8rem;
         text-align: right;
     }
+
     .order-total {
         display: flex;
         justify-content: space-between;
         margin-top: 20px;
     }
+
     button.button.update-cart:disabled {
         opacity: 0.6;
     }
+
     button.button.update-cart {
         background: transparent;
         border: 0;
+        @include smallText;
     }
+
     .coupon {
         display: flex;
         justify-content: flex-start;
         margin-top: 40px;
     }
+
     input#coupon_code {
         border-width: 0;
         font-size: 16px;
         padding: 10px;
     }
+
     .coupon-apply {
         background: transparent;
         border: 0;
         font-size: 17px;
     }
+
     .coupon-help {
         font-size: 14px;
         flex: 0 0 200px;
         line-height: 1.5;
     }
+
     .coupon_code_area {
         border-bottom: 1px solid;
         margin-right: 25px;
     }
+
     .cart-discount {
         display: flex;
         justify-content: space-between;
     }
+
     .cart-discount>div:nth-child(2) {
         text-align: right;
     }
+
     a.woocommerce-remove-coupon {
         display: block;
         font: 400 1.7rem/2.3rem 'Lars', Helvetica, Arial, sans-serif;

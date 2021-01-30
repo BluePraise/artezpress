@@ -18,7 +18,7 @@
 defined( 'ABSPATH' ) || exit;
 
 do_action( 'woocommerce_before_cart' ); ?>
-
+<div class="container">
 <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 	<?php do_action( 'woocommerce_before_cart_table' ); ?>
 
@@ -140,9 +140,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				?>
 			</div>
 			
-		
-				
-
+	
 					<?php if ( wc_coupons_enabled() ) { ?>
 						<div class="coupon">
 							<div class="coupon_code_area">
@@ -150,7 +148,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 							<input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Have a discount code?', 'woocommerce' ); ?>" /> <button type="submit" class="button coupon-apply" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Enter', 'woocommerce' ); ?></button>
 							<?php do_action( 'woocommerce_cart_coupon' ); ?>
 						</div>
-						<div class="coupon-help"> ArtEZ students and staffare eligible for a discount</div>
+						<div class="coupon-help"><?php _e('ArtEZ students and staffare eligible for a discount.', 'artezpress'); ?></div>
 						</div>
 					<?php } ?>
 
@@ -166,5 +164,5 @@ do_action( 'woocommerce_before_cart' ); ?>
 	<?php do_action( 'woocommerce_after_cart_table' ); ?>
 </form>
 
-
+</div>
 <?php do_action( 'woocommerce_after_cart' ); ?>
