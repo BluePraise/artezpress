@@ -1,4 +1,4 @@
-<a class="back-to-news" href="<?php echo site_url("/news"); ?>" role="link">
+<a class="go-back" href="<?php echo site_url("/news"); ?>" role="link">
     <img src="<?php echo get_stylesheet_directory_uri( ) ?>/assets/icons/btn_close.svg" alt="Close article and go back to news">
 </a>
 <article class="container news-item__single">

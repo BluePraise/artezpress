@@ -24,6 +24,8 @@ $language 	 	 		= get_field('language');
 $description 	 		= get_field('description');
 $additional_editions	= get_field('additional_editions');
 $type_of_edition 		= $additional_editions['type_of_edition'];
+$available 				= get_field('display_availability_block');
+$book_item_subtitle 	= get_field('book_item_subtitle');
 
 /**
  * Hook: woocommerce_before_single_product.
@@ -38,10 +40,17 @@ if (post_password_required()) {
 }
 ?>
 <main id="product-<?php the_ID(); ?>" <?php wc_product_class('container', $product); ?>>
-
+	<?php get_template_part('inc/templateparts/go', 'back'); ?>
 	<?php woocommerce_show_product_images(); ?>
-	<div class="post-container">
-		<h3 class="single-product-title"><?php the_title(); ?></h3>
+	<div class="post-container book-item__single">
+		<?php if ($available): ?>
+			<div class="book-item-available"><?php echo $available; ?></div>
+		<?php endif ?>
+		<h3 class="book-item-title"><?php the_title(); ?>
+		<?php if ($book_item_subtitle): ?>
+			<span class="book-item-subtitle"><?php echo $book_item_subtitle; ?></span>
+		<?php endif ?>	
+		</h3>
 		<div class="summary entry-summary">
 			<?php
 			/**
@@ -58,8 +67,8 @@ if (post_password_required()) {
 			 */
 
 			?>
-			<p class="single-product-author">By <?php echo $author ?></p>
-			<div class="single-product-description">
+			<p class="book-item-author"><?php _e('By ', 'artezpres') ?><?php echo $author ?></p>
+			<div class="book-item-description">
 				<?php echo $description; ?>
 			</div>
 				
