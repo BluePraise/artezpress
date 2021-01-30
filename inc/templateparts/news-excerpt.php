@@ -2,7 +2,7 @@
     <div class="grid-sizer"></div>
 <?php endif; ?>
 <div class="news-item">
-    <div class="news-date"><?php echo the_date( "d F Y" )?></div>
+    <div class="news-date-excerpt"><?php echo the_date( "d F Y" )?></div>
     <?php if( has_post_thumbnail() ): 
             $tn_id      = get_post_thumbnail_id( $post->ID );
             $imgmeta    = wp_get_attachment_metadata( $tn_id );

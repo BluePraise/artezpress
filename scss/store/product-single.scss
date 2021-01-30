@@ -35,6 +35,7 @@
 }
 
 .book-item-author {
+    @include smallText;
     margin-bottom: 4rem;
 }
 
