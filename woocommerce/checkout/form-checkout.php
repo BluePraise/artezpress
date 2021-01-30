@@ -23,11 +23,11 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
 
 if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
 
-	<h3><?php esc_html_e( 'Billing &amp; Shipping', 'artezpress' ); ?></h3>
+	<h3><?php esc_html_e( 'Billing and Shipping', 'artezpress' ); ?></h3>
 
 <?php else : ?>
 
-	<h3><?php esc_html_e( 'Billing &amp Shipping', 'artezpress' ); ?></h3>
+	<h3><?php esc_html_e( 'Billing and Shipping', 'artezpress' ); ?></h3>
 
 <?php endif; 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
