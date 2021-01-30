@@ -92,7 +92,7 @@ if (post_password_required()) {
 					// get the "news snippet" as amir calls it.
 					get_template_part('inc/templateparts/news', 'excerpt'); ?>
 				<?php endforeach; ?>
-				</div>
+			</div>
 				<?php 
 				// Reset the global post object so that the rest of the page works correctly.
 				wp_reset_postdata(); ?>

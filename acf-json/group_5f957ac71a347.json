@@ -35,14 +35,14 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_permissions": "",
             "default_value": "",
             "placeholder": "",
             "prepend": "",
             "append": "p.",
             "min": "",
             "max": "",
-            "step": ""
+            "step": "",
+            "translations": "sync"
         },
         {
             "key": "field_5f7adcba844cb",
@@ -364,5 +364,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1608145857
+    "modified": 1612012787
 }

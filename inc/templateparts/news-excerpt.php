@@ -1,4 +1,6 @@
-<div class="grid-sizer"></div>
+<?php if(!is_singular()): ?>
+    <div class="grid-sizer"></div>
+<?php endif; ?>
 <div class="news-item">
     <div class="news-date"><?php echo the_date( "d F Y" )?></div>
     <?php if( has_post_thumbnail() ): 

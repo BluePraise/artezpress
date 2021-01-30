@@ -130,7 +130,7 @@ jQuery(document).ready(function($) {
         lazyLoad: true,
     });
 
-    $(".news-grid").masonry({
+    $(".news-grid-masonry").masonry({
         // options
         itemSelector: ".news-item",
     });

@@ -59,7 +59,7 @@ get_header(); ?>
 		<section class="latest-news container">
 			
 			<h2 class="featured-title"><?php _e('News', 'storefront'); ?></h2>
-			<div class="flex-container news-grid">
+			<div class="flex-container news-grid-masonry">
     			<?php
         		$args = array(
 						'post_type' => 'post',
