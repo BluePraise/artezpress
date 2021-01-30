@@ -75,3 +75,14 @@ button,
 input::placeholder {
     font-family: 'lars';
 }
+
+input[type=text],
+input[type=password] {
+    height: 45px;
+    background: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: $border;
+    font-family: $default-font;
+}

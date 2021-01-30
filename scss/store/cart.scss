@@ -1,3 +1,42 @@
+/****
+* SHARED STYLING FOR ALL THE CART AND CHECKOUT
+**/
+// this class is used with the 
+// flexcontainer .col_left and right
+.woocommerce-checkout-container .col_left {
+    padding-right: 3.2rem;
+}
+
+.woocommerce-form__label-for-checkbox input[type="checkbox"].woocommerce-form__input-checkbox {
+    width: 1.3rem;
+    min-width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 30px;
+    border: 1px solid black;
+}
+
+.form-row {
+    display: table;
+    width: 100%;
+
+    .woocommerce-form__label-for-checkbox {
+        display: table-row;
+
+        .woocommerce-form__input-checkbox {
+            margin-right: 1rem;
+
+        }
+
+        .woocommerce-terms-and-conditions-checkbox-text {
+            display: table-cell;
+        }
+    }
+}
+
+/****
+* END OF SHARED STYLING
+**/
+
 .shop_table .woocommerce-cart-form__cart-item {
     display: flex;
     justify-content: space-between;

@@ -55,8 +55,8 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
-		<div class="col2-set" id="customer_details">
-			<div class="col-1">
+		<div class="flex-container woocommerce-checkout-container" id="customer_details">
+			<div class="col_left">
 				<?php do_action( 'woocommerce_checkout_billing' ); ?>
 				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
 			</div>
@@ -67,7 +67,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 	<?php endif; ?>
 
-	<div class="col-2">
+	<div class="col_right">
 	<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
 	
 			<div class="shipping-checkout">

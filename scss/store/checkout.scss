@@ -2,9 +2,11 @@
     width: 100%;
     margin-top: 30px;
     margin-bottom: 30px;
+
     th {
         display: block;
     }
+
     .cart-subtotal,
     .order-total,
     .shipping-checkout {
@@ -14,9 +16,11 @@
         padding: 10px;
         font-size: 16px;
     }
+
     .cart-subtotal {
         border-top: 2px solid;
     }
+
     .back-to-cart {
         padding: 10px;
         display: block;
@@ -24,21 +28,18 @@
     }
 }
 
-.woocommerce-form-login-toggle {
-    width: 46%;
-    .woocommerce-info {
-        font-size: 16px;
-        border-bottom: 2px solid;
-        padding: 5px 10px;
-        display: flex;
-        justify-content: space-between;
-    }
+.woocommerce-form-login-toggle .woocommerce-info {    
+    @include smallText;
+    border-bottom: 2px solid;
+    padding: 0.5rem 1rem;
+
 }
 
 form.checkout.woocommerce-checkout {
     .input-text::placeholder {
         font-family: $default-font;
     }
+
     .input-text {
         font-family: $default-font;
         border: 0;
@@ -47,50 +48,51 @@ form.checkout.woocommerce-checkout {
         width: 100%;
         padding: 10px;
     }
+
     ul.woocommerce-error {
         font-size: 16px;
         padding-left: 10px;
     }
+
     .woocommerce-billing-fields label,
     .woocommerce-shipping-fields__field-wrapper label {
         display: none;
     }
+
     .form-row {
         margin: 10px 0;
     }
+
     div#customer_details {
-        display: flex;
-        justify-content: space-between;
-        .col-1 {
-            flex: 0 0 48%;
-            padding-right: 2%
-        }
-        .col-2 {
-            flex: 0 0 50%;
-            padding-left: 0%
-        }
+
         .select2-container--default {
             width: 100%;
             border-bottom: 2px solid !important;
             padding-bottom: 10px;
             font-size: 16px;
         }
+
         .select2-container--default span.select2-selection {
             border-radius: 0 !important;
             border: 0px !important;
         }
+
         .radio-toggle {
             text-align: left;
         }
+
         .radio-toggle .woocommerce-form__label {
             margin-bottom: 0px;
         }
+
         input#ship-to-different-address-checkbox {
             height: 0;
         }
+
         .shipping_address {
             margin-top: -20px;
         }
+
         h3#ship-to-different-address,
         #artez-payment,
         #artez-delivery {
@@ -98,15 +100,18 @@ form.checkout.woocommerce-checkout {
             font-size: 16px;
             text-align: left;
         }
+
         .radio-toggle {
             padding: 0px 0 10px;
         }
+
         .radio-toggle>label,
         li.wc_payment_method {
             line-height: 3;
             border-bottom: 2px solid;
             padding-left: 10px;
         }
+
         .payment_box {
             font-size: 16px;
             line-height: 1.4;
@@ -114,34 +119,48 @@ form.checkout.woocommerce-checkout {
             color: #333;
             padding-bottom: 20px;
         }
+
+        .woocommerce-terms-and-conditions-checkbox-text,
         .woocommerce-privacy-policy-text {
-            font-size: 16px;
-            line-height: 1.4;
-            padding-bottom: 20px;
+            @include smallText;
+            padding-bottom: 2rem;
         }
+
         ul#shipping_method {
-            margin-bottom: 18px;
+            margin-bottom: 1.8rem;
         }
+
         ul#shipping_method>li {
             display: flex;
-            margin-top: 20px;
+            margin-top: 2rem;
             line-height: 0.9;
         }
+
         ul#shipping_method>li input {
             margin-right: 10px;
         }
+
         ul#shipping_method>li>label {
             display: flex;
             justify-content: space-between;
             width: 100%;
         }
-        input[type=checkbox]:checked:after {
-            content: '\2714';
-            font-size: 35px;
-            position: absolute;
-            top: 0px;
-            left: 3px;
-            color: #141415;
+
+        input[type=checkbox] {
+            width: 1.3rem;
+            min-width: 1.3rem;
+            height: 1.3rem;
+            border-radius: 30px;
+            border: 1px solid black;
+
+            &:checked:after {
+                content: '\2714';
+                font-size: 3.5rem;
+                position: absolute;
+                top: 0px;
+                left: 3px;
+                color: #141415;
+            }
         }
     }
 }
