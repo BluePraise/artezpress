@@ -40,7 +40,9 @@ if (post_password_required()) {
 }
 ?>
 <main id="product-<?php the_ID(); ?>" <?php wc_product_class('container', $product); ?>>
-	<?php get_template_part('inc/templateparts/go', 'back'); ?>
+	<a class="go-back" href="<?php echo site_url("/books"); ?>" role="link">
+		<img src="<?php echo get_stylesheet_directory_uri( ) ?>/assets/icons/btn_close.svg" alt="Close article and go back to books">
+	</a>
 	<?php woocommerce_show_product_images(); ?>
 	<div class="post-container book-item__single">
 		<?php if ($available): ?>

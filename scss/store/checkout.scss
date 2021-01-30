@@ -28,7 +28,7 @@
     }
 }
 
-.woocommerce-form-login-toggle .woocommerce-info {    
+.woocommerce-form-login-toggle .woocommerce-info {
     @include smallText;
     border-bottom: 2px solid;
     padding: 0.5rem 1rem;
@@ -36,18 +36,6 @@
 }
 
 form.checkout.woocommerce-checkout {
-    .input-text::placeholder {
-        font-family: $default-font;
-    }
-
-    .input-text {
-        font-family: $default-font;
-        border: 0;
-        border-bottom: 2px solid;
-        font-size: 16px;
-        width: 100%;
-        padding: 10px;
-    }
 
     ul.woocommerce-error {
         font-size: 16px;
@@ -162,5 +150,30 @@ form.checkout.woocommerce-checkout {
                 color: #141415;
             }
         }
+    }
+}
+
+//login form
+
+.woocommerce-form-login .form-row-ap {
+    width: 50%;
+    justify-content: space-between;
+    margin: 1rem 1rem 0 1rem;
+    padding-right: 3.2rem;
+    padding-right: 4rem;
+
+    .woocommerce-form__label-for-checkbox input[type=checkbox] {
+        margin-right: 10px;
+    }
+}
+
+
+.lost_password {
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+
+    a {
+        @include microText;
+        color: #767676;
     }
 }

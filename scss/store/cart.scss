@@ -3,7 +3,7 @@
 **/
 // this class is used with the 
 // flexcontainer .col_left and right
-.woocommerce-checkout-container .col_left {
+.woocommerce .flex-container .col_left {
     padding-right: 3.2rem;
 }
 
@@ -13,6 +13,29 @@
     height: 1.3rem;
     border-radius: 30px;
     border: 1px solid black;
+}
+
+.woocommerce input[type=datetime],
+.woocommerce input[type=datetime-local],
+.woocommerce input[type=date],
+.woocommerce input[type=month],
+.woocommerce input[type=time],
+.woocommerce input[type=week],
+.woocommerce input[type=number],
+.woocommerce input[type=url],
+.woocommerce input[type=tel],
+.woocommerce input[type=email],
+.woocommerce input[type=search],
+.woocommerce input[type=tel],
+.woocommerce input[type=color],
+.woocommerce input[type=file],
+.woocommerce input[type=text],
+.woocommerce input[type=password],
+.woocommerce textarea {
+    order: 0;
+    border-bottom: 2px solid;
+    width: 100%;
+    padding: 1rem;
 }
 
 .form-row {
@@ -31,6 +54,18 @@
             display: table-cell;
         }
     }
+}
+
+.woocommerce-ap-custom label {
+    display: none;
+}
+
+.woocommerce-ap-custom.form-title {
+    margin: 10px 0;
+    @include smallText;
+    border-bottom: 2px solid;
+    width: 100%;
+    padding: 1rem;
 }
 
 /****
@@ -130,24 +165,24 @@
     .coupon {
         display: flex;
         justify-content: flex-start;
-        margin-top: 40px;
+        margin-top: 4rem;
     }
 
     input#coupon_code {
         border-width: 0;
-        font-size: 16px;
         padding: 10px;
+        width: 82%;
     }
 
     .coupon-apply {
         background: transparent;
         border: 0;
-        font-size: 17px;
+        @include smallText;
     }
 
     .coupon-help {
-        font-size: 14px;
-        flex: 0 0 200px;
+        @include microText;
+        flex: 0 0 20rem;
         line-height: 1.5;
     }
 
