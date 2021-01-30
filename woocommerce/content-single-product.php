@@ -75,7 +75,8 @@ if (post_password_required()) {
 			<?php woocommerce_template_single_meta(); ?>
 
 
-					
+		</div><!-- .end of summary -->
+	</div><!-- .end of .post-container -->
 	<section class="related-news">
 		<h5 class="section-title"><?php _e('Related News', 'storefront'); ?></h5>
 		<?php
