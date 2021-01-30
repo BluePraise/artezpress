@@ -36,7 +36,11 @@
 }
 
 form.checkout.woocommerce-checkout {
+    .input-text::placeholder {
+        font-family: $default-font;
+    }
     .input-text {
+        font-family: $default-font;
         border: 0;
         border-bottom: 2px solid;
         font-size: 16px;
@@ -88,7 +92,8 @@ form.checkout.woocommerce-checkout {
             margin-top: -20px;
         }
         h3#ship-to-different-address,
-        #artez-payment {
+        #artez-payment,
+        #artez-delivery {
             border-bottom: 2px solid;
             font-size: 16px;
             text-align: left;
@@ -113,6 +118,30 @@ form.checkout.woocommerce-checkout {
             font-size: 16px;
             line-height: 1.4;
             padding-bottom: 20px;
+        }
+        ul#shipping_method {
+            margin-bottom: 18px;
+        }
+        ul#shipping_method>li {
+            display: flex;
+            margin-top: 20px;
+            line-height: 0.9;
+        }
+        ul#shipping_method>li input {
+            margin-right: 10px;
+        }
+        ul#shipping_method>li>label {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        input[type=checkbox]:checked:after {
+            content: '\2714';
+            font-size: 35px;
+            position: absolute;
+            top: 0px;
+            left: 3px;
+            color: #141415;
         }
     }
 }

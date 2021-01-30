@@ -64,15 +64,24 @@ defined( 'ABSPATH' ) || exit;
 			</div>
 		<?php endforeach; ?>
 
-		<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
-			<div class="shipping-checkout">
-			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
+		<?php $rate_table = array();
 
-			<?php wc_cart_totals_shipping_html(); ?>
+			$shipping_methods =WC()->shipping->get_packages();
 
-			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
+			foreach($shipping_methods as $shipping_method){
+				
+				foreach($shipping_method["rates"] as $key=>$val){		 
+						$rate_table[$key]= $val;
+				}	
+			}
+			//var_dump($rate_table);
+				
+			$shipping_price = $rate_table[WC()->session->get( 'chosen_shipping_methods' )[0]]->cost;
+		?>
+		<div class="order-total">
+			<div><?php esc_html_e( 'Shipping', 'woocommerce' ); ?></div>
+			<div><?php echo wc_price($shipping_price); ?></div>
 		</div>
-		<?php endif; ?>
 
 		<?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
 			<div class="fee">
