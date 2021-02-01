@@ -1,6 +1,7 @@
 // SCSS which Product Single and Overview have in common
-
-
+.book-item-author {
+    @include smallText;
+}
 .label-header,
 .colophon-value {
     display: block;

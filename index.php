@@ -10,8 +10,9 @@
             
         endif; ?>
     </div>
-    <?php the_posts_pagination();?>
+    <?php //the_posts_pagination();?>
 </main>
 
 
 <?php get_footer(); ?>
+s

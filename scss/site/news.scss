@@ -53,11 +53,11 @@
 }
 
 .news-date {
-    @include smallText;
     margin-bottom: 4.8rem;
 }
 
 .news-date-excerpt {
+    @include smallText;
     margin-bottom: 3.2rem;
 }
 
@@ -78,13 +78,13 @@
 .news-item-excerpt {
     @include smallText;
     text-align: left;
-    margin-bottom: 3.2rem;
 }
 
 a.news-read-more {
     @include smallText;
     display: inline-block;
     border-bottom: 1px solid currentColor;
+    margin-top: 3.2rem;
 
     &:hover {
         cursor: pointer;

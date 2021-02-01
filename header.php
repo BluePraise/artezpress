@@ -11,6 +11,9 @@
 		$single_product_text_color = get_field('text_color', $id);
 		?>
 		<style>
+			:root {
+				--text-color: <?php echo $single_product_text_color; ?>;
+			}
 			body.single-product { background-color: <?php echo $single_product_bg; ?>;}
 			body.single-product.artz-white-text .post-container, 
 			body.single-product.artz-white-text .related-news, body.single-product.artz-white-text .related-products, 

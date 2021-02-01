@@ -45,8 +45,18 @@
         width: 100%;
         display: inline-flex;
         flex-direction: row;
-        justify-content: space-between;
         margin-bottom: 4rem;
+        .product {
+            // anything else big
+            @media screen and (min-width: 992px) {
+                width: calc(100% / 6 - 3.2rem);
+                margin-right: 3.2rem;
+                &:last-child {
+                    margin-right: 0;
+                }
+            } 
+        }
+
     }
 
     .btn.btn-reg {
