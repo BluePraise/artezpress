@@ -78,6 +78,7 @@ const fetchPosts = ({
         // HTML template for a post
         const postTemplate = (post) => {
             let p_src = post._embedded['wp:featuredmedia'];
+            let acf_src = post.acf.post_building_modules;
 
             if (typeof(p_src) != "undefined") {
                 var width = parseInt(post._embedded['wp:featuredmedia'][0]['media_details']['width']);
@@ -92,6 +93,13 @@ const fetchPosts = ({
                 var featured_img = '';
             }
 
+            if (acf_src != null) {
+                var news_cotent = acf_src[0].news_content;
+            } else {
+                var news_cotent = "";
+            }
+
+
             post.feat_img = featured_img;
 
             return `
@@ -99,7 +107,7 @@ const fetchPosts = ({
             <div class="news-date-excerpt">${formatDate(post.date)}</div>
             <figure class="news-thumbnail">    ${post.feat_img} </figure>
              <h4 class="news-title news-title-excerpt">${post.title.rendered}</h4> 
-              <p class="news-item-excerpt">${post.excerpt.rendered.replace(/<[^>]*>?/gm, '')}</p>
+              <p class="news-item-excerpt">${news_cotent.replace(/<[^>]*>?/gm, '')}</p>
               <a class="news-read-more" href="${post.link}" title="${post.title.rendered}" role="link">Read More</a>
             </div>`;
         };
