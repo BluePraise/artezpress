@@ -1,3 +1,15 @@
+jQuery(window).on('load', function() {
+    var $ = jQuery;
+    var $container = $('.news-grid-masonry');
+    // initialize Masonry after all images have loaded  
+    $container.imagesLoaded(function() {
+        $container.masonry({
+            itemSelector: ".news-item"
+        });
+    });
+
+});
+
 jQuery(document).ready(function($) {
 
     //checkout page shipping address toggle
@@ -165,10 +177,6 @@ jQuery(document).ready(function($) {
         lazyLoad: true,
     });
 
-    $(".news-grid-masonry").masonry({
-        // options
-        itemSelector: ".news-item",
-    });
 
     $(".wp-end-of-page").waypoint({
         // element: document.getElementById("basic-waypoint"),
