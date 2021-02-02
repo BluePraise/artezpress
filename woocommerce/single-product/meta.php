@@ -150,14 +150,14 @@ global $product;
 				<div class="block">
 
 					<span class="label-header"><?php esc_html_e('Illustrations'); ?></span>
-					<span>ca. <?php echo $illustration['amount']; ?> 
+					<span>Ca. <?php echo $illustration['amount']; ?> 
 					<span>
 						<?php 
 							if (count($choices) > 2 ) :
 								foreach( $choices as $choice ):
 						?>	
-									<span><?php echo $choice; ?></span>
-								<?php endforeach; else: ?>	
+							<span><?php echo $choice; ?></span>
+							<?php endforeach; else: ?>	
 								<span><?php esc_html_e('b/w and colour');?> </span>
 						<?php endif; ?>	
 						
