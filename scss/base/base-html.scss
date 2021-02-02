@@ -70,3 +70,8 @@ ul li a {
 em {
     font-style: italic;
 }
+
+button,
+input::placeholder {
+    font-family: 'lars';
+}
