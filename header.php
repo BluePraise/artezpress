@@ -72,8 +72,9 @@
 				$language 				= get_post_meta($the_product_ID, 'language', true);
 				// get related editions from acf
 				$additional_editions 	= get_field('additional_editions', $the_product_ID);
-				$type_of_edition 		= $additional_editions['type_of_edition'];
-
+				if ($additional_editions):
+					$type_of_edition 		= $additional_editions['type_of_edition'];
+				endif;	
 				// show additional edition if there is one
 				if ($additional_editions): 
 					$related		 = $additional_editions['related_edition']; 
@@ -120,7 +121,7 @@
 							
 				<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
 
-					<span class="cart-label"><?php _e('Cart', 'artezpress'); ?></span>
+					<span class="cart-label"><?php _e('Shop', 'artezpress'); ?></span>
 
 					<?php 
 						global $woocommerce;

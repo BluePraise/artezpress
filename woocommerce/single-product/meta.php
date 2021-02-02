@@ -31,6 +31,7 @@ global $product;
 	$publishing_year = get_field('publishing_year');
 	$language    	 = get_field('language');
 	$authors 		 = get_field('author');
+	$copublisher	 = get_field('co_publishers');
 	$editions 		 = get_field('additional_editions');
 
 	$design    		 = get_field('design');
@@ -87,33 +88,30 @@ global $product;
 			</div>
 
 
-			<?php if ($design['designer']) : ?>
+			<?php if ($design) : ?>
 
 				<div class="block">
 					<span class="label-header"><?php esc_html_e('Design'); ?></span>
-					<span><?php echo $design['designer']; ?></span>
+					<span><?php echo $design; ?></span>
 				</div>
 
 			<?php endif; ?>
 
-			<?php if ($design['photography']) : ?>
+			<?php if ($photography) : ?>
 
 				<div class="block">
 					<span class="label-header"><?php esc_html_e('Photography'); ?></span>
-					<span><?php echo $design['photography']; ?></span>
+					<span><?php echo $photography; ?></span>
 				</div>
 
 			<?php endif; ?>
-			<?php if ($design['photography']) : ?>
+			<?php if ($copublisher) : ?>
 
 				<div class="block">
-					<span class="label-header"><?php esc_html_e('Photography'); ?></span>
-					<span><?php echo $design['photography']; ?></span>
+					<span class="label-header"><?php esc_html_e('Co-Publishers'); ?></span>
+					<span><?php echo $copublisher; ?></span>
 				</div>
-
 			<?php endif; ?>
-
-
 
 		</div><?php // END OF .COL_LEFT 
 				?>

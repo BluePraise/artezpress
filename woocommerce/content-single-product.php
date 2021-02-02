@@ -19,13 +19,15 @@
 defined('ABSPATH') || exit;
 
 global $product, $post;
+$book_item_subtitle 	= get_field('book_item_subtitle');
+$description 	 		= get_field('book_item_description');
 $author 	 	 		= get_field('author');
 $language 	 	 		= get_field('language');
-$description 	 		= get_field('description');
 $additional_editions	= get_field('additional_editions');
-$type_of_edition 		= $additional_editions['type_of_edition'];
+if ($additional_editions):
+	$type_of_edition 		= $additional_editions['type_of_edition'];
+endif;
 $available 				= get_field('display_availability_block');
-$book_item_subtitle 	= get_field('book_item_subtitle');
 
 /**
  * Hook: woocommerce_before_single_product.
@@ -80,7 +82,7 @@ if (post_password_required()) {
 		</div><!-- .end of summary -->
 	</div><!-- .end of .post-container -->
 	<section class="related-news">
-		<h5 class="section-title"><?php _e('Related News', 'storefront'); ?></h5>
+		<h5 class="section-title"><?php _e('News', 'storefront'); ?></h5>
 		<?php
 		/**
 		 * Related News

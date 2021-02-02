@@ -1,6 +1,6 @@
 {
     "key": "group_6015572c08a01",
-    "title": "Book Item Fields",
+    "title": "SUBTITLES, DESCRIPTION, AVAILABILITY",
     "fields": [
         {
             "key": "field_601557382c631",
@@ -21,6 +21,47 @@
             "append": "",
             "maxlength": "",
             "translations": "translate"
+        },
+        {
+            "key": "field_601921a8f7513",
+            "label": "Book Description",
+            "name": "book_item_description",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 24,
+            "new_lines": "wpautop",
+            "acfe_textarea_code": 0,
+            "translations": "translate"
+        },
+        {
+            "key": "field_60154d1865a00",
+            "label": "Book Availability",
+            "name": "display_availability_block",
+            "type": "wysiwyg",
+            "instructions": "Link the book to other editions by writing out the availability of other editions. Make sure to use consistent formatting.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Also available in the Dutch edition In en uit de mode and in an English ebook",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0,
+            "translations": "translate"
         }
     ],
     "location": [
@@ -34,10 +75,19 @@
     ],
     "menu_order": 0,
     "position": "acf_after_title",
-    "style": "default",
+    "style": "seamless",
     "label_placement": "left",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "block_editor",
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "author",
+        "format",
+        "send-trackbacks"
+    ],
     "active": true,
     "description": "",
     "acfe_display_title": "",
@@ -46,6 +96,6 @@
     ],
     "acfe_form": 0,
     "acfe_meta": "",
-    "acfe_note": "",
-    "modified": 1612011425
+    "acfe_note": "SUBTITLE AND DESCRIPTION",
+    "modified": 1612276658
 }
