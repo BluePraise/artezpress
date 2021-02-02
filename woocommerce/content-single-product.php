@@ -24,9 +24,6 @@ $description 	 		= get_field('book_item_description');
 $author 	 	 		= get_field('author');
 $language 	 	 		= get_field('language');
 $additional_editions	= get_field('additional_editions');
-if ($additional_editions):
-	$type_of_edition 		= $additional_editions['type_of_edition'];
-endif;
 $available 				= get_field('display_availability_block');
 
 /**

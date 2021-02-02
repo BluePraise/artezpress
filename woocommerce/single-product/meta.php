@@ -32,7 +32,7 @@ global $product;
 	$language    	 = get_field('language');
 	$authors 		 = get_field('author');
 	$copublisher	 = get_field('co_publishers');
-	$editions 		 = get_field('additional_editions');
+	// $editions 		 = get_field('additional_editions');
 
 	$design    		 = get_field('design');
 	$nur    	 	 = get_field('nur');
@@ -51,33 +51,28 @@ global $product;
 
 			<div class="block">
 				<span class="colophon-value"><?php echo $publishing_year ?>, <?php echo $language ?></span>
+
 				<?php if (wc_product_sku_enabled() && ($product->get_sku() || $product->is_type('variable'))) : ?>
 					<span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?> <span class="sku"><?php echo ($sku = $product->get_sku()) ? $sku : esc_html__('N/A', 'woocommerce'); ?></span></span>
 				<?php endif; ?>
-				<?php if ($editions) : ?>
-					<span class="colophon-value"><?php echo $editions['type_of_edition']; ?></span>
-					<?php
 
-					if ($editions) :
-						$related		 = $editions['related_edition'];
-						if ($related) :
-							foreach ($related as $r) :
-								// get the ID of the related product
-								$related_product_ID = $r->ID;
-								$related_product = wc_get_product($related_product_ID);
-								$related_product_sku = $related_product->get_sku();
-								$permalink = get_permalink($related_product_ID);
-								$price = wc_price($related_product->get_price());
-								echo ('ISBN ' . $related_product_sku);
+				<?php if (have_rows('additional_editions')) : while (have_rows('additional_editions')) : the_row();
+						$type_of_edition = get_sub_field('type_of_edition');
+						$related 		 = get_sub_field('related_edition');
+				?>
+						<span class="colophon-value"><?php echo $type_of_edition; _e( ' Edition', 'artezpress'); ?></span>
+						<?php foreach ($related as $r) :
+						// get the ID of the related product
+							$related_product_ID = $r->ID;
+							$related_product = wc_get_product($related_product_ID);
+							$related_product_sku = $related_product->get_sku();
+							$permalink = get_permalink($related_product_ID);
+							$price = wc_price($related_product->get_price());
+							echo ('ISBN ' . $related_product_sku);
 
-							endforeach;
-						endif;
-					else :
-						echo "nothing";
-
-					endif;
-					?>
-				<?php endif; ?>
+						endforeach;
+					?>		
+				<?php endwhile; endif; ?>
 
 				<span class="colophon-value">NUR <?php echo $nur; ?></span>
 			</div>
@@ -174,18 +169,18 @@ global $product;
 				</div>
 			<?php endif; ?>
 
-			<div class="block">
-				<?php if (have_rows('paper_type')) : ?>
+			<?php if (have_rows('paper_type')) : ?>
+				<div class="block">
 					<span class="label-header"><?php esc_html_e('Paper Stocks'); ?></span>
 					<?php while (have_rows('paper_type')) : the_row(); ?>
 						<?php $paper_stock = get_sub_field('paper_stock'); ?>
 						<span class="colophon-value"><?php echo $paper_stock; ?></span>
-				<?php endwhile;
-				endif; ?>
-			</div>
+					<?php endwhile; ?>
+				</div>
+			<?php endif; ?>
 
-		</div><?php // END OF .COL_RIGHT 
-				?>
+		</div>
+		
 	</div>
 
 

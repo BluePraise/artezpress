@@ -5,9 +5,16 @@
     margin-right: 16px;
 }
 
-.block__price .btn:first-child {
-    margin-bottom: 12px;
+.block__price form.cart {
+
+    margin-top: 1.2rem;
+
+    &:first-child {
+        margin-top: 0;
+    }
 }
+
+
 
 // Added because WooCommerce adds a p wrapper around 
 // price output. No time to investigate an elegant solution
@@ -67,10 +74,12 @@
 
 .book-item-meta {
     margin-top: 10rem;
-    margin-bottom: 8rem;
     @include smallText;
 }
 
 .book-item-meta .block {
     margin-bottom: 2.3rem;
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
