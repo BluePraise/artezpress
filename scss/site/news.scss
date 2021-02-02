@@ -4,9 +4,14 @@
     margin: 6rem auto;
 }
 
+.load-more {
+    margin: 30px auto;
+    text-align: center;
+}
+
 .news-item {
     @media (min-width: 768px) {
-        width: calc(50%);
+        // width: calc(50%);
     }
     @media (max-width: 767px) {
         width: calc(100%);
@@ -35,6 +40,21 @@
 // News card and excerpt
 // News excerpt snippet can be found in 
 // inc/templateparts/news-excerpt
+div#news-json-grid {
+    columns: 400px;
+    column-gap: 20px;
+    .news-item {
+        break-inside: avoid-column;
+        margin-bottom: 5rem;
+    }
+    figure.news-thumbnail {
+        text-align: center;
+    }
+    img.post-thumbnail.news-portrait {
+        width: auto !important;
+    }
+}
+
 .news-grid {
     flex-wrap: wrap;
     justify-content: space-between;

@@ -55,7 +55,12 @@ function artezpress_style()
 	wp_register_style('jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui');
     wp_enqueue_script('totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true);
     $ajax_url = admin_url( 'admin-ajax.php' );
-    
+	wp_enqueue_script('artezpress-news-json', get_theme_file_uri() . '/js/news-json.js', [], null, true);
+	wp_localize_script( 'artezpress-news-json', 'artez_object', 
+		  	array( 
+                'site_url' => site_url(),
+			) 
+		  );
     wp_enqueue_script('artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true);
     wp_localize_script( 'artezpress-script', 'artez_object', 
 		  	array( 
@@ -114,6 +119,7 @@ function artezpress_theme_setup()
 {
 	add_image_size('feature-slider-size', 1120, true, array('center', 'center'));
 	add_image_size( 'cart-thumb', 125, 177, true ); // 100 wide and 100 high
+	add_image_size( 'news-portrait', '', 460, false );
 	add_editor_style('style-editor.css'); // tries to include style-editor.css directly from your theme folder
 	
 	add_theme_support('editor-styles'); // if you don't add this line, your stylesheet won't be added

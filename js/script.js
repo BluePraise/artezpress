@@ -1,12 +1,11 @@
 jQuery(window).on('load', function() {
     var $ = jQuery;
-    var $container = $('.news-grid-masonry');
-    // initialize Masonry after all images have loaded  
-    $container.imagesLoaded(function() {
-        $container.masonry({
-            itemSelector: ".news-item"
-        });
-    });
+
+    // $(".news-grid-masonry").masonry({
+    //     // options
+    //     itemSelector: ".news-item",
+
+    // });
 
 });
 
