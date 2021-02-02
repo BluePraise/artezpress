@@ -8,7 +8,7 @@
             <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <?php get_template_part('inc/templateparts/news', 'thumbnail'); ?>
                 <div class="content-container">
-                    <p class="news-date"><?php echo the_date( "d F Y" )?></p>
+                    <p class="news-date"><?php echo get_the_date( "d F Y" )?></p>
                     <h3 class="news-title"><?php the_title(); ?></h3>
                 </div>
                     <div class="news-content__single">
