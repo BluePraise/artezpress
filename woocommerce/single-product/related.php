@@ -29,12 +29,9 @@ if ( $related_products ) : ?>
 
 		<?php
 		$heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Find More Related Publications', 'woocommerce' ) );
-
-		if ( $heading ) :
-			?>
+			if ( $heading ) :?>
 			<h5 class="section-title"><?php echo esc_html( $heading ); ?></h5>
 		<?php endif; ?>
-			<?php include get_theme_file_path('/inc/filter-tags.php'); ?>
 		<?php woocommerce_product_loop_start(); ?>
 		
 			<?php foreach ( $related_products as $related_product ) : ?>

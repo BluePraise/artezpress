@@ -1,13 +1,13 @@
 {
     "key": "group_600968f1d5f2b",
-    "title": "Single Product Background and text Color",
+    "title": "BACKGROUND AND TEXT COLORS",
     "fields": [
         {
             "key": "field_60096900acb40",
-            "label": "Upload Image",
+            "label": "Image",
             "name": "upload_image",
             "type": "image",
-            "instructions": "",
+            "instructions": "Extract Colors from Book Cover",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -26,11 +26,12 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": ""
+            "mime_types": "",
+            "translations": "sync"
         },
         {
             "key": "field_600972bcac37d",
-            "label": "Process image Button",
+            "label": "",
             "name": "process_image",
             "type": "acfe_button",
             "instructions": "",
@@ -41,17 +42,18 @@
                 "class": "",
                 "id": ""
             },
-            "button_value": "Get Colors",
+            "button_value": "Extract Colors",
             "button_type": "button",
             "button_class": "button button-secondary",
             "button_id": "",
             "button_before": "",
             "button_after": "<table id=\"table\" class=\"image_color_swa\" style=\"display:none\">\r\n\t\t\t\t<tbody><\/tbody>\r\n<\/table>\r\n<style>\r\n\t\t\t\ttable#table > tbody {\r\n    display: grid;\r\n    grid-column-gap: 21px;\r\n    grid-template-columns: auto auto auto auto auto;\r\n}\r\n\t\t\t\ttable#table {\r\n    margin-top: 16px;\r\n}\r\n\t\t\t\ttable#table > tbody > tr > td:first-child {\r\n    border-radius: 50px;\r\n\t\t\t\tdisplay: block;\r\n\t\t\t\tmargin: 0 auto;\r\n\t\t\t\theight: 40px;\r\n    width: 40px;\r\n}\r\n\t\t\t\t\r\n<\/style>",
-            "button_ajax": 1
+            "button_ajax": 1,
+            "translations": "sync"
         },
         {
             "key": "field_6009a1f610c17",
-            "label": "Black\/White",
+            "label": "Or: Black \/ White Background Color",
             "name": "blackwhite",
             "type": "radio",
             "instructions": "",
@@ -64,18 +66,19 @@
             },
             "choices": {
                 "#000": "Black",
-                "#fff": "White"
+                "#f2f2f2": "White"
             },
             "allow_null": 1,
             "other_choice": 0,
             "default_value": "",
             "layout": "horizontal",
             "return_format": "value",
+            "translations": "sync",
             "save_other_choice": 0
         },
         {
             "key": "field_600a9407f762b",
-            "label": "Custom Background Color",
+            "label": "Or: Custom Background Color",
             "name": "custom_color",
             "type": "color_picker",
             "instructions": "",
@@ -86,11 +89,12 @@
                 "class": "",
                 "id": "artz-custom-color"
             },
-            "default_value": ""
+            "default_value": "#F2F2F2",
+            "translations": "sync"
         },
         {
             "key": "field_600acb6670993",
-            "label": "Text color",
+            "label": "Select text color",
             "name": "text_color",
             "type": "radio",
             "instructions": "",
@@ -110,6 +114,7 @@
             "default_value": "",
             "layout": "horizontal",
             "return_format": "value",
+            "translations": "sync",
             "save_other_choice": 0
         }
     ],
@@ -122,14 +127,14 @@
             }
         ]
     ],
-    "menu_order": 5,
-    "position": "normal",
-    "style": "default",
+    "menu_order": 1,
+    "position": "acf_after_title",
+    "style": "seamless",
     "label_placement": "left",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "",
+    "description": "1 in Admin Area",
     "acfe_display_title": "",
     "acfe_autosync": [
         "json"
@@ -137,5 +142,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1611320262
+    "modified": 1612337473
 }

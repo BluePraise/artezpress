@@ -224,7 +224,9 @@
         "the_content",
         "excerpt",
         "discussion",
-        "comments"
+        "comments",
+        "categories",
+        "tags"
     ],
     "active": true,
     "description": "",
@@ -235,5 +237,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1611847879
+    "modified": 1612167402
 }

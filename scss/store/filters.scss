@@ -31,12 +31,12 @@
 }
 
 .site-main.products {
-  margin-top: 185px;
+  margin-top: 29.3rem;
 }
 
 .filter-tags {
-  margin-top: 10px;
-  padding-bottom: 10px;
+  margin-top: 8rem;
+  margin-bottom: 6.4rem;
   padding-top: 10px;
   position: relative;
 
@@ -188,16 +188,17 @@
   margin-left: auto;
   margin-right: auto;
 
-  &__input {
-    border: none;
-    font-size: 35px;
-    line-height: 48px;
+  input[type=search] {
+    border: none !important;
     flex: 1 auto;
-    font-family: 'lars';
 
-    &::-webkit-input-placeholder {
+    &::placeholder {
+      font-family: $default-font;
       text-align: center;
       color: black;
+      font-size: 3.5rem;
+      line-height: 4.8rem;
+
     }
   }
 

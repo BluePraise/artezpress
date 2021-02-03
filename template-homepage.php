@@ -72,7 +72,7 @@ get_header(); ?>
 							
 					<?php endwhile; ?>
 						</div><!--/.news-grid-->
-						<a class="btn black-on-white" href="<?php echo esc_url( '/news' ); ?>"><?php _e('See All News', 'artezpress'); ?></a>
+						<a class="btn black-on-white" href="<?php echo site_url( '/news' ); ?>"><?php _e('See All News', 'artezpress'); ?></a>
 					<?php } else {
 						echo __( '<p>Currently there is no news.</p>', 'artezpress' ); ?>
 						</div><!--/.new-grid-->

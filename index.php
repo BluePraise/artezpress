@@ -11,13 +11,18 @@
             
         // endif; ?>
     </div>
+<<<<<<< HEAD
     <div class="load-more">
     <img class="news-preloader"  src="<?php echo get_stylesheet_directory_uri()?>/assets/images/news/loading.gif" />
                         <button  class="btn white-on-black btn-load-more">Load More</button>
                         <h6 class="posts-loaded">All Loaded! </h6>
                     </div>
     <?php /* the_posts_pagination();*/ ?>
+=======
+    <?php //the_posts_pagination();?>
+>>>>>>> fbebbafff7303409022217193c9f572f3f7bced1
 </main>
 
 
 <?php get_footer(); ?>
+s

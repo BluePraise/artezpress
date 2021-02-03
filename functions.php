@@ -14,9 +14,10 @@ if (!isset($content_width)) {
 	$content_width = 1076;
 }
 
-add_action( 'after_setup_theme', 'load_child_language' );
-function load_child_language() {
-        load_child_theme_textdomain( 'artezpress', get_stylesheet_directory() . '/languages' ); 
+add_action('after_setup_theme', 'load_child_language');
+function load_child_language()
+{
+	load_child_theme_textdomain('artezpress', get_stylesheet_directory() . '/languages');
 }
 
 /**
@@ -34,7 +35,6 @@ function sf_child_theme_dequeue_style()
 	wp_deregister_style('storefront-jetpack-widgets');
 
 	wp_deregister_style('storefront-woocommerce-style');
-
 }
 add_action('wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999);
 
@@ -121,21 +121,21 @@ function artezpress_theme_setup()
 	add_image_size( 'cart-thumb', 125, 177, true ); // 100 wide and 100 high
 	add_image_size( 'news-portrait', '', 460, false );
 	add_editor_style('style-editor.css'); // tries to include style-editor.css directly from your theme folder
-	
+
 	add_theme_support('editor-styles'); // if you don't add this line, your stylesheet won't be added
-	add_theme_support( 'woocommerce', array(
+	add_theme_support('woocommerce', array(
 		'thumbnail_image_width' => 150,
 		'single_image_width'    => 300,
 
-        'product_grid'          => array(
-            'default_rows'    => 5,
-            'min_rows'        => 2,
-            'max_rows'        => 30,
-            'default_columns' => 4,
-            'min_columns'     => 4,
-            'max_columns'     => 4,
-        ),) );
-
+		'product_grid'          => array(
+			'default_rows'    => 5,
+			'min_rows'        => 2,
+			'max_rows'        => 30,
+			'default_columns' => 4,
+			'min_columns'     => 4,
+			'max_columns'     => 4,
+		),
+	));
 }
 
 add_action('after_setup_theme', 'artezpress_theme_setup');
@@ -163,15 +163,33 @@ add_filter('acf/settings/save_json', 'my_acf_json_save_point');
  */
 add_filter('pum_popup_content', 'veer_popup_maker_gutenburg_compat');
 
-function my_acf_admin_head()
-{
+function my_acf_admin_head() { 
+	if (is_user_logged_in(  )): 
 ?>
 	<style type="text/css">
-		.postbox-header h2.hndle {
+		.acf-tab-group li.active a {
 			font-family: 'Lars';
+			color: #0064fd !important;
 		}
 
-		.display-block {
+		#poststuff .stuffbox>h3,
+		#poststuff h2,
+		#poststuff h3.hndle,
+		.postbox-header {
+			font-family: 'Lars';
+			background: black;
+			color: white;
+		}
+
+		.acf-one-half .acf-input {
+			width: 25% !important;
+		}
+
+		.acf-one-third .acf-input {
+			width: 33% !important;
+		}
+
+		.d-block {
 			display: block;
 		}
 
@@ -206,6 +224,7 @@ function my_acf_admin_head()
 		}
 	</style>
 	<?php
+	endif;
 }
 
 add_action('acf/input/admin_head', 'my_acf_admin_head');
@@ -221,10 +240,10 @@ function veer_popup_maker_gutenburg_compat($content)
 
 
 /**********************************
-*
-* All WooCommerce Functions
-* 
-**********************************/
+ *
+ * All WooCommerce Functions
+ * 
+ **********************************/
 
 
 
@@ -252,10 +271,11 @@ function add_to_cart_fragment($fragments)
 add_filter('woocommerce_add_to_cart_fragments', 'add_to_cart_fragment', 10, 1);
 
 //Turn off irritating zoom hover effect 
-function remove_image_zoom_support() {
-    remove_theme_support( 'wc-product-gallery-zoom' );
+function remove_image_zoom_support()
+{
+	remove_theme_support('wc-product-gallery-zoom');
 }
-add_action( 'wp', 'remove_image_zoom_support', 100 );
+add_action('wp', 'remove_image_zoom_support', 100);
 
 
 if (!function_exists('woocommerce_widget_shopping_cart_subtotal')) {
@@ -367,7 +387,8 @@ add_action('wp_ajax_nopriv_filter_posts', 'ajax_filter_get_posts');
 
 
 // A function to change the text on the single shop file.
-function availability_filter_func($availability) {
+function availability_filter_func($availability)
+{
 	$availability['availability'] = str_ireplace('Out of stock', 'Out of Print', $availability['availability']);
 	return $availability;
 }
@@ -375,123 +396,129 @@ add_filter('woocommerce_get_availability', 'availability_filter_func');
 
 // enqueue js for color extractor
 add_action('acf/input/admin_enqueue_scripts', 'my_acf_admin_enqueue_scripts');
-	function my_acf_admin_enqueue_scripts() {
-		wp_enqueue_script( 'image-process-js', get_stylesheet_directory_uri() . '/js/image-process.js', false, '1.0.0' );
-    }
-    
+function my_acf_admin_enqueue_scripts()
+{
+	wp_enqueue_script('image-process-js', get_stylesheet_directory_uri() . '/js/image-process.js', false, '1.0.0');
+}
+
 // Ajax function for color extractor 
-    add_action( 'wp_ajax_extract_colors', 'extract_colors' );	
-	function extract_colors () {
-		
-		include_once("inc/colors.inc.php");
-		$ex=new GetMostCommonColors();
-		$attachment_id = $_POST['image_url'];
-		$attachment_path = wp_get_original_image_path( $attachment_id );
-		$colors = $ex->Get_Color($attachment_path, "5");
-		
-		
-		//var_dump($colors);
-		
-		wp_send_json_success( $colors );
-		die();
-		
-	}
-     
-    function wpse39446_modify_featured_image_labels( $labels ) {
-        $labels->featured_image = __( 'Book Cover', 'artezpress' );
-        $labels->set_featured_image = __( 'Set Book Cover', 'artezpress' );
-        $labels->remove_featured_image = __( 'Remove Book Cover', 'artezpress' );
-        $labels->use_featured_image = __( 'Use as Book Cover', 'artezpress' );
-        
-        return $labels;
-      }
-      add_filter( 'post_type_labels_product', 'wpse39446_modify_featured_image_labels', 10, 1 );
+add_action('wp_ajax_extract_colors', 'extract_colors');
+function extract_colors()
+{
 
-      function change_meta_box_titles() {
-        global $wp_meta_boxes; // array of defined meta boxes
-        // cycle through the array, change the titles you want
+	include_once("inc/colors.inc.php");
+	$ex = new GetMostCommonColors();
+	$attachment_id = $_POST['image_url'];
+	$attachment_path = wp_get_original_image_path($attachment_id);
+	$colors = $ex->Get_Color($attachment_path, "5");
 
-        $wp_meta_boxes['product']['side']['low']['woocommerce-product-images']['title'] = "Book Inner pages";
-    }
-    add_action('add_meta_boxes', 'change_meta_box_titles', 999);
+
+	//var_dump($colors);
+
+	wp_send_json_success($colors);
+	die();
+}
+
+function wpse39446_modify_featured_image_labels($labels)
+{
+	$labels->featured_image = __('Book Cover', 'artezpress');
+	$labels->set_featured_image = __('Set Book Cover', 'artezpress');
+	$labels->remove_featured_image = __('Remove Book Cover', 'artezpress');
+	$labels->use_featured_image = __('Use as Book Cover', 'artezpress');
+
+	return $labels;
+}
+add_filter('post_type_labels_product', 'wpse39446_modify_featured_image_labels', 10, 1);
+
+function change_meta_box_titles()
+{
+	global $wp_meta_boxes; // array of defined meta boxes
+	// cycle through the array, change the titles you want
+
+	$wp_meta_boxes['product']['side']['low']['woocommerce-product-images']['title'] = "Book Inner pages";
+}
+add_action('add_meta_boxes', 'change_meta_box_titles', 999);
 
 
 
 //Prevent Add to cart on reload
 
-add_action( 'woocommerce_add_to_cart_redirect', 'prevent_duplicate_products_redirect' );
-function prevent_duplicate_products_redirect( $url = false ) {
-  // if another plugin gets here first, let it keep the URL
-  if( !empty( $url ) ) {
-    return $url;
-  }
-  // redirect back to the original page, without the 'add-to-cart' parameter.
-  // we add the 'get_bloginfo' part so it saves a redirect on https:// sites.
-  return get_bloginfo( 'wpurl' ).add_query_arg( array(), remove_query_arg( 'add-to-cart' ) );
-} 
-
-
-
-add_filter( 'body_class',function($classes){
-    global $post;
-    $id = $post->ID;
-    if(is_product()) {
-
-    $single_product_text_color = get_field('text_color', $id);
-    
-   if($single_product_text_color == "#fff") {
-       $classes[] = 'artz-white-text';	
-   }
+add_action('woocommerce_add_to_cart_redirect', 'prevent_duplicate_products_redirect');
+function prevent_duplicate_products_redirect($url = false)
+{
+	// if another plugin gets here first, let it keep the URL
+	if (!empty($url)) {
+		return $url;
+	}
+	// redirect back to the original page, without the 'add-to-cart' parameter.
+	// we add the 'get_bloginfo' part so it saves a redirect on https:// sites.
+	return get_bloginfo('wpurl') . add_query_arg(array(), remove_query_arg('add-to-cart'));
 }
-   return $classes;
+
+
+
+add_filter('body_class', function ($classes) {
+	global $post;
+	$id = $post->ID;
+	if (is_product()) {
+
+		$single_product_text_color = get_field('text_color', $id);
+
+		if ($single_product_text_color == "#fff") {
+			$classes[] = 'artz-white-text';
+		}
+	}
+	return $classes;
 });
 
 add_action('wp_ajax_artez_random_bg', 'artez_random_bg');
 add_action('wp_ajax_nopriv_artez_random_bg', 'artez_random_bg');
 
-function artez_random_bg() {
+function artez_random_bg()
+{
 
-    $rows = get_field('hero_bg_imgs', 'option'); // get all the rows
-	$rand_row = $rows[ array_rand( $rows ) ];
-    echo $rand_row['bg_images_uploaded'];
-    wp_die();
+	$rows = get_field('hero_bg_imgs', 'option'); // get all the rows
+	$rand_row = $rows[array_rand($rows)];
+	echo $rand_row['bg_images_uploaded'];
+	wp_die();
 }
 
 // Removes cross-sell products from cart page
 
-remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 
-function filter_woocommerce_cart_totals_coupon_html($coupon_html, $coupon, $discount_amount_html ) {
-	if ( is_string( $coupon ) ) {
-		$coupon = new WC_Coupon( $coupon );
+function filter_woocommerce_cart_totals_coupon_html($coupon_html, $coupon, $discount_amount_html)
+{
+	if (is_string($coupon)) {
+		$coupon = new WC_Coupon($coupon);
 	}
 
-	$coupon_html          = $discount_amount_html . ' <a href="' . esc_url( add_query_arg( 'remove_coupon', rawurlencode( $coupon->get_code() ),  wc_get_cart_url() ) ) . '" class="woocommerce-remove-coupon" data-coupon="' . esc_attr( $coupon->get_code() ) . '">' . __( 'Remove', 'woocommerce' ) . '</a>';
+	$coupon_html          = $discount_amount_html . ' <a href="' . esc_url(add_query_arg('remove_coupon', rawurlencode($coupon->get_code()),  wc_get_cart_url())) . '" class="woocommerce-remove-coupon" data-coupon="' . esc_attr($coupon->get_code()) . '">' . __('Remove', 'woocommerce') . '</a>';
 
 	return $coupon_html;
-	
 }
 
-add_filter( 'woocommerce_cart_totals_coupon_html', 'filter_woocommerce_cart_totals_coupon_html', 10, 3 );
+add_filter('woocommerce_cart_totals_coupon_html', 'filter_woocommerce_cart_totals_coupon_html', 10, 3);
 
 remove_action("woocommerce_before_checkout_form", "woocommerce_checkout_coupon_form", 10);
-remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
-add_action( 'woocommerce_before_checkout_billing_form', 'woocommerce_checkout_login_form', 10 );
-remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
-add_action( 'woocommerce_checkout_order_payment', 'woocommerce_checkout_payment', 20 );
+remove_action('woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10);
+add_action('woocommerce_before_checkout_billing_form', 'woocommerce_checkout_login_form', 10);
+remove_action('woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20);
+add_action('woocommerce_checkout_order_payment', 'woocommerce_checkout_payment', 20);
 
 
-add_action("woocommerce_review_order_after_order_total", function(){
-	$out = "<a class='back-to-cart' href='".wc_get_cart_url()."'>Modify Cart</a>";
+add_action("woocommerce_review_order_after_order_total", function () {
+	$out = "<a class='back-to-cart' href='" . wc_get_cart_url() . "'>Modify Cart</a>";
 	echo $out;
 });
 
 // Hook in
-add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_fields');
 
 // Our hooked in function - $fields is passed via the filter!
-function custom_override_checkout_fields( $fields ) {
-unset($fields['order']['order_comments']);
+function custom_override_checkout_fields($fields)
+{
+	unset($fields['order']['order_comments']);
 
-return $fields;
+	return $fields;
 }

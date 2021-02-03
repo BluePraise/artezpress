@@ -71,7 +71,33 @@ em {
     font-style: italic;
 }
 
-button,
+
+input[type=datetime],
+input[type=datetime-local],
+input[type=date],
+input[type=month],
+input[type=time],
+input[type=week],
+input[type=number], 
+input[type=url],
+input[type=tel],
+input[type=email],
+input[type=search],
+input[type=tel],
+input[type=color],
+input[type=file],
+input[type=text],
+input[type=password], 
+textarea {
+    @include smallText;
+    height: 45px;
+    background: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: $border;
+}
+
 input::placeholder {
-    font-family: 'lars';
+    @include smallText;
 }
