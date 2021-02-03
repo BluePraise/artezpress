@@ -95,6 +95,7 @@ const fetchPosts = ({
 
             if (acf_src != null) {
                 var news_cotent = acf_src[0].news_content;
+                news_cotent = news_cotent.replace(/<[^>]*>?/gm, '');
             } else {
                 var news_cotent = "";
             }
@@ -107,7 +108,7 @@ const fetchPosts = ({
             <div class="news-date-excerpt">${formatDate(post.date)}</div>
             <figure class="news-thumbnail">    ${post.feat_img} </figure>
              <h4 class="news-title news-title-excerpt">${post.title.rendered}</h4> 
-              <p class="news-item-excerpt">${news_cotent.replace(/<[^>]*>?/gm, '')}</p>
+              <p class="news-item-excerpt">${news_cotent}</p>
               <a class="news-read-more" href="${post.link}" title="${post.title.rendered}" role="link">Read More</a>
             </div>`;
         };
