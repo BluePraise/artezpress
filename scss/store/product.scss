@@ -27,6 +27,11 @@ body.single-product.set-text-white {
         fill: var(--set-to-white) !important;
     }
 
+    .btn.white-on-black {
+        background: #f2f2f2;
+        color: $black;
+    }
+
     // a,
     // h1,
     // h2,
@@ -66,4 +71,8 @@ span.price {
     left: 40px;
     bottom: 100px;
     font-weight: 600;
+}
+
+.product-display .book-item-author {
+    @include smallText;
 }
