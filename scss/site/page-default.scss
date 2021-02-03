@@ -10,3 +10,41 @@
 .page-default .grid-container {
     @include grid(2, 2fr, 0, 3.2rem);
 }
+
+.content-block p {
+    // should be identical to line-height but what is the line-height?
+    // is it 2.4rem or 3.2rem? I am looking on Github, all the scss files, 
+    // indesign, and the UI PDF, my own notes.
+    margin-top: 3.2rem;
+    margin-bottom: 3.2rem;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    a {
+        @include underlineText;
+    }
+
+    ol>li {
+        counter-increment: roman;
+        position: relative;
+        padding-left: 4rem;
+
+        &::before {
+            content: counter(roman, upper-roman) ". ";
+            position: absolute;
+            left: 0;
+            width: 4rem;
+        }
+    }
+
+    .nested-list>li {
+        list-style-type: lower-alpha;
+        padding: 0 4rem;
+    }
+}

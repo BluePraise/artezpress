@@ -8,19 +8,22 @@
     width: 100%;
     border: none;
     outline: none;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
     transition: padding 0.4s ease-in;
 
     p {
         text-align: left;
+        position: relative;
+        padding-left: 3rem;
+        line-height: 3rem;
     }
 
     .icons {
-        display: inline-block;
-        margin-right: 17px;
-        width: 14px;
-        line-height: 23px;
+        position: absolute;
+        left: 0;
+        width: 1.4rem;
+        height: 3rem;
+        margin-right: 1.6rem;
         content: url(../../assets/icons/plus.svg);
     }
 
@@ -48,6 +51,7 @@
     background-color: white;
     overflow: hidden;
     transition: all 0.2s ease-in-out;
+
     p {
         line-height: 32px;
     }

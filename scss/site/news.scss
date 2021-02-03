@@ -125,7 +125,7 @@ a.news-read-more {
 
     // all the anchorlinks get an underline
     a {
-        @include undelineText;
+        @include underlineText;
     }
 
     // spacing for all the p tags
