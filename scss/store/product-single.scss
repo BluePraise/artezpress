@@ -90,7 +90,15 @@
 }
 
 .current-tag-list {
+    display: flex;
     margin-bottom: 4rem;
+
+    li { 
+        margin-left: 3.2rem;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
 }
 
 section.related-products .flex-container {
