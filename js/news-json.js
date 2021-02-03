@@ -95,7 +95,7 @@ const fetchPosts = ({
 
             if (acf_src != null) {
                 var news_cotent = acf_src[0].news_content;
-                news_cotent = news_cotent.replace(/<[^>]*>?/gm, '');
+                // news_cotent = news_cotent.replace(/<[^>]*>?/gm, '');
             } else {
                 var news_cotent = "";
             }
