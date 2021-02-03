@@ -55,12 +55,26 @@ function artezpress_style()
 	wp_register_style('jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui');
     wp_enqueue_script('totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true);
     $ajax_url = admin_url( 'admin-ajax.php' );
+	if(is_home()) {
 	wp_enqueue_script('artezpress-news-json', get_theme_file_uri() . '/js/news-json.js', [], null, true);
 	wp_localize_script( 'artezpress-news-json', 'artez_object', 
 		  	array( 
                 'site_url' => site_url(),
 			) 
 		  );
+		}
+	if(is_single()) {
+		global $post;
+		wp_enqueue_script('artezpress-single-news-json', get_theme_file_uri() . '/js/single-news-json.js', [], null, true);
+	wp_localize_script( 'artezpress-single-news-json', 'artez_object', 
+		  	array( 
+				'site_url' => site_url(),
+				'post_id' => $post->ID
+			) 
+		  );
+		}
+	
+
     wp_enqueue_script('artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true);
     wp_localize_script( 'artezpress-script', 'artez_object', 
 		  	array( 

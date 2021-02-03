@@ -4,8 +4,9 @@
     <a class="go-back" href="<?php echo site_url("/news"); ?>" role="link">
         <img src="<?php echo get_stylesheet_directory_uri( ) ?>/assets/icons/btn_close.svg" alt="Close article and go back to news">
     </a>
-    <article class="container news-item__single">
-            <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+    <article id="artez-single-post" class="container news-item__single">
+    <img class="news-preloader"  src="<?php echo get_stylesheet_directory_uri()?>/assets/images/news/loading.gif" />
+            <?php /* if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <?php get_template_part('inc/templateparts/news', 'thumbnail'); ?>
                 <div class="content-container">
                     <p class="news-date"><?php echo get_the_date( "d F Y" )?></p>
@@ -14,7 +15,7 @@
                     <div class="news-content__single">
                         <?php get_template_part('blocks/postbuilding/index'); ?>
                     </div>
-        <?php endwhile; endif; ?>
+        <?php endwhile; endif; */ ?>
     </article>
 </main>
 

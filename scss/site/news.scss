@@ -4,14 +4,15 @@
     margin: 6rem auto;
 }
 
+.news-preloader {
+    width: 100px;
+    margin: 0 auto 20px;
+    display: block;
+}
+
 .load-more {
     margin: 30px auto;
     text-align: center;
-    .news-preloader {
-        width: 100px;
-        margin: 0 auto 20px;
-        display: block;
-    }
     .posts-loaded {
         visibility: hidden;
     }
@@ -115,10 +116,6 @@ a.news-read-more {
     display: inline-block;
     border-bottom: 1px solid currentColor;
     margin-top: 3.2rem;
-<<<<<<< HEAD
-=======
-
->>>>>>> 63bb9f1ca214922cb666ccde19acda3c32c1a1ce
     &:hover {
         cursor: pointer;
         opacity: $hoverOpacity;
@@ -138,6 +135,10 @@ a.news-read-more {
 
 .news-item__single .news-thumbnail {
     margin-bottom: 8rem;
+    text-align: center;
+    img {
+        width: auto;
+    }
 }
 
 // NEWS MODULES

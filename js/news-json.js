@@ -154,20 +154,23 @@ const fetchPosts = ({
     // }
 
 
-
-    btnLoadMore.addEventListener('click', () => {
-        postsLoaded = false;
-        preloader.style.visibility = 'visible';
-        loadContent();
-        return false;
-    });
+    if (btnLoadMore) {
+        btnLoadMore.addEventListener('click', () => {
+            postsLoaded = false;
+            preloader.style.visibility = 'visible';
+            loadContent();
+            return false;
+        });
+    }
 
     // Public Properties and Methods
     // return {
     //     init: loadContent
     // };
-    return loadContent();
+    if (postsContent) {
+        return loadContent();
+    }
 
-};
+}
 
 fetchPosts();
