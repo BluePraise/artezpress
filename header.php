@@ -9,30 +9,11 @@ if (is_product()) {
 	$id = $post->ID;
 	$single_product_bg = get_field('custom_color', $id);
 	$single_product_text_color = get_field('text_color', $id);
+
 ?>
 	<style>
-		:root {
-			--text-color: <?php echo $single_product_text_color; ?>;
-		}
-
 		body.single-product {
 			background-color: <?php echo $single_product_bg; ?>;
-		}
-
-		body.single-product.artz-white-text .post-container,
-		body.single-product.artz-white-text .related-news,
-		body.single-product.artz-white-text .related-products,
-		body.single-product.artz-white-text h4,
-		body.single-product.artz-white-text .single-product-author,
-		body.single-product.artz-white-text .single-product-author,
-		body.single-product.artz-white-text a.news-read-more,
-		body.single-product.artz-white-text .language-toggle .lang-item a {
-			color: #fff !important;
-		}
-
-		body.single-product.artz-white-text .white-on-black {
-			color: #000 !important;
-			background: #fff !important;
 		}
 	</style>
 

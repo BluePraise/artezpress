@@ -1,7 +1,46 @@
 // SCSS which Product Single and Overview have in common
-// .book-item-author {
-//     @include smallText;
-// }
+
+// THIS IS WHERE THE PRODUCT CHANGES TEXT COLOR.
+// PLEASE DO NOT MESS WITH THIS.
+
+
+body.single-product.set-text-black {
+    color: var(--set-to-black) !important;
+
+    // a,
+    // h1,
+    // h2,
+    // h3,
+    // h4,
+    // h5,
+    // h6,
+    // p {
+
+    //     color: var(--set-to-black) !important;
+    // }
+}
+
+body.single-product.set-text-white {
+    color: var(--set-to-white) !important;
+
+    a.go-back svg {
+        fill: var(--set-to-white) !important;
+    }
+
+    // a,
+    // h1,
+    // h2,
+    // h3,
+    // h4,
+    // h5,
+    // h6,
+    // p {
+
+    //     color: var(--set-to-white) !important;
+    // }
+}
+
+
 .label-header,
 .colophon-value {
     display: block;
