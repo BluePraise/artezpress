@@ -88,3 +88,13 @@
 .book-item-related-new .news-item {
     width: 50%;
 }
+
+.current-tag-list {
+    margin-bottom: 4rem;
+}
+
+section.related-products .flex-container {
+    .product {
+        width: calc(100% / 4 - 3.2rem)
+    }
+}

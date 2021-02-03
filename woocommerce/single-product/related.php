@@ -27,11 +27,26 @@ if ( $related_products ) : ?>
 
 	<section class="related-products">
 
-		<?php
-		$heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Find More Related Publications', 'woocommerce' ) );
-			if ( $heading ) :?>
+		<?php $heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Find More Related Publications', 'woocommerce' ) );
+			if ( $heading ) :
+		?>
 			<h5 class="section-title"><?php echo esc_html( $heading ); ?></h5>
 		<?php endif; ?>
+
+		<?php
+			$current_tags = get_the_terms(get_the_ID(), 'product_tag');
+			$tag_array = array();
+			if (!empty($current_tags) && !is_wp_error($current_tags)):
+				echo '<ul class="current-tag-list">';
+				foreach ($current_tags as $tag):
+					$tag_title = $tag->name;
+					$tag_link = get_term_link($tag); // tag archive link
+
+				echo '<li><a class="btn black-on-white " href="' . $tag_link . '">' . $tag_title . '</a></li>';
+				endforeach;
+				echo '</ul>';
+		endif;
+		?>		
 		<?php woocommerce_product_loop_start(); ?>
 		
 			<?php foreach ( $related_products as $related_product ) : ?>
