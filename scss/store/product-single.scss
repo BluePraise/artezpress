@@ -5,9 +5,16 @@
     margin-right: 16px;
 }
 
-.block__price .btn:first-child {
-    margin-bottom: 12px;
+.block__price form.cart {
+
+    margin-top: 1.2rem;
+
+    &:first-child {
+        margin-top: 0;
+    }
 }
+
+
 
 // Added because WooCommerce adds a p wrapper around 
 // price output. No time to investigate an elegant solution
@@ -25,6 +32,7 @@
 
 .book-item-title {
     margin-bottom: 6rem;
+
     .book-item-subtitle {
         display: block;
     }
@@ -34,8 +42,7 @@
     margin-bottom: 4.8rem;
 }
 
-.book-item-author {
-    @include smallText;
+.book-item__single .book-item-author {
     margin-bottom: 4rem;
 }
 
@@ -53,7 +60,7 @@
 
     // spacing for all the p tags
     p {
-        margin-bottom: 2.4rem;
+        margin-bottom: 3rem;
 
         // but not the last child
         &:last-child {
@@ -67,15 +74,12 @@
 
 .book-item-meta {
     margin-top: 10rem;
-    margin-bottom: 8rem;
     @include smallText;
 }
 
-.book-item-meta .flex-container .col_left,
-.book-item-meta .flex-container .col_right {
-    width: 50%;
-}
-
 .book-item-meta .block {
-    margin-bottom: 4rem;
+    margin-bottom: 2.3rem;
+    &:last-child {
+        margin-bottom: 0;
+    }
 }

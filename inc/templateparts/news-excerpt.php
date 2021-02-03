@@ -1,6 +1,4 @@
-<?php if(!is_singular()): ?>
-    <div class="grid-sizer"></div>
-<?php endif; ?>
+
 <div class="news-item">
     <div class="news-date-excerpt"><?php echo get_the_date( "d F Y" )?></div>
     <?php if( has_post_thumbnail() ): 
@@ -18,7 +16,7 @@
                 </figure>
         <?php endif; ?>
     <?php endif; ?>
-    <h4 class="news-title news-title-excerpt"><?php the_title(); ?></h4>
+    <h4 class="news-titlenews-title-excerpt"><?php the_title(); ?></h4>
     <?php if( have_rows('post_building_modules') ):
         while ( have_rows('post_building_modules') ) : the_row();
 

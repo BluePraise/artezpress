@@ -1,13 +1,13 @@
 {
     "key": "group_600d8adbcea3f",
-    "title": "Single Product Overlay Shadow",
+    "title": "BOOK SHADOW OVERLAY",
     "fields": [
         {
             "key": "field_600d8afe56354",
-            "label": "Shadow Template",
+            "label": "Shadow Overlay Template",
             "name": "shadow_template",
             "type": "radio",
-            "instructions": "",
+            "instructions": "Choose an overlay",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -25,6 +25,7 @@
             "default_value": "nothing",
             "layout": "horizontal",
             "return_format": "value",
+            "translations": "sync",
             "save_other_choice": 0
         }
     ],
@@ -37,9 +38,9 @@
             }
         ]
     ],
-    "menu_order": 11,
-    "position": "normal",
-    "style": "default",
+    "menu_order": 2,
+    "position": "acf_after_title",
+    "style": "seamless",
     "label_placement": "left",
     "instruction_placement": "label",
     "hide_on_screen": "",
@@ -52,5 +53,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1611501034
+    "modified": 1612337511
 }

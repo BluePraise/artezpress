@@ -22,15 +22,19 @@ if ( is_user_logged_in() || 'no' === get_option( 'woocommerce_enable_checkout_lo
 }
 
 ?>
-<div class="woocommerce-form-login-toggle">
-	<?php wc_print_notice( apply_filters( 'woocommerce_checkout_login_message', esc_html__( 'Already a Customer?', 'woocommerce' ) ) . ' <a href="#" class="showlogin">' . esc_html__( 'Login', 'woocommerce' ) . '</a>', 'notice' ); ?>
-</div>
-<?php
+<div class="flex-container woocommerce-checkout-container">
+	<div class="col_left">
+		<div class="woocommerce-form-login-toggle">
+			<?php wc_print_notice( apply_filters( 'woocommerce_checkout_login_message', esc_html__( 'Already a Customer?', 'woocommerce' ) ) . ' <a href="#" class="showlogin">' . esc_html__( 'Login', 'woocommerce' ) . '</a>', 'notice' ); ?>
+		</div>
+	</div>	
+</div>	
+	<?php
 
-woocommerce_login_form(
-	array(
-		'message'  => esc_html__( '', 'woocommerce' ),
-		'redirect' => wc_get_checkout_url(),
-		'hidden'   => true,
-	)
-);
+	woocommerce_login_form(
+		array(
+			'message'  => esc_html__( '', 'woocommerce' ),
+			'redirect' => wc_get_checkout_url(),
+			'hidden'   => true,
+		)
+	);

@@ -11,7 +11,7 @@
         // endif; ?>
     </div>
     <div class="load-more">
-                        <button  class="btn white-on-black btn-load-more">Load More</button>
+            <button  class="btn white-on-black btn-load-more">Load More</button>
                     </div>
     <?php /* the_posts_pagination();*/ ?>
 </main>

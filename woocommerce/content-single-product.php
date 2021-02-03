@@ -19,13 +19,12 @@
 defined('ABSPATH') || exit;
 
 global $product, $post;
+$book_item_subtitle 	= get_field('book_item_subtitle');
+$description 	 		= get_field('book_item_description');
 $author 	 	 		= get_field('author');
 $language 	 	 		= get_field('language');
-$description 	 		= get_field('description');
 $additional_editions	= get_field('additional_editions');
-$type_of_edition 		= $additional_editions['type_of_edition'];
 $available 				= get_field('display_availability_block');
-$book_item_subtitle 	= get_field('book_item_subtitle');
 
 /**
  * Hook: woocommerce_before_single_product.
@@ -40,7 +39,9 @@ if (post_password_required()) {
 }
 ?>
 <main id="product-<?php the_ID(); ?>" <?php wc_product_class('container', $product); ?>>
-	<?php get_template_part('inc/templateparts/go', 'back'); ?>
+	<a class="go-back" href="<?php echo site_url("/books"); ?>" role="link">
+		<img src="<?php echo get_stylesheet_directory_uri( ) ?>/assets/icons/btn_close.svg" alt="Close article and go back to books">
+	</a>
 	<?php woocommerce_show_product_images(); ?>
 	<div class="post-container book-item__single">
 		<?php if ($available): ?>
@@ -78,7 +79,7 @@ if (post_password_required()) {
 		</div><!-- .end of summary -->
 	</div><!-- .end of .post-container -->
 	<section class="related-news">
-		<h5 class="section-title"><?php _e('Related News', 'storefront'); ?></h5>
+		<h5 class="section-title"><?php _e('News', 'storefront'); ?></h5>
 		<?php
 		/**
 		 * Related News

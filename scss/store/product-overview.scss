@@ -7,22 +7,28 @@ ul.page-numbers {
 }
 
 .product-display {
-    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .products .product,
 .product-display .product {
-    // 1076 (container width) / 4 (amount of books) = 269
-    // 269-32 (gutter width) = 237 per book 
-    width: 23.7rem;
-    // if it's rem do we still need the margin-right?
-    margin-right: 3.2rem;
     margin-bottom: 6.4rem;
 
     &:last-child {
         margin-left: 0;
     }
+
+    // ipad and higher
+    @media screen and (max-width: 991px) and (min-width: 768px) {
+        width: calc(33% - 3.2rem);
+        margin-right: 3.2rem;
+    }
+
+    // Mobile
+    @media screen and (max-width: 767px) {}
 }
+
+
 
 .related-products .product-display .product {
     margin-left: 3.2rem;

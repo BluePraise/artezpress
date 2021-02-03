@@ -1,11 +1,12 @@
 // Sometimes it's hard to be a puritan on a budget
 
-.display-block,
+.d-block,
 .show {
   display: block !important;
 }
 
-.hide {
+.hide,
+.d-none {
   display: none;
 }
 
@@ -42,4 +43,12 @@ ul.horizontal-list li {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.mb-4 {
+  margin-bottom: 4rem;
+}
+
+.mt-4 {
+  margin-top: 4rem;
 }
