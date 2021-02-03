@@ -685,8 +685,8 @@
             "acfe_permissions": "",
             "acfe_repeater_stylised_button": 1,
             "collapsed": "field_5fd2443d1d52f",
-            "min": 0,
-            "max": 0,
+            "min": 1,
+            "max": 4,
             "layout": "row",
             "button_label": "Add an edition",
             "acfe_settings": "",
@@ -778,7 +778,7 @@
         "send-trackbacks"
     ],
     "active": true,
-    "description": "COLOPHON",
+    "description": 3,
     "acfe_display_title": "COLOPHON",
     "acfe_autosync": [
         "json"
@@ -787,5 +787,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "CONTAINS publishing year, language, Nur, design, photography, pages, dimensions, illustration, binding",
-    "modified": 1612277765
+    "modified": 1612339353
 }

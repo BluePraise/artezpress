@@ -39,7 +39,7 @@
         ]
     ],
     "menu_order": 2,
-    "position": "normal",
+    "position": "acf_after_title",
     "style": "seamless",
     "label_placement": "left",
     "instruction_placement": "label",
@@ -53,5 +53,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1612276734
+    "modified": 1612337511
 }
