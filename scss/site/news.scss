@@ -7,6 +7,14 @@
 .load-more {
     margin: 30px auto;
     text-align: center;
+    .news-preloader {
+        width: 100px;
+        margin: 0 auto 20px;
+        display: block;
+    }
+    .posts-loaded {
+        visibility: hidden;
+    }
 }
 
 .news-item {

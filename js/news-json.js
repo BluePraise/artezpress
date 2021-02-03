@@ -21,6 +21,8 @@ const fetchPosts = ({
     let postsLoaded = false;
     let postsContent = document.querySelector('#news-json-grid');
     let btnLoadMore = document.querySelector('.btn-load-more');
+    let preloader = document.querySelector('.news-preloader');
+    let allLoaded = document.querySelector('.posts-loaded');
 
     // Private Methods
     const loadContent = function() {
@@ -51,18 +53,29 @@ const fetchPosts = ({
 
         // Make a request to the REST API
         const loadPosts = async() => {
+
+
             const url = getApiUrl(api);
             const request = await fetch(url);
-            const posts = await request.json();
+            //console.log(request.headers.get('X-WP-TotalPages'));
+            if (request.status == 200) {
+                const posts = await request.json();
 
-            // Builds the HTML to show the posts
-            const postsHtml = renderPostHtml(posts);
 
-            // Adds the HTML into the posts div
-            postsContent.innerHTML += postsHtml;
+                // Builds the HTML to show the posts
+                const postsHtml = renderPostHtml(posts);
+                // Adds the HTML into the posts div
+                postsContent.innerHTML += postsHtml;
+                // Required for the infinite scroll
+                postsLoaded = true;
+                preloader.style.visibility = 'hidden';
+            } else {
+                preloader.style.visibility = 'hidden';
+                btnLoadMore.style.visibility = 'hidden';
+                allLoaded.style.visibility = 'visible';
 
-            // Required for the infinite scroll
-            postsLoaded = true;
+            }
+
         };
 
         // Builds the HTML to show all posts
@@ -72,6 +85,7 @@ const fetchPosts = ({
                 postHtml += postTemplate(post);
             };
             return postHtml;
+
         };
 
 
@@ -114,6 +128,7 @@ const fetchPosts = ({
         };
 
         loadPosts();
+
     };
 
     // Where the magic happens
@@ -139,8 +154,10 @@ const fetchPosts = ({
     // }
 
 
+
     btnLoadMore.addEventListener('click', () => {
         postsLoaded = false;
+        preloader.style.visibility = 'visible';
         loadContent();
         return false;
     });
