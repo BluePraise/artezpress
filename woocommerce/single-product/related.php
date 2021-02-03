@@ -25,7 +25,7 @@ global $product;
 
 if ( $related_products ) : ?>
 
-	<section class="related-products">
+	<section class="related-books">
 
 		<?php $heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Find More Related Publications', 'woocommerce' ) );
 			if ( $heading ) :
