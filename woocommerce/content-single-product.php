@@ -78,7 +78,7 @@ if (post_password_required()) {
 
 		</div><!-- .end of summary -->
 	</div><!-- .end of .post-container -->
-	<section class="related-news">
+	<section class="related-news book-item-related-news">
 		<h5 class="section-title"><?php _e('News', 'storefront'); ?></h5>
 		<?php
 		/**

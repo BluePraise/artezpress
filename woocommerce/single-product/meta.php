@@ -59,6 +59,7 @@ global $product;
 				<?php if (have_rows('additional_editions')) : while (have_rows('additional_editions')) : the_row();
 						$type_of_edition = get_sub_field('type_of_edition');
 						$related 		 = get_sub_field('related_edition');
+					if($related):	
 				?>
 						<span class="colophon-value"><?php echo $type_of_edition; _e( ' Edition', 'artezpress'); ?></span>
 						<?php foreach ($related as $r) :
@@ -72,7 +73,7 @@ global $product;
 
 						endforeach;
 					?>		
-				<?php endwhile; endif; ?>
+				<?php endif; endwhile; endif; ?>
 
 				<span class="colophon-value">NUR <?php echo $nur; ?></span>
 			</div>
