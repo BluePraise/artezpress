@@ -55,7 +55,7 @@ if (post_password_required()) {
 					<rect class="cls-1" width="32" height="32" />
 				</clipPath>
 			</defs>
-			
+
 			<g class="cls-2">
 				<path d="M23.45,21.88l-1.57,1.57L16,17.57l-5.88,5.88L8.55,21.88,14.43,16,8.55,10.12l1.57-1.57L16,14.43l5.88-5.88,1.57,1.57L17.57,16ZM16,0A16,16,0,1,0,32,16,16,16,0,0,0,16,0" />
 			</g>
@@ -97,14 +97,15 @@ if (post_password_required()) {
 
 		</div><!-- .end of summary -->
 	</div><!-- .end of .post-container -->
-	<section class="related-news book-item-related-news">
-		<h5 class="section-title"><?php _e('News', 'storefront'); ?></h5>
-		<?php
-		/**
-		 * Related News
-		 */
-		$related_news = get_field('related_news');
-		if ($related_news) : ?>
+	<?php
+	/**
+	 * Related News
+	 */
+	$related_news = get_field('related_news');
+	if ($related_news) : ?>
+		<section class="related-news book-item-related-news">
+			<h5 class="section-title"><?php _e('News', 'storefront'); ?></h5>
+
 			<div class="flex-container news-grid">
 				<?php foreach ($related_news as $post) :
 
@@ -117,7 +118,8 @@ if (post_password_required()) {
 			<?php
 			// Reset the global post object so that the rest of the page works correctly.
 			wp_reset_postdata(); ?>
-		<?php endif; ?>
-	</section>
+		</section>
+	<?php endif; ?>
+	
 	<?php woocommerce_output_related_products(); ?>
 </main>
