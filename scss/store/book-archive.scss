@@ -7,24 +7,10 @@ ul.page-numbers {
 }
 
 .products .product,
-.product-display .product {
+.product-display .product,
+.book-grid .book-item {
     margin-bottom: 6.4rem;
-
-    &:last-child {
-        margin-left: 0;
-    }
-
-    // ipad and higher
-    @media screen and (max-width: 991px) and (min-width: 768px) {
-        width: calc(33% - 3.2rem);
-        margin-right: 3.2rem;
-    }
-
-    // Mobile
-    @media screen and (max-width: 767px) {}
 }
-
-
 
 .related-products .product-display .product {
     margin-left: 3.2rem;

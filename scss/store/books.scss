@@ -51,6 +51,7 @@ body.single-product.set-text-white {
     margin-right: 0;
 
     .book-item {
+
         @media screen and (min-width: 992px) {
             width: calc(100% / 4 - 3.2rem);
             margin-right: 3.2rem;
@@ -59,6 +60,24 @@ body.single-product.set-text-white {
             &:last-child {
                 margin-right: 0;
             }
+        }
+
+        // ipad and higher
+        @media screen and (max-width: 991px) and (min-width: 768px) {
+            width: calc(33.33% - 3.2rem);
+            margin-right: 3.2rem;
+
+            &:nth-child(3),
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        // Mobile
+        @media screen and (max-width: 767px) {}
+
+        a img {
+            @include boxShadow;
         }
 
     }
