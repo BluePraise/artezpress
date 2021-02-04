@@ -11,7 +11,8 @@
           <path d="M25 22.57l-6.11-6.11a10.43 10.43 0 10-2.43 2.43L22.57 25zM3.33 10.42a7.09 7.09 0 117.09 7.08 7.1 7.1 0 01-7.09-7.08z" />
         </svg>
       </button>
-      <input type="search" class="js-main-search main-search__input" name="" id="" placeholder="Search for ebooks">
+      <input type="search" class="js-main-search main-search__input" name="" id="" placeholder="">
+      <div class="rotate-placeholder"></div>
     </form>
     <?php include get_theme_file_path('/inc/filter-tags.php'); ?>
   </div>
