@@ -68,7 +68,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 	 				<?php 
 					//var_dump($cart_item);
 					echo wc_get_formatted_cart_item_data( $cart_item, $product_price ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					<?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<div class="quantity">' . sprintf( '%s &times; %s %s', $product_name, $cart_item['quantity'], $product_price ) . '</div>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<div class="quantity">' . sprintf( '<span class="mc-product-name">%s</span> <span class="mc-product-quantity">&times; %s</span> <span class="mc-product-total">%s</span>', $product_name, $cart_item['quantity'], wc_price($cart_item['line_subtotal']) ) . '</div>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</li>
 				<?php
 			}
@@ -77,7 +77,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 		do_action( 'woocommerce_mini_cart_contents' );
 		?>
 	</ul>
-
+	<hr class="mini-divider" />
 	<p class="woocommerce-mini-cart__total total">
 		<?php
 		/**
@@ -92,7 +92,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 
 	<?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
 
-	<p class="woocommerce-mini-cart__buttons buttons"><?php do_action( 'woocommerce_widget_shopping_cart_buttons' ); ?></p>
+	<!-- <p class="woocommerce-mini-cart__buttons buttons"><?php do_action( 'woocommerce_widget_shopping_cart_buttons' ); ?></p> -->
 
 	<?php do_action( 'woocommerce_widget_shopping_cart_after_buttons' ); ?>
 
