@@ -105,16 +105,16 @@ const fetchPost = ({
                         let pfeatured_img;
                         const loadProduct = async() => {
                             try {
-                                let purl = getApiUrl(product_api + '' + block.book_reference["ID"]);
+                                let purl = getApiUrl(product_api + '' + block.book_reference["ID"] + "?_embed");
                                 let prequest = await fetch(purl);
                                 // console.log(prequest);
                                 if (prequest.status == 200) {
-
+                                    let bcontainer = document.querySelector('.book_block');
                                     let product = await prequest.json();
                                     let product_src = await product._embedded['wp:featuredmedia'];
                                     if (typeof(product_src) != "undefined") {
-                                        pfeatured_img = await product._embedded['wp:featuredmedia'][0]['media_details']['sizes']['full'].source_url;
-                                        return pfeatured_img;
+                                        bcontainer.innerHTML = '<img src="' + product._embedded['wp:featuredmedia'][0]['media_details']['sizes']['full'].source_url + '" />';
+                                        // return pfeatured_img;
                                     }
 
                                 }
@@ -133,7 +133,7 @@ const fetchPost = ({
 
 
                         acf_blocks += ` <div class="book-reference news-module-container">
-                            <figure></figure>
+                            <figure class="book_block"></figure>
                     <h5>${block.book_reference["post_title"]}</h5>
                     <div class="content-container">
                         
