@@ -27,7 +27,7 @@
 }
 
 .search-and-tags {
-  width: 1076px;
+  width: 107.6rem;
 }
 
 .site-main.products {
@@ -36,13 +36,12 @@
 
 .filter-tags {
   margin-top: 8rem;
-  margin-bottom: 6.4rem;
-  padding-top: 10px;
+  // margin-bottom: 6.4rem;
   position: relative;
 
   &__inner {
     overflow: hidden;
-    max-width: 1076px;
+    max-width: 207.6rem;
   }
 
   &__list {
@@ -57,8 +56,9 @@
   &__item {
     border: 1px solid black;
     border-radius: 30px;
-    font-size: 1.5rem;
-    padding: 0px 15px;
+    font-size: 1.7rem;
+    line-height: 3.2rem;
+    padding: 0 1.2rem;
     margin-right: 1.2rem;
     text-align: center;
     flex-shrink: 0;
@@ -183,7 +183,7 @@
 }
 
 .main-search {
-  padding-top: 20px;
+  margin-top: 6rem;
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -217,7 +217,7 @@
 .js-hide-onscroll {
   position: fixed;
   z-index: 1;
-  top: 1em;
+  top: 2rem;
   background: white;
   transition: all 0.3s ease-in;
 

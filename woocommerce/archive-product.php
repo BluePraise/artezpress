@@ -15,7 +15,7 @@
     </form>
     <?php include get_theme_file_path('/inc/filter-tags.php'); ?>
   </div>
-  <main class="site-main products book-grid flex-container justify-space-between js-products-container" role="main">
+  <main class="site-main products book-grid flex-container js-products-container" role="main">
     <!-- <h2 class="products__not-found" style="display: none">Not found</h2> -->
     <?php woocommerce_product_loop_start(); ?>
     <?php if (wc_get_loop_prop('total')) : ?>
