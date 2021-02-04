@@ -104,8 +104,11 @@ if (is_product()) {
 			<?php endif; ?>
 
 			<div class="menu-misc">
-				<?php get_template_part('inc/templateparts/language', 'toggle');
-
+				
+				<?php 
+				if(!is_product()):	
+					get_template_part('inc/templateparts/language', 'toggle');
+				endif;
 				if (is_cart()) {
 					do_action('woocommerce_proceed_to_checkout');
 				} else if (is_checkout()) {
