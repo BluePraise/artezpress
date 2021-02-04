@@ -53,27 +53,29 @@ global $product;
 				<span class="colophon-value"><?php echo $publishing_year ?>, <?php echo $language ?></span>
 
 				<?php if (wc_product_sku_enabled() && ($product->get_sku() || $product->is_type('variable'))) : ?>
-					<span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?> <span class="sku"><?php echo ($sku = $product->get_sku()) ? $sku : esc_html__('N/A', 'woocommerce'); ?></span></span>
+					<a href="<?php echo $product->get_permalink() ?>" alt="<?php echo $product->get_name() ?>"><span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span> <span class="sku"><?php echo ($sku = $product->get_sku()) ? $sku : esc_html__('N/A', 'woocommerce'); ?></span></a>
 				<?php endif; ?>
 
 				<?php if (have_rows('additional_editions')) : while (have_rows('additional_editions')) : the_row();
 						$type_of_edition = get_sub_field('type_of_edition');
 						$related 		 = get_sub_field('related_edition');
-					if($related):	
+						if ($related) :
 				?>
-						<span class="colophon-value"><?php echo $type_of_edition; _e( ' Edition', 'artezpress'); ?></span>
-						<?php foreach ($related as $r) :
-						// get the ID of the related product
-							$related_product_ID = $r->ID;
-							$related_product = wc_get_product($related_product_ID);
-							$related_product_sku = $related_product->get_sku();
-							$permalink = get_permalink($related_product_ID);
-							$price = wc_price($related_product->get_price());
-							echo ('ISBN ' . $related_product_sku);
+							<a class="colophon-value"><span><?php echo $type_of_edition; _e(' Edition', 'artezpress'); ?></span>
+								<?php foreach ($related as $r) :
+									// get the ID of the related product
+									$related_product_ID = $r->ID;
+									$related_product = wc_get_product($related_product_ID);
+									$related_product_sku = $related_product->get_sku();
+									$permalink = get_permalink($related_product_ID);
+									$price = wc_price($related_product->get_price());
+									echo ('ISBN ' . $related_product_sku);
 
-						endforeach;
-					?>		
-				<?php endif; endwhile; endif; ?>
+								endforeach; ?>
+							</a>
+				<?php endif;
+					endwhile;
+				endif; ?>
 
 				<span class="colophon-value">NUR <?php echo $nur; ?></span>
 			</div>
@@ -181,7 +183,7 @@ global $product;
 			<?php endif; ?>
 
 		</div>
-		
+
 	</div>
 
 
