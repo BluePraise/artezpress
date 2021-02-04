@@ -10,8 +10,6 @@
     display: grid;
 }
 
-
-
 .flex-container {
     display: flex;
 }
@@ -23,6 +21,20 @@
 
 .justify-center {
     justify-content: center;
+}
+
+.justify-space-between {
+    justify-content: space-between;
+}
+
+.container-books {
+    margin-left: 27rem;
+    width: 100%;
+    max-width: 107.6rem;
+    @media (min-width: 1441px) {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .container-xs,
@@ -46,6 +58,7 @@
 }
 
 // aligns all the products in a row of six
+.book-grid,
 .product-display {
     flex-wrap: wrap;
     margin-left: auto;

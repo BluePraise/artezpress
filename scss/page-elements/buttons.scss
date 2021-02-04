@@ -18,6 +18,17 @@
   }
 }
 
+.btn.btn-rectangle {
+  @include clearButton(12px, 1.3rem, 3.1rem);
+
+  &:hover {
+    border: 2px solid #fff;
+    background-color: $black;
+    color: white;
+  }
+
+}
+
 span.btn:hover {
   cursor: not-allowed;
 }

@@ -1,9 +1,10 @@
 // styling for all pages and posts goes here...
-
 .page-title {
     display: block;
     padding-right: 1.6rem;
     padding-left: 1.6rem;
+    margin-top: 6rem;
+    margin-bottom: 8rem;
 }
 
 .featured-title {
@@ -19,8 +20,11 @@
 // used in book single
 a.go-back {
     display: block;
-
-    img {
+    position: fixed;
+    z-index: 100;
+    top: 50px;
+    left: 32px;
+    svg {
         width: 4.4rem;
         height: 4.4rem;
     }

@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 
+
 <main id="site-content" class="container-xl single-news" role="main">
     <a class="go-back" href="<?php echo site_url("/news"); ?>" role="link">
         <img src="<?php echo get_stylesheet_directory_uri( ) ?>/assets/icons/btn_close.svg" alt="Close article and go back to news">
