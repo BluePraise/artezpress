@@ -19,6 +19,9 @@
 // used in book single
 a.go-back {
     display: block;
+    position: sticky;
+    z-index: 100;
+    top: 50px;
 
     svg {
         width: 4.4rem;
