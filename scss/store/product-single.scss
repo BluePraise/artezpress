@@ -101,19 +101,3 @@
         }
     }
 }
-
-section.related-books .product-display {
-    margin-left: 0;
-    margin-right: 0;
-
-    .product {
-        width: calc(100% / 4 - 3.2rem);
-        margin-left: 3.2rem;
-        
-        &:first-child {
-            margin-left: 0;
-        }
-    }
-
-
-}

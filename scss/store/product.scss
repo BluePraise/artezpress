@@ -45,6 +45,24 @@ body.single-product.set-text-white {
     // }
 }
 
+// book grid
+.book-grid {
+    margin-left: 0;
+    margin-right: 0;
+
+    .book-item {
+        @media screen and (min-width: 992px) {
+            width: calc(100% / 4 - 3.2rem);
+            margin-right: 3.2rem;
+
+            &:nth-child(4),
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+    }
+}
 
 .label-header,
 .colophon-value {

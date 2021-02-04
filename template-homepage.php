@@ -33,9 +33,9 @@ get_header(); ?>
 
 		</section>
 
-		<section class="featured-books flex-container ">
+		<section class="featured-books flex-container">
 			<h2 class="featured-title"><?php _e('Books', 'artezpress'); ?></h2>
-			<div class="full-width products">
+			<div class="full-width products book-grid">
     			<?php
         		$args = array(
 						'post_type' => 'product',
