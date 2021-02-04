@@ -56,9 +56,10 @@ if (empty($product) || !$product->is_visible()) {
 	?>
 	<h4><?php echo get_the_title(); ?></h4>
 
-	<p class="book-item-author"><?php echo wp_trim_words($author, 20, '...'); ?></p>
+	<?php if( !is_front_page()): ?>
+		<p class="book-item-author"><?php echo wp_trim_words($author, 20, '...'); ?></p>
 
-
+	<?php endif; ?>	
 	<?php
 	woocommerce_template_loop_product_link_close();
 	/**
