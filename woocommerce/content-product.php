@@ -31,7 +31,7 @@ if (empty($product) || !$product->is_visible()) {
 	return;
 }
 ?>
-<div <?php wc_product_class('', $product); ?> data-filters="<?= $cats ?> <?= $author ?> year-<?= $year ?> <?= $tags ?>" data-search="<?= get_the_title() ?> <?= $cats ?> <?= $tags ?> <?= $author ?> <?= $design && is_array($design) ? $design['designer'] : '' ?>">
+<div <?php wc_product_class('book-item', $product); ?> data-filters="<?= $cats ?> <?= $author ?> year-<?= $year ?> <?= $tags ?>" data-search="<?= get_the_title() ?> <?= $cats ?> <?= $tags ?> <?= $author ?> <?= $design && is_array($design) ? $design['designer'] : '' ?>">
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
@@ -56,9 +56,10 @@ if (empty($product) || !$product->is_visible()) {
 	?>
 	<h4><?php echo get_the_title(); ?></h4>
 
-	<p class="book-item-author"><?php echo wp_trim_words($author, 20, '...'); ?></p>
+	<?php if( !is_front_page()): ?>
+		<p class="book-item-author"><?php echo wp_trim_words($author, 20, '...'); ?></p>
 
-
+	<?php endif; ?>	
 	<?php
 	woocommerce_template_loop_product_link_close();
 	/**

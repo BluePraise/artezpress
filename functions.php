@@ -117,6 +117,7 @@ function ap_excerpt_more($more)
 add_filter('excerpt_more', 'ap_excerpt_more');
 
 
+
 if (function_exists('acf_add_options_page')) {
 
 	acf_add_options_page(array(
@@ -470,32 +471,33 @@ function prevent_duplicate_products_redirect($url = false)
 }
 
 
+// Add specific CSS class by filter.
 
 add_filter('body_class', function ($classes) {
 	global $post;
 	$id = $post->ID;
-	if (is_product()) {
+	$single_product_text_color = get_field('text_color', $id);
+	if (is_product() && $single_product_text_color) :
+		if ($single_product_text_color == "#00000") :
+			return array_merge($classes, array('set-text-black'));
 
-		$single_product_text_color = get_field('text_color', $id);
-
-		if ($single_product_text_color == "#fff") {
-			$classes[] = 'artz-white-text';
-		}
-	}
-	return $classes;
+		elseif ($single_product_text_color == "#f2f2f2") :
+			return array_merge($classes, array('set-text-white'));
+		endif;
+	endif;
 });
 
 add_action('wp_ajax_artez_random_bg', 'artez_random_bg');
-add_action('wp_ajax_nopriv_artez_random_bg', 'artez_random_bg');
 
 function artez_random_bg()
 {
-
+	
 	$rows = get_field('hero_bg_imgs', 'option'); // get all the rows
 	$rand_row = $rows[array_rand($rows)];
 	echo $rand_row['bg_images_uploaded'];
 	wp_die();
 }
+add_action('wp_ajax_nopriv_artez_random_bg', 'artez_random_bg');
 
 // Removes cross-sell products from cart page
 

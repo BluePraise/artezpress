@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
         if (e.pageX < 20 || head_menu.is(':hover')) {
             // Show the menu if mouse is within 20 pixels
             // from the left or we are hovering over it
-            console.log('fire 1');
+            // console.log('fire 1');
             clearTimeout(menuTimeout);
             menuTimeout = null;
             $("header.fixed-bottom").css("z-index", 2);
@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
             // Hide the menu if the mouse is further than 20 pixels
             // from the left and it is not hovering over the menu
             // and we aren't already scheduled to hide it
-            console.log('fire 2');
+            // console.log('fire 2');
             menuTimeout = setTimeout(function() {
                 $("header.fixed-bottom").css("z-index", 0)
             }, 000);
@@ -310,7 +310,7 @@ then close all select boxes: */
 
         var showOnScroll = $(".js-show-onscroll");
 
-        if (scroll >= 10) {
+        if (scroll >= 20) {
             hideOnScroll.removeClass("shown").addClass("hidden");
             showOnScroll.removeClass("hidden").addClass("shown");
         } else {

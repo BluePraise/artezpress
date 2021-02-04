@@ -55,7 +55,7 @@
 
     // all the anchorlinks get an underline
     a {
-        @include undelineText;
+        @include underlineText;
     }
 
     // spacing for all the p tags
@@ -79,7 +79,25 @@
 
 .book-item-meta .block {
     margin-bottom: 2.3rem;
+
     &:last-child {
         margin-bottom: 0;
+    }
+}
+
+.book-item-related-new .news-item {
+    width: 50%;
+}
+
+.current-tag-list {
+    display: flex;
+    margin-bottom: 4rem;
+
+    li {
+        margin-left: 3.2rem;
+
+        &:first-child {
+            margin-left: 0;
+        }
     }
 }

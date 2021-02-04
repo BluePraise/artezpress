@@ -4,6 +4,8 @@
     display: block;
     padding-right: 1.6rem;
     padding-left: 1.6rem;
+    margin-top: 6rem;
+    margin-bottom: 8rem;
 }
 
 .featured-title {
@@ -19,8 +21,12 @@
 // used in book single
 a.go-back {
     display: block;
+    position: fixed;
+    z-index: 100;
+    top: 50px;
+    left: 32px;
 
-    img {
+    svg {
         width: 4.4rem;
         height: 4.4rem;
     }

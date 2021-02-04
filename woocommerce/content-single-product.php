@@ -38,19 +38,39 @@ if (post_password_required()) {
 	return;
 }
 ?>
+<a class="go-back" href="<?php echo site_url("/books"); ?>" role="link">
+	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
+		<defs>
+			<style>
+				.cls-1 {
+					fill: none;
+				}
+
+				.cls-2 {
+					clip-path: url(#clip-path);
+				}
+			</style>
+			<clipPath id="clip-path">
+				<rect class="cls-1" width="32" height="32" />
+			</clipPath>
+		</defs>
+
+		<g class="cls-2">
+			<path d="M23.45,21.88l-1.57,1.57L16,17.57l-5.88,5.88L8.55,21.88,14.43,16,8.55,10.12l1.57-1.57L16,14.43l5.88-5.88,1.57,1.57L17.57,16ZM16,0A16,16,0,1,0,32,16,16,16,0,0,0,16,0" />
+		</g>
+	</svg>
+</a>
 <main id="product-<?php the_ID(); ?>" <?php wc_product_class('container', $product); ?>>
-	<a class="go-back" href="<?php echo site_url("/books"); ?>" role="link">
-		<img src="<?php echo get_stylesheet_directory_uri( ) ?>/assets/icons/btn_close.svg" alt="Close article and go back to books">
-	</a>
+
 	<?php woocommerce_show_product_images(); ?>
 	<div class="post-container book-item__single">
-		<?php if ($available): ?>
+		<?php if ($available) : ?>
 			<div class="book-item-available"><?php echo $available; ?></div>
 		<?php endif ?>
 		<h3 class="book-item-title"><?php the_title(); ?>
-		<?php if ($book_item_subtitle): ?>
-			<span class="book-item-subtitle"><?php echo $book_item_subtitle; ?></span>
-		<?php endif ?>	
+			<?php if ($book_item_subtitle) : ?>
+				<span class="book-item-subtitle"><?php echo $book_item_subtitle; ?></span>
+			<?php endif ?>
 		</h3>
 		<div class="summary entry-summary">
 			<?php
@@ -72,34 +92,35 @@ if (post_password_required()) {
 			<div class="book-item-description">
 				<?php echo $description; ?>
 			</div>
-				
+
 			<?php woocommerce_template_single_meta(); ?>
 
 
 		</div><!-- .end of summary -->
 	</div><!-- .end of .post-container -->
-	<section class="related-news">
-		<h5 class="section-title"><?php _e('News', 'storefront'); ?></h5>
-		<?php
-		/**
-		 * Related News
-		 */
-		$related_news = get_field('related_news');
-		if ($related_news) : ?>
+	<?php
+	/**
+	 * Related News
+	 */
+	$related_news = get_field('related_news');
+	if ($related_news) : ?>
+		<section class="related-news book-item-related-news">
+			<h5 class="section-title"><?php _e('News', 'storefront'); ?></h5>
+
 			<div class="flex-container news-grid">
 				<?php foreach ($related_news as $post) :
 
 					// Setup this post for WP functions (variable must be named $post).
-					setup_postdata($post); 
+					setup_postdata($post);
 					// get the "news snippet" as amir calls it.
 					get_template_part('inc/templateparts/news', 'excerpt'); ?>
 				<?php endforeach; ?>
 			</div>
-				<?php 
-				// Reset the global post object so that the rest of the page works correctly.
-				wp_reset_postdata(); ?>
-			<?php endif; ?>
-	</section>						
-		<?php woocommerce_output_related_products(); ?>
-</main>
+			<?php
+			// Reset the global post object so that the rest of the page works correctly.
+			wp_reset_postdata(); ?>
+		</section>
+	<?php endif; ?>
 
+	<?php woocommerce_output_related_products(); ?>
+</main>

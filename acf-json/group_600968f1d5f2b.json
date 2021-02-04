@@ -106,8 +106,8 @@
                 "id": ""
             },
             "choices": {
-                "#000": "Black",
-                "#fff": "White"
+                "#00000": "Black",
+                "#f2f2f2": "White"
             },
             "allow_null": 0,
             "other_choice": 0,
@@ -142,5 +142,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1612337473
+    "modified": 1612385586
 }
