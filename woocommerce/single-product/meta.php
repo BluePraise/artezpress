@@ -61,18 +61,18 @@ global $product;
 						$related 		 = get_sub_field('related_edition');
 						if ($related) :
 				?>
-							<a class="colophon-value"><span><?php echo $type_of_edition; _e(' Edition', 'artezpress'); ?></span>
+							<span class="colophon-value">
+								<span class="d-block"><?php echo $type_of_edition; _e(' Edition', 'artezpress'); ?></span>
 								<?php foreach ($related as $r) :
 									// get the ID of the related product
 									$related_product_ID = $r->ID;
 									$related_product = wc_get_product($related_product_ID);
 									$related_product_sku = $related_product->get_sku();
 									$permalink = get_permalink($related_product_ID);
-									$price = wc_price($related_product->get_price());
-									echo ('ISBN ' . $related_product_sku);
+									echo ('<span>ISBN ' . $related_product_sku . '</span>');
 
 								endforeach; ?>
-							</a>
+							</span>
 				<?php endif;
 					endwhile;
 				endif; ?>
