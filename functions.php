@@ -482,7 +482,6 @@ function artez_random_bg()
 add_action('wp_ajax_nopriv_artez_random_bg', 'artez_random_bg');
 
 // Removes cross-sell products from cart page
-
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 
 function filter_woocommerce_cart_totals_coupon_html($coupon_html, $coupon, $discount_amount_html)
@@ -497,23 +496,6 @@ function filter_woocommerce_cart_totals_coupon_html($coupon_html, $coupon, $disc
 }
 
 add_filter('woocommerce_cart_totals_coupon_html', 'filter_woocommerce_cart_totals_coupon_html', 10, 3);
-
-add_filter('woocommerce_order_button_text', 'custom_order_button_text', 1);
-
-function custom_order_button_text($order_button_text)
-{
-
-	$order_button_text = 'Complete Checkout';
-
-	return $order_button_text;
-}
-
-remove_action("woocommerce_before_checkout_form", "woocommerce_checkout_coupon_form", 10);
-remove_action('woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10);
-add_action('woocommerce_before_checkout_billing_form', 'woocommerce_checkout_login_form', 10);
-remove_action('woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20);
-add_action('woocommerce_checkout_order_payment', 'woocommerce_checkout_payment', 20);
-
 
 add_action("woocommerce_review_order_after_order_total", function () {
 	$out = "<a class='back-to-cart' href='" . wc_get_cart_url() . "'>Modify Cart</a>";

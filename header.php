@@ -108,18 +108,8 @@ if (is_product()) {
 				<?php
 				if (!is_product()) :
 					get_template_part('inc/templateparts/language', 'toggle');
-				endif;
-				if (is_cart()) {
-					do_action('woocommerce_proceed_to_checkout');
-				} else if (is_checkout()) { ?>
-
-					<form name="checkout" method="post" class="checkout" action="<?php echo esc_url($get_checkout_url); ?>">
-						<?php wp_nonce_field('woocommerce-process_checkout', 'woocommerce-process-checkout-nonce'); ?>
-						<button type="submit" class="btn white-on-black cart-btn" name="woocommerce_checkout_place_order" id="place_order" value="Place order" data-value="Place order" />
-					</form>
-
-				<?php 	} else { ?>
-
+				endif; ?>
+				<?php if (!is_cart() && !is_checkout() ) : ?>
 					<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
 
 						<span class="cart-label"><?php _e('Shop', 'artezpress'); ?></span>
@@ -130,8 +120,12 @@ if (is_product()) {
 
 						<span class="cart-counter"><?php echo $count; ?></span>
 					</a>
-				<?php } ?>
-
+				<?php endif; ?>
+				<?php if (is_cart()) : ?>
+					<a href="<?php echo esc_url(wc_get_checkout_url()); ?>" class="btn white-on-black cart-btn">
+						<?php esc_html_e('Proceed', 'woocommerce'); ?>
+					</a>
+				<?php endif; ?>
 			</div>
 		</div>
 	</nav>

@@ -28,6 +28,7 @@
     }
 }
 
+.woocommerce-form__,
 .woocommerce-form-login-toggle .woocommerce-info {
     @include smallText;
     border-bottom: 2px solid;
@@ -51,27 +52,12 @@ form.checkout.woocommerce-checkout {
         margin: 10px 0;
     }
 
-    div#customer_details {
-
-        .select2-container--default {
-            width: 100%;
-            border-bottom: 2px solid !important;
-            padding-bottom: 10px;
-            font-size: 16px;
-        }
-
-        .select2-container--default span.select2-selection {
-            border-radius: 0 !important;
-            border: 0px !important;
-        }
-
+    .customer-details {
         .radio-toggle {
             text-align: left;
         }
 
-        .radio-toggle .woocommerce-form__label {
-            margin-bottom: 0px;
-        }
+
 
         input#ship-to-different-address-checkbox {
             height: 0;
@@ -93,12 +79,7 @@ form.checkout.woocommerce-checkout {
             padding: 0px 0 10px;
         }
 
-        .radio-toggle>label,
-        li.wc_payment_method {
-            line-height: 3;
-            border-bottom: 2px solid;
-            padding-left: 10px;
-        }
+
 
         .payment_box {
             font-size: 16px;
@@ -135,6 +116,66 @@ form.checkout.woocommerce-checkout {
         }
     }
 }
+
+// changes from Maggie.
+
+.woocommerce-checkout-container.flex-container {
+    justify-content: space-between;
+
+    .col-left {
+        width: 45%;
+        padding-right: 9rem;
+    }
+}
+
+//address field country
+.address-field {}
+
+.select2-container--default {
+    @include smallText;
+    width: 100%;
+    height: 4.5rem;
+    border-bottom: 1px solid !important;
+    padding-bottom: 1rem;
+    padding-top: 0.4rem;
+
+    span.select2-selection {
+        border-radius: 0 !important;
+        border: 0px !important;
+    }
+
+    .select2-selection--single .select2-selection__rendered {
+        color: $black;
+    }
+
+    .select2-results__options li.select2-results__option {
+        padding-left: 2rem;
+    }
+
+    .select2-container--default .select2-results__option--highlighted[aria-selected=true],
+    .select2-container--default .select2-results__option--highlighted[data-selected] {
+        background-color: $black;
+    }
+}
+
+// shipping address
+
+.woocommerce-shipping-fields {
+
+    //shipping address
+    .radio-toggle .woocommerce-form__label {
+        @include smallText;
+        padding-left: 10px;
+        line-height: 4.5rem;
+        border-bottom: 1px solid;
+        margin-bottom: 1.6rem;
+        &:first-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+    }
+}
+
 
 //login form
 
