@@ -57,7 +57,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 							} else {
 								echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $_product->get_name() ), $cart_item, $cart_item_key ) );
 							}
-
+							//var_dump($cart_item);
 							do_action( 'woocommerce_after_cart_item_name', $cart_item, $cart_item_key );
 
 							// Meta data.
