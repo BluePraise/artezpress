@@ -28,10 +28,11 @@ if (is_product()) {
 			<div class="main-menu-surface">
 				<div class="grid-container">
 					<?php get_template_part('inc/templateparts/nav', 'pages'); ?>
-					<div class="mini-cart-column">
-						<div class="mini-cart-total"><?php woocommerce_mini_cart(); ?></div>
-					</div>
-
+					<?php if (WC()->cart->get_cart_contents_count() == 0 && !is_checkout()) : ?>
+						<div class="mini-cart-column">
+							<div class="mini-cart-total"><?php woocommerce_mini_cart(); ?></div>
+						</div>
+					<?php endif; ?>	
 				</div>
 
 			</div>
