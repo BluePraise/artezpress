@@ -7,6 +7,19 @@
     padding-right: 3.2rem;
 }
 
+.woocommerce-notices-wrapper {
+    display: flex;
+    justify-content: center;
+    .woocommerce-message {
+        line-height: 4.6rem;
+        background-color: $black;
+        color: $white;
+        min-width: 50rem;
+        text-align: center;
+        @include underlineText;
+    }
+}
+
 .woocommerce-form__label-for-checkbox input[type="checkbox"].woocommerce-form__input-checkbox {
     width: 1.3rem;
     min-width: 1.3rem;
@@ -15,7 +28,6 @@
     border: 1px solid black;
 }
 
-.woocommerce-form__label-for-checkbox {}
 
 .woocommerce input[type=datetime],
 .woocommerce input[type=datetime-local],
@@ -94,21 +106,21 @@
 .shop_table .woocommerce-cart-form__cart-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
-    padding-bottom: 30px;
+    margin-bottom: 1.6rem;
+    padding-bottom: 3.2rem;
     border-bottom: 2px solid $black;
 
     .product-thumbnail {
-        margin-right: 25px;
+        margin-right: 3.2rem;
         flex-basis: 125px;
     }
 
     .product-thumbnail img {
-        width: 125px;
+        width: 12.5rem;
     }
 
     .quantity input {
-        width: 25px;
+        width: 3.2rem;
         border: none;
         outline: none;
         text-align: center;
@@ -207,7 +219,8 @@
 
     .coupon_code_area {
         border-bottom: 1px solid;
-        margin-right: 25px;
+        margin-right: 3.2rem;
+        width: 40rem;
     }
 
     .cart-discount {

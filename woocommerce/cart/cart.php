@@ -38,7 +38,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 						
 						<div class="flex-container">
-							<div class="product-thumbnail">
+							<div class="product-thumbnail book-item">
 							<?php
 							$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image('cart-thumb'), $cart_item, $cart_item_key );
 
@@ -72,21 +72,21 @@ do_action( 'woocommerce_before_cart' ); ?>
 						</div>
 						<div class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
 						<?php
-						if ( $_product->is_sold_individually() ) {
-							$product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key );
-						} else {
-							$product_quantity = woocommerce_quantity_input(
-								array(
-									'input_name'   => "cart[{$cart_item_key}][qty]",
-									'input_value'  => $cart_item['quantity'],
-									'max_value'    => $_product->get_max_purchase_quantity(),
-									'min_value'    => '0',
-									'product_name' => $_product->get_name(),
-								),
-								$_product,
-								false
-							);
-						}
+							if ( $_product->is_sold_individually() ) {
+								$product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key );
+							} else {
+								$product_quantity = woocommerce_quantity_input(
+									array(
+										'input_name'   => "cart[{$cart_item_key}][qty]",
+										'input_value'  => $cart_item['quantity'],
+										'max_value'    => $_product->get_max_purchase_quantity(),
+										'min_value'    => '0',
+										'product_name' => $_product->get_name(),
+									),
+									$_product,
+									false
+								);
+							}
 
 						echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item ); // PHPCS: XSS ok.
 						?>
