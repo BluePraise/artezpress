@@ -104,17 +104,21 @@ if (is_product()) {
 			<?php endif; ?>
 
 			<div class="menu-misc">
-				
-				<?php 
-				if(!is_product()):	
+
+				<?php
+				if (!is_product()) :
 					get_template_part('inc/templateparts/language', 'toggle');
 				endif;
 				if (is_cart()) {
 					do_action('woocommerce_proceed_to_checkout');
-				} else if (is_checkout()) {
-					$order_button_text = "Checkout";
-					echo apply_filters('woocommerce_order_button_html', '<button type="submit" class="btn white-on-black cart-btn" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr($order_button_text) . '" data-value="' . esc_attr($order_button_text) . '">' . esc_html($order_button_text) . '</button>'); // @codingStandardsIgnoreLine 
-				} else { ?>
+				} else if (is_checkout()) { ?>
+
+					<form name="checkout" method="post" class="checkout" action="<?php echo esc_url($get_checkout_url); ?>">
+						<?php wp_nonce_field('woocommerce-process_checkout', 'woocommerce-process-checkout-nonce'); ?>
+						<button type="submit" class="btn white-on-black cart-btn" name="woocommerce_checkout_place_order" id="place_order" value="Place order" data-value="Place order" />
+					</form>
+
+				<?php 	} else { ?>
 
 					<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
 

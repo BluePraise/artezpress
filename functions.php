@@ -498,6 +498,16 @@ function filter_woocommerce_cart_totals_coupon_html($coupon_html, $coupon, $disc
 
 add_filter('woocommerce_cart_totals_coupon_html', 'filter_woocommerce_cart_totals_coupon_html', 10, 3);
 
+add_filter('woocommerce_order_button_text', 'custom_order_button_text', 1);
+
+function custom_order_button_text($order_button_text)
+{
+
+	$order_button_text = 'Complete Checkout';
+
+	return $order_button_text;
+}
+
 remove_action("woocommerce_before_checkout_form", "woocommerce_checkout_coupon_form", 10);
 remove_action('woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10);
 add_action('woocommerce_before_checkout_billing_form', 'woocommerce_checkout_login_form', 10);

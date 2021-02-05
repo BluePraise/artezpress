@@ -18,7 +18,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <div class="shop_table woocommerce-checkout-review-order-table">
-	<!-- <thead>
+	<thead>
 		<tr>
 			<th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
 			<th class="product-total"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
@@ -49,7 +49,7 @@ defined( 'ABSPATH' ) || exit;
 
 		do_action( 'woocommerce_review_order_after_cart_contents' );
 		?>
-	</tbody> -->
+	</tbody>
 
 
 		<div class="cart-subtotal">

@@ -1,15 +1,18 @@
-<?php 
-    /* Template Name: Cart Page */
-    get_header(); 
+<?php
+/* Template Name: Cart Page */
+get_header();
 ?>
 
 
 <main id="site-content" class="container-xl" role="main">
-    <h2 class="page-title"><?php echo the_title(); ?></h2>
+    <?php if ( !is_page( 'cart' ) || !is_cart() ) : ?>
+        <h2 class="page-title"><?php echo the_title(); ?></h2>
+    <?php endif; ?>
     <?php
-        if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+    if (have_posts()) : while (have_posts()) : the_post();
             the_content();
-        endwhile; endif; 
+        endwhile;
+    endif;
     ?>
 
 </main>
