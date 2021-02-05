@@ -73,7 +73,7 @@ form.checkout.woocommerce-checkout {
         #artez-payment,
         #artez-delivery {
             border-bottom: 2px solid;
-            font-size: 16px;
+            @include smallText;
             text-align: left;
         }
         .radio-toggle {
