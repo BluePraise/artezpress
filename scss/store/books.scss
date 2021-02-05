@@ -72,13 +72,8 @@ body.single-product.set-text-white {
                 margin-right: 0;
             }
         }
-
         // Mobile
         @media screen and (max-width: 767px) {}
-
-        a img {
-            @include boxShadow;
-        }
 
     }
 }

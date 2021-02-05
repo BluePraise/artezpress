@@ -22,14 +22,12 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-	<!-- <h2><?php esc_html_e( 'Cart totals', 'woocommerce' ); ?></h2> -->
-
 	<div class="shop_table shop_table_responsive">
 
 		<div class="cart-subtotal">
 			<div class="subtotal-label"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></div>
 			<div class="update-cart"><button type="submit" class="button update-cart" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
-</div>
+		</div>
 			<div class="subtotal-value" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>"><?php wc_cart_totals_subtotal_html(); ?></div>
 		</div>
 
@@ -43,8 +41,6 @@ defined( 'ABSPATH' ) || exit;
 		<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
 
 			<?php do_action( 'woocommerce_cart_totals_before_shipping' ); ?>
-
-			<!-- <?php wc_cart_totals_shipping_html(); ?> -->
 
 			<?php do_action( 'woocommerce_cart_totals_after_shipping' ); ?>
 

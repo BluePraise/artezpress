@@ -38,6 +38,11 @@
     }
 }
 
+.book-item a img {
+    
+    @include boxShadow;
+}
+
 .book-item-available {
     margin-bottom: 4.8rem;
 }
