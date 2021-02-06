@@ -27,6 +27,13 @@ const fetchPosts = ({
     // Private Methods
     const loadContent = function() {
 
+        var msnry = new Masonry(postsContent, {
+            // options
+            itemSelector: '.news-item'
+        });
+
+
+
         // Starts with page = 1
         // Increase every time content is loaded
         ++startPage;
@@ -68,6 +75,12 @@ const fetchPosts = ({
                 postsContent.innerHTML += postsHtml;
                 // Required for the infinite scroll
                 postsLoaded = true;
+                msnry.reloadItems()
+                imagesLoaded(postsContent).on('progress', function() {
+                    // layout Masonry after each image loads
+                    msnry.layout();
+                });
+
                 preloader.style.visibility = 'hidden';
             } else {
                 preloader.style.visibility = 'hidden';
@@ -128,8 +141,10 @@ const fetchPosts = ({
         };
 
         loadPosts();
+        postsLoaded = true;
 
     };
+
 
     // Where the magic happens
     // Checks if IntersectionObserver is supported
@@ -162,6 +177,7 @@ const fetchPosts = ({
             return false;
         });
     }
+
 
     // Public Properties and Methods
     // return {

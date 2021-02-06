@@ -1,15 +1,6 @@
-jQuery(window).on('load', function() {
-    var $ = jQuery;
-
-    // $(".news-grid-masonry").masonry({
-    //     // options
-    //     itemSelector: ".news-item",
-
-    // });
-
-});
-
 jQuery(document).ready(function($) {
+
+
 
     //checkout page shipping address toggle
 
