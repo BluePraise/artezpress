@@ -500,7 +500,6 @@ function artez_random_bg()
 add_action('wp_ajax_nopriv_artez_random_bg', 'artez_random_bg');
 
 // Removes cross-sell products from cart page
-
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 
 function filter_woocommerce_cart_totals_coupon_html($coupon_html, $coupon, $discount_amount_html)
@@ -515,13 +514,6 @@ function filter_woocommerce_cart_totals_coupon_html($coupon_html, $coupon, $disc
 }
 
 add_filter('woocommerce_cart_totals_coupon_html', 'filter_woocommerce_cart_totals_coupon_html', 10, 3);
-
-remove_action("woocommerce_before_checkout_form", "woocommerce_checkout_coupon_form", 10);
-remove_action('woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10);
-add_action('woocommerce_before_checkout_billing_form', 'woocommerce_checkout_login_form', 10);
-remove_action('woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20);
-add_action('woocommerce_checkout_order_payment', 'woocommerce_checkout_payment', 20);
-
 
 add_action("woocommerce_review_order_after_order_total", function () {
 	$out = "<a class='back-to-cart' href='" . wc_get_cart_url() . "'>Modify Cart</a>";
@@ -539,12 +531,12 @@ function custom_override_checkout_fields($fields)
 	return $fields;
 }
 
-
-
-add_action ("woocommerce_review_order_before_submit", function(){
-?>
-<style type="text/css"> #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; } /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block. We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */ </style> <style type="text/css"> #mc-embedded-subscribe-form input[type=checkbox]{display: inline; width: auto;margin-right: 10px;} #mergeRow-gdpr {margin-top: 20px;} #mergeRow-gdpr fieldset label {font-weight: normal;} #mc-embedded-subscribe-form .mc_fieldset{border:none;min-height: 0px;padding-bottom:0px;} </style>
-
-<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
-<?php 
-}, 100);
+// hide coupon field on the checkout page
+function disable_coupon_field_on_checkout($enabled)
+{
+	if (is_checkout()) {
+		$enabled = false;
+	}
+	return $enabled;
+}
+add_filter('woocommerce_coupons_enabled', 'disable_coupon_field_on_checkout');

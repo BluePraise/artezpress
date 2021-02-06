@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Proceed to checkout button
  *
@@ -17,11 +18,11 @@
  * @version 2.4.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 ?>
 
-<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="btn white-on-black cart-btn">
-	<?php esc_html_e( 'Proceed', 'woocommerce' ); ?>
+<a href="<?php echo esc_url(wc_get_checkout_url()); ?>" class="btn white-on-black cart-btn">
+	<?php esc_html_e('Proceed', 'woocommerce'); ?>
 </a>

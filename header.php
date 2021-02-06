@@ -28,10 +28,11 @@ if (is_product()) {
 			<div class="main-menu-surface">
 				<div class="grid-container">
 					<?php get_template_part('inc/templateparts/nav', 'pages'); ?>
-					<div class="mini-cart-column">
-						<div class="mini-cart-total"><?php woocommerce_mini_cart(); ?></div>
-					</div>
-
+					<?php if (WC()->cart->get_cart_contents_count() == 0 || !is_checkout()) : ?>
+						<div class="mini-cart-column">
+							<div class="mini-cart-total"><?php woocommerce_mini_cart(); ?></div>
+						</div>
+					<?php endif; ?>	
 				</div>
 
 			</div>
@@ -104,18 +105,12 @@ if (is_product()) {
 			<?php endif; ?>
 
 			<div class="menu-misc">
-				
-				<?php 
-				if(!is_product()):	
-					get_template_part('inc/templateparts/language', 'toggle');
-				endif;
-				if (is_cart()) {
-					do_action('woocommerce_proceed_to_checkout');
-				} else if (is_checkout()) {
-					$order_button_text = "Checkout";
-					echo apply_filters('woocommerce_order_button_html', '<button type="submit" class="btn white-on-black cart-btn" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr($order_button_text) . '" data-value="' . esc_attr($order_button_text) . '">' . esc_html($order_button_text) . '</button>'); // @codingStandardsIgnoreLine 
-				} else { ?>
 
+				<?php
+				if (!is_product()) :
+					get_template_part('inc/templateparts/language', 'toggle');
+				endif; ?>
+				<?php if (!is_cart() && !is_checkout() ) : ?>
 					<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
 
 						<span class="cart-label"><?php _e('Shop', 'artezpress'); ?></span>
@@ -126,8 +121,12 @@ if (is_product()) {
 
 						<span class="cart-counter"><?php echo $count; ?></span>
 					</a>
-				<?php } ?>
-
+				<?php endif; ?>
+				<?php if (is_cart()) : ?>
+					<a href="<?php echo esc_url(wc_get_checkout_url()); ?>" class="btn white-on-black cart-btn">
+						<?php esc_html_e('Proceed', 'woocommerce'); ?>
+					</a>
+				<?php endif; ?>
 			</div>
 		</div>
 	</nav>

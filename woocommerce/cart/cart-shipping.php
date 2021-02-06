@@ -25,7 +25,6 @@ $show_shipping_calculator = ! empty( $show_shipping_calculator );
 $calculator_text          = '';
 ?>
 <tr class="woocommerce-shipping-totals shipping">
-	<th><h3 id="artez-delivery"><?php echo wp_kses_post( "Delivery" ); ?></h3></th>
 	<td data-title="<?php echo esc_attr( "Delivery" ); ?>">
 		<?php if ( $available_methods ) : ?>
 			<ul id="shipping_method" class="woocommerce-shipping-methods">

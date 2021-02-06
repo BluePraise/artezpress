@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Checkout Form
  *
@@ -15,74 +16,53 @@
  * @version 3.5.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 
-do_action( 'woocommerce_before_checkout_form', $checkout );
+do_action('woocommerce_before_checkout_form', $checkout);
 
-if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
-
-	<h3><?php esc_html_e( 'Billing and Shipping', 'artezpress' ); ?></h3>
-
-<?php else : ?>
-
-	<h3><?php esc_html_e( 'Billing and Shipping', 'artezpress' ); ?></h3>
-
-<?php endif; 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
-if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
-	echo esc_html( apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'woocommerce' ) ) );
+if (!$checkout->is_registration_enabled() && $checkout->is_registration_required() && !is_user_logged_in()) {
+	echo esc_html(apply_filters('woocommerce_checkout_must_be_logged_in_message', __('You must be logged in to checkout.', 'woocommerce')));
 	return;
-}
+} ?>
 
-?>
 
-<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
-	
-	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+<?php do_action('woocommerce_checkout_after_order_review'); ?>
 
-	<div id="order_review" class="woocommerce-checkout-review-order">
-		<?php do_action( 'woocommerce_checkout_order_review' ); ?>
-	</div>
+<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data">
 
-	<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
-	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
-	
-	<form name="checkout" method="post" class="checkout woocommerce-checkout mt-4" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
+	<?php if ($checkout->get_checkout_fields()) : ?>
 
-	<?php if ( $checkout->get_checkout_fields() ) : ?>
+		<?php do_action('woocommerce_checkout_before_customer_details'); ?>
 
-		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
-
-		<div class="flex-container woocommerce-checkout-container" id="customer_details">
+		<div class="flex-container woocommerce-checkout-container customer-details" id="customer_details">
 			<div class="col_left">
 				<div class="woocommerce-ap-custom form-title"><?php _e('Billing Address', 'artezpress'); ?></div>
-				<?php do_action( 'woocommerce_checkout_billing' ); ?>
-				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
+				<?php do_action('woocommerce_checkout_billing'); ?>
+				<?php do_action('woocommerce_checkout_shipping'); ?>
 			</div>
 
-		
 
-		<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
-	<?php endif; ?>
+			<?php do_action('woocommerce_checkout_after_customer_details'); ?>
 
-	<div class="col_right">
-	<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
-	
-			<div class="shipping-checkout">
-			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
-
-			<?php wc_cart_totals_shipping_html(); ?>
-
-			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
-		</div>
 		<?php endif; ?>
-	<h3 id="artez-payment"> <?php _e("Payment", "woocommerce"); ?></h3>
-		<?php do_action( 'woocommerce_checkout_order_payment' ); ?>
-	</div>
-	</div>
-</form>
 
-<?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
+		<div class="col_right">
+			<h3 class="woocommerce-ap-custom form-title"> <?php _e("Payment", "woocommerce"); ?></h3>
+			
+			<?php if (WC()->cart->needs_shipping() && WC()->cart->show_shipping()) : ?>
+
+				<div class="shipping-checkout">
+					<?php do_action('woocommerce_review_order_before_shipping'); ?>
+					<?php do_action('woocommerce_checkout_order_review'); ?>
+					<?php do_action('woocommerce_review_order_after_shipping'); ?>
+				</div>
+			<?php endif; ?>
+
+			<?php do_action('woocommerce_checkout_order_payment'); ?>
+		</div>
+		<?php do_action('woocommerce_after_checkout_form', $checkout); ?>
+</form>
