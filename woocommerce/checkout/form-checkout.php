@@ -59,9 +59,6 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
 				<div class="shipping-checkout">
 					<?php do_action('woocommerce_review_order_before_shipping'); ?>
 					<?php do_action('woocommerce_checkout_order_review'); ?>
-					<?php //wc_cart_totals_shipping_html(); 
-					?>
-
 					<?php do_action('woocommerce_review_order_after_shipping'); ?>
 				</div>
 			<?php endif; ?>

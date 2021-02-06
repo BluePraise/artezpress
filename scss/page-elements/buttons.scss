@@ -18,6 +18,10 @@
   }
 }
 
+button.btn {
+  line-height: 3.6rem;
+}
+
 .btn.btn-rectangle {
   @include clearButton(12px, 1.3rem, 3.1rem);
 

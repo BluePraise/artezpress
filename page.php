@@ -9,7 +9,7 @@
 			get_template_part('blocks/index'); ?>
 		</article>
 	<?php endif; ?>
-	<?php if (is_checkout()) : ?>
+	<?php if (is_checkout() ) : ?>
 		<div class="container-s">
 			<h2 class="page-title"><?php echo the_title(); ?></h2>
 			<?php the_content(); ?>
