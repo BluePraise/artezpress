@@ -20,6 +20,7 @@
 
 button.btn {
   line-height: 3.6rem;
+  @include smallText;
 }
 
 .btn.btn-rectangle {

@@ -512,3 +512,13 @@ function custom_override_checkout_fields($fields)
 
 	return $fields;
 }
+
+// hide coupon field on the checkout page
+function disable_coupon_field_on_checkout($enabled)
+{
+	if (is_checkout()) {
+		$enabled = false;
+	}
+	return $enabled;
+}
+add_filter('woocommerce_coupons_enabled', 'disable_coupon_field_on_checkout');

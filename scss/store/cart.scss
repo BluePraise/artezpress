@@ -1,15 +1,7 @@
-/****
-* SHARED STYLING FOR ALL THE CART AND CHECKOUT
-**/
-// this class is used with the 
-// flexcontainer .col_left and right
-.woocommerce .flex-container .col_left {
-    padding-right: 3.2rem;
-}
-
 .woocommerce-notices-wrapper {
     display: flex;
     justify-content: center;
+
     .woocommerce-message {
         line-height: 4.6rem;
         background-color: $black;
@@ -96,9 +88,14 @@
     width: 100%;
     text-align: left;
     border-bottom: 1px solid;
-    margin-top: 4.8rem;
     padding: 1rem;
 }
+
+.ap-icon-times {
+    display: inline-block;
+    font-size: 1.6rem;
+}
+
 
 /****
 * END OF SHARED STYLING

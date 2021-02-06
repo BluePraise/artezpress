@@ -95,16 +95,6 @@ form.checkout.woocommerce-checkout {
             padding-bottom: 2rem;
         }
 
-        ul#shipping_method {
-            margin-bottom: 1.8rem;
-        }
-
-        ul#shipping_method>li {
-            display: flex;
-            margin-top: 2rem;
-            line-height: 0.9;
-        }
-
         ul#shipping_method>li input {
             margin-right: 10px;
         }
@@ -122,9 +112,13 @@ form.checkout.woocommerce-checkout {
 .woocommerce-checkout-container.flex-container {
     justify-content: space-between;
 
-    .col-left {
+    .col_left {
         width: 45%;
         padding-right: 9rem;
+    }
+
+    .col_right {
+        width: 55%;
     }
 }
 
@@ -169,10 +163,45 @@ form.checkout.woocommerce-checkout {
         line-height: 4.5rem;
         border-bottom: 1px solid;
         margin-bottom: 1.6rem;
+
         &:first-child {
             border-bottom: none;
             margin-bottom: 0;
         }
+    }
+}
+
+// review checkout table from review-order.php
+.woocommerce-ap-custom-checkout-review-order-table {
+    margin-bottom: 3.2rem;
+}
+
+.woocommerce-ap-custom-checkout-review-order-table .table-row,
+.review-order .cart-subtotal,
+.review-order .order-total,
+.woocommerce-shipping-methods {
+    justify-content: space-between;
+    border-bottom: 1px solid $black;
+    @include smallText;
+    padding-left: 10px;
+    line-height: 4.8rem;
+
+    .product-name {
+        width: 100%;
+        border-bottom: none;
+    }
+}
+
+.review-order .back-to-cart {
+    display: inline-block;
+    @include microText;
+    margin-top: 1.6rem;
+    margin-left: 10px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid currentColor;
+
+    &:after {
+        margin-left: 10px;
     }
 }
 
