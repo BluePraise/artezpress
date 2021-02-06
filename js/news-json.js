@@ -29,7 +29,8 @@ const fetchPosts = ({
 
         var msnry = new Masonry(postsContent, {
             // options
-            itemSelector: '.news-item'
+            itemSelector: '.news-item',
+            transitionDuration: 0
         });
 
 
