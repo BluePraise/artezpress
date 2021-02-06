@@ -81,19 +81,6 @@ form.checkout.woocommerce-checkout {
 
 
 
-        .payment_box {
-            font-size: 16px;
-            line-height: 1.4;
-            padding-left: 30px;
-            color: #333;
-            padding-bottom: 20px;
-        }
-
-        .woocommerce-terms-and-conditions-checkbox-text,
-        .woocommerce-privacy-policy-text {
-            @include smallText;
-            padding-bottom: 2rem;
-        }
 
         ul#shipping_method>li input {
             margin-right: 10px;
@@ -176,17 +163,30 @@ form.checkout.woocommerce-checkout {
     margin-bottom: 3.2rem;
 }
 
+.wc_payment_method p {
+    @include microText;
+    padding-left: 4.1rem;
+}
+
+.wc_payment_method label,
+.woocommerce-ap-custom-checkout-review-order-table .table-row,
+.review-order .cart-subtotal,
+.review-order .order-total,
+.woocommerce-shipping-methods {
+    @include smallText;
+    padding: 1.2rem 10px;
+}
+
 .woocommerce-ap-custom-checkout-review-order-table .table-row,
 .review-order .cart-subtotal,
 .review-order .order-total,
 .woocommerce-shipping-methods {
     justify-content: space-between;
-    border-bottom: 1px solid $black;
-    @include smallText;
-    padding-left: 10px;
-    line-height: 4.8rem;
 
-    .product-name {
+    border-bottom: 1px solid $black;
+
+    .cart-item-row {
+        display: inline-flex;
         width: 100%;
         border-bottom: none;
     }
@@ -197,12 +197,35 @@ form.checkout.woocommerce-checkout {
     @include microText;
     margin-top: 1.6rem;
     margin-left: 10px;
-    padding-bottom: 3px;
+    color: #767676;
     border-bottom: 1px solid currentColor;
 
     &:after {
         margin-left: 10px;
     }
+}
+
+// TERMS AND CONDITIONS
+.woocommerce-terms-and-conditions-wrapper {
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+}
+
+.woocommerce-terms-and-conditions-checkbox-text,
+.woocommerce-privacy-policy-text {
+    @include smallText;
+
+    a {
+        @include underlineText;
+    }
+}
+
+// Had to move around place order button
+.form-row.place-order {
+    justify-content: flex-end;
+    align-items: flex-end;
+    display: inline-flex;
+    flex-direction: column;
 }
 
 
@@ -225,4 +248,8 @@ form.checkout.woocommerce-checkout {
         @include microText;
         color: #767676;
     }
+}
+
+.woocommerce-error {
+    color: red;
 }
