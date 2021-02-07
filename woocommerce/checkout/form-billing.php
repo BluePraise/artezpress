@@ -20,9 +20,6 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <div class="woocommerce-billing-fields">
 	
-
-	
-
 	<div class="woocommerce-billing-fields__field-wrapper">
 		<?php
 		$fields = $checkout->get_checkout_fields( 'billing' );

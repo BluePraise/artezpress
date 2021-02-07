@@ -10,14 +10,15 @@ jQuery(window).on("load", function () {
 });
 
 jQuery(document).ready(function($) {
+ 
 
-    //checkout page shipping address toggle
+	//checkout page shipping address toggle
 
-    $('.radio-toggle .input-radio').change(function() {
-        var curval = ($(this).val() === '0') ? true : false;
-        $('#ship-to-different-address-checkbox').prop('checked', curval);
-        $('#ship-to-different-address-checkbox').trigger('click');
-    });
+	$(".radio-toggle .input-radio").change(function () {
+		var curval = $(this).val() === "0" ? true : false;
+		$("#ship-to-different-address-checkbox").prop("checked", curval);
+		$("#ship-to-different-address-checkbox").trigger("click");
+	});
 
 
     // header menu overlap menu fix

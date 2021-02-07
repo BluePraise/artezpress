@@ -157,6 +157,10 @@
         display: flex;
         justify-content: space-between;
         margin-top: 20px;
+
+        .order-total-value {
+            text-align: right;
+        }
     }
 
     button.button.update-cart:disabled {

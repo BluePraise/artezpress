@@ -43,26 +43,23 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
 				<?php do_action('woocommerce_checkout_billing'); ?>
 				<?php do_action('woocommerce_checkout_shipping'); ?>
 			</div>
-
-
-
 			<?php do_action('woocommerce_checkout_after_customer_details'); ?>
 
 		<?php endif; ?>
 
 		<div class="col_right">
 			<h3 class="woocommerce-ap-custom form-title"> <?php _e("Payment", "woocommerce"); ?></h3>
-			
+
 			<?php if (WC()->cart->needs_shipping() && WC()->cart->show_shipping()) : ?>
 
 				<div class="shipping-checkout">
 					<?php do_action('woocommerce_review_order_before_shipping'); ?>
-					<?php do_action('woocommerce_checkout_order_review'); ?>
 					<?php do_action('woocommerce_review_order_after_shipping'); ?>
+					<?php do_action('woocommerce_checkout_order_review'); ?>
 				</div>
+
 			<?php endif; ?>
 
-			<?php do_action('woocommerce_checkout_order_payment'); ?>
+			<?php do_action('woocommerce_after_checkout_form', $checkout); ?>
 		</div>
-		<?php do_action('woocommerce_after_checkout_form', $checkout); ?>
 </form>

@@ -38,10 +38,6 @@
 
 form.checkout.woocommerce-checkout {
 
-    ul.woocommerce-error {
-        font-size: 16px;
-        padding-left: 10px;
-    }
 
     .woocommerce-billing-fields label,
     .woocommerce-shipping-fields__field-wrapper label {
@@ -74,23 +70,6 @@ form.checkout.woocommerce-checkout {
             font-size: 16px;
             text-align: left;
         }
-
-        .radio-toggle {
-            padding: 0px 0 10px;
-        }
-
-
-
-
-        ul#shipping_method>li input {
-            margin-right: 10px;
-        }
-
-        ul#shipping_method>li>label {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
     }
 }
 
@@ -110,8 +89,6 @@ form.checkout.woocommerce-checkout {
 }
 
 //address field country
-.address-field {}
-
 .select2-container--default {
     @include smallText;
     width: 100%;
@@ -139,9 +116,18 @@ form.checkout.woocommerce-checkout {
     }
 }
 
+// News letter hack
+.mailchimp-newsletter label {
+    display: inline-block !important;
+}
+
 // shipping address
 
 .woocommerce-shipping-fields {
+
+    .radio-toggle {
+        padding: 0px 0 10px;
+    }
 
     //shipping address
     .radio-toggle .woocommerce-form__label {
@@ -163,11 +149,25 @@ form.checkout.woocommerce-checkout {
     margin-bottom: 3.2rem;
 }
 
+.payment_box,
 .wc_payment_method p {
     @include microText;
     padding-left: 4.1rem;
+
+
 }
 
+// styling for multisafe select boxes
+
+.payment_method_multisafepay_creditcard {
+    select {
+        height: 36px;
+        padding: 0 10px;
+        border: 1px solid currentColor;
+    }
+}
+
+.shipping-total,
 .wc_payment_method label,
 .woocommerce-ap-custom-checkout-review-order-table .table-row,
 .review-order .cart-subtotal,
@@ -177,6 +177,7 @@ form.checkout.woocommerce-checkout {
     padding: 1.2rem 10px;
 }
 
+.shipping-total, 
 .woocommerce-ap-custom-checkout-review-order-table .table-row,
 .review-order .cart-subtotal,
 .review-order .order-total,
@@ -192,12 +193,44 @@ form.checkout.woocommerce-checkout {
     }
 }
 
+.woocommerce-shipping-methods li {
+    line-height: 4.8rem;
+    justify-content: space-between;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+
+    label {
+        margin-left: 10px;
+        display: inline-flex;
+        justify-content: space-between;
+        flex-grow: 2;
+        text-align: left;
+
+        span {
+            display: inline-block;
+        }
+    }
+}
+
+
+.review-order .order-total {
+    flex-wrap: wrap;
+}
+
+.includes_tax {
+    @include microText;
+    display: block;
+    width: 100%;
+    text-align: right;
+}
+
 .review-order .back-to-cart {
     display: inline-block;
     @include microText;
-    margin-top: 1.6rem;
+    margin-top: 1rem;
+    margin-bottom: 1.6rem;
     margin-left: 10px;
-    color: #767676;
     border-bottom: 1px solid currentColor;
 
     &:after {
