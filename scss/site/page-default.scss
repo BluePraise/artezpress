@@ -11,7 +11,13 @@
     @include grid(2, 2fr, 0, 3.2rem);
 }
 
-.content-block {margin-bottom: 8rem;} 
+.content-block {
+    margin-bottom: 8rem;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
 .content-block p {
     // should be identical to line-height but what is the line-height?
     // is it 2.4rem or 3.2rem? I am looking on Github, all the scss files, 
@@ -33,7 +39,7 @@
     @include underlineText;
 }
 
-.content-block ol > li {
+.content-block ol>li {
     counter-increment: roman;
     position: relative;
     padding-left: 4rem;
@@ -46,7 +52,11 @@
     }
 }
 
-.content-block .nested-list li {
-    list-style-type: lower-alpha;
-    padding: 0 4rem;
+ul.nested-list {
+    margin-top: 3.2rem;
+
+    li {
+        list-style-type: lower-alpha;
+        margin: 0 4rem;
+    }
 }
