@@ -49,11 +49,6 @@ form.checkout.woocommerce-checkout {
     }
 
     .customer-details {
-        .radio-toggle {
-            text-align: left;
-        }
-
-
 
         input#ship-to-different-address-checkbox {
             height: 0;
@@ -70,6 +65,16 @@ form.checkout.woocommerce-checkout {
             border-bottom: 2px solid;
             font-size: 16px;
             text-align: left;
+        }
+
+        ul#shipping_method>li input {
+            margin-right: 10px;
+        }
+
+        ul#shipping_method>li>label {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
         }
     }
 }
@@ -125,8 +130,8 @@ form.checkout.woocommerce-checkout {
 // shipping address
 
 .woocommerce-shipping-fields {
-
     .radio-toggle {
+        text-align: left;
         padding: 0px 0 10px;
     }
 
@@ -178,7 +183,7 @@ form.checkout.woocommerce-checkout {
     padding: 1.2rem 10px;
 }
 
-.shipping-total, 
+.shipping-total,
 .woocommerce-ap-custom-checkout-review-order-table .table-row,
 .review-order .cart-subtotal,
 .review-order .order-total,
