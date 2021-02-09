@@ -19,8 +19,8 @@
 }
 
 button.btn {
-  @include smallText;
-  line-height: 3.6rem;
+  font-family: $default-font;
+  line-height: 2.8rem;
 }
 
 .btn.btn-rectangle {

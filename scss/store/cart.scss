@@ -157,6 +157,10 @@
         display: flex;
         justify-content: space-between;
         margin-top: 20px;
+
+        .order-total-value {
+            text-align: right;
+        }
     }
 
     button.button.update-cart:disabled {
@@ -212,4 +216,15 @@
         display: block;
         font: 400 1.7rem/2.3rem 'Lars', Helvetica, Arial, sans-serif;
     }
+}
+
+// MAGGIE'S CHANGES
+
+.cart-subtotal {
+    padding: 0 10px;
+}
+
+.woocommerce-shipping-totals.shipping {
+    border-top: 1px solid;
+    margin-top: 1.6rem;
 }

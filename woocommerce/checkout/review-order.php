@@ -33,7 +33,7 @@ defined('ABSPATH') || exit;
 				<div class="cart-item-row woocommerce-ap-custom">
 					<?php echo apply_filters('woocommerce_checkout_cart_item_quantity', ' <span class="product-quantity">' . sprintf('%s <span class="ap-icon-times">✕</span> &nbsp;',  $cart_item['quantity']) . ' </span>', $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 					?>
-					<?php echo apply_filters('woocommerce_cart_item_name', '<span class="product-name">' . $_product->get_name(), $cart_item, $cart_item_key) . '(inc. 21% VAT) </span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+					<?php echo apply_filters('woocommerce_cart_item_name', '<span class="product-name">' . $_product->get_name(), $cart_item, $cart_item_key) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 					?>
 					<?php echo wc_get_formatted_cart_item_data($cart_item); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 					?>
@@ -47,7 +47,6 @@ defined('ABSPATH') || exit;
 		}
 	}
 
-	do_action('woocommerce_review_order_after_cart_contents');
 	?>
 
 	<div class="review-order">
@@ -55,6 +54,7 @@ defined('ABSPATH') || exit;
 		<div class="cart-subtotal flex-container">
 			<span><?php esc_html_e('Subtotal', 'woocommerce'); ?></span>
 			<span><?php wc_cart_totals_subtotal_html(); ?></span>
+
 		</div>
 
 		<?php foreach (WC()->cart->get_coupons() as $code => $coupon) : ?>
@@ -64,15 +64,6 @@ defined('ABSPATH') || exit;
 			</div>
 		<?php endforeach; ?>
 
-		<?php if (WC()->cart->needs_shipping() && WC()->cart->show_shipping()) : ?>
-
-			<?php do_action('woocommerce_review_order_before_shipping'); ?>
-
-			<?php wc_cart_totals_shipping_html(); ?>
-
-			<?php do_action('woocommerce_review_order_after_shipping'); ?>
-
-		<?php endif; ?>
 
 		<?php foreach (WC()->cart->get_fees() as $fee) : ?>
 			<div class="fee">
@@ -97,14 +88,20 @@ defined('ABSPATH') || exit;
 				</div>
 			<?php endif; ?>
 		<?php endif; ?>
-
+		<div class="shipping-total flex-container">
+			<?php $shipping_total = WC()->cart->get_shipping_total(); ?>
+			<span class="shipping-total-label"><?php esc_html_e('Shipping', 'artezpress'); ?></span>
+			<span class="shipping-total-value"><?php echo wc_price($shipping_total); ?></span>
+		</div>
 		<?php do_action('woocommerce_review_order_before_order_total'); ?>
 
 		<div class="order-total flex-container">
-			<th><?php esc_html_e('Total', 'woocommerce'); ?></th>
-			<td><?php wc_cart_totals_order_total_html(); ?></td>
-		</div>
 
+			<div><?php esc_html_e('Total', 'woocommerce'); ?></div>
+
+			<?php wc_cart_totals_order_total_html(); ?>
+		</div>
+		<?php do_action('woocommerce_review_order_after_cart_contents'); ?>
 		<?php do_action('woocommerce_review_order_after_order_total'); ?>
 
 	</div>

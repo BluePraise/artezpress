@@ -400,7 +400,6 @@ add_action('wp_ajax_filter_posts', 'ajax_filter_get_posts');
 add_action('wp_ajax_nopriv_filter_posts', 'ajax_filter_get_posts');
 
 
-
 // A function to change the text on the single shop file.
 function availability_filter_func($availability)
 {
@@ -454,8 +453,6 @@ function change_meta_box_titles()
 }
 add_action('add_meta_boxes', 'change_meta_box_titles', 999);
 
-
-
 //Prevent Add to cart on reload
 
 add_action('woocommerce_add_to_cart_redirect', 'prevent_duplicate_products_redirect');
@@ -469,6 +466,8 @@ function prevent_duplicate_products_redirect($url = false)
 	// we add the 'get_bloginfo' part so it saves a redirect on https:// sites.
 	return get_bloginfo('wpurl') . add_query_arg(array(), remove_query_arg('add-to-cart'));
 }
+
+
 
 
 // Add specific CSS class by filter.
@@ -515,7 +514,7 @@ function filter_woocommerce_cart_totals_coupon_html($coupon_html, $coupon, $disc
 
 add_filter('woocommerce_cart_totals_coupon_html', 'filter_woocommerce_cart_totals_coupon_html', 10, 3);
 
-add_action("woocommerce_review_order_after_order_total", function () {
+add_action("woocommerce_review_order_after_cart_contents", function () {
 	$out = "<a class='back-to-cart' href='" . wc_get_cart_url() . "'>Modify Cart</a>";
 	echo $out;
 });

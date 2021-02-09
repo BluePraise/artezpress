@@ -24,8 +24,8 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 $show_shipping_calculator = ! empty( $show_shipping_calculator );
 $calculator_text          = '';
 ?>
-<tr class="woocommerce-shipping-totals shipping">
-	<td data-title="<?php echo esc_attr( "Delivery" ); ?>">
+<div class="woocommerce-shipping-totals shipping">
+	<div data-title="<?php echo esc_attr( "Delivery" ); ?>">
 		<?php if ( $available_methods ) : ?>
 			<ul id="shipping_method" class="woocommerce-shipping-methods">
 				<?php foreach ( $available_methods as $method ) : ?>
@@ -42,19 +42,7 @@ $calculator_text          = '';
 					</li>
 				<?php endforeach; ?>
 			</ul>
-			<?php if ( is_cart() ) : ?>
-				<p class="woocommerce-shipping-destination">
-					<?php
-					if ( $formatted_destination ) {
-						// Translators: $s shipping destination.
-						printf( esc_html__( 'Shipping to %s.', 'woocommerce' ) . ' ', '<strong>' . esc_html( $formatted_destination ) . '</strong>' );
-						$calculator_text = esc_html__( 'Change address', 'woocommerce' );
-					} else {
-						echo wp_kses_post( apply_filters( 'woocommerce_shipping_estimate_html', __( 'Shipping options will be updated during checkout.', 'woocommerce' ) ) );
-					}
-					?>
-				</p>
-			<?php endif; ?>
+		
 			<?php
 		elseif ( ! $has_calculated_shipping || ! $formatted_destination ) :
 			if ( is_cart() && 'no' === get_option( 'woocommerce_enable_shipping_calc' ) ) {
@@ -71,12 +59,12 @@ $calculator_text          = '';
 		endif;
 		?>
 
-		<?php if ( $show_package_details ) : ?>
+		<?php if (is_cart() && $show_package_details ) : ?>
 			<?php echo '<p class="woocommerce-shipping-contents"><small>' . esc_html( $package_details ) . '</small></p>'; ?>
 		<?php endif; ?>
 
 		<?php if ( $show_shipping_calculator ) : ?>
 			<?php woocommerce_shipping_calculator( $calculator_text ); ?>
 		<?php endif; ?>
-	</td>
-</tr>
+	</div>
+</div>
