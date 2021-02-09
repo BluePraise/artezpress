@@ -4,9 +4,13 @@ jQuery(document).ready(function($) {
     //checkout page shipping address toggle
 
     $(".radio-toggle .input-radio").change(function() {
+
         var curval = $(this).val() === "0" ? true : false;
+
         $("#ship-to-different-address-checkbox").prop("checked", curval);
         $("#ship-to-different-address-checkbox").trigger("click");
+        $(".shipping_address").toggle("fast");
+
     });
 
 
