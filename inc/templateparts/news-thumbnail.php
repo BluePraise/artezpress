@@ -5,7 +5,7 @@
     
     if ($imgmeta['width'] < $imgmeta['height']): ?>
         <figure class="news-thumbnail is-portrait">
-            <?php the_post_thumbnail(); ?>
+            <?php the_post_thumbnail(array("auto", 460)); ?>
         </figure>
     <?php else: ?>
         <figure class="news-thumbnail is-landscape">
