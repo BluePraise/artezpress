@@ -89,6 +89,14 @@ div#news-json-grid {
 .news-thumbnail {
     padding: 0 2rem;
     margin-bottom: 3.2rem;
+    margin-left: auto;
+    margin-right: auto;
+    &.is-portrait {
+        max-width: 31.7rem;
+    }
+    &.is-landscape {
+        max-width: 42.7rem;
+    }
 }
 
 .news-thumbnail.attachment-is-portrait {
@@ -130,10 +138,12 @@ a.news-read-more {
 }
 
 .news-item__single .news-thumbnail {
-    margin-bottom: 8rem;
-    text-align: center;
-    img {
-        width: auto;
+    margin-bottom: 3.6rem;
+    &.is-portrait {
+        max-width: 42.8rem;
+    }
+    &.is-landscape {
+        max-width: 81.5rem;
     }
 }
 
@@ -141,16 +151,17 @@ a.news-read-more {
 // all these modules also have a classname which they share:
 // .news-module-container so any common classes can also
 // be set on that class.
+.news-module-container {
+    margin-bottom: 8rem;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
 .news-content__single .news-text {
     max-width: 77rem;
-    margin: 2rem auto;
-    padding-bottom: 4rem;
-    &:first-child {
-        // this substracts an additional 2rems to the bottom of 
-        // this module. I've left this here in case you wanted to 
-        // try out some new spacinds
-        margin: 0 auto 0rem auto;
-    }
+    margin-left: auto;
+    margin-right: auto;
     // all the anchorlinks get an underline
     a {
         @include underlineText;
@@ -166,7 +177,6 @@ a.news-read-more {
 }
 
 .news-item__single .book-reference {
-    margin-bottom: 8rem;
     figure {
         margin-bottom: 4rem;
         margin-left: auto;
@@ -188,10 +198,6 @@ a.news-read-more {
     h5 {
         margin-bottom: 4rem;
     }
-}
-
-.video-container {
-    margin: 8rem 0;
 }
 
 .news-video-caption {

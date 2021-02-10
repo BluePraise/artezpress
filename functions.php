@@ -545,3 +545,6 @@ function disable_coupon_field_on_checkout($enabled)
 	return $enabled;
 }
 add_filter('woocommerce_coupons_enabled', 'disable_coupon_field_on_checkout');
+
+
+add_filter('woocommerce_ship_to_different_address_checked', '__return_true', 999);

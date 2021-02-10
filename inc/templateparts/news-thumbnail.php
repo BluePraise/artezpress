@@ -4,11 +4,11 @@
     
     
     if ($imgmeta['width'] < $imgmeta['height']): ?>
-        <figure class="news-thumbnail attachment-is-portrait">
+        <figure class="news-thumbnail is-portrait">
             <?php the_post_thumbnail(array("auto", 460)); ?>
         </figure>
     <?php else: ?>
-        <figure class="news-thumbnail attachment-is-landscape">
+        <figure class="news-thumbnail is-landscape">
             <?php the_post_thumbnail(); ?>
         </figure>
 <?php endif; endif; ?>
