@@ -464,7 +464,13 @@ function prevent_duplicate_products_redirect($url = false)
 	}
 	// redirect back to the original page, without the 'add-to-cart' parameter.
 	// we add the 'get_bloginfo' part so it saves a redirect on https:// sites.
-	return get_bloginfo('wpurl') . add_query_arg(array(), remove_query_arg('add-to-cart'));
+	
+	return sprintf(
+		"%s://%s%s",
+		isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
+		$_SERVER['SERVER_NAME'],
+		add_query_arg(array(), remove_query_arg('add-to-cart'))
+	  );
 }
 
 
