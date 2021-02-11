@@ -25,11 +25,8 @@
 }
 
 .content-block p {
-    // should be identical to line-height but what is the line-height?
-    // is it 2.4rem or 3.2rem? I am looking on Github, all the scss files, 
-    // indesign, and the UI PDF, my own notes.
-    margin-top: 3.2rem;
-    margin-bottom: 3.2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 
     &:first-child {
         margin-top: 0;

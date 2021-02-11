@@ -529,3 +529,23 @@ add_filter('woocommerce_coupons_enabled', 'disable_coupon_field_on_checkout');
 
 
 add_filter('woocommerce_ship_to_different_address_checked', '__return_true', 999);
+
+
+// ALLOW TRANSLATION OF CUSTOM FIELDS AND OTHER PLUGIN DATA
+add_filter('pll_translate_post_meta', 'translate_post_meta', 10, 3);
+// Allows plugins to copy taxonomy terms when a new post (or page) translation is created or synchronize
+function translate_post_meta($value, $key, $lang)
+{
+	if ('_thumbnail_id' === $key) {
+		$value = pll_get_post($value, $lang);
+	}
+	return $value;
+}
+
+add_filter('pll_copy_taxonomies', 'copy_tax', 10, 2);
+
+function copy_tax($taxonomies, $sync)
+{
+	$taxonomies[] = 'my_custom_tax';
+	return $taxonomies;
+}
