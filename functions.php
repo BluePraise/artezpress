@@ -9,6 +9,8 @@
  * If you don't plan to dequeue the Storefront Core CSS you can remove the subsequent line and as well
  * as the sf_child_theme_dequeue_style() function declaration.
  */
+@ini_set('upload_max_size', '64M');
+
 
 if (!isset($content_width)) {
 	$content_width = 1076;
@@ -473,7 +475,7 @@ add_filter('body_class', function ($classes) {
 	endif;
 });
 
-add_action('wp_ajax_artez_random_bg', 'artez_random_bg');
+// add_action('wp_ajax_artez_random_bg', 'artez_random_bg');
 
 function artez_random_bg()
 {

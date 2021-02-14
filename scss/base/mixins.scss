@@ -32,10 +32,11 @@
 // Underline
 
 @mixin underlineText {
-  padding-bottom: 0.1rem;
-  position: relative; 
-  background-image: linear-gradient(to top, currentColor 6%, rgba(0, 0, 0, 0) 6%);
-
+  
+  position: relative;
+  display: inline-block;
+  padding-bottom: -0.1rem;
+  border-bottom: 2px solid currentColor;  
   // &::after {
   //   content: '';
   //   position: absolute;
