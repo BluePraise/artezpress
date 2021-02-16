@@ -1,45 +1,13 @@
 {
     "key": "group_5fcbe9e1e0080",
-    "title": "Product Publishing Settings",
+    "title": "FRONTPAGE HIGHLIGHTS",
     "fields": [
         {
-            "key": "field_5fcbea5328e37",
-            "label": "Add to Coming Soon",
-            "name": "add_coming_soon",
-            "type": "true_false",
-            "instructions": "Do you want to add this to the coming soon slider in the frontpage?",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5fd1233961154",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "acfe_permissions": [
-                "administrator",
-                "editor",
-                "superadmin"
-            ],
-            "message": "Show in Coming Soon Slider",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_5fd1233961154",
-            "label": "Add to New Releases",
-            "name": "add_new_releases",
-            "type": "true_false",
-            "instructions": "Do you want to add this to the New Releases slider in the frontpage?",
+            "key": "field_602aca5d45c0f",
+            "label": "COMING SOON",
+            "name": "coming_soon",
+            "type": "group",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -47,23 +15,47 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_permissions": [
-                "administrator",
-                "editor",
-                "superadmin"
-            ],
-            "message": "Add to New Releases",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
+            "layout": "block",
+            "acfe_seamless_style": 1,
+            "acfe_group_modal": 0,
+            "sub_fields": [
+                {
+                    "key": "field_5fcbea5328e37",
+                    "label": "Add to Coming Soon",
+                    "name": "add_coming_soon",
+                    "type": "true_false",
+                    "instructions": "Do you want to add this to the coming soon slider in the frontpage?",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_permissions": [
+                        "administrator",
+                        "editor",
+                        "author",
+                        "contributor",
+                        "subscriber",
+                        "customer",
+                        "shop_manager",
+                        "super_admin"
+                    ],
+                    "message": "Show in Coming Soon Slider",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                }
+            ]
         },
         {
-            "key": "field_5fd123667ff38",
-            "label": "Add to Backlog Slider",
-            "name": "add_backlog",
-            "type": "true_false",
-            "instructions": "Do you want to add this to the Backlog slider in the frontpage?",
+            "key": "field_602aca9c75836",
+            "label": "NEW RELEASES",
+            "name": "new_releases",
+            "type": "group",
+            "instructions": "This will be added to the slider to the frontpage",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -71,45 +63,99 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_permissions": [
-                "administrator",
-                "editor",
-                "superadmin"
-            ],
-            "message": "",
-            "default_value": 1,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
+            "layout": "block",
+            "acfe_seamless_style": 0,
+            "acfe_group_modal": 0,
+            "sub_fields": [
+                {
+                    "key": "field_602ac316850e6",
+                    "label": "Choose a book",
+                    "name": "add_to_new",
+                    "type": "relationship",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "product"
+                    ],
+                    "taxonomy": "",
+                    "filters": [
+                        "search",
+                        "post_type"
+                    ],
+                    "elements": "",
+                    "min": 1,
+                    "max": 1,
+                    "return_format": "object",
+                    "acfe_bidirectional": {
+                        "acfe_bidirectional_enabled": "0"
+                    },
+                    "translations": "sync"
+                },
+                {
+                    "key": "field_602ac6001d858",
+                    "label": "Add Image",
+                    "name": "add_custom_image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "uploader": "wp",
+                    "acfe_thumbnail": 0,
+                    "return_format": "array",
+                    "preview_size": "full",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "translations": "sync"
+                }
+            ]
         }
     ],
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "options_page",
                 "operator": "==",
-                "value": "product"
+                "value": "frontpage-highlights"
             }
         ]
     ],
     "menu_order": 0,
-    "position": "side",
+    "position": "acf_after_title",
     "style": "default",
     "label_placement": "left",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "acfe_display_title": "Frontpage",
+    "acfe_display_title": "",
     "acfe_autosync": [
         "json"
     ],
     "acfe_permissions": [
+        "administrator",
         "editor",
-        "superadmin"
+        "shop_manager",
+        "super_admin"
     ],
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1607600269
+    "modified": 1613417555
 }
