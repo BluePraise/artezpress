@@ -180,23 +180,28 @@ jQuery(document).ready(function($) {
         lazyLoad: true,
     });
 
-    $(".news-grid-masonry").masonry({
-        // options
-        itemSelector: ".news-item",
-    });
+    $(".news-grid").masonry({
+		// options
+		itemSelector: ".news-item",
+		gutter: 32,
+		percentPosition: true,
+		// horizontalOrder: true,
+		// gutter: 32
+		// columnWidth: 520,
+	});
 
     $(".wp-end-of-page").waypoint({
-        // element: document.getElementById("basic-waypoint"),
-        handler: function(direction) {
-            console.log("client height");
-            if (direction === "down") {
-                $(".main-menu-container").css({ opacity: 0 });
-            } else {
-                $(".main-menu-container").css({ opacity: 1 });
-            }
-        },
-        offset: "80%",
-    });
+		// element: document.getElementById("basic-waypoint"),
+		handler: function (direction) {
+			console.log("client height");
+			if (direction === "down") {
+				$(".main-menu-container").css({ opacity: 0 });
+			} else {
+				$(".main-menu-container").css({ opacity: 1 });
+			}
+		},
+		offset: "96.66%",
+	});
 
     //https://stackoverflow.com/questions/11867545/change-text-color-based-on-brightness-of-the-covered-background-area
 
