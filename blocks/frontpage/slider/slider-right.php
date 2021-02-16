@@ -4,18 +4,6 @@
 // show random posts
 // 
 
-// $the_query = new WP_Query($args);
-
-// if ($the_query->have_posts()) {
-
-//     $string .= '<ul>';
-//     while ($the_query->have_posts()) {
-//         $the_query->the_post();
-//         $string .= '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
-//     }
-//     $string .= '</ul>';
-//     /* Restore original Post Data */
-//     wp_reset_postdata();
 $args = array(
     'post_type' => 'product',
     'orderby'   => 'rand',
