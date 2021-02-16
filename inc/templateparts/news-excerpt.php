@@ -23,16 +23,14 @@
         if( get_row_layout() == 'news_content_module' ):
             $news_content      = get_sub_field('news_content');
                 
-            if ($news_content): 
-                //https://wordpress.stackexchange.com/questions/325271/generate-a-excerpt-from-an-acf-wysiwyg-field
-                if( !empty( $news_content ) ):
-                    $trimmed_content = wp_trim_words($news_content);
-                    $clean_excerpt = apply_filters('the_excerpt', $trimmed_content);
-
-                    // needs a custom class .news-item-excerpt
-                    echo '<p class="news-item-excerpt">'. $trimmed_content .'</p>';
+            if ($news_content):
+                    $start = strpos($news_content, '<p>'); // Locate the first paragraph tag
+                    $end = strpos($news_content, '</p>', $start); // Locate the first paragraph closing tag
+                    $news_content = substr($news_content, $start, $end - $start + 4); // Trim off everything after the closing paragraph tag
+                    // $news_content = str_replace(']]>', ']]>', $news_content);
+                    // $news_content = apply_filters('the_content', $news_content);
                 
-                endif;
+                    echo '<div class="news-item-excerpt">'. $news_content. '</div>';
             endif;
         endif;
         endwhile; endif 

@@ -101,7 +101,21 @@ function ap_excerpt_more($more)
 }
 add_filter('excerpt_more', 'ap_excerpt_more');
 
-
+function customized_field_excerpt()
+{
+	global $post;
+	$text = get_field('news');
+	if ('' != $text) {
+		$start = strpos($text, '<p>'); // Locate the first paragraph tag
+		$end = strpos($text, '</p>', $start); // Locate the first paragraph closing tag
+		$text = substr($text, $start, $end - $start + 4); // Trim off everything after the closing paragraph tag
+		$text = strip_shortcodes($text);
+		$text = str_replace(']]>', ']]>', $text);
+		$text = apply_filters('the_content', $text);
+	}
+	$text = '<p class="whatever">' . apply_filters('the_content', $text) . '</p>';
+	
+}
 
 if (function_exists('acf_add_options_page')) {
 
