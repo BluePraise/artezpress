@@ -14,11 +14,20 @@
 
     }
 
+    a {
+        position: absolute;
+        z-index: 10;
+        bottom: 3.2rem;
+        right: 3.6rem;
+        @include smallText;
+    }
+
     h3.slider-item-title {
         position: absolute;
         z-index: 2;
         bottom: 7rem;
         padding-left: 3.6rem;
+        margin-bottom: 3.2rem;
         color: white;
 
     }
@@ -28,8 +37,13 @@
     }
 
     .slider-item-left {
+        position: relative;
         background-color: black;
         height: 77rem;
+
+        a {
+            color: white;
+        }
 
         .slider-img {
             opacity: 0%;
