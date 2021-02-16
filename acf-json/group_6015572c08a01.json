@@ -62,6 +62,36 @@
             "media_upload": 0,
             "delay": 0,
             "translations": "translate"
+        },
+        {
+            "key": "field_5fcbea5328e37",
+            "label": "Add to Coming Soon",
+            "name": "add_coming_soon",
+            "type": "true_false",
+            "instructions": "This will add the book to the book slider and create a pre-order button.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": [
+                "administrator",
+                "editor",
+                "author",
+                "contributor",
+                "subscriber",
+                "customer",
+                "shop_manager",
+                "super_admin"
+            ],
+            "message": "Show in Coming Soon Slider",
+            "default_value": 0,
+            "ui": 0,
+            "translations": "sync",
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -97,5 +127,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "SUBTITLE AND DESCRIPTION",
-    "modified": 1612276658
+    "modified": 1613504433
 }

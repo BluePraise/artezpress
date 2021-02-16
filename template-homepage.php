@@ -17,21 +17,21 @@ get_header(); ?>
 	<main class="site-main test" role="main">
 
 		<?php get_template_part('blocks/frontpage/handshake/index'); ?>
-		<section class="features flex-container">
-
+		
 		<?php
-			if (have_rows('feature_sliders')) :
+			if (have_rows('feature_sliders')) : ?>
+				<section class="features flex-container">
+				<?php 
 				while (have_rows('feature_sliders')) : the_row();
 
-				get_template_part('blocks/frontpage/slider/slider','left');
-				get_template_part('blocks/frontpage/slider/slider','middle');
-				get_template_part('blocks/frontpage/slider/slider','right');
+					get_template_part('blocks/frontpage/slider/slider','left');
+					get_template_part('blocks/frontpage/slider/slider','middle');
+					get_template_part('blocks/frontpage/slider/slider','right');
 
-			endwhile;
-		endif;
-		?>
+				endwhile; ?>
+			</section>
+		<?php endif; ?>
 
-		</section>
 
 		<section class="featured-books flex-container">
 			<h2 class="featured-title"><?php _e('Books', 'artezpress'); ?></h2>

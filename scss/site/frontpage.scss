@@ -24,14 +24,16 @@
     }
 
     .owl-carousel .owl-item {
-        max-height: 7.7rem;
+        max-height: 77rem;
     }
 
     .slider-item-left {
         background-color: black;
+        height: 77rem;
 
         .slider-img {
             opacity: 0%;
+            height: 77rem;
         }
     }
 }
@@ -47,15 +49,18 @@
         display: inline-flex;
         flex-direction: row;
         margin-bottom: 4rem;
+
         .book-item {
+
             // anything else big
             @media screen and (min-width: 992px) {
                 width: calc(100% / 6 - 3.2rem);
                 margin-right: 3.2rem;
+
                 &:last-child {
                     margin-right: 0;
                 }
-            } 
+            }
         }
 
     }
