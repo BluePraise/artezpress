@@ -174,6 +174,7 @@ jQuery(document).ready(function($) {
 
     $(".owl-carousel").owlCarousel({
         items: 1,
+        slideBy: 2,
         loop: true,
         autoplay: true,
         dots: true,

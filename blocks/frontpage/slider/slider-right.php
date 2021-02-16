@@ -1,17 +1,25 @@
 
-<?php 
+<?php
 
-// if checkbox is checked then show this item in carroussel
-$checkbox = get_field('add_backlog');
-  
+// show random posts
+// 
+
+// $the_query = new WP_Query($args);
+
+// if ($the_query->have_posts()) {
+
+//     $string .= '<ul>';
+//     while ($the_query->have_posts()) {
+//         $the_query->the_post();
+//         $string .= '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+//     }
+//     $string .= '</ul>';
+//     /* Restore original Post Data */
+//     wp_reset_postdata();
 $args = array(
     'post_type' => 'product',
-    'meta_query' => array(
-        array (
-            'key'    => 'add_backlog',
-            'value'  => '1',
-        )
-    )
+    'orderby'   => 'rand',
+    'posts_per_page' => 3,
 );
 
 $loop = new WP_Query($args); ?>
