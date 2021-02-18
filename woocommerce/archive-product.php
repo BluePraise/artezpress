@@ -17,15 +17,27 @@
     <?php include get_theme_file_path('/inc/filter-tags.php'); ?>
   </div>
   <main class="site-main products book-grid flex-container js-products-container" role="main">
-    <!-- <h2 class="products__not-found" style="display: none">Not found</h2> -->
-    <?php woocommerce_product_loop_start(); ?>
-    <?php if (wc_get_loop_prop('total')) : ?>
-      <?php while (have_posts()) : the_post(); ?>
-        <?php do_action('woocommerce_shop_loop'); ?>
-        <?php wc_get_template_part('content', 'product'); ?>
-      <?php endwhile; ?>
-    <?php endif; ?>
-    <?php woocommerce_product_loop_end(); ?>
+
+    <?php //woocommerce_product_loop_start(); ?>
+    
+  <?php
+      $args = array(
+          'post_type'   => 'product',
+          'post_status' => 'publish',
+          'orderby'     => 'date',
+          'order'       => 'DESC',
+          'posts_per_page' => -1,  // -1 will get all the product. Specify positive integer value to get the number given number of product
+          );
+          $the_query = new WP_Query( $args );
+          if ( $the_query->have_posts() ) : 
+              while ( $the_query->have_posts() ) : $the_query->the_post(); 
+            
+            // if (wc_get_loop_prop('total')) : 
+              wc_get_template_part('content', 'product');
+            endwhile; 
+          endif; 
+     wp_reset_postdata();?>
+    <?php// woocommerce_product_loop_end(); ?>
   </main>
 </div>
 <!-- #main -->
