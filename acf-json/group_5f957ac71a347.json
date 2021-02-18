@@ -685,7 +685,7 @@
             "acfe_permissions": "",
             "acfe_repeater_stylised_button": 1,
             "collapsed": "field_5fd2443d1d52f",
-            "min": 1,
+            "min": 0,
             "max": 4,
             "layout": "row",
             "button_label": "Add an edition",
@@ -728,19 +728,17 @@
                         "id": ""
                     },
                     "acfe_permissions": "",
-                    "post_type": [
-                        "product",
-                        "product_variation"
-                    ],
+                    "post_type": "",
                     "taxonomy": "",
                     "filters": [
-                        "search"
+                        "search",
+                        "post_type"
                     ],
                     "elements": [
                         "featured_image"
                     ],
-                    "min": 1,
-                    "max": 1,
+                    "min": "",
+                    "max": "",
                     "return_format": "object",
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": "0"
@@ -750,6 +748,64 @@
                     "acfe_validate": ""
                 }
             ]
+        },
+        {
+            "key": "field_602e9af35d28e",
+            "label": "RESET",
+            "name": "",
+            "type": "column",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": "",
+            "column-type": "1_1",
+            "acfe_settings": "",
+            "acfe_validate": ""
+        },
+        {
+            "key": "field_602e9b045d28f",
+            "label": "ISBN",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": "",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_602e9ac25d28d",
+            "label": "ISBN",
+            "name": "isbn",
+            "type": "text",
+            "instructions": "If there is no ISBN available, this field will default to the SKU",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_permissions": "",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "translations": "sync",
+            "acfe_settings": "",
+            "acfe_validate": ""
         }
     ],
     "location": [
@@ -787,5 +843,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "CONTAINS publishing year, language, Nur, design, photography, pages, dimensions, illustration, binding",
-    "modified": 1612528064
+    "modified": 1613667096
 }
