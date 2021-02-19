@@ -731,15 +731,14 @@
                     "post_type": "",
                     "taxonomy": "",
                     "filters": [
-                        "search",
-                        "post_type"
+                        "search"
                     ],
                     "elements": [
                         "featured_image"
                     ],
                     "min": "",
                     "max": "",
-                    "return_format": "object",
+                    "return_format": "id",
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": "0"
                     },
@@ -843,5 +842,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "CONTAINS publishing year, language, Nur, design, photography, pages, dimensions, illustration, binding",
-    "modified": 1613667096
+    "modified": 1613744463
 }

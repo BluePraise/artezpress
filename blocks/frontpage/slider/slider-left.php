@@ -1,4 +1,7 @@
-
+<?php 
+    global $product;
+    $author = get_field('author'); 
+?>
 
 <div class="carousel-container">
     <h2><?php _e('Coming Soon'); ?></h2>
@@ -23,6 +26,7 @@ $loop = new WP_Query($args);
             <div class="slider-item-left">
                 <img class="slider-img" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php echo the_title(); ?>">
                 <h3 class="slider-item-title colour-effect"><?php echo the_title(); ?></h3>
+                <h3 class="slider-item-title colour-effect"><?php echo $author; ?></h3>
                 <a href="<?php the_permalink(); ?>">Read More</a>
             </div>
     <?php 

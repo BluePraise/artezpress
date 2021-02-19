@@ -92,7 +92,7 @@ if (post_password_required()) {
 			<div class="book-item-description">
 				<?php echo $description; ?>
 			</div>
-
+			
 			<?php woocommerce_template_single_meta(); ?>
 
 

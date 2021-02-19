@@ -33,7 +33,6 @@ global $product;
 	$authors 		 = get_field('author');
 	$copublisher	 = get_field('co_publishers');
 	$isbn	 		 = get_field('isbn');
-	// $editions 		 = get_field('additional_editions');
 
 	$design    		 = get_field('design');
 	$nur    	 	 = get_field('nur');
@@ -45,6 +44,7 @@ global $product;
 	$illustration    = get_field('illustrations');
 	$binding    	 = get_field('binding');
 	$paper_type    	 = get_field('paper_type');
+
 
 	?>
 	<div class="flex-container">
@@ -65,22 +65,17 @@ global $product;
 
 						$type_of_edition = get_sub_field('type_of_edition');
 						$related 		 = get_sub_field('related_edition');
-
 						if ($related) :
 					?>
 
 							<span class="colophon-value">
 								<span class="d-block"><?php echo $type_of_edition; _e(' Edition', 'artezpress'); ?></span>
 								<?php foreach ($related as $r) :
-									// get the ID of the related product
-									$related_product_ID 	= $r->ID;
-									$related_product 		= wc_get_product($related_product_ID);
-									$related_product_sku 	= $related_product->get_sku();
-									$permalink 				= get_permalink($related_product_ID);
-									$related_isbn 			= get_post_meta($related_product_ID, 'isbn', true);
-
+									$related_product 		= wc_get_product($r);
+									$permalink 				= get_permalink($related);
+									$related_isbn 			= get_post_meta($related, 'isbn', true);
 								?>
-									<a href="<?php echo $related_product->get_permalink() ?>" alt="<?php echo $related_product->get_name() ?>">
+									<a href="<?php echo get_permalink($r) ?>" alt="<?php echo $related_product->get_name() ?>">
 										<span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span> 
 										<span class="sku">
 											<?php if ($related_isbn) : 

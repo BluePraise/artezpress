@@ -5,7 +5,10 @@
     margin-right: 16px;
 }
 
-.block__price form.cart {
+.block-price .d-block {
+    margin-top: 1.2rem;
+} 
+.block-price form.cart {
 
     margin-top: 1.2rem;
 
@@ -19,7 +22,7 @@
 // Added because WooCommerce adds a p wrapper around 
 // price output. No time to investigate an elegant solution
 // at the moment.
-.block__price .single_add_to_cart_button p.price {
+.block-price .single_add_to_cart_button p.price {
     display: inline-block;
 }
 
@@ -39,7 +42,7 @@
 }
 
 .book-item a img {
-    
+
     @include boxShadow;
 }
 

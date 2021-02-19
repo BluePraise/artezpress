@@ -32,7 +32,7 @@ if (is_product()) {
 						<div class="mini-cart-column">
 							<div class="mini-cart-total"><?php woocommerce_mini_cart(); ?></div>
 						</div>
-					<?php endif; ?>	
+					<?php endif; ?>
 				</div>
 
 			</div>
@@ -63,42 +63,50 @@ if (is_product()) {
 				</div>
 			<?php endif; ?>
 			<?php if (is_product()) : ?>
-				<div class="block__price price">
+				<div class="block-price price">
 					<?php
 
 					defined('ABSPATH') || exit;
-
 					// get current post id outside loop.
 					global $wp_query;
 					$the_product_ID 		= $wp_query->post->ID;
 					$the_product 			= wc_get_product($the_product_ID);
 					$product_price 			= $the_product->get_price_html();
 					$language 				= get_post_meta($the_product_ID, 'language', true);
-					// get related editions from acf
-					$additional_editions 	= get_field('additional_editions', $the_product_ID);
-					$type_of_edition = get_sub_field('type_of_edition');
-					$related 		 = get_sub_field('related_edition');
-					?>
 
-					<form class="cart" action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', get_permalink($the_product_ID))); ?>" method="post" enctype='multipart/form-data'>
-						<button type="submit" name="add-to-cart" value="<?php echo $the_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo $language; ?></span><?php echo $product_price; ?></button>
-					</form>
+					// prijs status huidige product
+
+					if ($the_product->is_in_stock()) : ?>
+						<form class="cart" action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', get_permalink($the_product_ID))); ?>" method="post" enctype='multipart/form-data'>
+							<button type="submit" name="add-to-cart" value="<?php echo $the_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo $language; ?></span><?php echo $product_price; ?></button>
+						</form>
+					<?php else : ?>
+						<div class="btn white-on-black single_add_to_cart_button"><?php _e('Out of Print', 'artezpress'); ?></div>
+					<?php endif; ?>
+
 
 					<?php
-					// if there are additional editions, show loop over them and show them. 
-					if ($related) :
-						foreach ($related as $r) :
-							// get the ID of the related product
-							$related_product_ID = $r->ID;
-							$related_product = wc_get_product($related_product_ID);
-							$related_product_sku = $related_product->get_sku();
-							$permalink = get_permalink($related_product_ID);
-							$price = wc_price($related_product->get_price()); ?>
-
-							<form class="cart" action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', get_permalink($related_product_ID))); ?>" method="post" enctype='multipart/form-data'>
-								<button type="submit" name="add-to-cart" value="<?php echo $related_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo $type_of_edition; ?></span><?php echo $price; ?></button>
-							</form>
-					<?php endforeach;
+					// prijs pill voor related editions
+					$rows = get_field('additional_editions', $the_product_ID);
+					// var_dump($rows);
+					if (have_rows('additional_editions')) : while (have_rows('additional_editions')) : the_row();
+							$type_of_edition = get_sub_field('type_of_edition');
+							$related_book 	= get_sub_field('related_edition');
+							if ($related_book) :
+								foreach ($related_book as $r) :
+									$r_get_product 	   = wc_get_product($r);
+									$r_permalink 	   = get_permalink($r);
+									$r_language 	   = get_field("language", $r);
+									if ($r_get_product->is_in_stock()) : ?>
+										<form class="cart" action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', get_permalink($the_product_ID))); ?>" method="post" enctype='multipart/form-data'>
+											<button type="submit" name="add-to-cart" value="<?php echo $the_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo _e($language, 'artezpress'); ?></span><?php echo $product_price; ?></button>
+										</form>
+									<?php else : ?>
+										<a href="<?php echo get_permalink($r) ?>" class="d-block btn white-on-black single_add_to_cart_button" role="button"><?php _e('Temporarily Unavailable', 'artezpress'); ?></a>
+							<?php endif;
+								endforeach;
+							endif;
+						endwhile;
 					endif; ?>
 
 				</div>
@@ -110,7 +118,7 @@ if (is_product()) {
 				if (!is_product()) :
 					get_template_part('inc/templateparts/language', 'toggle');
 				endif; ?>
-				<?php if (!is_cart() && !is_checkout() ) : ?>
+				<?php if (!is_cart() && !is_checkout()) : ?>
 					<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
 
 						<span class="cart-label"><?php _e('Shop', 'artezpress'); ?></span>
