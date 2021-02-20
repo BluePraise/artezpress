@@ -3,6 +3,22 @@
 // THIS IS WHERE THE PRODUCT CHANGES TEXT COLOR.
 // PLEASE DO NOT MESS WITH THIS.
 
+.set-text-black {
+    color: var(--set-to-black) !important;
+}
+
+
+.set-text-white {
+    color: var(--set-to-white) !important;
+}
+
+.set-to-white a {
+    color: var(--set-to-white) !important;
+}
+
+.set-to-black a {
+    color: var(--set-to-black) !important;
+}
 
 body.single-product.set-text-black {
     color: var(--set-to-black) !important;
@@ -72,6 +88,7 @@ body.single-product.set-text-white {
                 margin-right: 0;
             }
         }
+
         // Mobile
         @media screen and (max-width: 767px) {}
 

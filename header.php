@@ -4,23 +4,21 @@ $rows = get_field('hero_bg_imgs', 'option'); // get all the rows
 $rand_row = $rows[array_rand($rows)];
 $rand_row_image = $rand_row['bg_images_uploaded']; // get the sub field value 
 
-if (is_product()) {
+if (is_product()) :
 	global $post;
 	$id = $post->ID;
 	$single_product_bg = get_field('custom_color', $id);
 	$single_product_text_color = get_field('text_color', $id);
-
+endif;
 ?>
+<?php if (is_product()) : ?>
 	<style>
 		body.single-product {
 			background-color: <?php echo $single_product_bg; ?>;
 		}
 	</style>
 
-<?php
-
-}
-?>
+<?php endif; ?>
 <header class="main-menu-container fixed-bottom">
 	<?php if (!is_product()) : ?>
 		<div class="js-menu" style="display: none;">
