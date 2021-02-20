@@ -252,6 +252,7 @@ function veer_popup_maker_gutenburg_compat($content)
 }
 
 
+
 /**********************************
  *
  * All WooCommerce Functions

@@ -29,7 +29,7 @@ global $product;
 	<?php
 	// VALUES FOR LEFT COL
 	$publishing_year = get_field('publishing_year');
-	$language    	 = get_field('language');
+	$language    	 = get_field('ap_language');
 	$authors 		 = get_field('author');
 	$copublisher	 = get_field('co_publishers');
 	$isbn	 		 = get_field('isbn');
@@ -51,13 +51,15 @@ global $product;
 		<div class="col_left">
 
 			<div class="block">
-				<span class="colophon-value"><?php echo $publishing_year ?>, <?php echo $language ?></span>
+				<?php if ($language): ?>
+					<span class="colophon-value"><?php echo $publishing_year ?>, <?php echo esc_html($language);?></span>
+				<?php endif; ?>
 				<?php if ($isbn) : ?>
 					<a href="<?php echo $product->get_permalink() ?>" alt="<?php echo $product->get_name() ?>"><span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span> <span class="sku"><?php echo $isbn; ?></span></a>
 					<?php elseif (wc_product_sku_enabled() && ($product->get_sku() || $product->is_type('variable'))) : ?>
 						<a href="<?php echo $product->get_permalink() ?>" alt="<?php echo $product->get_name() ?>"><span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span> <span class="sku"><?php echo ($sku = $product->get_sku()) ? $sku : esc_html__('N/A', 'woocommerce'); ?></span></a>
 					<?php endif; ?>
-				<?php //endif; ?>
+				
 
 				<?php if (have_rows('additional_editions')) :
 
@@ -80,6 +82,7 @@ global $product;
 										<span class="sku">
 											<?php if ($related_isbn) : 
 												echo $related_isbn; 
+												
 											else :
 												echo ($sku = $related_product->get_sku()) ? $sku : esc_html__('N/A', 'woocommerce');
 											endif; ?> 

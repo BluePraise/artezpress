@@ -18,33 +18,27 @@
   </div>
 
   <main class="site-main products book-grid flex-container js-products-container" role="main">
-    <?php //woocommerce_product_loop_start(); 
-    ?>
+    <?php //woocommerce_product_loop_start(); ?>
     <?php
     $current_lang_full = pll_current_language('name');
     $current_lang      = pll_current_language();
     $ap_language       = get_field('ap_language');
     $args = array(
       'post_type'       => 'product',
-      'meta_query' => array(
-        array(
-          'key' => 'ap_language',
-          'value' => $current_lang,
-          'compare' => '==',
-        ),
-      ),
       'orderby'         => 'date',
+      'lang'            => array('en', 'nl'),
       'order'           => 'DESC',
       'posts_per_page'  => -1,  // -1 will get all the product. Specify positive integer value to get the number given number of product
     );
     $the_query = new WP_Query($args);
     if ($the_query->have_posts()) :
       while ($the_query->have_posts()) : $the_query->the_post();
-          wc_get_template_part('content', 'product');
+        // if (wc_get_loop_prop('total')) : 
+        wc_get_template_part('content', 'product');
       endwhile;
     endif;
     wp_reset_postdata();
-    //wp_reset_query(); ?>
+    wp_reset_query();?>
     <?php// woocommerce_product_loop_end(); ?>
   </main>
 </div>

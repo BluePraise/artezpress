@@ -96,13 +96,13 @@ if (is_product()) {
 								foreach ($related_book as $r) :
 									$r_get_product 	   = wc_get_product($r);
 									$r_permalink 	   = get_permalink($r);
-									$r_language 	   = get_field("language", $r);
+									$r_language 	   = get_field("ap_language", $r);
 									if ($r_get_product->is_in_stock()) : ?>
 										<form class="cart" action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', get_permalink($the_product_ID))); ?>" method="post" enctype='multipart/form-data'>
 											<button type="submit" name="add-to-cart" value="<?php echo $the_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo _e($language, 'artezpress'); ?></span><?php echo $product_price; ?></button>
 										</form>
 									<?php else : ?>
-										<a href="<?php echo get_permalink($r) ?>" class="d-block btn white-on-black single_add_to_cart_button" role="button"><?php _e('Temporarily Unavailable', 'artezpress'); ?></a>
+										<a href="<?php echo get_permalink($r) ?>" class="d-block btn white-on-black single_add_to_cart_button" role="button"><?php _e('Out of Print', 'artezpress'); ?></a>
 							<?php endif;
 								endforeach;
 							endif;
