@@ -1,0 +1,11 @@
+.wcfg-primary-gallery.flickity-enabled {
+    height: 85vh;
+    img {
+        object-fit: fill;
+        width: auto;
+    }
+}
+
+.carousel.is-fullscreen .carousel-cell {
+    height: 100%;
+}

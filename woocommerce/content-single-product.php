@@ -60,7 +60,7 @@ if (post_password_required()) {
 		</g>
 	</svg>
 </a>
-<main id="product-<?php the_ID(); ?>" <?php wc_product_class('container', $product); ?>>
+<main id="product-<?php the_ID(); ?>" <?php wc_product_class('', $product); ?>>
 
 	<?php woocommerce_show_product_images(); ?>
 	<div class="post-container book-item__single">
