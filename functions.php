@@ -124,7 +124,18 @@ if (function_exists('acf_add_options_page')) {
 		'menu_title' => 'Hero Images',
 		'menu_slug' => 'hero-img',
 		'capability' => 'edit_posts',
+		'position' => '8',
+		'icon_url' => 'dashicons-welcome-view-site',
+		'redirect' => false
+	));
+	acf_add_options_page(array(
+		'page_title' => 'Frontpage Highlights',
+		'menu_title' => 'Frontpage Highlights',
+		'menu_slug' => 'fp-highlights',
+		'capability' => 'edit_posts',
 		'position' => '9',
+		'autoload' => true,
+		'icon_url' => 'dashicons-images-alt',
 		'redirect' => false
 	));
 }
