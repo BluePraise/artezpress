@@ -2,18 +2,7 @@
 // News grid
 
 .container-xl.single-news {
-    margin: 6rem auto;
-}
-
-.news-item {
-    @media (min-width: 768px) {
-
-        width: calc(50%);
-    }
-
-    @media (max-width: 767px) {
-        width: calc(100%);
-    }
+    margin: 0 auto;
 }
 
 // News archive grid
@@ -37,7 +26,7 @@
 /* This should be similiar on all pages that have a page-title */
 
 // News card and excerpt
-// News excerpt snippet can be found in 
+// News excerpt snippet can be found in
 // inc/templateparts/news-excerpt
 
 .news-grid {
@@ -46,10 +35,18 @@
 }
 
 .news-item {
-    text-align: left;
-    padding-left: 1.6rem;
-    padding-right: 1.6rem;
     margin-bottom: 8rem;
+
+    @media (min-width: 768px) {
+        width: calc(50%);
+        float: left;
+        padding-left: 1.6rem;
+        padding-right: 1.6rem;
+    }
+
+    @media (max-width: 767px) {
+        width: calc(100%);
+    }
 }
 
 .news-date {
@@ -67,28 +64,31 @@
 }
 
 .news-thumbnail {
+    height: fit-content;
     padding: 0 2rem;
-    margin-bottom: 3.6rem;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 4rem;
     text-align: center;
 
     img {
-        height: 100%;
         width: auto;
+        max-width: 100%;
     }
 
     &.is-portrait {
-        height: 46rem;
+        img {
+          max-height: 48rem;
+        }
     }
 
     &.is-landscape {
-        height: 32rem;
+        img {
+          max-height: 32rem;
+        }
     }
 }
 
 .news-title-excerpt {
-    margin-bottom: 3.2rem;
+    margin-bottom: 4rem;
 }
 
 .news-item-excerpt {
@@ -100,7 +100,7 @@ a.news-read-more {
     @include smallText;
     display: inline-block;
     border-bottom: 1px solid currentColor;
-    margin-top: 3.2rem;
+    margin-top: 3rem;
 
     &:hover {
         cursor: pointer;
@@ -118,18 +118,22 @@ a.news-read-more {
 }
 
 .news-item__single .news-thumbnail {
-    margin-bottom: 3.6rem;
+    margin-bottom: 8rem;
     width: auto;
-    height: 100%;
 
     &.is-portrait {
-        height: 62rem;
+        img {
+          max-height: 62rem;
+        }
     }
 
     &.is-landscape {
-        height: 54rem;
+        img {
+          max-height: 54rem;;
+        }
     }
 }
+
 
 
 // NEWS MODULES
@@ -144,7 +148,6 @@ a.news-read-more {
         margin-bottom: 0;
     }
 }
-
 
 .news-content__single .news-text {
     max-width: 77rem;
@@ -168,17 +171,28 @@ a.news-read-more {
 }
 
 .news-item__single .book-reference {
+    max-width: 77rem;
+    margin-left: auto;
+    margin-right: auto;
+
     figure {
-        margin-bottom: 4rem;
+        margin-bottom: 4.8rem;
         margin-left: auto;
         margin-right: auto;
-        width: 100%;
-        max-width: 52.2rem;
         height: auto;
+
+        @media (min-width: 768px) {
+          width: 66.66%;
+        }
+
+        @media (max-width: 767px) {
+          width: 50%;
+        }
+
 
         img {
             filter: grayscale(100%);
-            transition: all 400ms ease-in;
+            transition: all 150ms ease-in;
             @include boxShadow;
         }
 
@@ -195,10 +209,25 @@ a.news-read-more {
 
 }
 
+.video-container.news-module-container {
+  padding-top: 56.25%;
+  position: relative;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+
 .news-video-caption {
     @include smallText;
     text-align: center;
-    margin: 2.4rem 0;
+    position: absolute;
+    width: 100%;
+    margin-top: 1.2rem;
 }
 
 /* frontpage php */

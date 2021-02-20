@@ -10,7 +10,7 @@ jQuery(window).on("load", function () {
 });
 
 jQuery(document).ready(function($) {
- 
+
 
 	//checkout page shipping address toggle
 
@@ -139,9 +139,6 @@ jQuery(document).ready(function($) {
                     "background-image",
                     "url(" + response + ")"
                 );
-            },
-            error: function(e) {
-                alert("Error on closing menu");
             },
         });
     }
