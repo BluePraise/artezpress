@@ -482,7 +482,7 @@ function change_meta_box_titles()
 	global $wp_meta_boxes; // array of defined meta boxes
 	// cycle through the array, change the titles you want
 
-	$wp_meta_boxes['product']['side']['low']['woocommerce-product-images']['title'] = "Book Inner pages";
+	$wp_meta_boxes['product']['side']['low']['woocommerce-product-images']['title'] = "Book Inner Pages";
 }
 add_action('add_meta_boxes', 'change_meta_box_titles', 999);
 

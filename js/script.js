@@ -178,14 +178,12 @@ jQuery(document).ready(function($) {
         lazyLoad: true,
     });
 
-    $(".news-grid").masonry({
+    $(".news-grid-masonry").masonry({
 		// options
 		itemSelector: ".news-item",
-		gutter: 32,
 		percentPosition: true,
-		// horizontalOrder: true,
+		horizontalOrder: true,
 		// gutter: 32
-		// columnWidth: 520,
 	});
 
     $(".wp-end-of-page").waypoint({

@@ -82,9 +82,9 @@ defined('ABSPATH') || exit;
 					</div>
 				<?php endforeach; ?>
 			<?php else : ?>
-				<div class="tax-total">
-					<div><?php echo esc_html(WC()->countries->tax_or_vat()); ?></div>
-					<div><?php wc_cart_totals_taxes_total_html(); ?></div>
+				<div class="tax-total row-horizontal-border flex-container">
+					<span class="row-item"><?php echo esc_html(WC()->countries->tax_or_vat()); ?></span>
+					<span class="row-item"><?php wc_cart_totals_taxes_total_html(); ?></span>
 				</div>
 			<?php endif; ?>
 		<?php endif; ?>

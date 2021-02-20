@@ -183,21 +183,37 @@ form.checkout.woocommerce-checkout {
     padding: 1.2rem 10px;
 }
 
+
 .shipping-total,
 .woocommerce-ap-custom-checkout-review-order-table .table-row,
 .review-order .cart-subtotal,
 .review-order .order-total,
-.woocommerce-shipping-methods {
+.woocommerce-shipping-methods,
+.tax-total {
     justify-content: space-between;
 
     border-bottom: 1px solid $black;
 
-    .cart-item-row {
+    .cart-item-row{
         display: inline-flex;
         width: 100%;
         border-bottom: none;
     }
 }
+
+.row-horizontal-border {
+    justify-content: space-between;
+    border-bottom: 1px solid $black;
+
+    .row-item {
+        @include smallText; 
+        margin-top: 1rem;
+        margin-bottom: 1.6rem;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
 
 .woocommerce-shipping-methods li {
     line-height: 4.8rem;
@@ -291,4 +307,9 @@ form.checkout.woocommerce-checkout {
 
 .woocommerce-error {
     color: red;
+}
+
+.payment_method_multisafepay_ideal,
+.payment_method_multisafepay_creditcard {
+    display: none;
 }
