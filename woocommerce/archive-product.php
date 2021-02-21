@@ -35,16 +35,19 @@
       'orderby'         => 'date',
       'order'           => 'DESC',
       'posts_per_page'  => -1,  // -1 will get all the product. Specify positive integer value to get the number given number of product
-    
       'post_type'       => 'product',
-      // 'meta_query'  => array(
-      //   'relation'    => 'AND',
-      //   array(
-      //     'key'    => 'additional_editions_$_type_of_edition',
-      //     'compare'  => '!=',
-      //     'value'    => $current_lang_full,
-      //   )
-      // ),
+      'meta_query'  => array(
+        'relation'    => 'OR',
+        array(
+          'key'    => 'additional_editions_0_type_of_edition',
+          'compare'  => '!=',
+          'value'    => $current_lang_full,
+        ),
+      array(
+          'key'    => 'additional_editions_0_type_of_edition',
+      'compare' => 'NOT EXISTS' 
+        ),
+     ),
     );  
       
     $the_query = new WP_Query($args);

@@ -27,8 +27,8 @@
                     $start = strpos($news_content, '<p>'); // Locate the first paragraph tag
                     $end = strpos($news_content, '</p>', $start); // Locate the first paragraph closing tag
                     $news_content = substr($news_content, $start, $end - $start + 4); // Trim off everything after the closing paragraph tag
-                    // $news_content = str_replace(']]>', ']]>', $news_content);
-                    // $news_content = apply_filters('the_content', $news_content);
+                    $news_content = str_replace(']]>', ']]>', $news_content);
+                    $news_content = wp_trim_words( apply_filters('the_content', $news_content), 50 );
 
                     echo '<div class="news-item-excerpt">' . $news_content . '</div>';
                 endif;

@@ -22,6 +22,9 @@
         right: 3.6rem;
         @include smallText;
     }
+    .slider-img {
+        height: 77rem;
+    }
 
     h3.slider-item-title {
         position: absolute;
@@ -36,8 +39,7 @@
     .owl-carousel .owl-item {
         max-height: 77rem;
     }
-
-    .slider-item-left {
+    .coming-soon {
         position: relative;
         background-color: black;
         height: 77rem;
@@ -45,11 +47,10 @@
         a {
             color: white;
         }
-
         .slider-img {
             opacity: 0%;
-            height: 77rem;
         }
+
     }
 }
 

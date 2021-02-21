@@ -3,11 +3,11 @@
     "title": "FRONTPAGE HIGHLIGHTS",
     "fields": [
         {
-            "key": "field_602aca9c75836",
+            "key": "field_603289625b213",
             "label": "NEW RELEASES",
-            "name": "new_releases",
-            "type": "group",
-            "instructions": "This will be added to the slider to the frontpage",
+            "name": "new_releases_row",
+            "type": "repeater",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -15,9 +15,12 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
-            "acfe_seamless_style": 0,
-            "acfe_group_modal": 0,
+            "acfe_repeater_stylised_button": 0,
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
             "sub_fields": [
                 {
                     "key": "field_602ac316850e6",
@@ -37,13 +40,14 @@
                     ],
                     "taxonomy": "",
                     "filters": [
-                        "search",
-                        "post_type"
+                        "search"
                     ],
-                    "elements": "",
+                    "elements": [
+                        "featured_image"
+                    ],
                     "min": 1,
                     "max": 1,
-                    "return_format": "object",
+                    "return_format": "id",
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": "0"
                     },
@@ -64,7 +68,7 @@
                     },
                     "uploader": "wp",
                     "acfe_thumbnail": 0,
-                    "return_format": "array",
+                    "return_format": "url",
                     "preview_size": "full",
                     "library": "all",
                     "min_width": "",
@@ -109,5 +113,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1613906128
+    "modified": 1613931217
 }

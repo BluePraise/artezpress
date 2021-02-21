@@ -25,12 +25,12 @@ $loop = new WP_Query($args); ?>
                 if ($single_product_text_color == "#00000") : ?>
                         <div class="slider-item-right backlist-wrapper <?php echo 'set-to-black'; ?>" style="background-color:<?php echo $single_product_bg; ?>">
                         <?php elseif ($single_product_text_color == "#f2f2f2") : ?>
-                            <div class="slider-item-right backlist-wrapper <?php echo 'set-to-white'; ?>" style="background-color:<?php echo $single_product_bg; ?>">
+                            <div class="slider-item slider-item-right backlist-wrapper <?php echo 'set-to-white'; ?>" style="background-color:<?php echo $single_product_bg; ?>">
                             <?php endif; ?>
 
                             <img class="slider-img" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php echo the_title(); ?>">
-                            <h3 class="slider-item-title colour-effect"><?php echo the_title(); ?></h3>
-                            <h3 class="slider-item-title colour-effect"><?php echo $author; ?></h3>
+                            <h3 class="slider-item-title"><?php echo the_title(); ?></h3>
+                            <h3 class="slider-item-author"><?php echo $author; ?></h3>
                             <a href="<?php the_permalink(); ?>">Read More</a>
                             </div>
                         <?php
