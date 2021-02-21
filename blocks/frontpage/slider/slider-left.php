@@ -1,9 +1,8 @@
 <?php 
     global $product;
-    $author = get_field('author'); 
 ?>
 
-<div class="carousel-container">
+<div class="carousel-container coming-soon">
     <h2><?php _e('Coming Soon'); ?></h2>
     <div class="owl-carousel">
 <?php 
@@ -22,7 +21,8 @@ $args = array(
 $loop = new WP_Query($args);
 
     if ( $loop->have_posts() ) :
-        while ( $loop->have_posts() ) : $loop->the_post(); ?>
+        while ( $loop->have_posts() ) : $loop->the_post();
+            $author = get_field('author'); ?>
             <div class="slider-item-left">
                 <img class="slider-img" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php echo the_title(); ?>">
                 <h3 class="slider-item-title colour-effect"><?php echo the_title(); ?></h3>

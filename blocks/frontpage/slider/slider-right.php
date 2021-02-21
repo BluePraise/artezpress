@@ -19,6 +19,7 @@ $loop = new WP_Query($args); ?>
         if ($loop->have_posts()) :
             while ($loop->have_posts()) : $loop->the_post();
                 $id = $post->ID;
+                $author = get_field('author');
                 $single_product_bg = get_field('custom_color', $id);
                 $single_product_text_color = get_field('text_color', $id);
                 if ($single_product_text_color == "#00000") : ?>
@@ -29,6 +30,7 @@ $loop = new WP_Query($args); ?>
 
                             <img class="slider-img" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php echo the_title(); ?>">
                             <h3 class="slider-item-title colour-effect"><?php echo the_title(); ?></h3>
+                            <h3 class="slider-item-title colour-effect"><?php echo $author; ?></h3>
                             <a href="<?php the_permalink(); ?>">Read More</a>
                             </div>
                         <?php
