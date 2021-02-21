@@ -28,9 +28,15 @@ $inactiveOpacity: 0.5;
 // Borders
 
 $border: 2px solid currentColor;
+$thinBorder: 1px solid currentColor;
 
 //  Container sizes
 
 $default-container-width: 114rem;
+$xl-container-width: 161rem;
+$l-container-width: 114rem;
+$s-container-width: 96rem;
+$xs-container-width: 77rem;
+
 
 //  anything else

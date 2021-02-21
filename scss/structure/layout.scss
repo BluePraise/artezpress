@@ -2,16 +2,40 @@
 .container {
     max-width: $default-container-width;
     margin: 0 auto;
+}
+
+.container-xl {
+    max-width: $xl-container-width;
+    margin: 0 auto;
     padding-left: 1.6rem;
     padding-right: 1.6rem;
-    padding-top: 5.4rem;
+    padding-top: 6rem;
+}
+
+.container-l {
+    max-width: $l-container-width;
+    margin: 0 auto;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    padding-top: 6rem;
+}
+
+.container-s {
+    max-width: $s-container-width;
+    margin: 0 auto;
+}
+
+.container-xs,
+.post-container,
+.content-container {
+    max-width: $xs-container-width;
+    margin: 0 auto;
+    padding-bottom: 8rem;
 }
 
 .grid-container {
     display: grid;
 }
-
-
 
 .flex-container {
     display: flex;
@@ -42,26 +66,6 @@
     }
 }
 
-.container-xs,
-.post-container,
-.content-container {
-    max-width: 77rem;
-    margin: 0 auto;
-    padding-bottom: 8rem;
-}
-
-.container-s {
-    max-width: 96rem;
-    margin: 0 auto;
-}
-
-// I took off the margin: 3.6rem auto to control
-// margin for the news items
-.container-xl {
-    max-width: 161rem;
-    margin: 0 auto;
-}
-
 // aligns all the products in a row of six
 .book-grid,
 .product-display {
@@ -69,16 +73,6 @@
     margin-left: auto;
     margin-right: auto;
     max-width: 107.6rem;
-}
-
-// used in 2 col content editor on default pages
-.content__left,
-.content__right {
-    width: 35.3rem;
-}
-
-.content__left {
-    margin-right: 3.2rem;
 }
 
 .flex-container .col_left,
