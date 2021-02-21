@@ -127,9 +127,6 @@ jQuery(document).ready(function($) {
                     "url(" + response + ")"
                 );
             },
-            error: function(e) {
-                alert("Error on closing menu");
-            },
         });
     }
 
@@ -161,25 +158,33 @@ jQuery(document).ready(function($) {
 
     $(".owl-carousel").owlCarousel({
         items: 1,
+        slideBy: 2,
         loop: true,
         autoplay: true,
         dots: true,
         lazyLoad: true,
     });
 
+    $(".news-grid-masonry").masonry({
+		// options
+		itemSelector: ".news-item",
+		percentPosition: true,
+		horizontalOrder: true,
+		// gutter: 32
+	});
 
     $(".wp-end-of-page").waypoint({
-        // element: document.getElementById("basic-waypoint"),
-        handler: function(direction) {
-            console.log("client height");
-            if (direction === "down") {
-                $(".main-menu-container").css({ opacity: 0 });
-            } else {
-                $(".main-menu-container").css({ opacity: 1 });
-            }
-        },
-        offset: "80%",
-    });
+		// element: document.getElementById("basic-waypoint"),
+		handler: function (direction) {
+			console.log("client height");
+			if (direction === "down") {
+				$(".main-menu-container").css({ opacity: 0 });
+			} else {
+				$(".main-menu-container").css({ opacity: 1 });
+			}
+		},
+		offset: "96.66%",
+	});
 
     //https://stackoverflow.com/questions/11867545/change-text-color-based-on-brightness-of-the-covered-background-area
 

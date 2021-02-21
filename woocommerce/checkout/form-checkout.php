@@ -35,9 +35,10 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
 
 	<?php if ($checkout->get_checkout_fields()) : ?>
 
-		<?php do_action('woocommerce_checkout_before_customer_details'); ?>
+		<?php do_action('woocommerce_checkout_order_review'); ?>
 
 		<div class="flex-container woocommerce-checkout-container customer-details" id="customer_details">
+
 			<div class="col_left">
 				<div class="woocommerce-ap-custom form-title"><?php _e('Billing Address', 'artezpress'); ?></div>
 				<?php do_action('woocommerce_checkout_billing'); ?>
@@ -50,15 +51,16 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
 		<div class="col_right">
 			<h3 class="woocommerce-ap-custom form-title"> <?php _e("Payment", "woocommerce"); ?></h3>
 
-			<?php if (WC()->cart->needs_shipping() && WC()->cart->show_shipping()) : ?>
+			
 
 				<div class="shipping-checkout">
-					<?php do_action('woocommerce_review_order_before_shipping'); ?>
-					<?php do_action('woocommerce_review_order_after_shipping'); ?>
-					<?php do_action('woocommerce_checkout_order_review'); ?>
+					<?php do_action('woocommerce_review_order_before_shipping'); 
+					?>
+					<?php do_action('woocommerce_review_order_after_shipping'); 
+					?>
+					<?php //do_action('woocommerce_checkout_order_review'); ?>
 				</div>
 
-			<?php endif; ?>
 
 			<?php do_action('woocommerce_after_checkout_form', $checkout); ?>
 		</div>

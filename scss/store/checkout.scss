@@ -2,9 +2,11 @@
     width: 100%;
     margin-top: 30px;
     margin-bottom: 30px;
+
     th {
         display: block;
     }
+
     .cart-subtotal,
     .order-total,
     .shipping-checkout {
@@ -14,9 +16,11 @@
         padding: 10px;
         font-size: 16px;
     }
+
     .cart-subtotal {
         border-top: 2px solid;
     }
+
     .back-to-cart {
         padding: 10px;
         display: block;
@@ -29,38 +33,44 @@
     @include smallText;
     border-bottom: 2px solid;
     padding: 0.5rem 1rem;
+
 }
 
 form.checkout.woocommerce-checkout {
+
+
     .woocommerce-billing-fields label,
     .woocommerce-shipping-fields__field-wrapper label {
         display: none;
     }
-    .woocommerce-shipping-fields label {
-        font-size: 16px;
-        display: block;
-    }
+
     .form-row {
         margin: 10px 0;
     }
+
     .customer-details {
+
         input#ship-to-different-address-checkbox {
             height: 0;
         }
+
         .shipping_address {
             display: none;
             margin-top: -20px;
         }
+
         h3#ship-to-different-address,
         #artez-payment,
         #artez-delivery {
             border-bottom: 2px solid;
-            @include smallText;
+            font-size: 16px;
             text-align: left;
         }
+
         ul#shipping_method>li input {
             margin-right: 10px;
         }
+
         ul#shipping_method>li>label {
             display: flex;
             justify-content: space-between;
@@ -70,12 +80,15 @@ form.checkout.woocommerce-checkout {
 }
 
 // changes from Maggie.
+
 .woocommerce-checkout-container.flex-container {
     justify-content: space-between;
+
     .col_left {
         width: 45%;
         padding-right: 9rem;
     }
+
     .col_right {
         width: 55%;
     }
@@ -89,16 +102,20 @@ form.checkout.woocommerce-checkout {
     border-bottom: 1px solid !important;
     padding-bottom: 1rem;
     padding-top: 0.4rem;
+
     span.select2-selection {
         border-radius: 0 !important;
         border: 0px !important;
     }
+
     .select2-selection--single .select2-selection__rendered {
         color: $black;
     }
+
     .select2-results__options li.select2-results__option {
         padding-left: 2rem;
     }
+
     .select2-container--default .select2-results__option--highlighted[aria-selected=true],
     .select2-container--default .select2-results__option--highlighted[data-selected] {
         background-color: $black;
@@ -111,18 +128,21 @@ form.checkout.woocommerce-checkout {
 }
 
 // shipping address
+
 .woocommerce-shipping-fields {
     .radio-toggle {
         text-align: left;
         padding: 0px 0 10px;
     }
-    >>>>>>>2a0cc6d48d52fbd846be51da0c7560835eb2dbfd //shipping address
+
+    //shipping address
     .radio-toggle .woocommerce-form__label {
         @include smallText;
         padding-left: 10px;
         line-height: 4.5rem;
         border-bottom: 1px solid;
         margin-bottom: 1.6rem;
+
         &:first-child {
             border-bottom: none;
             margin-bottom: 0;
@@ -139,9 +159,12 @@ form.checkout.woocommerce-checkout {
 .wc_payment_method p {
     @include microText;
     padding-left: 4.1rem;
+
+
 }
 
 // styling for multisafe select boxes
+
 .payment_method_multisafepay_creditcard {
     select {
         height: 36px;
@@ -160,19 +183,37 @@ form.checkout.woocommerce-checkout {
     padding: 1.2rem 10px;
 }
 
+
 .shipping-total,
 .woocommerce-ap-custom-checkout-review-order-table .table-row,
 .review-order .cart-subtotal,
 .review-order .order-total,
-.woocommerce-shipping-methods {
+.woocommerce-shipping-methods,
+.tax-total {
     justify-content: space-between;
+
     border-bottom: 1px solid $black;
-    .cart-item-row {
+
+    .cart-item-row{
         display: inline-flex;
         width: 100%;
         border-bottom: none;
     }
 }
+
+.row-horizontal-border {
+    justify-content: space-between;
+    border-bottom: 1px solid $black;
+
+    .row-item {
+        @include smallText; 
+        margin-top: 1rem;
+        margin-bottom: 1.6rem;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
 
 .woocommerce-shipping-methods li {
     line-height: 4.8rem;
@@ -180,17 +221,20 @@ form.checkout.woocommerce-checkout {
     display: inline-flex;
     width: 100%;
     align-items: center;
+
     label {
         margin-left: 10px;
         display: inline-flex;
         justify-content: space-between;
         flex-grow: 2;
         text-align: left;
+
         span {
             display: inline-block;
         }
     }
 }
+
 
 .review-order .order-total {
     flex-wrap: wrap;
@@ -210,6 +254,7 @@ form.checkout.woocommerce-checkout {
     margin-bottom: 1.6rem;
     margin-left: 10px;
     border-bottom: 1px solid currentColor;
+
     &:after {
         margin-left: 10px;
     }
@@ -224,6 +269,7 @@ form.checkout.woocommerce-checkout {
 .woocommerce-terms-and-conditions-checkbox-text,
 .woocommerce-privacy-policy-text {
     @include smallText;
+
     a {
         @include underlineText;
     }
@@ -237,7 +283,9 @@ form.checkout.woocommerce-checkout {
     flex-direction: column;
 }
 
+
 //login form
+
 .woocommerce-form-login .form-row-ap {
     width: 50%;
     justify-content: space-between;
@@ -246,9 +294,11 @@ form.checkout.woocommerce-checkout {
     padding-right: 4rem;
 }
 
+
 .lost_password {
     margin-bottom: 2rem;
     margin-left: 1rem;
+
     a {
         @include microText;
         color: #767676;
@@ -257,4 +307,9 @@ form.checkout.woocommerce-checkout {
 
 .woocommerce-error {
     color: red;
+}
+
+.payment_method_multisafepay_ideal,
+.payment_method_multisafepay_creditcard {
+    display: none;
 }

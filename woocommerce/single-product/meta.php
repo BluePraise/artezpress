@@ -29,10 +29,10 @@ global $product;
 	<?php
 	// VALUES FOR LEFT COL
 	$publishing_year = get_field('publishing_year');
-	$language    	 = get_field('language');
+	$language    	 = get_field('ap_language');
 	$authors 		 = get_field('author');
 	$copublisher	 = get_field('co_publishers');
-	// $editions 		 = get_field('additional_editions');
+	$isbn	 		 = get_field('isbn');
 
 	$design    		 = get_field('design');
 	$nur    	 	 = get_field('nur');
@@ -45,40 +45,51 @@ global $product;
 	$binding    	 = get_field('binding');
 	$paper_type    	 = get_field('paper_type');
 
+
 	?>
 	<div class="flex-container">
 		<div class="col_left">
 
 			<div class="block">
-				<span class="colophon-value"><?php echo $publishing_year ?>, <?php echo $language ?></span>
-
-				<?php if (wc_product_sku_enabled() && ($product->get_sku() || $product->is_type('variable'))) : ?>
-					<a href="<?php echo $product->get_permalink() ?>" alt="<?php echo $product->get_name() ?>"><span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span> <span class="sku"><?php echo ($sku = $product->get_sku()) ? $sku : esc_html__('N/A', 'woocommerce'); ?></span></a>
+				<?php if ($language): ?>
+					<span class="colophon-value"><?php echo $publishing_year ?>, <?php echo esc_html($language);?></span>
 				<?php endif; ?>
-					
-				<?php if (have_rows('additional_editions')) : 
+				<?php if ($isbn) : ?>
+					<a href="<?php echo $product->get_permalink() ?>" alt="<?php echo $product->get_name() ?>"><span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span> <span class="sku"><?php echo $isbn; ?></span></a>
+					<?php elseif (wc_product_sku_enabled() && ($product->get_sku() || $product->is_type('variable'))) : ?>
+						<a href="<?php echo $product->get_permalink() ?>" alt="<?php echo $product->get_name() ?>"><span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span> <span class="sku"><?php echo ($sku = $product->get_sku()) ? $sku : esc_html__('N/A', 'woocommerce'); ?></span></a>
+					<?php endif; ?>
 				
-				while (have_rows('additional_editions')) : the_row();
-				
+
+				<?php if (have_rows('additional_editions')) :
+
+					while (have_rows('additional_editions')) : the_row();
+
 						$type_of_edition = get_sub_field('type_of_edition');
 						$related 		 = get_sub_field('related_edition');
-						
 						if ($related) :
-						
-				?>
-				
+					?>
+
 							<span class="colophon-value">
 								<span class="d-block"><?php echo $type_of_edition; _e(' Edition', 'artezpress'); ?></span>
 								<?php foreach ($related as $r) :
-									// get the ID of the related product
-									$related_product_ID = $r->ID;
-									$related_product = wc_get_product($related_product_ID);
-									$related_product_sku = $related_product->get_sku();
-									$permalink = get_permalink($related_product_ID);
-
-									?>
-									<a href="<?php echo $related_product->get_permalink() ?>" alt="<?php echo $related_product->get_name() ?>"><span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span> <span class="sku"><?php echo ($sku = $related_product->get_sku()) ? $sku : esc_html__('N/A', 'woocommerce'); ?></span></a>
-									<?php
+									$related_product 		= wc_get_product($r);
+									$permalink 				= get_permalink($related);
+									$related_isbn 			= get_post_meta($related, 'isbn', true);
+								?>
+									<a href="<?php echo get_permalink($r) ?>" alt="<?php echo $related_product->get_name() ?>">
+										<span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span> 
+										<span class="sku">
+											<?php if ($related_isbn) : 
+												echo $related_isbn; 
+												
+											else :
+												echo ($sku = $related_product->get_sku()) ? $sku : esc_html__('N/A', 'woocommerce');
+											endif; ?> 
+										</span>
+											
+									</a>
+								<?php
 								endforeach; ?>
 							</span>
 				<?php endif;

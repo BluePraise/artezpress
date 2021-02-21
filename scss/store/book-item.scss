@@ -1,39 +1,47 @@
 // if Store.css is not sufficient this is
 // Where the deviating styles for the book items go
+
 .btn span.edition-language {
     margin-right: 16px;
 }
 
-.block__price form.cart {
+.block-price .d-block {
     margin-top: 1.2rem;
+} 
+.block-price form.cart {
+
+    margin-top: 1.2rem;
+
     &:first-child {
         margin-top: 0;
     }
 }
 
+
+
 // Added because WooCommerce adds a p wrapper around 
 // price output. No time to investigate an elegant solution
 // at the moment.
-.block__price .single_add_to_cart_button p.price {
+.block-price .single_add_to_cart_button p.price {
     display: inline-block;
 }
 
 // single product (book item pages)
-.product {
-    .images {
-        margin-bottom: 8rem;
-    }
+.product .images {
+    margin-bottom: 8rem;
+    height: 85vh;
 }
 
 .book-item-title {
     margin-bottom: 6rem;
+
     .book-item-subtitle {
         display: block;
     }
 }
 
 .book-item a img {
-    
+
     @include boxShadow;
 }
 
@@ -47,16 +55,20 @@
 
 .book-item-description {
     margin-bottom: 8rem;
+
     &:first-child {
         margin: 0 auto 0rem auto;
     }
+
     // all the anchorlinks get an underline
     a {
         @include underlineText;
     }
+
     // spacing for all the p tags
     p {
         margin-bottom: 3rem;
+
         // but not the last child
         &:last-child {
             margin-bottom: 0;
@@ -66,6 +78,7 @@
 
 // colophon and specs
 // this is found in woocommerce/meta.php 
+
 .book-item-meta {
     margin-top: 10rem;
     @include smallText;
@@ -73,6 +86,7 @@
 
 .book-item-meta .block {
     margin-bottom: 2.3rem;
+
     &:last-child {
         margin-bottom: 0;
     }
@@ -85,8 +99,10 @@
 .current-tag-list {
     display: flex;
     margin-bottom: 4rem;
+
     li {
         margin-left: 3.2rem;
+
         &:first-child {
             margin-left: 0;
         }

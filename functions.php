@@ -9,6 +9,8 @@
  * If you don't plan to dequeue the Storefront Core CSS you can remove the subsequent line and as well
  * as the sf_child_theme_dequeue_style() function declaration.
  */
+@ini_set('upload_max_size', '64M');
+
 
 if (!isset($content_width)) {
 	$content_width = 1076;
@@ -116,7 +118,21 @@ function ap_excerpt_more($more)
 }
 add_filter('excerpt_more', 'ap_excerpt_more');
 
-
+function customized_field_excerpt()
+{
+	global $post;
+	$text = get_field('news');
+	if ('' != $text) {
+		$start = strpos($text, '<p>'); // Locate the first paragraph tag
+		$end = strpos($text, '</p>', $start); // Locate the first paragraph closing tag
+		$text = substr($text, $start, $end - $start + 4); // Trim off everything after the closing paragraph tag
+		$text = strip_shortcodes($text);
+		$text = str_replace(']]>', ']]>', $text);
+		$text = apply_filters('the_content', $text);
+	}
+	$text = '<p class="whatever">' . apply_filters('the_content', $text) . '</p>';
+	
+}
 
 if (function_exists('acf_add_options_page')) {
 
@@ -125,7 +141,18 @@ if (function_exists('acf_add_options_page')) {
 		'menu_title' => 'Hero Images',
 		'menu_slug' => 'hero-img',
 		'capability' => 'edit_posts',
+		'position' => '8',
+		'icon_url' => 'dashicons-welcome-view-site',
+		'redirect' => false
+	));
+	acf_add_options_page(array(
+		'page_title' => 'Frontpage Highlights',
+		'menu_title' => 'Frontpage Highlights',
+		'menu_slug' => 'fp-highlights',
+		'capability' => 'edit_posts',
 		'position' => '9',
+		'autoload' => true,
+		'icon_url' => 'dashicons-images-alt',
 		'redirect' => false
 	));
 }
@@ -254,6 +281,7 @@ function veer_popup_maker_gutenburg_compat($content)
 }
 
 
+
 /**********************************
  *
  * All WooCommerce Functions
@@ -326,6 +354,40 @@ if (!function_exists('array_flatten')) {
 	}
 }
 
+add_filter('get_post_metadata', 'add_dynamic_post_meta', 10, 4);
+
+/**
+ * Add dynamically-generated "post meta" to `\WP_Post` objects
+ *
+ * This makes it possible to access dynamic data related to a post object by simply referencing `$post->foo`.
+ * That keeps the calling code much cleaner than if it were to have to do something like
+ * `$foo = some_custom_logic( get_post_meta( $post->ID, 'bar', true ) ); echo esc_html( $foo )`.
+ *
+ * @param mixed  $value
+ * @param int    $post_id
+ * @param string $meta_key
+ * @param int    $single   @todo handle the case where this is false
+ *
+ * @return mixed
+ *      `null` to instruct `get_metadata()` to pull the value from the database
+ *      Any non-null value will be returned as if it were pulled from the database
+ */
+function add_dynamic_post_meta($value, $post_id, $meta_key, $single)
+{
+	$post = get_post($post_id);
+
+	if ('page' != $post->post_type) {
+		return $value;
+	}
+
+	switch ($meta_key) {
+		case 'verbose_page_template':
+			$value = "The page template is " . ($post->_wp_page_template ?: 'not assigned');
+			break;
+	}
+
+	return $value;
+}
 
 // Script for getting posts
 function ajax_filter_get_posts($taxonomy)
@@ -449,7 +511,7 @@ function change_meta_box_titles()
 	global $wp_meta_boxes; // array of defined meta boxes
 	// cycle through the array, change the titles you want
 
-	$wp_meta_boxes['product']['side']['low']['woocommerce-product-images']['title'] = "Book Inner pages";
+	$wp_meta_boxes['product']['side']['low']['woocommerce-product-images']['title'] = "Book Inner Pages";
 }
 add_action('add_meta_boxes', 'change_meta_box_titles', 999);
 
@@ -464,15 +526,14 @@ function prevent_duplicate_products_redirect($url = false)
 	}
 	// redirect back to the original page, without the 'add-to-cart' parameter.
 	// we add the 'get_bloginfo' part so it saves a redirect on https:// sites.
-	
+
 	return sprintf(
 		"%s://%s%s",
 		isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
 		$_SERVER['SERVER_NAME'],
 		add_query_arg(array(), remove_query_arg('add-to-cart'))
-	  );
+	);
 }
-
 
 
 
@@ -492,7 +553,7 @@ add_filter('body_class', function ($classes) {
 	endif;
 });
 
-add_action('wp_ajax_artez_random_bg', 'artez_random_bg');
+// add_action('wp_ajax_artez_random_bg', 'artez_random_bg');
 
 function artez_random_bg()
 {
@@ -548,3 +609,45 @@ add_filter('woocommerce_coupons_enabled', 'disable_coupon_field_on_checkout');
 
 
 add_filter('woocommerce_ship_to_different_address_checked', '__return_true', 999);
+
+
+// ALLOW TRANSLATION OF CUSTOM FIELDS AND OTHER PLUGIN DATA
+add_filter('pll_translate_post_meta', 'translate_post_meta', 10, 3);
+// Allows plugins to copy taxonomy terms when a new post (or page) translation is created or synchronize
+function translate_post_meta($value, $key, $lang)
+{
+	if ('_thumbnail_id' === $key) {
+		$value = pll_get_post($value, $lang);
+	}
+	return $value;
+}
+
+add_filter('pll_copy_taxonomies', 'copy_tax', 10, 2);
+
+function copy_tax($taxonomies, $sync)
+{
+	$taxonomies[] = 'my_custom_tax';
+	return $taxonomies;
+}
+
+// Disable Woocommerce Header in WP Admin 
+add_action('admin_head', 'Hide_WooCommerce_Breadcrumb');
+
+function Hide_WooCommerce_Breadcrumb()
+{
+	echo '<style>
+    .woocommerce-layout__header {
+        display: none;
+    }
+    .woocommerce-layout__activity-panel-tabs {
+        display: none;
+    }
+    .woocommerce-layout__header-breadcrumbs {
+        display: none;
+    }
+    .woocommerce-embed-page .woocommerce-layout__primary{
+        display: none;
+    }
+    .woocommerce-embed-page #screen-meta, .woocommerce-embed-page #screen-meta-links{top:0;}
+    </style>';
+}

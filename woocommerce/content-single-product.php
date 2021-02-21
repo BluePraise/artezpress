@@ -60,7 +60,7 @@ if (post_password_required()) {
 		</g>
 	</svg>
 </a>
-<main id="product-<?php the_ID(); ?>" <?php wc_product_class('container', $product); ?>>
+<main id="product-<?php the_ID(); ?>" <?php wc_product_class('', $product); ?>>
 
 	<?php woocommerce_show_product_images(); ?>
 	<div class="post-container book-item__single">
@@ -74,7 +74,7 @@ if (post_password_required()) {
 		</h3>
 		<div class="summary entry-summary">
 			<?php
-			/**
+			/**ƒ
 			 * Hook: woocommerce_single_product_summary.
 			 *
 			 * @hooked woocommerce_template_single_title - 5
@@ -92,7 +92,7 @@ if (post_password_required()) {
 			<div class="book-item-description">
 				<?php echo $description; ?>
 			</div>
-
+			
 			<?php woocommerce_template_single_meta(); ?>
 
 

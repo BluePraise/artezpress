@@ -22,7 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
-
 if ( $related_products ) : ?>
 
 	<section class="related-books">

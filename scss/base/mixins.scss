@@ -13,37 +13,45 @@
 // Typography
 
 @mixin largeText {
-  font: 400 2.1rem/3rem 'Lars', Helvetica, Arial, sans-serif;
+  @include Lars(2.1, 3);
+  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  // font-size: 2.1rem;
+  // line-height: 3rem;
 }
 
 @mixin menuText {
-  font: 400 2rem/2.8rem 'Lars', Helvetica, Arial, sans-serif;
+  @include Lars(2, 2.8);
+  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  // font-size: 2rem;
+  // line-height: 2.8rem;
 }
 
 @mixin smallText {
-  font: 400 1.7rem/2.3rem 'Lars', Helvetica, Arial, sans-serif;
+  @include Lars(1.7, 2.3);
+  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  // font-size: 1.7rem;
+  // line-height: 2.3rem;
 }
 
 @mixin microText {
-  font: 400 1.4rem/2.3rem 'Lars', Helvetica, Arial, sans-serif;
+  @include Lars(1.4, 2.3);
+  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  // font-size: 1.4rem;
+  // line-height: 2.3rem;
 }
 
 
 // Underline
 
 @mixin underlineText {
-  padding-bottom: 0;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -0.1rem;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(to top, currentColor 6%, rgba(0, 0, 0, 0) 6%);
-  }
+  background-image: linear-gradient(to bottom, currentColor 50%, transparent 50%);
+  background-position: 0 1.2em;
+  background-repeat: repeat-x;
+  background-size: 2px 1em;
 }
 
 @mixin boxShadow {

@@ -1,45 +1,42 @@
 
 <div class="news-item">
-    <div class="news-date-excerpt"><?php echo get_the_date( "d F Y" )?></div>
-    <?php if( has_post_thumbnail() ): 
-            $tn_id      = get_post_thumbnail_id( $post->ID );
-            $imgmeta    = wp_get_attachment_metadata( $tn_id );
-            
-            
-            if ($imgmeta['width'] < $imgmeta['height']): ?>
-                <figure class="news-thumbnail is-portrait">
-                    <?php the_post_thumbnail(array("auto", 460)); ?>
-                </figure>
-            <?php else: ?>
-                <figure class="news-thumbnail is-landscape">
-                    <?php the_post_thumbnail(); ?>
-                </figure>
+    <div class="news-date-excerpt"><?php echo the_date("d F Y") ?></div>
+    <?php if (has_post_thumbnail()) :
+        $tn_id      = get_post_thumbnail_id($post->ID);
+        $imgmeta    = wp_get_attachment_metadata($tn_id);
+
+
+        if ($imgmeta['width'] < $imgmeta['height']) : ?>
+            <figure class="news-thumbnail is-portrait">
+                <?php the_post_thumbnail(array("auto", 460)); ?>
+            </figure>
+        <?php else : ?>
+            <figure class="news-thumbnail is-landscape">
+                <?php the_post_thumbnail(); ?>
+            </figure>
         <?php endif; ?>
     <?php endif; ?>
     <h4 class="news-title news-title-excerpt"><?php the_title(); ?></h4>
-    <?php if( have_rows('post_building_modules') ):
-        while ( have_rows('post_building_modules') ) : the_row();
+    <?php if (have_rows('post_building_modules')) :
+        while (have_rows('post_building_modules')) : the_row();
 
-        if( get_row_layout() == 'news_content_module' ):
-            $news_content      = get_sub_field('news_content');
-                
-            if ($news_content): 
-                //https://wordpress.stackexchange.com/questions/325271/generate-a-excerpt-from-an-acf-wysiwyg-field
-                if( !empty( $news_content ) ):
-                    $trimmed_content = wp_trim_words($news_content);
-                    $clean_excerpt = apply_filters('the_excerpt', $trimmed_content);
+            if (get_row_layout() == 'news_content_module') :
+                $news_content      = get_sub_field('news_content');
 
-                    // needs a custom class .news-item-excerpt
-                    echo '<p class="news-item-excerpt">'. $trimmed_content .'</p>';
-                
+                if ($news_content) :
+                    $start = strpos($news_content, '<p>'); // Locate the first paragraph tag
+                    $end = strpos($news_content, '</p>', $start); // Locate the first paragraph closing tag
+                    $news_content = substr($news_content, $start, $end - $start + 4); // Trim off everything after the closing paragraph tag
+                    // $news_content = str_replace(']]>', ']]>', $news_content);
+                    // $news_content = apply_filters('the_content', $news_content);
+
+                    echo '<div class="news-item-excerpt">' . $news_content . '</div>';
                 endif;
             endif;
-        endif;
-        endwhile; endif 
+        endwhile;
+    endif
     ?>
 
 
-    <a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link"><?php _e('Read More', 'artezpress');?></a>
+    <a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link"><?php _e('Read More', 'artezpress'); ?></a>
 </div>
-
-

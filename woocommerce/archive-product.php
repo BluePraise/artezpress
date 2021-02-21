@@ -16,16 +16,44 @@
     </form>
     <?php include get_theme_file_path('/inc/filter-tags.php'); ?>
   </div>
+
   <main class="site-main products book-grid flex-container js-products-container" role="main">
-    <!-- <h2 class="products__not-found" style="display: none">Not found</h2> -->
-    <?php woocommerce_product_loop_start(); ?>
-    <?php if (wc_get_loop_prop('total')) : ?>
-      <?php while (have_posts()) : the_post(); ?>
-        <?php do_action('woocommerce_shop_loop'); ?>
-        <?php wc_get_template_part('content', 'product'); ?>
-      <?php endwhile; ?>
-    <?php endif; ?>
-    <?php woocommerce_product_loop_end(); ?>
+    <?php //woocommerce_product_loop_start(); 
+
+    // filter thourh repeater posts
+    function my_posts_where($where)
+    {
+      $where = str_replace("meta_key = 'additional_editions_$", "meta_key LIKE 'additional_editions_%", $where);
+      return $where;
+    }
+    add_filter('posts_where', 'my_posts_where');
+    $current_lang_full = pll_current_language('name');
+    $current_lang      = pll_current_language();
+    $ap_language       = get_field('ap_language');
+
+    $args = array(
+      'orderby'         => 'date',
+      'order'           => 'DESC',
+      'posts_per_page'  => -1,  // -1 will get all the product. Specify positive integer value to get the number given number of product
+    
+      'post_type'       => 'product',
+      // 'meta_query'  => array(
+      //   'relation'    => 'AND',
+      //   array(
+      //     'key'    => 'additional_editions_$_type_of_edition',
+      //     'compare'  => '!=',
+      //     'value'    => $current_lang_full,
+      //   )
+      // ),
+    );  
+      
+    $the_query = new WP_Query($args);
+    if ($the_query->have_posts()) :
+      while ($the_query->have_posts()) : $the_query->the_post();
+          wc_get_template_part('content', 'product');
+      endwhile;
+    endif;
+    wp_reset_postdata();?>
   </main>
 </div>
 <!-- #main -->

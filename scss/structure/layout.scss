@@ -1,9 +1,10 @@
 // Main Large container
 .container {
     max-width: $default-container-width;
-    margin: 5.4rem auto;
+    margin: 0 auto;
     padding-left: 1.6rem;
     padding-right: 1.6rem;
+    padding-top: 5.4rem;
 }
 
 .grid-container {
