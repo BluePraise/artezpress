@@ -7,10 +7,6 @@
 
 // News archive grid
 
-.news .page-title {
-    margin-bottom: 6.4rem;
-}
-
 .nav-links {
     text-align: center;
 }
@@ -91,7 +87,7 @@
     margin-bottom: 4rem;
 }
 
-.news-item-excerpt {
+.news-item-excerpt p {
     @include smallText;
     text-align: left;
 }

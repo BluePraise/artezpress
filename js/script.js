@@ -164,7 +164,7 @@ jQuery(document).ready(function($) {
                 panelP.style.height = panelP.clientHeight + "px";
                 setTimeout(() => {
                     panel.classList.toggle("open");
-                }, 100);
+                }, 0);
             }
         });
     }
