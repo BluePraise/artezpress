@@ -27,12 +27,12 @@ $tags = implode(',', wc_get_product_taxonomy_class($product->get_tag_ids(), 'pro
 $design 	= get_field('design');
 $book_lang  = get_field('ap_language');
 $current_lang_full = pll_current_language('name');
+$additional_editions = get_field('additional_editions');
 
 // Ensure visibility.
 if (empty($product) || !$product->is_visible()) {
 	return;
-}
-
+} 
 ?>
 <div <?php wc_product_class('book-item', $product); ?> data-filters="<?= $cats ?> <?= $author ?> year-<?= $year ?> <?= $tags ?>" data-search="<?= get_the_title() ?> <?= $cats ?> <?= $tags ?> <?= $author ?> <?= $design && is_array($design) ? $design['designer'] : '' ?>">
 	<?php

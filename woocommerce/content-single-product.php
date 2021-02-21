@@ -74,7 +74,7 @@ if (post_password_required()) {
 		</h3>
 		<div class="summary entry-summary">
 			<?php
-			/**
+			/**ƒ
 			 * Hook: woocommerce_single_product_summary.
 			 *
 			 * @hooked woocommerce_template_single_title - 5

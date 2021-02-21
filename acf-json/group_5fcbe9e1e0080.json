@@ -3,54 +3,6 @@
     "title": "FRONTPAGE HIGHLIGHTS",
     "fields": [
         {
-            "key": "field_602aca5d45c0f",
-            "label": "COMING SOON",
-            "name": "coming_soon",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "acfe_seamless_style": 1,
-            "acfe_group_modal": 0,
-            "sub_fields": [
-                {
-                    "key": "field_5fcbea5328e37",
-                    "label": "Add to Coming Soon",
-                    "name": "add_coming_soon",
-                    "type": "true_false",
-                    "instructions": "Do you want to add this to the coming soon slider in the frontpage?",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "acfe_permissions": [
-                        "administrator",
-                        "editor",
-                        "author",
-                        "contributor",
-                        "subscriber",
-                        "customer",
-                        "shop_manager",
-                        "super_admin"
-                    ],
-                    "message": "Show in Coming Soon Slider",
-                    "default_value": 0,
-                    "ui": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": ""
-                }
-            ]
-        },
-        {
             "key": "field_602aca9c75836",
             "label": "NEW RELEASES",
             "name": "new_releases",
@@ -157,5 +109,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1613847742
+    "modified": 1613906128
 }
