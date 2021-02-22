@@ -10,12 +10,9 @@ $args = array(
     'posts_per_page' => 3,
 );
 $loop = new WP_Query($args); 
+?>
 
-if ($single_product_text_color == "#00000") : ?>
-    <div class="carousel-container backlist set-to-black">
-<?php else : ?>
-    <div class="carousel-container backlist set-to-white">
-<?php endif; ?>
+<div class="carousel-container backlist">
 
     <h2 class="slider-title"><?php _e('From the Backlist', 'artezpress'); ?></h2>
     <div class="owl-carousel">
