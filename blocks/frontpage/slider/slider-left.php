@@ -3,7 +3,7 @@
 ?>
 
 <div class="carousel-container coming-soon">
-    <h2 class="slider-title"><?php _e('Coming Soon'); ?></h2>
+    <h2 class="slider-title"><?php _e('Coming Soon', 'artezpress'); ?></h2>
     <div class="owl-carousel">
 <?php 
 
@@ -26,10 +26,9 @@ $loop = new WP_Query($args);
             <div class="slider-item slider-item-left">
                 <img class="slider-img" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php echo the_title(); ?>">
                 <div class="slider-item-meta">
-                    <h3 class="slider-item-title"><?php echo the_title(); ?></h3>
-                    <h3 class="slider-item-author"><?php echo $author; ?></h3>
+                    <h2 class="slider-item-title"><?php echo the_title(); ?></h2>
                 </div>
-                    <a href="<?php the_permalink(); ?>">Read More</a>
+                    <a href="<?php the_permalink(); ?>"><?php _e('Read More', 'artezpress');?></a>
             </div>
     <?php 
         endwhile;

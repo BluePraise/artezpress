@@ -6,7 +6,7 @@ endif;
 
 
 <div class="carousel-container new-releases">
-<h2 class="slider-title"><?php _e('New Releases'); ?></h2>
+<h2 class="slider-title"><?php _e('New Releases', 'artezpress'); ?></h2>
 <div class="owl-carousel">
 
 <?php 
@@ -26,13 +26,11 @@ endif;
             $img        = get_sub_field('add_custom_image');
     ?>
 
-     <div class="slider-item slider-item-middle">
-            <img class="slider-img" src="<?php echo $img; ?>" alt="<?php echo $title; ?>">
+     <div class="slider-item slider-item-middle" style="background-image: url( <?php echo $img; ?>)">
         <div class="slider-item-meta">
-            <h3 class="slider-item-title"><?php echo $title; ?></h3>
-            <h3 class="slider-item-author"><?php echo $author; ?></h3>
+            <h2 class="slider-item-title"><?php echo $title; ?></h2>
         </div>    
-        <a href="<?php echo $permalink; ?>">Read More</a>
+        <a href="<?php echo $permalink; ?>"><?php _e('Read More', 'artezpress'); ?></a>
     </div>
 <?php
     
