@@ -12,7 +12,7 @@ $args = array(
 $loop = new WP_Query($args); ?>
 
 <div class="carousel-container backlist">
-    <h2><?php _e('From the Backlist'); ?></h2>
+    <h2 class="slider-title"><?php _e('From the Backlist'); ?></h2>
     <div class="owl-carousel">
         <?php
 
@@ -23,14 +23,16 @@ $loop = new WP_Query($args); ?>
                 $single_product_bg = get_field('custom_color', $id);
                 $single_product_text_color = get_field('text_color', $id);
                 if ($single_product_text_color == "#00000") : ?>
-                        <div class="slider-item-right backlist-wrapper <?php echo 'set-to-black'; ?>" style="background-color:<?php echo $single_product_bg; ?>">
+                        <div class="slider-item slider-item-right backlist-wrapper <?php echo 'set-to-black'; ?>" style="background-color:<?php echo $single_product_bg; ?>">
                         <?php elseif ($single_product_text_color == "#f2f2f2") : ?>
                             <div class="slider-item slider-item-right backlist-wrapper <?php echo 'set-to-white'; ?>" style="background-color:<?php echo $single_product_bg; ?>">
                             <?php endif; ?>
 
                             <img class="slider-img" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php echo the_title(); ?>">
-                            <h3 class="slider-item-title"><?php echo the_title(); ?></h3>
-                            <h3 class="slider-item-author"><?php echo $author; ?></h3>
+                            <div class="slider-item-meta">
+                                <h3 class="slider-item-title"><?php echo $title; ?></h3>
+                                <h3 class="slider-item-author"><?php echo $author; ?></h3>
+                            </div>
                             <a href="<?php the_permalink(); ?>">Read More</a>
                             </div>
                         <?php
