@@ -1,110 +1,101 @@
-// if Store.css is not sufficient this is
-// Where the deviating styles for the book items go
+// AMIR'S CSS — SINGLE BOOK ITEM
 
-.btn span.edition-language {
-    margin-right: 16px;
+// add padding left/right to entire page for mobile
+.product {
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
 }
 
-.block-price .d-block {
-    margin-top: 1.2rem;
-} 
-.block-price form.cart {
-
-    margin-top: 1.2rem;
-
-    &:first-child {
-        margin-top: 0;
-    }
-}
-
-
-
-// Added because WooCommerce adds a p wrapper around 
-// price output. No time to investigate an elegant solution
-// at the moment.
-.block-price .single_add_to_cart_button p.price {
-    display: inline-block;
-}
-
-// single product (book item pages)
+// Slider block
 .product .images {
+    margin-top: 6rem;
     margin-bottom: 8rem;
-    height: 85vh;
 }
 
-.book-item-title {
+
+// Text blocks
+.book-item__single {
+
+  p {
+    @include largeText;
+
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .book-item-available {
+    margin-bottom: 4.8rem;
+
+    a {
+      @include underlineText;
+    }
+  }
+
+  .book-item-title {
     margin-bottom: 6rem;
 
     .book-item-subtitle {
-        display: block;
+      display: block;
     }
-}
+  }
 
-.book-item a img {
+  .book-item-author {
+    margin-bottom: 3rem;
+  }
 
-    @include boxShadow;
-}
-
-.book-item-available {
-    margin-bottom: 4.8rem;
-}
-
-.book-item__single .book-item-author {
-    margin-bottom: 4rem;
-}
-
-.book-item-description {
+  .book-item-description {
     margin-bottom: 8rem;
+  }
 
-    &:first-child {
-        margin: 0 auto 0rem auto;
-    }
-
-    // all the anchorlinks get an underline
-    a {
-        @include underlineText;
-    }
-
-    // spacing for all the p tags
-    p {
-        margin-bottom: 3rem;
-
-        // but not the last child
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-}
-
-// colophon and specs
-// this is found in woocommerce/meta.php 
-
-.book-item-meta {
-    margin-top: 10rem;
+  // colophon and specs
+  // this is found in woocommerce/meta.php
+  .book-item-meta {
     @include smallText;
-}
 
-.book-item-meta .block {
-    margin-bottom: 2.3rem;
-
-    &:last-child {
-        margin-bottom: 0;
+    .grid-container {
+      @include grid(2, 1fr, 3.2rem, 3.2rem);
     }
+
+    .block:not(:last-child) {
+      margin-bottom: 2.3rem;
+    }
+  }
 }
 
-.book-item-related-new .news-item {
-    width: 50%;
+
+// related news block
+.related-news {
+  max-width: $l-container-width;
+  margin: 0 auto;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
 }
 
-.current-tag-list {
+
+
+// related books block
+.related-books {
+  max-width: $l-container-width;
+  margin: 0 auto;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+
+  .current-tag-list {
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 4rem;
 
     li {
-        margin-left: 3.2rem;
+      margin-bottom: 1.2rem;
 
-        &:first-child {
-            margin-left: 0;
-        }
+      &:not(:last-child) {
+        margin-right: .8rem;
+      }
     }
+  }
+}
+
+.book-item a img {
+    @include boxShadow;
 }

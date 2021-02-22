@@ -47,7 +47,7 @@ global $product;
 
 
 	?>
-	<div class="flex-container">
+	<div class="grid-container">
 		<div class="col_left">
 
 			<div class="block">
@@ -59,7 +59,7 @@ global $product;
 					<?php elseif (wc_product_sku_enabled() && ($product->get_sku() || $product->is_type('variable'))) : ?>
 						<a href="<?php echo $product->get_permalink() ?>" alt="<?php echo $product->get_name() ?>"><span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span> <span class="sku"><?php echo ($sku = $product->get_sku()) ? $sku : esc_html__('N/A', 'woocommerce'); ?></span></a>
 					<?php endif; ?>
-				
+
 
 				<?php if (have_rows('additional_editions')) :
 
@@ -78,16 +78,16 @@ global $product;
 									$related_isbn 			= get_post_meta($related, 'isbn', true);
 								?>
 									<a href="<?php echo get_permalink($r) ?>" alt="<?php echo $related_product->get_name() ?>">
-										<span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span> 
+										<span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span>
 										<span class="sku">
-											<?php if ($related_isbn) : 
-												echo $related_isbn; 
-												
+											<?php if ($related_isbn) :
+												echo $related_isbn;
+
 											else :
 												echo ($sku = $related_product->get_sku()) ? $sku : esc_html__('N/A', 'woocommerce');
-											endif; ?> 
+											endif; ?>
 										</span>
-											
+
 									</a>
 								<?php
 								endforeach; ?>
@@ -130,7 +130,7 @@ global $product;
 				</div>
 			<?php endif; ?>
 
-		</div><?php // END OF .COL_LEFT 
+		</div><?php // END OF .COL_LEFT
 				?>
 
 		<div class="col_right">
@@ -208,10 +208,10 @@ global $product;
 
 
 
-	<?php //echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); 
+	<?php //echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' );
 	?>
 
-	<?php //echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); 
+	<?php //echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' );
 	?>
 
 	<?php do_action('woocommerce_product_meta_end'); ?>
