@@ -1,7 +1,3 @@
-<?php 
-    global $product;
-?>
-
 <div class="carousel-container coming-soon">
     <h2 class="slider-title"><?php _e('Coming Soon', 'artezpress'); ?></h2>
     <div class="owl-carousel">

@@ -1,9 +1,3 @@
-<?php if (is_product()) :
-
-    // $single_product_text_color = get_field('text_color', $id);
-endif;
-?>
-
 
 <div class="carousel-container new-releases">
 <h2 class="slider-title"><?php _e('New Releases', 'artezpress'); ?></h2>
