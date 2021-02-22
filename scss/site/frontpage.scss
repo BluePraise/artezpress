@@ -18,7 +18,6 @@
         position: relative;
         z-index: 0;
         height: 77rem;
-        width: auto;
         display: inline-flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -61,6 +60,10 @@
     justify-content: center !important;
     align-items: center;
     width: 100%;
+    .slider-item-meta {
+        height: 90%;
+        transform: translateY(70%);
+    }
     img.slider-img {
         height: 58rem;
         width: auto;
