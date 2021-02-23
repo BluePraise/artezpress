@@ -29,8 +29,14 @@
 .main-menu-bar,
 .bottom-menu-bar {
   width: 100vw;
-  padding: 3.6rem 3.2rem;
   background-color: transparent;
+
+  @media (min-width: 1025px) {
+    padding: 3.6rem 3.2rem;
+  }
+  @media (max-width: 1024px) {
+    padding: 1.6rem;
+  }
 }
 
 .main-menu-bar {
@@ -52,13 +58,30 @@
   }
 }
 
+// Mobile Menu Background Color
+.main-menu-bar {
+  @media (max-width: 1024px) {
+    @include MobileMenuColors($book: false);
+    body.single-product & {
+      @include MobileMenuColors($book: true);
+    }
+  }
+}
+
+
 //menu surface
 .main-menu-surface,
 .wp-end-of-page {
   position: relative;
   width: 100vw;
-  padding: 4rem 3.2rem 12.8rem 3.2rem;
   background-color: $greyTransparent;
+
+  @media (min-width: 1025px) {
+    padding: 4rem 3.2rem 12.8rem 3.2rem;
+  }
+  @media (max-width: 1024px) {
+    padding: 4rem 1.6rem 12.8rem 1.6rem;
+  }
 
   &::before {
     content: " ";
@@ -89,6 +112,7 @@
   opacity: 0.85;
 }
 
+
 // -----------------------------
 // Main Menu Bar Elements
 // -----------------------------
@@ -103,49 +127,106 @@
   }
 }
 
-// Cart Button (see buttons.scss)
-
 // Language Toggle
 .language-toggle {
   position: relative;
   display: inline-block;
-  width: 12rem;
-  margin-right: 3.2rem;
   list-style: none;
 
-  .lang-item {
-    display: flex;
-    flex-direction: column-reverse;
-  }
+  // screens toggle
+  &__screen {
+    @media (min-width: 768px) {
+      margin-right: 2.4rem;
+      width: 11rem;
 
-  .inactive {
-    display: none;
-    opacity: $inactiveOpacity;
+      .lang-item {
+        display: flex;
+        flex-direction: column-reverse;
+      }
 
-    &:hover {
-      opacity: $activeOpacity;
+      .inactive {
+        display: none;
+      }
+
+      &:hover .inactive {
+        display: block;
+      }
+    }
+
+    @media (max-width: 767px) {
+      display: none;
     }
   }
 
-  &:hover .inactive {
-    display: block;
+  // mobile toggle
+  &__mobile {
+    @media (min-width: 768px) {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      display: inline-block;
+      margin-right: 1.6rem;
+
+      .lang-item {
+        display: flex;
+        text-transform: uppercase;
+      }
+
+      .drop-block__link {
+        margin-left: .6rem;
+
+        &:first-child:after{
+          content: '/';
+        }
+      }
+    }
+  }
+
+  // hover
+  .inactive {
+    opacity: $inactiveOpacity;
+    &:hover{
+      opacity: 1;
+    }
   }
 }
+
 
 // -----------------------------
 // Menu surface elements
 // -----------------------------
 
 // Layout
-.main-menu-surface {
+.main-menu-surface,
+.mast-footer {
   .grid-container {
     @include grid(4, 1fr, 3.6rem, 3.2rem);
   }
 }
 
-.mini-cart-column {
-  grid-column: 3 / span 2;
+.nav-column {
+  @media (min-width: 1025px) {
+    grid-column: auto / span 1;
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    grid-column: auto / span 2;
+  }
+  @media (max-width: 767px) {
+    grid-column: auto / span 4;
+  }
 }
+
+.mini-cart-column {
+  @media (min-width: 1025px) {
+    grid-column: 3 / span 2;
+  }
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+
 
 // Buttons List
 .search,
@@ -163,6 +244,7 @@
   span {
     // subscribe text
     display: block;
+    margin-bottom: .4rem;
   }
   input[type=email] {
     height: 45px;
@@ -200,6 +282,26 @@
   }
 }
 
+// Hover effects
+.search a,
+.page-list a,
+.social-menu a,
+.part-of a,
+.cart_list a {
+  &:hover {
+    opacity: $hoverOpacity;
+  }
+}
+
+// removes grey background when item is removed
+.blockUI,
+.blockMsg,
+.blockOverlay,
+.blockElement {
+  display: none !important;
+}
+
+
 // -----------------------------
 // Transition effects
 // -----------------------------
@@ -226,4 +328,15 @@ main {
 header {
   will-change: opacity;
   transition: opacity 100ms ease-in-out;
+}
+
+
+// -----------------------------------
+// Remove Search on Mobile (TEMPORARY)
+// -----------------------------------
+
+@media (max-width: 767px) {
+  .search {
+    display: none;
+  }
 }

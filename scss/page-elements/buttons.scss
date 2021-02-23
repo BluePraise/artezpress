@@ -70,3 +70,26 @@ span.btn:hover {
   background-color: $red;
   z-index: 3;
 }
+
+// Go Back Button
+// used in news single
+// used in book single
+a.go-back {
+    display: block;
+    position: fixed;
+    z-index: 100;
+
+    @media (min-width: 1025px) {
+      top: 3.2rem;
+      left: 3.2rem;
+    }
+    @media (max-width: 1024px) {
+      top: 1.6rem;
+      left: 1.6rem;
+    }
+
+    svg {
+        width: 3.6rem;
+        height: 3.6rem;
+    }
+}

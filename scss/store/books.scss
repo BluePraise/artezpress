@@ -21,14 +21,14 @@ body.single-product.set-text-black {
 }
 
 body.single-product.set-text-white {
-    color: var(--set-to-white) !important;
+    color: $white !important;
 
     a.go-back svg {
-        fill: var(--set-to-white) !important;
+        fill: $white !important;
     }
 
     .btn.white-on-black {
-        background: #f2f2f2;
+        background: $white;
         color: $black;
     }
 

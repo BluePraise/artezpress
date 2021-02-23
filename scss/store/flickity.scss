@@ -34,10 +34,10 @@
       top: 0;
       right: 50%;
       height: 100%;
-      width: 7.5vw;
-      opacity: .1;
+      width: 6vw;
+      opacity: .175;
       mix-blend-mode: multiply;
-      @include gradient(0, 0, 0, right);
+      @include gradientSpine(0, 0, 0, right);
     }
 
     .book-overlay__right {
@@ -45,10 +45,10 @@
       top: 0;
       left: 50%;
       height: 100%;
-      width: 10vw;
-      opacity: .2;
+      width: 8vw;
+      opacity: .25;
       mix-blend-mode: multiply;
-      @include gradient(0, 0, 0, left);
+      @include gradientSpine(0, 0, 0, left);
     }
   }
 }
