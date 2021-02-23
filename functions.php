@@ -21,7 +21,6 @@ function load_child_language()
 {
 	load_child_theme_textdomain('artezpress', get_stylesheet_directory() . '/languages');
 }
-
 /**
  * Dequeue a lot of css
  */
