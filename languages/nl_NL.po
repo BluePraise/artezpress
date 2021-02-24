@@ -1,24 +1,23 @@
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: artezpress\n"
+"Project-Id-Version: ArtEzPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-23 18:11+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"POT-Creation-Date: 2021-01-27 11:41+0000\n"
+"PO-Revision-Date: 2021-02-23 18:11+0000\n"
+"Last-Translator: Amir Avraham\n"
+"Language-Team: Dutch\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.5.0; wp-5.6\n"
-"X-Domain: artezpress"
+"X-Loco-Version: 2.5.0; wp-5.6.1\n"
+"X-Domain: storefront"
 
 #: woocommerce/single-product/meta.php:74
 msgid " Edition"
-msgstr ""
+msgstr "Editie"
 
 #. Name of the template
 msgid "4040"
@@ -26,15 +25,15 @@ msgstr ""
 
 #: template-homepage.php:106
 msgid "<p>Currently there is no news.</p>"
-msgstr ""
+msgstr "Er is momenteel geen nieuws."
 
 #: inc/templateparts/nav-pages.php:9
 msgid "About"
-msgstr ""
+msgstr "Over"
 
 #: woocommerce/cart/cart.php:155
-msgid "ArtEZ students and staff are eligible for a discount."
-msgstr ""
+msgid "ArtEZ students and staffare eligible for a discount."
+msgstr "Studenten en personeel van ArtEZ komen in aanmerking voor een korting."
 
 #: inc/templateparts/nav-pages.php:33
 msgid "ArtEZ University of the Arts"
@@ -42,121 +41,121 @@ msgstr ""
 
 #. Name of the theme
 msgid "ArtEzPress"
-msgstr ""
+msgstr "ArtEZPress"
 
 #: woocommerce/checkout/form-checkout.php:42
 msgid "Billing Address"
-msgstr ""
+msgstr "Factuur adres"
 
 #: functions.php:482
 msgid "Book Cover"
-msgstr ""
+msgstr "Book Kaft"
 
 #: template-homepage.php:38 inc/templateparts/nav-pages.php:7
 msgid "Books"
-msgstr ""
+msgstr "Boeken"
 
 #: footer.php:20
 msgid "Cart"
-msgstr ""
+msgstr "Winkel"
 
 #. Name of the template
 msgid "Cart Page"
-msgstr ""
+msgstr "Winkel"
 
 #. Description of the theme
 msgid "Child Theme of Storefront"
-msgstr ""
+msgstr "Sub Thema van Storefront"
 
 #: woocommerce/single-product/meta.php:26
 msgid "Colophon and Specifications"
-msgstr ""
+msgstr "Colofon en Specificaties"
 
 #: woocommerce/global/form-login.php:57
 msgid "Forgot password"
-msgstr ""
+msgstr "Wachtwoord vergeten"
 
 #: inc/templateparts/nav-pages.php:6
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: inc/templateparts/nav-pages.php:28
 msgid "How Can We Help?"
-msgstr ""
+msgstr "Hoe kunnen wij je helpen?"
 
 #. URI of the theme
 msgid "http://BluePraise/artezpress"
-msgstr ""
+msgstr "http://BluePraise/artezpress"
 
 #. Author URI of the theme
 msgid "https://magalielinda.me/"
-msgstr ""
+msgstr "https://magalielinda.me/"
 
 #. Author of the theme
 msgid "Magalie Chetrit"
-msgstr ""
+msgstr "Magalie Chetrit"
 
 #: template-homepage.php:89 inc/templateparts/nav-pages.php:8
 msgid "News"
-msgstr ""
+msgstr "Nieuws"
 
 #: header.php:85 header.php:107
 msgid "Out of Print"
-msgstr ""
+msgstr "Niet meer in druk"
 
 #: inc/templateparts/nav-pages.php:30
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Privacy Policy"
 
 #: inc/templateparts/news-excerpt.php:41 blocks/postbuilding/index.php:26
 msgid "Read More"
-msgstr ""
+msgstr "Lees Meer"
 
 #: functions.php:484
 msgid "Remove Book Cover"
-msgstr ""
+msgstr "Boek Kaft Verwijderen"
 
 #: inc/templateparts/nav-pages.php:3
 msgid "Search"
-msgstr ""
+msgstr "Zoeken"
 
 #: template-homepage.php:83
 msgid "See All Books"
-msgstr ""
+msgstr "Bekijk alle boeken"
 
 #: template-homepage.php:104
 msgid "See All News"
-msgstr ""
+msgstr "Bekijk al ons nieuws"
 
 #: functions.php:483
 msgid "Set Book Cover"
-msgstr ""
+msgstr "Maak boek kaft aan"
 
 #: woocommerce/checkout/review-order.php:93
 msgid "Shipping"
-msgstr ""
+msgstr "Verzending"
 
 #: header.php:126
 msgid "Shop"
-msgstr ""
+msgstr "Winkel"
 
 #: inc/templateparts/nav-pages.php:12
 msgid "Subscribe To Our Newsletter"
-msgstr ""
+msgstr "Schrijf je in voor onze nieuwsbrief"
 
 #: inc/templateparts/nav-pages.php:29
 msgid "Terms and Conditions"
-msgstr ""
+msgstr "Algemene Voorwaarden"
 
 #: woocommerce/cart/mini-cart.php:105
 #: woocommerce/single-product/cart/mini-cart.php:100
 msgid "There are no items in the cart."
-msgstr ""
+msgstr "Er zijn geen boeken in je winkelmandje."
 
 #: functions.php:314
 msgid "Total:"
-msgstr ""
+msgstr "Totaal"
 
 #: functions.php:485
 msgid "Use as Book Cover"
-msgstr ""
+msgstr "Gebruik als Boek Kaft"

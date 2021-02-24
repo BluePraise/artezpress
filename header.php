@@ -9,12 +9,15 @@ if (is_product()) :
 	$id = $post->ID;
 	$single_product_bg = get_field('custom_color', $id);
 	$single_product_text_color = get_field('text_color', $id);
+	$hex = $single_product_bg;
+	list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
 endif;
 ?>
 <?php if (is_product()) : ?>
 	<style>
 		body.single-product {
-			background-color: <?php echo $single_product_bg; ?>;
+			—book-background: rgb(<?php echo $r ?>, <?php echo $g ?>, <?php echo $b ?>);
+			background-color: rgb(<?php echo $r ?>, <?php echo $g ?>, <?php echo $b ?>);
 		}
 	</style>
 

@@ -28,7 +28,7 @@
         <li><a href="<?php echo site_url("/how-can-we-help"); ?>" title="How Can ArtEZPress Help"><?php _e('How Can We Help?', 'artezpress');?></a></li>
         <li><a href="<?php echo site_url("/terms-and-conditions"); ?>" title="ArtEZPress Terms and Conditions"><?php _e('Terms and Conditions', 'artezpress');?></a></li>
         <li><a href="<?php echo site_url("/privacy-policy"); ?>" title="ArtEZPress Privacy Policy"><?php _e('Privacy Policy', 'artezpress');?></a></li>
-        <li><a href="<?php echo site_url("/imprint"); ?>">Imprint</a></li>
+        <li><a href="<?php echo site_url("/imprint"); ?>"><?php _e('Imprint', 'artezpress');?></a></li>
     </ul>
     <div class="part-of">ArtEZ Press is part of <br><a href="https://www.artez.nl/" title="link to ArtEZ"><?php _e('ArtEZ University of the Arts', 'artezpress');?></a></div>
 
