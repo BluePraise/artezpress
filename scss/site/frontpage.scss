@@ -30,7 +30,7 @@
         }
     }
     a {
-        display: block;        
+        display: block;
         @include smallText;
     }
     .slider-img {
@@ -113,8 +113,4 @@
         align-self: center;
         @include clearButton(100px, 1rem, 3.1rem);
     }
-}
-
-.latest-news {
-    text-align: center;
 }

@@ -1,0 +1,27 @@
+/*************************
+*
+* MEDIA
+*
+*************************/
+svg,
+embed,
+object {
+  display: block;
+  height: auto;
+  width: 100%; }
+
+img {
+  aspect-ratio: attr(width)/attr(height);
+  height: auto;
+  width: 100%; }
+
+figure {
+  display: block;
+  margin: 0; }
+
+video {
+  display: block; }
+
+iframe {
+  display: block;
+  max-width: 100%; }
