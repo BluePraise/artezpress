@@ -100,7 +100,8 @@ global $product;
 			</div>
 
 			<div class="block">
-				<span class="label-header"><?php esc_html_e('Author', 'artezpress'); ?></span>
+				<span class="label-header"><?php esc_html_e('Author(s)', 'artezpress'); ?></span>
+
 				<span><?php echo $authors; ?></span>
 			</div>
 
