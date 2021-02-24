@@ -18,6 +18,8 @@
                 endforeach;
             endif;
             $img        = get_sub_field('add_custom_image');
+            $tn_id      = get_post_thumbnail_id($b);
+            $imgmeta    = wp_get_attachment_metadata($tn_id);
     ?>
 
      <div class="slider-item slider-item-middle" style="background-image: url( <?php echo $img; ?>)">

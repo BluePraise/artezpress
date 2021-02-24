@@ -38,37 +38,36 @@ get_header(); ?>
 		<h2 class="featured-title"><?php _e('Books', 'artezpress'); ?></h2>
 		<div class="full-width products book-grid">
 			<?php
-			
-			    // filter thourh repeater posts
-			    function my_posts_where($where)
-			    {
-			      $where = str_replace("meta_key = 'additional_editions_$", "meta_key LIKE 'additional_editions_%", $where);
-			      return $where;
-			    }
-			    add_filter('posts_where', 'my_posts_where');
-			    $current_lang_full = pll_current_language('name');
-			    $current_lang      = pll_current_language();
-			    $ap_language       = get_field('ap_language');
 
-			    $args = array(
-			      'orderby'         => 'date',
-			      'order'           => 'DESC',
-			      'posts_per_page'  => 6,  // -1 will get all the product. Specify positive integer value to get the number given number of product
-			      'post_type'       => 'product',
-			      'meta_query'  => array(
-			        'relation'    => 'OR',
-			        array(
-			          'key'    => 'additional_editions_0_type_of_edition',
-			          'compare'  => '!=',
-			          'value'    => $current_lang_full,
-			        ),
-			      array(
-			          'key'    => 'additional_editions_0_type_of_edition',
-			      'compare' => 'NOT EXISTS' 
-			        ),
-			     ),
-			    );  
-       		$loop = new WP_Query($args);
+			// filter thourh repeater posts
+			function my_posts_where($where) {
+				$where = str_replace("meta_key = 'additional_editions_$", "meta_key LIKE 'additional_editions_%", $where);
+				return $where;
+			}
+			add_filter('posts_where', 'my_posts_where');
+			$current_lang_full = pll_current_language('name');
+			$current_lang      = pll_current_language();
+			$ap_language       = get_field('ap_language');
+
+			$args = array(
+				'orderby'         => 'date',
+				'order'           => 'DESC',
+				'posts_per_page'  => 6,  // -1 will get all the product. Specify positive integer value to get the number given number of product
+				'post_type'       => 'product',
+				'meta_query'  => array(
+					'relation'    => 'OR',
+					array(
+						'key'    => 'additional_editions_0_type_of_edition',
+						'compare'  => '!=',
+						'value'    => $current_lang_full,
+					),
+					array(
+						'key'    => 'additional_editions_0_type_of_edition',
+						'compare' => 'NOT EXISTS'
+					),
+				),
+			);
+			$loop = new WP_Query($args);
 			if ($loop->have_posts()) {
 				while ($loop->have_posts()) : $loop->the_post();
 					wc_get_template_part('content', 'product');
@@ -101,7 +100,9 @@ get_header(); ?>
 				<?php endwhile; ?>
 		</div>
 		<!--/.news-grid-->
-		<a class="btn btn-rectangle" href="<?php echo site_url('/news'); ?>"><?php _e('See All News', 'artezpress'); ?></a>
+		<div class="wrapper-element ta-center">
+			<a class="btn btn-rectangle" href="<?php echo site_url('/news'); ?>"><?php _e('See All News', 'artezpress'); ?></a>
+		</div>
 	<?php } else {
 				echo __('<p>Currently there is no news.</p>', 'artezpress'); ?>
 		</div>
