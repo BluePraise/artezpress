@@ -41,20 +41,20 @@ if ( $related_products ) : ?>
 					$tag_title = $tag->name;
 					$tag_link = get_term_link($tag); // tag archive link
 
-				echo '<li><a class="btn black-on-white " href="' . $tag_link . '">' . $tag_title . '</a></li>';
+				echo '<li><a class="btn black-on-white tag-pill " href="' . $tag_link . '">' . $tag_title . '</a></li>';
 				endforeach;
 				echo '</ul>';
 		endif;
-		?>		
+		?>
 		<?php woocommerce_product_loop_start(); ?>
-		
+
 			<?php foreach ( $related_products as $related_product ) : ?>
 
 					<?php
 					$post_object = get_post( $related_product->get_id() );
 
 					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
-					
+
 					wc_get_template_part( 'content', 'product' );
 
 

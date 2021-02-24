@@ -196,7 +196,7 @@ jQuery(document).ready(function($) {
 				$(".main-menu-container").css({ opacity: 1 });
 			}
 		},
-		offset: "96.66%",
+		// offset: "100%",
 	});
 
     //https://stackoverflow.com/questions/11867545/change-text-color-based-on-brightness-of-the-covered-background-area

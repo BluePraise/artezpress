@@ -3,7 +3,7 @@
 
     <?php $langs_mobile = pll_the_languages(array('dropdown' => 0, 'raw' => 1)); ?>
     <?php if ($langs_array) : ?>
-        <ul class="language-toggle js-language-toggle">
+        <ul class="language-toggle language-toggle__screen js-language-toggle">
 
             <li class="lang-item">
                 <?php foreach ($langs_array as $lang) : ?>
@@ -15,7 +15,7 @@
         </ul>
     <?php endif; ?>
     <?php if ($langs_mobile) : ?>
-        <ul class="language-toggle show-on-mobile hide js-language-toggle">
+        <ul class="language-toggle language-toggle__mobile js-language-toggle">
 
             <li class="lang-item">
                 <?php foreach ($langs_array as $lang) : ?>

@@ -1,141 +1,107 @@
-// CSS FROM MAGGIE
+// CSS FROM AMIR
 
-.wcfg-primary-gallery.flickity-enabled {
-    height: 85vh;
+// slider conatiner
+.wcfg-primary-gallery .flickity-viewport {
+  overflow: visible;
+}
+
+// slider structure
+.flickity-slider {
+  .carousel-cell {
+    width: 100%;
+    max-width: calc((90vh - 16rem) * var(--var-aspect-ratio));
+    @include boxShadowLarge;
 
     img {
-        object-fit: fill;
-        width: auto;
+      object-fit: fill;
+    }
+  }
+}
+
+// matt + glossy paper overlay
+.book-slider .carousel-cell {
+
+  &:first-child {
+    .book-overlay {
+      display: none;
+    }
+  }
+
+  &:not(:first-child) {
+
+    .book-overlay__left {
+      position: absolute;
+      top: 0;
+      right: 50%;
+      height: 100%;
+      width: 6vw;
+      opacity: .175;
+      mix-blend-mode: multiply;
+      @include gradientSpine(0, 0, 0, right);
+    }
+
+    .book-overlay__right {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 100%;
+      width: 8vw;
+      opacity: .25;
+      mix-blend-mode: multiply;
+      @include gradientSpine(0, 0, 0, left);
+    }
+  }
+}
+
+// glossy paper extra shin
+.book-slider.glossy-paper .carousel-cell {
+
+  &:not(:first-child) {
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: calc(50% + 1.5vw);
+      transform: translateY(-50%);
+      height: 100%;
+      width: 2vw;
+      border-radius: 100%;
+      background-image: radial-gradient(ellipse at center, $white, transparent);
+      opacity: .5;
+      filter: blur(1vw);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: calc(50% + 1.5vw);
+      transform: translateY(-50%);
+      height: 100%;
+      width: 2vw;
+      border-radius: 100%;
+      background-image: radial-gradient(ellipse at center, $white, transparent);
+      opacity: .5;
+      filter: blur(1vw);
+    }
+  }
+}
+
+// clickable areas
+
+.carousel-button {
+    position: absolute;
+    top: 0;
+    width: calc(50% + 1.6rem);
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+
+    &__prev {
+      left: -1.6rem;
+    }
+    &__next {
+      right: -1.6rem;
     }
 }
-
-.carousel.is-fullscreen .carousel-cell {
-    height: 100%;
-}
-
-// CSS FROM THEBOY
-
-.wcfg-nav-gallery {
-    margin: 20px 0 0;
-}
-
-.woocommerce div.images div.wcfg-primary-gallery a {
-
-    text-align: center;
-    padding: 20px 0;
-}
-
-.woocommerce div.images div.wcfg-nav-gallery a {
-    display: block;
-    width: 75px;
-    margin: 0 5px;
-    padding: 3px;
-}
-
-.woocommerce div.product div.images .wcfg-primary-gallery a img {
-    max-height: 450px;
-}
-
-
-/* Flexbox for vertically centered images */
-
-.woocommerce div.images div.wcfg-primary-gallery a {
-    min-height: 100%;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-}
-
-.woocommerce div.images div.wcfg-nav-gallery a.is-nav-selected {
-    box-shadow: inset 0 0 0 3px #AD5800;
-}
-
-.flickity-enabled.is-draggable .flickity-viewport {
-    cursor: move;
-    cursor: -webkit-grab;
-    cursor: grab;
-}
-
-.woocommerce-main-image.wcfg-primary-image {
-    justify-content: center;
-}
-
-.woocommerce-main-image.carousel-cell--wide {
-    width: 100%;
-}
-
-.woocommerce div.images div.wcfg-primary-gallery a img {
-    z-index: 9999;
-}
-
-
-.product .images .wcfg-primary-gallery.flickity-enabled img {
-    height: 85vh;
-    width: auto;
-}
-
-.images.matt-paper .wcfg-primary-image::after {
-    /* box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.23);
-    content: "";
-    height: 100%;
-    position: absolute;
-    right: -25px;
-    width: 50%;
-    z-index: 999999; */
-}
-
-.images.matt-paper .wcfg-primary-image::before {
-    box-shadow: 0 0 0.9vw 1.5vw rgba(0, 0, 0, 0.32);
-    content: "";
-    height: 89%;
-    position: absolute;
-    left: 50%;
-    width: 0px;
-    z-index: 999999;
-}
-
-.images.matt-paper .wcfg-primary-image:first-child::before,
-.images.matt-paper .wcfg-primary-image:first-child::after {
-    display: none
-}
-
-.images.glossy-paper .wcfg-primary-image::after {
-    box-shadow: 3px 0px 15px 6px #ffffff8f;
-    content: "";
-    height: 100%;
-    position: absolute;
-    right: -25px;
-    width: 50%;
-    z-index: 999999;
-}
-
-.images.glossy-paper .wcfg-primary-image::before {
-    box-shadow: -3px 0 10px 6px #ffffff8f;
-    content: "";
-    height: 100%;
-    position: absolute;
-    left: -25px;
-    width: 50%;
-    z-index: 999999;
-}
-
-.images.artz-glossy-paper .wcfg-primary-image:first-child::before,
-.images.artz-glossy-paper .wcfg-primary-image:first-child::after {
-    display: none
-}
-
-.images .wcfg-primary-image img {
-    box-shadow: 0 0 11px 2px #00000059;
-}
-
-
-/* .images.artz-glossy-paper .wcfg-primary-image:nth-child(2n) img {
-    box-shadow: 0 3px 30px 0px #000;
-}
-
-.images.artz-glossy-paper .wcfg-primary-image:nth-child(2n+1) img {
-    box-shadow: 0 3px 30px 0px #000;
-} */

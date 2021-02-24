@@ -5,17 +5,20 @@
 }
 
 .btn.white-on-black {
-  @include darkButton(100px, .2rem, 3.1rem);
+  @include solidButton(100px, .4rem, 2.4rem);
 }
 
 .btn.black-on-white {
-  @include clearButton(100px, .2rem, 3.1rem);
+  @include clearButton(100px, .4rem, 1.6rem);
+}
 
-  &:hover {
-    border: 2px solid #fff;
-    background-color: #000;
-    color: white;
-  }
+.tag-pill {
+  @include baseSmallText;
+}
+
+.cart-btn {
+  min-width: 10.8rem;
+  text-align: center;
 }
 
 button.btn {
@@ -25,27 +28,68 @@ button.btn {
 
 .btn.btn-rectangle {
   @include clearButton(12px, 1.3rem, 3.1rem);
-
-  &:hover {
-    border: 2px solid #fff;
-    background-color: $black;
-    color: white;
-  }
-
 }
 
 span.btn:hover {
   cursor: not-allowed;
 }
 
+
+// Price Buttons
+
+.block-price {
+
+  .single_add_to_cart_button {
+    .edition-language {
+      margin-right: .8rem;
+    }
+    .price {
+      display: inline-block;
+    }
+  }
+
+  .d-block,
+  form.cart {
+    &:not(:first-child) {
+      margin-top: .8rem;
+    }
+  }
+}
+
 .cart-counter {
   position: absolute;
-  z-index: 3;
-  top: -10px;
-  background: red;
+  top: -1rem;
+  right: -.8rem;
+  height: 2.4rem;
+  width: 2.4rem;
   border-radius: 50%;
-  font-size: 13px;
-  padding: 0px 11px;
-  left: 90px;
-  color: black;
+  line-height: 2.4rem;
+  text-align: center;
+  font-size: 1.4rem;
+  color: $black;
+  background-color: $red;
+  z-index: 3;
+}
+
+// Go Back Button
+// used in news single
+// used in book single
+a.go-back {
+    display: block;
+    position: fixed;
+    z-index: 100;
+
+    @media (min-width: 1025px) {
+      top: 3.2rem;
+      left: 3.2rem;
+    }
+    @media (max-width: 1024px) {
+      top: 1.6rem;
+      left: 1.6rem;
+    }
+
+    svg {
+        width: 3.6rem;
+        height: 3.6rem;
+    }
 }
