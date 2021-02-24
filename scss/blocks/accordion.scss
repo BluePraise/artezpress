@@ -7,8 +7,6 @@
 }
 
 .accordion-content-container {
-    overflow: auto;
-
     &:not(:last-child) {
       margin-bottom: 0.8rem;
     }
