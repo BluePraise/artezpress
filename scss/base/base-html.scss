@@ -41,12 +41,9 @@ body {
     color: $black;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
-    /* i don't know if this will work on every page,
-    but it's here because of the fixed bottom causing a z-index overlap.
-    It's not possible to click on anything underneath it. */
+    // overflow-x: hidden;
+    /* solution for transparent menu is in main-menu.scss */
     @include baseText;
-    // @include largeText;
 }
 
 header {}

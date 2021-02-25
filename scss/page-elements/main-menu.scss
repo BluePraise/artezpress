@@ -68,6 +68,19 @@
   }
 }
 
+// click under transparent menu
+.main-menu-container {
+  @media (min-width: 1025px) {
+    pointer-events: none;
+
+    .main-menu-bar .logo,
+    .main-menu-bar .menu-misc,
+    .main-menu-bar .block-price,
+    .js-menu {
+      pointer-events: auto;
+    }
+  }
+}
 
 //menu surface
 .main-menu-surface,
