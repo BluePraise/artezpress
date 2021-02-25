@@ -1,57 +1,74 @@
-.features .carousel-container {
-    width: calc(100%/3);
-    position: relative;
-    z-index: 0;
-    height: 77rem;
-    padding-top: 4rem;
-    padding-bottom: 3.6rem;
+.features {
 
-    .owl-carousel {
-        position: absolute;
-        top: 0;
-        left: 0
+    // Mobile
+    @media screen and (max-width: 991px) {
+        flex-direction: column;
     }
 
-    h2.slider-title {
-        position: relative;
-        z-index: 10;
-    }
-
-    .slider-item {
+    .carousel-container {
+        width: calc(100%/3);
         position: relative;
         z-index: 0;
         height: 77rem;
-        display: inline-flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        padding-top: 4rem;
+        padding-bottom: 3.6rem;
 
-        a {
-            display: block;
-            @include smallText;
-            text-align: right;
-            margin-right: 3.6rem;
-            margin-bottom: 8rem;
-            z-index: 100;
+        @media screen and (max-width: 991px) {
+            width: 100%;
         }
-    }
 
-    .slider-item-meta {
-        margin-bottom: 3.6rem;
-        padding-left: 3.6rem;
-        padding-right: 3.6rem;
-        z-index: 3;
-
-        h2 {
-            text-align: left;
+        .owl-carousel {
+            position: absolute;
+            top: 0;
+            left: 0
         }
-    }
 
-    .slider-img {
-        position: absolute;
-        z-index: 2;
-        height: 77rem;
+        h2.slider-title {
+            position: relative;
+            z-index: 10;
+        }
+
+        .slider-item {
+            position: relative;
+            z-index: 0;
+            height: 77rem;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            @media screen and (max-width: 991px) {
+                align-items: center;
+                width: 100%;
+            }
+            a {
+                display: block;
+                @include smallText;
+                text-align: right;
+                margin-right: 3.6rem;
+                margin-bottom: 8rem;
+                z-index: 100;
+            }
+        }
+
+        .slider-item-meta {
+            margin-bottom: 3.6rem;
+            padding-left: 3.6rem;
+            padding-right: 3.6rem;
+            z-index: 3;
+
+            h2 {
+                text-align: left;
+            }
+        }
+
+        .slider-img {
+            position: absolute;
+            z-index: 2;
+            height: 77rem;
+        }
     }
 }
+
 
 // CSS FOR COMING SOON SLIDER
 .coming-soon {
