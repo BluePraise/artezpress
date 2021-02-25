@@ -311,5 +311,7 @@ form.checkout.woocommerce-checkout {
 
 .payment_method_multisafepay_ideal,
 .payment_method_multisafepay_creditcard {
-    display: none;
+    label img {
+        display: none;
+    }
 }
