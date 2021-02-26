@@ -1,5 +1,7 @@
 // MIXINS
 
+
+
 // Grids
 
 @mixin grid($cols, $fr, $rgap, $cgap) {
@@ -10,52 +12,49 @@
 }
 
 
+
 // Typography
 
 @mixin largeText {
-  @include Lars(2.1, 3);
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  @include Lars($largeText-font-size, $largeText-line-height);
+  font-family: $default-font;
   font-weight: 400;
-  // font-size: 2.1rem;
-  // line-height: 3rem;
-}
-
-@mixin menuText {
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  font-size: 2rem;
-  line-height: 2.8rem;
 }
 
 @mixin smallText {
-  @include Lars(1.7, 2.3);
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  @include Lars($smallText-font-size, $smallText-line-height);
+  font-family: $default-font;
   font-weight: 400;
-  // font-size: 1.7rem;
-  // line-height: 2.3rem;
-}
-
-@mixin microText {
-  @include Lars(1.4, 2.3);
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  // font-size: 1.4rem;
-  // line-height: 2.3rem;
 }
 
 @mixin baseText {
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-family: $default-font;
   font-weight: 400;
-  font-size: 2.1rem;
-  line-height: 3rem;
+  font-size: $largeText-font-size-rem;
+  line-height: $largeText-line-height-rem;
 }
 
 @mixin baseSmallText {
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-family: $default-font;
   font-weight: 400;
-  font-size: 1.7rem;
-  line-height: 2.3rem;
+  font-size: $smallText-font-size-rem;
+  line-height: $smallText-line-height-rem;
 }
+
+@mixin menuText {
+  font-family: $default-font;
+  font-weight: 400;
+  font-size: $menuText-font-size-rem;
+  line-height: $menuText-line-height-rem;
+}
+
+/* what is this? */
+@mixin microText {
+  @include Lars(1.4, 2.3);
+  font-family: $default-font;
+  font-weight: 400;
+}
+
 
 
 // Underline
@@ -66,6 +65,7 @@
   background-repeat: repeat-x;
   background-size: 2px 1em;
 }
+
 
 
 // Buttons
@@ -177,6 +177,7 @@
   background-position: $position;
   background-repeat: no-repeat;
 }
+
 
 
 // Mobile Menu Background Color

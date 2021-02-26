@@ -20,7 +20,6 @@ blockquote::after {
 
 html {
     scroll-behavior: smooth;
-    font-size: 10px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -35,7 +34,7 @@ body {
     -webkit-font-kerning: normal;
     font-kerning: normal;
     font-feature-settings: "kern"on, "kern", "ss01";
-    letter-spacing: 0.02rem;
+    letter-spacing: 0.015rem;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     color: $black;
@@ -88,9 +87,7 @@ input[type=file],
 input[type=text],
 input[type=password],
 textarea {
-    // font-family: 'Lars', Helvetica, Arial, sans-serif;
-    // @include smallText;
-    height: 45px;
+    height: 4.5rem;
     background: transparent;
     border-top: none;
     border-right: none;

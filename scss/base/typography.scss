@@ -40,25 +40,36 @@
 
 
 
+html {
+  @media (min-width: 1025px) {
+    font-size: 10px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 9.5px;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 9px;
+  }
+}
+
+
 h1,
 .h1 {
-    font-family: 'LarsExtended', Helvetica, Arial, sans-serif;
-    @include Lars(14, 14);
-    // font-size: 14rem;
-    // line-height: 14rem;
+    font-family: $extended-font;
+    @include Lars($h1-font-size, $h1-line-height);
     font-weight: 500;
-    letter-spacing: 0rem;
+    letter-spacing: 0;
     text-align: center;
 }
 
 h2,
 .h2 {
-    font-family: 'LarsExtended', Helvetica, Arial, sans-serif;
-    @include Lars(3.5, 4.8);
-    // font-size: 3.5rem;
-    // line-height: 4.8rem;
+    font-family: $extended-font;
+    @include Lars($h2-font-size, $h2-line-height);
     font-weight: 500;
-    letter-spacing: 0rem;
+    letter-spacing: 0;
     text-align: center;
 }
 
@@ -68,31 +79,25 @@ h2.highlight-item__title-author {
 
 h3,
 .h3 {
-    font-family: 'Lars', Helvetica, Arial, sans-serif;
-    @include Lars(3.5, 4.8);
-    // font-size: 3.5rem;
-    // line-height: 4.8rem;
+    font-family: $default-font;
+    @include Lars($h3-font-size, $h3-line-height);
     font-weight: 400;
-    letter-spacing: 0rem;
+    letter-spacing: 0;
     text-align: center;
 }
 
 h4,
 .h4 {
-    font-family: 'Lars', Helvetica, Arial, sans-serif;
-    @include Lars(2.2, 3.1);
-    // font-size: 2.2rem;
-    // line-height: 3.1rem;
+    font-family: $default-font;
+    @include Lars($largeText-font-size, $largeText-line-height);
     font-weight: 400;
     text-align: center;
 }
 
 h5,
 .h5 {
-    font-family: 'Lars', Helvetica, Arial, sans-serif;
-    @include Lars(2.1, 3);
-    // font-size: 2.1rem;
-    // line-height: 3rem;
+    font-family: $default-font;
+    @include Lars($largeText-font-size, $largeText-line-height);
     font-weight: 400;
     text-align: center;
 }
@@ -107,8 +112,10 @@ a {
     text-decoration: none;
 }
 
-blockquote {}
+strong {
+  font-weight: inherit;
+}
 
-strong {}
+blockquote {}
 
 i {}

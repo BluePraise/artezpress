@@ -12,19 +12,19 @@
 }
 
 .page-default.grid-container {
-    @media (min-width: 768px) {
-      @include grid(2, 1fr, 0, 3.2rem);
-      p:not(:last-child) {
-          margin-bottom: 3rem;
-      }
+  @media (min-width: 768px) {
+    @include grid(2, 1fr, 0, 3.2rem);
+    p:not(:last-child) {
+      margin-bottom: $largeText-line-height-rem;
     }
+  }
 
-    @media (max-width: 767px) {
-      @include grid(1, 1fr, 0, 0);
-      p {
-          margin-bottom: 3rem;
-      }
+  @media (max-width: 767px) {
+    @include grid(1, 1fr, 0, 0);
+    p {
+      margin-bottom: $largeText-line-height-rem;
     }
+  }
 }
 
 .content-block {
@@ -41,7 +41,7 @@
 }
 
 .content-block p:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: $largeText-line-height-rem;
 }
 
 .content-block a {
@@ -62,7 +62,7 @@
 }
 
 ul.nested-list {
-    margin-top: 3rem;
+    margin-top: $largeText-line-height-rem;
 
     li {
         list-style-type: lower-alpha;

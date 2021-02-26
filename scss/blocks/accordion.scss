@@ -32,14 +32,14 @@
         position: absolute;
         left: 0;
         width: 1.7rem;
-        height: 3rem;
+        height: $largeText-line-height-rem;
         margin-right: 1.6rem;
         content: url(../../assets/icons/plus.svg);
     }
 }
 
 .accordion-toggle.active {
-    padding-bottom: 32px;
+    padding-bottom: 3.2rem;
 
     .icons {
         content: url(../../assets/icons/minus.svg);
@@ -54,7 +54,7 @@
 
     p {
         padding-left: 3.2rem;
-        margin: 3rem 0;
+        margin: $largeText-line-height-rem 0;
         transform: none;
 
         a {

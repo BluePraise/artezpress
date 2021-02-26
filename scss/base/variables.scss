@@ -12,9 +12,52 @@
 //  All variables for the entire site
 
 
-//  Fonts
+//  Typography
 
+//  Fonts
 $default-font: 'Lars', Helvetica, Arial, sans-serif;
+$extended-font: 'LarsExtended', Helvetica, Arial, sans-serif;
+
+// Large Text
+$largeText-font-size: 2.1;
+$largeText-line-height: 3;
+$largeText-font-size-rem: 2.1rem;
+$largeText-line-height-rem: 3rem;
+
+// Small Text
+$smallText-font-size: 1.7;
+$smallText-line-height: 2.3;
+$smallText-font-size-rem: 1.7rem;
+$smallText-line-height-rem: 2.3rem;
+
+// Menu Text
+$menuText-font-size: 2;
+$menuText-line-height: 2.8;
+$menuText-font-size-rem: 2rem;
+$menuText-line-height-rem: 2.8rem;
+
+// H1
+$h1-font-size: 14;
+$h1-line-height: 14;
+$h1-font-size-rem: 14rem;
+$h1-line-height-rem: 14rem;
+
+// H2
+$h2-font-size: 3.5;
+$h2-line-height: 4.8;
+$h2-font-size-rem: 3.5rem;
+$h2-line-height-rem: 4.8rem;
+
+// H3
+$h3-font-size: 3.5;
+$h3-line-height: 4.8;
+$h3-font-size-rem: 3.5rem;
+$h3-line-height-rem: 4.8rem;
+
+//H4, H5
+/* Use Large text variables */
+
+
 
 //  Colors
 

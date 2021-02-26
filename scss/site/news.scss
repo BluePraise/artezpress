@@ -131,18 +131,15 @@ a.news-read-more {
 // .news-module-container so any common classes can also
 // be set on that class.
 
-.news-module-container {
+.news-module-container:not(:last-child) {
     margin-bottom: 8rem;
-
-    &:last-child {
-        margin-bottom: 0;
-    }
 }
 
 .news-content__single .news-text {
     max-width: 77rem;
     margin-left: auto;
     margin-right: auto;
+    @include largeText;
 
     // all the anchorlinks get an underline
     a {
@@ -150,13 +147,8 @@ a.news-read-more {
     }
 
     // spacing for all the p tags
-    p {
-        margin-bottom: 2.4rem;
-
-        // but not the last child
-        &:last-child {
-            margin-bottom: 0;
-        }
+    p:not(:last-child) {
+        margin-bottom: $largeText-line-height-rem;
     }
 }
 

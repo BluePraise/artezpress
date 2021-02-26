@@ -21,7 +21,7 @@
     @include largeText;
 
     &:not(:last-child) {
-      margin-bottom: 3rem;
+      margin-bottom: $largeText-line-height-rem;
     }
   }
 
@@ -42,7 +42,7 @@
   }
 
   .book-item-author {
-    margin-bottom: 3rem;
+    margin-bottom: $largeText-line-height-rem;
   }
 
   .book-item-description {
@@ -59,7 +59,7 @@
     }
 
     .block:not(:last-child) {
-      margin-bottom: 2.3rem;
+      margin-bottom: $smallText-line-height-rem;
     }
   }
 }
