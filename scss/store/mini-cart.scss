@@ -42,14 +42,14 @@
 }
 
 .woocommerce-mini-cart {
-  margin-bottom: 2.8rem;
+  margin-bottom: calc(#{$menuText-line-height-rem} - 1px);
 }
 
 hr.mini-divider {
     display: block;
     float: right;
     width: 8rem;
-    margin: 0 0 $menuText-line-height-rem 0;
+    margin: 0 0 calc(#{$menuText-line-height-rem} - 1px) 0;
     border: $thinBorder;
 }
 
