@@ -142,4 +142,4 @@ endif;
 	</nav>
 
 </header>
-<div class="site-container">
+<div class="site-wrapper">

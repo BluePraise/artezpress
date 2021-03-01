@@ -1,4 +1,3 @@
-</div>
 <footer class="mast-footer">
 	<?php if (is_front_page()) : ?>
 		<div class="grid-container wp-end-of-page">
