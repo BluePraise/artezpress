@@ -11,7 +11,7 @@
 	<div class="filter-tags__inner js-tags-container">
 		<div class="filter-tags__list js-tags">
 			<?php foreach ($terms as $term) : ?>
-				<a href="<?= get_term_link($term->term_id, 'product_tag'); ?>" class="js-filter-item filter-tags__item" data-filter="product_tag-<?= $term->slug ?>" data-id="<?= $term->term_id ?>"><?= $term->name; ?></a>
+				<a href="<?= get_term_link($term->term_id, 'product_tag'); ?>" class="js-filter-item filter-tags__item tag-pill black-on-white" data-filter="product_tag-<?= $term->slug ?>" data-id="<?= $term->term_id ?>"><?= $term->name; ?></a>
 			<?php endforeach; ?>
 		</div>
 	</div>
