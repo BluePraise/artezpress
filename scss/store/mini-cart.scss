@@ -5,7 +5,7 @@
 }
 
 .mini-cart-counter {
-    margin-bottom: 2.8rem;
+    margin-bottom: $menuText-line-height-rem;
 }
 
 .mini_cart_item {
@@ -14,7 +14,7 @@
     a.remove {
       height: auto;
       width: 2rem;
-      line-height: 2.8rem;
+      line-height: $menuText-line-height-rem;
     }
 
     .quantity {
@@ -42,14 +42,14 @@
 }
 
 .woocommerce-mini-cart {
-  margin-bottom: 2.8rem;
+  margin-bottom: calc(#{$menuText-line-height-rem} - 1px);
 }
 
 hr.mini-divider {
     display: block;
     float: right;
     width: 8rem;
-    margin: 0 0 2.8rem 0;
+    margin: 0 0 calc(#{$menuText-line-height-rem} - 1px) 0;
     border: $thinBorder;
 }
 

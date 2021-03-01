@@ -60,24 +60,26 @@
 }
 
 .news-thumbnail {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 4rem;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 4rem;
 
-    img {
-      height: 100%;
-      width: auto;
-    }
+  &.is-portrait {
+    padding-bottom: 88%;
+  }
 
-    &.is-portrait {
-      height: 48rem;
-      width: calc(48rem * (var(--var-aspect-ratio)));
-    }
+  &.is-landscape {
+    padding-bottom: 61.5%;
+  }
 
-    &.is-landscape {
-      height: 32rem;
-      width: calc(32rem * (var(--var-aspect-ratio)));
-    }
+  img {
+    height: 100%;
+    width: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .news-title-excerpt {
@@ -103,25 +105,35 @@ a.news-read-more {
 
 /* single php */
 .container.news-item__single {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .news-item__single .content-container {
-    padding-bottom: 0;
+  padding-bottom: 0;
 }
 
 .news-item__single .news-thumbnail {
-    margin-bottom: 8rem;
+  margin-bottom: 8rem;
 
-    &.is-portrait {
-      height: 72rem;
-      width: calc(72rem * (var(--var-aspect-ratio)));
+  &.is-portrait {
+    @media (min-width: 768px) {
+      padding-bottom: 60%;
     }
 
-    &.is-landscape {
-      height: 56rem;
-      width: calc(56rem * (var(--var-aspect-ratio)));
+    @media (max-width: 767px) {
+      padding-bottom: 100%;
     }
+  }
+
+  &.is-landscape {
+    @media (min-width: 768px) {
+      padding-bottom: 50%;
+    }
+
+    @media (max-width: 767px) {
+      padding-bottom: 70%;
+    }
+  }
 }
 
 
@@ -131,18 +143,15 @@ a.news-read-more {
 // .news-module-container so any common classes can also
 // be set on that class.
 
-.news-module-container {
+.news-module-container:not(:last-child) {
     margin-bottom: 8rem;
-
-    &:last-child {
-        margin-bottom: 0;
-    }
 }
 
 .news-content__single .news-text {
     max-width: 77rem;
     margin-left: auto;
     margin-right: auto;
+    @include largeText;
 
     // all the anchorlinks get an underline
     a {
@@ -150,13 +159,8 @@ a.news-read-more {
     }
 
     // spacing for all the p tags
-    p {
-        margin-bottom: 2.4rem;
-
-        // but not the last child
-        &:last-child {
-            margin-bottom: 0;
-        }
+    p:not(:last-child) {
+        margin-bottom: $largeText-line-height-rem;
     }
 }
 

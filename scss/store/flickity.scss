@@ -90,18 +90,36 @@
 
 // clickable areas
 
-.carousel-button {
-    position: absolute;
-    top: 0;
-    width: calc(50% + 1.6rem);
-    height: 100%;
-    z-index: 1;
-    opacity: 0;
+.book-slider .flickity-prev-next-button {
+  position: absolute;
+  top: 0;
+  width: calc(50% + 1.6rem);
+  height: 100%;
+  padding: 0;
+  opacity: 0;
+  background: transparent;
+  border: none;
 
-    &__prev {
-      left: -1.6rem;
+  &:active,
+  &:hover {
+    opacity: 0;
+    background: transparent;
+  }
+
+  &.previous {
+    left: -1.6rem;
+    &:not(:disabled) {
+      cursor: url(../../assets/icons/slide_prev.svg) 16 16, pointer;
     }
-    &__next {
-      right: -1.6rem;
+  }
+  &.next {
+    right: -1.6rem;
+    &:not(:disabled) {
+      cursor: url(../../assets/icons/slide_next.svg) 16 16, pointer;
     }
+  }
+
+  svg {
+    display: none;
+  }
 }
