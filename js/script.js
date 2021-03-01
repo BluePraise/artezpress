@@ -398,7 +398,7 @@ then close all select boxes: */
         });
     }
 
-
+    // For more settings: https://github.com/mattboldt/typed.js
     var typed = new Typed(".main-search__input", {
         strings: ['Search for Architecture',
             'Search a Designer',
@@ -410,7 +410,7 @@ then close all select boxes: */
         typeSpeed: 80,
         backSpeed: 50,
         attr: 'placeholder',
-        bindInputFocusEvents: true,
+        bindInputFocusEvents: false,
         loop: true
     });
 
