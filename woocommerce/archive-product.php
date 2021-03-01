@@ -14,7 +14,6 @@
             </svg>
         </button>
         <input type="search" class="js-main-search main-search__input" name="" id="" placeholder="">
-        <div class="rotate-placeholder"></div>
         </form>
         <?php include get_theme_file_path('/inc/filter-tags.php'); ?>
     </div>

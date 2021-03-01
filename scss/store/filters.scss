@@ -196,7 +196,6 @@
 
 .main-search {
   position: relative;
-//   margin-top: 6rem;
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -206,13 +205,14 @@
     flex: 1 auto;
 
     &::placeholder {
-      font-family: $default-font;
+      pointer-events: none;
+      font-family: $extended-font;
       text-align: center;
-      color: black;
+      color: $black;
       font-size: 3.5rem;
       line-height: 4.8rem;
 
-    }
+
   }
 
   button {
@@ -274,52 +274,52 @@
   }
 }
 
-.rotate-placeholder:after {
-  position: absolute;
-  width: 100%;
-  content: "Search for ebooks";
-  font-size: 3.5rem;
-  line-height: 4.5rem;
-  pointer-events: none;
-  display: block;
-  left: 32px;
-  height: 45px;
-  top: 3px;
-  text-align: center;
-  background-color: #fff;
-  font-family: $default-font;
-  text-align: center;
-  color: black;
+// .rotate-placeholder:after {
+//   position: absolute;
+//   width: 100%;
+//   content: "Search for ebooks";
+//   font-size: 3.5rem;
+//   line-height: 4.5rem;
+//   pointer-events: none;
+//   display: block;
+//   left: 32px;
+//   height: 45px;
+//   top: 3px;
+//   text-align: center;
+//   background-color: #fff;
+//   font-family: $default-font;
+//   text-align: center;
+//   color: black;
 
-  animation: animText 20s linear infinite;
-}
+//   animation: animText 20s linear infinite;
+// }
 
-input:focus+.rotate-placeholder {
-  display: none;
-}
+// input:focus+.rotate-placeholder {
+//   display: none;
+// }
 
-@keyframes animText {
-  0% {
-    content: "Search a book";
-  }
+// @keyframes animText {
+//   0% {
+//     content: "Search a book";
+//   }
 
-  20% {
-    content: "Search an author";
-  }
+//   20% {
+//     content: "Search an author";
+//   }
 
-  40% {
-    content: "Search a designer";
-  }
+//   40% {
+//     content: "Search a designer";
+//   }
 
-  60% {
-    content: "Search architecture";
-  }
+//   60% {
+//     content: "Search architecture";
+//   }
 
-  80% {
-    content: "Search installation art";
-  }
+//   80% {
+//     content: "Search installation art";
+//   }
 
-  100% {
-    content: "Search best sellers 2020";
-  }
-}
+//   100% {
+//     content: "Search best sellers 2020";
+//   }
+// }

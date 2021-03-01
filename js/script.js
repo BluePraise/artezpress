@@ -399,5 +399,21 @@ then close all select boxes: */
     }
 
 
+    var typed = new Typed(".main-search__input", {
+        strings: ['Search for Architecture',
+            'Search a Designer',
+            'Search a Category',
+            'Search a Year',
+            'Search a Title',
+            'Search Yellow',
+        ],
+        typeSpeed: 80,
+        backSpeed: 50,
+        attr: 'placeholder',
+        bindInputFocusEvents: true,
+        loop: true
+    });
+
+
 
 });
