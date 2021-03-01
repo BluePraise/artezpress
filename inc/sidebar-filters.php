@@ -37,11 +37,5 @@ $categories = get_terms(['taxonomy' => 'product_cat']);
         <li><a class="js-filter-item sidebar-filters__item" href="" role="button" data-filter="year-<?= $year ?>"><?= $year ?></a></li>
       <?php endforeach; ?>
     </ul>
-    <ul>
-      <li class="sidebar-filters__name js-filter-collapse">Authors</li>
-      <?php foreach ($authors as $author) : $author = trim($author) ?>
-        <li><a href="" class="js-filter-item sidebar-filters__item" role="button" data-filter="<?= $author ?>"><?= $author ?></a></li>
-      <?php endforeach; ?>
-    </ul>
   </div>
 </aside>
