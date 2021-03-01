@@ -2,38 +2,15 @@
 
 // THIS IS WHERE THE PRODUCT CHANGES TEXT COLOR.
 // PLEASE DO NOT MESS WITH THIS.
-
-.set-text-black {
+body.single-product.set-text-black,
+.set-text-black,
+.set-to-black a  {
     color: var(--set-to-black) !important;
 }
 
-
-.set-text-white {
+.set-text-white, 
+.set-to-white a  {
     color: var(--set-to-white) !important;
-}
-
-.set-to-white a {
-    color: var(--set-to-white) !important;
-}
-
-.set-to-black a {
-    color: var(--set-to-black) !important;
-}
-
-body.single-product.set-text-black {
-    color: var(--set-to-black) !important;
-
-    // a,
-    // h1,
-    // h2,
-    // h3,
-    // h4,
-    // h5,
-    // h6,
-    // p {
-
-    //     color: var(--set-to-black) !important;
-    // }
 }
 
 body.single-product.set-text-white {
@@ -47,24 +24,12 @@ body.single-product.set-text-white {
         background: $white;
         color: $black;
     }
-
-    // a,
-    // h1,
-    // h2,
-    // h3,
-    // h4,
-    // h5,
-    // h6,
-    // p {
-
-    //     color: var(--set-to-white) !important;
-    // }
 }
 
 // book grid
 .book-grid {
-    margin-left: 0;
-    margin-right: 0;
+    margin: auto;
+    max-width: $default-container-width;
 
     .book-item {
 
