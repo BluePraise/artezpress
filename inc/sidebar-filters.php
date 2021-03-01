@@ -24,7 +24,7 @@ $categories = get_terms(['taxonomy' => 'product_cat']);
     </svg> Search
   </h3>
   <div class="js-hide-onscroll sidebar-filters__in">
-    <h3 class="js-reset-filters sidebar-filters__title">All books</h3>
+    <div class="js-reset-filters sidebar-filters__title">All books</div>
     <ul>
       <li class="sidebar-filters__name js-filter-collapse">Categories</li>
       <?php foreach ($categories as $cat) : ?>

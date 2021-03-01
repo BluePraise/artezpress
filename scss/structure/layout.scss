@@ -36,11 +36,11 @@
     max-width: $xs-container-width;
     margin: 0 auto 8rem;
 }
-
+.grid,
 .grid-container {
     display: grid;
 }
-
+.flex,
 .flex-container {
     display: flex;
 }
