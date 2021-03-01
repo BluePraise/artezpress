@@ -30,5 +30,5 @@
                 <a href="https://twitter.com/ArtezPress"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_tw.svg" alt="Twitter Icon"></a>
             </li>
         </ul>
-    </div <div class="part-of">ArtEZ Press is part of <br><a href="https://www.artez.nl/" title="link to ArtEZ"><?php _e('ArtEZ University of the Arts', 'artezpress'); ?></a>
+    </div class="part-of">ArtEZ Press is part of <br><a href="https://www.artez.nl/" title="link to ArtEZ"><?php _e('ArtEZ University of the Arts', 'artezpress'); ?></a>
 </div>

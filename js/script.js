@@ -189,7 +189,7 @@ jQuery(document).ready(function($) {
     $(".wp-end-of-page").waypoint({
 		// element: document.getElementById("basic-waypoint"),
 		handler: function (direction) {
-			console.log("client height");
+			// console.log("client height");
 			if (direction === "down") {
 				$(".main-menu-container").css({ opacity: 0 });
 			} else {
