@@ -26,26 +26,51 @@
   display: none;
 }
 
+
+// Structure
 .search-bar.grid {
-    // how wide would the category column need to be?
-    grid-template-columns: 19% $default-container-width;
-    margin-top: 6rem;
-    margin-bottom: 6.4rem;
-    margin-left: 3.6rem;
-    margin-right: 3.6rem;
+  grid-template-columns: minmax(max-content, 1fr) minmax(10rem, 107.6rem) 1fr;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  padding:: 6rem 3.6rem 4.8rem;
+  background-color: $white;
 }
 
-// .search-and-tags {
-//   width: 107.6rem;
-// }
+.sidebar-filters {
+  padding-right: 6.4rem;
+
+  @media (min-width: 1025px) {
+    grid-column: 1 / span 1;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    grid-column: 2 / span 1;
+    grid-row: 2;
+  }
+
+  @media (max-width: 767px) {
+    grid-column: 2 / span 1;
+    grid-row: 2;
+  }
+}
+
+.search-and-tags {
+  grid-column: 2 / span 1;
+}
+
+// end of Structure
+
+
+
 
 .site-main.products {
   margin-top: 29.3rem;
 }
 
 .filter-tags {
-  margin-top: 8rem;
-  // margin-bottom: 6.4rem;
+  margin-top: 6rem;
   position: relative;
 
   &__inner {
@@ -63,14 +88,7 @@
   }
 
   &__item {
-    border: 1px solid black;
-    border-radius: 30px;
-    font-size: 1.7rem;
-    line-height: 3.2rem;
-    padding: 0 1.2rem;
-    margin-right: 1.2rem;
-    text-align: center;
-    flex-shrink: 0;
+    margin-right: .8rem;
 
     &.active {
       background: black;
@@ -123,6 +141,8 @@
   }
 
   &__next {
+    right: -1em;
+
     &::after {
       content: none;
     }
@@ -132,23 +152,12 @@
           rgba(255, 255, 255, 0.98) 20%,
           rgba(255, 255, 255, 0) 80%);
     }
-
-    right: -1em;
   }
 }
 
 .sidebar-filters {
-//   width: 270px;
-//   padding-left: 6px;
-//   padding-right: 6px;
-//   position: fixed;
-//   top: 40px;
-//   margin-top: 0;
-//   left: 3.2rem;
 
   &__in {
-    // width: 270px;
-    // margin-top: 6.2rem;
   }
 
   li {
@@ -211,8 +220,7 @@
       color: $black;
       font-size: 3.5rem;
       line-height: 4.8rem;
-
-
+    }
   }
 
   button {
@@ -228,7 +236,6 @@
 }
 
 .js-hide-onscroll {
-//   position: fixed;
   z-index: 1;
   top: 0rem;
   background: white;
@@ -273,53 +280,3 @@
     height: auto;
   }
 }
-
-// .rotate-placeholder:after {
-//   position: absolute;
-//   width: 100%;
-//   content: "Search for ebooks";
-//   font-size: 3.5rem;
-//   line-height: 4.5rem;
-//   pointer-events: none;
-//   display: block;
-//   left: 32px;
-//   height: 45px;
-//   top: 3px;
-//   text-align: center;
-//   background-color: #fff;
-//   font-family: $default-font;
-//   text-align: center;
-//   color: black;
-
-//   animation: animText 20s linear infinite;
-// }
-
-// input:focus+.rotate-placeholder {
-//   display: none;
-// }
-
-// @keyframes animText {
-//   0% {
-//     content: "Search a book";
-//   }
-
-//   20% {
-//     content: "Search an author";
-//   }
-
-//   40% {
-//     content: "Search a designer";
-//   }
-
-//   60% {
-//     content: "Search architecture";
-//   }
-
-//   80% {
-//     content: "Search installation art";
-//   }
-
-//   100% {
-//     content: "Search best sellers 2020";
-//   }
-// }

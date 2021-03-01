@@ -3,10 +3,10 @@
 
 
 
-    
+
     <div class="search-bar grid">
-        <?php include get_theme_file_path('/inc/sidebar-filters.php'); ?>
-        <div class="js-hide-onscroll search-and-tags">
+      <?php include get_theme_file_path('/inc/sidebar-filters.php'); ?>
+      <div class="js-hide-onscroll search-and-tags">
         <form class="flex-container main-search js-main-search">
         <button>
             <svg width="25px" height="25px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
@@ -16,11 +16,11 @@
         <input type="search" class="js-main-search main-search__input" name="" id="" placeholder="">
         </form>
         <?php include get_theme_file_path('/inc/filter-tags.php'); ?>
-    </div>
+      </div>
     </div>
   <main class="site-main book-grid flex-container js-products-container" role="main">
-    
-    <?php 
+
+    <?php
 
     // filter though repeater posts
     function my_posts_where($where)
@@ -47,11 +47,11 @@
         ),
       array(
           'key'    => 'additional_editions_0_type_of_edition',
-      'compare' => 'NOT EXISTS' 
+      'compare' => 'NOT EXISTS'
         ),
      ),
-    );  
-      
+    );
+
     $the_query = new WP_Query($args);
     if ($the_query->have_posts()) :
       while ($the_query->have_posts()) : $the_query->the_post();
