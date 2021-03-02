@@ -75,25 +75,6 @@ add_action('wp_enqueue_scripts', 'artezpress_style');
 remove_filter('the_content', 'wpautop');
 
 
-function ajax_filter_posts_scripts()
-{
-	// Enqueue script
-	wp_register_script(
-		'afp_script',
-		get_stylesheet_directory_uri() . '/js/ajax-filter.js',
-		false,
-		null,
-		false
-	);
-	wp_enqueue_script('afp_script');
-
-	wp_localize_script('afp_script', 'afp_vars', array(
-		'afp_nonce' => wp_create_nonce('afp_nonce'), // Create nonce which we later will use to verify AJAX request
-		'afp_ajax_url' => admin_url('admin-ajax.php')
-	));
-}
-
-add_action('wp_enqueue_scripts', 'ajax_filter_posts_scripts', 100);
 
 
 function ap_excerpt_more($more)

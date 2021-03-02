@@ -231,9 +231,10 @@ jQuery(document).ready(function($) {
     /* If the user clicks anywhere outside the select box,
 then close all select boxes: */
     document.addEventListener("click", closeAllSelect);
-
     $(".js-filter-collapse").click(function(e) {
+        var $activeElement = $(this).data("header");
         $(this).toggleClass("active");
+        
     });
 
     var productList = $(".product");
@@ -341,7 +342,7 @@ then close all select boxes: */
         offset: 0,
         atStart: true,
         atEnd: false,
-        containerWidthDiff: tags.scrollWidth - tagsContainer.clientWidth,
+        // containerWidthDiff: tags.scrollWidth - tagsContainer.clientWidth,
     };
 
     if (tagsProps.containerWidthDiff <= 0) {
