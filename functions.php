@@ -102,21 +102,6 @@ function ap_excerpt_more($more)
 }
 add_filter('excerpt_more', 'ap_excerpt_more');
 
-// function customized_field_excerpt()
-// {
-// 	global $post;
-// 	$text = get_field('news');
-// 	if ('' != $text) {
-// 		$start = strpos($text, '<p>'); // Locate the first paragraph tag
-// 		$end = strpos($text, '</p>', $start); // Locate the first paragraph closing tag
-// 		$text = substr($text, $start, $end - $start + 4); // Trim off everything after the closing paragraph tag
-// 		$text = strip_shortcodes($text);
-// 		$text = str_replace(']]>', ']]>', $text);
-// 		$text = apply_filters('the_content', $text);
-// 	}
-// 	$text = '<p class="whatever">' . apply_filters('the_content', $text) . '</p>';
-	
-// }
 
 if (function_exists('acf_add_options_page')) {
 
@@ -395,7 +380,6 @@ function ajax_filter_get_posts($taxonomy)
 				'taxonomy' => 'product_tag',
 				'field' => 'slug',
 				'terms' => $taxonomy
-				//              'terms' => implode(',', $taxonomy),
 			]
 		]
 	];
@@ -406,27 +390,22 @@ function ajax_filter_get_posts($taxonomy)
 	}
 
 	$query = new WP_Query($args);
-	$authors = [];
+	$languages = [];
 	$years = [];
 
 	if ($query->have_posts()) :
 		while ($query->have_posts()) {
 			$query->the_post();
 			wc_get_template_part('content', 'product');
-			$authors[] = explode(',', get_field('author'));
+			// $authors[] = explode(',', get_field('author'));
 			if (strlen(get_field('publishing_year'))) {
 				$years[] = get_field('publishing_year');
 			}
 		}
-		$authors = array_unique(array_flatten($authors), SORT_REGULAR);
+		// $authors = array_unique(array_flatten($authors), SORT_REGULAR);
 		$years = array_unique($years, SORT_REGULAR);
 	?>
 
-		<ul class="hidden-filter-authors">
-			<?php foreach ($authors as $author) : ?>
-				<li><a href=""><?= $author ?></a></li>
-			<?php endforeach; ?>
-		</ul>
 		<?php if (count($years)) : ?>
 			<ul class="hidden-filter-years">
 				<?php foreach ($years as $year) : ?>

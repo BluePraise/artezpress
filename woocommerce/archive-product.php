@@ -2,7 +2,6 @@
     
   <main class="site-main book-grid js-products-container" role="main">
     <?php get_template_part('inc/filters'); ?>
-    
     <div class="flex book-grid">
     <?php 
     // filter though repeater posts

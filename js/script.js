@@ -246,12 +246,13 @@ then close all select boxes: */
         $(".js-filter-item").removeClass("active");
     });
 
-    $(".js-filter-item").click(function(e) {
+    $(".js-filter-item").click(function (e) {
         e.preventDefault();
         var $this = $(this),
             $productsContainer = $(".products"),
             $filter = $this.data("filter"),
-            $filterTag = $this.data("tag");
+            $filterTag = $this.data("tag"),
+            $filterCat = $this.data("category");
 
         $this.toggleClass("active");
         if (filters.indexOf($filter) === -1) {
@@ -400,10 +401,9 @@ then close all select boxes: */
 
     // For more settings: https://github.com/mattboldt/typed.js
     var typed = new Typed(".main-search__input", {
-        strings: ['Search for Architecture',
-            'Search a Designer',
-            'Search a Category',
-            'Search a Year',
+        strings: ['Search for "Architecture"',
+            'Search by Category',
+            'Search by Year',
             'Search a Title',
             'Search Yellow',
         ],
