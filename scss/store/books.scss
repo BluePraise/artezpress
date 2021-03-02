@@ -8,7 +8,7 @@ body.single-product.set-text-black,
     color: var(--set-to-black) !important;
 }
 
-.set-text-white, 
+.set-text-white,
 .set-to-white a  {
     color: var(--set-to-white) !important;
 }
@@ -26,35 +26,19 @@ body.single-product.set-text-white {
     }
 }
 
+
 // book grid
 .book-grid {
-    margin: auto;
-    max-width: $default-container-width;
+  @include grid(4, 1fr, 6.4rem, 3.2rem);
 
     .book-item {
 
         @media screen and (min-width: 992px) {
-            width: calc(100% / 4 - 3.2rem);
-            margin-right: 3.2rem;
-
-            &:nth-child(4n),
-            &:last-child {
-                margin-right: 0;
-            }
         }
 
-        // ipad and higher
         @media screen and (max-width: 991px) and (min-width: 768px) {
-            width: calc(33.33% - 3.2rem);
-            margin-right: 3.2rem;
-
-            &:nth-child(3),
-            &:last-child {
-                margin-right: 0;
-            }
         }
 
-        // Mobile
         @media screen and (max-width: 767px) {}
 
     }

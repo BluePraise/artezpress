@@ -63,7 +63,7 @@ if (post_password_required()) {
 <main id="product-<?php the_ID(); ?>" <?php wc_product_class('', $product); ?>>
 
 	<?php woocommerce_show_product_images(); ?>
-	<div class="post-container book-item__single">
+	<div class="book-item__single post-container container-s">
 		<?php if ($available) : ?>
 			<div class="book-item-available"><?php echo $available; ?></div>
 		<?php endif ?>

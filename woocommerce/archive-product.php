@@ -1,9 +1,9 @@
 <?php get_header(); ?>
-    
-  <main class="site-main book-grid js-products-container" role="main">
+
+  <main class="site-main book-archive js-products-container" role="main">
     <?php get_template_part('inc/filters'); ?>
-    <div class="flex book-grid">
-    <?php 
+    <div class="book-grid grid-container container-l">
+    <?php
     // filter though repeater posts
     function my_posts_where($where)
     {
@@ -29,11 +29,11 @@
         ),
       array(
           'key'    => 'additional_editions_0_type_of_edition',
-      'compare' => 'NOT EXISTS' 
+      'compare' => 'NOT EXISTS'
         ),
      ),
-    );  
-      
+    );
+
     $the_query = new WP_Query($args);
     if ($the_query->have_posts()) :
       while ($the_query->have_posts()) : $the_query->the_post();

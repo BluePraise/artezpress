@@ -1,33 +1,10 @@
-// all styling for news grid
-// News grid
+// all styling for News Grid and Single
 
-.container-xl.single-news {
-    margin: 0 auto;
-}
 
 // News archive grid
 
-.nav-links {
-    text-align: center;
-}
-
-.page-numbers {
-    margin-right: 30px;
-
-    &.current {
-        color: rgba(0, 0, 0, 0.4);
-    }
-}
-
-/* This should be similiar on all pages that have a page-title */
-
-// News card and excerpt
-// News excerpt snippet can be found in
-// inc/templateparts/news-excerpt
-
-.news-grid {
-    flex-wrap: wrap;
-    justify-content: space-between;
+.news-grid-masonry {
+  margin: 0 -1.6rem;
 }
 
 .news-item {
@@ -104,9 +81,6 @@ a.news-read-more {
 }
 
 /* single php */
-.container.news-item__single {
-  margin: 0 auto;
-}
 
 .news-item__single .content-container {
   padding-bottom: 0;
@@ -223,6 +197,3 @@ a.news-read-more {
     width: 100%;
     margin-top: 1.2rem;
 }
-
-/* frontpage php */
-// gets styles now from .news-grid

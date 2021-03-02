@@ -1,14 +1,11 @@
 // AMIR'S CSS — SINGLE BOOK ITEM
 
-// add padding left/right to entire page for mobile
 .product {
-  padding-left: 1.6rem;
-  padding-right: 1.6rem;
   overflow: hidden;
 }
 
 // Slider block
-.product .images {
+.product .book-slider {
     margin-top: 6rem;
     margin-bottom: 8rem;
 }
@@ -52,6 +49,7 @@
   // colophon and specs
   // this is found in woocommerce/meta.php
   .book-item-meta {
+    margin-bottom: 8rem;
     @include smallText;
 
     .grid-container {

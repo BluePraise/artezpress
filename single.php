@@ -22,7 +22,7 @@
     </svg>
 </a>
 
-<main id="site-content" class="container-xl single-news" role="main">
+<main id="site-content" class="container-l single-news page" role="main">
 
     <article class="container news-item__single">
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>

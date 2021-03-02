@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main class="container-l news" role="main">
+<main class="container-l news page" role="main">
     <h2 class="page-title"><?php _e('News', 'storefront'); ?></h2>
     <div class="news-grid-masonry grid">
         <?php

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main class="site-main container-xl" role="main">
+<main class="site-main container-s page" role="main">
 	<?php if (!is_cart() && !is_checkout()) : ?>
 		<h2 class="page-title"><?php echo the_title(); ?></h2>
 		<article class="content-container">
