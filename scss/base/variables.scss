@@ -77,10 +77,9 @@ $thinBorder: 1px solid currentColor;
 //  Container sizes
 
 $default-container-width: 107.6rem;
-$xl-container-width: 161rem;
-$l-container-width: 114rem;
-$s-container-width: 96rem;
-$xs-container-width: 77rem;
+$xl-container-width: 161rem; /* where is this used? shouldnt be here */
+$l-container-width: 107.6rem;
+$s-container-width: 77rem;
 
 
 //  anything else
