@@ -32,12 +32,12 @@ $categories = get_terms(['taxonomy' => 'product_cat']);
         <input type="search" class="main-search__input" name="" id="" placeholder="">
         </form>
         <div class="filter-section">
-            <div class="filter-item js-filter-collapse" data-header="tags">Tags</div>
-            <div class="filter-item js-filter-collapse active" data-header="categories">Category</div>
-            <div class="filter-item js-filter-collapse" data-header="year">Year</div>
-            <div class="filter-item js-filter-collapse" data-header="language">Language</div>
-            <div class="filter-item js-reset-filters sidebar-filters__title">All books</div>
+            <div class="filter-header filter-header__tags js-filter-collapse active" data-header="tags">Tags</div>
+            <div class="filter-header filter-header__categories js-filter-collapse" data-header="categories">Category</div>
+            <div class="filter-header filter-header__year js-filter-collapse" data-header="year">Year</div>
+            <div class="filter-header filter-header__language js-filter-collapse" data-header="language">Language</div>
+            <div class="filter-header js-reset-filters sidebar-filters__title">All books</div>
         </div>
       <?php include get_theme_file_path('/inc/filter-tags.php'); ?>
-    </div>
+
 </div>

@@ -232,9 +232,29 @@ jQuery(document).ready(function($) {
 then close all select boxes: */
     document.addEventListener("click", closeAllSelect);
     $(".js-filter-collapse").click(function(e) {
+        var $this = $(this)
         var $activeElement = $(this).data("header");
-        $(this).toggleClass("active");
+        var $otherFilterHeaders = $('.filter-header').siblings();
         
+        $otherFilterHeaders.removeClass('active');
+        $(this).addClass("active");
+
+        if ($activeElement == "categories") {
+            $('.filter-tags__list').hide();
+            $('.filter-categories').show();
+            $('.filter-years').hide();
+        }
+        if ($activeElement == "year") {
+            $('.filter-tags__list').hide();
+            $('.filter-categories').hide();
+            $('.filter-years').show();
+        }
+        if ($activeElement == "tags") {
+            $('.filter-tags__list').show();
+            $('.filter-categories').hide();
+            $('.filter-years').hide();
+        }
+
     });
 
     var productList = $(".product");
@@ -244,7 +264,16 @@ then close all select boxes: */
     $(".js-reset-filters").click(function(e) {
         filters = [];
         productList.show();
-        $(".js-filter-item").removeClass("active");
+        
+        //show filter pills
+        $('.filter-tags__list').show();
+        //make sure other categories are hidden
+        $('.filter-categories').hide();
+        $('.filter-years').hide();
+        //make sure other filter items don't have active class
+        $(".js-filter-collapse").removeClass("active");
+        // reset back to tags filter header
+        $('.filter-header__tags').addClass('active');
     });
 
     $(".js-filter-item").click(function (e) {
@@ -315,6 +344,21 @@ then close all select boxes: */
         }
     });
 
+    // For more settings: https://github.com/mattboldt/typed.js
+    var typed = new Typed(".main-search__input", {
+        strings: ['Search for "Architecture"',
+            'Search by Category',
+            'Search by Year',
+            'Search a Title',
+            'Search Yellow',
+        ],
+        typeSpeed: 80,
+        backSpeed: 50,
+        attr: 'placeholder',
+        bindInputFocusEvents: false,
+        loop: true
+    });
+
     $(window).on("scroll", function() {
         var scroll = $(this).scrollTop();
         var hideOnScroll = $(".js-hide-onscroll");
@@ -342,7 +386,7 @@ then close all select boxes: */
         offset: 0,
         atStart: true,
         atEnd: false,
-        // containerWidthDiff: tags.scrollWidth - tagsContainer.clientWidth,
+        containerWidthDiff: tags.scrollWidth - tagsContainer.clientWidth,
     };
 
     if (tagsProps.containerWidthDiff <= 0) {
@@ -399,22 +443,5 @@ then close all select boxes: */
             setButtonsState();
         });
     }
-
-    // For more settings: https://github.com/mattboldt/typed.js
-    var typed = new Typed(".main-search__input", {
-        strings: ['Search for "Architecture"',
-            'Search by Category',
-            'Search by Year',
-            'Search a Title',
-            'Search Yellow',
-        ],
-        typeSpeed: 80,
-        backSpeed: 50,
-        attr: 'placeholder',
-        bindInputFocusEvents: false,
-        loop: true
-    });
-
-
 
 });
