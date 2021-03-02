@@ -58,9 +58,7 @@ $h3-line-height-rem: 4.8rem;
 /* Use Large text variables */
 
 
-
-//  Colors
-
+// Colors
 $white: rgb(255,255,255);
 $black: rgb(0,0,0);
 $greyTransparent: rgba(255,255,255,.9);
@@ -69,15 +67,15 @@ $hoverOpacity: 0.66;
 $activeOpacity: 1;
 $inactiveOpacity: 0.5;
 
-// Borders
 
+// Borders
 $border: 2px solid currentColor;
 $thinBorder: 1px solid currentColor;
 
-//  Container sizes
 
+//  Container sizes
 $default-container-width: 107.6rem;
-$xl-container-width: 168rem; /* where is this used? shouldnt be here */
+$xl-container-width: 168rem;
 $l-container-width: 107.6rem;
 $s-container-width: 77rem;
 

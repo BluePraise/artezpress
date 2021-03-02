@@ -32,38 +32,44 @@ $additional_editions = get_field('additional_editions');
 // Ensure visibility.
 if (empty($product) || !$product->is_visible()) {
 	return;
-} 
+}
 ?>
-<div <?php wc_product_class('book-item', $product); ?> data-filters="<?= $cats ?> <?= $author ?> year-<?= $year ?> <?= $tags ?>" data-search="<?= get_the_title() ?> <?= $cats ?> <?= $tags ?> <?= $author ?> <?= $design && is_array($design) ? $design['designer'] : '' ?>">
-	<?php
-	
-	/**
-	 * Hook: woocommerce_before_shop_loop_item.
-	 *
-	 * @hooked woocommerce_template_loop_product_link_open - 10
-	 */
-	// do_action( 'woocommerce_before_shop_loop_item' );
-	woocommerce_template_loop_product_link_open();
-	/**
-	 * Hook: woocommerce_before_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_show_product_loop_sale_flash - 10
-	 * @hooked woocommerce_template_loop_product_thumbnail - 10
-	 */
-	// do_action( 'woocommerce_before_shop_loop_item_title' );
-	woocommerce_template_loop_product_thumbnail();
-	/**
-	 * Hook: woocommerce_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_template_loop_product_title - 10
-	 */
-	?>
-	<h4><?php echo get_the_title(); ?></h4>
+<div <?php wc_product_class('book-item-card', $product); ?> data-filters="<?= $cats ?> <?= $author ?> year-<?= $year ?> <?= $tags ?>" data-search="<?= get_the_title() ?> <?= $cats ?> <?= $tags ?> <?= $author ?> <?= $design && is_array($design) ? $design['designer'] : '' ?>">
+
+		<?php
+		/**
+		 * Hook: woocommerce_before_shop_loop_item.
+		 *
+		 * @hooked woocommerce_template_loop_product_link_open - 10
+		 */
+		// do_action( 'woocommerce_before_shop_loop_item' );
+		woocommerce_template_loop_product_link_open();
+		/**
+		 * Hook: woocommerce_before_shop_loop_item_title.
+		 *
+		 * @hooked woocommerce_show_product_loop_sale_flash - 10
+		 * @hooked woocommerce_template_loop_product_thumbnail - 10
+		 */
+		// do_action( 'woocommerce_before_shop_loop_item_title' );
+		/**
+		 * Hook: woocommerce_shop_loop_item_title.
+		 *
+		 * @hooked woocommerce_template_loop_product_title - 10
+		 */
+		?>
+
+	<figure class="book-item-card__cover">
+		<?php
+		woocommerce_template_loop_product_thumbnail();
+		?>
+	</figure>
+
+	<h4 class="book-item-card__title"><?php echo get_the_title(); ?></h4>
 
 	<?php if (!is_front_page()) : ?>
-		<p class="book-item-author"><?php echo wp_trim_words($author, 20, '...'); ?></p>
+		<p class="book-item-card__author"><?php echo wp_trim_words($author, 20, '...'); ?></p>
 	<?php endif; ?>
-	
+
 	<?php
 		woocommerce_template_loop_product_link_close();
 	/**
