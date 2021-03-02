@@ -34,7 +34,7 @@ get_header(); ?>
 	<?php endif; ?>
 
 
-	<section class="featured-books flex-container">
+	<section class="excerpt-section featured-books">
 		<h2 class="featured-title"><?php _e('Books', 'artezpress'); ?></h2>
 		<div class="full-width products book-grid">
 			<?php
@@ -79,11 +79,13 @@ get_header(); ?>
 			?>
 		</div>
 		<!--/.products-->
-		<a class="btn btn-rectangle" href="<?php echo site_url('/books/'); ?>"><?php _e('See All Books', 'artezpress'); ?></a>
+		<div class="excerpt-section__expand">
+			<a class="btn excerpt-section__expand-btn black-on-white" href="<?php echo site_url('/books/'); ?>"><?php _e('See All Books', 'artezpress'); ?></a>
+		</div>
 
 	</section><!-- #main -->
 
-	<section class="latest-news container">
+	<section class="excerpt-section latest-news container">
 
 		<h2 class="featured-title"><?php _e('News', 'artezpress'); ?></h2>
 		<div class="flex-container news-grid news-grid-masonry">
@@ -100,8 +102,8 @@ get_header(); ?>
 				<?php endwhile; ?>
 		</div>
 		<!--/.news-grid-->
-		<div class="wrapper-element ta-center">
-			<a class="btn btn-rectangle" href="<?php echo site_url('/news'); ?>"><?php _e('See All News', 'artezpress'); ?></a>
+		<div class="excerpt-section__expand">
+			<a class="btn excerpt-section__expand-btn black-on-white" href="<?php echo site_url('/news'); ?>"><?php _e('See All News', 'artezpress'); ?></a>
 		</div>
 	<?php } else {
 				echo __('<p>Currently there is no news.</p>', 'artezpress'); ?>

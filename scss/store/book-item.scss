@@ -93,6 +93,19 @@
       }
     }
   }
+
+  .book-grid {
+    @include grid(4, 1fr, 0, 3.2rem);
+
+      .book-item {
+        @media (min-width: 768px) {
+          grid-column: auto / span 1;
+        }
+        @media (max-width: 767px) {
+          grid-column: auto / span 2;
+        }
+      }
+    }
 }
 
 .book-item a img {

@@ -15,8 +15,10 @@
 
 /* check if in use, if not delete! */
 .container-xl {
-  background: red;
-  color: blue !important;
+  max-width: $xl-container-width;
+  margin: 0 auto;
+  // background: red;
+  // color: blue !important;
 }
 
 .container-l {

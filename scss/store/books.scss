@@ -28,21 +28,47 @@ body.single-product.set-text-white {
 
 
 // book grid
+.book-archive {
 .book-grid {
-  @include grid(4, 1fr, 6.4rem, 3.2rem);
+    @include grid(12, 1fr, 0, 3.2rem);
+
+    @media (min-width: 1025px) {
+      padding-left: 1.6rem;
+      padding-right: 1.6rem;
+    }
+
+    @media (max-width: 1440px) {
+      max-width: $l-container-width;
+    }
 
     .book-item {
-
-        @media screen and (min-width: 992px) {
-        }
-
-        @media screen and (max-width: 991px) and (min-width: 768px) {
-        }
-
-        @media screen and (max-width: 767px) {}
-
+      @media (min-width: 1441px) {
+        grid-column: auto / span 2;
+      }
+      @media (min-width: 1025px) and (max-width: 1440px) {
+        grid-column: auto / span 3;
+      }
+      @media (min-width: 768px) and (max-width: 1024px) {
+        grid-column: auto / span 4;
+      }
+      @media (max-width: 767px) {
+        grid-column: auto / span 12;
+      }
     }
+  }
 }
+
+
+.book-item {
+  margin-bottom: 6.4rem;
+}
+
+
+
+
+
+
+
 
 .label-header,
 .colophon-value {

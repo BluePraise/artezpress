@@ -26,10 +26,6 @@ button.btn {
   // line-height: 2.8rem;
 }
 
-.btn.btn-rectangle {
-  @include clearButton(12px, 1.3rem, 3.1rem);
-}
-
 span.btn:hover {
   cursor: not-allowed;
 }

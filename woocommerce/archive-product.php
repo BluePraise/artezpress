@@ -2,7 +2,8 @@
 
   <main class="site-main book-archive js-products-container" role="main">
     <?php get_template_part('inc/filters'); ?>
-    <div class="book-grid grid-container container-l">
+
+    <div class="book-grid grid-container container-xl">
     <?php
     // filter though repeater posts
     function my_posts_where($where)
@@ -41,8 +42,9 @@
       endwhile;
     endif;
     wp_reset_postdata();?>
+    </div>
+
   </main>
-</div>
 <!-- </div> -->
 <!-- #main -->
 
