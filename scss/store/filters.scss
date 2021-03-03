@@ -63,6 +63,7 @@
     will-change: transform;
     align-items: flex-start;
     white-space: nowrap;
+    width: 100%;
 }
 .filter-tags__inner {
     line-height: 40px;
@@ -119,13 +120,8 @@
   margin-top: 2rem;
   margin-bottom: 6rem;
   position: relative;
-  &__list {
-
-  }
-
   &__item {
     margin-right: .8rem;
-
   }
 
   &__prev,

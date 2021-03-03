@@ -243,16 +243,25 @@ then close all select boxes: */
             $('.filter-tags__list').hide();
             $('.filter-categories').show();
             $('.filter-years').hide();
+            $('.filter-language').hide();
         }
         if ($activeElement == "year") {
             $('.filter-tags__list').hide();
             $('.filter-categories').hide();
             $('.filter-years').show();
+            $('.filter-language').hide();
         }
         if ($activeElement == "tags") {
             $('.filter-tags__list').show();
             $('.filter-categories').hide();
             $('.filter-years').hide();
+            $('.filter-language').hide();
+        }
+        if ($activeElement == "language") {
+            $('.filter-tags__list').hide();
+            $('.filter-categories').hide();
+            $('.filter-years').hide();
+            $('.filter-language').show();
         }
 
     });
@@ -380,7 +389,7 @@ then close all select boxes: */
     });
 
     var tagsContainer = document.querySelector(".js-tags-container"),
-        tags = document.querySelector(".js-tags");
+        tags = document.querySelector(".js-filter-elements");
 
     var tagsProps = {
         offset: 0,
@@ -388,7 +397,6 @@ then close all select boxes: */
         atEnd: false,
         containerWidthDiff: tags.scrollWidth - tagsContainer.clientWidth,
     };
-
     if (tagsProps.containerWidthDiff <= 0) {
         $(".js-tags-next").closest(".filter-tags__next").hide();
         $(".js-tags-prev").closest(".filter-tags__prev").hide();
@@ -427,16 +435,16 @@ then close all select boxes: */
         setButtonsState();
 
         $(".js-tags-prev").click(function() {
-            tagsProps.offset = getOffset(tagsProps.offset - 320);
-            $(".js-tags").css(
+            tagsProps.offset = getOffset(tagsProps.offset - 120);
+            $(".js-filter-elements").css(
                 "transform",
                 "translateX(-" + tagsProps.offset + "px)"
             );
             setButtonsState();
         });
         $(".js-tags-next").click(function() {
-            tagsProps.offset = getOffset(tagsProps.offset + 320);
-            $(".js-tags").css(
+            tagsProps.offset = getOffset(tagsProps.offset + 120);
+            $(".js-filter-elements").css(
                 "transform",
                 "translateX(-" + tagsProps.offset + "px)"
             );

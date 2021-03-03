@@ -8,8 +8,9 @@ while (have_posts()) {
   if (strlen(get_field('author'))) {
     $authors[] = explode(',', get_field('author'));
   }
-  if (strlen(get_field('language'))) {
-    $languages[] = explode(',', get_field('language'));
+  if (get_field('ap_language')) {
+    $l = get_field('ap_language');
+    $languages[] = get_field('ap_language');
   }
   if (strlen(get_field('publishing_year'))) {
     $years[] = (int)get_field('publishing_year');
@@ -21,7 +22,7 @@ $terms = get_terms(array('taxonomy' => 'product_tag'));
 $years = array_reverse(array_unique($years, SORT_NUMERIC));
 $categories = get_terms(['taxonomy' => 'product_cat']);
 ?>
-<div class="search-bar">
+<div class="search-bar container-l">
       
         <form class="flex-container main-search js-main-search">
         <button>
@@ -32,11 +33,11 @@ $categories = get_terms(['taxonomy' => 'product_cat']);
         <input type="search" class="main-search__input" name="" id="" placeholder="">
         </form>
         <div class="filter-section">
-            <div class="filter-header filter-header__tags js-filter-collapse active" data-header="tags">Tags</div>
-            <div class="filter-header filter-header__categories js-filter-collapse" data-header="categories">Category</div>
-            <div class="filter-header filter-header__year js-filter-collapse" data-header="year">Year</div>
-            <div class="filter-header filter-header__language js-filter-collapse" data-header="language">Language</div>
-            <div class="filter-header js-reset-filters sidebar-filters__title">All books</div>
+            <div class="filter-header filter-header__tags js-filter-collapse active" data-header="tags"><?php _e('Tags', 'artezpress'); ?></div>
+            <div class="filter-header filter-header__categories js-filter-collapse" data-header="categories"><?= _e('Category', 'artezpress'); ?></div>
+            <div class="filter-header filter-header__year js-filter-collapse" data-header="year"><?= _e('Year', 'artezpress') ?></div>
+            <!-- <div class="filter-header filter-header__language js-filter-collapse" data-header="language"><?php //_e('Language', 'artezpress') ?><</div> -->
+            <div class="filter-header js-reset-filters sidebar-filters__title"><?= _e('All Books', 'artezpress'); ?></div>
         </div>
       <?php include get_theme_file_path('/inc/filter-tags.php'); ?>
 
