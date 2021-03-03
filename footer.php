@@ -1,8 +1,10 @@
+</div> <!-- close site-wrapper -->
+
 <footer class="mast-footer">
 	<?php if (is_front_page()) : ?>
 		<div class="grid-container wp-end-of-page">
 			<?php get_template_part('inc/templateparts/nav', 'pages'); ?>
-			
+
 		<div class="mini-cart-column">
 			<div class="mini-cart-total"><?php woocommerce_mini_cart(); ?></div>
 		</div>
