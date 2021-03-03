@@ -15,7 +15,7 @@
   input[type=search] {
     border: none !important;
     flex: 1 auto;
-    margin-bottom: 3px;
+    padding-bottom: 3px;
     &::placeholder {
       pointer-events: none;
       font-family: $extended-font;

@@ -283,6 +283,7 @@ then close all select boxes: */
         $(".js-filter-collapse").removeClass("active");
         // reset back to tags filter header
         $('.filter-header__tags').addClass('active');
+        $('.tag-pill').removeClass('active');
     });
 
     $(".js-filter-item").click(function (e) {
@@ -397,6 +398,7 @@ then close all select boxes: */
         atEnd: false,
         containerWidthDiff: tags.scrollWidth - tagsContainer.clientWidth,
     };
+    // console.log(tagsProps.containerWidthDiff);
     if (tagsProps.containerWidthDiff <= 0) {
         $(".js-tags-next").closest(".filter-tags__next").hide();
         $(".js-tags-prev").closest(".filter-tags__prev").hide();
