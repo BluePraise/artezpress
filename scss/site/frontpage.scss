@@ -70,7 +70,6 @@
     }
 }
 
-
 // CSS FOR COMING SOON SLIDER
 .coming-soon {
     background-color: black;
@@ -111,36 +110,45 @@
     }
 }
 
+
+
+// Sections
+.excerpt-section {
+  margin: 8rem auto 16rem;
+
+  &__expand {
+    width: 100%;
+    text-align: center;
+
+    &-btn {
+      width: 22.8rem;
+    }
+  }
+}
+
+
+// Books Section
 .featured-books {
-    flex-direction: column;
-    align-items: center;
-    margin: 8rem 3.6rem;
+  display: block;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
 
-    .book-grid {
-        width: 100%;
-        max-width: 100%;
-        display: inline-flex;
-        flex-direction: row;
-        margin-bottom: 4rem;
+  .book-grid {
+    @include grid(12, 1fr, 6.4rem, 3.2rem);
 
-        .book-item {
-
-            // anything else big
-            @media screen and (min-width: 992px) {
-                width: calc(100% / 6 - 3.2rem);
-                margin-right: 3.2rem;
-
-                &:last-child {
-                    margin-right: 0;
-                }
-            }
-        }
-
+    .book-item-card {
+      @media (min-width: 1200px) {
+        grid-column: auto / span 2;
+      }
+      @media (min-width: 1025px) and (max-width: 1199px) {
+        grid-column: auto / span 2;
+      }
+      @media (min-width: 768px) and (max-width: 1024px) {
+        grid-column: auto / span 4;
+      }
+      @media (max-width: 767px) {
+        grid-column: auto / span 12;
+      }
     }
-
-    .btn.btn-reg {
-        display: inline-block;
-        align-self: center;
-        @include clearButton(100px, 1rem, 3.1rem);
-    }
+  }
 }

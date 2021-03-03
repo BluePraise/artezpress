@@ -1,11 +1,42 @@
+// THIS IS WHERE THE PRODUCT CHANGES TEXT COLOR.
+// PLEASE DO NOT MESS WITH THIS.
+
+// Colors
+
+body.single-product.set-text-black,
+.set-text-black,
+.set-to-black a  {
+    color: var(--set-to-black) !important;
+}
+
+.set-text-white,
+.set-to-white a  {
+    color: var(--set-to-white) !important;
+}
+
+body.single-product.set-text-white {
+    color: $white !important;
+
+    a.go-back svg {
+        fill: $white !important;
+    }
+
+    .btn.white-on-black {
+        background: $white;
+        color: $black;
+    }
+}
+
+
 // AMIR'S CSS — SINGLE BOOK ITEM
 
-.product {
+.book-item-page {
   overflow: hidden;
 }
 
+
 // Slider block
-.product .book-slider {
+.single-product .book-slider {
     margin-top: 6rem;
     margin-bottom: 8rem;
 }
@@ -59,6 +90,11 @@
     .block:not(:last-child) {
       margin-bottom: $smallText-line-height-rem;
     }
+
+    .label-header,
+    .colophon-value {
+      display: block;
+    }
   }
 }
 
@@ -93,8 +129,17 @@
       }
     }
   }
-}
 
-.book-item a img {
-    @include boxShadow;
+  .book-grid {
+    @include grid(4, 1fr, 0, 3.2rem);
+
+    .book-item-card {
+      @media (min-width: 768px) {
+        grid-column: auto / span 1;
+      }
+      @media (max-width: 767px) {
+        grid-column: auto / span 2;
+      }
+    }
+  }
 }

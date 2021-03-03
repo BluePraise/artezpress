@@ -1,76 +1,65 @@
-// SCSS which Product Single and Overview have in common
-
-// THIS IS WHERE THE PRODUCT CHANGES TEXT COLOR.
-// PLEASE DO NOT MESS WITH THIS.
-body.single-product.set-text-black,
-.set-text-black,
-.set-to-black a  {
-    color: var(--set-to-black) !important;
-}
-
-.set-text-white,
-.set-to-white a  {
-    color: var(--set-to-white) !important;
-}
-
-body.single-product.set-text-white {
-    color: $white !important;
-
-    a.go-back svg {
-        fill: $white !important;
-    }
-
-    .btn.white-on-black {
-        background: $white;
-        color: $black;
-    }
-}
+// Books Archive (influnces 'Book Archive', Homepage excerpt, 'Related Books')
 
 
-// book grid
+// book Grid
+.book-archive {
 .book-grid {
-  @include grid(4, 1fr, 6.4rem, 3.2rem);
+    @include grid(12, 1fr, 0, 3.2rem);
 
-    .book-item {
-
-        @media screen and (min-width: 992px) {
-        }
-
-        @media screen and (max-width: 991px) and (min-width: 768px) {
-        }
-
-        @media screen and (max-width: 767px) {}
-
+    @media (min-width: 1025px) {
+      padding-left: 1.6rem;
+      padding-right: 1.6rem;
     }
+
+    @media (max-width: 1440px) {
+      max-width: $l-container-width;
+    }
+
+    .book-item-card {
+      @media (min-width: 1441px) {
+        grid-column: auto / span 2;
+      }
+      @media (min-width: 1025px) and (max-width: 1440px) {
+        grid-column: auto / span 3;
+      }
+      @media (min-width: 768px) and (max-width: 1024px) {
+        grid-column: auto / span 4;
+      }
+      @media (max-width: 767px) {
+        grid-column: auto / span 12;
+      }
+    }
+  }
 }
 
-.label-header,
-.colophon-value {
-    display: block;
-}
 
-.woocommerce-product-details__short-description p {
-    font-family: 'Lars', Helvetica, Arial, sans-serif;
-    font-size: 2.1rem;
-    line-height: 3rem;
-}
+// Book item card
+.book-item-card {
+  margin-bottom: 6.4rem;
 
-.woocommerce-product-gallery__image a,
-.woocommerce-product-gallery__image a img {
-    display: block;
-}
+  &__title {
+    margin: 3.3rem 0 3.2rem;
+  }
 
-.woocommerce-product-gallery__image a img {
-    margin: 0 auto;
-}
-
-span.price {
-    position: fixed !important;
-    left: 40px;
-    bottom: 100px;
-    font-weight: 600;
-}
-
-.book-grid .book-item-author {
+  &__author {
     @include smallText;
+  }
+
+  &__cover {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3% 1.5% 1.5% 3%;
+    @include boxShadow;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 6%;
+      opacity: 0.075;
+      @include gradientSpine(0, 0, 0, left);
+    }
+  }
 }
