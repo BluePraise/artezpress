@@ -15,7 +15,7 @@
   input[type=search] {
     border: none !important;
     flex: 1 auto;
-    margin-bottom: 3px;
+    padding-bottom: 3px;
     &::placeholder {
       pointer-events: none;
       font-family: $extended-font;
@@ -38,11 +38,11 @@
   }
 }
 
-.filter-item {
+.filter-header {
     display: inline-block;
     margin-right: 3.6rem;
     opacity: 0.6;
-    transition: opacity 0.4s ease-in;
+    transition: opacity 0.2s ease-in;
     &:last-child {
         margin-right: 0;
     }
@@ -55,8 +55,30 @@
     }
 }
 
+.filter-list {
+    display: none;
+    overflow: hidden;
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0.05, 0, 0, 1);
+    will-change: transform;
+    align-items: flex-start;
+    white-space: nowrap;
+    width: 100%;
+}
+.filter-tags__inner {
+    line-height: 40px;
+}
+
 .hidden-filter-authors {
   display: none;
+}
+
+.tag-pill {
+    margin-right: .8rem;
+    &.active {
+      background: black;
+      color: white;
+    }
 }
 
 
@@ -98,22 +120,8 @@
   margin-top: 2rem;
   margin-bottom: 6rem;
   position: relative;
-  &__list {
-    transition-duration: 0.15s;
-    transition-timing-function: cubic-bezier(0.05, 0, 0, 1);
-    will-change: transform;
-    display: flex;
-    align-items: flex-start;
-    white-space: nowrap;
-  }
-
   &__item {
     margin-right: .8rem;
-
-    &.active {
-      background: black;
-      color: white;
-    }
   }
 
   &__prev,
