@@ -112,17 +112,6 @@ if (function_exists('acf_add_options_page')) {
 		'updated_message' => __("Item Updated", 'acf'),
 	));
 }
-function register_ap_menu() {
-  register_nav_menu('main-nav',__( 'Main Navigation' ));
-}
-add_action( 'init', 'register_ap_menu' );
-
-function main_nav() {
-	
-}
-
-
-
 
 
 function artezpress_theme_setup()
@@ -148,6 +137,44 @@ function artezpress_theme_setup()
 }
 
 add_action('after_setup_theme', 'artezpress_theme_setup');
+
+
+function register_ap_menu() {
+    register_nav_menus([ // Using array to specify more menus if needed
+        'primary' => __('Primary Menu Nederlands', 'artezpress'), // Main Navigation
+        'primary-menu-nederlands' => __('Primary Menu English', 'artezpress'), // Main Navigation
+        'secondary-menu-nederlands' => __('Secondary Menu Nederlands', 'artezpress'), // Main Navigation
+        'secondary-menu-english' => __('Secondary Menu English', 'artezpress'), // Main Navigation
+        // 'secondary-menu-nederlands' => __('Secondary Menu Nederlands', 'artezpress'), // Main Navigation
+    ]);
+}
+// Remove Injected classes, ID's and Page ID's from Navigation <li> items
+function my_css_attributes_filter($var)
+{
+    return is_array($var) ? [] : '';
+}
+
+add_filter('wp_nav_menu_args', 'my_wp_nav_menu_args'); // Remove surrounding <div> from WP Navigation
+// add_filter('nav_menu_css_class', 'my_css_attributes_filter', 100, 1); // Remove Navigation <li> injected classes (Commented out by default)
+add_filter('nav_menu_item_id', 'my_css_attributes_filter', 100, 1); // Remove Navigation <li> injected ID (Commented out by default)
+add_filter('page_css_class', 'my_css_attributes_filter', 100, 1); // Remove Navigation <li> Page ID's (Commented out by default)
+
+// Remove the <div> surrounding the dynamic navigation to cleanup markup
+function my_wp_nav_menu_args($args = '')
+{
+    $args['container'] = false;
+    return $args;
+}
+
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
+
+function special_nav_class ($classes, $item) {
+  if (in_array('current-menu-item', $classes) ){
+    $classes[] = 'active ';
+  }
+  return $classes;
+}
+
 
 add_action('artezpress_before_single_product_summary', 'woocommerce_show_product_images', 20);
 
@@ -612,3 +639,17 @@ function Hide_WooCommerce_Breadcrumb()
     .woocommerce-embed-page #screen-meta, .woocommerce-embed-page #screen-meta-links{top:0;}
     </style>';
 }
+
+// Remove Actions
+remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds
+remove_action('wp_head', 'feed_links', 2); // Display the links to the general feeds: Post and Comment Feed
+remove_action('wp_head', 'rsd_link'); // Display the link to the Really Simple Discovery service endpoint, EditURI link
+remove_action('wp_head', 'wlwmanifest_link'); // Display the link to the Windows Live Writer manifest file.
+remove_action('wp_head', 'index_rel_link'); // Index link
+remove_action('wp_head', 'parent_post_rel_link', 10, 0); // Prev link
+remove_action('wp_head', 'start_post_rel_link', 10, 0); // Start link
+remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // Display relational links for the posts adjacent to the current post.
+remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is generated on the wp_head hook, WP version
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+remove_action('wp_head', 'rel_canonical');
+remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);

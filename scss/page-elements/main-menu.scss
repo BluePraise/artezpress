@@ -244,11 +244,12 @@
 // Buttons List
 .search,
 .social-menu,
-.page-list {
+.page-list,
+.menu {
   margin-bottom: $menuText-line-height-rem;
 }
 
-.page-list li a {
+.menu li a {
   display: inline-block;
 }
 
@@ -298,6 +299,7 @@
 // Hover effects
 .search a,
 .page-list a,
+.menu a,
 .social-menu a,
 .part-of a,
 .cart_list a {
