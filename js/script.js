@@ -393,81 +393,81 @@ then close all select boxes: */
         $(".js-show-onscroll").removeClass("shown").addClass("hidden");
     });
 
-    $('.filter-list').flickity({
-        cellSelector: '.js-filter-item',
-        setGallerySize: false,
-        wrapAround: false,
-        contain: true,
-        groupCells: false,
-        draggable: false,
-        pageDots: false,
-        freeScroll: true,
-        freeScrollFriction: 0.03
-    });
+    // $('.filter-list').flickity({
+    //     cellSelector: '.js-filter-item',
+    //     setGallerySize: false,
+    //     wrapAround: false,
+    //     contain: true,
+    //     groupCells: false,
+    //     draggable: false,
+    //     pageDots: false,
+    //     freeScroll: true,
+    //     freeScrollFriction: 0.03
+    // });
 
-    // var tagsContainer = document.querySelector(".js-tags-container"),
-    //     tags = document.querySelector(".js-filter-elements");
+    var tagsContainer = document.querySelector(".js-tags-container"),
+        tags = document.querySelector(".js-filter-elements");
 
-    // var tagsProps = {
-    //     offset: 0,
-    //     atStart: true,
-    //     atEnd: false,
-    //     containerWidthDiff: tags.scrollWidth - tagsContainer.clientWidth,
-    // };
-    // // console.log(tagsProps.containerWidthDiff);
-    // if (tagsProps.containerWidthDiff <= 0) {
-    //     $(".js-tags-next").closest(".filter-tags__next").hide();
-    //     $(".js-tags-prev").closest(".filter-tags__prev").hide();
-    // } else {
-    //     function getOffset(offset) {
-    //         return Math.min(Math.max(offset, 0), tagsProps.containerWidthDiff);
-    //     }
+    var tagsProps = {
+        offset: 0,
+        atStart: true,
+        atEnd: false,
+        containerWidthDiff: tags.scrollWidth - tagsContainer.clientWidth,
+    };
+    // console.log(tagsProps.containerWidthDiff);
+    if (tagsProps.containerWidthDiff <= 0) {
+        $(".js-tags-next").closest(".filter-tags__next").hide();
+        $(".js-tags-prev").closest(".filter-tags__prev").hide();
+    } else {
+        function getOffset(offset) {
+            return Math.min(Math.max(offset, 0), tagsProps.containerWidthDiff);
+        }
 
-    //     function setButtonsState() {
-    //         tagsProps.atStart = 0 >= tagsProps.offset;
-    //         tagsProps.atEnd =
-    //             tagsProps.offset >= tagsProps.containerWidthDiff &&
-    //             !tagsProps.atStart;
-    //         tagsProps.offset = getOffset(tagsProps.offset);
+        function setButtonsState() {
+            tagsProps.atStart = 0 >= tagsProps.offset;
+            tagsProps.atEnd =
+                tagsProps.offset >= tagsProps.containerWidthDiff &&
+                !tagsProps.atStart;
+            tagsProps.offset = getOffset(tagsProps.offset);
 
-    //         $(".js-tags-next")
-    //             .closest(".filter-tags__next")
-    //             .css("display", "flex");
-    //         $(".js-tags-prev")
-    //             .closest(".filter-tags__prev")
-    //             .css("display", "flex");
-    //         if (tagsProps.atEnd) {
-    //             $(".js-tags-next").closest(".filter-tags__next").hide();
-    //             $(".js-tags-next")
-    //                 .closest(".filter-tags__prev")
-    //                 .css("display", "flex");
-    //         }
-    //         if (tagsProps.atStart) {
-    //             $(".js-tags-prev").closest(".filter-tags__prev").hide();
-    //             $(".js-tags-next")
-    //                 .closest(".filter-tags__next")
-    //                 .css("display", "flex");
-    //         }
-    //     }
+            $(".js-tags-next")
+                .closest(".filter-tags__next")
+                .css("display", "flex");
+            $(".js-tags-prev")
+                .closest(".filter-tags__prev")
+                .css("display", "flex");
+            if (tagsProps.atEnd) {
+                $(".js-tags-next").closest(".filter-tags__next").hide();
+                $(".js-tags-next")
+                    .closest(".filter-tags__prev")
+                    .css("display", "flex");
+            }
+            if (tagsProps.atStart) {
+                $(".js-tags-prev").closest(".filter-tags__prev").hide();
+                $(".js-tags-next")
+                    .closest(".filter-tags__next")
+                    .css("display", "flex");
+            }
+        }
 
-    //     setButtonsState();
+        setButtonsState();
 
-    //     $(".js-tags-prev").click(function() {
-    //         tagsProps.offset = getOffset(tagsProps.offset - 120);
-    //         $(".js-filter-elements").css(
-    //             "transform",
-    //             "translateX(-" + tagsProps.offset + "px)"
-    //         );
-    //         setButtonsState();
-    //     });
-    //     $(".js-tags-next").click(function() {
-    //         tagsProps.offset = getOffset(tagsProps.offset + 120);
-    //         $(".js-filter-elements").css(
-    //             "transform",
-    //             "translateX(-" + tagsProps.offset + "px)"
-    //         );
-    //         setButtonsState();
-    //     });
-    // }
+        $(".js-tags-prev").click(function() {
+            tagsProps.offset = getOffset(tagsProps.offset - 320);
+            $(".js-filter-elements").css(
+                "transform",
+                "translateX(-" + tagsProps.offset + "px)"
+            );
+            setButtonsState();
+        });
+        $(".js-tags-next").click(function() {
+            tagsProps.offset = getOffset(tagsProps.offset + 320);
+            $(".js-filter-elements").css(
+                "transform",
+                "translateX(-" + tagsProps.offset + "px)"
+            );
+            setButtonsState();
+        });
+    }
 
 });

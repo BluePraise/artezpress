@@ -121,6 +121,10 @@
   margin-top: 2rem;
   margin-bottom: 6rem;
   position: relative;
+  &__inner {
+    overflow: hidden;
+    max-width: $default-container-width;
+  }
   &__item {
     margin-right: .8rem;
   }
