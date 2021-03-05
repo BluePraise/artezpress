@@ -40,5 +40,5 @@ $categories = get_terms(['taxonomy' => 'product_cat']);
             <div class="filter-header js-reset-filters sidebar-filters__title"><?= _e('All Books', 'artezpress'); ?></div>
         </div>
       <?php include get_theme_file_path('/inc/filter-tags.php'); ?>
-
 </div>
+

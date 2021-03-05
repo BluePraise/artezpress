@@ -56,6 +56,8 @@
 }
 
 .filter-list {
+    line-height: 40px;
+    height: 40px;
     display: none;
     overflow: hidden;
     transition-duration: 0.15s;
@@ -65,15 +67,14 @@
     white-space: nowrap;
     width: 100%;
 }
-.filter-tags__inner {
-    line-height: 40px;
-}
+
 
 .hidden-filter-authors {
   display: none;
 }
 
 .tag-pill {
+    position: relative !important;
     margin-right: .8rem;
     &.active {
       background: black;

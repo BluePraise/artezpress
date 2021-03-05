@@ -21,7 +21,7 @@
                 <?php foreach ($langs_array as $lang) : ?>
                     <a href="<?php echo $lang['url']; ?>" class="drop-block__link <?php if ($lang['current_lang']) : ?>active<?php else : ?>inactive<?php endif; ?>">
                         <?php echo $lang['slug']; ?>
-                    </a>
+                    </a> 
                 <?php endforeach; ?>
             </li>
         </ul>
