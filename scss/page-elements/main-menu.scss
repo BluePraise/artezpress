@@ -21,7 +21,6 @@
   width: 100vw;
   min-height: 100px;
   z-index: 2;
-  background: transparent;
   bottom: 0;
   left: 0;
 }
@@ -29,7 +28,6 @@
 .main-menu-bar,
 .bottom-menu-bar {
   width: 100vw;
-  background-color: transparent;
 
   @media (min-width: 1025px) {
     padding: 3.6rem 3.2rem;
