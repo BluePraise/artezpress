@@ -43,7 +43,7 @@ add_action('wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999);
 function artezpress_style()
 {
 	wp_register_style('artezpress-css', get_stylesheet_directory_uri() . '/style.css');
-	wp_register_style('flickity', 'https://unpkg.com/flickity@2/dist/flickity.min.css');
+	
 	wp_register_style('app-css', get_stylesheet_directory_uri() . '/assets/css/app.css');
 	wp_enqueue_style('app-css');
 	wp_enqueue_script('jquery');
@@ -57,10 +57,11 @@ function artezpress_style()
 	wp_enqueue_script('totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true);
     wp_register_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
     wp_enqueue_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
-	wp_register_script('flickity',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, true);
+	wp_register_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
 	if(is_archive()):
-		wp_enqueue_script('flickity',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, true);
-		wp_enqueue_style('flickity');
+        wp_register_style('flickity-theme', 'https://unpkg.com/flickity@2/dist/flickity.min.css');
+		wp_enqueue_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
+		wp_enqueue_style('flickity-theme');
 	endif;
 	$ajax_url = admin_url('admin-ajax.php');
 
@@ -141,10 +142,9 @@ add_action('after_setup_theme', 'artezpress_theme_setup');
 
 function register_ap_menu() {
     register_nav_menus([ // Using array to specify more menus if needed
-        'primary' => __('Primary Menu Nederlands', 'artezpress'), // Main Navigation
-        'primary-menu-nederlands' => __('Primary Menu English', 'artezpress'), // Main Navigation
-        'secondary-menu-nederlands' => __('Secondary Menu Nederlands', 'artezpress'), // Main Navigation
-        'secondary-menu-english' => __('Secondary Menu English', 'artezpress'), // Main Navigation
+        // 'primary' => __('Primary Menu Nederlands', 'artezpress'), // Main Navigation
+        'primary-menu' => __('Primary Menu', 'artezpress'), // Main Navigation
+        'secondary-menu' => __('Secondary Menu', 'artezpress'), // Main Navigation
         // 'secondary-menu-nederlands' => __('Secondary Menu Nederlands', 'artezpress'), // Main Navigation
     ]);
 }
