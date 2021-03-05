@@ -89,7 +89,6 @@
 }
 
 // clickable areas
-
 .book-slider .flickity-prev-next-button {
   position: absolute;
   top: 0;
@@ -108,18 +107,40 @@
 
   &.previous {
     left: -1.6rem;
+  }
+
+  &.next {
+    right: -1.6rem;
+  }
+
+  svg {
+    display: none;
+  }
+}
+
+// cursors
+.set-text-black .flickity-prev-next-button {
+  &.previous {
     &:not(:disabled) {
       cursor: url(../../assets/icons/slide_prev.svg) 16 16, pointer;
     }
   }
   &.next {
-    right: -1.6rem;
     &:not(:disabled) {
       cursor: url(../../assets/icons/slide_next.svg) 16 16, pointer;
     }
   }
+}
 
-  svg {
-    display: none;
+.set-text-white .flickity-prev-next-button {
+  &.previous {
+    &:not(:disabled) {
+      cursor: url(../../assets/icons/slide_prev_white.svg) 16 16, pointer;
+    }
+  }
+  &.next {
+    &:not(:disabled) {
+      cursor: url(../../assets/icons/slide_next_white.svg) 16 16, pointer;
+    }
   }
 }

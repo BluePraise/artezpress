@@ -19,9 +19,9 @@
 .fixed-bottom {
   position: fixed;
   width: 100vw;
+  min-height: 100px;
   z-index: 2;
   background: transparent;
-  min-height: 100px;
   bottom: 0;
   left: 0;
 }
@@ -35,7 +35,7 @@
     padding: 3.6rem 3.2rem;
   }
   @media (max-width: 1024px) {
-    padding: 1.6rem;
+    padding: 1rem 1.6rem 1.6rem;
   }
 }
 
@@ -59,14 +59,34 @@
 }
 
 // Mobile Menu Background Color
-.main-menu-bar {
-  @media (max-width: 1024px) {
-    @include MobileMenuColors($book: false);
-    body.single-product & {
-      @include MobileMenuColors($book: true);
+.mobile-menu-bar {
+  transition: all 200ms ease-in-out;
+  @include MobileMenuColors($book: false);
+
+  body.single-product & {
+    @include MobileMenuColors($book: true);
+  }
+
+  &::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 16px;
+    top: -16px;
+    opacity: 1;
+    transition: opacity 200ms ease-in-out;
+  }
+
+  &.surface-open {
+    background-color: transparent;
+
+    &::before {
+      opacity: 0;
     }
   }
 }
+
 
 // click under transparent menu
 .main-menu-container {
@@ -83,11 +103,18 @@
 }
 
 //menu surface
+.main-menu-surface {
+  background-color: $greyTransparent;
+}
+
+.wp-end-of-page {
+  background-color: $white;
+}
+
 .main-menu-surface,
 .wp-end-of-page {
   position: relative;
   width: 100vw;
-  background-color: $greyTransparent;
 
   @media (min-width: 1025px) {
     padding: 4rem 3.2rem 12.8rem 3.2rem;
@@ -240,7 +267,6 @@
 }
 
 
-
 // Buttons List
 .search,
 .social-menu,
@@ -252,6 +278,7 @@
 .menu li a {
   display: inline-block;
 }
+
 
 // Newsletter registration
 .newsletter {
@@ -279,6 +306,7 @@
   }
 }
 
+
 // Social buttons
 .social-menu ul {
   line-height: 0;
@@ -296,6 +324,20 @@
   }
 }
 
+
+// ArtEZ University Logo
+.artez_university_logo {
+  height: calc(#{$menuText-line-height-rem} / 1.08);
+  display: flex;
+  align-items: flex-end;
+
+  svg {
+    height: calc(#{$menuText-font-size-rem} * 1.05);
+    width: auto;
+  }
+}
+
+
 // Hover effects
 .search a,
 .page-list a,
@@ -307,6 +349,7 @@
     opacity: $hoverOpacity;
   }
 }
+
 
 // removes grey background when item is removed
 .blockUI,

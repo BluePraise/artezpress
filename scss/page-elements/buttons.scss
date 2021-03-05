@@ -17,8 +17,14 @@
 }
 
 .cart-btn {
-  min-width: 10.8rem;
   text-align: center;
+
+  @media (min-width: 768px) {
+    min-width: 10.8rem;
+  }
+  @media (max-width: 767px) {
+    min-width: 8rem;
+  }
 }
 
 button.btn {

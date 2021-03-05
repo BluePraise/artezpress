@@ -42,7 +42,7 @@ endif;
 	<?php endif; ?>
 
 
-	<nav class="main-menu-bar">
+	<nav class="main-menu-bar js-menubar">
 
 		<div class="flex-container">
 			<?php if (!is_product()) : ?>

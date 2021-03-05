@@ -1,9 +1,9 @@
-<?php 
+<?php
     // Note for Maggie: the path construction needs to be: site_url/current_lang/page_name
     // Or use dynamic WP Navigation
     $current_lang      = pll_current_language();
 ?>
-<div class="nav-column">
+<div class="nav-column nav-column__main">
     <div class="search">
         <a href="<?php echo site_url("/books"); ?>" title="Search ArtEZPress Books"><?php _e('Search', 'artezpress'); ?></a>
     </div>
@@ -16,17 +16,17 @@
         <?php else: ?>
         <li class="<?php if (is_front_page()): echo 'active'; endif; ?>"><a href="<?php echo site_url(); ?>/nl/" title="ArtEZPress"><?php _e('Home', 'artezpress'); ?></a></li>
         <li class="<?php if (is_page("books")): echo 'active'; endif; ?>"><a href="<?php echo site_url(); ?>/nl/books" title="ArtEZPress Boeken"><?php _e('Books', 'artezpress') ?></a></li>
-        <li class="<?php if (is_page("nieuws")): echo 'active'; endif; ?>"><a href="<?php echo site_url("/news"); ?>><a href="<?php echo site_url(); ?>/nl/nieuws" title="ArtEZPress Nieuws"><?php _e('News', 'artezpress'); ?></a></li>
+        <li class="<?php if (is_page("nieuws")): echo 'active'; endif; ?>"><a href="<?php echo site_url("/news"); ?>/nl/nieuws" title="ArtEZPress Nieuws"><?php _e('News', 'artezpress'); ?></a></li>
         <li class="<?php if (is_page("over")): echo 'active'; endif; ?>"><a href="<?php echo site_url(); ?>/nl/over" title="Over ArtEZPress"><?php _e('About', 'artezpress'); ?>ArtEZ Press</a></li>
         <?php endif; ?>
     </ul>
     <div class="newsletter">
-        <span><?php _e('Subscribe To Our Newsletter', 'artezpress'); ?></span>
+        <span><?php _e('Subscribe to our newsletter', 'artezpress'); ?></span>
         <input type="email" />
         <button type="submit" class="btn btn-reg">OK</button>
     </div>
 </div>
-<div class="nav-column">
+<div class="nav-column nav-column__secondary">
     <ul class="page-list">
         <?php if($current_lang === 'EN'):?>
         <li class="<?php if (is_page("contact")): echo 'active'; endif; ?>"><a href="<?php echo site_url("/contact"); ?>" title="Contact ArtEZPress">Contact</a></li>
@@ -52,9 +52,11 @@
                 <a href="https://twitter.com/ArtezPress"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_tw.svg" alt="Twitter Icon"></a>
             </li>
         </ul>
-    </div class="part-of"><?php _e('ArtEZ Press is part of', 'artezpress'); ?> <br><a href="https://www.artez.nl/" title="link to ArtEZ">
-        <a>
-            <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/artez_university_logo.svg" alt="Artez University Logo">
-        
-    </a>
+    </div>
+    <div class="part-of">
+        ArtEZ Press is part of <br>
+        <a class="artez_university_logo" href="https://www.artez.nl/" title="link to ArtEZ">
+          <?php echo file_get_contents( get_stylesheet_directory_uri() . '/assets/icons/artez_university_logo.svg' ); ?>
+        </a>
+    </div>
 </div>

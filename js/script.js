@@ -96,16 +96,19 @@ jQuery(document).ready(function($) {
         // Trigger change event
         $qty.trigger('change');
     });
+
     // Menu button
     const body = $("body"),
         main = $("main"),
         menu = $(".js-menu");
+				menubar = $(".js-menubar");
 
     $(".js-toggle-menu")
         .on("mouseenter", function() {
             if (!body.hasClass("menu-open")) {
                 body.addClass("menu-open");
                 main.addClass("blur");
+								menubar.toggleClass("surface-open");
                 menu.delay(0).fadeToggle(100, "swing");
             }
         })
@@ -113,6 +116,7 @@ jQuery(document).ready(function($) {
             event.preventDefault();
             body.toggleClass("menu-open");
             main.toggleClass("blur");
+						menubar.toggleClass("surface-open");
             menu.delay(0).fadeToggle(100, "swing");
         });
 
@@ -121,9 +125,21 @@ jQuery(document).ready(function($) {
             artez_ajax_menu();
             body.removeClass("menu-open");
             main.toggleClass("blur");
+						menubar.toggleClass("surface-open");
             menu.delay(0).fadeToggle(100, "swing");
         }
     });
+
+		// Mobile menu
+		$(window).bind("resize", function () {
+			console.log($(this).width())
+			if ($(this).width() < 1025) {
+					menubar.addClass('mobile-menu-bar')
+			} else {
+					menubar.removeClass('mobile-menu-bar')
+			}
+		}).trigger('resize');
+
 
     function artez_ajax_menu() {
         jQuery.ajax({
@@ -187,19 +203,6 @@ jQuery(document).ready(function($) {
 		// gutter: 32
 	});
 
-    $(".wp-end-of-page").waypoint({
-		// element: document.getElementById("basic-waypoint"),
-		handler: function (direction) {
-			// console.log("client height");
-			if (direction === "down") {
-				$(".main-menu-container").css({ opacity: 0 });
-			} else {
-				$(".main-menu-container").css({ opacity: 1 });
-			}
-		},
-		// offset: "100%",
-	});
-
     //https://stackoverflow.com/questions/11867545/change-text-color-based-on-brightness-of-the-covered-background-area
 
     function closeAllSelect(elmnt) {
@@ -236,7 +239,7 @@ then close all select boxes: */
         var $this = $(this)
         var $activeElement = $(this).data("header");
         var $otherFilterHeaders = $('.filter-header').siblings();
-        
+
         $otherFilterHeaders.removeClass('active');
         $(this).addClass("active");
 
@@ -274,7 +277,7 @@ then close all select boxes: */
     $(".js-reset-filters").click(function(e) {
         filters = [];
         productList.show();
-        
+
         //show filter pills
         $('.filter-tags__list').show();
         //make sure other categories are hidden
