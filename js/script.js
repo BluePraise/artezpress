@@ -189,10 +189,11 @@ jQuery(document).ready(function($) {
 
     var flkty = $carousel.data('flickity');
 
-    flkty.on('resize', function () {
+    flkty.on( 'resize', function() {
         var isSingleSlide = flkty.slides.length < 2;
-        $carousel.toggleClass('is-single-slide', isSingleSlide);
-    });    
+        $carousel.toggleClass( 'is-single-slide', isSingleSlide );
+    });
+
 
     $(".news-grid-masonry").masonry({
 		// options
