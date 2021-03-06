@@ -65,7 +65,7 @@ jQuery(document).ready(function($) {
     }
     // Quantity "plus" and "minus" buttons
     $(document.body).on('click', '.plus, .minus', function() {
-        console.log('1');
+        // console.log('1');
         var $qty = $(this).closest('.quantity').find('.qty'),
             currentVal = parseFloat($qty.val()),
             max = parseFloat($qty.attr('max')),
@@ -132,7 +132,7 @@ jQuery(document).ready(function($) {
 
 		// Mobile menu
 		$(window).bind("resize", function () {
-			console.log($(this).width())
+			// console.log($(this).width())
 			if ($(this).width() < 1025) {
 					menubar.addClass('mobile-menu-bar')
 			} else {
@@ -185,13 +185,14 @@ jQuery(document).ready(function($) {
         });
     }
 
-    $(".owl-carousel").owlCarousel({
-        items: 1,
-        slideBy: 2,
-        loop: true,
-        autoplay: true,
-        dots: true,
-        lazyLoad: true,
+    $('.main-carousel').flickity({
+        cellSelector: '.slider-item',
+        setGallerySize: false,
+        wrapAround: false,
+        contain: true,
+        groupCells: false,
+        draggable: false,
+        pageDots: true,
     });
 
 

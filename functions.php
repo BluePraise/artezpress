@@ -50,7 +50,6 @@ function artezpress_style()
 	wp_enqueue_script('jquery-ui');
 	wp_enqueue_script('waypoints', get_theme_file_uri() . '/js/jquery.waypoints.min.js', [], null, true);
 	wp_enqueue_script('masonry');
-	wp_enqueue_script('owl-slider', get_theme_file_uri() . '/js/owl.slider.js', [], null, true);
 	wp_enqueue_script('jquery-ui-accordion');
 	wp_enqueue_script('jquery-ui-slider');
 	wp_register_style('jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui');
@@ -58,7 +57,7 @@ function artezpress_style()
     wp_register_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
     wp_enqueue_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
 	wp_register_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
-	if(is_archive()):
+	if(is_archive() || is_front_page()):
         wp_register_style('flickity-theme', 'https://unpkg.com/flickity@2/dist/flickity.min.css');
 		wp_enqueue_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
 		wp_enqueue_style('flickity-theme');
