@@ -19,12 +19,12 @@ $loop = new WP_Query($args);
     if ( $loop->have_posts() ) :
         while ( $loop->have_posts() ) : $loop->the_post();
             $author = get_field('author'); ?>
-            <div class="slider-item slider-item-left">
+            <div class="slider-item">
                 <img class="slider-img" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php echo the_title(); ?>">
                 <div class="slider-item-meta">
                     <h2 class="slider-item-title"><?php echo the_title(); ?></h2>
-                </div>
                     <a href="<?php the_permalink(); ?>"><?php _e('Read More', 'artezpress');?></a>
+                </div>
             </div>
     <?php 
         endwhile;

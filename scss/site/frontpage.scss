@@ -7,41 +7,37 @@
     }
 
     .carousel-container {
-        width: calc(100%/3);
         position: relative;
-        z-index: 0;
+        z-index: -1;
+        width: calc(100%/3);
         height: 77rem;
-        padding-top: 4rem;
-        padding-bottom: 3.6rem;
 
         @media screen and (max-width: 991px) {
             width: 100%;
         }
-
-        .main-carousel {
-            position: absolute;
-            top: 0;
-            left: 0
+        .is-single-slide .flickity-page-dots {
+            display: none;
         }
 
-        h2.slider-title {
-            position: relative;
+        .slider-title {
+            position: absolute;
             z-index: 10;
+            width: 100%;
+            margin-top: 4rem;
         }
 
         .slider-item {
-            position: relative;
-            z-index: 0;
-            height: 77rem;
             display: inline-flex;
             flex-direction: column;
+            align-items: flex-end;
             justify-content: flex-end;
-
+            height: 77rem;
             @media screen and (max-width: 991px) {
                 align-items: center;
                 width: 100%;
             }
             a {
+                position: relative;
                 display: block;
                 @include smallText;
                 text-align: right;
@@ -52,6 +48,7 @@
         }
 
         .slider-item-meta {
+            width: 100%;
             margin-bottom: 3.6rem;
             padding-left: 3.6rem;
             padding-right: 3.6rem;
@@ -63,9 +60,15 @@
         }
 
         .slider-img {
-            position: absolute;
-            z-index: 2;
-            height: 77rem;
+            // position: absolute;
+            // z-index: 2;
+            // height: 77rem;
+        }
+        .flickity-page-dots {
+            bottom: 40px;
+            .dot {
+                background: $white;
+            }
         }
     }
 }
@@ -73,7 +76,7 @@
 // CSS FOR COMING SOON SLIDER
 .coming-soon {
     background-color: black;
-    color: white;
+    color: $white;
 
     .slider-img {
         opacity: 0%;
@@ -83,27 +86,19 @@
 
 // CSS FOR NEW RELEASES
 
-.new-releases {
-    .slider-item {
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        width: 100%;
-    }
+.new-releases .slider-item {
+    background-position: center center;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    width: 100%;
 }
 
 // CSS FOR BACKLIST SLIDER
 .backlist .slider-item {
-    justify-content: center !important;
-    align-items: center;
     width: 100%;
 
-    .slider-item-meta {
-        // height: 90%;
-        // transform: translateY(70%);
-    }
-
-    img.slider-img {
+    figure {
+        padding: 14rem;
         height: 58rem;
         width: auto;
         box-shadow: 0 0.5vw 1.5vw rgba(0, 0, 0, 0.19), 0 0.4vw 0.8vw rgba(0, 0, 0, 0.23);

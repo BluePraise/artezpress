@@ -185,14 +185,27 @@ jQuery(document).ready(function($) {
         });
     }
 
+    // FOR FRONTPAGE CAROUSEL
+
     $('.main-carousel').flickity({
         cellSelector: '.slider-item',
-        setGallerySize: false,
+        setGallerySize: true,
+        resize: true,
         wrapAround: false,
+        watchCSS: true,
+        fade: true,
         contain: true,
-        groupCells: false,
         draggable: false,
+        prevNextButtons: false,
         pageDots: true,
+    });
+
+
+    var flkty = $carousel.data('flickity');
+
+    flkty.on( 'resize', function() {
+        var isSingleSlide = flkty.slides.length < 2;
+        $carousel.toggleClass( 'is-single-slide', isSingleSlide );
     });
 
 

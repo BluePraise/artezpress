@@ -1,7 +1,7 @@
 
 <div class="carousel-container new-releases">
 <h2 class="slider-title"><?php _e('New Releases', 'artezpress'); ?></h2>
-<div class="main-carousel">
+<div class="main-carousel" data-flickity=''>
 
 <?php 
 
