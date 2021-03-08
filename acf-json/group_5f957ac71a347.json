@@ -672,11 +672,18 @@
         {
             "key": "field_601956aab5c18",
             "label": "Add an Additional Edition",
-            "name": "additional_editions",
+            "name": "additional_editionss",
             "type": "repeater",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5f7adc2a6b0d9",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
