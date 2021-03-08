@@ -34,13 +34,14 @@ body {
     -webkit-font-kerning: normal;
     font-kerning: normal;
     font-feature-settings: "kern"on, "kern", "ss01";
-    letter-spacing: 0.012rem;
+    letter-spacing: 0.015rem;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     color: $black;
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+    // solution for transparent menu is in main-menu.scss */
     @include baseText;
 }
 
@@ -86,9 +87,14 @@ input[type=file],
 input[type=text],
 input[type=password],
 textarea {
+    height: 4.5rem;
     background: transparent;
     border-top: none;
     border-right: none;
     border-left: none;
     border-bottom: $border;
+}
+
+input::placeholder {
+    @include smallText;
 }

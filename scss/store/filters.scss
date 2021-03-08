@@ -1,275 +1,235 @@
-// SEARCH AND FILTERS BAR
-
-
-// Set 'Book Archive' Margin
-.site-main.book-archive {
-  padding-top: calc((var(--bar-height)) + 3.2rem);
-}
-
-
-// Search Bar Block
 .search-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  padding: 0 16px;
-  background-color: $greyTransparent;
   z-index: 1;
-
-  &.is-fixed {
-    position: fixed;
-  }
-
-  // &::after {
-  //   content: " ";
-  //   position: absolute;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 1.6rem;
-  //   bottom: -1.6rem;
-  //   @include gradient(255, 255, 255, top);
-  // }
-
-  &__inner {
-    position: relative;
-    margin-top: calc(6rem - ((#{$h2-line-height-rem} - #{$h2-font-size-rem}) / 2));
-
-    @media (min-width: 1025px) and (max-width: 1440px) {
-      padding-left: 1.6rem;
-      padding-right: 1.6rem;
-    }
-  }
+  padding-top: 6rem;
+  background-color: $white;
 }
 
-
-// Search Bar Toggle
-.search-bar__toggle {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  background: 0 0;
-  border: none;
-  display: flex;
-  align-items: center;
-
-  @media (min-width: 1025px) {
-    padding: 3.2rem;
-  }
-  @media (max-width: 1024px) {
-    padding: 1.6rem;
-  }
-
-  &-icon {
-    width: 1.8rem;
-    margin-right: .8rem;
-  }
-
-  span {
-    font-family: $extended-font;
-    font-size: $largeText-font-size-rem;
-    font-weight: 500;
-    letter-spacing: 0rem;
-  }
-}
-
-
-// Search Bar Components
-
-// Serach Form
-.search-section {
-  margin-bottom:  4.4rem;
-
-  &__inner {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-}
 
 .main-search {
-  width: 64rem;
-  max-width: 100%;
-  display: flex;
-  align-items: center;
-
-  &__input {
-    @include baseH2;
-    width: 100%;
-    line-height: 1.1;
-
-    &::placeholder {
-      color: $black;
-    }
-  }
+    position: relative;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6rem;
 
   input[type=search] {
-    border: none;
-    padding: 0;
+    border: none !important;
+    flex: 1 auto;
+    padding-bottom: 3px;
+    &::placeholder {
+      pointer-events: none;
+      font-family: $extended-font;
+      text-align: center;
+      color: $black;
+      font-size: 3.5rem;
+      line-height: 4.8rem;
+    }
   }
 
   button {
-    height: 3.3rem;
-    width: 3.3rem;
-  }
-}
-
-
-// Typed
-.fake-typewriter {
-  position: absolute;
-  top: 0;
-  background: $white;
-
-  &.is-paused {
-    display: none;
+    appearance: none;
+    background: none;
+    border: none;
   }
 
-  &__input {
-    position: relative;
-
-    &:not(:first-child)::after {
-      content: "";
-      display: block;
-      position: absolute;
-      top: .4rem;
-      right: -2px;
-      width: 1px;
-      height: $h2-font-size-rem;
-      animation: 1s blink step-end infinite;
-    }
+  svg {
+    width: auto;
+    height: auto;
   }
-}
-
-@keyframes "blink" {
-  from, to {
-    background-color: transparent;
-  }
-  50% {
-    background-color: $black;
-  }
-}
-
-
-// Filter Headers
-.filter-section {
-  margin-bottom:  3.2rem;
-}
-
-.filter-headers-container {
-  margin-bottom: 2rem;
 }
 
 .filter-header {
-  @include baseMenuText;
-  display: inline-block;
+    display: inline-block;
+    margin-right: 3.6rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease-in;
+    &:last-child {
+        margin-right: 0;
+    }
+    &:hover {
+        cursor: pointer;
+        opacity: 1;
+    }
+    &.active {
+        opacity: 1;
+    }
+}
+
+.filter-list {
+    line-height: 40px;
+    height: 40px;
+    display: none;
+    overflow: hidden;
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0.05, 0, 0, 1);
+    will-change: transform;
+    align-items: flex-start;
+    white-space: nowrap;
+    width: 100%;
+}
+
+
+.hidden-filter-authors {
+  display: none;
+}
+
+.tag-pill {
+    position: relative !important;
+    margin-right: .8rem;
+    &.active {
+      background: black;
+      color: white;
+    }
+}
+
+
+// Structure
+
+
+// .sidebar-filters {
+//   padding-right: 6.4rem;
+
+//   @media (min-width: 1025px) {
+//     grid-column: 1 / span 1;
+//   }
+
+//   @media (min-width: 768px) and (max-width: 1024px) {
+//     grid-column: 2 / span 1;
+//     grid-row: 2;
+//   }
+
+//   @media (max-width: 767px) {
+//     grid-column: 2 / span 1;
+//     grid-row: 2;
+//   }
+// }
+
+// .search-and-tags {
+//   grid-column: 2 / span 1;
+// }
+
+// end of Structure
+
+
+
+
+.site-main.products {
+  margin-top: 29.3rem;
+}
+
+.filter-tags {
+  margin-top: 2rem;
+  margin-bottom: 6rem;
   position: relative;
-  opacity: $inactiveOpacity;
-  margin-right: 2rem;
-
-  &:hover {
-    cursor: pointer;
-    opacity: $activeOpacity;
+  &__inner {
+    overflow: hidden;
+    max-width: $default-container-width;
   }
-  &.active {
-    opacity: $activeOpacity;
+  &__item {
+    margin-right: .8rem;
   }
 
-  &:not(.filter-header__reset):not(.active) {
-    padding-right: 1.8rem;
+  &__prev,
+  &__next {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: 2000;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 
+    &::before,
     &::after {
-      content: "˃";
-      display: block;
-      position: absolute;
-      right: 0;
-      top: 0;
+      height: 100%;
+      width: 50px;
+      content: "";
+      pointer-events: none;
+    }
+
+    button {
+      background: white;
+      border: none;
+      height: 100%;
     }
   }
 
-  &:not(.filter-header__reset).active {
-    padding-right: 1.8rem;
+  &__prev {
+    left: 0;
+    display: none;
+
+    &::before {
+      content: none;
+    }
 
     &::after {
-      content: "˅";
-      display: block;
-      position: absolute;
-      right: -.4rem;
-      top: 0;
+      background: linear-gradient(to right,
+          rgba(255, 255, 255, 0.98) 20%,
+          rgba(255, 255, 255, 0) 80%);
+    }
+
+    button {
+      transform: rotate(180deg);
     }
   }
 
-  &.filter-header__reset {
-    padding-right: 2.2rem;
+  &__next {
+    right: -1em;
 
     &::after {
-      content: "×";
-      display: block;
-      position: absolute;
-      right: 0;
-      top: 0;
+      content: none;
+    }
+
+    &::before {
+      background: linear-gradient(to left,
+          rgba(255, 255, 255, 0.98) 20%,
+          rgba(255, 255, 255, 0) 80%);
     }
   }
 }
 
+.js-hide-onscroll {
+  z-index: 1;
+  top: 0rem;
+  background: white;
+  transition: all 0.3s ease-in;
 
-// Filters Slider
-.filter-list {
-  height: 3.6rem;
-
-  &-item {
-    padding-right: .8rem;
-
-    a {
-      display: block;
-      white-space: nowrap;
-    }
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 
-  .flickity-prev-next-button {
-    border-radius: 0;
-    width: 4.8rem;
-    height: 4.8rem;
-    background: $white;
+  &.shown {
+    opacity: 1;
+    visibility: visible;
+  }
+}
 
-    &:disabled {
-      opacity: 0;
-    }
+.js-show-onscroll {
+  transition: all 0.3s ease-in;
 
-    &:active {
-      opacity: 1;
-    }
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 
-    @media (min-width: 1025px) {
-      &.next {
-        right: -4.8rem;
-      }
+  &.shown {
+    opacity: 1;
+    visibility: visible;
+  }
+}
 
-      &.previous {
-        left: -4.8rem;
-      }
-    }
+.fixed-search-toggle {
+  position: absolute;
+  display: flex;
+  opacity: 0;
+  cursor: pointer;
 
-    @media (max-width: 1024px) and (min-width: 768px) {
-      &.next {
-        right: -1.6rem;
-      }
-
-      &.previous {
-        left: -1.6rem;
-      }
-    }
-
-    @media (max-width: 767px) {
-      &.next {
-        right: -2.4rem;
-      }
-
-      &.previous {
-        left: -2.4rem;
-      }
-    }
-
+  svg {
+    margin-right: 10px;
+    width: auto;
+    height: auto;
   }
 }
