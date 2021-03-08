@@ -1,23 +1,25 @@
-<div class="filter-tags">
-		<div class="filter-list filter-tags__list js-filter-elements filter-tags" style="display:block;">
-			<?php foreach ($terms as $term) : ?>
-				<a href="<?= get_term_link($term->term_id, 'product_tag'); ?>" class="js-filter-item filter-tags__item tag-pill black-on-white" data-filter="product_tag-<?= $term->slug ?>" data-id="<?= $term->term_id ?>"><?=  _e($term->name); ?></a>
-			<?php endforeach; ?>
+<div class="filter-list">
+	<?php foreach ($terms as $term) : ?>
+		<div class="filter-list-item filter-list__tags-item tags flickity">
+			<a href="<?= get_term_link($term->term_id, 'product_tag'); ?>" class="tag-pill black-on-white js-filter-item" data-id="<?= $term->term_id ?>" data-filter="product_tag-<?= $term->slug ?>"><?=  _e($term->name); ?></a>
 		</div>
-        <div class="filter-list js-filter-elements filter-categories">
-            <?php foreach ($categories as $cat) : ?>
-                <a href="" class="js-filter-item sidebar-filters__item tag-pill black-on-white" role="button" data-id="<?= $cat->term_id ?>" data-filter="product_cat-<?= $cat->slug ?>"><?= _e($cat->name); ?></a>
-            <?php endforeach; ?>
-        </div>
-        <div class="filter-list filter-year__list js-filter-elements filter-years" data-id="<?= $cat->term_id ?>">
-            <?php foreach ($years as $year) : ?>
-                <a class="js-filter-item sidebar-filters__item tag-pill black-on-white" href="" role="button" data-filter="year-<?= $year ?>"><?= $year ?></a>
-            <?php endforeach; ?>
-        </div>
-        <div class="filter-list filter-language__list js-filter-elements filter-language">
-            <?php foreach ($languages as $lang) : ?>
-                <a class="js-filter-item sidebar-filters__item tag-pill black-on-white" href="" role="button" data-filter="<?= $lang ?>"><?= _e($lang); ?></a>
-            <?php endforeach; ?>
-        </div>
-	
+	<?php endforeach; ?>
+
+  <?php foreach ($categories as $cat) : ?>
+		<div class="filter-list-item filter-list__categories-item categories" style="display:none;">
+      <a href="" class="tag-pill black-on-white js-filter-item" role="button" data-id="<?= $cat->term_id ?>" data-filter="product_cat-<?= $cat->slug ?>"><?= _e($cat->name); ?></a>
+		</div>
+  <?php endforeach; ?>
+
+  <?php foreach ($years as $year) : ?>
+		<div class="filter-list-item filter-list__years-item year" style="display:none;">
+      <a href="" class="tag-pill black-on-white js-filter-item" role="button" data-id="<?= $year ?>" data-filter="year-<?= $year ?>"><?= $year ?></a>
+		</div>
+  <?php endforeach; ?>
+
+  <?php foreach ($languages as $lang) : ?>
+		<div class="filter-list-item filter-list__language-item languages" style="display:none;">
+      <a href="" class="tag-pill black-on-white js-filter-item" role="button" data-id="<?= $lang ?>" data-filter="language-<?= $lang ?>"><?= _e($lang); ?></a>
+		</div>
+  <?php endforeach; ?>
 </div>

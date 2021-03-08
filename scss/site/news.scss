@@ -4,7 +4,9 @@
 // News archive grid
 
 .news-grid-masonry {
-  margin: 0 -1.6rem;
+  @media (min-width: 768px) {
+    margin: 0 -1.6rem;
+  }
 }
 
 .news-item {
