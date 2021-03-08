@@ -184,15 +184,28 @@ jQuery(document).ready(function($) {
         });
     }
 
-    $(".owl-carousel").owlCarousel({
-        items: 1,
-        slideBy: 2,
-        loop: true,
-        autoplay: true,
-        dots: true,
-        lazyLoad: true,
+    // FOR FRONTPAGE CAROUSEL
+
+    $('.main-carousel').flickity({
+        cellSelector: '.slider-item',
+        setGallerySize: true,
+        resize: true,
+        wrapAround: false,
+        watchCSS: true,
+        fade: true,
+        contain: true,
+        draggable: false,
+        prevNextButtons: false,
+        pageDots: true,
     });
 
+
+    var flkty = $carousel.data('flickity');
+
+    flkty.on('resize', function () {
+        var isSingleSlide = flkty.slides.length < 2;
+        $carousel.toggleClass('is-single-slide', isSingleSlide);
+    });    
 
     $(".news-grid-masonry").masonry({
 		// options
@@ -239,10 +252,10 @@ jQuery(document).ready(function($) {
 		// SEARCH BAR CONATINER
 
 		var searchBar = $('.js-scroll-hide'),
-				searchToggle = $('.js-search-toggle'),
-				bookArchive = $('.js-products-container'),
-				barHeight = $('.search-bar').height(),
-				typedContainer = $(".js-fake-typewriter");
+            searchToggle = $('.js-search-toggle'),
+            bookArchive = $('.js-products-container'),
+            barHeight = $('.search-bar').height(),
+            typedContainer = $(".js-fake-typewriter");
 
 
 		// Get height of Search Bar and use as css variable for 'Book Archive' padding-top
@@ -257,27 +270,27 @@ jQuery(document).ready(function($) {
 		$(window).scroll(function(){
       if ($(this).scrollTop() > barHeight) {
 
-				// Turn Bar to fixed position
-				searchBar.fadeOut(100, function() {
-			    $(this).addClass("is-fixed");
-				});
-				// Show the Search toggle
-				searchToggle.fadeIn(100);
-				// and stop typed
-				typedContainer.addClass('is-paused');
-				typed.stop();
+        // Turn Bar to fixed position
+        searchBar.fadeOut(100, function() {
+        $(this).addClass("is-fixed");
+        });
+        // Show the Search toggle
+        searchToggle.fadeIn(100);
+        // and stop typed
+        typedContainer.addClass('is-paused');
+        typed.stop();
 
       } else {
 
-				// When scrolling back up remove the bar fixed position
-				searchBar.fadeIn(0, function() {
-			    $(this).removeClass("is-fixed");
-				});
-				// Hide the Search toggle
-				searchToggle.fadeOut(100);
-				// and stop typed
-				typedContainer.removeClass('is-paused');
-				typed.start();
+        // When scrolling back up remove the bar fixed position
+        searchBar.fadeIn(0, function() {
+        $(this).removeClass("is-fixed");
+        });
+        // Hide the Search toggle
+        searchToggle.fadeOut(100);
+        // and stop typed
+        typedContainer.removeClass('is-paused');
+        typed.start();
 
       }
 		});
