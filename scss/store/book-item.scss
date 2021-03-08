@@ -1,110 +1,145 @@
-// if Store.css is not sufficient this is
-// Where the deviating styles for the book items go
+// THIS IS WHERE THE PRODUCT CHANGES TEXT COLOR.
+// PLEASE DO NOT MESS WITH THIS.
 
-.btn span.edition-language {
-    margin-right: 16px;
+// Colors
+
+body.single-product.set-text-black,
+.set-text-black,
+.set-to-black a  {
+    color: var(--set-to-black) !important;
 }
 
-.block-price .d-block {
-    margin-top: 1.2rem;
-} 
-.block-price form.cart {
+.set-text-white,
+.set-to-white a  {
+    color: var(--set-to-white) !important;
+}
 
-    margin-top: 1.2rem;
+body.single-product.set-text-white {
+    color: $white !important;
 
-    &:first-child {
-        margin-top: 0;
+    a.go-back svg {
+        fill: $white !important;
+    }
+
+    .btn.white-on-black {
+        background: $white;
+        color: $black;
     }
 }
 
 
+// SINGLE BOOK ITEM
 
-// Added because WooCommerce adds a p wrapper around 
-// price output. No time to investigate an elegant solution
-// at the moment.
-.block-price .single_add_to_cart_button p.price {
-    display: inline-block;
-}
+// .book-item-page {
+//   overflow: hidden;
+// }
 
-// single product (book item pages)
-.product .images {
+
+// Slider block
+.single-product .book-slider {
+    margin-top: 6rem;
     margin-bottom: 8rem;
-    height: 85vh;
 }
 
-.book-item-title {
+
+// Text blocks
+.book-item__single {
+
+  p {
+    @include largeText;
+
+    &:not(:last-child) {
+      margin-bottom: $largeText-line-height-rem;
+    }
+  }
+
+  .book-item-available {
+    margin-bottom: 4.8rem;
+
+    a {
+      @include underlineText;
+    }
+  }
+
+  .book-item-title {
     margin-bottom: 6rem;
 
     .book-item-subtitle {
-        display: block;
+      display: block;
     }
-}
+  }
 
-.book-item a img {
+  .book-item-author {
+    margin-bottom: $largeText-line-height-rem;
+  }
 
-    @include boxShadow;
-}
-
-.book-item-available {
-    margin-bottom: 4.8rem;
-}
-
-.book-item__single .book-item-author {
-    margin-bottom: 4rem;
-}
-
-.book-item-description {
+  .book-item-description {
     margin-bottom: 8rem;
+  }
 
-    &:first-child {
-        margin: 0 auto 0rem auto;
-    }
-
-    // all the anchorlinks get an underline
-    a {
-        @include underlineText;
-    }
-
-    // spacing for all the p tags
-    p {
-        margin-bottom: 3rem;
-
-        // but not the last child
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-}
-
-// colophon and specs
-// this is found in woocommerce/meta.php 
-
-.book-item-meta {
-    margin-top: 10rem;
+  // colophon and specs
+  // this is found in woocommerce/meta.php
+  .book-item-meta {
+    margin-bottom: 8rem;
     @include smallText;
-}
 
-.book-item-meta .block {
-    margin-bottom: 2.3rem;
-
-    &:last-child {
-        margin-bottom: 0;
+    .grid-container {
+      @include grid(2, 1fr, 3.2rem, 3.2rem);
     }
+
+    .block:not(:last-child) {
+      margin-bottom: $smallText-line-height-rem;
+    }
+
+    .label-header,
+    .colophon-value {
+      display: block;
+    }
+  }
 }
 
-.book-item-related-new .news-item {
-    width: 50%;
+
+// related news block
+.related-news {
+  max-width: $l-container-width;
+  margin: 0 auto;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
 }
 
-.current-tag-list {
+
+
+// related books block
+.related-books {
+  max-width: $l-container-width;
+  margin: 0 auto;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+
+  .current-tag-list {
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 4rem;
 
     li {
-        margin-left: 3.2rem;
+      margin-bottom: 1.2rem;
 
-        &:first-child {
-            margin-left: 0;
-        }
+      &:not(:last-child) {
+        margin-right: .8rem;
+      }
     }
+  }
+
+  .book-grid {
+    @include grid(4, 1fr, 0, 3.2rem);
+
+    .book-item-card {
+      @media (min-width: 768px) {
+        grid-column: auto / span 1;
+      }
+      @media (max-width: 767px) {
+        grid-column: auto / span 2;
+      }
+    }
+  }
 }

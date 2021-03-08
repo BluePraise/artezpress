@@ -1,52 +1,60 @@
 .woocommerce-mini-cart.cart-list {
     list-style: none;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
 }
 
 .mini-cart-counter {
-    margin-bottom: 50px;
+    margin-bottom: $menuText-line-height-rem;
 }
 
 .mini_cart_item {
     display: flex;
+
+    a.remove {
+      height: auto;
+      width: 2rem;
+      line-height: $menuText-line-height-rem;
+    }
+
     .quantity {
         display: flex;
-        margin-left: 10px;
-        line-height: 1.6;
-        justify-content: space-evenly;
+        margin-left: 1rem;
         width: 100%;
+
         span.mc-product-quantity {
-            flex: 0 0 65px;
-            text-align: right;
-            margin-left: auto;
+            margin-left: 1.6rem;
         }
+
         span.mc-product-total {
-            flex: 0 0 120px;
+            align-self: flex-end;
+            margin-left: auto;
             text-align: right;
         }
     }
+
     a.remove::before {
         display: inline-block;
-        content: '✕';
-        font-family: 'Lars', Arial, Helvetica, sans-serif;
-        color: #000;
-        font-weight: 200;
-        font-size: 16px;
-        line-height: 2;
+        content: '×';
+        color: $black;
+        @include baseMenuText;
     }
+}
+
+.woocommerce-mini-cart {
+  margin-bottom: calc(#{$menuText-line-height-rem} - 1px);
 }
 
 hr.mini-divider {
-    width: 8rem;
+    display: block;
     float: right;
-    border: 1px solid;
-    margin: 20px 0;
+    width: 8rem;
+    margin: 0 0 calc(#{$menuText-line-height-rem} - 1px) 0;
+    border: $thinBorder;
 }
 
 p.woocommerce-mini-cart__total.total {
-    margin-top: 50px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    padding-left: 10px;
 }

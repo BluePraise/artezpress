@@ -60,10 +60,10 @@ if (post_password_required()) {
 		</g>
 	</svg>
 </a>
-<main id="product-<?php the_ID(); ?>" <?php wc_product_class('', $product); ?>>
+<main id="product-<?php the_ID(); ?>" <?php wc_product_class('book-item-page', $product); ?>>
 
 	<?php woocommerce_show_product_images(); ?>
-	<div class="post-container book-item__single">
+	<div class="book-item__single post-container container-s">
 		<?php if ($available) : ?>
 			<div class="book-item-available"><?php echo $available; ?></div>
 		<?php endif ?>
@@ -92,7 +92,7 @@ if (post_password_required()) {
 			<div class="book-item-description">
 				<?php echo $description; ?>
 			</div>
-			
+
 			<?php woocommerce_template_single_meta(); ?>
 
 

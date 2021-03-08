@@ -1,5 +1,7 @@
 // MIXINS
 
+
+
 // Grids
 
 @mixin grid($cols, $fr, $rgap, $cgap) {
@@ -10,55 +12,98 @@
 }
 
 
+
 // Typography
 
 @mixin largeText {
-  @include Lars(2.1, 3);
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  @include Lars($largeText-font-size, $largeText-line-height);
+  font-family: $default-font;
   font-weight: 400;
-  // font-size: 2.1rem;
-  // line-height: 3rem;
-}
-
-@mixin menuText {
-  @include Lars(2, 2.8);
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  // font-size: 2rem;
-  // line-height: 2.8rem;
 }
 
 @mixin smallText {
-  @include Lars(1.7, 2.3);
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  @include Lars($smallText-font-size, $smallText-line-height);
+  font-family: $default-font;
   font-weight: 400;
-  // font-size: 1.7rem;
-  // line-height: 2.3rem;
 }
 
+@mixin menuText {
+  @include Lars($menuText-font-size, $menuText-line-height);
+  font-family: $extras-font;
+  font-weight: 400;
+}
+
+@mixin baseText {
+  font-family: $default-font;
+  font-weight: 400;
+  font-size: $largeText-font-size-rem;
+  line-height: $largeText-line-height-rem;
+}
+
+@mixin baseSmallText {
+  font-family: $default-font;
+  font-weight: 400;
+  font-size: $smallText-font-size-rem;
+  line-height: $smallText-line-height-rem;
+}
+
+@mixin baseMenuText {
+  font-family: $extras-font;
+  font-weight: 400;
+  font-size: $menuText-font-size-rem;
+  line-height: $menuText-line-height-rem;
+}
+
+@mixin h2 {
+  @include Lars($h2-font-size, $h2-line-height-rem);
+  font-family: $extended-font;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+@mixin baseH2 {
+  font-size: $h2-font-size-rem;
+  line-height: $h2-line-height-rem;
+  font-family: $extended-font;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+
+/* what is this? */
 @mixin microText {
   @include Lars(1.4, 2.3);
-  font-family: 'Lars', Helvetica, Arial, sans-serif;
+  font-family: $default-font;
   font-weight: 400;
-  // font-size: 1.4rem;
-  // line-height: 2.3rem;
 }
+
 
 
 // Underline
 
 @mixin underlineText {
-  background-image: linear-gradient(to bottom, currentColor 50%, transparent 50%);
-  background-position: 0 1.2em;
-  background-repeat: repeat-x;
-  background-size: 2px 1em;
+  text-decoration: underline;
+  text-underline-offset: .15em;
 }
 
-@mixin boxShadow {
-  box-shadow: 0 0.5vw 1.5vw rgba(0, 0, 0, 0.19), 0 0.4vw 0.8vw rgba(0, 0, 0, 0.23);
-}
+
 
 // Buttons
+
+@mixin solidButton($rad, $padH, $padW) {
+  background: $black;
+  border: none;
+  border-radius: $rad;
+  text-decoration: none;
+  padding: $padH $padW;
+  color: $white;
+
+  &:hover {
+    opacity: $hoverOpacity;
+  }
+}
 
 @mixin clearButton($rad, $padH, $padW) {
   background: transparent;
@@ -72,15 +117,103 @@
   }
 }
 
-@mixin darkButton($rad, $padH, $padW) {
-  background: $black;
-  border: 2px solid $black;
-  border-radius: $rad;
-  text-decoration: none;
-  padding: $padH $padW;
-  color: $white;
 
-  &:hover {
-    opacity: $hoverOpacity;
+
+// Block Shadow
+
+@mixin boxShadow {
+  box-shadow: 0 0.5vw 1.5vw rgba(0, 0, 0, 0.12),
+              0 0.4vw 0.8vw rgba(0, 0, 0, 0.18);
+}
+
+@mixin boxShadowLarge {
+  box-shadow: 0 1vw 3vw rgba(0, 0, 0, 0.1),
+              0 0.8vw 1.6vw rgba(0, 0, 0, 0.16);
+}
+
+// Gradients
+
+@mixin gradient($r, $g, $b, $position) {
+  background-image: linear-gradient(to $position,
+      rgba($r, $g, $b, 0) 0%,
+      rgba($r, $g, $b, 0.013) 8.1%,
+      rgba($r, $g, $b, 0.049) 15.5%,
+      rgba($r, $g, $b, 0.104) 22.5%,
+      rgba($r, $g, $b, 0.175) 29%,
+      rgba($r, $g, $b, 0.259) 35.3%,
+      rgba($r, $g, $b, 0.352) 41.2%,
+      rgba($r, $g, $b, 0.45) 47.1%,
+      rgba($r, $g, $b, 0.55) 52.9%,
+      rgba($r, $g, $b, 0.648) 58.8%,
+      rgba($r, $g, $b, 0.741) 64.7%,
+      rgba($r, $g, $b, 0.825) 71%,
+      rgba($r, $g, $b, 0.896) 77.5%,
+      rgba($r, $g, $b, 0.9) 84.5%,
+      rgba($r, $g, $b, 0.9) 100%);
+  background-size: 100% 100%;
+  background-position: $position;
+  background-repeat: no-repeat;
+}
+
+@mixin gradientRgb($rgb, $position) {
+  background-image: linear-gradient(to $position,
+      rgba($rgb, 0) 0%,
+      rgba($rgb, 0.013) 8.1%,
+      rgba($rgb, 0.049) 15.5%,
+      rgba($rgb, 0.104) 22.5%,
+      rgba($rgb, 0.175) 29%,
+      rgba($rgb, 0.259) 35.3%,
+      rgba($rgb, 0.352) 41.2%,
+      rgba($rgb, 0.45) 47.1%,
+      rgba($rgb, 0.55) 52.9%,
+      rgba($rgb, 0.648) 58.8%,
+      rgba($rgb, 0.741) 64.7%,
+      rgba($rgb, 0.825) 71%,
+      rgba($rgb, 0.896) 77.5%,
+      rgba($rgb, 0.9) 84.5%,
+      rgba($rgb, 0.9) 100%);
+  background-size: 100% 100%;
+  background-position: $position;
+  background-repeat: no-repeat;
+}
+
+// Book spine
+@mixin gradientSpine($r, $g, $b, $position) {
+  background-image: linear-gradient(to $position,
+      rgba($r, $g, $b, 0) 0%,
+      rgba($r, $g, $b, 0.013) 8.1%,
+      rgba($r, $g, $b, 0.049) 15.5%,
+      rgba($r, $g, $b, 0.104) 22.5%,
+      rgba($r, $g, $b, 0.175) 29%,
+      rgba($r, $g, $b, 0.259) 35.3%,
+      rgba($r, $g, $b, 0.352) 41.2%,
+      rgba($r, $g, $b, 0.45) 47.1%,
+      rgba($r, $g, $b, 0.55) 52.9%,
+      rgba($r, $g, $b, 0.648) 58.8%,
+      rgba($r, $g, $b, 0.741) 64.7%,
+      rgba($r, $g, $b, 0.85) 71%,
+      rgba($r, $g, $b, 0.921) 77.5%,
+      rgba($r, $g, $b, 0.99) 84.5%,
+      rgba($r, $g, $b, 1) 100%);
+  background-size: 100% 100%;
+  background-position: $position;
+  background-repeat: no-repeat;
+}
+
+
+
+// Mobile Menu Background Color
+
+@mixin MobileMenuColors($book: true) {
+  @if $book {
+    background-color: rgba(var(--book-background), 0.9);
+    // &::before {
+    //   @include gradientRgb(var(--book-background), bottom);
+    // }
+  } @else {
+    background-color: $greyTransparent;
+    // &::before {
+    //   @include gradient(242, 242, 242, bottom);
+    // }
   }
 }

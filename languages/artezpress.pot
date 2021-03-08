@@ -1,9 +1,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: ArtEzPress\n"
+"Project-Id-Version: artezpress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 11:41+0000\n"
+"POT-Creation-Date: 2021-02-23 18:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,8 +16,48 @@ msgstr ""
 "X-Loco-Version: 2.5.0; wp-5.6\n"
 "X-Domain: artezpress"
 
+#: woocommerce/single-product/meta.php:74
+msgid " Edition"
+msgstr ""
+
+#. Name of the template
+msgid "4040"
+msgstr ""
+
+#: template-homepage.php:106
+msgid "<p>Currently there is no news.</p>"
+msgstr ""
+
+#: inc/templateparts/nav-pages.php:9
+msgid "About"
+msgstr ""
+
+#: woocommerce/cart/cart.php:155
+msgid "ArtEZ students and staff are eligible for a discount."
+msgstr ""
+
+#: inc/templateparts/nav-pages.php:33
+msgid "ArtEZ University of the Arts"
+msgstr ""
+
 #. Name of the theme
 msgid "ArtEzPress"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:42
+msgid "Billing Address"
+msgstr ""
+
+#: functions.php:482
+msgid "Book Cover"
+msgstr ""
+
+#: template-homepage.php:38 inc/templateparts/nav-pages.php:7
+msgid "Books"
+msgstr ""
+
+#: footer.php:20
+msgid "Cart"
 msgstr ""
 
 #. Name of the template
@@ -28,6 +68,22 @@ msgstr ""
 msgid "Child Theme of Storefront"
 msgstr ""
 
+#: woocommerce/single-product/meta.php:26
+msgid "Colophon and Specifications"
+msgstr ""
+
+#: woocommerce/global/form-login.php:57
+msgid "Forgot password"
+msgstr ""
+
+#: inc/templateparts/nav-pages.php:6
+msgid "Home"
+msgstr ""
+
+#: inc/templateparts/nav-pages.php:28
+msgid "How Can We Help?"
+msgstr ""
+
 #. URI of the theme
 msgid "http://BluePraise/artezpress"
 msgstr ""
@@ -36,76 +92,71 @@ msgstr ""
 msgid "https://magalielinda.me/"
 msgstr ""
 
-#: content-none.php:34
-msgid ""
-"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
-"searching can help."
-msgstr ""
-
 #. Author of the theme
 msgid "Magalie Chetrit"
 msgstr ""
 
-#: content-none.php:14
-msgid "Nothing Found"
-msgstr ""
-
-#: 404.php:22
-msgid ""
-"Nothing was found at this location. Try searching, or check out the links "
-"below."
-msgstr ""
-
-#: 404.php:19
-msgid "Oops! That page can&rsquo;t be found."
-msgstr ""
-
-#: 404.php:59 404.php:61
-msgid "Popular Products"
-msgstr ""
-
-#: 404.php:45 404.php:47
-msgid "Product Categories"
-msgstr ""
-
-#: 404.php:39
-msgid "Promoted Products"
-msgstr ""
-
-#. 1: URL
-#: content-none.php:23
-#, php-format
-msgid ""
-"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
-
-#: 404.php:25
-msgid "Search"
-msgstr ""
-
-#. %s: search term
-#: search.php:19
-#, php-format
-msgid "Search Results for: %s"
-msgstr "Zoekresultaten voor: %s"
-
-#: content-none.php:29
-msgid ""
-"Sorry, but nothing matched your search terms. Please try again with some "
-"different keywords."
-msgstr ""
-
+#: template-homepage.php:89 inc/templateparts/nav-pages.php:8
 msgid "News"
 msgstr ""
 
-msgid "See All News"
+#: header.php:85 header.php:107
+msgid "Out of Print"
 msgstr ""
 
-msgid "Books"
+#: inc/templateparts/nav-pages.php:30
+msgid "Privacy Policy"
 msgstr ""
 
+#: inc/templateparts/news-excerpt.php:41 blocks/postbuilding/index.php:26
+msgid "Read More"
+msgstr ""
+
+#: functions.php:484
+msgid "Remove Book Cover"
+msgstr ""
+
+#: inc/templateparts/nav-pages.php:3
+msgid "Search"
+msgstr ""
+
+#: template-homepage.php:83
 msgid "See All Books"
 msgstr ""
 
-msgid "Cart"
+#: template-homepage.php:104
+msgid "See All News"
+msgstr ""
+
+#: functions.php:483
+msgid "Set Book Cover"
+msgstr ""
+
+#: woocommerce/checkout/review-order.php:93
+msgid "Shipping"
+msgstr ""
+
+#: header.php:126
+msgid "Shop"
+msgstr ""
+
+#: inc/templateparts/nav-pages.php:12
+msgid "Subscribe To Our Newsletter"
+msgstr ""
+
+#: inc/templateparts/nav-pages.php:29
+msgid "Terms and Conditions"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:105
+#: woocommerce/single-product/cart/mini-cart.php:100
+msgid "There are no items in the cart."
+msgstr ""
+
+#: functions.php:314
+msgid "Total:"
+msgstr ""
+
+#: functions.php:485
+msgid "Use as Book Cover"
 msgstr ""

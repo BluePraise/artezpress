@@ -1,98 +1,154 @@
-.features .carousel-container {
-    width: calc(100%/3);
-    position: relative;
-    z-index: 0;
-    h2 {
-        display: block;
-        position: absolute;
-        width: 100%;
-        z-index: 2;
-        text-align: center;
-        top: 6rem;
-        color: white;
+.features {
+    margin: 0 -16px;
+
+    // Mobile
+    @media screen and (max-width: 991px) {
+        flex-direction: column;
     }
 
-    a {
-        position: absolute;
-        display: block;
-        z-index: 10;
-        bottom: 3.2rem;
-        right: 3.6rem;
-        @include smallText;
-    }
-
-    h3.slider-item-title {
-        position: absolute;
-        z-index: 2;
-        bottom: 7rem;
-        padding-left: 3.6rem;
-        margin-bottom: 3.2rem;
-        color: white;
-    }
-    .owl-carousel .owl-item {
-        max-height: 77rem;
-    }
-    .slider-item-left {
+    .carousel-container {
+        width: calc(100%/3);
         position: relative;
-        background-color: black;
+        z-index: 0;
         height: 77rem;
+        padding-top: 4rem;
+        padding-bottom: 3.6rem;
 
-        a {
-            color: white;
+        @media screen and (max-width: 991px) {
+            width: 100%;
+        }
+
+        .owl-carousel {
+            position: absolute;
+            top: 0;
+            left: 0
+        }
+
+        h2.slider-title {
+            position: relative;
+            z-index: 10;
+        }
+
+        .slider-item {
+            position: relative;
+            z-index: 0;
+            height: 77rem;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            @media screen and (max-width: 991px) {
+                align-items: center;
+                width: 100%;
+            }
+            a {
+                display: block;
+                @include smallText;
+                text-align: right;
+                margin-right: 3.6rem;
+                margin-bottom: 8rem;
+                z-index: 100;
+            }
+        }
+
+        .slider-item-meta {
+            margin-bottom: 3.6rem;
+            padding-left: 3.6rem;
+            padding-right: 3.6rem;
+            z-index: 3;
+
+            h2 {
+                text-align: left;
+            }
         }
 
         .slider-img {
-            opacity: 0%;
+            position: absolute;
+            z-index: 2;
             height: 77rem;
         }
     }
 }
 
+// CSS FOR COMING SOON SLIDER
+.coming-soon {
+    background-color: black;
+    color: white;
+
+    .slider-img {
+        opacity: 0%;
+    }
+
+}
+
+// CSS FOR NEW RELEASES
+
+.new-releases {
+    .slider-item {
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+    }
+}
+
 // CSS FOR BACKLIST SLIDER
-.backlist .backlist-wrapper {
-    padding: 4rem 3.6rem;
-    height: 77rem;
+.backlist .slider-item {
+    justify-content: center !important;
+    align-items: center;
+    width: 100%;
+
+    .slider-item-meta {
+        // height: 90%;
+        // transform: translateY(70%);
+    }
 
     img.slider-img {
         height: 58rem;
         width: auto;
         box-shadow: 0 0.5vw 1.5vw rgba(0, 0, 0, 0.19), 0 0.4vw 0.8vw rgba(0, 0, 0, 0.23);
-        object-fit: fill;
-        margin: 0 auto;
     }
 }
 
-.featured-books {
-    flex-direction: column;
-    align-items: center;
-    margin: 8rem 3.6rem;
-    .book-grid {
-        width: 100%;
-        max-width: 100%;
-        display: inline-flex;
-        flex-direction: row;
-        margin-bottom: 4rem;
 
-        .book-item {
 
-            // anything else big
-            @media screen and (min-width: 992px) {
-                width: calc(100% / 6 - 3.2rem);
-                margin-right: 3.2rem;
+// Sections
+.excerpt-section {
+  margin: 8rem auto 16rem;
 
-                &:last-child {
-                    margin-right: 0;
-                }
-            }
-        }
-    }
-    .btn.btn-reg {
-        display: inline-block;
-        align-self: center;
-        @include clearButton(100px, 1rem, 3.1rem);
-    }
-}
-
-.latest-news {
+  &__expand {
+    width: 100%;
     text-align: center;
+
+    &-btn {
+      width: 22.8rem;
+    }
+  }
+}
+
+
+// Books Section
+.featured-books {
+  display: block;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+
+  .book-grid {
+    @include grid(12, 1fr, 6.4rem, 3.2rem);
+
+    .book-item-card {
+      @media (min-width: 1200px) {
+        grid-column: auto / span 2;
+      }
+      @media (min-width: 1025px) and (max-width: 1199px) {
+        grid-column: auto / span 2;
+      }
+      @media (min-width: 768px) and (max-width: 1024px) {
+        grid-column: auto / span 4;
+      }
+      @media (max-width: 767px) {
+        grid-column: auto / span 12;
+      }
+    }
+  }
 }

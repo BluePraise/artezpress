@@ -35,7 +35,7 @@ defined('ABSPATH') || exit;
 		</div>
 
 
-		<div class="shipping_address" style="display:none">
+		<div class="shipping_address" style="display:block">
 
 			<?php do_action('woocommerce_before_checkout_shipping_form', $checkout); ?>
 

@@ -1,10 +1,5 @@
-<?php 
-    global $product;
-    $author = get_field('author'); 
-?>
-
-<div class="carousel-container">
-    <h2><?php _e('Coming Soon'); ?></h2>
+<div class="carousel-container coming-soon">
+    <h2 class="slider-title"><?php _e('Coming Soon', 'artezpress'); ?></h2>
     <div class="owl-carousel">
 <?php 
 
@@ -22,12 +17,14 @@ $args = array(
 $loop = new WP_Query($args);
 
     if ( $loop->have_posts() ) :
-        while ( $loop->have_posts() ) : $loop->the_post(); ?>
-            <div class="slider-item-left">
+        while ( $loop->have_posts() ) : $loop->the_post();
+            $author = get_field('author'); ?>
+            <div class="slider-item slider-item-left">
                 <img class="slider-img" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php echo the_title(); ?>">
-                <h3 class="slider-item-title colour-effect"><?php echo the_title(); ?></h3>
-                <h3 class="slider-item-title colour-effect"><?php echo $author; ?></h3>
-                <a href="<?php the_permalink(); ?>">Read More</a>
+                <div class="slider-item-meta">
+                    <h2 class="slider-item-title"><?php echo the_title(); ?></h2>
+                </div>
+                    <a href="<?php the_permalink(); ?>"><?php _e('Read More', 'artezpress');?></a>
             </div>
     <?php 
         endwhile;

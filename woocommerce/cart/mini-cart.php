@@ -32,7 +32,7 @@ $count = $woocommerce->cart->cart_contents_count;
 ?>
 	<span class="mini-cart-greeting">Hi, <?php echo $name; ?></span>
 <?php else :  ?>
-	<span class="mini-cart-greeting">Hi</span>
+	<span class="mini-cart-greeting">Hi,</span>
 <?php endif; ?>
 
 <?php if (!WC()->cart->is_empty()) : ?>

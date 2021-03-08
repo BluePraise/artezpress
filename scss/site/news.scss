@@ -1,45 +1,12 @@
-// all styling for news grid
-// News grid
-.container-xl.single-news {
-    margin: 0 auto;
-}
+// all styling for News Grid and Single
+
 
 // News archive grid
-.news .page-title {
-    margin-bottom: 6.4rem;
-}
 
-.nav-links {
-    text-align: center;
-}
-
-.page-numbers {
-    margin-right: 30px;
-    &.current {
-        color: rgba(0, 0, 0, 0.4);
-    }
-}
-
-
-/* This should be similiar on all pages that have a page-title */
-
-// News card and excerpt
-// News excerpt snippet can be found in
-// inc/templateparts/news-excerpt
-div#news-json-grid {
-    // columns: 400px;
-    // column-gap: 20px;
-    figure.news-thumbnail {
-        text-align: center;
-    }
-    img.post-thumbnail.news-portrait {
-        width: auto !important;
-    }
-}
-
-.news-grid {
-    flex-wrap: wrap;
-    justify-content: space-between;
+.news-grid-masonry {
+  @media (min-width: 768px) {
+    margin: 0 -1.6rem;
+  }
 }
 
 .news-item {
@@ -72,33 +39,26 @@ div#news-json-grid {
 }
 
 .news-thumbnail {
-    height: fit-content;
-    padding: 0 2rem;
-    margin-bottom: 4rem;
-    text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 4rem;
 
-    img {
-        width: auto;
-        max-width: 100%;
-    }
+  &.is-portrait {
+    padding-bottom: 88%;
+  }
 
-    &.is-portrait {
-        img {
-          max-height: 48rem;
-        }
-    }
-    &.is-landscape {
-        img {
-          max-height: 32rem;
-        }
-    }
-}
+  &.is-landscape {
+    padding-bottom: 61.5%;
+  }
 
-.news-thumbnail.attachment-is-portrait {
-    text-align: center;
-    img {
-        width: auto !important
-    }
+  img {
+    height: 100%;
+    width: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .news-title-excerpt {
@@ -110,10 +70,10 @@ div#news-json-grid {
     text-align: left;
 }
 
-a.news-read-more {
+.news-read-more {
     @include smallText;
+    @include underlineText;
     display: inline-block;
-    border-bottom: 1px solid currentColor;
     margin-top: 3rem;
 
     &:hover {
@@ -122,31 +82,34 @@ a.news-read-more {
     }
 }
 
-
 /* single php */
 
-.container.news-item__single {
-    margin: 0 auto;
-}
-
 .news-item__single .content-container {
-    padding-bottom: 0;
+  padding-bottom: 0;
 }
 
 .news-item__single .news-thumbnail {
-    margin-bottom: 8rem;
-    width: auto;
+  margin-bottom: 8rem;
 
-    &.is-portrait {
-        img {
-          max-height: 62rem;
-        }
+  &.is-portrait {
+    @media (min-width: 768px) {
+      padding-bottom: 60%;
     }
-    &.is-landscape {
-        img {
-          max-height: 54rem;;
-        }
+
+    @media (max-width: 767px) {
+      padding-bottom: 100%;
     }
+  }
+
+  &.is-landscape {
+    @media (min-width: 768px) {
+      padding-bottom: 50%;
+    }
+
+    @media (max-width: 767px) {
+      padding-bottom: 70%;
+    }
+  }
 }
 
 
@@ -155,28 +118,25 @@ a.news-read-more {
 // all these modules also have a classname which they share:
 // .news-module-container so any common classes can also
 // be set on that class.
-.news-module-container {
+
+.news-module-container:not(:last-child) {
     margin-bottom: 8rem;
-    &:last-child {
-        margin-bottom: 0;
-    }
 }
 
 .news-content__single .news-text {
     max-width: 77rem;
     margin-left: auto;
     margin-right: auto;
+    @include largeText;
+
     // all the anchorlinks get an underline
     a {
         @include underlineText;
     }
+
     // spacing for all the p tags
-    p {
-        margin-bottom: 2.4rem;
-        // but not the last child
-        &:last-child {
-            margin-bottom: 0;
-        }
+    p:not(:last-child) {
+        margin-bottom: $largeText-line-height-rem;
     }
 }
 
@@ -186,34 +146,33 @@ a.news-read-more {
     margin-right: auto;
 
     figure {
-        margin-bottom: 4.8rem;
-        margin-left: auto;
-        margin-right: auto;
-        height: auto;
+    position: relative;
+    margin-bottom: 4.8rem;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
 
-        @media (min-width: 768px) {
-          width: 66.66%;
-        }
-
-        @media (max-width: 767px) {
-          width: 50%;
-        }
-
-
-        img {
-            filter: grayscale(100%);
-            transition: all 150ms ease-in;
-            @include boxShadow;
-        }
-        &:hover {
-            img {
-                filter: grayscale(0%);
-            }
-        }
+    @media (min-width: 768px) {
+      width: 66.66%;
     }
-    h5 {
-        margin-bottom: 4rem;
+
+    @media (max-width: 767px) {
+      width: 50%;
     }
+
+    img {
+      filter: grayscale(100%);
+      transition: filter 100ms ease-in;
+
+      &:hover {
+        filter: none;
+      }
+    }
+  }
+
+  h5 {
+    margin-bottom: 4rem;
+  }
 }
 
 .video-container.news-module-container {
@@ -236,7 +195,3 @@ a.news-read-more {
     width: 100%;
     margin-top: 1.2rem;
 }
-
-
-/* frontpage php */
-// gets styles now from .news-grid

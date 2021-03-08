@@ -194,7 +194,7 @@ form.checkout.woocommerce-checkout {
 
     border-bottom: 1px solid $black;
 
-    .cart-item-row{
+    .cart-item-row {
         display: inline-flex;
         width: 100%;
         border-bottom: none;
@@ -311,5 +311,7 @@ form.checkout.woocommerce-checkout {
 
 .payment_method_multisafepay_ideal,
 .payment_method_multisafepay_creditcard {
-    display: none;
+    label img {
+        display: none;
+    }
 }

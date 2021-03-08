@@ -28,14 +28,10 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
 	return;
 } ?>
 
-
-<?php do_action('woocommerce_checkout_after_order_review'); ?>
-
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data">
 
 	<?php if ($checkout->get_checkout_fields()) : ?>
-
-		<?php do_action('woocommerce_checkout_order_review'); ?>
+			
 
 		<div class="flex-container woocommerce-checkout-container customer-details" id="customer_details">
 
@@ -58,7 +54,7 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
 					?>
 					<?php do_action('woocommerce_review_order_after_shipping'); 
 					?>
-					<?php //do_action('woocommerce_checkout_order_review'); ?>
+					<?php do_action('woocommerce_checkout_order_review'); ?>
 				</div>
 
 

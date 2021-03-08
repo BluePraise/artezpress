@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
 global $product;
 ?>
 <div class="book-item-meta product_meta">
-	<h5 class="section-title"><?php _e('Colophon and Specifications'); ?></h5>
+	<h5 class="section-title"><?php _e('Colophon and Specifications', 'artezpress'); ?></h5>
 
 	<?php do_action('woocommerce_product_meta_start'); ?>
 	<?php
@@ -47,7 +47,7 @@ global $product;
 
 
 	?>
-	<div class="flex-container">
+	<div class="grid-container">
 		<div class="col_left">
 
 			<div class="block">
@@ -55,11 +55,11 @@ global $product;
 					<span class="colophon-value"><?php echo $publishing_year ?>, <?php echo esc_html($language);?></span>
 				<?php endif; ?>
 				<?php if ($isbn) : ?>
-					<a href="<?php echo $product->get_permalink() ?>" alt="<?php echo $product->get_name() ?>"><span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span> <span class="sku"><?php echo $isbn; ?></span></a>
+					<a href="<?php echo $product->get_permalink() ?>" alt="<?php echo $product->get_name() ?>"><span class="sku_wrapper"><?php esc_html_e('ISBN', 'artezpress'); ?></span> <span class="sku"><?php echo $isbn; ?></span></a>
 					<?php elseif (wc_product_sku_enabled() && ($product->get_sku() || $product->is_type('variable'))) : ?>
-						<a href="<?php echo $product->get_permalink() ?>" alt="<?php echo $product->get_name() ?>"><span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span> <span class="sku"><?php echo ($sku = $product->get_sku()) ? $sku : esc_html__('N/A', 'woocommerce'); ?></span></a>
+						<a href="<?php echo $product->get_permalink() ?>" alt="<?php echo $product->get_name() ?>"><span class="sku_wrapper"><?php esc_html_e('ISBN', 'artezpress'); ?></span> <span class="sku"><?php echo ($sku = $product->get_sku()) ? $sku : esc_html__('N/A', 'artezpress'); ?></span></a>
 					<?php endif; ?>
-				
+
 
 				<?php if (have_rows('additional_editions')) :
 
@@ -78,16 +78,16 @@ global $product;
 									$related_isbn 			= get_post_meta($related, 'isbn', true);
 								?>
 									<a href="<?php echo get_permalink($r) ?>" alt="<?php echo $related_product->get_name() ?>">
-										<span class="sku_wrapper"><?php esc_html_e('ISBN', 'woocommerce'); ?></span> 
+										<span class="sku_wrapper"><?php esc_html_e('ISBN', 'artezpress'); ?></span> 
 										<span class="sku">
-											<?php if ($related_isbn) : 
-												echo $related_isbn; 
-												
+											<?php if ($related_isbn) :
+												echo $related_isbn;
+
 											else :
-												echo ($sku = $related_product->get_sku()) ? $sku : esc_html__('N/A', 'woocommerce');
+												echo ($sku = $related_product->get_sku()) ? $sku : esc_html__('N/A', 'artezpress');
 											endif; ?> 
 										</span>
-											
+
 									</a>
 								<?php
 								endforeach; ?>
@@ -100,7 +100,8 @@ global $product;
 			</div>
 
 			<div class="block">
-				<span class="label-header"><?php esc_html_e('Author'); ?></span>
+				<span class="label-header"><?php esc_html_e('Author(s)', 'artezpress'); ?></span>
+
 				<span><?php echo $authors; ?></span>
 			</div>
 
@@ -108,7 +109,7 @@ global $product;
 			<?php if ($design) : ?>
 
 				<div class="block">
-					<span class="label-header"><?php esc_html_e('Design'); ?></span>
+					<span class="label-header"><?php esc_html_e('Design', 'artezpress'); ?></span>
 					<span><?php echo $design; ?></span>
 				</div>
 
@@ -117,7 +118,7 @@ global $product;
 			<?php if ($photography) : ?>
 
 				<div class="block">
-					<span class="label-header"><?php esc_html_e('Photography'); ?></span>
+					<span class="label-header"><?php esc_html_e('Photography', 'artezpress'); ?></span>
 					<span><?php echo $photography; ?></span>
 				</div>
 
@@ -125,19 +126,19 @@ global $product;
 			<?php if ($copublisher) : ?>
 
 				<div class="block">
-					<span class="label-header"><?php esc_html_e('Co-Publishers'); ?></span>
+					<span class="label-header"><?php esc_html_e('Co-Publishers', 'artezpress'); ?></span>
 					<span><?php echo $copublisher; ?></span>
 				</div>
 			<?php endif; ?>
 
-		</div><?php // END OF .COL_LEFT 
+		</div><?php // END OF .COL_LEFT
 				?>
 
 		<div class="col_right">
 			<?php if ($series) : ?>
 
 				<div class="block">
-					<span class="label-header"><?php esc_html_e('Series'); ?></span>
+					<span class="label-header"><?php esc_html_e('Series', 'artezpress'); ?></span>
 					<span><?php echo $series; ?></span>
 				</div>
 
@@ -146,7 +147,7 @@ global $product;
 			<?php if ($pages) : ?>
 
 				<div class="block">
-					<span class="label-header"><?php esc_html_e('Pages'); ?></span>
+					<span class="label-header"><?php esc_html_e('Pages', 'artezpress'); ?></span>
 					<span><?php echo $pages; ?> p.</span>
 				</div>
 
@@ -166,7 +167,7 @@ global $product;
 			?>
 				<div class="block">
 
-					<span class="label-header"><?php esc_html_e('Illustrations'); ?></span>
+					<span class="label-header"><?php esc_html_e('Illustrations', 'artezpress'); ?></span>
 					<span>Ca. <?php echo $illustration['amount']; ?>
 						<span>
 							<?php
@@ -176,7 +177,7 @@ global $product;
 									<span><?php echo $choice; ?></span>
 								<?php endforeach;
 							else : ?>
-								<span><?php esc_html_e('b/w and colour'); ?> </span>
+								<span><?php esc_html_e('b/w and colour', 'artezpress'); ?> </span>
 							<?php endif; ?>
 
 							ills.</span>
@@ -186,14 +187,14 @@ global $product;
 
 			<?php if ($binding) : ?>
 				<div class="block">
-					<span class="label-header"><?php esc_html_e('Binding'); ?></span>
+					<span class="label-header"><?php esc_html_e('Binding', 'artezpress'); ?></span>
 					<span><?php echo $binding; ?></span>
 				</div>
 			<?php endif; ?>
 
 			<?php if (have_rows('paper_type')) : ?>
 				<div class="block">
-					<span class="label-header"><?php esc_html_e('Paper Stocks'); ?></span>
+					<span class="label-header"><?php esc_html_e('Paper Stocks', 'artezpress'); ?></span>
 					<?php while (have_rows('paper_type')) : the_row(); ?>
 						<?php $paper_stock = get_sub_field('paper_stock'); ?>
 						<span class="colophon-value"><?php echo $paper_stock; ?></span>
@@ -208,10 +209,10 @@ global $product;
 
 
 
-	<?php //echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); 
+	<?php //echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' );
 	?>
 
-	<?php //echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); 
+	<?php //echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' );
 	?>
 
 	<?php do_action('woocommerce_product_meta_end'); ?>

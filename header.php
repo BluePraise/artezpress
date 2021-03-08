@@ -1,20 +1,23 @@
 <?php
 get_template_part('head');
-$rows = get_field('hero_bg_imgs', 'option'); // get all the rows 
+$rows = get_field('hero_bg_imgs', 'option'); // get all the rows
 $rand_row = $rows[array_rand($rows)];
-$rand_row_image = $rand_row['bg_images_uploaded']; // get the sub field value 
+$rand_row_image = $rand_row['bg_images_uploaded']; // get the sub field value
 
 if (is_product()) :
 	global $post;
 	$id = $post->ID;
 	$single_product_bg = get_field('custom_color', $id);
 	$single_product_text_color = get_field('text_color', $id);
+	$hex = $single_product_bg;
+	list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
 endif;
 ?>
 <?php if (is_product()) : ?>
 	<style>
 		body.single-product {
-			background-color: <?php echo $single_product_bg; ?>;
+			--book-background: <?php echo $r ?>, <?php echo $g ?>, <?php echo $b ?>;
+			background-color: rgb(<?php echo $r ?>, <?php echo $g ?>, <?php echo $b ?>);
 		}
 	</style>
 
@@ -39,7 +42,7 @@ endif;
 	<?php endif; ?>
 
 
-	<nav class="main-menu-bar">
+	<nav class="main-menu-bar js-menubar">
 
 		<div class="flex-container">
 			<?php if (!is_product()) : ?>
@@ -70,16 +73,16 @@ endif;
 					$the_product_ID 		= $wp_query->post->ID;
 					$the_product 			= wc_get_product($the_product_ID);
 					$product_price 			= $the_product->get_price_html();
-					$language 				= get_post_meta($the_product_ID, 'language', true);
+					$language 				= get_field('ap_language', $the_product_ID);
 
 					// prijs status huidige product
 
 					if ($the_product->is_in_stock()) : ?>
 						<form class="cart" action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', get_permalink($the_product_ID))); ?>" method="post" enctype='multipart/form-data'>
-							<button type="submit" name="add-to-cart" value="<?php echo $the_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo $language; ?></span><?php echo $product_price; ?></button>
+							<button type="submit" name="add-to-cart" value="<?php echo $the_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo _e($language, 'artezpress'); ?> </span><?php echo $product_price; ?></button>
 						</form>
 					<?php else : ?>
-						<div class="btn white-on-black single_add_to_cart_button"><?php _e('Out of Print', 'artezpress'); ?></div>
+						<div class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo _e($language, 'artezpress'); ?></span><?php _e('Out of Print', 'artezpress'); ?></div>
 					<?php endif; ?>
 
 
@@ -94,13 +97,14 @@ endif;
 								foreach ($related_book as $r) :
 									$r_get_product 	   = wc_get_product($r);
 									$r_permalink 	   = get_permalink($r);
+									$r_product_price   = $r_get_product->get_price_html();
 									$r_language 	   = get_field("ap_language", $r);
 									if ($r_get_product->is_in_stock()) : ?>
 										<form class="cart" action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', get_permalink($the_product_ID))); ?>" method="post" enctype='multipart/form-data'>
-											<button type="submit" name="add-to-cart" value="<?php echo $the_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo _e($language, 'artezpress'); ?></span><?php echo $product_price; ?></button>
+											<button type="submit" name="add-to-cart" value="<?php echo $the_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo _e($r_language, 'artezpress'); ?></span><?php echo $r_product_price; ?></button>
 										</form>
 									<?php else : ?>
-										<a href="<?php echo get_permalink($r) ?>" class="d-block btn white-on-black single_add_to_cart_button" role="button"><?php _e('Out of Print', 'artezpress'); ?></a>
+										<a href="<?php echo get_permalink($r) ?>" class="d-block btn white-on-black single_add_to_cart_button" role="button"><span><?php echo _e($r_language, 'artezpress'); ?> </span><?php _e('Out of Print', 'artezpress'); ?></a>
 							<?php endif;
 								endforeach;
 							endif;
@@ -138,3 +142,4 @@ endif;
 	</nav>
 
 </header>
+<div class="site-wrapper">

@@ -21,7 +21,6 @@ function load_child_language()
 {
 	load_child_theme_textdomain('artezpress', get_stylesheet_directory() . '/languages');
 }
-
 /**
  * Dequeue a lot of css
  */
@@ -44,7 +43,7 @@ add_action('wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999);
 function artezpress_style()
 {
 	wp_register_style('artezpress-css', get_stylesheet_directory_uri() . '/style.css');
-	wp_enqueue_style('artezpress-css');
+	
 	wp_register_style('app-css', get_stylesheet_directory_uri() . '/assets/css/app.css');
 	wp_enqueue_style('app-css');
 	wp_enqueue_script('jquery');
@@ -55,61 +54,33 @@ function artezpress_style()
 	wp_enqueue_script('jquery-ui-accordion');
 	wp_enqueue_script('jquery-ui-slider');
 	wp_register_style('jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui');
-    wp_enqueue_script('totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true);
-    $ajax_url = admin_url( 'admin-ajax.php' );
-	if(is_home()) {
-	wp_enqueue_script('artezpress-news-json', get_theme_file_uri() . '/js/news-json.js', [], null, true);
-	wp_localize_script( 'artezpress-news-json', 'artez_object', 
-		  	array( 
-                'site_url' => site_url(),
-			) 
-		  );
-		}
-	if(is_single()) {
-		global $post;
-		wp_enqueue_script('artezpress-single-news-json', get_theme_file_uri() . '/js/single-news-json.js', [], null, true);
-	wp_localize_script( 'artezpress-single-news-json', 'artez_object', 
-		  	array( 
-				'site_url' => site_url(),
-				'post_id' => $post->ID
-			) 
-		  );
-		}
-	
+	wp_enqueue_script('totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true);
+    wp_register_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
+    wp_enqueue_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
+	wp_register_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
+	if(is_archive()):
+        wp_register_style('flickity-theme', 'https://unpkg.com/flickity@2/dist/flickity.min.css');
+		wp_enqueue_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
+		wp_enqueue_style('flickity-theme');
+	endif;
+	$ajax_url = admin_url('admin-ajax.php');
 
-    wp_enqueue_script('artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true);
-    wp_localize_script( 'artezpress-script', 'artez_object', 
-		  	array( 
-                'ajax_url' => $ajax_url,
-                'nonce' => wp_create_nonce('ajax-nonce')
-			) 
-		  );
+	wp_enqueue_script('artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true);
+	wp_localize_script(
+		'artezpress-script',
+		'artez_object',
+		array(
+			'ajax_url' => $ajax_url,
+			'nonce' => wp_create_nonce('ajax-nonce')
+		)
+	);
 }
 add_action('wp_enqueue_scripts', 'artezpress_style');
 
 
+remove_filter('the_content', 'wpautop');
 
 
-
-function ajax_filter_posts_scripts()
-{
-	// Enqueue script
-	wp_register_script(
-		'afp_script',
-		get_stylesheet_directory_uri() . '/js/ajax-filter.js',
-		false,
-		null,
-		false
-	);
-	wp_enqueue_script('afp_script');
-
-	wp_localize_script('afp_script', 'afp_vars', array(
-		'afp_nonce' => wp_create_nonce('afp_nonce'), // Create nonce which we later will use to verify AJAX request
-		'afp_ajax_url' => admin_url('admin-ajax.php')
-	));
-}
-
-add_action('wp_enqueue_scripts', 'ajax_filter_posts_scripts', 100);
 
 
 function ap_excerpt_more($more)
@@ -118,21 +89,6 @@ function ap_excerpt_more($more)
 }
 add_filter('excerpt_more', 'ap_excerpt_more');
 
-function customized_field_excerpt()
-{
-	global $post;
-	$text = get_field('news');
-	if ('' != $text) {
-		$start = strpos($text, '<p>'); // Locate the first paragraph tag
-		$end = strpos($text, '</p>', $start); // Locate the first paragraph closing tag
-		$text = substr($text, $start, $end - $start + 4); // Trim off everything after the closing paragraph tag
-		$text = strip_shortcodes($text);
-		$text = str_replace(']]>', ']]>', $text);
-		$text = apply_filters('the_content', $text);
-	}
-	$text = '<p class="whatever">' . apply_filters('the_content', $text) . '</p>';
-	
-}
 
 if (function_exists('acf_add_options_page')) {
 
@@ -146,22 +102,23 @@ if (function_exists('acf_add_options_page')) {
 		'redirect' => false
 	));
 	acf_add_options_page(array(
-		'page_title' => 'Frontpage Highlights',
-		'menu_title' => 'Frontpage Highlights',
+		'page_title' => 'New Releases',
+		'menu_title' => 'New Releases',
 		'menu_slug' => 'fp-highlights',
 		'capability' => 'edit_posts',
 		'position' => '9',
 		'autoload' => true,
 		'icon_url' => 'dashicons-images-alt',
-		'redirect' => false
+		'redirect' => false,
+		'updated_message' => __("Item Updated", 'acf'),
 	));
 }
+
 
 function artezpress_theme_setup()
 {
 	add_image_size('feature-slider-size', 1120, true, array('center', 'center'));
-	add_image_size( 'cart-thumb', 125, 177, true ); // 100 wide and 100 high
-	add_image_size( 'news-portrait', '', 460, false );
+	add_image_size('cart-thumb', 125, 177, true); 
 	add_editor_style('style-editor.css'); // tries to include style-editor.css directly from your theme folder
 
 	add_theme_support('editor-styles'); // if you don't add this line, your stylesheet won't be added
@@ -181,6 +138,43 @@ function artezpress_theme_setup()
 }
 
 add_action('after_setup_theme', 'artezpress_theme_setup');
+
+
+function register_ap_menu() {
+    register_nav_menus([ // Using array to specify more menus if needed
+        // 'primary' => __('Primary Menu Nederlands', 'artezpress'), // Main Navigation
+        'primary-menu' => __('Primary Menu', 'artezpress'), // Main Navigation
+        'secondary-menu' => __('Secondary Menu', 'artezpress'), // Main Navigation
+        // 'secondary-menu-nederlands' => __('Secondary Menu Nederlands', 'artezpress'), // Main Navigation
+    ]);
+}
+// Remove Injected classes, ID's and Page ID's from Navigation <li> items
+function my_css_attributes_filter($var)
+{
+    return is_array($var) ? [] : '';
+}
+
+add_filter('wp_nav_menu_args', 'my_wp_nav_menu_args'); // Remove surrounding <div> from WP Navigation
+// add_filter('nav_menu_css_class', 'my_css_attributes_filter', 100, 1); // Remove Navigation <li> injected classes (Commented out by default)
+add_filter('nav_menu_item_id', 'my_css_attributes_filter', 100, 1); // Remove Navigation <li> injected ID (Commented out by default)
+add_filter('page_css_class', 'my_css_attributes_filter', 100, 1); // Remove Navigation <li> Page ID's (Commented out by default)
+
+// Remove the <div> surrounding the dynamic navigation to cleanup markup
+function my_wp_nav_menu_args($args = '')
+{
+    $args['container'] = false;
+    return $args;
+}
+
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
+
+function special_nav_class ($classes, $item) {
+  if (in_array('current-menu-item', $classes) ){
+    $classes[] = 'active ';
+  }
+  return $classes;
+}
+
 
 add_action('artezpress_before_single_product_summary', 'woocommerce_show_product_images', 20);
 
@@ -411,7 +405,6 @@ function ajax_filter_get_posts($taxonomy)
 				'taxonomy' => 'product_tag',
 				'field' => 'slug',
 				'terms' => $taxonomy
-				//              'terms' => implode(',', $taxonomy),
 			]
 		]
 	];
@@ -422,27 +415,22 @@ function ajax_filter_get_posts($taxonomy)
 	}
 
 	$query = new WP_Query($args);
-	$authors = [];
+	$languages = [];
 	$years = [];
 
 	if ($query->have_posts()) :
 		while ($query->have_posts()) {
 			$query->the_post();
 			wc_get_template_part('content', 'product');
-			$authors[] = explode(',', get_field('author'));
+			// $authors[] = explode(',', get_field('author'));
 			if (strlen(get_field('publishing_year'))) {
 				$years[] = get_field('publishing_year');
 			}
 		}
-		$authors = array_unique(array_flatten($authors), SORT_REGULAR);
+		// $authors = array_unique(array_flatten($authors), SORT_REGULAR);
 		$years = array_unique($years, SORT_REGULAR);
 	?>
 
-		<ul class="hidden-filter-authors">
-			<?php foreach ($authors as $author) : ?>
-				<li><a href=""><?= $author ?></a></li>
-			<?php endforeach; ?>
-		</ul>
 		<?php if (count($years)) : ?>
 			<ul class="hidden-filter-years">
 				<?php foreach ($years as $year) : ?>
@@ -651,3 +639,17 @@ function Hide_WooCommerce_Breadcrumb()
     .woocommerce-embed-page #screen-meta, .woocommerce-embed-page #screen-meta-links{top:0;}
     </style>';
 }
+
+// Remove Actions
+remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds
+remove_action('wp_head', 'feed_links', 2); // Display the links to the general feeds: Post and Comment Feed
+remove_action('wp_head', 'rsd_link'); // Display the link to the Really Simple Discovery service endpoint, EditURI link
+remove_action('wp_head', 'wlwmanifest_link'); // Display the link to the Windows Live Writer manifest file.
+remove_action('wp_head', 'index_rel_link'); // Index link
+remove_action('wp_head', 'parent_post_rel_link', 10, 0); // Prev link
+remove_action('wp_head', 'start_post_rel_link', 10, 0); // Start link
+remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // Display relational links for the posts adjacent to the current post.
+remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is generated on the wp_head hook, WP version
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+remove_action('wp_head', 'rel_canonical');
+remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);

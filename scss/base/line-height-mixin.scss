@@ -25,7 +25,7 @@ $baseFontSize: 10;
  * @param {number} $descenderHeightScale - the height of the descender expressed as a ratio of the font
  * @param {number} $capHeight - the font's cap height expressed as a ratio of the font
  */
-@mixin basekick($typeSizeModifier, $typeRowSpan, $descenderHeightScale, $capHeight) {
+@mixin basekick($typeSizeModifier, $typeRowSpan, $descenderHeightScale, $capHeight, $r-Modifier) {
   $fontSize: $typeSizeModifier * $baseFontSize;
   $lineHeight: $typeRowSpan * $verticalRhythmBase;
   $typeOffset: calculateTypeOffset($lineHeight, $fontSize, $descenderHeightScale);
@@ -38,16 +38,35 @@ $baseFontSize: 10;
 
   $preventCollapse: 1;
 
-  font-size: #{$fontSize}px;
-  line-height: #{$lineHeight}px;
-  transform: translateY(#{$typeOffset}em);
-  padding-top: #{$preventCollapse}px;
+  /* resposive variables (Amir) */
+  $r-fontSize: $fontSize * $r-Modifier;
+  $r-lineHeight: $lineHeight * $r-Modifier;
+  $r-typeOffset: $typeOffset * $r-Modifier;
+  $r-preventCollapse: $preventCollapse * $r-Modifier;
+  $r-heightCorrection: $heightCorrection * $r-Modifier;
+  $r-preventCollapse: $preventCollapse * $r-Modifier;
+
+  font-size: #{$r-fontSize}px;
+  line-height: #{$r-lineHeight}px;
+  transform: translateY(#{$r-typeOffset}em);
+  padding-top: #{$r-preventCollapse}px;
   &::before {
     content: "";
-    margin-top: #{-($heightCorrection + $preventCollapse)}px;
+    margin-top: #{-($r-heightCorrection + $r-preventCollapse)}px;
     display: block;
     height: 0;
   }
+
+  // font-size: #{$fontSize}px;
+  // line-height: #{$lineHeight}px;
+  // transform: translateY(#{$typeOffset}em);
+  // padding-top: #{$preventCollapse}px;
+  // &::before {
+  //   content: "";
+  //   margin-top: #{-($heightCorrection + $preventCollapse)}px;
+  //   display: block;
+  //   height: 0;
+  // }
 }
 
 /**
@@ -60,5 +79,15 @@ $baseFontSize: 10;
   $larsDescenderHeightScale: 0.11;
   $larsCapHeight: 0.72;
 
-  @include basekick($typeSizeModifier, $typeRowSpan, $larsDescenderHeightScale, $larsCapHeight);
+  @media (min-width: 1025px) {
+    @include basekick($typeSizeModifier, $typeRowSpan, $larsDescenderHeightScale, $larsCapHeight, 1);
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    @include basekick($typeSizeModifier, $typeRowSpan, $larsDescenderHeightScale, $larsCapHeight, 0.95);
+  }
+
+  @media (max-width: 767px) {
+    @include basekick($typeSizeModifier, $typeRowSpan, $larsDescenderHeightScale, $larsCapHeight, 0.9);
+  }
 }

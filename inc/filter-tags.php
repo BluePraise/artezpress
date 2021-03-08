@@ -1,25 +1,25 @@
-<?php $terms = get_terms(array('taxonomy' => 'product_tag')); ?>
-<div class="filter-tags">
-	<div class="filter-tags__prev">
-		<button class="js-tags-prev">
-			<svg width="24px" height="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-				<polygon points="12 24 10.66 22.66 21.33 12 10.66 1.33 12 0 24 12 12 24" />
-			</svg>
-		</button>
-	</div>
-
-	<div class="filter-tags__inner js-tags-container">
-		<div class="filter-tags__list js-tags">
-			<?php foreach ($terms as $term) : ?>
-				<a href="<?= get_term_link($term->term_id, 'product_tag'); ?>" class="js-filter-item filter-tags__item" data-filter="product_tag-<?= $term->slug ?>" data-id="<?= $term->term_id ?>"><?= $term->name; ?></a>
-			<?php endforeach; ?>
+<div class="filter-list">
+	<?php foreach ($terms as $term) : ?>
+		<div class="filter-list-item filter-list__tags-item tags flickity">
+			<a href="<?= get_term_link($term->term_id, 'product_tag'); ?>" class="tag-pill black-on-white js-filter-item" data-id="<?= $term->term_id ?>" data-filter="product_tag-<?= $term->slug ?>"><?=  _e($term->name); ?></a>
 		</div>
-	</div>
-	<div class="filter-tags__next">
-		<button class="js-tags-next">
-			<svg width="24px" height="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-				<polygon points="12 24 10.66 22.66 21.33 12 10.66 1.33 12 0 24 12 12 24" />
-			</svg>
-		</button>
-	</div>
+	<?php endforeach; ?>
+
+  <?php foreach ($categories as $cat) : ?>
+		<div class="filter-list-item filter-list__categories-item categories" style="display:none;">
+      <a href="" class="tag-pill black-on-white js-filter-item" role="button" data-id="<?= $cat->term_id ?>" data-filter="product_cat-<?= $cat->slug ?>"><?= _e($cat->name); ?></a>
+		</div>
+  <?php endforeach; ?>
+
+  <?php foreach ($years as $year) : ?>
+		<div class="filter-list-item filter-list__years-item year" style="display:none;">
+      <a href="" class="tag-pill black-on-white js-filter-item" role="button" data-id="<?= $year ?>" data-filter="year-<?= $year ?>"><?= $year ?></a>
+		</div>
+  <?php endforeach; ?>
+
+  <?php foreach ($languages as $lang) : ?>
+		<div class="filter-list-item filter-list__language-item languages" style="display:none;">
+      <a href="" class="tag-pill black-on-white js-filter-item" role="button" data-id="<?= $lang ?>" data-filter="language-<?= $lang ?>"><?= _e($lang); ?></a>
+		</div>
+  <?php endforeach; ?>
 </div>

@@ -1,320 +1,275 @@
-.hi-maggie {
+// SEARCH AND FILTERS BAR
+
+
+// Set 'Book Archive' Margin
+.site-main.book-archive {
+  padding-top: calc((var(--bar-height)) + 3.2rem);
+}
+
+
+// Search Bar Block
+.search-bar {
   position: absolute;
-}
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 0 16px;
+  background-color: $greyTransparent;
+  z-index: 1;
 
-.loading {
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.2);
-  }
-
-  &::after {
-    content: "loading...";
+  &.is-fixed {
     position: fixed;
-    z-index: 1;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 30px;
   }
-}
 
-.hidden-filter-authors {
-  display: none;
-}
-
-.search-and-tags {
-  width: 107.6rem;
-}
-
-.site-main.products {
-  margin-top: 29.3rem;
-}
-
-.filter-tags {
-  margin-top: 8rem;
-  // margin-bottom: 6.4rem;
-  position: relative;
+  // &::after {
+  //   content: " ";
+  //   position: absolute;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 1.6rem;
+  //   bottom: -1.6rem;
+  //   @include gradient(255, 255, 255, top);
+  // }
 
   &__inner {
-    overflow: hidden;
-    max-width: 207.6rem;
-  }
+    position: relative;
+    margin-top: calc(6rem - ((#{$h2-line-height-rem} - #{$h2-font-size-rem}) / 2));
 
-  &__list {
-    transition-duration: 0.15s;
-    transition-timing-function: cubic-bezier(0.05, 0, 0, 1);
-    will-change: transform;
-    display: flex;
-    align-items: flex-start;
-    white-space: nowrap;
-  }
-
-  &__item {
-    border: 1px solid black;
-    border-radius: 30px;
-    font-size: 1.7rem;
-    line-height: 3.2rem;
-    padding: 0 1.2rem;
-    margin-right: 1.2rem;
-    text-align: center;
-    flex-shrink: 0;
-
-    &.active {
-      background: black;
-      color: white;
+    @media (min-width: 1025px) and (max-width: 1440px) {
+      padding-left: 1.6rem;
+      padding-right: 1.6rem;
     }
-  }
-
-  &__prev,
-  &__next {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    z-index: 2000;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-    &::before,
-    &::after {
-      height: 100%;
-      width: 50px;
-      content: "";
-      pointer-events: none;
-    }
-
-    button {
-      background: white;
-      border: none;
-      height: 100%;
-    }
-  }
-
-  &__prev {
-    left: 0;
-    display: none;
-
-    &::before {
-      content: none;
-    }
-
-    &::after {
-      background: linear-gradient(to right,
-          rgba(255, 255, 255, 0.98) 20%,
-          rgba(255, 255, 255, 0) 80%);
-    }
-
-    button {
-      transform: rotate(180deg);
-    }
-  }
-
-  &__next {
-    &::after {
-      content: none;
-    }
-
-    &::before {
-      background: linear-gradient(to left,
-          rgba(255, 255, 255, 0.98) 20%,
-          rgba(255, 255, 255, 0) 80%);
-    }
-
-    right: -1em;
   }
 }
 
-.sidebar-filters {
-  width: 270px;
-  padding-left: 6px;
-  padding-right: 6px;
+
+// Search Bar Toggle
+.search-bar__toggle {
   position: fixed;
-  top: 40px;
-  margin-top: 0;
-  left: 3.2rem;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: 0 0;
+  border: none;
+  display: flex;
+  align-items: center;
 
-  &__in {
-    width: 270px;
-    margin-top: 64px;
+  @media (min-width: 1025px) {
+    padding: 3.2rem;
+  }
+  @media (max-width: 1024px) {
+    padding: 1.6rem;
   }
 
-  li {
-    cursor: pointer;
-    margin-bottom: 10px;
+  &-icon {
+    width: 1.8rem;
+    margin-right: .8rem;
   }
 
-  &__title {
-    cursor: pointer;
-    font-size: 2rem;
-    font-weight: 400;
-    text-align: left;
-    line-height: 1;
-    margin-bottom: 3.6rem;
+  span {
+    font-family: $extended-font;
+    font-size: $largeText-font-size-rem;
+    font-weight: 500;
+    letter-spacing: 0rem;
   }
+}
 
-  ul {
-    padding-left: 20px;
-  }
 
-  &__name {
-    margin-left: -18px;
+// Search Bar Components
 
-    &::before {
-      content: "– ";
-    }
+// Serach Form
+.search-section {
+  margin-bottom:  4.4rem;
 
-    &:not(.active) {
-      &::before {
-        content: "+ ";
-      }
-
-      ~li {
-        display: none;
-      }
-    }
-  }
-
-  &__item {
-    &:not(.active) {
-      opacity: 0.35;
-    }
+  &__inner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
 
 .main-search {
-  position: relative;
-  margin-top: 6rem;
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 64rem;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
 
-  input[type=search] {
-    border: none !important;
-    flex: 1 auto;
+  &__input {
+    @include baseH2;
+    width: 100%;
+    line-height: 1.1;
 
     &::placeholder {
-      font-family: $default-font;
-      text-align: center;
-      color: black;
-      font-size: 3.5rem;
-      line-height: 4.8rem;
-
+      color: $black;
     }
   }
 
-  button {
-    appearance: none;
-    background: none;
+  input[type=search] {
     border: none;
+    padding: 0;
   }
 
-  svg {
-    width: auto;
-    height: auto;
-  }
-}
-
-.js-hide-onscroll {
-  position: fixed;
-  z-index: 1;
-  top: 0rem;
-  background: white;
-  transition: all 0.3s ease-in;
-
-  &.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-
-  &.shown {
-    opacity: 1;
-    visibility: visible;
+  button {
+    height: 3.3rem;
+    width: 3.3rem;
   }
 }
 
-.js-show-onscroll {
-  transition: all 0.3s ease-in;
 
-  &.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-
-  &.shown {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-.fixed-search-toggle {
+// Typed
+.fake-typewriter {
   position: absolute;
-  display: flex;
-  opacity: 0;
-  cursor: pointer;
+  top: 0;
+  background: $white;
 
-  svg {
-    margin-right: 10px;
-    width: auto;
-    height: auto;
+  &.is-paused {
+    display: none;
+  }
+
+  &__input {
+    position: relative;
+
+    &:not(:first-child)::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: .4rem;
+      right: -2px;
+      width: 1px;
+      height: $h2-font-size-rem;
+      animation: 1s blink step-end infinite;
+    }
   }
 }
 
-.rotate-placeholder:after {
-  position: absolute;
-  width: 100%;
-  content: "Search for ebooks";
-  font-size: 3.5rem;
-  line-height: 4.5rem;
-  pointer-events: none;
-  display: block;
-  left: 32px;
-  height: 45px;
-  top: 3px;
-  text-align: center;
-  background-color: #fff;
-  font-family: $default-font;
-  text-align: center;
-  color: black;
-
-  animation: animText 20s linear infinite;
+@keyframes "blink" {
+  from, to {
+    background-color: transparent;
+  }
+  50% {
+    background-color: $black;
+  }
 }
 
-input:focus+.rotate-placeholder {
-  display: none;
+
+// Filter Headers
+.filter-section {
+  margin-bottom:  3.2rem;
 }
 
-@keyframes animText {
-  0% {
-    content: "Search a book";
+.filter-headers-container {
+  margin-bottom: 2rem;
+}
+
+.filter-header {
+  @include baseMenuText;
+  display: inline-block;
+  position: relative;
+  opacity: $inactiveOpacity;
+  margin-right: 2rem;
+
+  &:hover {
+    cursor: pointer;
+    opacity: $activeOpacity;
+  }
+  &.active {
+    opacity: $activeOpacity;
   }
 
-  20% {
-    content: "Search an author";
+  &:not(.filter-header__reset):not(.active) {
+    padding-right: 1.8rem;
+
+    &::after {
+      content: "˃";
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
   }
 
-  40% {
-    content: "Search a designer";
+  &:not(.filter-header__reset).active {
+    padding-right: 1.8rem;
+
+    &::after {
+      content: "˅";
+      display: block;
+      position: absolute;
+      right: -.4rem;
+      top: 0;
+    }
   }
 
-  60% {
-    content: "Search architecture";
+  &.filter-header__reset {
+    padding-right: 2.2rem;
+
+    &::after {
+      content: "×";
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+}
+
+
+// Filters Slider
+.filter-list {
+  height: 3.6rem;
+
+  &-item {
+    padding-right: .8rem;
+
+    a {
+      display: block;
+      white-space: nowrap;
+    }
   }
 
-  80% {
-    content: "Search installation art";
-  }
+  .flickity-prev-next-button {
+    border-radius: 0;
+    width: 4.8rem;
+    height: 4.8rem;
+    background: $white;
 
-  100% {
-    content: "Search best sellers 2020";
+    &:disabled {
+      opacity: 0;
+    }
+
+    &:active {
+      opacity: 1;
+    }
+
+    @media (min-width: 1025px) {
+      &.next {
+        right: -4.8rem;
+      }
+
+      &.previous {
+        left: -4.8rem;
+      }
+    }
+
+    @media (max-width: 1024px) and (min-width: 768px) {
+      &.next {
+        right: -1.6rem;
+      }
+
+      &.previous {
+        left: -1.6rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      &.next {
+        right: -2.4rem;
+      }
+
+      &.previous {
+        left: -2.4rem;
+      }
+    }
+
   }
 }

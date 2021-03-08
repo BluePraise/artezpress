@@ -13,15 +13,14 @@
 // main-menu bar
 .main-menu-container,
 .mast-footer {
-  @include menuText;
+  @include baseMenuText;
 }
 
 .fixed-bottom {
   position: fixed;
   width: 100vw;
-  z-index: 2;
-  background: transparent;
   min-height: 100px;
+  z-index: 2;
   bottom: 0;
   left: 0;
 }
@@ -29,8 +28,13 @@
 .main-menu-bar,
 .bottom-menu-bar {
   width: 100vw;
-  padding: 3.6rem 3.2rem;
-  background-color: transparent;
+
+  @media (min-width: 1025px) {
+    padding: 3.6rem 3.2rem;
+  }
+  @media (max-width: 1024px) {
+    padding: 1.6rem;
+  }
 }
 
 .main-menu-bar {
@@ -52,41 +56,80 @@
   }
 }
 
+// Mobile Menu Background Color
+.mobile-menu-bar {
+  transition: all 200ms ease-in-out;
+  @include MobileMenuColors($book: false);
+
+  body.single-product & {
+    @include MobileMenuColors($book: true);
+  }
+
+  // &::before {
+  //   content: " ";
+  //   position: absolute;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 16px;
+  //   top: -16px;
+  //   opacity: 1;
+  //   transition: opacity 200ms ease-in-out;
+  // }
+
+  &.surface-open {
+    background-color: transparent;
+
+    &::before {
+      opacity: 0;
+    }
+  }
+}
+
+
+// click under transparent menu
+.main-menu-container {
+  @media (min-width: 1025px) {
+    pointer-events: none;
+
+    .main-menu-bar .logo,
+    .main-menu-bar .menu-misc,
+    .main-menu-bar .block-price,
+    .js-menu {
+      pointer-events: auto;
+    }
+  }
+}
+
 //menu surface
+.main-menu-surface {
+  background-color: $greyTransparent;
+}
+
+.wp-end-of-page {
+  background-color: $white;
+}
+
 .main-menu-surface,
 .wp-end-of-page {
   position: relative;
   width: 100vw;
-  padding: 4rem 3.2rem 12.8rem 3.2rem;
-  background-color: $greyTransparent;
 
-  &::before {
-    content: " ";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 1.6rem;
-    top: -1.6rem;
-    background-image: linear-gradient(to bottom,
-        rgba(242, 242, 242, 0) 0%,
-        rgba(242, 242, 242, 0.013) 8.1%,
-        rgba(242, 242, 242, 0.049) 15.5%,
-        rgba(242, 242, 242, 0.104) 22.5%,
-        rgba(242, 242, 242, 0.175) 29%,
-        rgba(242, 242, 242, 0.259) 35.3%,
-        rgba(242, 242, 242, 0.352) 41.2%,
-        rgba(242, 242, 242, 0.45) 47.1%,
-        rgba(242, 242, 242, 0.55) 52.9%,
-        rgba(242, 242, 242, 0.648) 58.8%,
-        rgba(242, 242, 242, 0.741) 64.7%,
-        rgba(242, 242, 242, 0.825) 71%,
-        rgba(242, 242, 242, 0.896) 77.5%,
-        rgba(242, 242, 242, 0.9) 84.5%,
-        rgba(242, 242, 242, 0.9) 100%);
-    background-size: 100% 100%;
-    background-position: bottom;
-    background-repeat: no-repeat;
+  @media (min-width: 1025px) {
+    padding: 4rem 3.2rem 12.8rem 3.2rem;
   }
+  @media (max-width: 1024px) {
+    padding: 4rem 1.6rem 12.8rem 1.6rem;
+  }
+
+  // &::before {
+  //   content: " ";
+  //   position: absolute;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 1.6rem;
+  //   top: -1.6rem;
+  //   @include gradient(255, 255, 255, bottom);
+  // }
 }
 
 .main-menu-surface {
@@ -107,6 +150,7 @@
   opacity: 0.85;
 }
 
+
 // -----------------------------
 // Main Menu Bar Elements
 // -----------------------------
@@ -114,6 +158,7 @@
 // Logo Menu Button
 .logo {
   align-self: flex-end;
+  cursor: pointer;
 
   svg {
     width: 15rem;
@@ -121,69 +166,128 @@
   }
 }
 
-// Cart Button (see buttons.scss)
-
 // Language Toggle
 .language-toggle {
   position: relative;
   display: inline-block;
-  width: 12rem;
-  margin-right: 3.2rem;
   list-style: none;
 
-  .lang-item {
-    display: flex;
-    flex-direction: column-reverse;
-  }
+  // screens toggle
+  &__screen {
+    @media (min-width: 768px) {
+      margin-right: 2.4rem;
+      width: 11rem;
 
-  .inactive {
-    display: none;
-    opacity: $inactiveOpacity;
+      .lang-item {
+        display: flex;
+        flex-direction: column-reverse;
+      }
 
-    &:hover {
-      opacity: $activeOpacity;
+      .inactive {
+        display: none;
+      }
+
+      &:hover .inactive {
+        display: block;
+      }
+    }
+
+    @media (max-width: 767px) {
+      display: none;
     }
   }
 
-  &:hover .inactive {
-    display: block;
+  // mobile toggle
+  &__mobile {
+    @media (min-width: 768px) {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      display: inline-block;
+      margin-right: 1.6rem;
+
+      .lang-item {
+        display: flex;
+        text-transform: uppercase;
+      }
+
+      .drop-block__link {
+        margin-left: .6rem;
+
+        &:first-child:after{
+          content: '/';
+        }
+      }
+    }
+  }
+
+  // hover
+  .inactive {
+    opacity: $inactiveOpacity;
+    &:hover{
+      opacity: 1;
+    }
   }
 }
+
 
 // -----------------------------
 // Menu surface elements
 // -----------------------------
 
 // Layout
-.main-menu-surface {
+.main-menu-surface,
+.mast-footer {
   .grid-container {
     @include grid(4, 1fr, 3.6rem, 3.2rem);
   }
 }
 
-.mini-cart-column {
-  grid-column: 3 / span 2;
+.nav-column {
+  @media (min-width: 1025px) {
+    grid-column: auto / span 1;
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    grid-column: auto / span 2;
+  }
+  @media (max-width: 767px) {
+    grid-column: auto / span 4;
+  }
 }
+
+.mini-cart-column {
+  @media (min-width: 1025px) {
+    grid-column: 3 / span 2;
+  }
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
 
 // Buttons List
 .search,
 .social-menu,
-.page-list {
-  margin-bottom: 2.8rem;
+.page-list,
+.menu {
+  margin-bottom: $menuText-line-height-rem;
 }
 
-.page-list li a {
+.menu li a {
   display: inline-block;
 }
+
 
 // Newsletter registration
 .newsletter {
   span {
     // subscribe text
     display: block;
+    margin-bottom: .4rem;
   }
   input[type=email] {
-    height: 45px;
+    height: 4.5rem;
     width: calc(100% - 7.2rem);
     max-width: 32rem;
     background: transparent;
@@ -197,9 +301,10 @@
 
   .btn-reg {
     @include clearButton(7px, 4px, 8px);
-    @include menuText;
+    @include baseMenuText;
   }
 }
+
 
 // Social buttons
 .social-menu ul {
@@ -211,12 +316,48 @@
 
     a {
       width: 2.2rem;
-      height: 2.8rem;
+      height: $menuText-line-height-rem;
       padding: 0.3rem 0;
       margin-right: 1.6rem;
     }
   }
 }
+
+
+// ArtEZ University Logo
+.artez_university_logo {
+  height: calc(#{$menuText-line-height-rem} / 1.08);
+  display: flex;
+  align-items: flex-end;
+
+  svg {
+    height: calc(#{$menuText-font-size-rem} * 1.05);
+    width: auto;
+  }
+}
+
+
+// Hover effects
+.search a,
+.page-list a,
+.menu a,
+.social-menu a,
+.part-of a,
+.cart_list a {
+  &:hover {
+    opacity: $hoverOpacity;
+  }
+}
+
+
+// removes grey background when item is removed
+.blockUI,
+.blockMsg,
+.blockOverlay,
+.blockElement {
+  display: none !important;
+}
+
 
 // -----------------------------
 // Transition effects
@@ -244,4 +385,15 @@ main {
 header {
   will-change: opacity;
   transition: opacity 100ms ease-in-out;
+}
+
+
+// -----------------------------------
+// Remove Search on Mobile (TEMPORARY)
+// -----------------------------------
+
+@media (max-width: 767px) {
+  .search {
+    display: none;
+  }
 }

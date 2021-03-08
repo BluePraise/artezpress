@@ -1,41 +1,45 @@
+.accordion-container {
+  @include largeText;
+}
+
+.accordion-container:not(:last-child) {
+  margin-bottom: 8rem;
+}
+
 .accordion-content-container {
-    margin-bottom: 32px;
+    &:not(:last-child) {
+      margin-bottom: 0.8rem;
+    }
 }
 
 .accordion-toggle {
-    font-family: $default-font;
-    background-color: #fff;
+    @include largeText;
+    background-color: transparent;
     width: 100%;
     border: none;
     outline: none;
     padding: 0;
-    transition: padding 0.4s ease-in;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
 
     p {
         text-align: left;
         position: relative;
         padding-left: 3rem;
-        line-height: 3rem;
-
     }
 
     .icons {
         position: absolute;
         left: 0;
-        width: 1.4rem;
-        height: 3rem;
+        width: 1.7rem;
+        height: $largeText-line-height-rem;
         margin-right: 1.6rem;
         content: url(../../assets/icons/plus.svg);
-    }
-
-    &:hover {
-        background-color: #ffffff;
-        cursor: pointer;
     }
 }
 
 .accordion-toggle.active {
-    padding-bottom: 32px;
+    padding-bottom: 3.2rem;
 
     .icons {
         content: url(../../assets/icons/minus.svg);
@@ -43,27 +47,26 @@
 }
 
 .panel {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    background-color: transparent;
+    overflow: auto;
     height: 0;
-    opacity: 0;
-    padding: 0 0 0 32px;
-    background-color: white;
-    overflow: hidden;
-    transition: all 0.2s ease-in-out;
+    will-change: height, margin-bottom;
 
     p {
-        line-height: 3.2rem;
+        padding-left: 3.2rem;
+        margin: $largeText-line-height-rem 0;
+        transform: none;
 
         a {
-            @include underlineText;
+          @include underlineText;
         }
     }
 }
 
 .panel.open {
-    opacity: 1;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border-top: $thinBorder;
+    border-bottom: $thinBorder;
+    margin-bottom: 1.6rem;
+    transition: height 0.2s ease-in,
+                margin-bottom 0.1s ease-in;
 }

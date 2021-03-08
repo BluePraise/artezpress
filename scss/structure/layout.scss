@@ -1,83 +1,84 @@
-// Main Large container
+// Site padding
+
+.site-wrapper {
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 160px;
+}
+
+
+// Main containers
+
 .container {
-    max-width: $default-container-width;
-    margin: 0 auto;
-    padding-left: 1.6rem;
-    padding-right: 1.6rem;
-    padding-top: 5.4rem;
+  max-width: $default-container-width;
+  margin: 0 auto;
 }
 
-.grid-container {
-    display: grid;
+/* check if in use, if not delete! */
+.container-xl {
+  max-width: $xl-container-width;
+  margin: 0 auto;
+  // background: red;
+  // color: blue !important;
 }
 
-.flex-container {
-    display: flex;
-}
-
-.flex-col {
-    display: inline-flex;
-    flex-direction: column;
-}
-
-.justify-center {
-    justify-content: center;
-}
-
-.justify-space-between {
-    justify-content: space-between;
-}
-
-.container-books {
-    margin-left: 27rem;
-    width: 100%;
-    max-width: 107.6rem;
-    @media (min-width: 1441px) {
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-.container-xs,
-.post-container,
-.content-container {
-    max-width: 77rem;
-    margin: 0 auto;
-    padding-bottom: 8rem;
+.container-l {
+  max-width: $l-container-width;
+  margin: 0 auto;
 }
 
 .container-s {
-    max-width: 96rem;
-    margin: 0 auto;
+  max-width: $s-container-width;
+  margin: 0 auto;
 }
 
-// I took off the margin: 3.6rem auto to control
-// margin for the news items
-.container-xl {
-    max-width: 161rem;
-    margin: 0 auto;
+.content-container {
+  max-width: $s-container-width;
+  margin: 0 auto;
+  padding-bottom: 8rem;
 }
 
-// aligns all the products in a row of six
-.book-grid,
-.product-display {
-    flex-wrap: wrap;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 107.6rem;
+
+// Pages
+
+.page {
+  padding-top: 6rem;
 }
 
-// used in 2 col content editor on default pages
-.content__left,
-.content__right {
-    width: 35.3rem;
+
+// Grids
+
+.grid,
+.grid-container {
+  display: grid;
+}
+.flex,
+.flex-container {
+  display: flex;
 }
 
-.content__left {
-    margin-right: 3.2rem;
+.flex-col {
+  display: inline-flex;
+  flex-direction: column;
 }
 
 .flex-container .col_left,
 .flex-container .col_right {
-    width: 50%;
+  width: 50%;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+
+// Blocks
+
+.page-title {
+  display: block;
+  margin-bottom: 8rem;
 }
