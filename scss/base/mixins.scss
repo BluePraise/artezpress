@@ -27,6 +27,12 @@
   font-weight: 400;
 }
 
+@mixin menuText {
+  @include Lars($menuText-font-size, $menuText-line-height);
+  font-family: $extras-font;
+  font-weight: 400;
+}
+
 @mixin baseText {
   font-family: $default-font;
   font-weight: 400;
@@ -41,12 +47,30 @@
   line-height: $smallText-line-height-rem;
 }
 
-@mixin menuText {
-  font-family: $default-font;
+@mixin baseMenuText {
+  font-family: $extras-font;
   font-weight: 400;
   font-size: $menuText-font-size-rem;
   line-height: $menuText-line-height-rem;
 }
+
+@mixin h2 {
+  @include Lars($h2-font-size, $h2-line-height-rem);
+  font-family: $extended-font;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+@mixin baseH2 {
+  font-size: $h2-font-size-rem;
+  line-height: $h2-line-height-rem;
+  font-family: $extended-font;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-align: center;
+}
+
 
 /* what is this? */
 @mixin microText {
@@ -124,8 +148,8 @@
       rgba($r, $g, $b, 0.741) 64.7%,
       rgba($r, $g, $b, 0.825) 71%,
       rgba($r, $g, $b, 0.896) 77.5%,
-      rgba($r, $g, $b, 0.95) 84.5%,
-      rgba($r, $g, $b, 0.95) 100%);
+      rgba($r, $g, $b, 0.9) 84.5%,
+      rgba($r, $g, $b, 0.9) 100%);
   background-size: 100% 100%;
   background-position: $position;
   background-repeat: no-repeat;
@@ -146,8 +170,8 @@
       rgba($rgb, 0.741) 64.7%,
       rgba($rgb, 0.825) 71%,
       rgba($rgb, 0.896) 77.5%,
-      rgba($rgb, 0.95) 84.5%,
-      rgba($rgb, 0.95) 100%);
+      rgba($rgb, 0.9) 84.5%,
+      rgba($rgb, 0.9) 100%);
   background-size: 100% 100%;
   background-position: $position;
   background-repeat: no-repeat;
@@ -183,13 +207,13 @@
 @mixin MobileMenuColors($book: true) {
   @if $book {
     background-color: rgba(var(--book-background), 0.9);
-    &::before {
-      @include gradientRgb(var(--book-background), bottom);
-    }
+    // &::before {
+    //   @include gradientRgb(var(--book-background), bottom);
+    // }
   } @else {
     background-color: $greyTransparent;
-    &::before {
-      @include gradient(242, 242, 242, bottom);
-    }
+    // &::before {
+    //   @include gradient(242, 242, 242, bottom);
+    // }
   }
 }

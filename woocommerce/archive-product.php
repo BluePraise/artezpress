@@ -1,7 +1,8 @@
 <?php get_header(); ?>
 
+  <?php get_template_part('inc/filters'); ?>
+
   <main class="site-main book-archive js-products-container" role="main">
-    <?php get_template_part('inc/filters'); ?>
 
     <div class="book-grid grid-container container-xl">
     <?php
