@@ -9,7 +9,6 @@
  * If you don't plan to dequeue the Storefront Core CSS you can remove the subsequent line and as well
  * as the sf_child_theme_dequeue_style() function declaration.
  */
-@ini_set('upload_max_size', '64M');
 
 
 if (!isset($content_width)) {
@@ -43,12 +42,10 @@ add_action('wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999);
 function artezpress_style()
 {
 	wp_register_style('artezpress-css', get_stylesheet_directory_uri() . '/style.css');
-	
 	wp_register_style('app-css', get_stylesheet_directory_uri() . '/assets/css/app.css');
 	wp_enqueue_style('app-css');
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui');
-	wp_enqueue_script('waypoints', get_theme_file_uri() . '/js/jquery.waypoints.min.js', [], null, true);
 	wp_enqueue_script('masonry');
 	wp_enqueue_script('owl-slider', get_theme_file_uri() . '/js/owl.slider.js', [], null, true);
 	wp_enqueue_script('jquery-ui-accordion');

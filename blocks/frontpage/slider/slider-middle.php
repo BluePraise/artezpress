@@ -1,7 +1,7 @@
 
 <div class="carousel-container new-releases">
 <h2 class="slider-title"><?php _e('New Releases', 'artezpress'); ?></h2>
-<div class="owl-carousel">
+<div class="main-carousel" data-flickity=''>
 
 <?php 
 
@@ -22,7 +22,7 @@
             $imgmeta    = wp_get_attachment_metadata($tn_id);
     ?>
 
-     <div class="slider-item slider-item-middle" style="background-image: url( <?php echo $img; ?>)">
+     <div class="slider-item" style="background-image: url( <?php echo $img; ?>)">
         <div class="slider-item-meta">
             <h2 class="slider-item-title"><?php echo $title; ?></h2>
         </div>    

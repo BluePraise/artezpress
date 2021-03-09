@@ -2,7 +2,7 @@
 
 <footer class="mast-footer">
 	<?php if (is_front_page()) : ?>
-		<div class="grid-container wp-end-of-page">
+		<div class="grid-container">
 			<?php get_template_part('inc/templateparts/nav', 'pages'); ?>
 
 		<div class="mini-cart-column">

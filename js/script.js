@@ -184,14 +184,34 @@ jQuery(document).ready(function($) {
         });
     }
 
-    $(".owl-carousel").owlCarousel({
-        items: 1,
-        slideBy: 2,
-        loop: true,
-        autoplay: true,
-        dots: true,
-        lazyLoad: true,
-    });
+    // FOR FRONTPAGE CAROUSEL
+
+    var $maincarousel = $('.main-carousel');
+
+    function frontpageFlickity() {
+        $maincarousel.flickity({
+            cellSelector: '.slider-item',
+            setGallerySize: true,
+            resize: true,
+            wrapAround: false,
+            watchCSS: true,
+            fade: true,
+            contain: true,
+            draggable: false,
+            prevNextButtons: false,
+            pageDots: true
+        });
+    }
+
+    frontpageFlickity();
+
+    // var flkty = $maincarousel.data('flickity');
+
+    // flkty.on( 'resize', function() {
+    //     var isSingleSlide = flkty.slides.length < 2;
+    //     $maincarousel.toggleClass( 'is-single-slide', isSingleSlide );
+    // });
+
 
 
     $(".news-grid-masonry").masonry({
