@@ -228,7 +228,10 @@ jQuery(document).ready(function ($) {
         freeScroll: true,
         contain: true,
         draggable: true,
-        // prevNextButtons: true,
+        on: {
+            ready: function () {
+            }
+        }
     });
     // // if one slide add class so display none.
     // $highlightcarousel.on( 'resize', function() {
@@ -236,15 +239,17 @@ jQuery(document).ready(function ($) {
     //     $highlightcarousel.toggleClass('is-single-slide', isSingleSlide);
     // });
     
-    //
     
+    var flkty = $backlist.data('flickity');
+    $backlistTitle = $('.backlist').find('.slider-title');
+    //get current color from slider-item-meta
+    //apply value to slider-title.
 
-    $backlist.on('settle.flickity', function (event, index) {
-        let isSelectedSlide = $('.slider-item.is-selected');
+    $backlist.on('scroll.flickity', function () {
+        let selectedSlideColor = $(flkty.selectedElement).data('textcolor');
         //get current color from slider-item-meta
-        let currentColor = isSelectedSlide.attr('data-textcolor');
         //apply value to slider-title.
-        // console.log(isSelectedSlide.data('textcolor'));
+        $backlistTitle.css('color', selectedSlideColor );
     });
     
 
