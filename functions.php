@@ -47,22 +47,32 @@ function artezpress_style()
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui');
 	wp_enqueue_script('masonry');
-	wp_enqueue_script('owl-slider', get_theme_file_uri() . '/js/owl.slider.js', [], null, true);
-	wp_enqueue_script('jquery-ui-accordion');
-	wp_enqueue_script('jquery-ui-slider');
-	wp_register_style('jquery-ui-smoothness', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui');
-	wp_enqueue_script('totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true);
+    wp_register_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
+    wp_register_style('flickity-theme', 'https://unpkg.com/flickity@2/dist/flickity.min.css');
+    
+    // USED FOR SEARCH AND FILTER ON ArCHIVe PAGE
     wp_register_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
-    wp_enqueue_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
-	wp_register_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
+    wp_register_script('filters', get_theme_file_uri() . '/js/filters.js', [], null, true);
+    
+    if (is_front_page()):
+        wp_enqueue_script('owl-slider', get_theme_file_uri() . '/js/owl.slider.js', [], null, true);
+    endif;
+    if (is_page()):
+        wp_enqueue_script('jquery-ui-accordion');
+    endif;
+	// wp_enqueue_script('totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true);
 	if(is_archive() || is_front_page()):
-        wp_register_style('flickity-theme', 'https://unpkg.com/flickity@2/dist/flickity.min.css');
 		wp_enqueue_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
 		wp_enqueue_style('flickity-theme');
+    endif;
+    if (is_archive()): 
+        wp_enqueue_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
+        wp_enqueue_script('filters', get_theme_file_uri() . '/js/filters.js', [], null, true);
 	endif;
-	$ajax_url = admin_url('admin-ajax.php');
-
+    
 	wp_enqueue_script('artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true);
+    
+	$ajax_url = admin_url('admin-ajax.php');
 	wp_localize_script(
 		'artezpress-script',
 		'artez_object',

@@ -19,7 +19,7 @@
 
   <?php foreach ($languages as $lang) : ?>
 		<div class="filter-list-item filter-list__language-item languages" style="display:none;">
-      <a href="" class="tag-pill black-on-white js-filter-item" role="button" data-id="<?= $lang ?>" data-filter="language-<?= $lang ?>"><?= _e($lang); ?></a>
+        <a href="" class="tag-pill black-on-white js-filter-item" role="button" data-id="<?= $lang ?>" data-filter="booklang-<?= $lang ?>"><?= _e($lang); ?></a>
 		</div>
   <?php endforeach; ?>
 </div>

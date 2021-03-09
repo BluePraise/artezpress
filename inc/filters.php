@@ -2,25 +2,24 @@
 $authors = [];
 $years = [];
 
-while (have_posts()) {
-  the_post();
+while (have_posts()) : the_post();
   global $product;
   if (strlen(get_field('author'))) {
     $authors[] = explode(',', get_field('author'));
   }
   if (get_field('ap_language')) {
-    $l = get_field('ap_language');
     $languages[] = get_field('ap_language');
   }
   if (strlen(get_field('publishing_year'))) {
     $years[] = (int)get_field('publishing_year');
   }
-}
+endwhile;
 sort($years, SORT_NUMERIC);
 $terms = get_terms(array('taxonomy' => 'product_tag'));
 //$authors = array_unique(array_flatten($authors), SORT_REGULAR);
 $years = array_reverse(array_unique($years, SORT_NUMERIC));
 $categories = get_terms(['taxonomy' => 'product_cat']);
+$languages = array_unique($languages);
 ?>
 
 <button class="search-bar__toggle js-search-toggle" type="button" style="display: none;">
