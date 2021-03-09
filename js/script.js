@@ -185,33 +185,68 @@ jQuery(document).ready(function ($) {
     }
 
     // FOR FRONTPAGE CAROUSEL
+    $comingsoon  = $('.coming-soon-carousel');
+    $newreleases = $('.new-releases-carousel');
+    $backlist    = $('.backlist-carousel');
+    $highlightcarousel    = $('.highlight-carousel');
 
-    var $maincarousel = $('.main-carousel');
+    $comingsoon.flickity({
+        cellSelector: '.slider-item',
+        setGallerySize: true,
+        resize: true,
+        imagesLoaded: true,
+        wrapAround: false,
+        // watchCSS: true,
+        // fade: true,
+        freeScroll: true,
+        contain: true,
+        draggable: false,
+        prevNextButtons: false,
+        pageDots: true
+    });
 
-    function frontpageFlickity() {
-        $maincarousel.flickity({
-            cellSelector: '.slider-item',
-            setGallerySize: true,
-            resize: true,
-            wrapAround: false,
-            watchCSS: true,
-            fade: true,
-            contain: true,
-            draggable: false,
-            prevNextButtons: false,
-            pageDots: true
-        });
-    }
-
-    frontpageFlickity();
-
-    // var flkty = $maincarousel.data('flickity');
-
-    // flkty.on( 'resize', function() {
+     $newreleases.flickity({
+        cellSelector: '.slider-item',
+        setGallerySize: true,
+        resize: true,
+        // wrapAround: false,
+        watchCSS: true,
+        // fade: true,
+        // freeScroll: true,
+        // contain: true,
+        // draggable: false,
+        // prevNextButtons: false,
+        pageDots: true
+     });
+    $backlist.flickity({
+        cellSelector: '.slider-item',
+        autoPlay: true,
+        setGallerySize: true,
+        resize: true,
+        wrapAround: false,
+        fade: true,
+        freeScroll: true,
+        contain: true,
+        draggable: true,
+        // prevNextButtons: true,
+    });
+    // // if one slide add class so display none.
+    // $highlightcarousel.on( 'resize', function() {
     //     var isSingleSlide = flkty.slides.length < 2;
-    //     $maincarousel.toggleClass( 'is-single-slide', isSingleSlide );
+    //     $highlightcarousel.toggleClass('is-single-slide', isSingleSlide);
     // });
+    
+    //
+    
 
+    $backlist.on('settle.flickity', function (event, index) {
+        let isSelectedSlide = $('.slider-item.is-selected');
+        //get current color from slider-item-meta
+        let currentColor = isSelectedSlide.attr('data-textcolor');
+        //apply value to slider-title.
+        // console.log(isSelectedSlide.data('textcolor'));
+    });
+    
 
 
     $(".news-grid-masonry").masonry({

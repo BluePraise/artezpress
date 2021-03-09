@@ -140,6 +140,9 @@ body.single-product.set-text-white {
       @media (max-width: 767px) {
         grid-column: auto / span 2;
       }
+      a {
+          display: block;
+      }
     }
   }
 }

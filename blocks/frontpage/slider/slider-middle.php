@@ -1,7 +1,7 @@
 
 <div class="carousel-container new-releases">
 <h2 class="slider-title"><?php _e('New Releases', 'artezpress'); ?></h2>
-<div class="main-carousel" data-flickity=''>
+<div class="highlight-carousel new-releases-carousel">
 
 <?php 
 
@@ -29,10 +29,8 @@
         <a href="<?php echo $permalink; ?>"><?php _e('Read More', 'artezpress'); ?></a>
     </div>
 <?php
-    
-    
-endwhile;
-endif;  
-        ?>
+    endwhile;
+    endif;  
+?>
     </div>
 </div>
