@@ -55,7 +55,7 @@ function artezpress_style()
     wp_register_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
     wp_enqueue_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
 	wp_register_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
-	if(is_archive()):
+	if(is_archive() || is_front_page()):
         wp_register_style('flickity-theme', 'https://unpkg.com/flickity@2/dist/flickity.min.css');
 		wp_enqueue_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
 		wp_enqueue_style('flickity-theme');
