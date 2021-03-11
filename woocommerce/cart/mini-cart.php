@@ -30,14 +30,14 @@ $count = $woocommerce->cart->cart_contents_count;
 	// var_dump($current_user);
 	$name = $current_user->display_name;
 ?>
-	<span class="mini-cart-greeting">Hi, <?php echo $name; ?></span>
+	<span class="mini-cart-greeting">Hi <?php echo $name; ?>,</span>
 <?php else :  ?>
 	<span class="mini-cart-greeting">Hi,</span>
 <?php endif; ?>
 
 <?php if (!WC()->cart->is_empty()) : ?>
 
-	<div class="mini-cart-counter">You have <?php echo $count ?> items in your cart</div>
+	<div class="mini-cart-counter">You have <?php echo $count ?> items in your cart,</div>
 	<ul class="woocommerce-mini-cart cart_list product_list_widget <?php echo esc_attr($args['list_class']); ?>">
 		<?php
 		do_action('woocommerce_before_mini_cart_contents');
@@ -67,7 +67,6 @@ $count = $woocommerce->cart->cart_contents_count;
 					);
 					?>
 					<?php
-					//var_dump($cart_item);
 					echo wc_get_formatted_cart_item_data($cart_item, $product_price); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 					?>
 					<?php echo apply_filters('woocommerce_widget_cart_item_quantity', '<div class="quantity">' . sprintf('<span class="mc-product-name">%s</span> <span class="mc-product-quantity">&times; %s</span> <span class="mc-product-total">%s</span>', $product_name, $cart_item['quantity'], wc_price($cart_item['line_subtotal'])) . '</div>', $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 

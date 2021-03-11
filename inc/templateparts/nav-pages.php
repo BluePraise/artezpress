@@ -36,14 +36,14 @@
             <li <?php if (is_page("for-authors")):?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url("/for-authors"); ?>" title="For Authors"><?php _e('For Authors', 'artezpress'); ?></a></li>
             <li <?php if (is_page("terms-and-conditions")):?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url("/terms-and-conditions"); ?>" title="ArtEZPress Terms and Conditions"><?php _e('Terms and Conditions', 'artezpress'); ?></a></li>
             <li <?php if (is_page("privacy-policy")):?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url("/privacy-policy"); ?>" title="ArtEZPress Privacy Policy"><?php _e('Privacy Policy', 'artezpress'); ?></a></li>
-            <li <?php if (is_page("imprint")):?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url("/imprint"); ?>"><?php _e('Imprint', 'artezpress'); ?></a></li>
+            <li <?php if (is_page("colophon")):?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url("/colophon"); ?>"><?php _e('Colophon', 'artezpress'); ?></a></li>
         <?php else: ?>
             <li <?php if (is_page("contact")):?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url(); ?>/nl/contact/" title="Contact ArtEZPress">Contact</a></li>
             <li <?php if (is_page("hoe-kunnen-we-helpen")):?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url(); ?>/nl/hoe-kunnen-we-helpen/" title="Hoe kunnen we u helpen?"><?php _e('How Can We Help?', 'artezpress'); ?></a></li>
             <li <?php if (is_page("voor-auteurs")):?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url(); ?>/nl/voor-auteurs/" title="Voor Auteurs"><?php _e('For Authors', 'artezpress'); ?></a></li>
             <li <?php if (is_page("algemene-voorwaarden")):?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url(); ?>/nl/algemene-voorwaarden/" title="ArtEZPress Terms and Conditions"><?php _e('Terms and Conditions', 'artezpress'); ?></a></li>
             <li <?php if (is_page("privacy-policy")):?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url(); ?>/nl/privacy-policy" title="ArtEZPress Privacy Policy"><?php _e('Privacy Policy', 'artezpress'); ?></a></li>
-            <li <?php if (is_page("colofon")):?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url(""); ?>/nl/colofon/"><?php _e('Colofon', 'artezpress'); ?></a></li>
+            <li <?php if (is_page("colofon")):?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url(""); ?>/nl/colofon/"><?php _e('Colophon', 'artezpress'); ?></a></li>
         <?php endif; ?>
     </ul>
     <div class="social-menu">
