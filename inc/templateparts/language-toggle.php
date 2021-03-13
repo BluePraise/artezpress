@@ -25,10 +25,13 @@
         <ul class="language-toggle language-toggle__mobile js-language-toggle">
 
             <li class="lang-item">
-                <?php foreach ($langs_array as $lang) : ?>
-                    <a href="<?php echo $lang['url']; ?>" class="drop-block__link <?php if ($lang['current_lang']) : ?>active<?php else : ?>inactive<?php endif; ?>">
-                        <?php echo $lang['slug']; ?>
-                    </a> 
+                <?php foreach ($langs_mobile as $lang) : ?>
+                    <a href="<?= $lang['url']; ?>" class="drop-block__link <?php if ($lang['current_lang']) : ?>active<?php else : ?>inactive<?php endif; ?>">
+                        <?= $lang['slug']; ?>
+                        <?php if ($lang['slug'] === "en") :?>
+                            <span>/</span>
+                        <?php endif; ?>    
+                    </a>
                 <?php endforeach; ?>
             </li>
         </ul>
