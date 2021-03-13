@@ -142,9 +142,10 @@ jQuery(document).ready(function($) {
         });
     }
 
-    flicitySlider();
-
-
+    setTimeout(function () {
+        flicitySlider();
+    }, 400);
+    
     //when filter headers buttons clicked
     filterHeaderButtons.on( 'click', function() {
         //use data-header attribute & class for filtering teh filterSlider
