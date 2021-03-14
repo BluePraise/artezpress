@@ -43,6 +43,7 @@ function artezpress_style()
 {
 	wp_register_style('artezpress-css', get_stylesheet_directory_uri() . '/style.css');
 	wp_register_style('app-css', get_stylesheet_directory_uri() . '/assets/css/app.css');
+	wp_enqueue_style('artezpress-css');
 	wp_enqueue_style('app-css');
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui');
@@ -56,9 +57,6 @@ function artezpress_style()
     wp_register_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
     wp_register_script('filters', get_theme_file_uri() . '/js/filters.js', [], null, true);
     
-    if (is_front_page()):
-        wp_enqueue_script('owl-slider', get_theme_file_uri() . '/js/owl.slider.js', [], null, true);
-    endif;
     if (is_page()):
         wp_enqueue_script('jquery-ui-accordion');
     endif;
