@@ -25,32 +25,6 @@ jQuery(document).ready(function ($) {
     });
 
 
-    // header menu overlap menu fix
-
-    var head_menu = $('header.fixed-bottom');
-    var menuTimeout = null;
-
-    // $(window).on('mousemove', mouseMoveHandler);
-
-    function mouseMoveHandler(e) {
-        if (e.pageX < 20 || head_menu.is(':hover')) {
-            // Show the menu if mouse is within 20 pixels
-            // from the left or we are hovering over it
-            // console.log('fire 1');
-            clearTimeout(menuTimeout);
-            menuTimeout = null;
-            $("header.fixed-bottom").css("z-index", 2);
-        } else if (menuTimeout === null) {
-            // Hide the menu if the mouse is further than 20 pixels
-            // from the left and it is not hovering over the menu
-            // and we aren't already scheduled to hide it
-            // console.log('fire 2');
-            menuTimeout = setTimeout(function () {
-                $("header.fixed-bottom").css("z-index", 0)
-            }, 000);
-        }
-    }
-
     // cart Quantity JS
 
     if (!String.prototype.getDecimals) {
@@ -63,6 +37,7 @@ jQuery(document).ready(function ($) {
             return Math.max(0, (match[1] ? match[1].length : 0) - (match[2] ? +match[2] : 0));
         }
     }
+
     // Quantity "plus" and "minus" buttons
     $(document.body).on('click', '.plus, .minus', function () {
         console.log('1');
@@ -291,3 +266,4 @@ jQuery(document).ready(function ($) {
         }
     }
 });
+
