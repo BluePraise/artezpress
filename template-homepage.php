@@ -21,7 +21,9 @@ get_header(); ?>
 
 	<?php
 	if (have_rows('feature_sliders')) : ?>
-		<section class="features flex-container">
+		<section class="featured-section features">
+			<div class="featured-section__grid grid">
+
 			<?php
 			while (have_rows('feature_sliders')) : the_row();
 
@@ -30,6 +32,8 @@ get_header(); ?>
 				get_template_part('blocks/frontpage/slider/slider', 'right');
 
 			endwhile; ?>
+
+			</div>
 		</section>
 	<?php endif; ?>
 

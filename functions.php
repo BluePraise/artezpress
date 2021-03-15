@@ -51,11 +51,11 @@ function artezpress_style()
     wp_register_script('flickity-fade',  "https://unpkg.com/flickity-fade@1/flickity-fade.js", ['jquery'], null, false);
     wp_register_style('flickity-theme', 'https://unpkg.com/flickity@2/dist/flickity.min.css');
     wp_register_style('flickity-fade', 'https://unpkg.com/flickity-fade@1/flickity-fade.css');
-    
+
     // USED FOR SEARCH AND FILTER ON ArCHIVe PAGE
     wp_register_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
     wp_register_script('filters', get_theme_file_uri() . '/js/filters.js', [], null, true);
-    
+
     if (is_front_page()):
         wp_enqueue_script('owl-slider', get_theme_file_uri() . '/js/owl.slider.js', [], null, true);
     endif;
@@ -68,13 +68,13 @@ function artezpress_style()
 		wp_enqueue_script('flickity-fade',  "https://unpkg.com/flickity-fade@1/flickity-fade.js", ['jquery'], null, true);
 		wp_enqueue_style('flickity-theme');
     endif;
-    if (is_archive()): 
+    if (is_archive()):
         wp_enqueue_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
         wp_enqueue_script('filters', get_theme_file_uri() . '/js/filters.js', [], null, true);
 	endif;
-    
+
 	wp_enqueue_script('artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true);
-    
+
 	$ajax_url = admin_url('admin-ajax.php');
 	wp_localize_script(
 		'artezpress-script',
@@ -128,7 +128,7 @@ if (function_exists('acf_add_options_page')) {
 function artezpress_theme_setup()
 {
 	add_image_size('feature-slider-size', 1120, true, array('center', 'center'));
-	add_image_size('cart-thumb', 125, 177, true); 
+	add_image_size('cart-thumb', 125, 177, true);
 	add_editor_style('style-editor.css'); // tries to include style-editor.css directly from your theme folder
 
 	add_theme_support('editor-styles'); // if you don't add this line, your stylesheet won't be added
@@ -209,8 +209,8 @@ add_filter('acf/settings/save_json', 'my_acf_json_save_point');
  */
 add_filter('pum_popup_content', 'veer_popup_maker_gutenburg_compat');
 
-function my_acf_admin_head() { 
-	if (is_user_logged_in(  )): 
+function my_acf_admin_head() {
+	if (is_user_logged_in(  )):
 ?>
 	<style type="text/css">
 		.acf-tab-group li.active a {
@@ -289,7 +289,7 @@ function veer_popup_maker_gutenburg_compat($content)
 /**********************************
  *
  * All WooCommerce Functions
- * 
+ *
  **********************************/
 
 
@@ -317,7 +317,7 @@ function add_to_cart_fragment($fragments)
 }
 add_filter('woocommerce_add_to_cart_fragments', 'add_to_cart_fragment', 10, 1);
 
-//Turn off irritating zoom hover effect 
+//Turn off irritating zoom hover effect
 function remove_image_zoom_support()
 {
 	remove_theme_support('wc-product-gallery-zoom');
@@ -475,7 +475,7 @@ function my_acf_admin_enqueue_scripts()
 	wp_enqueue_script('image-process-js', get_stylesheet_directory_uri() . '/js/image-process.js', false, '1.0.0');
 }
 
-// Ajax function for color extractor 
+// Ajax function for color extractor
 add_action('wp_ajax_extract_colors', 'extract_colors');
 function extract_colors()
 {
@@ -555,7 +555,7 @@ add_filter('body_class', function ($classes) {
 
 function artez_random_bg()
 {
-	
+
 	$rows = get_field('hero_bg_imgs', 'option'); // get all the rows
 	$rand_row = $rows[array_rand($rows)];
 	echo $rand_row['bg_images_uploaded'];
@@ -628,7 +628,7 @@ function copy_tax($taxonomies, $sync)
 	return $taxonomies;
 }
 
-// Disable Woocommerce Header in WP Admin 
+// Disable Woocommerce Header in WP Admin
 add_action('admin_head', 'Hide_WooCommerce_Breadcrumb');
 
 function Hide_WooCommerce_Breadcrumb()

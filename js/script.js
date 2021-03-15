@@ -184,74 +184,148 @@ jQuery(document).ready(function ($) {
         });
     }
 
+
     // FOR FRONTPAGE CAROUSEL
-    $comingsoon  = $('.coming-soon-carousel');
-    $newreleases = $('.new-releases-carousel');
-    $backlist    = $('.backlist-carousel');
-    $highlightcarousel    = $('.highlight-carousel');
 
-    $comingsoon.flickity({
-        cellSelector: '.slider-item',
-        setGallerySize: true,
-        resize: true,
-        imagesLoaded: true,
-        wrapAround: false,
-        // watchCSS: true,
-        // fade: true,
-        freeScroll: true,
-        contain: true,
-        draggable: false,
-        prevNextButtons: false,
-        pageDots: true
+		// I set up each of the sliders as a var, then I can control each one of them individually
+		var target = $('.coming-soon-carousel').flickity({
+			cellSelector: '.carousel-cell',
+			imagesLoaded: true,
+			autoPlay: 11000,
+			fade: true,
+			selectedAttraction: 1,
+      friction: 1,
+			prevNextButtons: false,
+			pageDots: false,
+			setGallerySize: false,
     });
 
-     $newreleases.flickity({
-        cellSelector: '.slider-item',
-        setGallerySize: true,
-        resize: true,
-        // wrapAround: false,
-        watchCSS: true,
-        // fade: true,
-        // freeScroll: true,
-        // contain: true,
-        // draggable: false,
-        // prevNextButtons: false,
-        pageDots: true
+		var target = $('.new-releases-carousel').flickity({
+			cellSelector: '.carousel-cell',
+ 			imagesLoaded: true,
+ 			autoPlay: 9000,
+ 			fade: true,
+ 			selectedAttraction: 0.2,
+ 			friction: 0.8,
+ 			prevNextButtons: false,
+ 			pageDots: false,
+			setGallerySize: false,
      });
-    $backlist.flickity({
-        cellSelector: '.slider-item',
-        autoPlay: true,
-        setGallerySize: true,
-        resize: true,
-        wrapAround: false,
-        fade: true,
-        freeScroll: true,
-        contain: true,
-        draggable: true,
-        on: {
-            ready: function () {
-            }
+
+    var target = $('.backlist-carousel').flickity({
+      cellSelector: '.carousel-cell',
+			imagesLoaded: true,
+			lazyLoad: true,
+			autoPlay: 7000,
+			fade: true,
+			selectedAttraction: 0.2,
+			friction: 0.8,
+			prevNextButtons: false,
+			pageDots: false,
+			adaptiveHeight: true,
+			on: {
+        ready: function() {
+					startData();
+        },
+        change: function() {
+					changeData();
         }
+      }
     });
+
+		// For slider load
+		// Get data-color and data-url from the active slide and copy them to the slider parent
+		// in this case with "each"... don't knwo why :/
+		function startData() {
+			$('.carousel-container').each(function(i, container) {
+				var target = $(container).find('.highlights-carousel'),
+						nav = target.find('.slider-nav__link'),
+						s = target.find('.is-selected'),
+						sColor = s.data("color"),
+						sUrl = s.data("url");
+
+				target.attr( "data-color", sColor );
+				nav.attr("href", (sUrl));
+
+			});
+		};
+
+		// For slide change
+		// Get data-color and data-url from the active slide and copy them to the slider parent
+		// in this case counting on the fact all the sliders are defined as "var target"... Again, don't knwo why :/
+		function changeData() {
+			var nav = target.find('.slider-nav__link'),
+					s = target.find('.is-selected'),
+					sColor = s.data("color"),
+					sUrl = s.data("url");
+
+			target.attr( "data-color", sColor );
+			nav.attr("href", (sUrl));
+		};
+
+
+		// Custom Highlights Nav Pager
+		// I can't get all the sliders to add active class t othe first bullet on load (works on chnage, but on load aonly in Backlist)
+		$('.carousel-container').each(function(i, container) {
+		  var $container = $(container);
+		  var $slider = $container.find('.highlights-carousel');
+		  var flkty = $slider.data('flickity');
+		  var selectedIndex = flkty.selectedIndex;
+
+		  var slideCount = flkty.slides.length;
+
+		  var $pagers = $container.find('.slider-nav__pager');
+
+		  for (i = 0; i < slideCount; i++) {
+		    $pagers.append('<span></span>');
+		  }
+
+		  var $pager = $pagers.find('span');
+
+		  $slider.on('select.flickity', function() {
+
+		    $pager.filter('.is-active').removeClass('is-active');
+		    $pager.eq(flkty.selectedIndex).addClass('is-active');
+
+		  });
+
+		  $pagers.on('click', 'span', function() {
+		    var index = $(this).index();
+		    $slider.flickity('select', index);
+		  });
+
+		});
+
+
+		// $carouselBacklist.on( 'change.flickity', function( event, index ) {
+		//   console.log( 'Flickity change ' + index );
+		// });
+
     // // if one slide add class so display none.
     // $highlightcarousel.on( 'resize', function() {
     //     var isSingleSlide = flkty.slides.length < 2;
     //     $highlightcarousel.toggleClass('is-single-slide', isSingleSlide);
     // });
-    
-    
-    var flkty = $backlist.data('flickity');
-    $backlistTitle = $('.backlist').find('.slider-title');
-    //get current color from slider-item-meta
-    //apply value to slider-title.
 
-    $backlist.on('scroll.flickity', function () {
-        let selectedSlideColor = $(flkty.selectedElement).data('textcolor');
-        //get current color from slider-item-meta
-        //apply value to slider-title.
-        $backlistTitle.css('color', selectedSlideColor );
-    });
-    
+
+    // var flkty = $backlist.data('flickity');
+    // $backlistTitle = $('.backlist').find('.slider-title');
+    // //get current color from slider-item-meta
+    // //apply value to slider-title.
+		//
+    // $backlist.on('scroll.flickity', function () {
+    //     let selectedSlideColor = $(flkty.selectedElement).data('textcolor');
+    //     //get current color from slider-item-meta
+    //     //apply value to slider-title.
+    //     $backlistTitle.css('color', selectedSlideColor );
+    // });
+
+
+
+
+
+
+
 
 
     $(".news-grid-masonry").masonry({
