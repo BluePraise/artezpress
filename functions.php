@@ -545,7 +545,7 @@ add_filter('body_class', function ($classes) {
 		if ($single_product_text_color == "#00000") :
 			return array_merge($classes, array('set-text-black'));
 
-		elseif ($single_product_text_color == "#f2f2f2") :
+		elseif ($single_product_text_color == "#fffff") :
 			return array_merge($classes, array('set-text-white'));
 		endif;
 	endif;
