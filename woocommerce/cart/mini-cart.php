@@ -37,7 +37,7 @@ $count = $woocommerce->cart->cart_contents_count;
 
 <?php if (!WC()->cart->is_empty()) : ?>
 
-	<div class="mini-cart-counter">You have <?php echo $count ?> items in your cart,</div>
+	<div class="mini-cart-counter">You have <?php echo $count ?> items in your cart:</div>
 	<ul class="woocommerce-mini-cart cart_list product_list_widget <?php echo esc_attr($args['list_class']); ?>">
 		<?php
 		do_action('woocommerce_before_mini_cart_contents');

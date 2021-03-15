@@ -1,6 +1,6 @@
-<div class="filter-list">
+<div class="filter-list fade-in">
 	<?php foreach ($terms as $term) : ?>
-		<div class="filter-list-item filter-list__tags-item tags flickity">
+		<div class="filter-list-item tags flickity fade-in">
 			<a href="<?= get_term_link($term->term_id, 'product_tag'); ?>" class="tag-pill black-on-white js-filter-item" data-id="<?= $term->term_id ?>" data-filter="product_tag-<?= $term->slug ?>"><?=  _e($term->name); ?></a>
 		</div>
 	<?php endforeach; ?>

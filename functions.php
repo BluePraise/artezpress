@@ -532,21 +532,29 @@ function prevent_duplicate_products_redirect($url = false)
 }
 
 
-
+// BODY CLASS FUNCTION
 // Add specific CSS class by filter.
 
 add_filter('body_class', function ($classes) {
-	global $post;
-	$id = $post->ID;
+   
+    global $post;
+    $id = $post->ID;
+
 	$single_product_text_color = get_field('text_color', $id);
 	if (is_product() && $single_product_text_color) :
 		if ($single_product_text_color == "#00000") :
 			return array_merge($classes, array('set-text-black'));
 
-		elseif ($single_product_text_color == "#f2f2f2") :
+		elseif ($single_product_text_color == "#fffff") :
 			return array_merge($classes, array('set-text-white'));
 		endif;
 	endif;
+
+    $current_lang = pll_current_language();
+    if ($current_lang === 'en') :
+        $lang_class[] = 'lang-en';
+        return $lang_class;
+    endif;
 });
 
 // add_action('wp_ajax_artez_random_bg', 'artez_random_bg');

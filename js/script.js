@@ -10,7 +10,13 @@ jQuery(window).on("load", function () {
 });
 
 jQuery(document).ready(function ($) {
-
+    // ANIMATIONS
+    $(".book-item-card").each(function (i) {
+		$(this)
+			.delay(100 * i)
+			.fadeIn(900);
+	});
+    
 
     //checkout page shipping address toggle
 
@@ -25,32 +31,6 @@ jQuery(document).ready(function ($) {
     });
 
 
-    // header menu overlap menu fix
-
-    var head_menu = $('header.fixed-bottom');
-    var menuTimeout = null;
-
-    // $(window).on('mousemove', mouseMoveHandler);
-
-    function mouseMoveHandler(e) {
-        if (e.pageX < 20 || head_menu.is(':hover')) {
-            // Show the menu if mouse is within 20 pixels
-            // from the left or we are hovering over it
-            // console.log('fire 1');
-            clearTimeout(menuTimeout);
-            menuTimeout = null;
-            $("header.fixed-bottom").css("z-index", 2);
-        } else if (menuTimeout === null) {
-            // Hide the menu if the mouse is further than 20 pixels
-            // from the left and it is not hovering over the menu
-            // and we aren't already scheduled to hide it
-            // console.log('fire 2');
-            menuTimeout = setTimeout(function () {
-                $("header.fixed-bottom").css("z-index", 0)
-            }, 000);
-        }
-    }
-
     // cart Quantity JS
 
     if (!String.prototype.getDecimals) {
@@ -63,6 +43,7 @@ jQuery(document).ready(function ($) {
             return Math.max(0, (match[1] ? match[1].length : 0) - (match[2] ? +match[2] : 0));
         }
     }
+
     // Quantity "plus" and "minus" buttons
     $(document.body).on('click', '.plus, .minus', function () {
         console.log('1');
@@ -365,3 +346,49 @@ jQuery(document).ready(function ($) {
         }
     }
 });
+(function ($) {
+	"use strict";
+
+	/**
+	 * To Title Case 2.1 – http://individed.com/code/to-title-case/
+	 * Copyright © 2008–2013 David Gouch. Licensed under the MIT License.
+	 *
+	 * @returns {string}
+	 */
+	String.prototype.toTitleCase = function () {
+		var smallWords = /^(a|that|is|on|van|have|an|and|as|at|but|by|en|for|if|in|nor|of|on|or|per|the|with|to|vs?\.?|via)$/i;
+
+		return this.replace(
+			/[A-Za-z0-9\u00C0-\u00FF]+[^\s-]*/g,
+			function (match, index, title) {
+				if (
+					index > 0 &&
+					index + match.length !== title.length &&
+					match.search(smallWords) > -1 &&
+					title.charAt(index - 2) !== ":" &&
+					(title.charAt(index + match.length) !== "-" ||
+						title.charAt(index - 1) === "-") &&
+					title.charAt(index - 1).search(/[^\s-]/) < 0
+				) {
+					return match.toLowerCase();
+				}
+
+				if (match.substr(1).search(/[A-Z]|\../) > -1) {
+					return match;
+				}
+
+				return match.charAt(0).toUpperCase() + match.substr(1);
+			}
+		);
+	};
+    if ($('.lang-en') && $('.English') && !$('.Nederlands')) {
+        $("h1, h2, h3, h4, h5").each(
+            function () {
+                var heading_string = $(this).html().toString();
+
+                var heading_case = heading_string.toTitleCase();
+
+                $(this).html(heading_case);
+        });
+    }
+})(jQuery);

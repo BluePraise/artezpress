@@ -28,13 +28,20 @@ $design 	= get_field('design');
 $book_lang  = get_field('ap_language');
 $current_lang_full = pll_current_language('name');
 $additional_editions = get_field('additional_editions');
+// $lang_en; 
+
+// if ($book_lang === 'English'): 
+//     $lang_en = 'lang-en';
+// else: 
+//     return '';
+// endif;
 
 // Ensure visibility.
 if (empty($product) || !$product->is_visible()) {
 	return;
 }
 ?>
-<div <?php wc_product_class('book-item-card', $product); ?> data-filters="<?= $cats ?> <?= $author ?> year-<?= $year ?> <?= $tags ?> booklang-<?= $book_lang  ?>" data-search="<?= get_the_title() ?> <?= $cats ?> <?= $tags ?> <?= $author ?> <?= $design && is_array($design) ? $design['designer'] : '' ?>">
+<div <?php wc_product_class(array('book-item-card', $book_lang), $product); ?> data-filters="<?= $cats ?> <?= $author ?> year-<?= $year ?> <?= $tags ?> booklang-<?= $book_lang ?>" data-search="<?= get_the_title() ?> <?= $cats ?> <?= $tags ?> <?= $author ?> <?= $design && is_array($design) ? $design['designer'] : '' ?>">
 
 		<?php
 		/**

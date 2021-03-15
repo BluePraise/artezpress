@@ -21,16 +21,6 @@
     position: fixed;
   }
 
-  // &::after {
-  //   content: " ";
-  //   position: absolute;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 1.6rem;
-  //   bottom: -1.6rem;
-  //   @include gradient(255, 255, 255, top);
-  // }
-
   &__inner {
     position: relative;
     margin-top: calc(6rem - ((#{$h2-line-height-rem} - #{$h2-font-size-rem}) / 2));
@@ -219,6 +209,7 @@
   height: 3.6rem;
 
   &-item {
+    
     padding-right: .8rem;
 
     a {
@@ -273,3 +264,7 @@
 
   }
 }
+
+// .filter-list .fade-in {
+//     opacity: 0;
+// }
