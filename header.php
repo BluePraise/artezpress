@@ -1,15 +1,8 @@
 <?php
 get_template_part('head');
 $rows = get_field('hero_bg_imgs', 'option'); // get all the rows
-$bg = array();
-foreach($rows as $row): 
-    array_push($bg, $row['bg_images_uploaded']);
-endforeach;
-print_r($bg);
-$i = rand(0, count($bg)-1);
-$selectedBg = "$bg[$i]";
-// $rand_row = $rows[array_rand($rows)];
-// $rand_row_image = $rand_row['bg_images_uploaded']; // get the sub field value
+$rand_row = $rows[array_rand($rows)];
+$rand_row_image = $rand_row['bg_images_uploaded']; // get the sub field value
 
 if (is_product()) :
 	global $post;
@@ -32,7 +25,7 @@ endif;
 <header class="main-menu-container fixed-bottom">
 	<?php if (!is_product()) : ?>
 		<div class="js-menu" style="display: none;">
-			<div class="bg-overlay" style="background-image: url(<?php echo $selectedBg; ?>);"></div>
+			<div class="bg-overlay" style="background-image: url(<?php echo $rand_row_image; ?>);"></div>
 			<div class="main-menu-surface">
 				<div class="grid-container">
 					<?php get_template_part('inc/templateparts/nav', 'pages'); ?>

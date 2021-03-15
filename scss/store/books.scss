@@ -1,6 +1,5 @@
 // Books Archive (influnces 'Book Archive', Homepage excerpt, 'Related Books')
 
-
 // book Grid
 .book-archive {
 .book-grid {
@@ -35,6 +34,7 @@
 
 // Book item card
 .book-item-card {
+  display: none;
   margin-bottom: 6.4rem;
 
   &__title {
