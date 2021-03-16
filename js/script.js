@@ -11,6 +11,9 @@ jQuery(window).on("load", function () {
 
 jQuery(document).ready(function ($) {
     // ANIMATIONS
+    $(".homepage").delay(10).fadeIn(800);
+    $(".mast-footer").delay(20).fadeIn(800);
+    $(".featured-section").delay(30).fadeIn(800);
     $(".book-item-card").each(function (i) {
 		$(this)
 			.delay(100 * i)
@@ -23,7 +26,6 @@ jQuery(document).ready(function ($) {
     $(".radio-toggle .input-radio").change(function () {
 
         var curval = $(this).val() === "0" ? true : false;
-
         $("#ship-to-different-address-checkbox").prop("checked", curval);
         $("#ship-to-different-address-checkbox").trigger("click");
         $(".shipping_address").toggle("fast");

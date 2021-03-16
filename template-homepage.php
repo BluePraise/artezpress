@@ -15,7 +15,7 @@
 
 get_header(); ?>
 
-<main class="site-main homepage test" role="main">
+<main class="site-main homepage" role="main">
 
 	<?php get_template_part('blocks/frontpage/handshake/index'); ?>
 
