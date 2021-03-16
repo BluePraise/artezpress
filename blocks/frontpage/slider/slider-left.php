@@ -5,7 +5,7 @@
       <div class="slider-title"><?php _e('Coming Soon', 'artezpress'); ?></div>
 
       <div class="slider-nav grid">
-        
+        <div class="slider-nav__pager"></div>
         <a class="slider-nav__link" href=""><?php _e('Read More', 'artezpress'); ?></a>
       </div>
     </div>

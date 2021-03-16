@@ -169,129 +169,202 @@ jQuery(document).ready(function ($) {
     // FOR FRONTPAGE CAROUSEL
 
 		// I set up each of the sliders as a var, then I can control each one of them individually
-        // This one doesn't need to have any event detection anyway so let's leave this one out of the functions.
-		$(".coming-soon-carousel").flickity({
-			cellSelector: ".carousel-cell",
-			imagesLoaded: true,
-			autoPlay: 11000,
-			fade: true,
-			selectedAttraction: 1,
-			friction: 1,
-			prevNextButtons: false,
-            pageDots: true,
-			setGallerySize: false,
-		});
+    var $soon_carousel = $(".coming-soon-carousel");    
+    $(".coming-soon-carousel").flickity({
+        cellSelector: ".carousel-cell",
+        imagesLoaded: true,
+        autoPlay: 11000,
+        fade: true,
+        selectedAttraction: 1,
+        friction: 1,
+        prevNextButtons: false,
+        pageDots: false,
+        setGallerySize: false,
+        on: {
+            ready: function () {
+                var $pagers = $(".coming-soon-carousel").find(".slider-nav__pager");
+                var $nav = $soon_carousel.find(".slider-nav__link");
+                var $selected_slide = $soon_carousel.find(".is-selected");
+                var $slides = $(".coming-soon-carousel").find('.carousel-cell');
 
-        $(".new-releases-carousel").flickity({
-			cellSelector: ".carousel-cell",
-			imagesLoaded: true,
-			autoPlay: 9000,
-			fade: true,
-			selectedAttraction: 0.2,
-			friction: 0.8,
-			prevNextButtons: false,
-			pageDots: true,
-			setGallerySize: false,
-			on: {
-				ready: function () {
-					var nav = $(".new-releases-carousel").find(
-							".slider-nav__link"
-						),
-						s = $(".new-releases-carousel").find(".is-selected"),
-						dots = $(".new-releases-carousel").find(
-							".flickity-page-dots"
-						);
-						sColor = s.data("color"),
-                            sUrl = s.data("url");
-                        s.css('background-color', sColor);
-
-					$(".new-releases-carousel").attr("data-color", sColor);
-					nav.attr("href", sUrl);
-				},
-				change: function () {
-					var nav = $(".new-releases-carousel").find(
-							".slider-nav__link"
-						),
-						s = $(".new-releases-carousel").find(".is-selected"),
-						dots = $(".new-releases-carousel").find(
-							".flickity-page-dots"
-						);
-					(sColor = s.data("color")), (sUrl = s.data("url"));
-					s.css("background-color", sColor);
-
-					$(".new-releases-carousel").attr("data-color", sColor);
-					nav.attr("href", sUrl);
-				},
-			},
-		});
-
-        $('.backlist-carousel').flickity({
-            cellSelector: '.carousel-cell',
-            imagesLoaded: true,
-            lazyLoad: true,
-            autoPlay: 7000,
-            fade: true,
-            selectedAttraction: 0.2,
-            friction: 0.8,
-            prevNextButtons: false,
-            pageDots: false,
-            adaptiveHeight: true,
-            on: {
-                ready: function() {
-                    var nav = $(".backlist-carousel").find(".slider-nav__link"),
-						s = $(".backlist-carousel").find(".is-selected"),
-						sColor = s.data("color"),
-						sUrl = s.data("url");
-
-					$(".backlist-carousel").attr("data-color", sColor);
-					nav.attr("href", sUrl);
-                },
-                change: function() {
-                    var nav = $(".backlist-carousel").find(".slider-nav__link"),
-						s = $(".backlist-carousel").find(".is-selected"),
-						sColor = s.data("color"),
-						sUrl = s.data("url");
-                    
-					    $(".backlist-carousel").attr("data-color", sColor);
-					    nav.attr("href", sUrl);
+                var sUrl = $selected_slide.data("url");
+                $nav.attr("href", sUrl);
+                
+                if ($slides.length > 1) {
+                    // append a span to every nav pager.
+                    for (i = 0; i < $slides.length; i++) {
+                        $pagers.append("<span></span>");
+                    }                    
                 }
-            }
-        });
+                $soon_carousel.on("select.flickity", function () {
+                    var $pager = $pagers.find("span");
+                    var $flkty = $(this).data('flickity');
+                    $pager.eq($flkty.selectedIndex).addClass("is-active");
+                    // $backlist_pager.eq($flkty.prevSelectedIndex).removeClass('is-active');
+                });
 
+                $pagers.on('click', 'span', function() {
+                    var index = $(this).index();
+                    $(".coming-soon-carousel").flickity('select', index);
+                });
+            },
+            change: function () {
+                var $pagers = $(".coming-soon-carousel").find(".slider-nav__pager");
+                var $nav = $soon_carousel.find(".slider-nav__link");
+                var $selected_slide = $soon_carousel.find(".is-selected");
+                
+                var sUrl = $selected_slide.data("url");
+                $nav.attr("href", sUrl);
+                
+                $soon_carousel.on("scroll.flickity", function () {
+                    var $pager = $pagers.find("span");
+                    var $flkty = $(this).data('flickity');
+                        $pager.filter('.is-active').removeClass('is-active');
+                        $pager.eq($flkty.selectedIndex).addClass("is-active");
+                    }
+                );
+            },
+        }
+    });
 
+    var $newreleases_carousel = $(".new-releases-carousel");
+    $(".new-releases-carousel").flickity({
+        cellSelector: ".carousel-cell",
+        imagesLoaded: true,
+        autoPlay: 9000,
+        fade: true,
+        selectedAttraction: 0.2,
+        friction: 0.8,
+        prevNextButtons: false,
+        pageDots: false,
+        setGallerySize: false,
+        on: {
+            ready: function () {
+                var $pagers = $(".new-releases-carousel").find(".slider-nav__pager");
+                var $nav = $newreleases_carousel.find(".slider-nav__link");
+                var $selected_slide = $newreleases_carousel.find(".is-selected");
+                var $slides = $(".new-releases-carousel").find('.carousel-cell');
+                
+                var sColor = $selected_slide.data("color"),
+                    sUrl = $selected_slide.data("url");
+                
+                $newreleases_carousel.attr("data-color", sColor);
+                $nav.attr("href", sUrl);
+                
+                if ($slides.length > 1) {
+                    // append a span to every nav pager.
+                    for (i = 0; i < $slides.length; i++) {
+                        $pagers.append("<span></span>");
+                    }                    
+                }
 
-		// Custom Highlights Nav Pager
-		// I can't get all the sliders to add active class t othe first bullet on load (works on chnage, but on load aonly in Backlist)
-		$('.carousel-container').each(function(i, container) {
-		  var $container = $(container);
-		  var $slider = $container.find('.highlights-carousel');
-		  var flkty = $slider.data('flickity');
-		  var selectedIndex = flkty.selectedIndex;
+                
+                $newreleases_carousel.on("select.flickity", function () {
+                    var $pager = $pagers.find("span");
+                    var $flkty = $(this).data('flickity');
+                    $pager.eq($flkty.selectedIndex).addClass("is-active");
+                    // $backlist_pager.eq($flkty.prevSelectedIndex).removeClass('is-active');
+                });
 
-		  var slideCount = flkty.slides.length;
+                $pagers.on('click', 'span', function() {
+                    var index = $(this).index();
+                    $(".new-releases-carousel").flickity('select', index);
+                });
+            },
+            change: function () {
+                    
+                var $pagers = $(".new-releases-carousel").find(".slider-nav__pager");
+                var $nav = $newreleases_carousel.find(".slider-nav__link");
+                var $selected_slide = $newreleases_carousel.find(".is-selected");
+                
+                var sColor = $selected_slide.data("color"),
+                    sUrl = $selected_slide.data("url");
+                
+                $newreleases_carousel.attr("data-color", sColor);
+                $nav.attr("href", sUrl);
+                    
+                $newreleases_carousel.attr("data-color", sColor);
+                $nav.attr("href", sUrl);
+                
+                $newreleases_carousel.on("scroll.flickity", function () {
+                    var $pager = $pagers.find("span");
+                    var $flkty = $(this).data('flickity');
+                        $pager.filter('.is-active').removeClass('is-active');
+                        $pager.eq($flkty.selectedIndex).addClass("is-active");
+                    }
+                );
+            },
+        },
+    });
+    
+        
+    
+    var $backlist_carousel = $(".backlist-carousel");
+    $(".backlist-carousel").flickity({
+        cellSelector: ".carousel-cell",
+        imagesLoaded: true,
+        lazyLoad: true,
+        autoPlay: 7000,
+        fade: true,
+        selectedAttraction: 0.2,
+        friction: 0.8,
+        prevNextButtons: false,
+        pageDots: false,
+        adaptiveHeight: true,
+        on: {
+            ready: function () {
+                var $backlist_pagers = $(".backlist-carousel").find(".slider-nav__pager");
+                var $backlist_nav = $backlist_carousel.find(".slider-nav__link");
+                var $selected_slide = $backlist_carousel.find(".is-selected");
+                
+                var sColor = $selected_slide.data("color"),
+                    sUrl = $selected_slide.data("url");
+                
+                $backlist_carousel.attr("data-color", sColor);
+                $backlist_nav.attr("href", sUrl);
+                
+                // append a span to every nav pager.
+                for (i = 0; i < 3; i++) {
+                    $backlist_pagers.append("<span></span>");
+                }
+                
+                $backlist_carousel.on("select.flickity", function () {
+                    var $backlist_pager = $backlist_pagers.find("span");
+                    var $flkty = $(this).data('flickity');
+                    $backlist_pager.eq($flkty.selectedIndex).addClass("is-active");
+                    // $backlist_pager.eq($flkty.prevSelectedIndex).removeClass('is-active');
+                });
 
-		  var $pagers = $container.find('.slider-nav__pager');
-
-		  for (i = 0; i < slideCount; i++) {
-		    $pagers.append('<span></span>');
-		  }
-
-		  var $pager = $pagers.find('span');
-
-		  $slider.on('select.flickity', function() {
-
-		    $pager.filter('.is-active').removeClass('is-active');
-		    $pager.eq(flkty.selectedIndex).addClass('is-active');
-
-		  });
-
-		  $pagers.on('click', 'span', function() {
-		    var index = $(this).index();
-		    $slider.flickity('select', index);
-		  });
-
-		});
-
+                $backlist_pagers.on('click', 'span', function() {
+                    var index = $(this).index();
+                    $(".backlist-carousel").flickity('select', index);
+                });
+            },
+            change: function () {
+                    
+                var $backlist_pagers = $(".backlist-carousel").find(".slider-nav__pager");
+                var $backlist_nav = $backlist_carousel.find(".slider-nav__link");
+                var $selected_slide = $backlist_carousel.find(".is-selected");
+                
+                var sColor = $selected_slide.data("color"),
+                    sUrl = $selected_slide.data("url");
+                
+                $backlist_carousel.attr("data-color", sColor);
+                $backlist_nav.attr("href", sUrl);
+                    
+                $backlist_carousel.attr("data-color", sColor);
+                $backlist_nav.attr("href", sUrl);
+                
+                $backlist_carousel.on("scroll.flickity", function () {
+                    var $backlist_pager = $backlist_pagers.find("span");
+                    var $flkty = $(this).data('flickity');
+                        $backlist_pager.filter('.is-active').removeClass('is-active');
+                        $backlist_pager.eq($flkty.selectedIndex).addClass("is-active");
+                    }
+                );
+            },
+        },
+    });
 
 
     $(".news-grid-masonry").masonry({
