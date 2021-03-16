@@ -6,7 +6,7 @@
       <div class="slider-title"><?php _e('New Releases', 'artezpress'); ?></div>
 
       <div class="slider-nav grid">
-        <div class="slider-nav__pager"></div>
+        <!-- <div class="slider-nav__pager"></div> -->
         <a class="slider-nav__link" href=""><?php _e('Read More', 'artezpress'); ?></a>
       </div>
     </div>
@@ -27,11 +27,12 @@
                     endforeach;
                 endif;
                 $img        = get_sub_field('add_custom_image');
-                $tn_id      = get_post_thumbnail_id($b);
-                $imgmeta    = wp_get_attachment_metadata($tn_id);
+                // print_r($img);     
+                // $img        = get_post_thumbnail_id($b);
+                $imgmeta    = wp_get_attachment_metadata($img);
         ?>
 
-        <div class="carousel-cell carousel-cell-highlights" style="background: center / cover no-repeat url(<?php echo $img; ?>)" data-color="<?= $text_color; ?>"  data-url="<?= $permalink; ?>">
+        <div class="carousel-cell carousel-cell-highlights" style="background-image: url(<?php echo $img; ?>)" data-color="<?= $text_color; ?>"  data-url="<?= $permalink; ?>">
           <div class="carousel-cell__title"><?= $title; ?></div>
        </div>
 

@@ -34,6 +34,9 @@
 			height: 100%;
 		}
 	}
+    .flickity-page-dots { 
+        bottom: 33px;
+    }
 
 	// carousel cells
 	.carousel-cell {
@@ -139,6 +142,15 @@
 	}
 }
 
+// NEW RELEASES
+
+.new-releases-carousel .carousel-cell-highlights {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
 // Coming Soon
 .coming-soon-carousel {
 	color: $white;
@@ -146,6 +158,10 @@
 	.carousel-cell {
 		background-color: #212121;
 	}
+    .flickity-page-dots .dot.is-selected {
+        background-color: $white;
+        
+    }
 }
 
 // Media Sizes for Highlisght

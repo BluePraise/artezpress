@@ -169,80 +169,95 @@ jQuery(document).ready(function ($) {
     // FOR FRONTPAGE CAROUSEL
 
 		// I set up each of the sliders as a var, then I can control each one of them individually
-		var target = $('.coming-soon-carousel').flickity({
-			cellSelector: '.carousel-cell',
+        // This one doesn't need to have any event detection anyway so let's leave this one out of the functions.
+		$(".coming-soon-carousel").flickity({
+			cellSelector: ".carousel-cell",
 			imagesLoaded: true,
 			autoPlay: 11000,
 			fade: true,
 			selectedAttraction: 1,
-      friction: 1,
+			friction: 1,
 			prevNextButtons: false,
-			pageDots: false,
+            pageDots: true,
 			setGallerySize: false,
-    });
+		});
 
-		var target = $('.new-releases-carousel').flickity({
-			cellSelector: '.carousel-cell',
- 			imagesLoaded: true,
- 			autoPlay: 9000,
- 			fade: true,
- 			selectedAttraction: 0.2,
- 			friction: 0.8,
- 			prevNextButtons: false,
- 			pageDots: false,
-			setGallerySize: false,
-     });
-
-    var target = $('.backlist-carousel').flickity({
-      cellSelector: '.carousel-cell',
+        $(".new-releases-carousel").flickity({
+			cellSelector: ".carousel-cell",
 			imagesLoaded: true,
-			lazyLoad: true,
-			autoPlay: 7000,
+			autoPlay: 9000,
 			fade: true,
 			selectedAttraction: 0.2,
 			friction: 0.8,
 			prevNextButtons: false,
-			pageDots: false,
-			adaptiveHeight: true,
+			pageDots: true,
+			setGallerySize: false,
 			on: {
-        ready: function() {
-					startData();
-        },
-        change: function() {
-					changeData();
-        }
-      }
-    });
+				ready: function () {
+					var nav = $(".new-releases-carousel").find(
+							".slider-nav__link"
+						),
+						s = $(".new-releases-carousel").find(".is-selected"),
+						dots = $(".new-releases-carousel").find(
+							".flickity-page-dots"
+						);
+						sColor = s.data("color"),
+                            sUrl = s.data("url");
+                        s.css('background-color', sColor);
 
-		// For slider load
-		// Get data-color and data-url from the active slide and copy them to the slider parent
-		// in this case with "each"... don't knwo why :/
-		function startData() {
-			$('.carousel-container').each(function(i, container) {
-				var target = $(container).find('.highlights-carousel'),
-						nav = target.find('.slider-nav__link'),
-						s = target.find('.is-selected'),
+					$(".new-releases-carousel").attr("data-color", sColor);
+					nav.attr("href", sUrl);
+				},
+				change: function () {
+					var nav = $(".new-releases-carousel").find(
+							".slider-nav__link"
+						),
+						s = $(".new-releases-carousel").find(".is-selected"),
+						dots = $(".new-releases-carousel").find(
+							".flickity-page-dots"
+						);
+					(sColor = s.data("color")), (sUrl = s.data("url"));
+					s.css("background-color", sColor);
+
+					$(".new-releases-carousel").attr("data-color", sColor);
+					nav.attr("href", sUrl);
+				},
+			},
+		});
+
+        $('.backlist-carousel').flickity({
+            cellSelector: '.carousel-cell',
+            imagesLoaded: true,
+            lazyLoad: true,
+            autoPlay: 7000,
+            fade: true,
+            selectedAttraction: 0.2,
+            friction: 0.8,
+            prevNextButtons: false,
+            pageDots: false,
+            adaptiveHeight: true,
+            on: {
+                ready: function() {
+                    var nav = $(".backlist-carousel").find(".slider-nav__link"),
+						s = $(".backlist-carousel").find(".is-selected"),
 						sColor = s.data("color"),
 						sUrl = s.data("url");
 
-				target.attr( "data-color", sColor );
-				nav.attr("href", (sUrl));
+					$(".backlist-carousel").attr("data-color", sColor);
+					nav.attr("href", sUrl);
+                },
+                change: function() {
+                    var nav = $(".backlist-carousel").find(".slider-nav__link"),
+						s = $(".backlist-carousel").find(".is-selected"),
+						sColor = s.data("color"),
+						sUrl = s.data("url");
+                    
+					    $(".backlist-carousel").attr("data-color", sColor);
+					    nav.attr("href", sUrl);
+                }
+            }
+        });
 
-			});
-		};
-
-		// For slide change
-		// Get data-color and data-url from the active slide and copy them to the slider parent
-		// in this case counting on the fact all the sliders are defined as "var target"... Again, don't knwo why :/
-		function changeData() {
-			var nav = target.find('.slider-nav__link'),
-					s = target.find('.is-selected'),
-					sColor = s.data("color"),
-					sUrl = s.data("url");
-
-			target.attr( "data-color", sColor );
-			nav.attr("href", (sUrl));
-		};
 
 
 		// Custom Highlights Nav Pager
@@ -276,36 +291,6 @@ jQuery(document).ready(function ($) {
 		  });
 
 		});
-
-
-		// $carouselBacklist.on( 'change.flickity', function( event, index ) {
-		//   console.log( 'Flickity change ' + index );
-		// });
-
-    // // if one slide add class so display none.
-    // $highlightcarousel.on( 'resize', function() {
-    //     var isSingleSlide = flkty.slides.length < 2;
-    //     $highlightcarousel.toggleClass('is-single-slide', isSingleSlide);
-    // });
-
-
-    // var flkty = $backlist.data('flickity');
-    // $backlistTitle = $('.backlist').find('.slider-title');
-    // //get current color from slider-item-meta
-    // //apply value to slider-title.
-		//
-    // $backlist.on('scroll.flickity', function () {
-    //     let selectedSlideColor = $(flkty.selectedElement).data('textcolor');
-    //     //get current color from slider-item-meta
-    //     //apply value to slider-title.
-    //     $backlistTitle.css('color', selectedSlideColor );
-    // });
-
-
-
-
-
-
 
 
 
