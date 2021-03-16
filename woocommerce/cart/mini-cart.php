@@ -47,9 +47,9 @@ $count = $woocommerce->cart->cart_contents_count;
 			$_product   = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
 			$product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
             $edition 	= get_field('ap_language', $product_id);
-            if ($edition == 'Nederlands'): 
+            if ($edition == 'Nederlands'):
                 $edition = 'Nederlandse';
-            endif;   
+            endif;
 			if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key)) {
 				$product_name      = apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key);
 				$product_price     = apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key);
@@ -72,9 +72,9 @@ $count = $woocommerce->cart->cart_contents_count;
 					?>
 					<?php echo wc_get_formatted_cart_item_data($cart_item, $product_price); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                     <?php  if ($cart_item['quantity'] > 1):
-					    echo apply_filters('woocommerce_widget_cart_item_quantity', '<div class="quantity">' . sprintf('<span class="mc-product-name">%s (%s %s)</span> <span class="mc-product-quantity">&times; %s</span> <span class="mc-product-total">%s</span>', $product_name, $edition, esc_attr__('edition', 'artezpress') , $cart_item['quantity'], wc_price($cart_item['line_subtotal'])) . '</div>', $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-                    else: 
-                        echo apply_filters('woocommerce_widget_cart_item_quantity', '<div class="quantity">' . sprintf('<span class="mc-product-name">%s (%s %s)</span> <span class="mc-product-total">%s</span>', $product_name, $edition, esc_attr__('edition', 'artezpress') , wc_price($cart_item['line_subtotal'])) . '</div>', $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+					    echo apply_filters('woocommerce_widget_cart_item_quantity', '<div class="quantity">' . sprintf('<span class="mc-product-name">%s (%s %s)</span> <span class="mc-product-quantity">&times; %s</span> <span class="mc-product-total">%s</span>', $product_name, $edition, esc_attr__('edition', 'artezpress') , $cart_item['quantity'], wc_price($cart_item['line_subtotal'])) . '</div>', $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                    else:
+                        echo apply_filters('woocommerce_widget_cart_item_quantity', '<div class="quantity">' . sprintf('<span class="mc-product-name">%s (%s %s)</span> <span class="mc-product-total">%s</span>', $product_name, $edition, esc_attr__('edition', 'artezpress') , wc_price($cart_item['line_subtotal'])) . '</div>', $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     endif; ?>
 				</li>
 		<?php

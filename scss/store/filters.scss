@@ -166,6 +166,10 @@
     opacity: $activeOpacity;
   }
 
+  &::after {
+    font-family: $extras-font;
+  }
+
   &:not(.filter-header__reset):not(.active) {
     padding-right: 1.8rem;
 
@@ -209,7 +213,7 @@
   height: 3.6rem;
 
   &-item {
-    
+
     padding-right: .8rem;
 
     a {

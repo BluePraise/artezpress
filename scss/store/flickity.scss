@@ -12,8 +12,21 @@
     max-width: calc((90vh - 16rem) * var(--var-aspect-ratio));
     @include boxShadowLarge;
 
-    img {
-      object-fit: fill;
+    figure {
+      padding-bottom: calc(100% * 1 / var(--var-aspect-ratio));
+      display: block;
+      height: 0;
+      overflow: hidden;
+      position: relative;
+
+      img {
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
     }
   }
 }

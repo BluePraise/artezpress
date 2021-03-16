@@ -107,7 +107,7 @@ if (post_password_required()) {
 		<section class="related-news book-item-related-news">
 			<h5 class="section-title"><?php _e('Related News', 'storefront'); ?></h5>
 
-			<div class="flex-container news-grid">
+			<div class="news-grid">
 				<?php foreach ($related_news as $post) :
 
 					// Setup this post for WP functions (variable must be named $post).

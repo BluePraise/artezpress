@@ -536,7 +536,7 @@ function prevent_duplicate_products_redirect($url = false)
 // Add specific CSS class by filter.
 
 add_filter('body_class', function ($classes) {
-   
+
     global $post;
     $id = $post->ID;
 
@@ -545,7 +545,7 @@ add_filter('body_class', function ($classes) {
 		if ($single_product_text_color == "#00000") :
 			return array_merge($classes, array('set-text-black'));
 
-		elseif ($single_product_text_color == "#fffff") :
+		elseif ($single_product_text_color == "#f2f2f2") :
 			return array_merge($classes, array('set-text-white'));
 		endif;
 	endif;

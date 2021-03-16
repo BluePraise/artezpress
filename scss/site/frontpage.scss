@@ -6,6 +6,8 @@
   margin: 0 -16px;
 
   &__grid {
+    background: $black;
+
     @media (min-width: 768px) {
       grid-template-columns: 1fr 1fr 1fr;
     }
@@ -49,15 +51,11 @@
       text-align: left;
       width: 100%;
       position: absolute;
-      padding: 3.2rem;
-      bottom: 3.6rem;
     }
 
     // Book Covers
     &__cover {
-      width: 80%;
-      max-width: calc((75vh - (9.2rem + 13.2rem)) * var(--var-aspect-ratio));
-      padding: 9.2rem 0 13.2rem;
+      width: 100%;
       margin: 0 auto;
     }
 
@@ -89,14 +87,12 @@
 }
 
 .slider-title {
-  padding: 3.2rem;
   line-height: 1;
 }
 
 .slider-nav {
   margin-top: auto;
   width: 100%;
-  padding: 3.2rem;
   grid-template-columns: 1fr 1fr 1fr;
 
   &__pager {
@@ -132,6 +128,7 @@
     grid-column: 3 / span 1;
     line-height: 1;
     text-align: right;
+    white-space: nowrap;
 
     &:hover {
       opacity: $hoverOpacity;
@@ -144,28 +141,47 @@
   color: $white;
 
   .carousel-cell {
-    background-color: #212121;
+    background-color: #242424;
   }
 }
 
 
 // Media Sizes for Highlisght
 @media (min-width: 1200px) {
+  .carousel-cell__cover {
+    max-width: calc((33.333vw - (6.4rem)) * var(--var-aspect-ratio));
+    padding: 9.2rem 0 13.2rem;
+  }
+
   .carousel-cell__title {
     @include baseH2;
+    padding: 3.2rem;
+    bottom: 3.6rem;
   }
 
   .slider-title {
     @include baseH2;
+    padding: 3.2rem;
+  }
+
+  .slider-nav {
+    padding: 3.2rem;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
+  .carousel-cell__cover {
+    max-width: calc((33.333vw - (3.2rem)) * var(--var-aspect-ratio));
+    padding: 6.4rem 0 10.2rem;
+  }
+
   .carousel-cell__title {
     font-family: $extended-font;
     font-size: $largeText-font-size-rem;
     font-weight: 500;
     letter-spacing: 0rem;
+    padding: 2.4rem;
+    bottom: 2.8rem;
   }
 
   .slider-title {
@@ -174,16 +190,33 @@
     font-weight: 500;
     letter-spacing: 0rem;
     text-align: center;
+    padding: 2.4rem;
+  }
+
+  .slider-nav {
+    padding: 2.4rem;
   }
 }
 
 @media (max-width: 767px) {
+  .carousel-cell__cover {
+    max-width: calc((100vw - (6.4rem)) * var(--var-aspect-ratio));
+    padding: 9.2rem 0 13.2rem;
+  }
+
   .carousel-cell__title {
     @include baseH2;
+    padding: 3.2rem;
+    bottom: 3.6rem;
   }
 
   .slider-title {
     @include baseH2;
+    padding: 3.2rem;
+  }
+
+  .slider-nav {
+    padding: 3.2rem;
   }
 }
 
@@ -210,6 +243,10 @@
       }
       @media (max-width: 767px) {
         grid-column: auto / span 6;
+      }
+
+      h4 {
+        margin-bottom: 0;
       }
     }
   }

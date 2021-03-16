@@ -143,6 +143,7 @@
   svg {
     width: 15rem;
     height: 3.6rem;
+    filter: drop-shadow(0 0 3em rgba(255, 255, 255, 0.5));
   }
 }
 
@@ -151,6 +152,7 @@
   position: relative;
   display: inline-block;
   list-style: none;
+  text-shadow: 0 0 3em rgba(255, 255, 255, 0.5);
 
   // screens toggle
   &__screen {
@@ -167,7 +169,7 @@
        .inactive {
         display: none;
       }
-      
+
 
       &:hover .inactive {
         display: block;
@@ -252,10 +254,15 @@
   margin-bottom: $menuText-line-height-rem;
 }
 
-.menu li a {
-  display: inline-block;
-}
+.page-list li {
+  display: block;
 
+  &.active:before {
+    content: "▷";
+    font-family: $extras-font;
+    padding-right: 0.8rem;
+  }
+}
 
 // Newsletter registration
 .newsletter {
@@ -363,15 +370,4 @@ main {
 header {
   will-change: opacity;
   transition: opacity 100ms ease-in-out;
-}
-
-
-// -----------------------------------
-// Remove Search on Mobile (TEMPORARY)
-// -----------------------------------
-
-@media (max-width: 767px) {
-  .search {
-    display: none;
-  }
 }
