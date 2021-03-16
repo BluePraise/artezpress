@@ -148,8 +148,9 @@
     }
 
     .cart-subtotal {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 68% 100px 100px;
+        grid-gap: 20px;
     }
 
     .update-cart {
