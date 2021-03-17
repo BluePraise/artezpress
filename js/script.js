@@ -260,7 +260,6 @@ jQuery(document).ready(function ($) {
                     }                    
                 }
 
-                
                 $newreleases_carousel.on("select.flickity", function () {
                     var $pager = $pagers.find("span");
                     var $flkty = $(this).data('flickity');
@@ -284,9 +283,6 @@ jQuery(document).ready(function ($) {
                 
                 $newreleases_carousel.attr("data-color", sColor);
                 $nav.attr("href", sUrl);
-                    
-                $newreleases_carousel.attr("data-color", sColor);
-                $nav.attr("href", sUrl);
                 
                 $newreleases_carousel.on("scroll.flickity", function () {
                     var $pager = $pagers.find("span");
@@ -298,8 +294,7 @@ jQuery(document).ready(function ($) {
             },
         },
     });
-    
-        
+
     
     var $backlist_carousel = $(".backlist-carousel");
     $(".backlist-carousel").flickity({
@@ -351,9 +346,6 @@ jQuery(document).ready(function ($) {
                 var sColor = $selected_slide.data("color"),
                     sUrl = $selected_slide.data("url");
                 
-                $backlist_carousel.attr("data-color", sColor);
-                $backlist_nav.attr("href", sUrl);
-                    
                 $backlist_carousel.attr("data-color", sColor);
                 $backlist_nav.attr("href", sUrl);
                 
