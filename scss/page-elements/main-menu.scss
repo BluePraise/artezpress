@@ -137,71 +137,75 @@
 	align-self: flex-end;
 	cursor: pointer;
 
-	svg {
-		width: 15rem;
-		height: 3.6rem;
-	}
+  svg {
+    width: 15rem;
+    height: 3.6rem;
+    filter: drop-shadow(0 0 3em rgba(255, 255, 255, 0.5));
+  }
 }
 
 // Language Toggle
 .language-toggle {
-	position: relative;
-	display: inline-block;
-	list-style: none;
+  position: relative;
+  display: inline-block;
+  list-style: none;
+  text-shadow: 0 0 3em rgba(255, 255, 255, 0.5);
 
-	// screens toggle
-	&__screen {
-		@media (min-width: 768px) {
-			margin-right: 2.4rem;
-			width: 11rem;
+  // screens toggle
+  &__screen {
+    @media (min-width: 768px) {
+      margin-right: 2.4rem;
+      width: 11rem;
 
-			.lang-item.en {
-				display: flex;
-				flex-direction: column-reverse;
-			}
+      .lang-item.en{
 
-			.inactive {
-				display: none;
-			}
+        display: flex;
+        flex-direction: column-reverse;
+      }
 
-			&:hover .inactive {
-				display: block;
-			}
-		}
+       .inactive {
+        display: none;
+      }
 
-		@media (max-width: 767px) {
-			display: none;
-		}
-	}
 
-	// mobile toggle
-	&__mobile {
-		@media (min-width: 768px) {
-			display: none;
-		}
+      &:hover .inactive {
+        display: block;
+      }
+    }
 
-		@media (max-width: 767px) {
-			display: inline-block;
-			margin-right: 1.6rem;
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
 
-			.lang-item {
-				display: flex;
-				text-transform: uppercase;
-			}
+  // mobile toggle
+  &__mobile {
+    @media (min-width: 768px) {
+      display: none;
+    }
 
-			.drop-block__link {
-				margin-left: 0.6rem;
-			}
-		}
-	}
+    @media (max-width: 767px) {
+      display: inline-block;
+      margin-right: 1.6rem;
 
-	// hover
-	.inactive {
-		opacity: $inactiveOpacity;
-		&:hover {
-			opacity: 1;
-		}
-	}
+      .lang-item {
+        display: flex;
+        text-transform: uppercase;
+      }
+
+      .drop-block__link {
+        margin-left: .6rem;
+      }
+    }
+  }
+
+  // hover
+  .inactive {
+    opacity: $inactiveOpacity;
+    &:hover{
+      opacity: 1;
+    }
+  }
 }
 
 // -----------------------------
@@ -245,8 +249,14 @@
 	margin-bottom: $menuText-line-height-rem;
 }
 
-.menu li a {
-	display: inline-block;
+.page-list li {
+  display: block;
+
+  &.active:before {
+    content: "▷";
+    font-family: $extras-font;
+    padding-right: 0.8rem;
+  }
 }
 
 // Newsletter registration
@@ -349,14 +359,4 @@ main {
 header {
 	will-change: opacity;
 	transition: opacity 100ms ease-in-out;
-}
-
-// -----------------------------------
-// Remove Search on Mobile (TEMPORARY)
-// -----------------------------------
-
-@media (max-width: 767px) {
-	.search {
-		display: none;
-	}
 }

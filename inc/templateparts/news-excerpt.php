@@ -1,6 +1,6 @@
-
-<a href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">
   <div class="news-item">
+    <a href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">
+
       <div class="news-date-excerpt"><?php echo the_date("d F Y") ?></div>
       <?php if (has_post_thumbnail()) :
           $tn_id      = get_post_thumbnail_id($post->ID);
@@ -38,7 +38,7 @@
       endif
       ?>
 
-
       <a class="news-read-more" href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link"><?php _e('Read More', 'artezpress'); ?></a>
+
+    </a>
   </div>
-</a>

@@ -83,10 +83,6 @@ h2,
     text-align: center;
 }
 
-h2.highlight-item__title-author {
-    text-align: left;
-}
-
 h3,
 .h3 {
     font-family: $default-font;
@@ -116,16 +112,18 @@ h5,
   @include largeText;
 }
 
+.extras-font {
+  font-family: $extras-font;
+}
 
 a {
   color: currentColor;
   text-decoration: none;
 }
 
+
+
+
 strong {
   font-weight: inherit;
 }
-
-blockquote {}
-
-i {}

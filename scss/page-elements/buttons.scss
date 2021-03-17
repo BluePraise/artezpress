@@ -41,16 +41,26 @@ button {
   @media (max-width: 767px) {
     min-width: 8rem;
   }
+
 }
 
 button.btn {
   font-family: $default-font;
-  // line-height: 2.8rem;
 }
 
 span.btn:hover {
   cursor: not-allowed;
 }
+
+
+// Homepage excerpt expand buttons
+
+.excerpt-section__expand-btn {
+  @include baseMenuText;
+  text-align: center;
+  width: 22.8rem;
+}
+
 
 
 // Price Buttons
@@ -95,7 +105,7 @@ span.btn:hover {
 a.go-back {
   display: block;
   position: fixed;
-  z-index: 100;
+  z-index: 1;
 
   @media (min-width: 1025px) {
     top: 3.2rem;

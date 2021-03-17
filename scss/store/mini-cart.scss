@@ -12,9 +12,19 @@
     display: flex;
 
     a.remove {
+      line-height: $menuText-line-height-rem;
       height: auto;
       width: 2rem;
-      line-height: $menuText-line-height-rem;
+
+      &::before {
+        content: '×';
+        display: inline-block;
+        color: $black;
+        font-family: $extras-font;
+        font-weight: inherit;
+        font-size: inherit;
+        line-height: inherit;      
+      }
     }
 
     .quantity {
@@ -31,13 +41,6 @@
             margin-left: auto;
             text-align: right;
         }
-    }
-
-    a.remove::before {
-        display: inline-block;
-        content: '×';
-        color: $black;
-        @include baseMenuText;
     }
 }
 

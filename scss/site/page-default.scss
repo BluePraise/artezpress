@@ -48,6 +48,11 @@
     @include underlineText;
 }
 
+
+.content-block ol:not(:last-child) {
+  margin-bottom: $largeText-line-height-rem;
+}
+
 .content-block ol>li {
     counter-increment: roman;
     position: relative;
@@ -62,10 +67,46 @@
 }
 
 ul.nested-list {
-    margin-top: $largeText-line-height-rem;
+  margin-top: $largeText-line-height-rem;
+  margin-bottom: $largeText-line-height-rem;
 
-    li {
-        list-style-type: lower-alpha;
-        margin-left: 4rem;
+  li {
+    list-style-type: lower-alpha;
+    margin-left: 4rem;
+  }
+}
+
+ol.table-of-contents {
+
+  li {
+    position: relative;
+    padding-left: 11.2rem;
+
+    &::before {
+      position: absolute;
+      left: 0;
+      width: 11.2rem;
+      white-space: nowrap;
     }
+  }
+
+  &__en {
+    counter-reset: articles;
+    li {
+      counter-increment: articles;
+      &::before {
+        content: "Article " counter(articles) ".";
+      }
+    }
+  }
+
+  &__nl {
+    counter-reset: artikelen;
+    li {
+      counter-increment: artikelen;
+      &::before {
+        content: "Artikel " counter(artikelen) ".";
+      }
+    }
+  }
 }

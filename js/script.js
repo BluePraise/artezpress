@@ -16,10 +16,10 @@ jQuery(document).ready(function ($) {
     $(".featured-section").delay(30).fadeIn(800);
     $(".book-item-card").each(function (i) {
 		$(this)
-			.delay(100 * i)
-			.fadeIn(900);
+			.delay(150 * i)
+			.fadeIn(250);
 	});
-    
+
 
     //checkout page shipping address toggle
 
