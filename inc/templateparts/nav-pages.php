@@ -47,11 +47,15 @@
         <?php endif; ?>
     </ul>
     <div class="social-menu">
-        <ul class="horizontal-list">
+        <ul class="horizontal-list flex">
             <li>
                 <a href="https://www.facebook.com/ArtezPress/" alt="link to facebook"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_fb.svg" alt="Facebook Icon"></a>
+            </li>
+            <li>
                 <a href="https://www.instagram.com/artezpress/"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_ig.svg" alt="Instagram Icon"></a>
-                <a href="https://twitter.com/ArtezPress"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_tw.svg" alt="Twitter Icon"></a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/company/artez-press/"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_li.svg" alt="LinkedIn Icon"></a>
             </li>
         </ul>
     </div>

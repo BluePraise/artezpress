@@ -1,6 +1,5 @@
 // HOMEPAGE SECTIONS
 
-
 // Featured Section
 .featured-section {
   margin: 0 -16px;
@@ -77,13 +76,13 @@
 
 // Overlay text and nav
 .slider-overlay {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	z-index: 1;
 }
 
 .slider-title {
@@ -138,13 +137,12 @@
 
 // Coming Soon
 .coming-soon-carousel {
-  color: $white;
+	color: $white;
 
   .carousel-cell {
     background-color: #242424;
   }
 }
-
 
 // Media Sizes for Highlisght
 @media (min-width: 1200px) {
@@ -220,8 +218,6 @@
   }
 }
 
-
-
 // Books Section
 .featured-books {
   display: block;
@@ -251,7 +247,6 @@
     }
   }
 }
-
 
 // News Section
 .excerpt-section {
