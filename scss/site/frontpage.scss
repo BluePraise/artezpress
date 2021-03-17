@@ -255,14 +255,10 @@
 
 // News Section
 .excerpt-section {
-  margin: 8rem auto 16rem;
+  margin: 8rem auto 12rem;
 
   &__expand {
     width: 100%;
     text-align: center;
-
-    &-btn {
-      width: 22.8rem;
-    }
   }
 }
