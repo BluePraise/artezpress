@@ -24,9 +24,7 @@
         <?php endif; ?>
     </ul>
     <div class="newsletter">
-        <span><?php _e('Subscribe to our newsletter', 'artezpress'); ?></span>
-        <input type="email" />
-        <button type="submit" class="btn btn-reg">OK</button>
+        <?php get_template_part('inc/templateparts/mailchimp'); ?>
     </div>
 </div>
 <div class="nav-column nav-column__secondary">
