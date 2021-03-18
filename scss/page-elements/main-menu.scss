@@ -243,10 +243,13 @@
 
 // Buttons List
 .search,
-.social-menu,
 .page-list,
 .menu {
 	margin-bottom: $menuText-line-height-rem;
+}
+
+.social-menu {
+	margin-bottom: calc((#{$menuText-line-height-rem} * 2) - .5rem);
 }
 
 .page-list li {
