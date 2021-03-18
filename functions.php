@@ -185,8 +185,23 @@ function special_nav_class ($classes, $item) {
   return $classes;
 }
 
-
 add_action('artezpress_before_single_product_summary', 'woocommerce_show_product_images', 20);
+
+
+function add_custom_text_after_cart_item_name( $cart_item, $cart_item_key ) {
+    
+    $product = $cart_item['data'];
+
+    $edition = get_post_meta( $product->get_id(), 'ap_language', true );
+    if ($edition === "nl"):
+        $html = '<div class="d-block edition-language">(Nederlandse ed.)</div>';
+    else: 
+        $html = '<div class="d-block edition-language">(English ed.)</div>';
+    endif;
+    echo $html;
+
+}
+add_action( 'woocommerce_after_cart_item_name', 'add_custom_text_after_cart_item_name', 10, 2 );
 
 /***
  * ACF CUSTOMIZATION
@@ -301,8 +316,7 @@ function veer_popup_maker_gutenburg_compat($content)
 *
 */
 
-function add_to_cart_fragment($fragments)
-{
+function add_to_cart_fragment($fragments){
 
 	global $woocommerce;
 	$count = $woocommerce->cart->cart_contents_count;

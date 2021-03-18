@@ -74,9 +74,9 @@ $count = $woocommerce->cart->cart_contents_count;
 					?>
 					<?php echo wc_get_formatted_cart_item_data($cart_item, $product_price); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                     <?php  if ($cart_item['quantity'] > 1):
-					    echo apply_filters('woocommerce_widget_cart_item_quantity', '<div class="quantity">' . sprintf('<span class="mc-product-name">%s (%s %s)</span> <span class="mc-product-quantity">&times; %s</span> <span class="mc-product-total">%s</span>', $product_name, $edition, esc_attr__('edition', 'artezpress') , $cart_item['quantity'], wc_price($cart_item['line_subtotal'])) . '</div>', $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					    echo apply_filters('woocommerce_widget_cart_item_quantity', '<div class="quantity">' . sprintf('<span class="mc-product-name">%s (%s %s)</span> <span class="mc-product-quantity">&times; %0s</span> <span class="mc-product-total">%s</span>', $product_name, $edition, esc_attr__('edition', 'artezpress') , $cart_item['quantity'], wc_price($cart_item['line_subtotal'])) . '</div>', $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     else:
-                        echo apply_filters('woocommerce_widget_cart_item_quantity', '<div class="quantity">' . sprintf('<span class="mc-product-name">%s (%s %s)</span> <span class="mc-product-total">%s</span>', $product_name, $edition, esc_attr__('edition', 'artezpress') , wc_price($cart_item['line_subtotal'])) . '</div>', $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                        echo apply_filters('woocommerce_widget_cart_item_quantity', '<div class="quantity">' . sprintf('<span class="mc-product-name">%s (%s %s)</span> <span class="mc-product-total">%s</span>', $product_name, $edition, esc_attr__('edition', 'artezpress'), wc_price($cart_item['line_subtotal'])) . '</div>', $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     endif; ?>
 				</li>
 		<?php
