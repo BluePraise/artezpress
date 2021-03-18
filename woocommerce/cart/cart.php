@@ -31,24 +31,22 @@ do_action('woocommerce_before_cart'); ?>
 			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
 				$_product   = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
 				$product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
+                
+
 
 				if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key)) {
 					$product_permalink = apply_filters('woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink($cart_item) : '', $cart_item, $cart_item_key);
-			?>
+			    ?>
 					<li class="woocommerce-cart-form__cart-item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
 
 
 						<div class="flex-container">
 							<div class="product-thumbnail book-item">
-								<?php
-								$thumbnail = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image('cart-thumb'), $cart_item, $cart_item_key);
+                                <?php $thumbnail = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image('cart-thumb'), $cart_item, $cart_item_key); ?>
+								<figure class="book-item-card__cover">
+								    <?php echo $thumbnail; ?>
+                                </figure>
 
-								if (!$product_permalink) {
-									echo $thumbnail; // PHPCS: XSS ok.
-								} else {
-									printf('<a href="%s">%s</a>', esc_url($product_permalink), $thumbnail); // PHPCS: XSS ok.
-								}
-								?>
 							</div>
 
 							<div class="product-name" data-title="<?php esc_attr_e('Product', 'woocommerce'); ?>">
@@ -95,7 +93,6 @@ do_action('woocommerce_before_cart'); ?>
 
 						<div class="flex-col">
 
-
 							<div class="product-price" data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>">
 								<?php
 								echo apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key); // PHPCS: XSS ok.
@@ -136,14 +133,6 @@ do_action('woocommerce_before_cart'); ?>
 			</div>
 			<div class="subtotal-value" data-title="<?php esc_attr_e('Subtotal', 'woocommerce'); ?>"><?php wc_cart_totals_subtotal_html(); ?></div>
 		</div>
-
-		<?php if (WC()->cart->needs_shipping() && WC()->cart->show_shipping()) : ?>
-
-			<?php do_action('woocommerce_cart_totals_before_shipping'); ?>
-
-			<?php wc_cart_totals_shipping_html(); ?>
-			<?php do_action('woocommerce_cart_totals_after_shipping'); ?>
-		<?php endif; ?>
 
 		<?php if (wc_coupons_enabled()) { ?>
 			<div class="coupon">

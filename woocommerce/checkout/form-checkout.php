@@ -27,37 +27,39 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
 	echo esc_html(apply_filters('woocommerce_checkout_must_be_logged_in_message', __('You must be logged in to checkout.', 'woocommerce')));
 	return;
 } ?>
-
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data">
-
+    
 	<?php if ($checkout->get_checkout_fields()) : ?>
-			
 
-		<div class="flex-container woocommerce-checkout-container customer-details" id="customer_details">
+		<div class="flex-container woocommerce-checkout-container">
 
 			<div class="col_left">
 				<div class="woocommerce-ap-custom form-title"><?php _e('Billing Address', 'artezpress'); ?></div>
-				<?php do_action('woocommerce_checkout_billing'); ?>
-				<?php do_action('woocommerce_checkout_shipping'); ?>
+				    <?php do_action('woocommerce_checkout_billing'); ?>
+                    <?php do_action('woocommerce_checkout_after_customer_details'); ?>
 			</div>
-			<?php do_action('woocommerce_checkout_after_customer_details'); ?>
 
-		<?php endif; ?>
+		
 
 		<div class="col_right">
 			<h3 class="woocommerce-ap-custom form-title"> <?php _e("Payment", "woocommerce"); ?></h3>
-
-			
-
-				<div class="shipping-checkout">
-					<?php do_action('woocommerce_review_order_before_shipping'); 
-					?>
-					<?php do_action('woocommerce_review_order_after_shipping'); 
-					?>
-					<?php do_action('woocommerce_checkout_order_review'); ?>
+                    
+                <div class="shipping-checkout">
+                    <?php 
+                        // THIS CREATES THE SHIPPING CHOICES. THAT FORM IS BUILT UP IN CHECKOUT/FORM-SHIPPING.PHP
+                        if (WC()->cart->needs_shipping() && WC()->cart->show_shipping()) : ?>
+			            <?php do_action('woocommerce_cart_totals_before_shipping'); ?>
+			            <?php wc_cart_totals_shipping_html(); ?>
+			            <?php do_action('woocommerce_cart_totals_after_shipping'); ?>               
+		            <?php endif; ?>
+				    <?php do_action('woocommerce_checkout_shipping'); ?>
 				</div>
 
 
+		
+
 			<?php do_action('woocommerce_after_checkout_form', $checkout); ?>
-		</div>
+        </div>
+    <?php endif; ?>
+    
 </form>

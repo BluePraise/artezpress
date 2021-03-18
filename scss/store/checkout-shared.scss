@@ -1,0 +1,68 @@
+// SHARED STYLING FOR CART AND CHECKOUT (MAYBE ALSO MINI CART?)
+
+.woocommerce-notices-wrapper {
+    display: flex;
+    justify-content: center;
+
+    .woocommerce-message {
+        line-height: 4.6rem;
+        background-color: $black;
+        color: $white;
+        min-width: 50rem;
+        text-align: center;
+        @include underlineText;
+    }
+}
+
+.woocommerce input[type=datetime],
+.woocommerce input[type=datetime-local],
+.woocommerce input[type=date],
+.woocommerce input[type=month],
+.woocommerce input[type=time],  
+.woocommerce input[type=week],
+.woocommerce input[type=number],
+.woocommerce input[type=url],
+.woocommerce input[type=tel],
+.woocommerce input[type=email],
+.woocommerce input[type=search],
+.woocommerce input[type=tel],
+.woocommerce input[type=color],
+.woocommerce input[type=file],
+.woocommerce input[type=text],
+.woocommerce input[type=password],
+.woocommerce textarea {
+    order: 0;
+    border-bottom: 1px solid;
+    width: 100%;
+    padding: 0 1rem 1rem 1rem;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-family: $default-font;
+  font-size: 14px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-family: $default-font;
+  font-size: 14px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-family: $default-font;
+  font-size: 14px;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-family: $default-font;
+  font-size: 14px;
+}
+
+.form-row {
+    display: table;
+    width: 100%;
+}
+
+.woocommerce-form__label-for-checkbox {
+
+    span {
+        @include smallText;
+    }
+
+}
