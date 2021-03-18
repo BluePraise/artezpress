@@ -87,7 +87,9 @@
 
 @mixin underlineText {
   text-decoration: underline;
+  text-decoration-line: underline;
   text-underline-offset: .15em;
+  text-decoration-thickness: .075em;
 }
 
 
