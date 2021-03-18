@@ -1,3 +1,18 @@
+// SECTION TO REVIEW SUB TOTAL
+.review-cart-subtotal {
+    margin: 3.6rem 0;
+    .cart-subtotal.flex {
+        border-top: 1px solid currentColor;
+        border-bottom: 1px solid currentColor;
+        justify-content: space-between;
+    }
+    a.back-to-cart{
+        @include baseSmallText;
+        @include underlineText;
+    }
+}
+
+
 .flex-container.woocommerce-checkout-container {
     justify-content: space-between;
     .col_left,
