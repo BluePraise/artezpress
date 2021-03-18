@@ -128,7 +128,7 @@ do_action('woocommerce_before_cart'); ?>
 		<?php do_action('woocommerce_before_cart_totals'); ?>
 		<div class="cart-subtotal">
 			<div class="subtotal-label"><?php esc_html_e('Subtotal', 'woocommerce'); ?></div>
-			<div class="update-cart"><button type="submit" class="button update-cart" name="update_cart" value="<?php esc_attr_e('Update amount', 'woocommerce'); ?>"><?php esc_html_e('Update cart', 'woocommerce'); ?></button>
+			<div class="update-cart"><button type="submit" class="button update-cart" name="update_cart" value="<?php esc_attr_e('Update amount', 'woocommerce'); ?>"><?php _e("Update cart", "artezpress"); ?></button>
 
 			</div>
 			<div class="subtotal-value" data-title="<?php esc_attr_e('Subtotal', 'woocommerce'); ?>"><?php wc_cart_totals_subtotal_html(); ?></div>
