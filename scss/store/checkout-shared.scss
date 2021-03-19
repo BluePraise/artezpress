@@ -119,8 +119,7 @@
 }
 
 
-.woocommerce-form__label-for-checkbox {
-
+.woocommerce-form__label-for-checkbox:not(.woocommerce-form-login__rememberme) {
     span {
         @include smallText;
     }

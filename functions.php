@@ -350,6 +350,14 @@ function add_to_cart_fragment($fragments){
 }
 add_filter('woocommerce_add_to_cart_fragments', 'add_to_cart_fragment', 10, 1);
 
+
+// CHANGE THE MESSAGE FOR LOGIN PROPERLY VIA THIS FILTER
+add_filter( 'woocommerce_checkout_login_message', 'ap_return_customer_message' );
+ 
+function ap_return_customer_message() {
+    return '<div class="woocommerce-ap-custom form-title"><span>Already a Customer?</span> <a href="#" class="showlogin">' . esc_html__( 'Login', 'artezpress' ) . '</a></div>';
+}
+
 //Turn off irritating zoom hover effect
 function remove_image_zoom_support()
 {
