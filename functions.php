@@ -50,10 +50,6 @@ function artezpress_style()
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui');
 	wp_enqueue_script('masonry');
-    wp_register_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
-    wp_register_script('flickity-fade',  "https://unpkg.com/flickity-fade@1/flickity-fade.js", ['jquery'], null, false);
-    wp_register_style('flickity-theme', 'https://unpkg.com/flickity@2/dist/flickity.min.css');
-    wp_register_style('flickity-fade', 'https://unpkg.com/flickity-fade@1/flickity-fade.css');
 
     // USED FOR SEARCH AND FILTER ON ArCHIVe PAGE
     wp_register_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
@@ -64,6 +60,10 @@ function artezpress_style()
     endif;
 	// wp_enqueue_script('totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true);
 	if(is_archive() || is_front_page()):
+        wp_register_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
+        wp_register_script('flickity-fade',  "https://unpkg.com/flickity-fade@1/flickity-fade.js", ['jquery'], null, false);
+        wp_register_style('flickity-theme', 'https://unpkg.com/flickity@2/dist/flickity.min.css');
+        wp_register_style('flickity-fade', 'https://unpkg.com/flickity-fade@1/flickity-fade.css');
 		wp_enqueue_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, true);
 		wp_enqueue_script('flickity-fade',  "https://unpkg.com/flickity-fade@1/flickity-fade.js", ['jquery'], null, true);
 		wp_enqueue_style('flickity-theme');
@@ -310,6 +310,25 @@ function veer_popup_maker_gutenburg_compat($content)
 
 
 /* Woocommerce filters */
+/*
+* Unset the labels in the checkout
+*
+*/
+
+function custom_override_checkout_fields($fields) {
+    unset($fields['order']['order_comments']);
+   // unsetting fields takes a little bit of research for me. So for this round 
+   // I am going to use CSS to not show the labels.
+    // unset($fields['billing']['billing_address_1']);
+//  $fields['shipping']['shipping_first_name']['placeholder'] = 'First Name';
+//  $fields['shipping']['shipping_last_name']['placeholder'] = 'Last Name';
+//  $fields['shipping']['shipping_company']['placeholder'] = 'Company Name'; 
+//  $fields['billing']['billing_last_name']['placeholder'] = 'Last Name';
+//  $fields['billing']['billing_email']['placeholder'] = 'Email Address ';
+//  $fields['billing']['billing_phone']['placeholder'] = 'Phone ';
+    return $fields;
+ }
+ add_filter('woocommerce_checkout_fields', 'custom_override_checkout_fields');
 
 /*
 * Mini cart with total counter not total price
@@ -606,16 +625,6 @@ add_action("woocommerce_review_order_after_cart_contents", function () {
 	echo $out;
 });
 
-// Hook in
-add_filter('woocommerce_checkout_fields', 'custom_override_checkout_fields');
-
-// Our hooked in function - $fields is passed via the filter!
-function custom_override_checkout_fields($fields)
-{
-	unset($fields['order']['order_comments']);
-
-	return $fields;
-}
 
 // hide coupon field on the checkout page
 function disable_coupon_field_on_checkout($enabled)
@@ -628,7 +637,7 @@ function disable_coupon_field_on_checkout($enabled)
 add_filter('woocommerce_coupons_enabled', 'disable_coupon_field_on_checkout');
 
 
-add_filter('woocommerce_ship_to_different_address_checked', '__return_true', 999);
+// add_filter('woocommerce_ship_to_different_address_checked', '__return_true', 999);
 
 
 // ALLOW TRANSLATION OF CUSTOM FIELDS AND OTHER PLUGIN DATA

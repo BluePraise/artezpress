@@ -1,11 +1,6 @@
 
 .review-order.flex-container {
     flex-direction: column;
-    .item-row {
-        width: 100%;
-        margin-left: 10px;
-        line-height: 4.8rem;
-    }
 }
 
 .woocommerce-form__label-for-checkbox input[type="checkbox"].woocommerce-form__input-checkbox {
@@ -20,18 +15,6 @@
     display: none;
 }
 
-.woocommerce-ap-custom.form-title {
-    @include largeText;
-    width: 100%;
-    text-align: left;
-    border-bottom: 1px solid;
-    padding: 1rem;
-}
-
-.ap-icon-times {
-    display: inline-block;
-    font-size: 1.4rem;
-}
 
 
 .shop_table .woocommerce-cart-form__cart-item {
