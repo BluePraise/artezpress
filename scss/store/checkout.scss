@@ -116,3 +116,34 @@ form.woocommerce-checkout {
     padding: 0.7rem 1.3rem;
     border-bottom: 1px solid;
 }
+
+.mailchimp-newsletter {
+    padding: 0.7rem 1.3rem;
+    label {
+        transform: unset;
+        font-size: 17px;
+        display: inline-block;
+    }
+}
+
+// TERMS AND CONDITIONS
+
+.woocommerce-privacy-policy-text {
+    margin-bottom: 2.4rem;
+    margin-top: 4rem;
+}
+.woocommerce-terms-and-conditions-wrapper {
+    margin-bottom: 4rem;
+}
+
+.demo_store {
+    text-align: center;
+    background-color: antiquewhite;
+    padding: 10px;
+    display: inline-block;
+    a.woocommerce-store-notice__dismiss-link {
+        padding: 10px;
+        border-left: 1px solid black;
+        margin-left: 10px;
+    }
+}

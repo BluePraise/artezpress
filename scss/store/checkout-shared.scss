@@ -12,6 +12,9 @@
         text-align: center;
         @include underlineText;
     }
+    .woocommerce-error {
+        color: red;
+    }
 }
 
 // STRUCTURE OR GRID 
@@ -33,7 +36,7 @@
 
 // ROWS -> THESE ARE THE ROWS IN THE CHECKOUT FIELD
 // THEY ARE <p> Tags
-.form-row {
+.woocommerce-checkout .form-row:not(.mailchimp-newsletter) {
     display: table;
     width: 100%;
     // mixin fucks up the heights for the inputs so I just put in there
@@ -49,6 +52,9 @@
     input {
         padding: 1.3rem 1.3rem;
     }
+}
+label.woocommerce-form__label-text  {
+    display: inline-block !important;
 }
 
 // TITLES AND TEKST (TYPOGRAPHY)
@@ -121,7 +127,7 @@
 
 .woocommerce-form__label-for-checkbox:not(.woocommerce-form-login__rememberme) {
     span {
-        @include smallText;
+        // @include smallText;
     }
 
 }

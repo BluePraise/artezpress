@@ -358,6 +358,11 @@
             {
                 "param": "page",
                 "operator": "!=",
+                "value": "2303"
+            },
+            {
+                "param": "page",
+                "operator": "!=",
                 "value": "39"
             },
             {
@@ -406,5 +411,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1616067020
+    "modified": 1616187840
 }

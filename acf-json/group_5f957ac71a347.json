@@ -155,9 +155,11 @@
                 "2017": "2017",
                 "2018": "2018",
                 "2019": "2019",
-                "2020": "2020"
+                "2020": "2020",
+                "2021": "2021",
+                "2022": "2022"
             },
-            "default_value": 2020,
+            "default_value": 2021,
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
@@ -728,7 +730,9 @@
                         "id": ""
                     },
                     "acfe_permissions": "",
-                    "post_type": "",
+                    "post_type": [
+                        "product"
+                    ],
                     "taxonomy": "",
                     "filters": [
                         "search"
@@ -745,43 +749,6 @@
                     "translations": "sync",
                     "acfe_settings": "",
                     "acfe_validate": ""
-                },
-                {
-                    "key": "field_602feabddc3ff",
-                    "label": "DO NOT SHOW",
-                    "name": "noshow",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "acfe_permissions": "",
-                    "message": "",
-                    "default_value": 1,
-                    "ui": 0,
-                    "translations": "sync",
-                    "acfe_settings": {
-                        "602febbddc404": {
-                            "acfe_settings_location": "admin",
-                            "acfe_settings_settings": {
-                                "602febc0dc405": {
-                                    "acfe_settings_setting_type": "hide_label",
-                                    "acfe_settings_setting_operator": "false"
-                                },
-                                "602febc6dc406": {
-                                    "acfe_settings_setting_type": "hide_field",
-                                    "acfe_settings_setting_operator": "false"
-                                }
-                            }
-                        }
-                    },
-                    "acfe_validate": "",
-                    "ui_on_text": "",
-                    "ui_off_text": ""
                 }
             ]
         },
@@ -879,5 +846,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "CONTAINS publishing year, language, Nur, design, photography, pages, dimensions, illustration, binding",
-    "modified": 1613808906
+    "modified": 1616152181
 }

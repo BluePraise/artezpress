@@ -1,4 +1,3 @@
-  
   <div class="news-item">
     <a href="<?php echo the_permalink() ?>" title="<?php the_title(); ?>" role="link">
 

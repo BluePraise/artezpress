@@ -16,22 +16,30 @@
     $current_lang_full = pll_current_language('name');
     $current_lang      = pll_current_language();
     $ap_language       = get_field('ap_language');
+    // FIXME I need to have a comparis with $current_lang_full
+    if ($ap_language === "engelse" || $ap_language === "engelse "):
+        $ap_language = "english";
+    elseif ($ap_language === "dutch" || $ap_language === "nederlandse" || $ap_language === "nederlandse "):
+        $ap_language = "nederlands";
+    else:
+        $ap_language = $ap_language;
+    endif;
 
     $args = array(
       'orderby'         => 'date',
       'order'           => 'DESC',
       'posts_per_page'  => -1,  // -1 will get all the product. Specify positive integer value to get the number given number of product
       'post_type'       => 'product',
-      'meta_query'  => array(
+      'meta_query'      => array(
         'relation'    => 'OR',
         array(
-          'key'    => 'additional_editions_0_type_of_edition',
-          'compare'  => '!=',
-          'value'    => $current_lang_full,
+            'key'    => 'additional_editions_0_type_of_edition',
+            'compare'  => '!=',
+            'value'    => $current_lang_full,
         ),
       array(
-          'key'    => 'additional_editions_0_type_of_edition',
-      'compare' => 'NOT EXISTS'
+            'key'    => 'additional_editions_0_type_of_edition',
+            'compare' => 'NOT EXISTS'
         ),
      ),
     );

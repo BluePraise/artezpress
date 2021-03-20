@@ -4,7 +4,7 @@
  * The template for displaying 404 pages (not found).
  *
  * @package storefront
- * Template Name: 4040
+ * Template Name: 404
  */
 
 get_header(); ?>
