@@ -73,22 +73,19 @@ global $woocommerce;
 			</div>
 		<?php endforeach; ?>
 
-		<?php if (wc_tax_enabled() && !WC()->cart->display_prices_including_tax()) : ?>
-			<?php if ('itemized' === get_option('woocommerce_tax_total_display')) : ?>
-				<?php foreach (WC()->cart->get_tax_totals() as $code => $tax) : // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited 
-				?>
-					<div class="tax-rate tax-rate-<?php echo esc_attr(sanitize_title($code)); ?> review-order-row"">
-						<th><?php echo esc_html($tax->label); ?></th>
-						<td><?php echo wp_kses_post($tax->formatted_amount); ?></td>
-					</div>
-				<?php endforeach; ?>
-			<?php else : ?>
-				<div class="tax-total row-horizontal-border review-order-row">
-					<span class="row-item"><?php echo esc_html(WC()->countries->tax_or_vat()); ?></span>
-					<span class="row-item"><?php wc_cart_totals_taxes_total_html(); ?></span>
-				</div>
-			<?php endif; ?>
-		<?php endif; ?>
+		 <div class="shipping-total flex-container">
+             <div class="shipping-total review-order-row-">
+            <?php if (WC()->cart->needs_shipping() && WC()->cart->show_shipping()) : ?>
+                <div class="woocommerce-ap-custom form-title"><?php esc_html_e( 'Shipping Method', 'woocommerce' ); ?></div>
+			    <?php do_action('woocommerce_review_order_before_shipping'); ?>
+			        <?php wc_cart_totals_shipping_html(); ?>
+                    <?php $shipping_total = WC()->cart->get_shipping_total(); ?>
+                    <span class="shipping-total-label"><?php esc_html_e('Shipping', 'artezpress'); ?></span>
+			        <span class="shipping-total-value"><?php echo wc_price($shipping_total); ?></span>
+			    <?php do_action('woocommerce_review_order_after_shipping'); ?>
+		    <?php endif; ?>
+			
+		</div>
         
         
 		<?php do_action('woocommerce_review_order_before_order_total'); ?>
@@ -97,16 +94,7 @@ global $woocommerce;
 			<div><?php esc_html_e('Total', 'woocommerce'); ?></div>
 			<?php wc_cart_totals_order_total_html(); ?>
 		</div>
-        <div class="shipping-total review-order-row-">
-            <?php if (WC()->cart->needs_shipping() && WC()->cart->show_shipping()) : ?>
-                <div class="woocommerce-ap-custom form-title"><?php esc_html_e( 'Shipping Method', 'woocommerce' ); ?></div>
-			    <?php do_action('woocommerce_review_order_before_shipping'); ?>
-			        <?php wc_cart_totals_shipping_html(); ?>
-                    <?php $shipping_total = WC()->cart->get_shipping_total(); ?>
-			    <?php do_action('woocommerce_review_order_after_shipping'); ?>
-		    <?php endif; ?>
-			
-		</div>
+       
 		
 		<?php do_action('woocommerce_review_order_after_order_total'); ?>
 

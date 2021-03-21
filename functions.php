@@ -54,6 +54,7 @@ function artezpress_style()
     // USED FOR SEARCH AND FILTER ON ArCHIVe PAGE
     wp_register_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
     wp_register_script('filters', get_theme_file_uri() . '/js/filters.js', [], null, true);
+    wp_register_script('checkout', get_theme_file_uri() . '/js/checkout.js', [], null, true);
 
     if (is_page()):
         wp_enqueue_script('jquery-ui-accordion');
@@ -71,6 +72,9 @@ function artezpress_style()
         wp_enqueue_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
         wp_enqueue_script('filters', get_theme_file_uri() . '/js/filters.js', [], null, true);
 	endif;
+    if (is_cart() || is_checkout()):
+        wp_enqueue_script('checkout', get_theme_file_uri() . '/js/checkout.js', [], null, true);
+    endif; 
 
 	wp_enqueue_script('artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true);
 
@@ -78,6 +82,7 @@ function artezpress_style()
 	wp_localize_script(
 		'artezpress-script',
 		'artez_object',
+        'checkout',
 		array(
 			'ajax_url' => $ajax_url,
 			'nonce' => wp_create_nonce('ajax-nonce')

@@ -1,4 +1,5 @@
 jQuery(function (f) {
+    console.log("works");
     if ("undefined" == typeof wc_checkout_params) return !1;
     var g = {
         updateTimer: !(f.blockUI.defaults.overlayCSS.cursor = "default"),
