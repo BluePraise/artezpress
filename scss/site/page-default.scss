@@ -75,7 +75,7 @@
   padding-left: 4rem;
 
   &::before {
-    content: "□";
+    content: '\25A1';
     font-family: $extras-font;
     position: absolute;
     left: 0;

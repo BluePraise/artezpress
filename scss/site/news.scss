@@ -39,8 +39,11 @@
 }
 
 .news-title {
+  margin-bottom: 6rem;
+
+  @media (min-width: 768px) {
     padding: 0 4rem;
-    margin-bottom: 6rem;
+  }
 }
 
 .news-thumbnail {
@@ -142,6 +145,19 @@
     // spacing for all the p tags
     p:not(:last-child) {
         margin-bottom: $largeText-line-height-rem;
+    }
+
+    li {
+      position: relative;
+      padding-left: 3.2rem;
+
+      &::before {
+        content: '\25FB';
+        font-family: $extras-font;
+        position: absolute;
+        left: 0;
+        width: 3.2rem;
+      }
     }
 }
 

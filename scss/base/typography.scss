@@ -68,10 +68,22 @@ html {
 h1,
 .h1 {
     font-family: $extended-font;
-    @include Lars($h1-font-size, $h1-line-height);
     font-weight: 500;
     letter-spacing: 0;
     text-align: center;
+
+    @media (min-width: 768px) {
+      font-size: $h1-font-size-rem;
+      line-height: $h1-line-height-rem;
+    }
+    @media (min-width: 361px) and (max-width: 767px) {
+      font-size: $h1-font-size-rem-m;
+      line-height: $h1-line-height-rem-m;
+    }
+    @media (max-width: 360px) {
+      font-size: $h1-font-size-rem-s;
+      line-height: $h1-line-height-rem-s;
+    }
 }
 
 h2,
