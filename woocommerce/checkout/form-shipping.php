@@ -22,7 +22,7 @@ defined('ABSPATH') || exit;
 <div class="woocommerce-shipping-fields">
 	<?php if (true === WC()->cart->needs_shipping_address()) : ?>
 
-		<h3 class="woocommerce-ap-custom form-title"><?php _e("Shipping", "artezpress"); ?></h3>
+		<h3 class="woocommerce-ap-custom form-title"><?php _e("Shipping Address", "artezpress"); ?></h3>
 		<div class="radio-toggle">
 			<label class="woocommerce-form__label woocommerce-form__label-for-radio radio d-block">
 				<input id="ship-to-different-address-radio-no" class="woocommerce-form__input woocommerce-form__input-radio input-radio" type="radio" name="ship_to_different_address_radio_toggle" value="0" <?php checked(apply_filters('woocommerce_ship_to_different_address_checked', 'billing' === get_option('woocommerce_ship_to_destination') ? 1 : 0), 1); ?> /> <?php _e('Shipping address is the same', 'woocommerce'); ?>

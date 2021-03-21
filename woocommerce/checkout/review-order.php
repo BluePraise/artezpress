@@ -99,7 +99,7 @@ global $woocommerce;
 		</div>
         <div class="shipping-total review-order-row-">
             <?php if (WC()->cart->needs_shipping() && WC()->cart->show_shipping()) : ?>
-                <div class="woocommerce-ap-custom form-title"><?php esc_html_e( 'Choose Shipping', 'woocommerce' ); ?></div>
+                <div class="woocommerce-ap-custom form-title"><?php esc_html_e( 'Shipping Method', 'woocommerce' ); ?></div>
 			    <?php do_action('woocommerce_review_order_before_shipping'); ?>
 			        <?php wc_cart_totals_shipping_html(); ?>
                     <?php $shipping_total = WC()->cart->get_shipping_total(); ?>

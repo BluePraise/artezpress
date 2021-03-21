@@ -80,6 +80,12 @@ form.woocommerce-checkout {
         font-size: 17px;
     }
 }
+.woocommerce-checkout-container
+.create-account {
+    margin-top: 1.3rem;
+    font-size: 17px;
+    line-height: 23px;
+}
 
 .woocommerce-form-login__rememberme {
     input, span { display: inline-block;}
@@ -129,6 +135,12 @@ form.woocommerce-checkout {
     }
 }
 
+.woocommerce-billing-fields
+.mailchimp-newsletter {
+    padding-left: 1.3rem;
+    margin-top: 1.3rem;
+}
+
 .woocommerce-account-fields .form-row {
     padding-left: 1.3rem;
 }
@@ -141,6 +153,10 @@ form.woocommerce-checkout {
         justify-content: space-between;
         padding-top: 1.3rem;
         padding-bottom: 1.3rem;
+    }
+    .review-order {
+        border-top: 1px solid currentColor;
+        margin-top: 3.6rem;
     }
     .review-order-row {
         display: flex;
@@ -160,8 +176,6 @@ form.woocommerce-checkout {
         }
     }
     .order-total {
-        margin-top: 4rem;
-        border-top: 1px solid;
         padding: 1.3rem 0.7rem;
     }
 
