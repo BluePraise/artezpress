@@ -25,6 +25,22 @@
     }
 }
 
+.woocommerce-form-register,
+    .woocommerce-form-login {
+        .form-row {
+            padding: 1.3rem 1.3rem;
+            input {
+                line-height: 4.8rem;
+                font-family: $default-font;
+                font-size: 17px;
+            }
+        }
+        .btn.btn-black-on-white {
+            @include clearButton(100px, .4rem, 1.6rem);
+            font-size: 17px;
+        }
+    }
+
 li.woocommerce-MyAccount-navigation-link {
     padding-left: 0.7rem;
 }
@@ -55,21 +71,7 @@ li.woocommerce-MyAccount-navigation-link {
         @include underlineText;
     }
 }
-.woocommerce-form-register,
-.woocommerce-form-login {
-    .form-row {
-        padding: 1.3rem 1.3rem;
-        input {
-            height: 50px;
-            font-family: $default-font;
-            font-size: 17px;
-        }
-    }
-    .btn.btn-black-on-white {
-        @include clearButton(100px, .4rem, 1.6rem);
-        font-size: 17px;
-    }
-}
+
 
 .woocommerce-form-register {
     .mailchimp-newsletter {

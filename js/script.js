@@ -1,3 +1,4 @@
+jQuery(document.body).trigger("update_checkout");
 jQuery(window).on("load", function () {
 	var $ = jQuery;
 	var $container = $(".news-grid-masonry");
@@ -18,7 +19,9 @@ jQuery(document).ready(function ($) {
 		$(this)
 			.delay(150 * i)
 			.fadeIn(250);
-	});
+    });
+    
+    // $('body').trigger('update_checkout');
 
 
     //checkout page shipping address toggle
@@ -48,7 +51,6 @@ jQuery(document).ready(function ($) {
 
     // Quantity "plus" and "minus" buttons
     $(document.body).on('click', '.plus, .minus', function () {
-        console.log('1');
         var $qty = $(this).closest('.quantity').find('.qty'),
             currentVal = parseFloat($qty.val()),
             max = parseFloat($qty.attr('max')),

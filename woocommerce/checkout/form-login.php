@@ -26,7 +26,7 @@ if ( is_user_logged_in() || 'no' === get_option( 'woocommerce_enable_checkout_lo
 	<div class="woocommerce-form-login-toggle">
 		<?php wc_print_notice( apply_filters( 'woocommerce_checkout_login_message', esc_html__( 'Already a Customer?', 'artezpress' ) ) . '', 'notice' ); ?>
     <div class="flex-container woocommerce-checkout-container">
-        <div class="col_left">
+        
         <?php
         // this template for this fucker is located in: global/form-login.php
         woocommerce_login_form(
@@ -36,6 +36,6 @@ if ( is_user_logged_in() || 'no' === get_option( 'woocommerce_enable_checkout_lo
                 'hidden'   => true,
             )
         );?>
-        </div>
+        
 	</div>
 </div>

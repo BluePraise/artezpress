@@ -27,9 +27,13 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 	return;
 }?>
 
+
+
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
+    
     <div class="flex woocommerce-checkout-container">
+    
         <div class="col_left">
             <?php if ( $checkout->get_checkout_fields() ) : ?>
                 <div class="woocommerce-ap-custom form-title"><?php _e('Billing Address', 'artezpress'); ?></div>
@@ -52,11 +56,12 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
         <div class="col_right">
             <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
         
-            <div class="woocommerce-ap-custom form-title"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></div>
+            <div class="woocommerce-ap-custom form-title"><?php esc_html_e( 'Your Order', 'woocommerce' ); ?></div>
         
             <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
             <div id="order_review" class="woocommerce-checkout-review-order">
+                <?php // you can find this form in review-order ?>
                 <?php do_action( 'woocommerce_checkout_order_review' ); ?>
             </div>
 

@@ -23,6 +23,7 @@ if (!is_ajax()) {
 }
 ?>
 <div id="payment" class="woocommerce-checkout-payment">
+    <div class="woocommerce-ap-custom form-title"><?php _e('Payment', 'artezpress'); ?></div>
 	<?php if (WC()->cart->needs_payment()) : ?>
 		<ul class="wc_payment_methods payment_methods methods">
 			<?php

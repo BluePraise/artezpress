@@ -58,7 +58,6 @@ function artezpress_style()
     if (is_page()):
         wp_enqueue_script('jquery-ui-accordion');
     endif;
-	// wp_enqueue_script('totitlecase',  get_theme_file_uri() . '/js/totitlecase-min.js', [], null, true);
 	if(is_archive() || is_front_page()):
         wp_register_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
         wp_register_script('flickity-fade',  "https://unpkg.com/flickity-fade@1/flickity-fade.js", ['jquery'], null, false);
@@ -352,11 +351,10 @@ add_filter('woocommerce_add_to_cart_fragments', 'add_to_cart_fragment', 10, 1);
 
 
 // CHANGE THE MESSAGE FOR LOGIN PROPERLY VIA THIS FILTER
-add_filter( 'woocommerce_checkout_login_message', 'ap_return_customer_message' );
- 
 function ap_return_customer_message() {
     return '<div class="woocommerce-ap-custom form-title"><span>'. esc_html__('Already a Customer?', 'artezpress') .'</span> <a href="#" class="showlogin">' . esc_html__( 'Login', 'artezpress' ) . '</a></div>';
 }
+add_filter( 'woocommerce_checkout_login_message', 'ap_return_customer_message' );
 
 //Turn off irritating zoom hover effect
 function remove_image_zoom_support()
@@ -613,23 +611,35 @@ function artez_random_bg()
 add_action('wp_ajax_nopriv_artez_random_bg', 'artez_random_bg');
 
 // Removes cross-sell products from cart page
-remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
+// remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
+// function update_total_cost($order_fragments) {
 
-function filter_woocommerce_cart_totals_coupon_html($coupon_html, $coupon, $discount_amount_html)
-{
-	if (is_string($coupon)) {
-		$coupon = new WC_Coupon($coupon);
-	}
+// 	ob_start();
+// 	$order_fragments['.shipping-total-value'] = 10;
 
-	$coupon_html          = $discount_amount_html . ' <a href="' . esc_url(add_query_arg('remove_coupon', rawurlencode($coupon->get_code()),  wc_get_cart_url())) . '" class="woocommerce-remove-coupon" data-coupon="' . esc_attr($coupon->get_code()) . '">' . __('Remove', 'woocommerce') . '</a>';
+// 	return $order_fragments;
 
-	return $coupon_html;
+// }
+// add_filter('woocommerce_update_order_review_fragments', 'websites_depot_order_fragments_split_shipping', 10, 1);
+
+
+function update_total_cost( $fragments ) {
+	global $woocommerce;
+
+	ob_start();
+
+	?>
+	
+	<?php
+	$fragments['span.shipping-total-value'] = ob_get_clean();
+	return $fragments;
 }
+add_filter( 'woocommerce_update_order_review_fragments', 'update_total_cost' );
 
 add_filter('woocommerce_cart_totals_coupon_html', 'filter_woocommerce_cart_totals_coupon_html', 10, 3);
 
-add_action("woocommerce_review_order_after_cart_contents", function () {
-	$out = "<a class='back-to-cart' href='" . wc_get_cart_url() . "'>Modify Cart</a>";
+add_action("woocommerce_review_order_before_order_total", function () {
+	$out = '<a class="back-to-cart" href="' . wc_get_cart_url() . '">' . __('Back to Cart', 'artezpress') . "</a>";
 	echo $out;
 });
 
@@ -644,12 +654,31 @@ function disable_coupon_field_on_checkout($enabled)
 }
 add_filter('woocommerce_coupons_enabled', 'disable_coupon_field_on_checkout');
 
+// THIS IS TO HIDE COLONS AFTER THE SHIPPING LABELS `\_--_/
+function ace_hide_shipping_title( $label ) {
+	
+	return str_replace( ':', ' ', $label);
+}
+add_filter( 'woocommerce_cart_shipping_method_full_label', 'ace_hide_shipping_title' );
 
-// add_filter('woocommerce_ship_to_different_address_checked', '__return_true', 999);
 
+add_action( 'wp_footer', 'update_checkout_script' );
+function update_checkout_script() {
+    if (is_checkout()) :
+    ?>
+    <script>
+        jQuery('div.woocommerce').on('change', '.shipping-methods', function(){
+            console.log("changed");
+            jQuery("[name='update_checkout']").trigger("click"); 
+        });
+    </script>
+    <?php
+    endif;
+}
 
 // ALLOW TRANSLATION OF CUSTOM FIELDS AND OTHER PLUGIN DATA
 add_filter('pll_translate_post_meta', 'translate_post_meta', 10, 3);
+
 // Allows plugins to copy taxonomy terms when a new post (or page) translation is created or synchronize
 function translate_post_meta($value, $key, $lang)
 {

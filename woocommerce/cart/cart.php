@@ -130,13 +130,13 @@ do_action('woocommerce_before_cart'); ?>
 
 
 		<?php do_action('woocommerce_before_cart_collaterals'); ?>
+      
 		<?php do_action('woocommerce_before_cart_totals'); ?>
 		<div class="cart-subtotal">
 			<div class="subtotal-label"><?php esc_html_e('Subtotal', 'woocommerce'); ?></div>
-			<div class="update-cart"><button type="submit" class="button update-cart" name="update_cart" value="<?php esc_attr_e('Update amount', 'woocommerce'); ?>"><?php _e("Update cart", "artezpress"); ?></button>
-
+			    <div class="update-cart"><button type="submit" class="button update-cart" name="update_cart" value="<?php esc_attr_e('Update amount', 'woocommerce'); ?>"><?php _e("Update cart", "artezpress"); ?></button>
 			</div>
-			<div class="subtotal-value" data-title="<?php esc_attr_e('Subtotal', 'woocommerce'); ?>"><?php wc_cart_totals_subtotal_html(); ?></div>
+			<div class="subtotal-value" data-title="<?php esc_attr_e('Subtotal', 'woocommerce'); ?>"><?php wc_cart_totals_order_total_html(); ?></div>
 		</div>
 
 		<?php if (wc_coupons_enabled()) { ?>
@@ -148,6 +148,7 @@ do_action('woocommerce_before_cart'); ?>
 				<div class="coupon-help"><?php _e('ArtEZ students and staff are eligible for a discount.', 'artezpress'); ?></div>
 			</div>
 		<?php } ?>
+
 		
 		<?php do_action('woocommerce_cart_actions'); ?>
 

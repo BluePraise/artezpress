@@ -1,10 +1,17 @@
 // SHARED STYLING FOR CART AND CHECKOUT (MAYBE ALSO MINI CART?)
+.woocommerce {
+    .btn.black-on-white {
+        font-size: 17px;
+        line-height: 23px;
+    }
+}
 
 .woocommerce-notices-wrapper {
     display: flex;
     justify-content: center;
 
     .woocommerce-message {
+        padding: 0 9.3rem;
         line-height: 4.6rem;
         background-color: $black;
         color: $white;
@@ -36,8 +43,7 @@
 
 // ROWS -> THESE ARE THE ROWS IN THE CHECKOUT FIELD
 // THEY ARE <p> Tags
-.woocommerce-checkout .form-row:not(.mailchimp-newsletter) {
-    display: table;
+.woocommerce-billing-fields .form-row {
     width: 100%;
     // mixin fucks up the heights for the inputs so I just put in there
     font-size: unset;
@@ -53,10 +59,10 @@
         padding: 1.3rem 1.3rem;
     }
 }
-label.woocommerce-form__label-text  {
-    display: inline-block !important;
+.woocommerce-form__label-text {
+    font-size: 17px;
+    line-height: 23px;
 }
-
 // TITLES AND TEKST (TYPOGRAPHY)
 .woocommerce-ap-custom.form-title {
     font-size: 21px;
