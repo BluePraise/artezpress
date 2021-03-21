@@ -101,6 +101,13 @@ body.single-product.set-text-white {
 .related-news {
   max-width: $l-container-width;
   margin: 0 auto;
+
+  .news-grid {
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: row;
+    }
+  }
 }
 
 

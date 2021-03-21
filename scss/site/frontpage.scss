@@ -128,6 +128,7 @@
     line-height: 1;
     text-align: right;
     white-space: nowrap;
+    cursor: pointer;
 
     &:hover {
       opacity: $hoverOpacity;
@@ -140,7 +141,7 @@
 	color: $white;
 
   .carousel-cell {
-    background-color: #242424;
+    background-color: #313131;
   }
 }
 
@@ -196,7 +197,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (min-width: 361px) and (max-width: 767px) {
   .carousel-cell__cover {
     max-width: calc((100vw - (6.4rem)) * var(--var-aspect-ratio));
     padding: 9.2rem 0 13.2rem;
@@ -218,14 +219,56 @@
   }
 }
 
+@media (max-width: 360px) {
+  .carousel-cell__cover {
+    max-width: calc((100vw - (3.2rem)) * var(--var-aspect-ratio));
+    padding: 6.4rem 0 10.2rem;
+  }
+
+  .carousel-cell__title {
+    font-family: $extended-font;
+    font-size: $largeText-font-size-rem;
+    font-weight: 500;
+    letter-spacing: 0rem;
+    padding: 2.4rem;
+    bottom: 2.8rem;
+  }
+
+  .slider-title {
+    font-family: $extended-font;
+    font-size: $largeText-font-size-rem;
+    font-weight: 500;
+    letter-spacing: 0rem;
+    text-align: center;
+    padding: 2.4rem;
+  }
+
+  .slider-nav {
+    padding: 2.4rem;
+  }
+}
+
 // Books Section
 .featured-books {
   display: block;
-  padding-left: 1.6rem;
-  padding-right: 1.6rem;
+
+  @media (min-width: 768px) {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+  }
+  @media (max-width: 767px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
   .book-grid {
-    @include grid(12, 1fr, 0, 3.2rem);
+
+    @media (min-width: 768px) {
+      @include grid(12, 1fr, 0, 3.2rem);
+    }
+    @media (max-width: 767px) {
+      @include grid(12, 1fr, 0, 1.6rem);
+    }
 
     .book-item-card {
       @media (min-width: 1200px) {
@@ -237,8 +280,11 @@
       @media (min-width: 768px) and (max-width: 1024px) {
         grid-column: auto / span 4;
       }
-      @media (max-width: 767px) {
+      @media (min-width: 361px) and (max-width: 767px) {
         grid-column: auto / span 6;
+      }
+      @media (max-width: 360px) {
+        grid-column: auto / span 12;
       }
 
       h4 {
