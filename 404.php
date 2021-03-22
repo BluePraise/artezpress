@@ -3,23 +3,27 @@
 /**
  * The template for displaying 404 pages (not found).
  *
- * @package storefront
  * Template Name: 404
  */
 
-get_header(); ?>
+get_header(); 
+// TODO: DYNAMICALLY EDIT 404???
+$page_en = get_page_by_title( 'page-not-found' );
+$page_nl = get_page_by_title( 'page-niet-gevonden' );
+
+?>
 
 
 
-<main id="main" class="site-main" role="main">
+<main id="main" class="site-main page" role="main">
 
 	<div class="error-404 not-found">
 
 		<div class="page-content content-container">
-			<h2 class="page-title"><?php echo the_title(); ?></h2>
+            
+			<h2 class="page-title"><?php _e("Page not found.", "artezpress"); ?></h2>
 			<article class="content-container">
-				<?php the_content(); ?>
-
+                <p class="p1"><?php esc_html('this should be english De pagina die u zoekt, bestaat niet of is ergens anders verplaatst. U kunt opnieuw beginnen vanaf onze <a href="https://testzone.mayconnect.org/artezpress/nl/">startpagina</a> of de zoekoptie gebruiken.');?></p>
 			</article>
 
 		</div><!-- .page-content -->
