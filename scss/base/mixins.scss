@@ -131,8 +131,8 @@
 }
 
 @mixin boxShadowLarge {
-  box-shadow: 0 1vw 3vw rgba(0, 0, 0, 0.1),
-              0 0.8vw 1.6vw rgba(0, 0, 0, 0.16);
+  box-shadow: 0 1.1em 3.3em rgba(0, 0, 0, 0.1),
+              0 0.8em 1.6em rgba(0, 0, 0, 0.14);
 }
 
 // Gradients

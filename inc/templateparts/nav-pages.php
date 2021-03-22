@@ -25,8 +25,10 @@
     </ul>
     <div class="newsletter">
         <span><?php _e('Subscribe to our newsletter', 'artezpress'); ?></span>
-        <input type="email" />
-        <button type="submit" class="btn btn-reg">OK</button>
+        <div class="flex">
+          <input type="email" />
+          <button type="submit" class="btn btn-reg">OK</button>
+        </div>
     </div>
 </div>
 <div class="nav-column nav-column__secondary">
