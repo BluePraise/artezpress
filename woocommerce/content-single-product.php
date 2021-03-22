@@ -105,7 +105,7 @@ if (post_password_required()) {
 	$related_news = get_field('related_news');
 	if ($related_news) : ?>
 		<section class="related-news book-item-related-news">
-			<h5 class="section-title"><?php _e('Related News', 'storefront'); ?></h5>
+			<h5 class="section-title"><?php _e('Related News', 'artezpress'); ?></h5>
 
 			<div class="news-grid">
 				<?php foreach ($related_news as $post) :

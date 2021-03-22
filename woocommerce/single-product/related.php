@@ -26,10 +26,8 @@ if ( $related_products ) : ?>
 
 	<section class="related-books">
 
-		<?php $heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Find More Related Publications', 'woocommerce' ) );
-			if ( $heading ) :
-		?>
-			<h5 class="section-title"><?php echo esc_html( $heading ); ?></h5>
+		
+			<h5 class="section-title"><?php echo _e('Related Publications', 'artezpress'); ?></h5>
 		<?php endif; ?>
 
 		<?php
@@ -41,7 +39,7 @@ if ( $related_products ) : ?>
 					$tag_title = $tag->name;
 					$tag_link = get_term_link($tag); // tag archive link
 
-				echo '<li><a class="btn black-on-white tag-pill " href="' . $tag_link . '">' . $tag_title . '</a></li>';
+				echo '<li><span class="btn black-on-white tag-pill " href="' . $tag_link . '">' . $tag_title . '</span></li>';
 				endforeach;
 				echo '</ul>';
 		endif;
