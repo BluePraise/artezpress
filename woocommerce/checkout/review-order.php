@@ -74,7 +74,8 @@ global $woocommerce;
 		<?php endforeach; ?>
 
 		 <div class="shipping-total flex-container">
-             <div class="shipping-total review-order-row-">
+             <div class="shipping-total review-order-row">
+            <?php // @GANGESH - THE CODE BELOW IS HERE AS AN INDICATOR. THE CSS CLASSES WORK. ?>
             <?php if (WC()->cart->needs_shipping() && WC()->cart->show_shipping()) : ?>
                 <div class="woocommerce-ap-custom form-title"><?php esc_html_e( 'Shipping Method', 'woocommerce' ); ?></div>
 			    <?php do_action('woocommerce_review_order_before_shipping'); ?>
