@@ -266,7 +266,7 @@ jQuery(document).ready(function ($) {
                     var $pager = $pagers.find("span");
                     var $flkty = $(this).data('flickity');
                     $pager.eq($flkty.selectedIndex).addClass("is-active");
-                    // $backlist_pager.eq($flkty.prevSelectedIndex).removeClass('is-active');
+                    // $pager.eq($flkty.prevSelectedIndex).removeClass('is-active');
                 });
 
                 $pagers.on('click', 'span', function() {
