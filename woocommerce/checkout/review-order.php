@@ -19,6 +19,7 @@
 defined('ABSPATH') || exit;
 global $woocommerce;
 ?>
+<?php //.shop_table woocommerce-ap-custom-checkout-review-order-table was added by maggie ?>
 <div class="shop_table woocommerce-ap-custom-checkout-review-order-table woocommerce-checkout-review-order-table">
 
 
@@ -51,7 +52,7 @@ global $woocommerce;
 	?>
 
 	<div class="review-order">
-
+        <?php //You can add classes. I put in review-order-row, so you can reuse it or change it. The rest is from wooc0mmerce ?>
 		<div class="cart-subtotal review-order-row">
 			<span><?php esc_html_e('Subtotal', 'woocommerce'); ?></span>
 			<span><?php wc_cart_totals_subtotal_html(); ?></span>
@@ -72,22 +73,17 @@ global $woocommerce;
 				<td><?php wc_cart_totals_fee_html($fee); ?></td>
 			</div>
 		<?php endforeach; ?>
+        <?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
+            <div class="shipping-total review-order-row">
 
-		 <div class="shipping-total flex-container">
-             <div class="shipping-total review-order-row">
-            <?php // @GANGESH - THE CODE BELOW IS HERE AS AN INDICATOR. THE CSS CLASSES WORK. ?>
-            <?php if (WC()->cart->needs_shipping() && WC()->cart->show_shipping()) : ?>
-                <div class="woocommerce-ap-custom form-title"><?php esc_html_e( 'Shipping Method', 'woocommerce' ); ?></div>
-			    <?php do_action('woocommerce_review_order_before_shipping'); ?>
-			        <?php wc_cart_totals_shipping_html(); ?>
-                    <?php $shipping_total = WC()->cart->get_shipping_total(); ?>
-                    <span class="shipping-total-label"><?php esc_html_e('Shipping', 'artezpress'); ?></span>
-			        <span class="shipping-total-value"><?php echo wc_price($shipping_total); ?></span>
-			    <?php do_action('woocommerce_review_order_after_shipping'); ?>
-		    <?php endif; ?>
-			
-		</div>
-        
+			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
+
+			<?php wc_cart_totals_shipping_html(); ?>
+
+			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
+
+            </div>
+		<?php endif; ?>
         
 		<?php do_action('woocommerce_review_order_before_order_total'); ?>
         

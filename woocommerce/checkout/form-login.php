@@ -25,10 +25,11 @@ if ( is_user_logged_in() || 'no' === get_option( 'woocommerce_enable_checkout_lo
 
 	<div class="woocommerce-form-login-toggle">
 		<?php wc_print_notice( apply_filters( 'woocommerce_checkout_login_message', esc_html__( 'Already a Customer?', 'artezpress' ) ) . '', 'notice' ); ?>
+   <?php //This div is a div maggie made.?>     
     <div class="flex-container woocommerce-checkout-container">
         
         <?php
-        // this template for this fucker is located in: global/form-login.php
+        // the template for this fucker is located in: global/form-login.php 
         woocommerce_login_form(
             array(
                 'message'  => esc_html__( '', 'artezpress' ),

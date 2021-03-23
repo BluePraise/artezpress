@@ -29,10 +29,24 @@ function sf_child_theme_dequeue_style()
 	wp_deregister_style('storefront-style');
 	wp_dequeue_style('storefront-fonts');
 	wp_deregister_style('storefront-fonts');
+    if(!is_admin()) {
+        wp_dequeue_style('dashicons-css');
+        wp_deregister_style('dashicons-css');
+        wp_dequeue_style('wp-block-library-theme');
+	    wp_deregister_style('wp-block-library-theme');
+        wp_dequeue_style('storefront-gutenberg-blocks');
+	    wp_deregister_style('storefront-gutenberg-blocks');
+        wp_dequeue_style('wp-block-library');
+	    wp_deregister_style('wp-block-library');
+        wp_dequeue_style('storefront-icons');
+	    wp_deregister_style('storefront-icons');
+    }
 
 	// storefront-jetpack-widgets-css
 	wp_dequeue_style('storefront-jetpack-widgets');
 	wp_deregister_style('storefront-jetpack-widgets');
+    wp_dequeue_style('select2');
+    wp_deregister_style('select2');
 
 	wp_deregister_style('storefront-woocommerce-style');
 }
@@ -54,7 +68,6 @@ function artezpress_style()
     // USED FOR SEARCH AND FILTER ON ArCHIVe PAGE
     wp_register_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
     wp_register_script('filters', get_theme_file_uri() . '/js/filters.js', [], null, true);
-    wp_register_script('checkout', get_theme_file_uri() . '/js/checkout.js', [], null, true);
 
     if (is_page()):
         wp_enqueue_script('jquery-ui-accordion');
@@ -72,9 +85,6 @@ function artezpress_style()
         wp_enqueue_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
         wp_enqueue_script('filters', get_theme_file_uri() . '/js/filters.js', [], null, true);
 	endif;
-    if (is_cart() || is_checkout()):
-        wp_enqueue_script('checkout', get_theme_file_uri() . '/js/checkout.js', [], null, true);
-    endif; 
 
 	wp_enqueue_script('artezpress-script', get_theme_file_uri() . '/js/script.js', [], null, true);
 
@@ -82,7 +92,6 @@ function artezpress_style()
 	wp_localize_script(
 		'artezpress-script',
 		'artez_object',
-        'checkout',
 		array(
 			'ajax_url' => $ajax_url,
 			'nonce' => wp_create_nonce('ajax-nonce')
@@ -615,39 +624,13 @@ function artez_random_bg()
 }
 add_action('wp_ajax_nopriv_artez_random_bg', 'artez_random_bg');
 
-// Removes cross-sell products from cart page
-// remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
-// function update_total_cost($order_fragments) {
-
-// 	ob_start();
-// 	$order_fragments['.shipping-total-value'] = 10;
-
-// 	return $order_fragments;
-
-// }
-// add_filter('woocommerce_update_order_review_fragments', 'websites_depot_order_fragments_split_shipping', 10, 1);
-
-
-function update_total_cost( $fragments ) {
-	global $woocommerce;
-
-	ob_start();
-
-	?>
-	
-	<?php
-	$fragments['span.shipping-total-value'] = ob_get_clean();
-	return $fragments;
-}
-add_filter( 'woocommerce_update_order_review_fragments', 'update_total_cost' );
 
 add_filter('woocommerce_cart_totals_coupon_html', 'filter_woocommerce_cart_totals_coupon_html', 10, 3);
 
-add_action("woocommerce_review_order_before_order_total", function () {
-	$out = '<a class="back-to-cart" href="' . wc_get_cart_url() . '">' . __('Back to Cart', 'artezpress') . "</a>";
+add_action("woocommerce_checkout_order_review", function () {
+	$out = '<a class="back-to-cart" href="' . wc_get_cart_url() . '">' . __('Modify Cart', 'artezpress') . "</a>";
 	echo $out;
 });
-
 
 // hide coupon field on the checkout page
 function disable_coupon_field_on_checkout($enabled)
@@ -665,21 +648,6 @@ function ace_hide_shipping_title( $label ) {
 	return str_replace( ':', ' ', $label);
 }
 add_filter( 'woocommerce_cart_shipping_method_full_label', 'ace_hide_shipping_title' );
-
-
-add_action( 'wp_footer', 'update_checkout_script' );
-function update_checkout_script() {
-    if (is_checkout()) :
-    ?>
-    <script>
-        jQuery('div.woocommerce').on('change', '.shipping-methods', function(){
-            console.log("changed");
-            jQuery("[name='update_checkout']").trigger("click"); 
-        });
-    </script>
-    <?php
-    endif;
-}
 
 // ALLOW TRANSLATION OF CUSTOM FIELDS AND OTHER PLUGIN DATA
 add_filter('pll_translate_post_meta', 'translate_post_meta', 10, 3);

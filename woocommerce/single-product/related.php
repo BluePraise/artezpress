@@ -25,10 +25,8 @@ global $product;
 if ( $related_products ) : ?>
 
 	<section class="related-books">
-
 		
 			<h5 class="section-title"><?php echo _e('Related Publications', 'artezpress'); ?></h5>
-		<?php endif; ?>
 
 		<?php
 			$current_tags = get_the_terms(get_the_ID(), 'product_tag');
@@ -39,11 +37,11 @@ if ( $related_products ) : ?>
 					$tag_title = $tag->name;
 					$tag_link = get_term_link($tag); // tag archive link
 
-				echo '<li><span class="btn black-on-white tag-pill " href="' . $tag_link . '">' . $tag_title . '</span></li>';
+				    echo '<li><span class="btn black-on-white tag-pill " href="' . $tag_link . '">' . $tag_title . '</span></li>';
 				endforeach;
 				echo '</ul>';
-		endif;
-		?>
+		    endif;
+		    ?>
 		<?php woocommerce_product_loop_start(); ?>
 
 			<?php foreach ( $related_products as $related_product ) : ?>

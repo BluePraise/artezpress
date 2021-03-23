@@ -18,8 +18,9 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
+<?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>
 <div class="woocommerce-billing-fields">
-	
+	<?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>
 	<div class="woocommerce-billing-fields__field-wrapper">
 		<?php
 		$fields = $checkout->get_checkout_fields( 'billing' );
