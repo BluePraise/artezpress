@@ -38,7 +38,7 @@ defined( 'ABSPATH' ) || exit;
 			</p>
 
 		<?php else : ?>
-            <h1><?php _e('Your Order Is Confirmed!', 'artezpress'); ?></h1>
+            <h4><?php _e('Your Order Is Confirmed!', 'artezpress'); ?></h4>
 
 			<p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', esc_html__( 'Thank you. Your order has been received.', 'woocommerce' ), $order ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 
@@ -50,7 +50,7 @@ defined( 'ABSPATH' ) || exit;
                     endif;
                 ?>
                 <p>Hi <?php echo $billing_name; ?>,</p>
-                <p>Your <?php esc_html_e( 'order No.', 'artezpress' ); ?> <?php echo $order->get_order_number(); esc_html__( ' has been successfully processed. If you have any questions about your order, please contact our', 'artezpress' )?> <a class="" href="mailto:artezpress@artez.nl"><?php _e('customer service', 'artezpress');?></a></p>
+                <p>Your <?php esc_html_e( 'order No.', 'artezpress' ); ?> <?php echo $order->get_order_number(); esc_html__( ' has been successfully processed. If you have any questions about your order, please contact our', 'artezpress' )?> <a class="" href="mailto:order@support.hexspoor.nl"><?php _e('customer service', 'artezpress');?></a></p>
                 <p><?php esc_html__( 'Thank you.', 'artezpress');?></p>
                 <p>ArtEZ Press Team</p>
 			</div>

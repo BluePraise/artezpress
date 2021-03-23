@@ -45,6 +45,7 @@ function sf_child_theme_dequeue_style()
 	// storefront-jetpack-widgets-css
 	wp_dequeue_style('storefront-jetpack-widgets');
 	wp_deregister_style('storefront-jetpack-widgets');
+
     wp_dequeue_style('select2');
     wp_deregister_style('select2');
 
@@ -625,7 +626,7 @@ function artez_random_bg()
 add_action('wp_ajax_nopriv_artez_random_bg', 'artez_random_bg');
 
 
-add_filter('woocommerce_cart_totals_coupon_html', 'filter_woocommerce_cart_totals_coupon_html', 10, 3);
+// add_filter('woocommerce_cart_totals_coupon_html', 'filter_woocommerce_cart_totals_coupon_html', 10, 3);
 
 add_action("woocommerce_checkout_order_review", function () {
 	$out = '<a class="back-to-cart" href="' . wc_get_cart_url() . '">' . __('Modify Cart', 'artezpress') . "</a>";
