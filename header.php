@@ -27,6 +27,11 @@ endif;
 		<div class="js-menu" style="display: none;">
 			<div class="bg-overlay" style="background-image: url(<?php echo $rand_row_image; ?>);"></div>
 			<div class="main-menu-surface">
+
+				<button class="mobile-menu-close js-close-menu" alt="close">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1{fill:none;stroke:#000;stroke-width:2px;}</style></defs><line class="cls-1" x1="1" y1="1" x2="23" y2="23"/><line class="cls-1" x1="23" y1="1" x2="1" y2="23"/></svg>
+				</button>
+
 				<div class="grid-container">
 					<?php get_template_part('inc/templateparts/nav', 'pages'); ?>
 					<?php if (WC()->cart->get_cart_contents_count() == 0 || !is_checkout()) : ?>

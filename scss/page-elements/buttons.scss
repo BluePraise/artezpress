@@ -110,7 +110,7 @@ span.btn:hover {
 // Go Back Button
 // used in news single
 // used in book single
-a.go-back {
+.go-back {
   display: block;
   position: fixed;
   z-index: 1;
@@ -133,5 +133,22 @@ a.go-back {
       width: 3.2rem;
       height: 3.2rem;
     }
+  }
+}
+
+
+// Close Mobile Menu Button
+.mobile-menu-close {
+  position: fixed;
+  top: 3.6rem;
+  right: 1.6rem;
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  @media (min-width: 768px) {
+    display: none;
   }
 }

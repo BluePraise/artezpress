@@ -63,10 +63,6 @@
 	body.single-product & {
 		@include MobileMenuColors($book: true);
 	}
-
-	&.surface-open {
-		background-color: transparent;
-	}
 }
 
 // click under transparent menu
@@ -104,7 +100,7 @@
 		padding: 4rem 1.6rem 12.8rem 1.6rem;
 	}
 	@media (max-width: 767px) {
-		padding: 4rem 1.6rem 10rem 1.6rem;
+		padding: 3.2rem 1.6rem 10rem 1.6rem;
 	}
 }
 
@@ -117,7 +113,8 @@
 // Background Images
 .bg-overlay {
 	position: fixed;
-	height: 100vh;
+	height: 100vh; /* fallback */
+	height: calc(var(--vh, 1vh) * 100);
 	width: 100vw;
 	left: 0;
 	bottom: 0;
@@ -213,6 +210,20 @@
   }
 }
 
+// Mobile
+@media (max-width: 767px) {
+	.main-menu-surface {
+		height: 100vh; /* fallback */
+		height: calc(var(--vh, 1vh) * 100);
+		background-color: $greyTransparent;
+	}
+
+	.bg-overlay {
+		display: none;
+	}
+}
+
+
 // -----------------------------
 // Menu surface elements
 // -----------------------------
@@ -255,7 +266,7 @@
 
 .social-menu {
 	@media (min-width: 768px) {
-		margin-bottom: calc((#{$menuText-line-height-rem} * 2) - .5rem);
+		margin-bottom: calc((#{$menuText-line-height-rem} * 2) - 1rem);
 	}
 	@media (max-width: 767px) {
 		margin-bottom: $menuText-line-height-rem;
@@ -280,7 +291,7 @@
 		margin-bottom: 0.4rem;
 	}
 	input[type="email"] {
-		height: 4.5rem;
+		// height: 4.5rem;
 		width: calc(100% - 7.2rem);
 		max-width: 32rem;
 		background: transparent;
@@ -293,8 +304,9 @@
 	}
 
 	.btn-reg {
-		@include clearButton(7px, 4px, 8px);
+		@include clearButton(.8rem, .8rem, .8rem);
 		@include baseMenuText;
+		line-height: 1;
 	}
 }
 
@@ -360,17 +372,6 @@
 		left: 0;
 		width: 100%;
 		overflow: scroll;
-	}
-
-	@media (max-width: 360px) {
-		.main-menu-surface {
-			height: 100vh;
-			background-color: $white;
-		}
-
-		.mobile-menu-bar.surface-open {
-			background: $white;
-		}
 	}
 }
 

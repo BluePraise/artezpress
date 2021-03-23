@@ -9,7 +9,7 @@
 .flickity-slider {
   .carousel-cell {
     width: 100%;
-    max-width: calc((90vh - 16rem) * var(--var-aspect-ratio));
+    max-width: calc(((90 * var(--vh)) - 16rem) * var(--var-aspect-ratio));
     @include boxShadowLarge;
 
     figure {
