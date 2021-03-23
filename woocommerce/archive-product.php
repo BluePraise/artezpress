@@ -25,24 +25,47 @@
         $ap_language = $ap_language;
     endif;
 
-    $args = array(
-      'orderby'         => 'date',
-      'order'           => 'DESC',
-      'posts_per_page'  => -1,  // -1 will get all the product. Specify positive integer value to get the number given number of product
-      'post_type'       => 'product',
-      'meta_query'      => array(
-        'relation'    => 'OR',
-        array(
-            'key'    => 'additional_editions_0_type_of_edition',
-            'compare'  => '!=',
-            'value'    => $current_lang_full,
-        ),
-      array(
-            'key'    => 'additional_editions_0_type_of_edition',
-            'compare' => 'NOT EXISTS'
-        ),
-     ),
-    );
+
+    if( have_rows('new_releases_row', 'option') ):
+
+      while( have_rows('new_releases_row', 'option') ): the_row(); 
+         $book_obj    = get_sub_field('add_to_new');
+         if ($book_obj):
+           foreach ($book_obj as $b) :
+              $post_ex[] = $b; 
+           endforeach;
+       endif;
+       endwhile; 
+      endif; 
+      
+         $args = array(
+           'orderby'         => 'date',
+           'order'           => 'DESC',
+           'posts_per_page'  => -1,  // -1 will get all the product. Specify positive integer value to get the number given number of product
+           'post_type'       => 'product',
+            'post__not_in' =>  $post_ex,
+           'meta_query'      => array(
+             'relation'    => 'AND',
+             array(
+               'relation' => 'OR',
+             array(
+                 'key'    => 'additional_editions_0_type_of_edition',
+                 'compare'  => '!=',
+                 'value'    => $current_lang_full,
+             ),
+           array(
+                 'key'    => 'additional_editions_0_type_of_edition',
+                 'compare' => 'NOT EXISTS'
+             )
+           ),
+             array(
+               'key'    => 'add_coming_soon',
+               'compare' => '!=',
+               'value'    => 1
+           ),
+          ),
+         );
+         
 
     $the_query = new WP_Query($args);
     if ($the_query->have_posts()) :
