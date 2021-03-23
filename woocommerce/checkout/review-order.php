@@ -19,7 +19,7 @@
 defined('ABSPATH') || exit;
 global $woocommerce;
 ?>
-<div class="shop_table woocommerce-ap-custom-checkout-review-order-table">
+<div class="shop_table woocommerce-ap-custom-checkout-review-order-table woocommerce-checkout-review-order-table">
 
 
 	<?php
