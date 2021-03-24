@@ -27,12 +27,12 @@ defined('ABSPATH') || exit;
         <?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>
 		<div class="radio-toggle">
 			<label class="woocommerce-form__label woocommerce-form__label-for-radio radio d-block">
-                <input id="ship-to-different-address-radio-no" class="woocommerce-form__input woocommerce-form__input-radio input-radio" type="radio" name="ship_to_different_address_radio_toggle" value="0" <?php checked(apply_filters('woocommerce_ship_to_different_address_checked', 'billing' === get_option('woocommerce_ship_to_destination') ? 1 : 0), 1); ?> /> <?php _e('Shipping address is the same', 'woocommerce'); ?>
-                <label class="woocommerce-custom-form__label-for-radio" for="#"></label>
+                <input id="ship-to-different-address-radio-no" class="woocommerce-form__input woocommerce-form__input-radio input-radio" type="radio" name="ship_to_different_address_radio_toggle" value="0" <?php checked(apply_filters('woocommerce_ship_to_different_address_checked', 'billing' === get_option('woocommerce_ship_to_destination') ? 1 : 0), 1); ?> /> 
+                <label class="woocommerce-custom-form__label-for-radio" for="#"><?php _e('Shipping address is the same', 'woocommerce'); ?></label>
 			</label>
 			<label class="woocommerce-form__label woocommerce-form__label-for-radio radio d-block">
-                <input id="ship-to-different-address-radio-yes" selected class="woocommerce-form__input woocommerce-form__input-radio input-radio" type="radio" name="ship_to_different_address_radio_toggle" value="1" <?php checked(apply_filters('woocommerce_ship_to_different_address_checked', 'shipping' === get_option('woocommerce_ship_to_destination') ? 1 : 0), 1); ?> /> <?php _e('Different shipping address', 'woocommerce'); ?>
-                <label class="woocommerce-custom-form__label-for-radio" for="#"></label>
+                <input id="ship-to-different-address-radio-yes" selected class="woocommerce-form__input woocommerce-form__input-radio input-radio" type="radio" name="ship_to_different_address_radio_toggle" value="1" <?php checked(apply_filters('woocommerce_ship_to_different_address_checked', 'shipping' === get_option('woocommerce_ship_to_destination') ? 1 : 0), 1); ?> /> 
+                <label class="woocommerce-custom-form__label-for-radio" for="#"><?php _e('Different shipping address', 'woocommerce'); ?></label>
 			</label>
 
 			<span><input id="ship-to-different-address-checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" <?php checked(apply_filters('woocommerce_ship_to_different_address_checked', 'shipping' === get_option('woocommerce_ship_to_destination') ? 1 : 0), 1); ?> type="checkbox" name="ship_to_different_address" value="1" style="opacity:0;" /></span>

@@ -125,7 +125,7 @@ endif;
 				if (!is_product()) :
 					get_template_part('inc/templateparts/language', 'toggle');
 				endif; ?>
-				<?php if (!is_cart() && !is_checkout()) : ?>
+				
 					<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
 
 						<span class="cart-label"><?php _e('Shop', 'artezpress'); ?></span>
@@ -136,12 +136,6 @@ endif;
 
 						<span class="cart-counter"><?php echo $count; ?></span>
 					</a>
-				<?php endif; ?>
-				<?php if (is_cart()) : ?>
-					<a href="<?php echo esc_url(wc_get_checkout_url()); ?>" class="btn white-on-black cart-btn">
-						<?php esc_html_e('Proceed', 'woocommerce'); ?>
-					</a>
-				<?php endif; ?>
 			</div>
 		</div>
 	</nav>

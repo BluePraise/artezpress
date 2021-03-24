@@ -160,9 +160,10 @@ do_action('woocommerce_before_cart'); ?>
 
 		<?php do_action('woocommerce_cart_actions'); ?>
 
-		<?php wp_nonce_field('woocommerce-cart', 'woocommerce-cart-nonce'); ?>
-
-
+		    <?php wp_nonce_field('woocommerce-cart', 'woocommerce-cart-nonce'); ?>
+                <div class="button-container">
+            		<?php do_action('woocommerce_proceed_to_checkout'); ?>
+                </div>
 		<?php do_action('woocommerce_after_cart_contents'); ?>
 
 		<?php do_action('woocommerce_after_cart_table'); ?>

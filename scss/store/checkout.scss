@@ -153,25 +153,24 @@
     }
 
     /*  Radio  */
-    .woocommerce-custom-form__label-for-radio [type="radio"]:not(:checked) + span:before,
-    .woocommerce-custom-form__label-for-radio [type="radio"]:checked + span:before {
-        position: absolute;
-        left: 0;
-        top: 0;
-        font-family: "L-icons";
-        width: 1em;
-        height: 1em;
-        -webkit-transition: all 0.1s;
-        transition: all 0.1s;
+   
+    .woocommerce-form__label-for-radio [type="radio"]:not(:checked) + span:before,
+    .woocommerce-form__label-for-radio [type="radio"]:checked + span:before, 
+    .woocommerce-form__label-for-checkbox [type="checkbox"]:not(:checked) + span,
+    .woocommerce-form__label-for-checkbox [type="checkbox"]:checked + span {
+        position: relative;
+        padding-left: 1.6em;
+        cursor: pointer;
+        @include baseSmallText;
     }
 
     /* Radio empty */
-    .woocommerce-custom-form__label-for-radio [type="radio"]:not(:checked) + span:before {
+    .woocommerce-form__label-for-radio [type="radio"]:not(:checked) + span:before {
         content: "\25A1";
     }
 
     /* Radio checked */
-    .woocommerce-custom-form__label-for-radio [type="radio"]:checked + span:before {
+    .woocommerce-form__label-for-radio [type="radio"]:checked + span:before {
         content: "\25A0";
     }
 }
