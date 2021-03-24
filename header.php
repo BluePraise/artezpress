@@ -34,7 +34,7 @@ endif;
 
 				<div class="grid-container">
 					<?php get_template_part('inc/templateparts/nav', 'pages'); ?>
-					<?php if (WC()->cart->get_cart_contents_count() == 0) : ?>
+					<?php if (WC()->cart->get_cart_contents_count() == 0 || !is_checkout()) : ?>
 						<div class="mini-cart-column">
 							<div class="mini-cart-total"><?php woocommerce_mini_cart(); ?></div>
 						</div>
@@ -125,7 +125,7 @@ endif;
 				if (!is_product()) :
 					get_template_part('inc/templateparts/language', 'toggle');
 				endif; ?>
-				<?php if (!is_cart() ) : ?>
+				<?php if (!is_cart() && !is_checkout()) : ?>
 					<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
 
 						<span class="cart-label"><?php _e('Shop', 'artezpress'); ?></span>
