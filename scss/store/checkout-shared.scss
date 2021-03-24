@@ -25,7 +25,7 @@
     }
 }
 
-// STRUCTURE OR GRID 
+// STRUCTURE OR GRID
 
 .flex.woocommerce-checkout-container {
     justify-content: space-between;
@@ -87,7 +87,7 @@
 .woocommerce input[type=datetime-local],
 .woocommerce input[type=date],
 .woocommerce input[type=month],
-.woocommerce input[type=time],  
+.woocommerce input[type=time],
 .woocommerce input[type=week],
 .woocommerce input[type=number],
 .woocommerce input[type=url],
@@ -115,8 +115,9 @@
     padding-top: 10px;
 }
 
+// AMIR //
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    @include smallText;
+    @include baseSmallText;
 }
 ::-moz-placeholder { /* Firefox 19+ */
   font-family: $default-font;
@@ -138,6 +139,3 @@
     }
 
 }
-
-
-
