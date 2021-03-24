@@ -93,7 +93,15 @@
 
 .woocommerce-ap-custom.form-title {
     @include largeText;
-}
+// STRUCTURE OR GRID
+
+// .flex.woocommerce-checkout-container {
+//     justify-content: space-between;
+//     .col_left,
+//     .col_right {
+//         width: calc(50% - 3.6rem);
+//     }
+// }
 
 
 
