@@ -30,7 +30,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
     <?php //.flex and col_left and right are shit I made up woocommerce-checkout-container is from woocommerce. ?>    
-    <div class="flex woocommerce-checkout-container">
+    <div class="grid woocommerce-checkout-container">
     
         <div class="col_left">
             <?php if ( $checkout->get_checkout_fields() ) : ?>
