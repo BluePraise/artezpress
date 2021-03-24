@@ -48,7 +48,7 @@ do_action('woocommerce_before_cart'); ?>
 
 						<div class="flex-container">
 							<div class="product-thumbnail book-item">
-                                <?php $thumbnail = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image('cart-thumb'), $cart_item, $cart_item_key); ?>
+                                <?php $thumbnail = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image('full'), $cart_item, $cart_item_key); ?>
 								<figure class="book-item-card__cover">
 								    <?php echo $thumbnail; ?>
                                 </figure>
