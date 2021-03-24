@@ -173,6 +173,10 @@
     .woocommerce-form__label-for-radio [type="radio"]:checked + span:before {
         content: "\25A0";
     }
+
+    .woocommerce-custom-form__label-for-radio:before {
+        top: -13px !important;
+    }
 }
 
 .state_select,
