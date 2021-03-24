@@ -35,22 +35,17 @@ if ( is_user_logged_in() ) {
 				<label class="d-none" for="username"><?php esc_html_e( 'Username or email', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
 				<input type="text" class="input-text" name="username" id="username" autocomplete="username" placeholder="<?php esc_html_e( 'Username or email', 'woocommerce' ); ?>" />
 			</p>
-			<p class="form-row form-row-last">
+			<p class="form-row form-row-last input-btn-combo">
 				<label class="d-none" for="password"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
 				<input class="input-text" type="password" name="password" id="password" autocomplete="current-password" placeholder="<?php esc_html_e( 'Password', 'woocommerce' ); ?>" />
+                <?php do_action( 'woocommerce_login_form' ); ?>
+                <?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
+            
+                <input type="hidden" name="redirect" value="<?php echo esc_url( $redirect ); ?>" />
+                <button type="submit" class="woocommerce-button button woocommerce-form-login__submit" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>"><?php esc_html_e( 'Login', 'woocommerce' ); ?></button>
 			</p>
 		
-
-	<?php do_action( 'woocommerce_login_form' ); ?>
-
-            <div class="form-row-ap__h">
-                <p class="lost_password"><a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Forgot password', 'artezpress' ); ?></a></p>
-            <?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
-            <input type="hidden" name="redirect" value="<?php echo esc_url( $redirect ); ?>" />
-            <button type="submit" class="woocommerce-button button woocommerce-form-login__submit btn black-on-white" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>"><?php esc_html_e( 'Login', 'woocommerce' ); ?></button>
-            </div>
-        
-
+            <p class="lost_password"><a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Forgot password', 'artezpress' ); ?></a></p>
 		</div>
 
 

@@ -6,6 +6,12 @@
         line-height: 23px;
     }
 }
+
+.woocommerce-ap-custom.form-title {
+    @include baseText;
+    padding: 0 1rem;
+    border-bottom: 1px solid currentColor;
+}
 .woocommerce select,
 .woocommerce input[type="radio"]
 .woocommerce input[type=datetime],
@@ -28,10 +34,9 @@
     order: 0;
     width: 100%;    
     height: 4.8rem;
-    font-size: 17px;
     padding: 0;
     border-bottom: none;
-    padding: 0 0.7rem;
+    padding: 0 1rem;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -91,37 +96,26 @@
     }
 }
 
-.woocommerce-ap-custom.form-title {
-    @include largeText;
-// STRUCTURE OR GRID
-
-// .flex.woocommerce-checkout-container {
-//     justify-content: space-between;
-//     .col_left,
-//     .col_right {
-//         width: calc(50% - 3.6rem);
-//     }
-// }
-
-
-
+.input-btn-combo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    button[type=submit] {
+        background: transparent;
+        border: 0;
+        padding: 1rem;
+        cursor: pointer;
+        // font-family: $default-font;
+        @include baseSmallText;
+    }
+}
 
 // ROWS -> THESE ARE THE ROWS IN THE CHECKOUT FIELD
 // THEY ARE <p> Tags
 
 
 // TITLES AND TEKST (TYPOGRAPHY)
-.woocommerce-ap-custom.form-title {
-    font-size: 21px;
-    line-height: 30px;
-    transform: unset;
-    padding-top: 1px;
-    width: 100%;
-    text-align: left;
-    border-bottom: 1px solid;
-    padding: 1rem;
-}
-
 .ap-icon-times {
     display: inline-block;
     font-size: 1.4rem;

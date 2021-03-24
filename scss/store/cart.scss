@@ -21,7 +21,7 @@
 
 // Items Cells Structure
 
-.cart_item {
+.woocommerce-cart-form__cart-item.cart_item {
   border-top: $thinBorder;
 
   &:nth-last-child(1) {

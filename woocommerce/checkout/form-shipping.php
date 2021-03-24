@@ -23,7 +23,7 @@ defined('ABSPATH') || exit;
 <div class="woocommerce-shipping-fields">
 	<?php if (true === WC()->cart->needs_shipping_address()) : ?>
         <?php //You can change the title classes - not a problem ?>    
-		<h3 class="woocommerce-ap-custom form-title"><?php _e("Shipping Address", "artezpress"); ?></h3>
+		<div class="woocommerce-ap-custom form-title"><?php _e("Shipping Address", "artezpress"); ?></div>
         <?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>
 		<div class="radio-toggle">
 			<label class="woocommerce-form__label woocommerce-form__label-for-radio radio d-block">
@@ -39,7 +39,6 @@ defined('ABSPATH') || exit;
         <?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>
 		<div class="shipping_address">
             <?php //You can change the title classes - not a problem ?>    
-            <h3 class="woocommerce-ap-custom form-title"><?php _e("Other Shipping Address", "artezpress"); ?></h3>
 			<?php do_action('woocommerce_before_checkout_shipping_form', $checkout); ?>
             <?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>
 			<div class="woocommerce-shipping-fields__field-wrapper">
