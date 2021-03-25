@@ -89,12 +89,27 @@
     width: 100%;
     line-height: 1.1;
 
-    &::placeholder {
-      color: $black;
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        font-family: $extended-font;
+        color: $black;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+        font-family: $extended-font;
+        color: $black;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+        font-family: $extended-font;
+        color: $black;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+        font-family: $extended-font;
+        color: $black;
     }
   }
 
   input[type=search] {
+    font-family: $extended-font;
+    @include baseH2;
     border: none;
     padding: 0;
   }
