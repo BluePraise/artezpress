@@ -88,7 +88,7 @@ if (post_password_required()) {
 			 */
 
 			?>
-			<p class="book-item-author"><?php _e('By ', 'artezpres') ?><?php echo $author ?></p>
+			<p class="book-item-author"><?php _e('By ', 'artezpress') ?><?php echo $author ?></p>
 			<div class="book-item-description">
 				<?php echo $description; ?>
 			</div>
