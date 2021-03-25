@@ -324,6 +324,8 @@ function veer_popup_maker_gutenburg_compat($content)
 
 
 /* Woocommerce filters */
+add_filter( 'wc_add_to_cart_message_html', '__return_false' );
+
 /*
 * Unset the labels in the checkout
 *
@@ -413,6 +415,23 @@ if (!function_exists('array_flatten')) {
 }
 
 add_filter('get_post_metadata', 'add_dynamic_post_meta', 10, 4);
+
+
+/**
+ * Change number of related products output
+ */ 
+function woo_related_products_limit() {
+  global $product;
+	
+	$args['posts_per_page'] = 6;
+	return $args;
+}
+//add_filter( 'woocommerce_output_related_products_args', 'jk_related_products_args', 20 );
+  function jk_related_products_args( $args ) {
+	$args['posts_per_page'] = 4; // 4 related products
+	$args['columns'] = 4; // arranged in 2 columns
+	return $args;
+}
 
 /**
  * Add dynamically-generated "post meta" to `\WP_Post` objects
