@@ -632,8 +632,6 @@ add_filter('body_class', function ($classes) {
     endif;
 });
 
-// add_action('wp_ajax_artez_random_bg', 'artez_random_bg');
-
 function artez_random_bg()
 {
 
