@@ -21,7 +21,7 @@ get_header(); ?>
 
 	<?php
 	if (have_rows('feature_sliders')) : ?>
-		<section class="featured-section features">
+		<section class="featured-section features" id="jump-to">
 			<div class="featured-section__grid grid">
 
 			<?php

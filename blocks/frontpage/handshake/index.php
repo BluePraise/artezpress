@@ -15,6 +15,5 @@
 ?>
 
 <div class="hero fade-in" style="background-image: url(<?php echo $rand_row_image; ?>);">
-
-    <h1>ArtEZ Press</h1>
+    <h1><a href="#jump-to">ArtEZ Press</a></h1>
 </div>

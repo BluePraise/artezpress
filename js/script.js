@@ -28,8 +28,18 @@ jQuery(document).ready(function ($) {
 			.fadeIn(250);
     });
     
-    // $('body').trigger('update_checkout');
-
+    $(".hero h1 a").on("click", function (event) {
+        
+        if (this.hash !== "") {
+            event.preventDefault();
+            // Store hash
+            var hash = this.hash;
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 500, function () {
+            });
+        }
+    });
 
     //checkout page shipping address toggle
 
@@ -282,7 +292,7 @@ jQuery(document).ready(function ($) {
                 $newreleases_carousel.on("select.flickity", function () {
                     var $pager = $pagers.find("span");
                     var $flkty = $(this).data('flickity');
-                    console.log($flkty);
+                    
                     $pager.eq($flkty.selectedIndex).addClass("is-active");
                     // $pager.eq($flkty.prevSelectedIndex).removeClass('is-active');
                 });

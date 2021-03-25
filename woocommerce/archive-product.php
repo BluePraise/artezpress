@@ -48,13 +48,13 @@
              'relation'    => 'AND',
              array(
                'relation' => 'OR',
-             array(
-                 'key'    => 'additional_editions_0_type_of_edition',
-                 'compare'  => '!=',
-                 'value'    => $current_lang_full,
-             ),
-           array(
-                 'key'    => 'additional_editions_0_type_of_edition',
+                array(
+                    'key'    => 'additional_editions_0_type_of_edition',
+                    'compare'  => '!=',
+                    'value'    => $current_lang_full,
+                ),
+                array(
+                'key'    => 'additional_editions_0_type_of_edition',
                  'compare' => 'NOT EXISTS'
              )
            ),
