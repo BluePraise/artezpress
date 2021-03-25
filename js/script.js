@@ -250,6 +250,7 @@ jQuery(document).ready(function ($) {
     $(".new-releases-carousel").flickity({
         cellSelector: ".carousel-cell",
         imagesLoaded: true,
+        lazyLoad: true,
         autoPlay: 9000,
         fade: true,
         selectedAttraction: 0.2,
@@ -274,12 +275,14 @@ jQuery(document).ready(function ($) {
                     // append a span to every nav pager.
                     for (i = 0; i < $slides.length; i++) {
                         $pagers.append("<span></span>");
+                        $pagers.find('span:first-child').addClass('is-active');
                     }                    
                 }
 
                 $newreleases_carousel.on("select.flickity", function () {
                     var $pager = $pagers.find("span");
                     var $flkty = $(this).data('flickity');
+                    console.log($flkty);
                     $pager.eq($flkty.selectedIndex).addClass("is-active");
                     // $pager.eq($flkty.prevSelectedIndex).removeClass('is-active');
                 });

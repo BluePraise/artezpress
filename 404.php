@@ -23,7 +23,8 @@ $page_nl = get_page_by_title( 'page-niet-gevonden' );
             
 			<h2 class="page-title"><?php _e("Page not found.", "artezpress"); ?></h2>
 			<article class="content-container">
-                <p class="p1"><?php esc_html('The page you are looking for does not exist or has been moved elsewhere. You can start again from our [homepage](https://artezpress.artez.nl/) or use the [search](https://artezpress.artez.nl/en/books/) option.');?></p>
+               
+                <p class="p1"><?php _e('The page you are looking for does not exist or has been moved elsewhere. You can start again from our ', 'artezpress'); ?><a href="https://artezpress.artez.nl/">homepage</a> <?php _e('or use the ', 'artezpress'); ?><a href="https://artezpress.artez.nl/en/books/"><?php _e('search option.', 'artezpress');?></p>
 			</article>
 
 		</div><!-- .page-content -->

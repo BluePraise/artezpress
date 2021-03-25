@@ -175,6 +175,7 @@
     }
 
     .woocommerce-custom-form__label-for-radio:before {
+        z-index: -1;
         top: -13px !important;
     }
 }

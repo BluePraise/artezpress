@@ -28,9 +28,11 @@ defined('ABSPATH') || exit;
 
                 $single_product_bg = get_field('custom_color');
                 $single_product_text_color = get_field('text_color');
-                $image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "large" );
+                $image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "full", false );
+                
                 $image_width = $image_data[1];
                 $image_height = $image_data[2];
+                
             ?>
 
             <div class="carousel-cell carousel-cell-highlights carousel-cell__backlist" style="background-color: <?= $single_product_bg;?>" data-color="<?= $single_product_text_color; ?>"  data-url="<?php the_permalink(); ?>">

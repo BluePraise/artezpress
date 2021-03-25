@@ -15,7 +15,7 @@
 
 get_header(); ?>
 
-<main class="site-main homepage test" role="main">
+<main class="site-main homepage" role="main">
 
 	<?php get_template_part('blocks/frontpage/handshake/index'); ?>
 
@@ -84,7 +84,8 @@ get_header(); ?>
 		</div>
 		<!--/.products-->
 		<div class="excerpt-section__expand">
-			<a class="btn excerpt-section__expand-btn black-on-white" href="<?php echo site_url('/books/'); ?>"><?php _e('See All Books', 'artezpress'); ?></a>
+            
+			<a class="btn excerpt-section__expand-btn black-on-white" href="<?php if($current_lang === 'en'): echo site_url("/books"); else:?> <?php echo site_url(); ?>/nl/boeken" <?php endif; ?>"><?php _e('See All Books', 'artezpress'); ?></a>
 		</div>
 
 	</section><!-- #main -->
@@ -107,7 +108,7 @@ get_header(); ?>
 		</div>
 		<!--/.news-grid-->
 		<div class="excerpt-section__expand">
-			<a class="btn excerpt-section__expand-btn black-on-white" href="<?php echo site_url('/news'); ?>"><?php _e('See All News', 'artezpress'); ?></a>
+			<a class="btn excerpt-section__expand-btn black-on-white" href="<?php if($current_lang === 'en'): echo site_url("/news"); else:?> <?php echo site_url(); ?>/nl/nieuws" <?php endif; ?>"><?php _e('See All News', 'artezpress'); ?></a>
 		</div>
 	<?php } else {
 				echo __('<p>Currently there is no news.</p>', 'artezpress'); ?>

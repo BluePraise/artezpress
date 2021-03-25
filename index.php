@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main class="container-l news page" role="main">
-    <h2 class="page-title"><?php _e('News', 'storefront'); ?></h2>
+    <h2 class="page-title"><?php _e('News', 'artezpress'); ?></h2>
     <div class="news-grid-masonry grid">
         <?php
             if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
