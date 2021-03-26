@@ -43,7 +43,6 @@
            'order'           => 'DESC',
            'posts_per_page'  => -1,  // -1 will get all the product. Specify positive integer value to get the number given number of product
            'post_type'       => 'product',
-           'post__not_in' =>  $post_ex,
            'meta_query'      => array(
              'relation'    => 'AND',
              array(

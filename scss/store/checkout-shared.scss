@@ -18,19 +18,24 @@
     border-bottom: 1px solid currentColor;
 }
 
+.woocommerce-checkout {
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      @include baseSmallText;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    font-family: $default-font;
+    @include smallText;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    font-family: $default-font;
+    @include smallText;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    font-family: $default-font;
+    @include smallText;
+  }
+}
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    @include baseSmallText;
-}
-::-moz-placeholder { /* Firefox 19+ */
-  @include baseSmallText;
-}
-:-ms-input-placeholder { /* IE 10+ */
-  @include baseSmallText;
-}
-:-moz-placeholder { /* Firefox 18- */
-  @include baseSmallText;
-}
 
 .woocommerce-form__label-for-checkbox {
     @include baseSmallText;
@@ -71,9 +76,16 @@
         text-align: center;
         @include underlineText;
     }
-    .woocommerce-error {
-        color: red;
-    }
+}
+
+// WOOCOMMERCE ERROR
+ul.woocommerce-error {
+    font-size: 1.7rem;
+    line-height: 2.3rem;
+    color: red;
+    margin-bottom: 4.8rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .input-btn-combo {
