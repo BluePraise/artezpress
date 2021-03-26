@@ -49,7 +49,10 @@ $count = $woocommerce->cart->cart_contents_count;
             $edition 	= get_field('ap_language', $product_id);
             // if current language is dutch
             // if current language is english.
-            if ($edition == 'Nederlands' ):
+            $current_lang      = pll_current_language();
+            if ($edition == 'Nederlands' && $current_lang === 'en'):
+                $edition = 'Dutch';
+            else: 
                 $edition = 'Nederlandse';
             endif;
 			if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key)) {

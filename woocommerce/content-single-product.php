@@ -25,6 +25,7 @@ $author 	 	 		= get_field('author');
 $language 	 	 		= get_field('language');
 $additional_editions	= get_field('additional_editions');
 $available 				= get_field('display_availability_block');
+$current_lang           = pll_current_language();
 
 /**
  * Hook: woocommerce_before_single_product.
