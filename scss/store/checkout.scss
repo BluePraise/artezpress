@@ -312,6 +312,13 @@ form.woocommerce-checkout {
 .woocommerce-shipping-fields {
     margin-top: 4.8rem;
 }
+
+.woocommerce-shipping-methods li label {
+    display: flex;
+    line-height: 4.8rem;
+    justify-content: space-between;
+}
+
 .woocommerce-checkout-payment {
     margin-top: calc(4.8rem + 1px);
 }
