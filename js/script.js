@@ -1,9 +1,9 @@
 // --VH variable
 
 // First we get the viewport height and multiple it by 1% to get a value for a vh unit
-let vh = window.visualViewport.height * 0.01;
+// let vh = window.visualViewport.height * 0.01;
 // Set the value in the --vh custom property to the root of the document
-document.documentElement.style.setProperty('--vh', `${vh}px`);
+// document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 
 jQuery(window).on("load", function () {
@@ -19,9 +19,9 @@ jQuery(window).on("load", function () {
 
 jQuery(document).ready(function ($) {
     // ANIMATIONS
-    $(".homepage").delay(10).fadeIn(800);
-    $(".mast-footer").delay(20).fadeIn(800);
-    $(".featured-section").delay(30).fadeIn(800);
+    $(".homepage").fadeIn(400);
+    $(".mast-footer").fadeIn(400);
+    $(".featured-section").fadeIn(400);
     $(".book-item-card").each(function (i) {
 		$(this)
 			.delay(150 * i)
