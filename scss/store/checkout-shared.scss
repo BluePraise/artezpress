@@ -1,4 +1,7 @@
 // SHARED STYLING FOR CART AND CHECKOUT (MAYBE ALSO MINI CART?)
+.woocommerce-notices-wrapper {
+    display: none;
+}
 
 .woocommerce {
     .btn.black-on-white {
@@ -63,20 +66,20 @@
 }
 
 
-.woocommerce-notices-wrapper {
-    display: flex;
-    justify-content: center;
+// .woocommerce-notices-wrapper {
+//     display: flex;
+//     justify-content: center;
 
-    .woocommerce-message {
-        padding: 0 9.3rem;
-        line-height: 4.6rem;
-        background-color: $black;
-        color: $white;
-        min-width: 50rem;
-        text-align: center;
-        @include underlineText;
-    }
-}
+//     .woocommerce-message {
+//         padding: 0 9.3rem;
+//         line-height: 4.6rem;
+//         background-color: $black;
+//         color: $white;
+//         min-width: 50rem;
+//         text-align: center;
+//         @include underlineText;
+//     }
+// }
 
 // WOOCOMMERCE ERROR
 ul.woocommerce-error {
