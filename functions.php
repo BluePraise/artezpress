@@ -329,17 +329,34 @@ function veer_popup_maker_gutenburg_compat($content)
  * @param array $rates Array of rates found for the package.
  * @return array
  */
-function my_hide_shipping_when_free_is_available( $rates ) {
-	$free = array();
+/**
+ * Hide shipping rates when free shipping is available: https://docs.woothemes.com/document/hide-other-shipping-methods-when-free-shipping-is-available/
+ *
+ * @param array $rates Array of rates found for the package
+ * @param array $package The package array/object being shipped
+ * @return array of modified rates
+ */
+function hide_shipping_when_free_is_available( $rates, $package ) {
+    // Only modify rates if free_shipping is present
+    $free_shipping_rate_key = false;
 
-	foreach ( $rates as $rate_id => $rate ) {
-		if ( 'free_shipping' === $rate->method_id ) {
-			$free[ $rate_id ] = $rate;
-			break;
-		}
-	}
+    foreach ( $rates as $rate_key => $rate ) {
+        $rate_key_exploded = explode( ':', $rate_key );
+        if ( $rate_key_exploded[0] === 'free_shipping' ) {
+            $free_shipping_rate_key = $rate_key;
+        }
+    }
 
-	return ! empty( $free ) ? $free : $rates;
+    if ( $free_shipping_rate_key ) {
+        foreach ( $rates as $rate_key => $rate ) {
+            if ( $rate_key !== $free_shipping_rate_key ) {
+                unset( $rates[ $rate_key ] );
+            }
+        }
+    }
+
+    return $rates;
+
 }
 
 add_filter( 'woocommerce_package_rates', 'my_hide_shipping_when_free_is_available', 100 );
