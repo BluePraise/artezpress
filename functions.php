@@ -341,7 +341,7 @@ function hide_shipping_when_free_is_available( $rates, $package ) {
     $free_shipping_rate_key = false;
 
     foreach ( $rates as $rate_key => $rate ) {
-        $rate_key_exploded = explode( ':', $rate_key );
+        $rate_key_exploded = explode( ' ', $rate_key );
         if ( $rate_key_exploded[0] === 'free_shipping' ) {
             $free_shipping_rate_key = $rate_key;
         }
