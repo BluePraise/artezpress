@@ -338,24 +338,16 @@ function veer_popup_maker_gutenburg_compat($content)
  */
 function hide_shipping_when_free_is_available( $rates, $package ) {
     // Only modify rates if free_shipping is present
-    $free_shipping_rate_key = false;
+    $free = array();
 
-    foreach ( $rates as $rate_key => $rate ) {
-        $rate_key_exploded = explode( ' ', $rate_key );
-        if ( $rate_key_exploded[0] === 'free_shipping' ) {
-            $free_shipping_rate_key = $rate_key;
-        }
-    }
+	foreach ( $rates as $rate_id => $rate ) {
+		if ( 'free_shipping' === $rate->method_id ) {
+			$free[ $rate_id ] = $rate;
+			break;
+		}
+	}
 
-    if ( $free_shipping_rate_key ) {
-        foreach ( $rates as $rate_key => $rate ) {
-            if ( $rate_key !== $free_shipping_rate_key ) {
-                unset( $rates[ $rate_key ] );
-            }
-        }
-    }
-
-    return $rates;
+	return ! empty( $free ) ? $free : $rates;
 
 }
 
