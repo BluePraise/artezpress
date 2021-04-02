@@ -336,18 +336,19 @@ function veer_popup_maker_gutenburg_compat($content)
  * @param array $package The package array/object being shipped
  * @return array of modified rates
  */
-function hide_shipping_when_free_is_available( $rates, $package ) {
+function hide_shipping_when_free_is_available( $rates) {
     // Only modify rates if free_shipping is present
     $free = array();
-
-	foreach ( $rates as $rate_id => $rate ) {
-		if ( 'free_shipping' === $rate->method_id ) {
-			$free[ $rate_id ] = $rate;
-			break;
-		}
-	}
-
+    if (is_checkout()):
+        foreach ( $rates as $rate_id => $rate ) {
+            if ( 'free_shipping' === $rate->method_id ) {
+                $free[ $rate_id ] = $rate;
+                break;
+            }
+        }
+    endif;
 	return ! empty( $free ) ? $free : $rates;
+
 
 }
 
