@@ -329,31 +329,29 @@ function veer_popup_maker_gutenburg_compat($content)
  * @param array $rates Array of rates found for the package.
  * @return array
  */
-/**
- * Hide shipping rates when free shipping is available: https://docs.woothemes.com/document/hide-other-shipping-methods-when-free-shipping-is-available/
- *
- * @param array $rates Array of rates found for the package
- * @param array $package The package array/object being shipped
- * @return array of modified rates
- */
+
 function hide_shipping_when_free_is_available( $rates) {
     // Only modify rates if free_shipping is present
     $free = array();
     if (is_checkout()):
+		
         foreach ( $rates as $rate_id => $rate ) {
+			
             if ( 'free_shipping' === $rate->method_id ) {
                 $free[ $rate_id ] = $rate;
                 break;
             }
         }
     endif;
+
 	return ! empty( $free ) ? $free : $rates;
-
-
 }
 
-add_filter( 'woocommerce_package_rates', 'my_hide_shipping_when_free_is_available', 100 );
+add_filter( 'woocommerce_package_rates', 'hide_shipping_when_free_is_available', 100 );
 
+/* Disable Transient Cache */
+
+add_filter('transient_shipping-transient-version', function($value, $name) { return false; }, 10, 2);
 
 /* Woocommerce filters */
 add_filter( 'wc_add_to_cart_message_html', '__return_false' );
