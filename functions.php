@@ -201,17 +201,19 @@ function special_nav_class ($classes, $item) {
 
 add_action('artezpress_before_single_product_summary', 'woocommerce_show_product_images', 20);
 
-
 function add_custom_text_after_cart_item_name( $cart_item, $cart_item_key ) {
     
     $product = $cart_item['data'];
-
     $edition = get_post_meta( $product->get_id(), 'ap_language', true );
-    if ($edition === "nl"):
-        $html = '<div class="d-block edition-language">(Nederlandse ed.)</div>';
-    else: 
-        $html = '<div class="d-block edition-language">(English ed.)</div>';
-    endif;
+
+    if ($edition === 'Nederlands') {
+
+        $html = '<div class="d-block edition-language">('. esc_html__( 'Nederlandse', 'artezpress') . ' ed. )</div>';
+    }
+    else {
+        $html = '<div class="d-block edition-language">(' . esc_html__('Engelse', 'artezpress') . ' ed.)</div>';
+    }
+
     echo $html;
 
 }
