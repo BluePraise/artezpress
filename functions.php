@@ -323,6 +323,28 @@ function veer_popup_maker_gutenburg_compat($content)
  *
  **********************************/
 
+ function filter_related_productss($args){	
+	global $product;
+	$argss = get_posts( array(
+        'post_type' => 'product',
+		'numberposts' => -1,
+		'fields' => 'ids',
+		'post_status' => 'publish',
+        'meta_query' => array(
+            array (
+                'key'    => 'add_coming_soon',
+                'value'  => '1',
+            )
+        )
+    ));
+	
+	$args = array_map(function($value) {
+		return intval($value);
+	}, $args);
+	$args = array_diff($args, $argss);
+	return $args;
+}
+add_filter('woocommerce_related_products','filter_related_productss');
 
 /**
  * Hide shipping rates when free shipping is available.
