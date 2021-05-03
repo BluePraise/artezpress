@@ -17,7 +17,40 @@ jQuery(window).on("load", function () {
 	});
 });
 
-jQuery(document).ready(function ($) {
+  
+jQuery(document).ready(function($) {
+    
+    function getViewportOffset($e) {
+        var $window = $(window),
+          scrollLeft = $window.scrollLeft(),
+          scrollTop = $window.scrollTop(),
+          offset = $e.offset(),
+          rect1 = { x1: scrollLeft, y1: scrollTop, x2: scrollLeft + $window.width(), y2: scrollTop + $window.height() },
+          rect2 = { x1: offset.left, y1: offset.top, x2: offset.left + $e.width(), y2: offset.top + $e.height() };
+        return {
+          left: offset.left - scrollLeft,
+          top: offset.top - scrollTop,
+          insideViewport: rect1.x1 < rect2.x2 && rect1.x2 > rect2.x1 && rect1.y1 < rect2.y2 && rect1.y2 > rect2.y1
+        };
+      }
+        
+
+    var scroll = true;
+    if($("#jump-to").length != 0) {
+        var viewportOffset = getViewportOffset($("#jump-to"));
+        //console.log("left: " + viewportOffset.left + ", top: " + viewportOffset.top + ", insideViewport: " + viewportOffset.insideViewport);
+
+        var position = $(document).scrollTop();
+        var startP = $(".hero").position();
+        var finishP = $("#jump-to");
+
+        if(viewportOffset.top > 0 && scroll==true ) {
+            scroll = false;
+            $('html,body').animate({scrollTop: finishP.offset().top},4000);  
+        } 
+    }
+    
+    
     // ANIMATIONS
     $(".homepage").fadeIn(400);
     $(".mast-footer").fadeIn(400);
