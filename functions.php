@@ -447,6 +447,11 @@ if (!function_exists('woocommerce_widget_shopping_cart_subtotal')) {
 	}
 }
 
+add_filter('multisafepay_customer_locale', 'return_my_own_locale');
+function return_my_own_locale($locale) {
+  // Your conditions and logic to return a valid locale code
+  return $custom_locale;
+}
 
 if (!function_exists('array_flatten_iterator')) {
 	function array_flatten_iterator(array $array)
