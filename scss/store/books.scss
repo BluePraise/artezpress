@@ -2,73 +2,77 @@
 
 // book Grid
 .book-archive {
-.book-grid {
-    @media (min-width: 768px) {
-      @include grid(12, 1fr, 0, 3.2rem);
-    }
-    @media (max-width: 767px) {
-      @include grid(12, 1fr, 0, 1.6rem);
-    }
+    .book-grid {
+        @media (min-width: 768px) {
+            @include grid(12, 1fr, 0, 3.2rem);
+        }
+        @media (max-width: 767px) {
+            @include grid(12, 1fr, 0, 1.6rem);
+        }
 
-    @media (min-width: 1025px) {
-      padding-left: 1.6rem;
-      padding-right: 1.6rem;
-    }
+        @media (min-width: 1025px) {
+            padding-left: 1.6rem;
+            padding-right: 1.6rem;
+        }
 
-    @media (max-width: 1440px) {
-      max-width: $l-container-width;
-    }
+        @media (max-width: 1440px) {
+            max-width: $l-container-width;
+        }
 
-    .book-item-card {
-      @media (min-width: 1441px) {
-        grid-column: auto / span 2;
-      }
-      @media (min-width: 1025px) and (max-width: 1440px) {
-        grid-column: auto / span 3;
-      }
-      @media (min-width: 768px) and (max-width: 1024px) {
-        grid-column: auto / span 4;
-      }
-      @media (min-width: 361px) and (max-width: 767px) {
-        grid-column: auto / span 6;
-      }
-      @media (max-width: 360px) {
-        grid-column: auto / span 12;
-      }
+        .book-item-card {
+            @media (min-width: 1441px) {
+                grid-column: auto / span 2;
+            }
+            @media (min-width: 1025px) and (max-width: 1440px) {
+                grid-column: auto / span 3;
+            }
+            @media (min-width: 768px) and (max-width: 1024px) {
+                grid-column: auto / span 4;
+            }
+            @media (min-width: 361px) and (max-width: 767px) {
+                grid-column: auto / span 6;
+            }
+            @media (max-width: 360px) {
+                grid-column: auto / span 12;
+            }
+        }
     }
-  }
 }
-
 
 // Book item card
 .book-item-card {
-  display: none;
-  margin-bottom: 6.4rem;
+    display: none;
+    margin-bottom: 6.4rem;
 
-  &__title {
-    margin: 3.3rem 0 3.2rem;
-  }
-
-  &__author {
-    @include smallText;
-  }
-
-  &__cover {
-    position: relative;
-    overflow: hidden;
-    border-radius:  2.8% .7% .7% 2.8%;
-    @include boxShadow;
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 6%;
-      opacity: 0.075;
-      z-index: 1;
-      @include gradientSpine(0, 0, 0, left);
+    &__title {
+        margin: 3.3rem 0 3.2rem;
     }
-  }
+
+    &__author {
+        @include smallText;
+    }
+
+    &__cover {
+        position: relative;
+        overflow: hidden;
+        border-radius: 2.8% 0.7% 0.7% 2.8%;
+        @include boxShadow;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 6%;
+            opacity: 0.075;
+            z-index: 1;
+            @include gradientSpine(0, 0, 0, left);
+        }
+    }
+}
+
+.pre-order-label {
+    display: block;
+    margin-bottom: 16px;
 }

@@ -84,6 +84,14 @@ endif;
 
 					if ($the_product->is_in_stock()) : ?>
 						<form class="cart" action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', get_permalink($the_product_ID))); ?>" method="post" enctype='multipart/form-data'>
+							<?php 
+								if(get_post_meta($the_product_ID, "_wc_pre_orders_enabled", true) == "yes"): 
+								$product_price =  wc_price(get_post_meta($the_product_ID, "_wc_pre_orders_fee", true)); 
+							?>
+							
+								<span class='pre-order-label'> <?php echo _e('Pre-Order', 'artezpress'); ?> </span>
+							
+							<?php endif; ?>
 							<button type="submit" name="add-to-cart" value="<?php echo $the_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo _e($language, 'artezpress'); ?> </span><?php echo $product_price; ?></button>
 						</form>
 					<?php else : ?>
