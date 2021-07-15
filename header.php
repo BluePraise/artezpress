@@ -89,7 +89,7 @@ endif;
 								$product_price =  wc_price(get_post_meta($the_product_ID, "_wc_pre_orders_fee", true)); 
 							?>
 							
-								<span class='pre-order-label'> <?php echo _e('Pre-Order', 'artezpress'); ?> </span>
+								<span class='pre-order-label'> <?php echo _e('Pre-order', 'artezpress'); ?> </span>
 							
 							<?php endif; ?>
 							<button type="submit" name="add-to-cart" value="<?php echo $the_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo _e($language, 'artezpress'); ?> </span><?php echo $product_price; ?></button>
