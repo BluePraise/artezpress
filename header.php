@@ -27,6 +27,11 @@ endif;
 		<div class="js-menu" style="display: none;">
 			<div class="bg-overlay" style="background-image: url(<?php echo $rand_row_image; ?>);"></div>
 			<div class="main-menu-surface">
+
+				<button class="mobile-menu-close js-close-menu" alt="close">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1{fill:none;stroke:#000;stroke-width:2px;}</style></defs><line class="cls-1" x1="1" y1="1" x2="23" y2="23"/><line class="cls-1" x1="23" y1="1" x2="1" y2="23"/></svg>
+				</button>
+
 				<div class="grid-container">
 					<?php get_template_part('inc/templateparts/nav', 'pages'); ?>
 					<?php if (WC()->cart->get_cart_contents_count() == 0 || !is_checkout()) : ?>
@@ -79,6 +84,12 @@ endif;
 
 					if ($the_product->is_in_stock()) : ?>
 						<form class="cart" action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', get_permalink($the_product_ID))); ?>" method="post" enctype='multipart/form-data'>
+							<?php 
+								if(get_post_meta($the_product_ID, "_wc_pre_orders_enabled", true) == "yes"): 
+								// $product_price =  wc_price(get_post_meta($the_product_ID, "_wc_pre_orders_fee", false)); 
+							?>
+							<span class='pre-order-label'> <?php echo _e('Pre-order', 'artezpress'); ?> </span>
+							<?php endif; ?>
 							<button type="submit" name="add-to-cart" value="<?php echo $the_product_ID; ?>" class="btn white-on-black single_add_to_cart_button"><span class="edition-language"><?php echo _e($language, 'artezpress'); ?> </span><?php echo $product_price; ?></button>
 						</form>
 					<?php else : ?>
@@ -120,7 +131,7 @@ endif;
 				if (!is_product()) :
 					get_template_part('inc/templateparts/language', 'toggle');
 				endif; ?>
-				<?php if (!is_cart() && !is_checkout()) : ?>
+				
 					<a class="btn white-on-black cart-btn" href="<?php echo wc_get_cart_url(); ?>">
 
 						<span class="cart-label"><?php _e('Shop', 'artezpress'); ?></span>
@@ -131,12 +142,6 @@ endif;
 
 						<span class="cart-counter"><?php echo $count; ?></span>
 					</a>
-				<?php endif; ?>
-				<?php if (is_cart()) : ?>
-					<a href="<?php echo esc_url(wc_get_checkout_url()); ?>" class="btn white-on-black cart-btn">
-						<?php esc_html_e('Proceed', 'woocommerce'); ?>
-					</a>
-				<?php endif; ?>
 			</div>
 		</div>
 	</nav>

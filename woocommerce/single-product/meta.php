@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
 global $product;
 ?>
 <div class="book-item-meta product_meta">
-	<h5 class="section-title"><?php _e('Colophon and Specifications', 'artezpress'); ?></h5>
+	<h5 class="section-title"><?php _e('Specifications', 'artezpress'); ?></h5>
 
 	<?php do_action('woocommerce_product_meta_start'); ?>
 	<?php

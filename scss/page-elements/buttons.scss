@@ -15,7 +15,12 @@ button {
 }
 
 .white-on-black {
-  @include solidButton(100px, .4rem, 2.4rem);
+  @media (min-width: 768px) {
+    @include solidButton(100px, .4rem, 2.4rem);
+  }
+  @media (max-width: 767px) {
+    @include solidButton(100px, .4rem, 1.6rem);
+  }
 }
 
 .black-on-white {
@@ -45,12 +50,21 @@ button {
 
 button.btn {
   font-family: $default-font;
-  // line-height: 2.8rem;
 }
 
 span.btn:hover {
   cursor: not-allowed;
 }
+
+
+// Homepage excerpt expand buttons
+
+.excerpt-section__expand-btn {
+  @include baseMenuText;
+  text-align: center;
+  width: 22.8rem;
+}
+
 
 
 // Price Buttons
@@ -87,15 +101,19 @@ span.btn:hover {
   color: $black;
   background-color: $red;
   z-index: 3;
+
+  @media (max-width: 360px) {
+    transform: scale(.9);
+  }
 }
 
 // Go Back Button
 // used in news single
 // used in book single
-a.go-back {
+.go-back {
   display: block;
   position: fixed;
-  z-index: 100;
+  z-index: 1;
 
   @media (min-width: 1025px) {
     top: 3.2rem;
@@ -115,5 +133,22 @@ a.go-back {
       width: 3.2rem;
       height: 3.2rem;
     }
+  }
+}
+
+
+// Close Mobile Menu Button
+.mobile-menu-close {
+  position: fixed;
+  top: 3.6rem;
+  right: 1.6rem;
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  @media (min-width: 768px) {
+    display: none;
   }
 }

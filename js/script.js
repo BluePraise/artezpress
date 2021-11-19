@@ -1,10 +1,84 @@
+// --VH variable
+
+// First we get the viewport height and multiple it by 1% to get a value for a vh unit
+let vh = window.visualViewport.height * 0.01;
+// Set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+
+jQuery(window).on("load", function () {
+	var $ = jQuery;
+	var $container = $(".news-grid-masonry");
+	// initialize Masonry after all images have loaded
+	$container.imagesLoaded(function () {
+		$container.masonry({
+			itemSelector: ".news-item",
+		});
+	});
+});
+
+  
 jQuery(document).ready(function($) {
+    
+    function getViewportOffset($e) {
+        var $window = $(window),
+          scrollLeft = $window.scrollLeft(),
+          scrollTop = $window.scrollTop(),
+          offset = $e.offset(),
+          rect1 = { x1: scrollLeft, y1: scrollTop, x2: scrollLeft + $window.width(), y2: scrollTop + $window.height() },
+          rect2 = { x1: offset.left, y1: offset.top, x2: offset.left + $e.width(), y2: offset.top + $e.height() };
+        return {
+          left: offset.left - scrollLeft,
+          top: offset.top - scrollTop,
+          insideViewport: rect1.x1 < rect2.x2 && rect1.x2 > rect2.x1 && rect1.y1 < rect2.y2 && rect1.y2 > rect2.y1
+        };
+      }
+        
 
+    var scroll = true;
+    if($("#jump-to").length != 0) {
+        var viewportOffset = getViewportOffset($("#jump-to"));
+        //console.log("left: " + viewportOffset.left + ", top: " + viewportOffset.top + ", insideViewport: " + viewportOffset.insideViewport);
 
-    $(".radio-toggle .input-radio").change(function() {
+        var position = $(document).scrollTop();
+        var startP = $(".hero").position();
+        var finishP = $("#jump-to");
+
+        if(viewportOffset.top > 0 && scroll==true ) {
+            scroll = false;
+            $('html,body').animate({scrollTop: finishP.offset().top},4000);  
+        } 
+    }
+    
+    
+    // ANIMATIONS
+    $(".homepage").fadeIn(400);
+    $(".mast-footer").fadeIn(400);
+    $(".featured-section").fadeIn(400);
+    $(".book-item-card").each(function (i) {
+		$(this)
+			.delay(150 * i)
+			.fadeIn(250);
+    });
+    
+    $(".hero h1 a").on("click", function (event) {
+        
+        if (this.hash !== "") {
+            event.preventDefault();
+            // Store hash
+            var hash = this.hash;
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 500, function () {
+            });
+        }
+    });
+
+    //checkout page shipping address toggle
+
+    $(".radio-toggle .input-radio").change(function () {
 
         var curval = $(this).val() === "0" ? true : false;
-
         $("#ship-to-different-address-checkbox").prop("checked", curval);
         $("#ship-to-different-address-checkbox").trigger("click");
         $(".shipping_address").toggle("fast");
@@ -12,36 +86,10 @@ jQuery(document).ready(function($) {
     });
 
 
-    // header menu overlap menu fix
-
-    var head_menu = $('header.fixed-bottom');
-    var menuTimeout = null;
-
-    // $(window).on('mousemove', mouseMoveHandler);
-
-    function mouseMoveHandler(e) {
-        if (e.pageX < 20 || head_menu.is(':hover')) {
-            // Show the menu if mouse is within 20 pixels
-            // from the left or we are hovering over it
-            // console.log('fire 1');
-            clearTimeout(menuTimeout);
-            menuTimeout = null;
-            $("header.fixed-bottom").css("z-index", 2);
-        } else if (menuTimeout === null) {
-            // Hide the menu if the mouse is further than 20 pixels
-            // from the left and it is not hovering over the menu
-            // and we aren't already scheduled to hide it
-            // console.log('fire 2');
-            menuTimeout = setTimeout(function() {
-                $("header.fixed-bottom").css("z-index", 0)
-            }, 000);
-        }
-    }
-
     // cart Quantity JS
 
     if (!String.prototype.getDecimals) {
-        String.prototype.getDecimals = function() {
+        String.prototype.getDecimals = function () {
             var num = this,
                 match = ('' + num).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
             if (!match) {
@@ -50,9 +98,9 @@ jQuery(document).ready(function($) {
             return Math.max(0, (match[1] ? match[1].length : 0) - (match[2] ? +match[2] : 0));
         }
     }
+
     // Quantity "plus" and "minus" buttons
-    $(document.body).on('click', '.plus, .minus', function() {
-        console.log('1');
+    $(document.body).on('click', '.plus, .minus', function () {
         var $qty = $(this).closest('.quantity').find('.qty'),
             currentVal = parseFloat($qty.val()),
             max = parseFloat($qty.attr('max')),
@@ -86,45 +134,53 @@ jQuery(document).ready(function($) {
 
     // Menu button
     const body = $("body"),
-        main = $("main"),
-        menu = $(".js-menu");
-				menubar = $(".js-menubar");
+        	main = $("main"),
+        	menu = $(".js-menu");
+    			menubar = $(".js-menubar");
 
     $(".js-toggle-menu")
-        .on("mouseenter", function() {
+        .on("mouseenter", function () {
             if (!body.hasClass("menu-open")) {
                 body.addClass("menu-open");
                 main.addClass("blur");
-								menubar.toggleClass("surface-open");
+                menubar.toggleClass("surface-open");
                 menu.delay(0).fadeToggle(100, "swing");
             }
         })
-        .on("click", function(event) {
+        .on("click", function (event) {
             event.preventDefault();
             body.toggleClass("menu-open");
             main.toggleClass("blur");
-						menubar.toggleClass("surface-open");
+            menubar.toggleClass("surface-open");
             menu.delay(0).fadeToggle(100, "swing");
         });
 
-    $(".bg-overlay").on("mouseenter", function() {
+    $(".bg-overlay").on("mouseenter", function () {
         if (body.hasClass("menu-open")) {
             artez_ajax_menu();
             body.removeClass("menu-open");
             main.toggleClass("blur");
-						menubar.toggleClass("surface-open");
+            menubar.toggleClass("surface-open");
             menu.delay(0).fadeToggle(100, "swing");
         }
     });
 
-		// Mobile menu
-		$(window).bind("resize", function () {
-			if ($(this).width() < 1025) {
-					menubar.addClass('mobile-menu-bar')
-			} else {
-					menubar.removeClass('mobile-menu-bar')
-			}
-		}).trigger('resize');
+		// mobile menu X button
+		$(".js-close-menu").on("click", function () {
+          body.removeClass("menu-open");
+          main.removeClass("blur");
+          menubar.toggleClass("surface-open");
+          menu.delay(0).fadeToggle(100, "swing");
+    });
+
+    // Mobile menu
+    $(window).bind("resize", function () {
+        if ($(this).width() < 1025) {
+            menubar.addClass('mobile-menu-bar')
+        } else {
+            menubar.removeClass('mobile-menu-bar')
+        }
+    }).trigger('resize');
 
 
     function artez_ajax_menu() {
@@ -135,7 +191,7 @@ jQuery(document).ready(function($) {
                 action: "artez_random_bg",
                 nonce: artez_object.nonce,
             },
-            success: function(response) {
+            success: function (response) {
                 // console.log(response);
                 jQuery(".bg-overlay").css(
                     "background-image",
@@ -153,7 +209,7 @@ jQuery(document).ready(function($) {
     var i;
 
     for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
+        acc[i].addEventListener("click", function () {
             this.classList.toggle("active");
             var panel = this.nextElementSibling;
             var panelP = panel.firstElementChild;
@@ -171,37 +227,210 @@ jQuery(document).ready(function($) {
         });
     }
 
+
     // FOR FRONTPAGE CAROUSEL
 
-    $('.main-carousel').flickity({
-        cellSelector: '.slider-item',
-        setGallerySize: true,
-        resize: true,
-        wrapAround: false,
-        watchCSS: true,
+		// I set up each of the sliders as a var, then I can control each one of them individually
+    var $soon_carousel = $(".coming-soon-carousel");    
+    $(".coming-soon-carousel").flickity({
+        cellSelector: ".carousel-cell",
+        imagesLoaded: true,
+        autoPlay: 11000,
         fade: true,
-        contain: true,
-        draggable: false,
+        selectedAttraction: 1,
+        friction: 1,
         prevNextButtons: false,
-        pageDots: true,
+        pageDots: false,
+        setGallerySize: false,
+        on: {
+            ready: function () {
+                // var $pagers = $(".coming-soon-carousel").find(".slider-nav__pager");
+                // // var $nav = $soon_carousel.find(".slider-nav__link");
+                // // var $selected_slide = $soon_carousel.find(".is-selected");
+                // var $slides = $(".coming-soon-carousel").find('.carousel-cell');
+
+                // // var sUrl = $selected_slide.data("url");
+                // // $nav.attr("href", sUrl);
+                
+                // if ($slides.length > 1) {
+                //     // append a span to every nav pager.
+                //     for (i = 0; i < $slides.length; i++) {
+                //         $pagers.append("<span></span>");
+                //     }                    
+                // }
+                // $soon_carousel.on("select.flickity", function () {
+                //     var $pager = $pagers.find("span");
+                //     var $flkty = $(this).data('flickity');
+                //     $pager.eq($flkty.selectedIndex).addClass("is-active");
+                //     // $backlist_pager.eq($flkty.prevSelectedIndex).removeClass('is-active');
+                // });
+
+                // $pagers.on('click', 'span', function() {
+                //     var index = $(this).index();
+                //     $(".coming-soon-carousel").flickity('select', index);
+                // });
+            },
+            change: function () {
+                // var $pagers = $(".coming-soon-carousel").find(".slider-nav__pager");
+                // var $nav = $soon_carousel.find(".slider-nav__link");
+                // var $selected_slide = $soon_carousel.find(".is-selected");
+                
+                // var sUrl = $selected_slide.data("url");
+                // $nav.attr("href", sUrl);
+                
+                // $soon_carousel.on("scroll.flickity", function () {
+                //     var $pager = $pagers.find("span");
+                //     var $flkty = $(this).data('flickity');
+                //         $pager.filter('.is-active').removeClass('is-active');
+                //         $pager.eq($flkty.selectedIndex).addClass("is-active");
+                //     }
+                // );
+            },
+        }
     });
 
+    var $newreleases_carousel = $(".new-releases-carousel");
+    $(".new-releases-carousel").flickity({
+        cellSelector: ".carousel-cell",
+        imagesLoaded: true,
+        lazyLoad: true,
+        autoPlay: 9000,
+        fade: true,
+        selectedAttraction: 0.2,
+        friction: 0.8,
+        prevNextButtons: false,
+        pageDots: false,
+        setGallerySize: false,
+        on: {
+            ready: function () {
+                var $pagers = $(".new-releases-carousel").find(".slider-nav__pager");
+                var $nav = $newreleases_carousel.find(".slider-nav__link");
+                var $selected_slide = $newreleases_carousel.find(".is-selected");
+                var $slides = $(".new-releases-carousel").find('.carousel-cell');
+                
+                var sColor = $selected_slide.data("color"),
+                    sUrl = $selected_slide.data("url");
+                
+                $newreleases_carousel.attr("data-color", sColor);
+                $nav.attr("href", sUrl);
+                
+                if ($slides.length > 1) {
+                    // append a span to every nav pager.
+                    for (i = 0; i < $slides.length; i++) {
+                        $pagers.append("<span></span>");
+                        $pagers.find('span:first-child').addClass('is-active');
+                    }                    
+                }
 
-    var flkty = $carousel.data('flickity');
+                $newreleases_carousel.on("select.flickity", function () {
+                    var $pager = $pagers.find("span");
+                    var $flkty = $(this).data('flickity');
+                    
+                    $pager.eq($flkty.selectedIndex).addClass("is-active");
+                    // $pager.eq($flkty.prevSelectedIndex).removeClass('is-active');
+                });
 
-    flkty.on( 'resize', function() {
-        var isSingleSlide = flkty.slides.length < 2;
-        $carousel.toggleClass( 'is-single-slide', isSingleSlide );
+                $pagers.on('click', 'span', function() {
+                    var index = $(this).index();
+                    $(".new-releases-carousel").flickity('select', index);
+                });
+            },
+            change: function () {
+                    
+                var $pagers = $(".new-releases-carousel").find(".slider-nav__pager");
+                var $nav = $newreleases_carousel.find(".slider-nav__link");
+                var $selected_slide = $newreleases_carousel.find(".is-selected");
+                
+                var sColor = $selected_slide.data("color"),
+                    sUrl = $selected_slide.data("url");
+                
+                $newreleases_carousel.attr("data-color", sColor);
+                $nav.attr("href", sUrl);
+                
+                $newreleases_carousel.on("scroll.flickity", function () {
+                    var $pager = $pagers.find("span");
+                    var $flkty = $(this).data('flickity');
+                        $pager.filter('.is-active').removeClass('is-active');
+                        $pager.eq($flkty.selectedIndex).addClass("is-active");
+                    }
+                );
+            },
+        },
+    });
+
+    
+    var $backlist_carousel = $(".backlist-carousel");
+    $(".backlist-carousel").flickity({
+        cellSelector: ".carousel-cell",
+        imagesLoaded: true,
+        lazyLoad: true,
+        autoPlay: 7000,
+        fade: true,
+        selectedAttraction: 0.2,
+        friction: 0.8,
+        prevNextButtons: false,
+        pageDots: false,
+        adaptiveHeight: true,
+        on: {
+            ready: function () {
+                var $backlist_pagers = $(".backlist-carousel").find(".slider-nav__pager");
+                var $backlist_nav = $backlist_carousel.find(".slider-nav__link");
+                var $selected_slide = $backlist_carousel.find(".is-selected");
+                
+                var sColor = $selected_slide.data("color"),
+                    sUrl = $selected_slide.data("url");
+                
+                $backlist_carousel.attr("data-color", sColor);
+                $backlist_nav.attr("href", sUrl);
+                
+                // append a span to every nav pager.
+                for (i = 0; i < 3; i++) {
+                    $backlist_pagers.append("<span></span>");
+                }
+                
+                $backlist_carousel.on("select.flickity", function () {
+                    var $backlist_pager = $backlist_pagers.find("span");
+                    var $flkty = $(this).data('flickity');
+                    $backlist_pager.eq($flkty.selectedIndex).addClass("is-active");
+                    // $backlist_pager.eq($flkty.prevSelectedIndex).removeClass('is-active');
+                });
+
+                $backlist_pagers.on('click', 'span', function() {
+                    var index = $(this).index();
+                    $(".backlist-carousel").flickity('select', index);
+                });
+            },
+            change: function () {
+                    
+                var $backlist_pagers = $(".backlist-carousel").find(".slider-nav__pager");
+                var $backlist_nav = $backlist_carousel.find(".slider-nav__link");
+                var $selected_slide = $backlist_carousel.find(".is-selected");
+                
+                var sColor = $selected_slide.data("color"),
+                    sUrl = $selected_slide.data("url");
+                
+                $backlist_carousel.attr("data-color", sColor);
+                $backlist_nav.attr("href", sUrl);
+                
+                $backlist_carousel.on("scroll.flickity", function () {
+                    var $backlist_pager = $backlist_pagers.find("span");
+                    var $flkty = $(this).data('flickity');
+                        $backlist_pager.filter('.is-active').removeClass('is-active');
+                        $backlist_pager.eq($flkty.selectedIndex).addClass("is-active");
+                    }
+                );
+            },
+        },
     });
 
 
     $(".news-grid-masonry").masonry({
-		// options
-		itemSelector: ".news-item",
-		percentPosition: true,
-		horizontalOrder: true,
-		// gutter: 32
-	});
+        // options
+        itemSelector: ".news-item",
+        percentPosition: true,
+        horizontalOrder: true,
+        // gutter: 32
+    });
 
     //https://stackoverflow.com/questions/11867545/change-text-color-based-on-brightness-of-the-covered-background-area
 
@@ -231,484 +460,50 @@ jQuery(document).ready(function($) {
             }
         }
     }
-
-
-
-		// BOOK ARCHIVE SEARCH BAR
-		// ------------------------
-
-		// SEARCH BAR CONATINER
-
-		var searchBar = $('.js-scroll-hide'),
-            searchToggle = $('.js-search-toggle'),
-            bookArchive = $('.js-products-container'),
-            barHeight = $('.search-bar').height(),
-            typedContainer = $(".js-fake-typewriter");
-
-
-		// Get height of Search Bar and use as css variable for 'Book Archive' padding-top
-		function getBarHeight() {
-			bookArchive.get(0).style.setProperty("--bar-height", (barHeight) + 'px');
-		}
-		$(window).on("load resize",function(e){
-			getBarHeight();
-		});
-
-		// when scrolling below the serach bar, hide and turn to fixed
-		$(window).scroll(function(){
-      if ($(this).scrollTop() > barHeight) {
-
-        // Turn Bar to fixed position
-        searchBar.fadeOut(100, function() {
-        $(this).addClass("is-fixed");
-        });
-        // Show the Search toggle
-        searchToggle.fadeIn(100);
-        // and stop typed
-        typedContainer.addClass('is-paused');
-        typed.stop();
-
-      } else {
-
-        // When scrolling back up remove the bar fixed position
-        searchBar.fadeIn(0, function() {
-        $(this).removeClass("is-fixed");
-        });
-        // Hide the Search toggle
-        searchToggle.fadeOut(100);
-        // and stop typed
-        typedContainer.removeClass('is-paused');
-        typed.start();
-
-      }
-		});
-
-		// Show bar on toggle click
-		searchToggle.click(function() {
-			$(this).fadeOut(100);
-			searchBar.fadeIn(100);
-		});
-
-
-		// SEARCH FORM
-
-		$(".js-main-search").on("submit", function(e) {
-				e.preventDefault();
-				var $this = $(this),
-						search = $this.find("input[type=search]").val().toLowerCase();
-
-				if (search) {
-						productList.each(function() {
-								var product = $(this);
-								if (
-										product.data("search").toLowerCase().indexOf(search) === -1
-								) {
-										product.hide();
-								} else {
-										product.show();
-								}
-						});
-						if (!productList.is(":visible")) {
-								$(".products__not-found").show();
-						} else {
-								$(".products__not-found").hide();
-						}
-				} else {
-						if (!filters.length) {
-								productList.show();
-						}
-				}
-		});
-
-
-		// TYPEWRITER IN SEARCH
-
-		// Fake Typed: For more settings: https://github.com/mattboldt/typed.js
-		var typed = new Typed(".js-fake-typewriter__input", {
-				strings: [' a Book',
-									'^250 an Author',
-									'^250 for ‘Architecture’',
-									'^250 for ‘Design’',
-									'^250 ‘Performance Art’',
-									'^250 ‘Fashion History’',
-				],
-				typeSpeed: 90,
-				startDelay: 3000,
-				backSpeed: 90,
-				backDelay: 3000,
-				smartBackspace: true,
-				loop: true,
-				showCursor: false,
-		})
-
-		// remvoe and stop Typed on click
-		typedContainer.click(function(e) {
-			$(this).addClass('is-paused');
-			$('.js-real-input').focus();
-			typed.stop();
-		});
-
-		// disable Typed on mobile
-		$(window).bind("resize", function () {
-			if ($(this).width() < 768) {
-				typedContainer.addClass('is-paused');
-				typed.stop();
-			} else {
-				typedContainer.removeClass('is-paused');
-				typed.start();
-			}
-		}).trigger('resize');
-
-
-
-		// BOOK ARCHIVE FILTERS HEADERS
-
-		var filterSlider = $('.filter-list'),
-		 		filterHeaderButtons = $('.filter-header');
-
-		function flicitySlider() {
-			//init flickity
-			filterSlider.flickity({
-				cellSelector: '.filter-list-item',
-				cellAlign: 'left',
-				pageDots: false,
-				setGallerySize: false,
-				freeScroll: true,
-				groupCells: '80%',
-				arrowShape: 'M66.97 100 16.97 50 66.97 0 72.69 5.72 28.41 50 72.69 94.28 66.97 100z',
-			});
-		}
-
-		flicitySlider();
-
-
-		//when filter headers buttons clicked
-		filterHeaderButtons.on( 'click', function() {
-			//use data-header attribute & class for filtering teh filterSlider
-			var filterValue = $( this ).attr('data-header'),
-			 		slide = filterSlider.find('.filter-list-item'),
-					primeryFilters = filterSlider.find('.tags'),
-					primeryHeader = $('.filter-header__tags');
-
-			if (filterValue === 'reset') {
-				// reset back to Tags
-				primeryFilters.fadeIn(400).addClass('flickity');
-				primeryHeader.addClass('active');
-
-				// hide all other slides
-				slide.not(primeryFilters).removeClass('flickity');
-				slide.not(primeryFilters).hide();
-				filterHeaderButtons.not(primeryHeader).removeClass('active');
-
-			} else {
-				//set active slide
-				var active = $('.' + filterValue).fadeIn(400);
-				// show only slide with the same class as the header button "attr('data-header)"
-				slide.addClass('flickity');
-				slide.not(active).removeClass('flickity');
-				slide.not(active).hide();
-
-				// remove active class from all buttons
-				$('.filter-header').removeClass('active');
-
-				// add active class to active header button
-				$(this).addClass('active');
-			}
-
-			// destroy filterSlider and rebuild with new filters
-			filterSlider.flickity('destroy');
-
-			//rebuild filterSlider with new filter list
-			flicitySlider();
-		});
-
-
-		// BOOK ARCHIVE FILTERS
-
-		var productList = $(".product");
-		var tags = [];
-		var filters = [];
-
-		$(".js-reset-filters").click(function(e) {
-				filters = [];
-				productList.show();
-
-				// reset all selected filters
-				$('.tag-pill').removeClass('active');
-		});
-
-		$(".js-filter-item").click(function (e) {
-				e.preventDefault();
-				var $this = $(this),
-						$productsContainer = $(".products"),
-						$filter = $this.data("filter");
-
-				$this.toggleClass("active");
-				if (filters.indexOf($filter) === -1) {
-						filters.push($filter);
-				} else {
-						filters = filters.filter((f) => f !== $filter);
-						productList.each(function() {
-								if ($(this).data("filters").indexOf($filter) !== -1) {
-										$(this).hide();
-								}
-						});
-						if (!filters.length) {
-								$(".js-reset-filters").click();
-						}
-						return;
-				}
-
-				if ($filter) {
-						productList.each(function() {
-							var $this = $(this);
-							if ($this.data("filters").indexOf($filter) === -1) {
-									if (
-											filters.every((i) => !$this.data("filters").includes(i))
-									) {
-											$this.hide();
-									}
-							} else {
-									$this.show();
-							}
-					});
-				}
-		});
-
 });
+(function ($) {
+	"use strict";
 
+	/**
+	 * To Title Case 2.1 – http://individed.com/code/to-title-case/
+	 * Copyright © 2008–2013 David Gouch. Licensed under the MIT License.
+	 *
+	 * @returns {string}
+	 */
+	String.prototype.toTitleCase = function () {
+		var smallWords = /^(a|that|is|on|van|have|an|and|as|at|but|by|en|for|if|in|nor|of|on|or|per|the|with|to|vs?\.?|via)$/i;
 
+		return this.replace(
+			/[A-Za-z0-9\u00C0-\u00FF]+[^\s-]*/g,
+			function (match, index, title) {
+				if (
+					index > 0 &&
+					index + match.length !== title.length &&
+					match.search(smallWords) > -1 &&
+					title.charAt(index - 2) !== ":" &&
+					(title.charAt(index + match.length) !== "-" ||
+						title.charAt(index - 1) === "-") &&
+					title.charAt(index - 1).search(/[^\s-]/) < 0
+				) {
+					return match.toLowerCase();
+				}
 
-/* If the user clicks anywhere outside the select box,
-then close all select boxes: */
-// document.addEventListener("click", closeAllSelect);
-// $(".js-filter-collapse").click(function(e) {
-//     var $this = $(this)
-//     var $activeElement = $(this).data("header");
-//     var $otherFilterHeaders = $('.filter-header').siblings();
-//
-//     $otherFilterHeaders.removeClass('active');
-//     $(this).addClass("active");
-//
-//     if ($activeElement == "categories") {
-//         $('.filter-list__tags-item').hide();
-//         $('.filter-list__categories-item').show();
-//         $('.filter-list__years-item').hide();
-//         $('.filter-list__language-item').hide();
-//     }
-//     if ($activeElement == "year") {
-//         $('.filter-list__tags-item').hide();
-//         $('.filter-list__categories-item').hide();
-//         $('.filter-list__years-item').show();
-//         $('.filter-list__language-item').hide();
-//     }
-//     if ($activeElement == "tags") {
-//         $('.filter-list__tags-item').show();
-//         $('.filter-list__categories-item').hide();
-//         $('.filter-list__years-item').hide();
-//         $('.filter-list__language-item').hide();
-//     }
-//     if ($activeElement == "language") {
-//         $('.filter-list__tags-item').hide();
-//         $('.filter-list__categories-item').hide();
-//         $('.filter-list__years-item').hide();
-//         $('.filter-list__language-item').show();
-//     }
-//
-// });
-//
-// var productList = $(".product");
-// var tags = [];
-// var filters = [];
-//
-// $(".js-reset-filters").click(function(e) {
-//     filters = [];
-//     productList.show();
-//
-//     //show filter pills
-//     $('.filter-list__tags').show();
-//     //make sure other categories are hidden
-//     $('.filter-list__categories').hide();
-//     $('.filter-list__years').hide();
-//     //make sure other filter items don't have active class
-//     $(".js-filter-collapse").removeClass("active");
-//     // reset back to tags filter header
-//     $('.filter-header__tags').addClass('active');
-//     $('.tag-pill').removeClass('active');
-// });
-//
-// $(".js-filter-item").click(function (e) {
-//     e.preventDefault();
-//     var $this = $(this),
-//         $productsContainer = $(".products"),
-//         $filter = $this.data("filter"),
-//         $filterTag = $this.data("tag"),
-//         $filterCat = $this.data("category");
-//
-//     $this.toggleClass("active");
-//     if (filters.indexOf($filter) === -1) {
-//         filters.push($filter);
-//     } else {
-//         filters = filters.filter((f) => f !== $filter);
-//         productList.each(function() {
-//             if ($(this).data("filters").indexOf($filter) !== -1) {
-//                 $(this).hide();
-//             }
-//         });
-//         if (!filters.length) {
-//             $(".js-reset-filters").click();
-//         }
-//         return;
-//     }
-//
-//     if ($filter) {
-//         productList.each(function() {
-//             var $this = $(this);
-//             if ($this.data("filters").indexOf($filter) === -1) {
-//                 if (
-//                     filters.every((i) => !$this.data("filters").includes(i))
-//                 ) {
-//                     $this.hide();
-//                 }
-//             } else {
-//                 $this.show();
-//             }
-//         });
-//     }
-// });
-//
+				if (match.substr(1).search(/[A-Z]|\../) > -1) {
+					return match;
+				}
 
-// $(".js-main-search").on("submit", function(e) {
-//     e.preventDefault();
-//     var $this = $(this),
-//         search = $this.find("input[type=search]").val().toLowerCase();
-//
-//     if (search) {
-//         productList.each(function() {
-//             var product = $(this);
-//             if (
-//                 product.data("search").toLowerCase().indexOf(search) === -1
-//             ) {
-//                 product.hide();
-//             } else {
-//                 product.show();
-//             }
-//         });
-//         if (!productList.is(":visible")) {
-//             $(".products__not-found").show();
-//         } else {
-//             $(".products__not-found").hide();
-//         }
-//     } else {
-//         if (!filters.length) {
-//             productList.show();
-//         }
-//     }
-// });
-//
-// // For more settings: https://github.com/mattboldt/typed.js
-// var typed = new Typed(".main-search__input", {
-//     strings: ['Search for "Architecture"',
-// 	            'Search by Category',
-// 	            'Search by Year',
-// 	            'Search a Title',
-// 	            'Search Yellow',
-//     ],
-//     typeSpeed: 90,
-// 		startDelay: 1000,
-// 		backSpeed: 90,
-// 		backDelay: 3000,
-// 		loop: true,
-// 		showCursor: true,
-// 	  cursorChar: '|',
-// 		autoInsertCss: true,
-//     attr: 'placeholder',
-//     bindInputFocusEvents: true,
-// });
-//
-// $(window).on("scroll", function() {
-//     var scroll = $(this).scrollTop();
-//     var hideOnScroll = $(".js-hide-onscroll");
-//
-//     var showOnScroll = $(".js-show-onscroll");
-//
-//     if (scroll >= 20) {
-//         hideOnScroll.removeClass("shown").addClass("hidden");
-//         showOnScroll.removeClass("hidden").addClass("shown");
-//     } else {
-//         hideOnScroll.removeClass("hidden").addClass("shown");
-//         showOnScroll.removeClass("shown").addClass("hidden");
-//     }
-// });
-//
-// $(".js-search-toggle").click(function() {
-//     $(".js-hide-onscroll").removeClass("hidden").addClass("shown");
-//     $(".js-show-onscroll").removeClass("shown").addClass("hidden");
-// });
-//
+				return match.charAt(0).toUpperCase() + match.substr(1);
+			}
+		);
+	};
+    if ($('.lang-en') && $('.English') && !$('.Nederlands')) {
+        $("h1, h2, h3, h4, h5").each(
+            function () {
+                var heading_string = $(this).html().toString();
 
+                var heading_case = heading_string.toTitleCase();
 
-// var tagsContainer = document.querySelector(".js-tags-container"),
-//     tags = document.querySelector(".js-filter-elements");
-
-// var tagsProps = {
-//     offset: 0,
-//     atStart: true,
-//     atEnd: false,
-//     containerWidthDiff: tags.scrollWidth - tagsContainer.clientWidth,
-// };
-// // console.log(tagsProps.containerWidthDiff);
-// if (tagsProps.containerWidthDiff <= 0) {
-//     $(".js-tags-next").closest(".filter-tags__next").hide();
-//     $(".js-tags-prev").closest(".filter-tags__prev").hide();
-// } else {
-//     function getOffset(offset) {
-//         return Math.min(Math.max(offset, 0), tagsProps.containerWidthDiff);
-//     }
-
-//     function setButtonsState() {
-//         tagsProps.atStart = 0 >= tagsProps.offset;
-//         tagsProps.atEnd =
-//             tagsProps.offset >= tagsProps.containerWidthDiff &&
-//             !tagsProps.atStart;
-//         tagsProps.offset = getOffset(tagsProps.offset);
-
-//         $(".js-tags-next")
-//             .closest(".filter-tags__next")
-//             .css("display", "flex");
-//         $(".js-tags-prev")
-//             .closest(".filter-tags__prev")
-//             .css("display", "flex");
-//         if (tagsProps.atEnd) {
-//             $(".js-tags-next").closest(".filter-tags__next").hide();
-//             $(".js-tags-next")
-//                 .closest(".filter-tags__prev")
-//                 .css("display", "flex");
-//         }
-//         if (tagsProps.atStart) {
-//             $(".js-tags-prev").closest(".filter-tags__prev").hide();
-//             $(".js-tags-next")
-//                 .closest(".filter-tags__next")
-//                 .css("display", "flex");
-//         }
-//     }
-
-//     setButtonsState();
-
-//     $(".js-tags-prev").click(function() {
-//         tagsProps.offset = getOffset(tagsProps.offset - 120);
-//         $(".js-filter-elements").css(
-//             "transform",
-//             "translateX(-" + tagsProps.offset + "px)"
-//         );
-//         setButtonsState();
-//     });
-//     $(".js-tags-next").click(function() {
-//         tagsProps.offset = getOffset(tagsProps.offset + 120);
-//         $(".js-filter-elements").css(
-//             "transform",
-//             "translateX(-" + tagsProps.offset + "px)"
-//         );
-//         setButtonsState();
-//     });
-// }
+                $(this).html(heading_case);
+        });
+    }
+})(jQuery);

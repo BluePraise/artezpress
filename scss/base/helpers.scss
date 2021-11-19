@@ -53,8 +53,13 @@ ul.horizontal-list li {
   margin-top: 4rem;
 }
 
-.wrapper-element {}
-
 .ta-center {
   text-align: center;
+}
+.ta-right {
+    text-align: right;
+}
+
+.space-between {
+    justify-content: space-between;
 }

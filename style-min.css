@@ -1,12 +1,16 @@
+@charset "UTF-8";
+
 /*
     Theme Name: ArtEzPress
-    GitHub Theme URI: BluePraise/artezpress
+    Theme URI: BluePraise/artezpress
     Author: Magalie Chetrit
     Author URI: https://magalielinda.me/
     Description: Child Theme of Storefront
+    Text Domain: artezpress
+    Domain Path: /languages/
     Version: 0.0.0
     License: No License
     License URI: #
-
+    Template: storefront
 */
 /*# sourceMappingURL=style-min.css.map */

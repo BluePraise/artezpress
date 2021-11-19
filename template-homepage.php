@@ -15,13 +15,15 @@
 
 get_header(); ?>
 
-<main class="site-main homepage test" role="main">
+<main class="site-main homepage" role="main">
 
 	<?php get_template_part('blocks/frontpage/handshake/index'); ?>
 
 	<?php
 	if (have_rows('feature_sliders')) : ?>
-		<section class="features flex-container">
+		<section class="featured-section features" id="jump-to">
+			<div class="featured-section__grid grid">
+
 			<?php
 			while (have_rows('feature_sliders')) : the_row();
 
@@ -30,6 +32,8 @@ get_header(); ?>
 				get_template_part('blocks/frontpage/slider/slider', 'right');
 
 			endwhile; ?>
+
+			</div>
 		</section>
 	<?php endif; ?>
 
@@ -48,24 +52,38 @@ get_header(); ?>
 			$current_lang_full = pll_current_language('name');
 			$current_lang      = pll_current_language();
 			$ap_language       = get_field('ap_language');
+            $book_obj           = get_sub_field('add_to_new');
+            if ($book_obj):
+            foreach ($book_obj as $b) :
+                $post_ex[] = $b; 
+            endforeach;
+            endif;
 
 			$args = array(
 				'orderby'         => 'date',
 				'order'           => 'DESC',
 				'posts_per_page'  => 6,  // -1 will get all the product. Specify positive integer value to get the number given number of product
 				'post_type'       => 'product',
-				'meta_query'  => array(
-					'relation'    => 'OR',
-					array(
-						'key'    => 'additional_editions_0_type_of_edition',
-						'compare'  => '!=',
-						'value'    => $current_lang_full,
-					),
-					array(
-						'key'    => 'additional_editions_0_type_of_edition',
-						'compare' => 'NOT EXISTS'
-					),
-				),
+				'meta_query'      => array(
+             'relation'    => 'AND',
+             array(
+               'relation' => 'OR',
+                array(
+                    'key'    => 'additional_editions_0_type_of_edition',
+                    'compare'  => '!=',
+                    'value'    => $current_lang_full,
+                ),
+                array(
+                'key'    => 'additional_editions_0_type_of_edition',
+                 'compare' => 'NOT EXISTS'
+             )
+           ),
+             array(
+               'key'    => 'add_coming_soon',
+               'compare' => '!=',
+               'value'    => 1
+           ),
+          ),
 			);
 			$loop = new WP_Query($args);
 			if ($loop->have_posts()) {
@@ -80,7 +98,8 @@ get_header(); ?>
 		</div>
 		<!--/.products-->
 		<div class="excerpt-section__expand">
-			<a class="btn excerpt-section__expand-btn black-on-white" href="<?php echo site_url('/books/'); ?>"><?php _e('See All Books', 'artezpress'); ?></a>
+            
+			<a class="btn excerpt-section__expand-btn black-on-white" href="<?php if($current_lang === 'en'): echo site_url("/books"); else:?> <?php echo site_url(); ?>/nl/boeken" <?php endif; ?>"><?php _e('See All Books', 'artezpress'); ?></a>
 		</div>
 
 	</section><!-- #main -->
@@ -103,7 +122,7 @@ get_header(); ?>
 		</div>
 		<!--/.news-grid-->
 		<div class="excerpt-section__expand">
-			<a class="btn excerpt-section__expand-btn black-on-white" href="<?php echo site_url('/news'); ?>"><?php _e('See All News', 'artezpress'); ?></a>
+			<a class="btn excerpt-section__expand-btn black-on-white" href="<?php if($current_lang === 'en'): echo site_url("/news"); else:?> <?php echo site_url(); ?>/nl/nieuws" <?php endif; ?>"><?php _e('See All News', 'artezpress'); ?></a>
 		</div>
 	<?php } else {
 				echo __('<p>Currently there is no news.</p>', 'artezpress'); ?>

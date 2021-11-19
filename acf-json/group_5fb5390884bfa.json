@@ -338,12 +338,52 @@
             {
                 "param": "page",
                 "operator": "!=",
+                "value": "498"
+            },
+            {
+                "param": "page",
+                "operator": "!=",
+                "value": "38"
+            },
+            {
+                "param": "page",
+                "operator": "!=",
+                "value": "41"
+            },
+            {
+                "param": "page",
+                "operator": "!=",
+                "value": "180"
+            },
+            {
+                "param": "page",
+                "operator": "!=",
+                "value": "2303"
+            },
+            {
+                "param": "page",
+                "operator": "!=",
                 "value": "39"
             },
             {
                 "param": "page",
                 "operator": "!=",
+                "value": "496"
+            },
+            {
+                "param": "page",
+                "operator": "!=",
                 "value": "40"
+            },
+            {
+                "param": "page",
+                "operator": "!=",
+                "value": "168"
+            },
+            {
+                "param": "page",
+                "operator": "!=",
+                "value": "465"
             }
         ]
     ],
@@ -371,5 +411,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1612554965
+    "modified": 1616187840
 }

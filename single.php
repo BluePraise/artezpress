@@ -1,5 +1,9 @@
-<?php get_header(); ?>
-<a class="go-back" href="<?php echo site_url("/news"); ?>" role="link">
+<?php 
+    get_header(); 
+    $current_lang           = pll_current_language();
+?>
+
+<a class="go-back" href="<?php if($current_lang === 'en'): echo site_url("/news"); else:?> <?php echo site_url(); ?>/nl/nieuws" <?php endif; ?>" role="link">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
         <defs>
             <style>

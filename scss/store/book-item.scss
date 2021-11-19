@@ -1,5 +1,38 @@
-// THIS IS WHERE THE PRODUCT CHANGES TEXT COLOR.
-// PLEASE DO NOT MESS WITH THIS.
+// ANIMATIONS
+.book-item-page {
+    animation: fadeIn ease 2s;
+    -webkit-animation: fadeIn ease 2s;
+    -moz-animation: fadeIn ease 2s;
+    -o-animation: fadeIn ease 2s;
+    -ms-animation: fadeIn ease 2s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
 
 // Colors
 
@@ -30,15 +63,13 @@ body.single-product.set-text-white {
 
 // SINGLE BOOK ITEM
 
-// .book-item-page {
-//   overflow: hidden;
-// }
-
 
 // Slider block
 .single-product .book-slider {
-    margin-top: 6rem;
-    margin-bottom: 8rem;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding: 6rem 16px 8rem 16px;
+  overflow: hidden;
 }
 
 
@@ -103,8 +134,13 @@ body.single-product.set-text-white {
 .related-news {
   max-width: $l-container-width;
   margin: 0 auto;
-  padding-left: 1.6rem;
-  padding-right: 1.6rem;
+
+  .news-grid {
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: row;
+    }
+  }
 }
 
 
@@ -113,8 +149,6 @@ body.single-product.set-text-white {
 .related-books {
   max-width: $l-container-width;
   margin: 0 auto;
-  padding-left: 1.6rem;
-  padding-right: 1.6rem;
 
   .current-tag-list {
     display: flex;
@@ -139,6 +173,9 @@ body.single-product.set-text-white {
       }
       @media (max-width: 767px) {
         grid-column: auto / span 2;
+      }
+      a {
+          display: block;
       }
     }
   }

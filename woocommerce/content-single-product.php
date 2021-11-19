@@ -25,6 +25,7 @@ $author 	 	 		= get_field('author');
 $language 	 	 		= get_field('language');
 $additional_editions	= get_field('additional_editions');
 $available 				= get_field('display_availability_block');
+$current_lang           = pll_current_language();
 
 /**
  * Hook: woocommerce_before_single_product.
@@ -38,7 +39,7 @@ if (post_password_required()) {
 	return;
 }
 ?>
-<a class="go-back" href="<?php echo site_url("/books"); ?>" role="link">
+<a class="go-back" href="<?php if($current_lang === 'en'): echo site_url("/books"); else:?> <?php echo site_url(); ?>/nl/boeken" <?php endif; ?>" role="link">
 	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
 		<defs>
 			<style>
@@ -88,7 +89,7 @@ if (post_password_required()) {
 			 */
 
 			?>
-			<p class="book-item-author"><?php _e('By ', 'artezpres') ?><?php echo $author ?></p>
+			<p class="book-item-author"><?php _e('By ', 'artezpress') ?><?php echo $author ?></p>
 			<div class="book-item-description">
 				<?php echo $description; ?>
 			</div>
@@ -105,9 +106,9 @@ if (post_password_required()) {
 	$related_news = get_field('related_news');
 	if ($related_news) : ?>
 		<section class="related-news book-item-related-news">
-			<h5 class="section-title"><?php _e('Related News', 'storefront'); ?></h5>
+			<h5 class="section-title"><?php _e('Related News', 'artezpress'); ?></h5>
 
-			<div class="flex-container news-grid">
+			<div class="news-grid">
 				<?php foreach ($related_news as $post) :
 
 					// Setup this post for WP functions (variable must be named $post).

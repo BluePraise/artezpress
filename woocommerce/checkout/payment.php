@@ -23,6 +23,7 @@ if (!is_ajax()) {
 }
 ?>
 <div id="payment" class="woocommerce-checkout-payment">
+    <div class="woocommerce-ap-custom form-title"><?php _e('Payment', 'artezpress'); ?></div>
 	<?php if (WC()->cart->needs_payment()) : ?>
 		<ul class="wc_payment_methods payment_methods methods">
 			<?php
@@ -49,7 +50,7 @@ if (!is_ajax()) {
 
 		<?php do_action('woocommerce_review_order_before_submit'); ?>
 
-		<?php echo apply_filters('woocommerce_order_button_html', '<button type="submit" class="btn black-on-white" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr($order_button_text) . '" data-value="' . esc_attr($order_button_text) . '">' . esc_html($order_button_text) . '</button>'); // @codingStandardsIgnoreLine 
+		<?php echo apply_filters('woocommerce_order_button_html', '<div class="place-order-container"><button type="submit" class="btn white-on-black" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr($order_button_text) . '" data-value="' . esc_attr($order_button_text) . '">' . esc_html($order_button_text) . '</button></div>'); // @codingStandardsIgnoreLine 
 		?>
 
 		<?php do_action('woocommerce_review_order_after_submit'); ?>

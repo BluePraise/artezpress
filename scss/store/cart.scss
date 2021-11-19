@@ -1,239 +1,231 @@
-.woocommerce-notices-wrapper {
-    display: flex;
-    justify-content: center;
+// General
 
-    .woocommerce-message {
-        line-height: 4.6rem;
-        background-color: $black;
-        color: $white;
-        min-width: 50rem;
-        text-align: center;
-        @include underlineText;
+.woocommerce-cart-form {
+  a, button {
+    cursor: pointer;
+
+    &:hover {
+      opacity: $hoverOpacity;
     }
+  }
 }
 
-.review-order.flex-container {
-    flex-direction: column;
-    .item-row {
-        width: 100%;
-        margin-left: 10px;
-        line-height: 4.8rem;
+
+// Table Grid
+
+.cart-form__table,
+.cart-subtotal {
+  @include grid(12, 1fr, 0, 0);
+}
+
+
+// Items Cells Structure
+
+.woocommerce-cart-form__cart-item.cart_item {
+  border-top: $thinBorder;
+
+  &:nth-last-child(1) {
+    border-bottom: $thinBorder;
+  }
+}
+
+.cart-form__cell {
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
+
+  &-thumbnail {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    @media (min-width: 768px) {
+      grid-column: 1 / span 2;
     }
-}
-
-.woocommerce-form__label-for-checkbox input[type="checkbox"].woocommerce-form__input-checkbox {
-    width: 1.3rem;
-    min-width: 1.3rem;
-    height: 1.3rem;
-    border-radius: 30px;
-    border: 1px solid black;
-}
-
-
-.woocommerce input[type=datetime],
-.woocommerce input[type=datetime-local],
-.woocommerce input[type=date],
-.woocommerce input[type=month],
-.woocommerce input[type=time],
-.woocommerce input[type=week],
-.woocommerce input[type=number],
-.woocommerce input[type=url],
-.woocommerce input[type=tel],
-.woocommerce input[type=email],
-.woocommerce input[type=search],
-.woocommerce input[type=tel],
-.woocommerce input[type=color],
-.woocommerce input[type=file],
-.woocommerce input[type=text],
-.woocommerce input[type=password],
-.woocommerce textarea {
-    order: 0;
-    border-bottom: 1px solid;
-    width: 100%;
-    padding: 0 1rem 1rem 1rem;
-}
-
-.form-row {
-    display: table;
-    width: 100%;
-}
-
-.woocommerce-form__label-for-checkbox {
-
-    span {
-        @include smallText;
+    @media (max-width: 767px) {
+      display: none;
     }
+  }
 
-}
+  &-name {
+    padding-left: 1rem;
+    padding-right: 1rem;
 
-.woocommerce-ap-custom label {
-    display: none;
-}
-
-.woocommerce-ap-custom.form-title {
-    @include largeText;
-    width: 100%;
-    text-align: left;
-    border-bottom: 1px solid;
-    padding: 1rem;
-}
-
-.ap-icon-times {
-    display: inline-block;
-    font-size: 1.4rem;
-}
-
-
-/****
-* END OF SHARED STYLING
-**/
-
-.shop_table .woocommerce-cart-form__cart-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1.6rem;
-    padding-bottom: 3.2rem;
-    border-bottom: 2px solid $black;
-
-    .product-thumbnail {
-        margin-right: 3.2rem;
-        flex-basis: 125px;
+    @media (min-width: 768px) {
+      grid-column: 3 / span 8;
+      justify-content: space-between;
     }
-
-    .product-thumbnail img {
-        width: 12.5rem;
+    @media (max-width: 767px) {
+      grid-column: 1 / span 8;
+      flex-direction: column;
     }
+  }
 
-    .quantity input {
-        width: 3.2rem;
+  &-price {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: right;
+
+    @media (min-width: 768px) {
+      grid-column: 11 / span 2;
+    }
+    @media (max-width: 767px) {
+      grid-column: 9 / span 4;
+    }
+  }
+}
+
+
+// Subtotal Row
+
+.cart-subtotal {
+  border-bottom: $thinBorder;
+
+  .cart-form__cell {
+    padding: .8rem 1rem;
+  }
+
+  .subtotal-label {
+    @media (min-width: 768px) {
+      grid-column: 1 / span 5;
+    }
+    @media (max-width: 767px) {
+      grid-column: 1 / span 4;
+    }
+  }
+
+  .update-cart {
+    text-align: right;
+
+    @media (min-width: 768px) {
+      grid-column: 6 / span 5;
+    }
+    @media (max-width: 767px) {
+      grid-column: 5 / span 4;
+    }
+  }
+
+  .subtotal-value {
+    text-align: right;
+
+    @media (min-width: 768px) {
+      grid-column: 11 / span 2;
+    }
+    @media (max-width: 767px) {
+      grid-column: 9 / span 4;
+    }
+  }
+}
+
+
+// Inner Cells Elements
+
+.cart-form__cell-price {
+  .label-remove {
+    @include baseSmallText;
+    @include underlineText;
+    line-height: $largeText-line-height-rem;
+  }
+}
+
+.cart-form__cell-name {
+
+  .item-title {
+    margin-bottom: .8rem;
+  }
+
+  .product-quantity {
+    @include baseSmallText;
+    line-height: $largeText-line-height-rem;
+
+    .quantity {
+      width: 6.4rem;
+      display: flex;
+      justify-content: space-between;
+
+      input {
+        padding: 0;
         border: none;
         outline: none;
         text-align: center;
         background: transparent;
-    }
+      }
 
-    .quantity input::-webkit-outer-spin-button,
-    .quantity input::-webkit-inner-spin-button {
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
         display: none;
         margin: 0;
-    }
+      }
 
-    .quantity input.qty {
+      input.qty {
         appearance: textfield;
-        -webkit-appearance: none;
-        -moz-appearance: textfield;
+      }
     }
-
-    .product-remove .label-remove {
-        @include smallText;
-    }
-
-    .flex-col {
-        text-align: right;
-        flex: 0 0 13rem;
-    }
-
-    .product-quantity {
-        margin-left: auto;
-        flex: 0 0 12rem;
-        text-align: right;
-    }
+  }
 }
 
+.cart-subtotal {
+  .update-cart {
+    @include baseSmallText;
+    @include underlineText;
+    line-height: $largeText-line-height-rem;
+    background: transparent;
+    border: 0;
+    white-space: nowrap;
+  }
+}
+
+
+// Coupon Field
+
 .woocommerce-cart-form {
-    .cart_totals .shop_table.shop_table_responsive {
+  .coupon {
+    margin-top: 8rem;
+    @include grid(2, 1fr, 3.2rem, 3.2rem);
+    @include baseSmallText;
+
+    .coupon_code_area {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      border-bottom: $thinBorder;
+
+      @media (max-width: 767px) {
+        grid-column: auto / span 2;
+      }
+
+      input {
         width: 100%;
-        border-bottom: 1px solid;
-        padding-bottom: 2rem;
-    }
-
-    .cart-subtotal {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .update-cart {
-        margin-left: auto;
-        flex: 0 0 15.5rem;
-    }
-
-    .subtotal-value {
-        flex: 0 0 8rem;
-        text-align: right;
-    }
-
-    .order-total {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-
-        .order-total-value {
-            text-align: right;
-        }
-    }
-
-    button.button.update-cart:disabled {
-        opacity: 0.6;
-    }
-
-    button.button.update-cart {
-        background: transparent;
-        border: 0;
-        @include smallText;
-    }
-
-    .coupon {
-        display: flex;
-        justify-content: flex-start;
-        margin-top: 4rem;
-    }
-
-    input#coupon_code {
         border-width: 0;
-        padding: 10px;
-        width: 82%;
-    }
+        padding: 1rem;
+      }
 
-    .coupon-apply {
+      input::placeholder {
+        color: currentColor;
+      }
+
+      .coupon-apply {
         background: transparent;
         border: 0;
-        @include smallText;
+        padding: 1rem;
+      }
     }
 
     .coupon-help {
-        @include microText;
-        flex: 0 0 20rem;
-        line-height: 1.5;
+      @media (max-width: 767px) {
+        grid-column: auto / span 2;
+      }
     }
-
-    .coupon_code_area {
-        border-bottom: 1px solid;
-        margin-right: 3.2rem;
-        width: 40rem;
-    }
-
-    .cart-discount {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .cart-discount>div:nth-child(2) {
-        text-align: right;
-    }
-
-    a.woocommerce-remove-coupon {
-        display: block;
-        font: 400 1.7rem/2.3rem 'Lars', Helvetica, Arial, sans-serif;
-    }
+  }
 }
+
 
 // MAGGIE'S CHANGES
 
-.cart-subtotal {
-    padding: 0 10px;
+.tax_label {
+    display: none;
 }
 
-.woocommerce-shipping-totals.shipping {
-    border-top: 1px solid;
-    margin-top: 1.6rem;
+.button-container {
+    text-align: right;
+    margin-top: 4.8rem;
 }

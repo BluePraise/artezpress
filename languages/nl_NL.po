@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: ArtEzPress\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-01-27 11:41+0000\n"
-"PO-Revision-Date: 2021-02-23 18:11+0000\n"
-"Last-Translator: Amir Avraham\n"
+"PO-Revision-Date: 2021-03-18 12:19+0000\n"
+"Last-Translator: magaliechetrit\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.5.0; wp-5.6.1\n"
+"X-Loco-Version: 2.5.2; wp-5.7\n"
 "X-Domain: storefront"
 
 #: woocommerce/single-product/meta.php:74
@@ -21,65 +21,108 @@ msgstr "Editie"
 
 #. Name of the template
 msgid "4040"
-msgstr ""
+msgstr "404"
 
-#: template-homepage.php:106
+#: template-homepage.php:109
 msgid "<p>Currently there is no news.</p>"
 msgstr "Er is momenteel geen nieuws."
 
-#: inc/templateparts/nav-pages.php:9
-msgid "About"
+#: inc/templateparts/nav-pages.php:16 inc/templateparts/nav-pages.php:21
+#| msgid "About"
+msgid "About "
 msgstr "Over"
 
 #: woocommerce/cart/cart.php:155
-msgid "ArtEZ students and staffare eligible for a discount."
+#| msgid "ArtEZ students and staffare eligible for a discount."
+msgid "ArtEZ students and staff are eligible for a discount."
 msgstr "Studenten en personeel van ArtEZ komen in aanmerking voor een korting."
-
-#: inc/templateparts/nav-pages.php:33
-msgid "ArtEZ University of the Arts"
-msgstr ""
 
 #. Name of the theme
 msgid "ArtEzPress"
 msgstr "ArtEZPress"
 
-#: woocommerce/checkout/form-checkout.php:42
+#: woocommerce/single-product/meta.php:103
+msgid "Author(s)"
+msgstr "Auteur(s)"
+
+#: woocommerce/single-product/meta.php:180
+msgid "b/w and colour"
+msgstr "z/w en kleur"
+
+#: woocommerce/checkout/form-checkout.php:39
 msgid "Billing Address"
 msgstr "Factuur adres"
 
-#: functions.php:482
+#: woocommerce/single-product/meta.php:190
+msgid "Binding"
+msgstr ""
+
+#: functions.php:498
 msgid "Book Cover"
 msgstr "Book Kaft"
 
-#: template-homepage.php:38 inc/templateparts/nav-pages.php:7
+#: template-homepage.php:38 inc/templateparts/nav-pages.php:14
+#: inc/templateparts/nav-pages.php:19
 msgid "Books"
 msgstr "Boeken"
-
-#: footer.php:20
-msgid "Cart"
-msgstr "Winkel"
 
 #. Name of the template
 msgid "Cart Page"
 msgstr "Winkel"
 
+#: inc/filters.php:67
+msgid "Category"
+msgstr "Categorie"
+
 #. Description of the theme
 msgid "Child Theme of Storefront"
 msgstr "Sub Thema van Storefront"
+
+#: inc/filters.php:70
+msgid "Clear"
+msgstr "Transparant"
+
+#: woocommerce/single-product/meta.php:129
+msgid "Co-Publishers"
+msgstr "Mede-uitgevers"
+
+#: inc/templateparts/nav-pages.php:39 inc/templateparts/nav-pages.php:46
+msgid "Colophon"
+msgstr "Colofon"
 
 #: woocommerce/single-product/meta.php:26
 msgid "Colophon and Specifications"
 msgstr "Colofon en Specificaties"
 
+#: blocks/frontpage/slider/slider-left.php:2
+msgid "Coming Soon"
+msgstr "Volgt binnenkort"
+
+#: woocommerce/single-product/meta.php:112
+msgid "Design"
+msgstr "Design"
+
+#: woocommerce/cart/mini-cart.php:74
+msgid "edition"
+msgstr "editie"
+
+#: inc/templateparts/nav-pages.php:36 inc/templateparts/nav-pages.php:43
+msgid "For Authors"
+msgstr "Voor auteurs"
+
 #: woocommerce/global/form-login.php:57
 msgid "Forgot password"
 msgstr "Wachtwoord vergeten"
 
-#: inc/templateparts/nav-pages.php:6
+#: blocks/frontpage/slider/slider-right.php:15
+msgid "From the Backlist"
+msgstr "Van de backlist"
+
+#: inc/templateparts/nav-pages.php:13 inc/templateparts/nav-pages.php:18
 msgid "Home"
 msgstr "Home"
 
-#: inc/templateparts/nav-pages.php:28
+#: inc/templateparts/nav-pages.php:35 inc/templateparts/nav-pages.php:42
 msgid "How Can We Help?"
 msgstr "Hoe kunnen wij je helpen?"
 
@@ -91,11 +134,35 @@ msgstr "http://BluePraise/artezpress"
 msgid "https://magalielinda.me/"
 msgstr "https://magalielinda.me/"
 
+#: woocommerce/single-product/meta.php:170
+msgid "Illustrations"
+msgstr "Illustraties"
+
+#: woocommerce/single-product/meta.php:58
+#: woocommerce/single-product/meta.php:60
+#: woocommerce/single-product/meta.php:81
+msgid "ISBN"
+msgstr "ISBN"
+
+#: inc/filters.php:69
+msgid "Language"
+msgstr "Taal"
+
 #. Author of the theme
 msgid "Magalie Chetrit"
 msgstr "Magalie Chetrit"
 
-#: template-homepage.php:89 inc/templateparts/nav-pages.php:8
+#: woocommerce/single-product/meta.php:60
+#: woocommerce/single-product/meta.php:87
+msgid "N/A"
+msgstr "Niet Beschikbaar"
+
+#: blocks/frontpage/slider/slider-middle.php:3
+msgid "New Releases"
+msgstr "Nieuwe uitgaven"
+
+#: template-homepage.php:90 inc/templateparts/nav-pages.php:15
+#: inc/templateparts/nav-pages.php:20
 msgid "News"
 msgstr "Nieuws"
 
@@ -103,31 +170,58 @@ msgstr "Nieuws"
 msgid "Out of Print"
 msgstr "Niet meer in druk"
 
-#: inc/templateparts/nav-pages.php:30
+#: woocommerce/single-product/meta.php:150
+msgid "Pages"
+msgstr "Pagina's"
+
+#: woocommerce/single-product/meta.php:197
+msgid "Paper Stocks"
+msgstr "Papier"
+
+#: woocommerce/single-product/meta.php:121
+msgid "Photography"
+msgstr "Fotografie"
+
+#: functions.php:156
+msgid "Primary Menu"
+msgstr ""
+
+#: inc/templateparts/nav-pages.php:38 inc/templateparts/nav-pages.php:45
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
 
-#: inc/templateparts/news-excerpt.php:41 blocks/postbuilding/index.php:26
+#: inc/templateparts/news-excerpt.php:42 blocks/postbuilding/index.php:26
+#: blocks/frontpage/slider/slider-right.php:34
+#: blocks/frontpage/slider/slider-middle.php:29
+#: blocks/frontpage/slider/slider-left.php:27
 msgid "Read More"
 msgstr "Lees Meer"
 
-#: functions.php:484
+#: functions.php:500
 msgid "Remove Book Cover"
 msgstr "Boek Kaft Verwijderen"
 
-#: inc/templateparts/nav-pages.php:3
+#: inc/templateparts/nav-pages.php:8
 msgid "Search"
 msgstr "Zoeken"
+
+#: functions.php:157
+msgid "Secondary Menu"
+msgstr ""
 
 #: template-homepage.php:83
 msgid "See All Books"
 msgstr "Bekijk alle boeken"
 
-#: template-homepage.php:104
+#: template-homepage.php:106
 msgid "See All News"
 msgstr "Bekijk al ons nieuws"
 
-#: functions.php:483
+#: woocommerce/single-product/meta.php:141
+msgid "Series"
+msgstr "Serie"
+
+#: functions.php:499
 msgid "Set Book Cover"
 msgstr "Maak boek kaft aan"
 
@@ -135,27 +229,35 @@ msgstr "Maak boek kaft aan"
 msgid "Shipping"
 msgstr "Verzending"
 
-#: header.php:126
+#: header.php:126 footer.php:35
 msgid "Shop"
 msgstr "Winkel"
 
-#: inc/templateparts/nav-pages.php:12
-msgid "Subscribe To Our Newsletter"
+#: inc/templateparts/nav-pages.php:25
+#| msgid "Subscribe To Our Newsletter"
+msgid "Subscribe to our newsletter"
 msgstr "Schrijf je in voor onze nieuwsbrief"
 
-#: inc/templateparts/nav-pages.php:29
+#: inc/templateparts/nav-pages.php:37 inc/templateparts/nav-pages.php:44
 msgid "Terms and Conditions"
 msgstr "Algemene Voorwaarden"
 
-#: woocommerce/cart/mini-cart.php:105
-#: woocommerce/single-product/cart/mini-cart.php:100
+#: inc/filters.php:66
+msgid "Theme"
+msgstr "Thema"
+
+#: woocommerce/cart/mini-cart.php:106
 msgid "There are no items in the cart."
 msgstr "Er zijn geen boeken in je winkelmandje."
 
-#: functions.php:314
+#: functions.php:336
 msgid "Total:"
 msgstr "Totaal"
 
-#: functions.php:485
+#: functions.php:501
 msgid "Use as Book Cover"
 msgstr "Gebruik als Boek Kaft"
+
+#: inc/filters.php:68
+msgid "Year"
+msgstr "Jaar"

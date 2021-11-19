@@ -469,3 +469,9 @@ textarea {
     color: #000;
     padding: 0.2em 0;
 }
+
+
+// remove rounded coreners for input on iOS (amir)
+input {
+  border-radius: 0;
+}

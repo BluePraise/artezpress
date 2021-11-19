@@ -1,0 +1,15 @@
+body {
+    font-family: 'Lars', Helvetica, Arial, sans-serif;
+    font-size: 1.7rem;
+    line-height: 2.3rem;
+}
+
+.editor-post-title__block .editor-post-title__input {
+    font-family: 'LarsExtended', Helvetica, Arial, sans-serif;
+    font-size: 14rem;
+    line-height: 14rem;
+    font-weight: 500;
+    letter-spacing: 0rem;
+    text-align: center;
+}
+/*# sourceMappingURL=style-editor-min.css.map */

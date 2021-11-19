@@ -12,15 +12,29 @@
     display: flex;
 
     a.remove {
+      line-height: $menuText-line-height-rem;
       height: auto;
       width: 2rem;
-      line-height: $menuText-line-height-rem;
+
+      &::before {
+        content: '×';
+        display: inline-block;
+        color: $black;
+        font-family: $extras-font;
+        font-weight: inherit;
+        font-size: inherit;
+        line-height: inherit;
+      }
     }
 
     .quantity {
         display: flex;
         margin-left: 1rem;
         width: 100%;
+
+        span.mc-product-name {
+            margin-right: 3.2rem;
+        }
 
         span.mc-product-quantity {
             margin-left: 1.6rem;
@@ -31,13 +45,9 @@
             margin-left: auto;
             text-align: right;
         }
-    }
-
-    a.remove::before {
-        display: inline-block;
-        content: '×';
-        color: $black;
-        @include baseMenuText;
+        // &:last-child {
+        //     margin-left: 3rem; // this i
+        // }
     }
 }
 
@@ -57,4 +67,7 @@ p.woocommerce-mini-cart__total.total {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    .tax_label {
+        display: none;
+    }
 }

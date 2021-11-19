@@ -1,0 +1,115 @@
+// SHARED STYLING FOR CART AND CHECKOUT (MAYBE ALSO MINI CART?)
+.woocommerce-notices-wrapper {
+    display: none;
+}
+
+.woocommerce {
+    .btn.black-on-white {
+        font-size: 17px;
+        line-height: 23px;
+    }
+}
+
+.woocommerce-ap-custom.form-title {
+    font-family: "Lars", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 2.1rem;
+    line-height: 4.8rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid currentColor;
+}
+
+.woocommerce-checkout {
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      @include baseSmallText;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    font-family: $default-font;
+    @include smallText;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    font-family: $default-font;
+    @include smallText;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    font-family: $default-font;
+    @include smallText;
+  }
+}
+
+
+.woocommerce-form__label-for-checkbox {
+    @include baseSmallText;
+    line-height: 4.8rem;
+    padding: 0 1rem;
+}
+.woocommerce-form__label-for-radio {
+    @include baseSmallText;
+    line-height: 4.8rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid;
+}
+
+.form-row {
+    width: 100%;
+    border-bottom: 1px solid currentColor;
+    span.woocommerce-input-wrapper {
+        display: block;
+        @include baseSmallText;
+    }
+    // turn off all labels
+    label {
+        display: none;
+    }
+}
+
+
+// .woocommerce-notices-wrapper {
+//     display: flex;
+//     justify-content: center;
+
+//     .woocommerce-message {
+//         padding: 0 9.3rem;
+//         line-height: 4.6rem;
+//         background-color: $black;
+//         color: $white;
+//         min-width: 50rem;
+//         text-align: center;
+//         @include underlineText;
+//     }
+// }
+
+// WOOCOMMERCE ERROR
+ul.woocommerce-error {
+    font-size: 1.7rem;
+    line-height: 2.3rem;
+    color: red;
+    margin-bottom: 4.8rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.input-btn-combo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    button[type=submit] {
+        background: transparent;
+        border: 0;
+        padding: 1rem;
+        cursor: pointer;
+        // font-family: $default-font;
+        @include baseSmallText;
+    }
+}
+
+// ROWS -> THESE ARE THE ROWS IN THE CHECKOUT FIELD
+// THEY ARE <p> Tags
+
+
+// TITLES AND TEKST (TYPOGRAPHY)
+.ap-icon-times {
+    display: inline-block;
+    font-size: 1.4rem;
+}

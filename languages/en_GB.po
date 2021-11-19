@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Storefront package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-02-08 12:30+0000\n"
+"PO-Revision-Date: 2021-02-24 18:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,8 +16,24 @@ msgstr ""
 "Last-Translator: Amir Avraham\n"
 "X-Loco-Version: 2.5.0; wp-5.6.1"
 
+#: woocommerce/single-product/meta.php:74
+msgid " Edition"
+msgstr ""
+
+#. Name of the template
+msgid "4040"
+msgstr ""
+
+#: template-homepage.php:108
+msgid "<p>Currently there is no news.</p>"
+msgstr ""
+
 #: inc/templateparts/nav-pages.php:9
 msgid "About"
+msgstr ""
+
+#: woocommerce/cart/cart.php:155
+msgid "ArtEZ students and staff are eligible for a discount."
 msgstr ""
 
 #: inc/templateparts/nav-pages.php:33
@@ -28,16 +44,28 @@ msgstr ""
 msgid "ArtEzPress"
 msgstr ""
 
-#: functions.php:395
+#: woocommerce/single-product/meta.php:103
+msgid "Author(s)"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:180
+msgid "b/w and colour"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:39
+msgid "Billing Address"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:190
+msgid "Binding"
+msgstr ""
+
+#: functions.php:482
 msgid "Book Cover"
 msgstr ""
 
-#: inc/templateparts/nav-pages.php:7
+#: template-homepage.php:38 inc/templateparts/nav-pages.php:7
 msgid "Books"
-msgstr ""
-
-#: header.php:110 footer.php:20
-msgid "Cart"
 msgstr ""
 
 #. Name of the template
@@ -48,11 +76,35 @@ msgstr "Cart"
 msgid "Child Theme of Storefront"
 msgstr ""
 
+#: woocommerce/single-product/meta.php:129
+msgid "Co-Publishers"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:26
+msgid "Colophon and Specifications"
+msgstr ""
+
+#: blocks/frontpage/slider/slider-left.php:2
+msgid "Coming Soon"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:112
+msgid "Design"
+msgstr ""
+
+#: woocommerce/global/form-login.php:57
+msgid "Forgot password"
+msgstr ""
+
+#: blocks/frontpage/slider/slider-right.php:17
+msgid "From the Backlist"
+msgstr ""
+
 #: inc/templateparts/nav-pages.php:6
 msgid "Home"
 msgstr ""
 
-#: inc/templateparts/nav-pages.php:28
+#: inc/templateparts/nav-pages.php:20
 msgid "How Can We Help?"
 msgstr ""
 
@@ -64,27 +116,65 @@ msgstr ""
 msgid "https://magalielinda.me/"
 msgstr ""
 
+#: woocommerce/single-product/meta.php:170
+msgid "Illustrations"
+msgstr ""
+
+#: inc/templateparts/nav-pages.php:23
+msgid "Imprint"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:58
+#: woocommerce/single-product/meta.php:60
+#: woocommerce/single-product/meta.php:81
+msgid "ISBN"
+msgstr ""
+
 #. Author of the theme
 msgid "Magalie Chetrit"
 msgstr ""
 
-#: index.php:4 inc/templateparts/nav-pages.php:8
+#: woocommerce/single-product/meta.php:60
+#: woocommerce/single-product/meta.php:87
+msgid "N/A"
+msgstr ""
+
+#: blocks/frontpage/slider/slider-middle.php:3
+msgid "New Releases"
+msgstr ""
+
+#: template-homepage.php:89 inc/templateparts/nav-pages.php:8
 msgid "News"
 msgstr ""
 
-#: header.php:99
+#: header.php:85 header.php:107
 msgid "Out of Print"
 msgstr ""
 
-#: inc/templateparts/nav-pages.php:30
+#: woocommerce/single-product/meta.php:150
+msgid "Pages"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:197
+msgid "Paper Stocks"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:121
+msgid "Photography"
+msgstr ""
+
+#: inc/templateparts/nav-pages.php:22
 msgid "Privacy Policy"
 msgstr ""
 
 #: inc/templateparts/news-excerpt.php:41 blocks/postbuilding/index.php:26
+#: blocks/frontpage/slider/slider-right.php:33
+#: blocks/frontpage/slider/slider-middle.php:27
+#: blocks/frontpage/slider/slider-left.php:27
 msgid "Read More"
 msgstr ""
 
-#: functions.php:397
+#: functions.php:484
 msgid "Remove Book Cover"
 msgstr ""
 
@@ -92,27 +182,47 @@ msgstr ""
 msgid "Search"
 msgstr "Search"
 
-#: functions.php:396
+#: template-homepage.php:83
+msgid "See All Books"
+msgstr ""
+
+#: template-homepage.php:105
+msgid "See All News"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:141
+msgid "Series"
+msgstr ""
+
+#: functions.php:483
 msgid "Set Book Cover"
+msgstr ""
+
+#: woocommerce/checkout/review-order.php:93
+msgid "Shipping"
+msgstr ""
+
+#: header.php:126 footer.php:33
+msgid "Shop"
 msgstr ""
 
 #: inc/templateparts/nav-pages.php:12
 msgid "Subscribe To Our Newsletter"
 msgstr ""
 
-#: inc/templateparts/nav-pages.php:29
+#: inc/templateparts/nav-pages.php:21
 msgid "Terms and Conditions"
 msgstr ""
 
-#: woocommerce/cart/mini-cart.php:100
+#: woocommerce/cart/mini-cart.php:105
 #: woocommerce/single-product/cart/mini-cart.php:100
 msgid "There are no items in the cart."
 msgstr ""
 
-#: functions.php:263
+#: functions.php:314
 msgid "Total:"
 msgstr ""
 
-#: functions.php:398
+#: functions.php:485
 msgid "Use as Book Cover"
 msgstr ""

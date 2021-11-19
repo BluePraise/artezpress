@@ -1,15 +1,4 @@
-.large-text p {
-    @include largeText;
-}
-
-.page-default h2 {
-    margin-top: 6rem;
-    margin-bottom: 8rem;
-}
-
-.page-default a {
-    @include underlineText;
-}
+// 2 col grid
 
 .page-default.grid-container {
   @media (min-width: 768px) {
@@ -27,45 +16,114 @@
   }
 }
 
-.content-block {
-    margin-bottom: 8rem;
-    @include largeText;
 
-    &:last-child {
-        margin-bottom: 0;
-    }
+// text items
+
+.content-block, /* 1col blocks */
+.content__left, .content__right /* 2col blocks */ {
+
+  p, ol, ul {
+    @include largeText;
+  }
+
+  a {
+    @include underlineText;
+  }
+
+  .indent {
+    margin-top: calc(#{$largeText-line-height-rem} * 2);
+  }
 }
 
-.nested-list {
-  @include largeText;
+.large-text p {
+    @include largeText;
+}
+
+
+// content blocks
+
+.content-block:not(:last-child) {
+  margin-bottom: 8rem;
 }
 
 .content-block p:not(:last-child) {
-    margin-bottom: $largeText-line-height-rem;
+  margin-bottom: $largeText-line-height-rem;
 }
 
-.content-block a {
-    @include underlineText;
+.content-block ol:not(:last-child) {
+  margin-bottom: $largeText-line-height-rem;
 }
+
+
+// lists
 
 .content-block ol>li {
-    counter-increment: roman;
-    position: relative;
-    padding-left: 4rem;
+  counter-increment: roman;
+  position: relative;
+  padding-left: 4rem;
 
-    &::before {
-        content: counter(roman, upper-roman) ". ";
-        position: absolute;
-        left: 0;
-        width: 4rem;
-    }
+  &::before {
+    content: counter(roman, upper-roman) ". ";
+    position: absolute;
+    left: 0;
+    width: 4rem;
+  }
+}
+
+.content-block ul:not(.nested-list)>li {
+  position: relative;
+  padding-left: 4rem;
+
+  &::before {
+    content: '\25A1';
+    font-family: $extras-font;
+    position: absolute;
+    left: 0;
+    width: 4rem;
+  }
 }
 
 ul.nested-list {
-    margin-top: $largeText-line-height-rem;
+  margin-top: $largeText-line-height-rem;
+  margin-bottom: $largeText-line-height-rem;
 
-    li {
-        list-style-type: lower-alpha;
-        margin-left: 4rem;
+  li {
+    list-style-type: lower-alpha;
+    margin-left: 4rem;
+  }
+}
+
+ol.table-of-contents {
+
+  li {
+    position: relative;
+    padding-left: 11.2rem;
+
+    &::before {
+      position: absolute;
+      left: 0;
+      width: 11.2rem;
+      white-space: nowrap;
     }
+  }
+
+  &__en {
+    counter-reset: articles;
+    li {
+      counter-increment: articles;
+      &::before {
+        content: "Article " counter(articles) ".";
+      }
+    }
+  }
+
+  &__nl {
+    counter-reset: artikelen;
+    li {
+      counter-increment: artikelen;
+      &::before {
+        content: "Artikel " counter(artikelen) ".";
+      }
+    }
+  }
 }

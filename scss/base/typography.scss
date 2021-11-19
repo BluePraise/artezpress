@@ -32,10 +32,10 @@
 }
 
 @font-face {
-    font-family: 'LarsExtra';
-    src: url("../../assets/fonts/Lars-Extra.otf") format("opentype"),
-        url("../../assets/fonts/Lars-Extra.woff") format("woff"),
-        url("../../assets/fonts/Lars-Extra.woff2") format("woff2");
+    font-family: 'L-icons';
+    src: url("../../assets/fonts/Icons.otf") format("opentype"),
+        url("../../assets/fonts/Icons.woff") format("woff"),
+        url("../../assets/fonts/Icons.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
 }
@@ -68,10 +68,22 @@ html {
 h1,
 .h1 {
     font-family: $extended-font;
-    @include Lars($h1-font-size, $h1-line-height);
     font-weight: 500;
     letter-spacing: 0;
     text-align: center;
+
+    @media (min-width: 768px) {
+      font-size: $h1-font-size-rem;
+      line-height: $h1-line-height-rem;
+    }
+    @media (min-width: 361px) and (max-width: 767px) {
+      font-size: $h1-font-size-rem-m;
+      line-height: $h1-line-height-rem-m;
+    }
+    @media (max-width: 360px) {
+      font-size: $h1-font-size-rem-s;
+      line-height: $h1-line-height-rem-s;
+    }
 }
 
 h2,
@@ -81,10 +93,6 @@ h2,
     font-weight: 500;
     letter-spacing: 0;
     text-align: center;
-}
-
-h2.highlight-item__title-author {
-    text-align: left;
 }
 
 h3,
@@ -116,16 +124,18 @@ h5,
   @include largeText;
 }
 
+.extras-font {
+  font-family: $extras-font;
+}
 
 a {
   color: currentColor;
   text-decoration: none;
 }
 
+
+
+
 strong {
   font-weight: inherit;
 }
-
-blockquote {}
-
-i {}
