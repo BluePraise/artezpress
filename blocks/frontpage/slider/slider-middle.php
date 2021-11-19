@@ -27,8 +27,6 @@
                     endforeach;
                 endif;
                 $img        = get_sub_field('add_custom_image');
-                // print_r($img);     
-                // $img        = get_post_thumbnail_id($b);
                 $imgmeta    = wp_get_attachment_metadata($img);
         ?>
 

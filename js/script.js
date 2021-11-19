@@ -244,48 +244,12 @@ jQuery(document).ready(function($) {
         setGallerySize: false,
         on: {
             ready: function () {
-                // var $pagers = $(".coming-soon-carousel").find(".slider-nav__pager");
-                // // var $nav = $soon_carousel.find(".slider-nav__link");
-                // // var $selected_slide = $soon_carousel.find(".is-selected");
-                // var $slides = $(".coming-soon-carousel").find('.carousel-cell');
-
-                // // var sUrl = $selected_slide.data("url");
-                // // $nav.attr("href", sUrl);
+                var $nav = $soon_carousel.find(".slider-nav__link");
+                var $selected_slide = $soon_carousel.find(".is-selected");
                 
-                // if ($slides.length > 1) {
-                //     // append a span to every nav pager.
-                //     for (i = 0; i < $slides.length; i++) {
-                //         $pagers.append("<span></span>");
-                //     }                    
-                // }
-                // $soon_carousel.on("select.flickity", function () {
-                //     var $pager = $pagers.find("span");
-                //     var $flkty = $(this).data('flickity');
-                //     $pager.eq($flkty.selectedIndex).addClass("is-active");
-                //     // $backlist_pager.eq($flkty.prevSelectedIndex).removeClass('is-active');
-                // });
-
-                // $pagers.on('click', 'span', function() {
-                //     var index = $(this).index();
-                //     $(".coming-soon-carousel").flickity('select', index);
-                // });
-            },
-            change: function () {
-                // var $pagers = $(".coming-soon-carousel").find(".slider-nav__pager");
-                // var $nav = $soon_carousel.find(".slider-nav__link");
-                // var $selected_slide = $soon_carousel.find(".is-selected");
-                
-                // var sUrl = $selected_slide.data("url");
-                // $nav.attr("href", sUrl);
-                
-                // $soon_carousel.on("scroll.flickity", function () {
-                //     var $pager = $pagers.find("span");
-                //     var $flkty = $(this).data('flickity');
-                //         $pager.filter('.is-active').removeClass('is-active');
-                //         $pager.eq($flkty.selectedIndex).addClass("is-active");
-                //     }
-                // );
-            },
+                sUrl = $selected_slide.data("url");
+                $nav.attr("href", sUrl);
+            }
         }
     });
 
