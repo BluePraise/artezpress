@@ -323,6 +323,22 @@ function veer_popup_maker_gutenburg_compat($content)
  *
  **********************************/
 
+add_action('woocommerce_thankyou', 'change_preorder_status_to_paid', 10, 1);
+function change_preorder_status_to_paid ( $order_id ) {
+
+    if ( ! $order_id )
+        return;
+
+    // Getting an instance of the order object
+    $order = wc_get_order( $order_id );
+
+	if( $order->get_status()) {
+		$status = get_status();
+		var_dump($status);
+    }
+    
+}
+
  function filter_related_productss($args){	
 	global $product;
 	$argss = get_posts( array(
@@ -618,9 +634,7 @@ function extract_colors()
 	$attachment_path = wp_get_original_image_path($attachment_id);
 	$colors = $ex->Get_Color($attachment_path, "5");
 
-
 	//var_dump($colors);
-
 	wp_send_json_success($colors);
 	die();
 }
