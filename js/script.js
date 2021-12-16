@@ -43,10 +43,11 @@ jQuery(document).ready(function($) {
         var position = $(document).scrollTop();
         var startP = $(".hero").position();
         var finishP = $("#jump-to");
-
-        if(viewportOffset.top > 0 && scroll==true ) {
+        if (viewportOffset.top > 0 && scroll == true) {
             scroll = false;
-            $('html,body').animate({scrollTop: finishP.offset().top},4000);  
+            setTimeout(function () {
+                $('html,body').animate({ scrollTop: finishP.offset().top }, 400);
+            }, 4000);
         } 
     }
     
