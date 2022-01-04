@@ -5,10 +5,6 @@ example/masonry.html
 example/schau.js
 scripts/masonry.html
 scripts/script.js
-scripts/masonry.html
-scripts/script.js
-scripts/masonry.html
-scripts/script.js
 node_modules/
 gulpfile-min.js
 package-lock.json
@@ -18,8 +14,6 @@ app.css.map
 app.css
 js/script-min.js
 assets/.DS_Store
-assets/.DS_Store
-assets/.DS_Store
-assets/.DS_Store
 .DS_Store
 assets/.DS_Store
+

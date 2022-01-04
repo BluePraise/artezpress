@@ -347,6 +347,22 @@ function veer_popup_maker_gutenburg_compat($content)
 add_filter('woocommerce_related_products','filter_related_productss');
 
 /**
+ * Changes status for a pre-order to processing
+ */
+function action_woocommerce_order_status_changed( $order_id, $old_status, $new_status, $order ) {
+	if ( ! class_exists( 'WC_Pre_Orders_Order' ) ) {
+		return;
+	}
+    // Compare
+    if ( ! $order_id ) {return;}            
+	$order = wc_get_order( $order_id );
+	if( $order->get_status() == 'pre-ordered'  ) {
+		$order->update_status( 'processing' );
+	}
+}
+add_filter( 'woocommerce_payment_complete_order_status', 'action_woocommerce_order_status_changed', 10, 42);
+
+/**
  * Hide shipping rates when free shipping is available.
  * Updated to support WooCommerce 2.6 Shipping Zones.
  *
