@@ -201,23 +201,7 @@ function special_nav_class ($classes, $item) {
 
 add_action('artezpress_before_single_product_summary', 'woocommerce_show_product_images', 20);
 
-function add_custom_text_after_cart_item_name( $cart_item, $cart_item_key ) {
-    
-    $product = $cart_item['data'];
-    $edition = get_post_meta( $product->get_id(), 'ap_language', true );
 
-    if ($edition === 'Nederlands') {
-
-        $html = '<div class="d-block edition-language">('. esc_html__( 'Nederlandse', 'artezpress') . ' ed. )</div>';
-    }
-    else {
-        $html = '<div class="d-block edition-language">(' . esc_html__('Engelse', 'artezpress') . ' ed.)</div>';
-    }
-
-    echo $html;
-
-}
-add_action( 'woocommerce_after_cart_item_name', 'add_custom_text_after_cart_item_name', 10, 2 );
 
 /***
  * ACF CUSTOMIZATION
@@ -323,28 +307,44 @@ function veer_popup_maker_gutenburg_compat($content)
  *
  **********************************/
 
- function filter_related_productss($args){	
-	global $product;
-	$argss = get_posts( array(
-        'post_type' => 'product',
-		'numberposts' => -1,
-		'fields' => 'ids',
-		'post_status' => 'publish',
-        'meta_query' => array(
-            array (
-                'key'    => 'add_coming_soon',
-                'value'  => '1',
-            )
-        )
-    ));
-	
-	$args = array_map(function($value) {
-		return intval($value);
-	}, $args);
-	$args = array_diff($args, $argss);
-	return $args;
+add_action('woocommerce_thankyou', 'change_preorder_status_to_paid', 10, 1);
+function change_preorder_status_to_paid ( $order_id ) {
+
+    if ( ! $order_id )
+        return;
+
+    // Getting an instance of the order object
+    $order = wc_get_order( $order_id );
+
+	// change pre-order status to 'processing'.
+	// The processing status is needed, because this is the status 
+	// Hexspoor WMS uses to proces an order. They do not have a status "Pre-Order"
+	if( $order->get_status() === 'pre-ordered') {
+		$order->update_status('processing');
+    }
+    
 }
-add_filter('woocommerce_related_products','filter_related_productss');
+
+// Translate editions in cart item
+
+function add_custom_text_after_cart_item_name( $cart_item, $cart_item_key ) {
+    
+    $product = $cart_item['data'];
+    $edition = get_post_meta( $product->get_id(), 'ap_language', true );
+
+    if ($edition === 'nl') {
+
+        $html = '<div class="d-block edition-language">('. esc_html__( 'Nederlandse', 'artezpress') . ' ed. )</div>';
+    }
+    else {
+        $html = '<div class="d-block edition-language">(' . esc_html__('Engelse', 'artezpress') . ' ed.)</div>';
+    }
+
+    echo $html;
+
+}
+add_action( 'woocommerce_after_cart_item_name', 'add_custom_text_after_cart_item_name', 10, 2 );
+
 
 /**
  * Changes status for a pre-order to processing
@@ -392,6 +392,60 @@ add_filter( 'woocommerce_package_rates', 'hide_shipping_when_free_is_available',
 /* Disable Transient Cache */
 
 add_filter('transient_shipping-transient-version', function($value, $name) { return false; }, 10, 2);
+
+// add_action('woocommerce_related_products','filter_related_productss');
+
+add_action('woocommerce_thankyou', 'ship_catalogue', 10, 1);
+function ship_catalogue( $order_id ) {
+    if ( ! $order_id )
+        return;
+
+    // Allow code execution only once 
+    if( ! get_post_meta( $order_id, '_thankyou_action_done', true ) ) {
+
+        // Get an instance of the WC_Order object
+        $order = wc_get_order( $order_id );
+
+        // Get the order key
+        $order_key = $order->get_order_key();
+
+        // Get the order number
+        $order_key = $order->get_order_number();
+
+        if($order->is_paid())
+            $paid = __('yes');
+        else
+		
+            $paid = __('no');
+
+			$all_ids = get_posts( array(
+				'post_type' => 'product',
+				'numberposts' => -1,
+				'post_status' => 'publish',
+				'fields' => 'ids',
+				'tax_query' => array(
+				   array(
+					  'taxonomy' => 'product_cat',
+					  'field' => 'term_id',
+					  'terms' => 16, /*category name*/
+					  'operator' => 'IN',
+					  )
+				   ),
+				));
+				foreach ( $all_ids as $id ) {
+					$order->add_product( wc_get_product($id), 1);
+				}
+
+			
+
+        // Output some data
+        echo '<p>Order ID: '. $order_id . ' — Order Status: ' . $order->get_status() . ' — Order is paid: ' . $paid . '</p>';
+
+        // Flag the action as done (to avoid repetitions on reload for example)
+        $order->update_meta_data( '_thankyou_action_done', true );
+        $order->save();
+    }
+}
 
 /* Woocommerce filters */
 add_filter( 'wc_add_to_cart_message_html', '__return_false' );
@@ -463,11 +517,6 @@ if (!function_exists('woocommerce_widget_shopping_cart_subtotal')) {
 	}
 }
 
-add_filter('multisafepay_customer_locale', 'return_my_own_locale');
-function return_my_own_locale($locale) {
-  // Your conditions and logic to return a valid locale code
-  return $custom_locale;
-}
 
 if (!function_exists('array_flatten_iterator')) {
 	function array_flatten_iterator(array $array)
@@ -634,9 +683,6 @@ function extract_colors()
 	$attachment_path = wp_get_original_image_path($attachment_id);
 	$colors = $ex->Get_Color($attachment_path, "5");
 
-
-	//var_dump($colors);
-
 	wp_send_json_success($colors);
 	die();
 }
@@ -783,6 +829,26 @@ function Hide_WooCommerce_Breadcrumb()
     .woocommerce-embed-page #screen-meta, .woocommerce-embed-page #screen-meta-links{top:0;}
     </style>';
 }
+
+
+/**
+ * Charge a WooCommerce pre-order when the associated order is set to Completed status
+ *
+ * @param int $order_id
+ * @param \WC_Order $order
+ */
+function sv_wc_charge_order_on_order_complete( $order_id, $order ) {
+
+	if ( ! class_exists( 'WC_Pre_Orders_Order' ) ) {
+		return;
+	}
+
+	if ( WC_Pre_Orders_Order::order_contains_pre_order( $order ) && WC_Pre_Orders_Manager::can_pre_order_be_changed_to( 'completed', $order ) ) {
+		WC_Pre_Orders_Manager::complete_pre_order( $order, $message );
+	}
+}
+// add_action( 'woocommerce_order_status_completed', 'sv_wc_charge_order_on_order_complete', 10, 2 );
+
 
 // Remove Actions
 remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds
