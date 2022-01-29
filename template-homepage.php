@@ -52,7 +52,7 @@ get_header(); ?>
 			$current_lang_full = pll_current_language('name');
 			$current_lang      = pll_current_language();
 			$ap_language       = get_field('ap_language');
-            $book_obj           = get_sub_field('add_to_new');
+            $book_obj          = get_sub_field('add_to_new');
             if ($book_obj):
             foreach ($book_obj as $b) :
                 $post_ex[] = $b; 
@@ -62,33 +62,41 @@ get_header(); ?>
 			$args = array(
 				'orderby'         => 'date',
 				'order'           => 'DESC',
-				'posts_per_page'  => 6,  // -1 will get all the product. Specify positive integer value to get the number given number of product
+				'posts_per_page'  => 30,  // -1 will get all the product. Specify positive integer value to get the number given number of product
 				'post_type'       => 'product',
 				'meta_query'      => array(
-             'relation'    => 'AND',
-             array(
-               'relation' => 'OR',
-                array(
-                    'key'    => 'additional_editions_0_type_of_edition',
-                    'compare'  => '!=',
-                    'value'    => $current_lang_full,
-                ),
-                array(
-                'key'    => 'additional_editions_0_type_of_edition',
-                 'compare' => 'NOT EXISTS'
-             )
-           ),
-             array(
-               'key'    => 'add_coming_soon',
-               'compare' => '!=',
-               'value'    => 1
-           ),
-          ),
+             	'relation'    => 'AND',
+             	array(
+               	'relation' => 'OR',
+					array(
+						'key'    => 'additional_editions_0_type_of_edition',
+						'compare'  => '!=',
+						'value'    => $current_lang_full,
+					),
+					array(
+					'key'    => 'additional_editions_0_type_of_edition',
+					 'compare' => 'NOT EXISTS'
+				 )
+	           ),
+				
+          		),
+				
+				'tax_query'            => array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field'    => 'slug', // Or 'name' or 'term_id'
+                'terms'    => array('invisible'),
+                'operator' => 'NOT IN', // Excluded
+            )
+        )
 			);
 			$loop = new WP_Query($args);
+			//var_dump($loop->posts);
 			if ($loop->have_posts()) {
-				while ($loop->have_posts()) : $loop->the_post();
+				$x=0;
+				while ($loop->have_posts() && $x < 6 ) : $loop->the_post();
 					wc_get_template_part('content', 'product');
+					$x++;
 				endwhile;
 			} else {
 				echo __('No products found', 'storefront');
