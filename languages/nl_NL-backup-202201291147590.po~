@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ArtEzPress\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-01-27 11:41+0000\n"
-"PO-Revision-Date: 2022-01-29 11:47+0000\n"
+"PO-Revision-Date: 2021-03-18 12:19+0000\n"
 "Last-Translator: magaliechetrit\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -80,7 +80,7 @@ msgstr "Sub Thema van Storefront"
 
 #: inc/filters.php:70
 msgid "Clear"
-msgstr "Verwijder filters"
+msgstr "Transparant"
 
 #: woocommerce/single-product/meta.php:129
 msgid "Co-Publishers"
