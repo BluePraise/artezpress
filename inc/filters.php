@@ -1,7 +1,7 @@
 <?php
 $authors = [];
 $years = [];
-
+$current_lang      = pll_current_language();
 while (have_posts()) : the_post();
   global $product;
   if (strlen(get_field('author'))) {
@@ -53,8 +53,8 @@ $languages = array_unique($languages);
             </svg>
           </button>
           <div class="main-search__input">
-            <span class="fake-typewriter__input">Search</span>
-            <span class="fake-typewriter__input js-fake-typewriter__input"></span>
+            <span class="fake-typewriter__input"><?= _e('Search', 'artezpress') ?></span>
+            <span class="fake-typewriter__input js-fake-typewriter__input <?php if($current_lang === 'en'): echo 'js-en';  else: echo 'js-nl'; endif; ?>"></span>                
           </div>
         </form>
 
