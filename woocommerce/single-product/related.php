@@ -21,12 +21,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $product;
+$related_books = get_field('related_books');
+/**
+ * Related Books
+ */ 
+?>
 
-if ( $related_products ) : ?>
-
-	<section class="related-books">
-		
-			<h5 class="section-title"><?php echo _e('Related Publications', 'artezpress'); ?></h5>
+ <section class="related-books">
+	 <h5 class="section-title"><?php echo _e('Related Publications', 'artezpress'); ?></h5>
 
 		<?php
 			$current_tags = get_the_terms(get_the_ID(), 'product_tag');
@@ -40,28 +42,26 @@ if ( $related_products ) : ?>
 				    echo '<li><span class="btn black-on-white tag-pill " href="' . $tag_link . '">' . $tag_title . '</span></li>';
 				endforeach;
 				echo '</ul>';
-		    endif;
-		    ?>
-		<?php woocommerce_product_loop_start(); ?>
+		    endif;		
+		woocommerce_product_loop_start(); 
+		if ( $related_books ) : 
+			foreach ($related_books as $related_book) :
+				$related_book_ID = $related_book->ID ;
+				setup_postdata( $GLOBALS['post'] =& $related_book_ID ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+				wc_get_template_part( 'content', 'product' );
+			endforeach;
+		else: 
+			foreach ( $related_products as $related_product ) : 
+				$post_object = get_post( $related_product->get_id() );
+				setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+				wc_get_template_part( 'content', 'product' );
 
-			<?php foreach ( $related_products as $related_product ) : ?>
-
-					<?php
-					$post_object = get_post( $related_product->get_id() );
-
-					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
-
-					wc_get_template_part( 'content', 'product' );
-
-
-
-					?>
-
-			<?php endforeach; ?>
-
-		<?php woocommerce_product_loop_end(); ?>
-
+			endforeach; 
+		endif; 
+		woocommerce_product_loop_end(); 
+	?>
+	</div>
 	</section>
-	<?php
-endif;
-wp_reset_postdata();
+	<?php 
+	// Reset the global post object so that the rest of the page works correctly.
+	wp_reset_postdata();

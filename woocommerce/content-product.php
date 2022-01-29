@@ -28,13 +28,7 @@ $design 	= get_field('design');
 $book_lang  = get_field('ap_language');
 $current_lang_full = pll_current_language('name');
 $additional_editions = get_field('additional_editions');
-// $lang_en; 
 
-// if ($book_lang === 'English'): 
-//     $lang_en = 'lang-en';
-// else: 
-//     return '';
-// endif;
 
 // Ensure visibility.
 if (empty($product) || !$product->is_visible()) {
