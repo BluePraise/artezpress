@@ -30,7 +30,10 @@
                 $imgmeta    = wp_get_attachment_metadata($img);
         ?>
 
-        <div class="carousel-cell carousel-cell-highlights" style="background-image: url(<?php echo $img; ?>)" data-color="<?= $text_color; ?>"  data-url="<?= $permalink; ?>">
+        <div class="carousel-cell carousel-cell-highlights" 
+            style="background-image: url(<?php echo $img; ?>)" 
+            data-color="<?= $text_color; ?>" 
+            data-url="<?= $permalink; ?>">
           <div class="carousel-cell__title"><?= $title; ?></div>
        </div>
 

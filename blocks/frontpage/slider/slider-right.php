@@ -28,9 +28,9 @@ defined('ABSPATH') || exit;
             if ($loop->have_posts()) :
             while ($loop->have_posts()) : $loop->the_post();
 
-                $single_product_bg = get_field('custom_color');
-                $single_product_text_color = get_field('text_color');
-                $image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "full", false );
+                $single_product_bg          = get_field('custom_color');
+                $single_product_text_color  = get_field('text_color');
+                $image_data                 = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "full", false );
                 
                 $image_width = $image_data[1];
                 $image_height = $image_data[2];
