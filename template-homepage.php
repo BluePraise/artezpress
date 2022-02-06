@@ -60,31 +60,43 @@ get_header(); ?>
             endif;
 
 			$args = array(
-				'orderby'         => 'date',
-				'order'           => 'DESC',
-				'posts_per_page'  => 6,  // -1 will get all the product. Specify positive integer value to get the number given number of product
-				'post_type'       => 'product',
-				'meta_query'      => array(
-             'relation'    => 'AND',
-             array(
-               'relation' => 'OR',
-                array(
-                    'key'    => 'additional_editions_0_type_of_edition',
-                    'compare'  => '!=',
-                    'value'    => $current_lang_full,
-                ),
-                array(
-                'key'    => 'additional_editions_0_type_of_edition',
-                 'compare' => 'NOT EXISTS'
-             )
-           ),
-             array(
-               'key'    => 'add_coming_soon',
-               'compare' => '!=',
-               'value'    => 1
-           ),
-          ),
-			);
+ 				'orderby'         => 'date',
+ 				'order'           => 'DESC',
+ 				'posts_per_page'  => 6,  // -1 will get all the product. Specify positive integer value to get the number given number of product
+ 				'post_type'       => 'product',
+ 				'meta_query'      => array (
+
+              		'relation'    => 'AND', array(
+
+                		'relation' => 'OR',
+							array(
+								'key'    	=> 'additional_editions_0_type_of_edition',
+								'compare'  	=> '!=',
+								'value'    	=> $current_lang_full,
+							),
+							array(
+								'key'     	=> 'additional_editions_0_type_of_edition',
+								'compare' 	=> 'NOT EXISTS'
+						)
+            		),
+
+					array(
+						'key'    	=> 'add_coming_soon',
+						'compare' 	=> '!=',
+						'value'    	=> 1
+					),
+           		),
+
+ 				'tax_query'		=> array( 
+					 array(
+                 		'taxonomy' => 'product_cat',
+                 		'field'    => 'slug', // Or 'name' or 'term_id'
+                 		'terms'    => array('invisible'),
+                 		'operator' => 'NOT IN', // Excluded
+             		)
+         		)
+ 			);
+			 
 			$loop = new WP_Query($args);
 			if ($loop->have_posts()) {
 				while ($loop->have_posts()) : $loop->the_post();
