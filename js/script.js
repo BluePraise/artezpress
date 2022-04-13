@@ -18,7 +18,55 @@ jQuery(window).on("load", function () {
 });
 
   
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
+    $('ul#shipping_method input').each(function () {
+        var $this = $(this);
+        if ($this.val().indexOf("local_pickup") != -1) {
+            if ($this.prop('checked')) {
+                hideShippingFields();
+            }
+            if ($this.attr('type') == 'hidden') {
+                hideShippingFields();
+            }
+        }
+    });
+
+
+    $(document).on('change', 'ul#shipping_method input', function () {
+        var $this = $(this);
+        if ($this.val().indexOf("local_pickup") != -1) {
+            hideShippingFields();
+        } else {
+            showShippingFields();
+        }
+    });
+
+    function hideShippingFields() {
+        var $col1 = $('.col-1');
+        $('#ship-to-different-address-checkbox').prop('checked', false);
+        $('.woocommerce-shipping-fields').find('.radio-toggle').css({ opacity: '0.4' });
+        $('.woocommerce-shipping-fields').find('#ship-to-different-address-radio-no').attr('disabled', 'disabled');
+        $('.woocommerce-shipping-fields').find('#ship-to-different-address-radio-yes').attr('disabled', 'disabled');
+        $('.woocommerce-additional-fields').appendTo($col1);
+        $('.shipping_address').hide();
+        $col1.css({
+            marginLeft: "auto",
+            marginRight: "auto"
+        });
+    }
+
+    function showShippingFields() {
+        $col2 = $('.woocommerce-shipping-fields').closest('.col-2');
+        var $col1 = $('.col-1');
+        $('.woocommerce-additional-fields').appendTo($col2);
+        $('.woocommerce-shipping-fields').find('.radio-toggle').css({ opacity: '1' });
+        $('.woocommerce-shipping-fields').find('#ship-to-different-address-radio-no').removeAttr('disabled', '');
+        $('.woocommerce-shipping-fields').find('#ship-to-different-address-radio-yes').removeAttr('disabled');
+        $col1.css({
+            marginLeft: "",
+            marginRight: ""
+        });
+    }
     
     function getViewportOffset($e) {
         var $window = $(window),

@@ -42,8 +42,7 @@ if ( $max_value && $min_value === $max_value ) {
         title="<?php echo esc_attr_x( 'Qty', 'Product quantity input tooltip', 'woocommerce' ); ?>"
         size="4"
         pattern="<?php echo esc_attr( $pattern ); ?>"
-        inputmode="<?php echo esc_attr( $inputmode ); ?>"
-        aria-labelledby="<?php echo esc_attr( $labelledby ); ?>" />
+        inputmode="<?php echo esc_attr( $inputmode ); ?>" />
     <input type="button" value="+" class="qty_button plus" />
 </div>
 	<?php

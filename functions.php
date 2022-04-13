@@ -362,6 +362,26 @@ function action_woocommerce_order_status_changed( $order_id, $old_status, $new_s
 }
 add_filter( 'woocommerce_payment_complete_order_status', 'action_woocommerce_order_status_changed', 10, 42);
 
+
+/**
+ * When click and collect use base address 
+ * basse_address : Name of Customer
+ * Base_address_2: c/o ArtezPress
+ * onderlangs 9, 6812 CE Arnhem
+ */
+
+function local_pickup_ship_to_artez() {
+    $chosen_shipping = WC()->session->get( 'chosen_shipping_methods' )[0];
+    $chosen_shipping = explode(':', $chosen_shipping);
+    if ( $chosen_shipping[0] == 'local_pickup' ){
+		add_filter( 'woocommerce_ship_to_different_address_checked', '__return_true' );
+        // wc_add_notice( __( "You need to fill up \"Order notes\" with some details.", "woocommerce" ), 'error' );
+    }
+}
+// add_filter( 'woocommerce_countries_base_postcode', '6812 CE');
+// add_filter( 'woocommerce_countries_base_city', '' );
+// add_filter( 'woocommerce_countries_base_country', 'Netherlands');
+
 /**
  * Hide shipping rates when free shipping is available.
  * Updated to support WooCommerce 2.6 Shipping Zones.
@@ -393,7 +413,6 @@ add_filter( 'woocommerce_package_rates', 'hide_shipping_when_free_is_available',
 
 add_filter('transient_shipping-transient-version', function($value, $name) { return false; }, 10, 2);
 
-// add_action('woocommerce_related_products','filter_related_productss');
 
 add_action('woocommerce_thankyou', 'ship_catalogue', 10, 1);
 function ship_catalogue( $order_id ) {
