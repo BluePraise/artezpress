@@ -889,20 +889,24 @@ function alter_order_shipping_address( $order, $data ) {
     // Loop through cart items
 	$shipping_method ='local_pickup:2'; 
    
-
+//echo $order->has_shipping_method('Local Pickup');
         // Targetting a custom product type
-        if ( $order->has_shipping_method('Local Pickup') ) {
+
+      if($order->has_shipping_method('local_pickup')) {
             // Changing shipping address
             $order->set_address( array(
+				'first_name' => "Store manager first name",
+				'last_name' => "Store manager last name",
                 'company'    => 'Test',
                 'email'      => 'test@test.com',
-                'phone'      => '777-777-777-777',
+                'phone'      => '777-777-7778',
+				'address_1' => "Store address",
                 'city'       => 'London',
                 'state'      => '',
                 'postcode'   => '12345',
                 'country'    => 'UK'
             ), 'shipping' );
-            
-        }
+        
+	  }
 
 }
