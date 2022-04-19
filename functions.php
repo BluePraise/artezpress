@@ -882,3 +882,27 @@ remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 remove_action('wp_head', 'rel_canonical');
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+
+
+add_action( 'woocommerce_checkout_create_order', 'alter_order_shipping_address', 10, 2 );
+function alter_order_shipping_address( $order, $data ) {
+    // Loop through cart items
+	$shipping_method ='local_pickup:2'; 
+   
+
+        // Targetting a custom product type
+        if ( $order->has_shipping_method('Local Pickup') ) {
+            // Changing shipping address
+            $order->set_address( array(
+                'company'    => 'Test',
+                'email'      => 'test@test.com',
+                'phone'      => '777-777-777-777',
+                'city'       => 'London',
+                'state'      => '',
+                'postcode'   => '12345',
+                'country'    => 'UK'
+            ), 'shipping' );
+            
+        }
+
+}
