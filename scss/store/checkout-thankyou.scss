@@ -1,0 +1,12 @@
+// custom styling and overrides for thank you page at checkout
+// added May 8 2022
+.woocommerce-thankyou-order-received {
+	text-align: center;
+}
+
+.logo.woocommerce-thankyou-order-received {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3.2rem;
+}
+    
