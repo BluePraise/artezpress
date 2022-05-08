@@ -9,4 +9,40 @@
     justify-content: center;
     margin-bottom: 3.2rem;
 }
+.woocommerce-thankyou-order-details.order_details {
+	border: 2px solid black;
+    border-radius: 4px;	
+}
+
+
+.woocommerce-order-details {
+	margin: 3.2rem 0;
+}
+.woocommerce-order-details__title {
+	margin: 4.8rem 0;
+}
+
+.woocommerce-table--order-details {
+	margin: auto;
+	width: 100%;
+}
+.woocommerce-table__product-table.product-total,
+.woocommerce-table__product-name.product-name {
+	text-align: left;
+	padding: 8px 0;
+}
+
+.woocommerce-table__product-name.product-name {
+	display: flex;
+    justify-content: space-between;
+    margin-right: 4.8rem;
+}
+
+.woocommerce-table--order-details tfoot tr {
+	text-align: left;
+    border-top: 1px solid;
     
+    th {
+    	padding: 8px 0;	
+    }
+}
