@@ -246,3 +246,52 @@ table.my_account_orders {
     float: right;
     margin-right: 0;
 }
+
+.login-container {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    .login-link {
+        @include baseSmallText;
+    }
+}
+// MY Account Logged In
+.account-page.logged-in {
+    .woocommerce-EditAccountForm.edit-account {
+        display: flex;
+        flex-direction: column;
+    }
+    .woocommerce-form-row label { 
+        display: inline-block;
+        @include baseSmallText;
+    }
+    .woocommerce-form-row {
+        width: 100%;
+        padding: 16px 0;
+        span {
+            display: block;
+            font-size: 12px;
+        }
+    }
+    .form-row {
+        border-bottom: 0px solid currentColor;
+    }
+    input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=url], input[type=tel], input[type=email], input[type=search], input[type=tel], input[type=color], input[type=file], input[type=text], input[type=password], textarea {
+        width: 100%;
+    }
+    fieldset {
+        margin-top: 4.8rem;
+    }
+    button.button {
+        @include solidButton(100px, .4rem, 1.6rem);
+    }
+
+    .woocommerce-Address-title.title  {
+        margin-bottom: 3.2rem;
+        margin-top: 3.2rem;
+        a {
+            @include solidButton(100px, .4rem, 1.6rem);
+        }
+    }
+    
+}

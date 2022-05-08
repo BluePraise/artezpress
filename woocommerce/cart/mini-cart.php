@@ -23,15 +23,29 @@ do_action('woocommerce_before_mini_cart'); ?>
 <?php
 global $woocommerce;
 $count = $woocommerce->cart->cart_contents_count;
+
 ?>
 
 <?php if (is_user_logged_in()) :
+
 	$current_user = wp_get_current_user();
-	// var_dump($current_user);
 	$name = $current_user->user_firstname;
 ?>
+<div class="login-container">
+	<a class="login-link" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" alt="<?php esc_attr_e( 'Login', 'artezpress' ); ?>">
+    	<?php _e( 'View Account', 'artezpress' ); ?>
+	</a>
+	<a class="login-link" href="<?php esc_url( wc_logout_url() ); ?>" alt="<?php esc_attr_e( 'Logout', 'artezpress' ); ?>">
+    	<?php _e( 'Log Out', 'artezpress' ); ?>
+	</a>
+</div>
 	<span class="mini-cart-greeting">Hi <?php echo $name; ?>,</span>
 <?php else :  ?>
+	<div class="login-container">
+	<a class="login-link" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" alt="<?php esc_attr_e( 'Login', 'artezpress' ); ?>">
+    	<?php _e( 'Login to your account', 'artezpress' ); ?>
+	</a>
+</div>
 	<span class="mini-cart-greeting">Hi,</span>
 <?php endif; ?>
 
