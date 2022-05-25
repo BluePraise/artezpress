@@ -266,7 +266,7 @@
 
 .social-menu {
 	@media (min-width: 768px) {
-		margin-bottom: calc((#{$menuText-line-height-rem} * 2) - 1rem);
+		   margin-bottom: 2.4rem;
 	}
 	@media (max-width: 767px) {
 		margin-bottom: $menuText-line-height-rem;
@@ -324,6 +324,10 @@
 			padding: 0.3rem 0;
 		}
 	}
+}
+
+.part-of + .part-of {
+	  margin-top: 2rem;
 }
 
 // ArtEZ University Logo

@@ -35,7 +35,7 @@
     ?>
 
         <div class="carousel-cell carousel-cell-highlights" 
-          style="background-color: <?= $single_product_bg;?>" 
+          style="background-color: <?= $single_product_bg;?> color: <?= $single_product_text_color; ?>" 
           data-color="<?= $single_product_text_color; ?>" 
           data-url="<?php the_permalink(); ?>">
 

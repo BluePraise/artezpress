@@ -50,10 +50,11 @@
             <li>
                 <a href="https://www.instagram.com/artezpress/"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_ig.svg" alt="Instagram Icon"></a>
             </li>
-            <li>
-                <a href="https://www.linkedin.com/company/artez-press/"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_li.svg" alt="LinkedIn Icon"></a>
-            </li>
+            <li> <a href="https://www.linkedin.com/company/artez-press/"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/icons/menu_li.svg" alt="LinkedIn Icon"></a></li>
         </ul>
+    </div>
+    <div class="part-of">
+        ArtEZ Press is <?php _e('publisher of', 'artezpress'); ?> APRIA
     </div>
     <div class="part-of">
         ArtEZ Press <?php _e('is part of', 'artezpress'); ?> <br>
