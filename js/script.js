@@ -19,9 +19,9 @@ jQuery(window).on("load", function () {
 
   
 jQuery(document).ready(function ($) {
-    $('ul#shipping_method input').each(function () {
+     $('ul#shipping_method input').each(function () {
         var $this = $(this);
-        if ($this.val().indexOf("local_pickup") != -1) {
+        if ($this.val().indexOf("wc_pickup_store") != -1  ) {
             if ($this.prop('checked')) {
                 hideShippingFields();
             }
@@ -34,13 +34,12 @@ jQuery(document).ready(function ($) {
 
     $(document).on('change', 'ul#shipping_method input', function () {
         var $this = $(this);
-        if ($this.val().indexOf("local_pickup") != -1) {
+        if ($this.val().indexOf("wc_pickup_store") != -1) {
             hideShippingFields();
         } else {
             showShippingFields();
         }
     });
-
     function hideShippingFields() {
         var $col1 = $('.col-1');
         $('#ship-to-different-address-checkbox').prop('checked', false);
