@@ -58,10 +58,8 @@ function artezpress_style()
 {
 	wp_register_style('artezpress-css', get_stylesheet_directory_uri() . '/style.css');
 	wp_register_style('app-css', get_stylesheet_directory_uri() . '/assets/css/app.css');
-	wp_register_style('animate', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 	wp_enqueue_style('artezpress-css');
 	wp_enqueue_style('app-css');
-	wp_enqueue_style('animate');
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui');
 	wp_enqueue_script('masonry');
@@ -73,15 +71,15 @@ function artezpress_style()
     if (is_page()):
         wp_enqueue_script('jquery-ui-accordion');
     endif;
-	if(is_archive() || is_front_page()):
-        wp_register_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
-        wp_register_script('flickity-fade',  "https://unpkg.com/flickity-fade@1/flickity-fade.js", ['jquery'], null, false);
-        wp_register_style('flickity-theme', 'https://unpkg.com/flickity@2/dist/flickity.min.css');
-        wp_register_style('flickity-fade', 'https://unpkg.com/flickity-fade@1/flickity-fade.css');
-		wp_enqueue_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, true);
-		wp_enqueue_script('flickity-fade',  "https://unpkg.com/flickity-fade@1/flickity-fade.js", ['jquery'], null, true);
-		wp_enqueue_style('flickity-theme');
-    endif;
+
+	wp_register_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, false);
+	wp_register_script('flickity-fade',  "https://unpkg.com/flickity-fade@1/flickity-fade.js", ['jquery'], null, false);
+	wp_register_style('flickity-theme', 'https://unpkg.com/flickity@2/dist/flickity.min.css');
+	wp_register_style('flickity-fade', 'https://unpkg.com/flickity-fade@1/flickity-fade.css');
+	wp_enqueue_script('flickity-theme',  "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js", ['jquery'], null, true);
+	wp_enqueue_script('flickity-fade',  "https://unpkg.com/flickity-fade@1/flickity-fade.js", ['jquery'], null, true);
+	wp_enqueue_style('flickity-theme');
+
     if (is_archive()):
         wp_enqueue_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
         wp_enqueue_script('filters', get_theme_file_uri() . '/js/filters.js', [], null, true);
@@ -104,7 +102,7 @@ add_action('wp_enqueue_scripts', 'artezpress_style');
 
 remove_filter('the_content', 'wpautop');
 
-
+add_theme_support('woocommerce');
 
 
 function ap_excerpt_more($more)
@@ -672,8 +670,8 @@ function ajax_filter_get_posts($taxonomy)
 	die();
 }
 
-add_action('wp_ajax_filter_posts', 'ajax_filter_get_posts');
-add_action('wp_ajax_nopriv_filter_posts', 'ajax_filter_get_posts');
+// add_action('wp_ajax_filter_posts', 'ajax_filter_get_posts');
+// add_action('wp_ajax_nopriv_filter_posts', 'ajax_filter_get_posts');
 
 
 // A function to change the text on the single shop file.
@@ -780,7 +778,7 @@ function artez_random_bg()
 	echo $rand_row['bg_images_uploaded'];
 	wp_die();
 }
-add_action('wp_ajax_nopriv_artez_random_bg', 'artez_random_bg');
+// add_action('wp_ajax_nopriv_artez_random_bg', 'artez_random_bg');
 
 
 // add_filter('woocommerce_cart_totals_coupon_html', 'filter_woocommerce_cart_totals_coupon_html', 10, 3);
@@ -910,3 +908,19 @@ function alter_order_shipping_address( $order, $data ) {
 	  }
 
 }
+
+function ap_author_post_type() {
+	register_post_type('author',
+		array(
+			'labels'      => array(
+				'name'          => __('Authors', 'artezpress'),
+				'singular_name' => __('author', 'artezpress'),
+				'add_new' 		=> __('New Author', 'artezpress')
+			),
+				'menu_icon'   => 'dashicons-book-alt',
+				'public'      => true,
+				'has_archive' => false,
+		)
+	);
+}
+add_action('init', 'ap_author_post_type');
