@@ -1,0 +1,31 @@
+.author-page .container-l.grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2%;
+}
+
+@media (max-width: 768.1px) {
+    .author-page .container-l.grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 481px) {
+    .author-page .container-l.grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.author-page .author-content__top {
+    h2 {
+        margin: 16px 0;
+    }
+}
+
+.author-page .author-content__socials {
+    a {
+        display: inline-block;
+        width: 2.2rem;
+        height: 2.8rem;
+        padding: 0.3rem;
+    }
+}

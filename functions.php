@@ -908,19 +908,3 @@ function alter_order_shipping_address( $order, $data ) {
 	  }
 
 }
-
-function ap_author_post_type() {
-	register_post_type('author',
-		array(
-			'labels'      => array(
-				'name'          => __('Authors', 'artezpress'),
-				'singular_name' => __('author', 'artezpress'),
-				'add_new' 		=> __('New Author', 'artezpress')
-			),
-				'menu_icon'   => 'dashicons-book-alt',
-				'public'      => true,
-				'has_archive' => false,
-		)
-	);
-}
-add_action('init', 'ap_author_post_type');

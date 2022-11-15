@@ -1,0 +1,192 @@
+{
+    "key": "group_63509c2448ff8",
+    "title": "Author Fields",
+    "fields": [
+        {
+            "key": "field_63509dbb20842",
+            "label": "Add Author",
+            "name": "add_author",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Nieuwe Auteur",
+            "sub_fields": [
+                {
+                    "key": "field_63509cef20841",
+                    "label": "Author Image",
+                    "name": "author_image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "uploader": "",
+                    "acfe_thumbnail": 0,
+                    "return_format": "url",
+                    "preview_size": "large",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "translations": "copy_once",
+                    "library": "all"
+                },
+                {
+                    "key": "field_63509e4c20843",
+                    "label": "Author Name",
+                    "name": "author_name",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "translations": "translate"
+                },
+                {
+                    "key": "field_63509e5a20844",
+                    "label": "Author Bio",
+                    "name": "author_bio",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0,
+                    "translations": "translate"
+                },
+                {
+                    "key": "field_63509ea520845",
+                    "label": "Author Website",
+                    "name": "author_website",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "translations": "copy_once"
+                },
+                {
+                    "key": "field_63509eba20846",
+                    "label": "Author Instagram",
+                    "name": "author_instagram",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "translations": "copy_once"
+                },
+                {
+                    "key": "field_63509ec620847",
+                    "label": "Author Twitter",
+                    "name": "author_twitter",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "translations": "copy_once"
+                },
+                {
+                    "key": "field_63509ed520848",
+                    "label": "Author Facebook",
+                    "name": "author_facebook",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "translations": "copy_once"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "archive-authors.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "permalink",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1668435645
+}
