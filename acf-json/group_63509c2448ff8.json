@@ -155,6 +155,23 @@
                     "default_value": "",
                     "placeholder": "",
                     "translations": "copy_once"
+                },
+                {
+                    "key": "field_63736ff91bd11",
+                    "label": "Author Linkedin",
+                    "name": "author_linkedin",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "translations": "copy_once"
                 }
             ]
         }
@@ -188,5 +205,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1668435645
+    "modified": 1668509711
 }
