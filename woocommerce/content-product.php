@@ -60,9 +60,7 @@ if (empty($product) || !$product->is_visible()) {
 		?>
 
 	<figure class="book-item-card__cover">
-		<?php
-		woocommerce_template_loop_product_thumbnail();
-		?>
+		<?php woocommerce_template_loop_product_thumbnail(); ?>
 	</figure>
 
 	<h4 class="book-item-card__title"><?php echo get_the_title(); ?></h4>

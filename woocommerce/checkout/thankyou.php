@@ -42,7 +42,7 @@ defined( 'ABSPATH' ) || exit;
 			<div class="woocommerce-order-overview woocommerce-thankyou-order-confirmation order_details">
 
                 <?php 
-                    if (is_user_logged_in()) :
+                    if (is_user_logged_in() && !is_checkout()) :
                         $billing_name = get_billing_first_name();
                     ?>
                     <p>Hi <?php echo $billing_name; ?>,</p>
