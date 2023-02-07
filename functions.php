@@ -315,18 +315,18 @@ function change_preorder_status_to_paid ( $order_id ) {
     $order = wc_get_order( $order_id );
 
 	// change pre-order status to 'processing'.
-	// The processing status is needed, because this is the status 
+	// The processing status is needed, because this is the status
 	// Hexspoor WMS uses to proces an order. They do not have a status "Pre-Order"
 	if( $order->get_status() === 'pre-ordered') {
 		$order->update_status('processing');
     }
-    
+
 }
 
 // Translate editions in cart item
 
 function add_custom_text_after_cart_item_name( $cart_item, $cart_item_key ) {
-    
+
     $product = $cart_item['data'];
     $edition = get_post_meta( $product->get_id(), 'ap_language', true );
 
@@ -352,7 +352,7 @@ function action_woocommerce_order_status_changed( $order_id, $old_status, $new_s
 		return;
 	}
     // Compare
-    if ( ! $order_id ) {return;}            
+    if ( ! $order_id ) {return;}
 	$order = wc_get_order( $order_id );
 	if( $order->get_status() == 'pre-ordered'  ) {
 		$order->update_status( 'processing' );
@@ -362,7 +362,7 @@ add_filter( 'woocommerce_payment_complete_order_status', 'action_woocommerce_ord
 
 
 /**
- * When click and collect use base address 
+ * When click and collect use base address
  * basse_address : Name of Customer
  * Base_address_2: c/o ArtezPress
  * onderlangs 9, 6812 CE Arnhem
@@ -392,9 +392,9 @@ function hide_shipping_when_free_is_available( $rates) {
     // Only modify rates if free_shipping is present
     $free = array();
     if (is_checkout()):
-		
+
         foreach ( $rates as $rate_id => $rate ) {
-			
+
             if ( 'free_shipping' === $rate->method_id ) {
                 $free[ $rate_id ] = $rate;
                 break;
@@ -417,7 +417,7 @@ function ship_catalogue( $order_id ) {
     if ( ! $order_id )
         return;
 
-    // Allow code execution only once 
+    // Allow code execution only once
     if( ! get_post_meta( $order_id, '_thankyou_action_done', true ) ) {
 
         // Get an instance of the WC_Order object
@@ -432,7 +432,7 @@ function ship_catalogue( $order_id ) {
         if($order->is_paid())
             $paid = __('yes');
         else
-		
+
             $paid = __('no');
 
 			$all_ids = get_posts( array(
@@ -453,7 +453,7 @@ function ship_catalogue( $order_id ) {
 					$order->add_product( wc_get_product($id), 1);
 				}
 
-			
+
 
         // Output some data
         echo '<p>Order ID: '. $order_id . ' — Order Status: ' . $order->get_status() . ' — Order is paid: ' . $paid . '</p>';
@@ -474,12 +474,12 @@ add_filter( 'wc_add_to_cart_message_html', '__return_false' );
 
 function custom_override_checkout_fields($fields) {
     unset($fields['order']['order_comments']);
-   // unsetting fields takes a little bit of research for me. So for this round 
+   // unsetting fields takes a little bit of research for me. So for this round
    // I am going to use CSS to not show the labels.
     // unset($fields['billing']['billing_address_1']);
 //  $fields['shipping']['shipping_first_name']['placeholder'] = 'First Name';
 //  $fields['shipping']['shipping_last_name']['placeholder'] = 'Last Name';
-//  $fields['shipping']['shipping_company']['placeholder'] = 'Company Name'; 
+//  $fields['shipping']['shipping_company']['placeholder'] = 'Company Name';
 //  $fields['billing']['billing_last_name']['placeholder'] = 'Last Name';
 //  $fields['billing']['billing_email']['placeholder'] = 'Email Address ';
 //  $fields['billing']['billing_phone']['placeholder'] = 'Phone ';
@@ -560,10 +560,10 @@ add_filter('get_post_metadata', 'add_dynamic_post_meta', 10, 4);
 
 /**
  * Change number of related products output
- */ 
+ */
 function woo_related_products_limit() {
   global $product;
-	
+
 	$args['posts_per_page'] = 6;
 	return $args;
 }
@@ -800,7 +800,6 @@ add_filter('woocommerce_coupons_enabled', 'disable_coupon_field_on_checkout');
 
 // THIS IS TO HIDE COLONS AFTER THE SHIPPING LABELS `\_--_/
 function ace_hide_shipping_title( $label ) {
-	
 	return str_replace( ':', ' ', $label);
 }
 add_filter( 'woocommerce_cart_shipping_method_full_label', 'ace_hide_shipping_title' );

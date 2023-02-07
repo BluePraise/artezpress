@@ -29,15 +29,15 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 <?php //YOU CAN FIND THE LOGIN IN THE FILE FORM-LOGIN ?>
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
-    <?php //.flex and col_left and right are shit I made up woocommerce-checkout-container is from woocommerce. ?>    
+    <?php //.flex and col_left and right are shit I made up woocommerce-checkout-container is from woocommerce. ?>
     <div class="grid woocommerce-checkout-container">
-    
+
         <div class="col_left">
             <?php if ( $checkout->get_checkout_fields() ) : ?>
                 <?php // .woocommerce-ap-custom .form-title Are classes I made up. You can change these titles to H3 or spans and change the classnames.?>
                 <div class="woocommerce-ap-custom form-title"><?php _e('Billing Address', 'artezpress'); ?></div>
                 <?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
-                <?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>    
+                <?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>
                 <div class="col2-set" id="customer_details">
                     <div class="col-1">
                         <?php // you can find this snippet in checkout/form-billing ?>
@@ -57,19 +57,19 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
         <?php // .?>
         <div class="col_right">
             <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
-        
+
             <div class="woocommerce-ap-custom form-title"><?php esc_html_e( 'Your Order', 'woocommerce' ); ?></div>
-        
+
                 <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
-            <?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>    
+            <?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>
             <div id="order_review" class="woocommerce-checkout-review-order">
                 <?php // you can find this form in review-order ?>
                 <?php do_action( 'woocommerce_checkout_order_review' ); ?>
             </div>
 
             <?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
-        </div>    
+        </div>
     </div>
 
 </form>

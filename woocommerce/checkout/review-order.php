@@ -33,22 +33,22 @@ global $woocommerce;
 	?>
 			<div class="<?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item review-order-row table-row', $cart_item, $cart_item_key)); ?>">
 				<div class="cart-item-row woocommerce-ap-custom">
-					<?php echo apply_filters('woocommerce_checkout_cart_item_quantity', ' <span class="product-quantity">' . sprintf('%s <span class="ap-icon-times">✕</span> &nbsp;',  $cart_item['quantity']) . ' </span>', $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+					<?php echo apply_filters('woocommerce_checkout_cart_item_quantity', ' <span class="product-quantity">' . sprintf('%s <span class="ap-icon-times">✕</span> &nbsp;',  $cart_item['quantity']) . ' </span>', $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
-					<?php echo apply_filters('woocommerce_cart_item_name', '<span class="product-name">' . $_product->get_name(), $cart_item, $cart_item_key) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+					<?php echo apply_filters('woocommerce_cart_item_name', '<span class="product-name">' . $_product->get_name(), $cart_item, $cart_item_key) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
-					<?php echo wc_get_formatted_cart_item_data($cart_item); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+					<?php echo wc_get_formatted_cart_item_data($cart_item); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
 				</div>
 				<div class="product-total">
-					<?php echo apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+					<?php echo apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
 				</div>
 			</div>
 	<?php
 		}
 	}
-   do_action('woocommerce_review_order_after_cart_contents'); 
+   do_action('woocommerce_review_order_after_cart_contents');
 	?>
 
 	<div class="review-order">
@@ -84,15 +84,15 @@ global $woocommerce;
 
             </div>
 		<?php endif; ?>
-        
+
 		<?php do_action('woocommerce_review_order_before_order_total'); ?>
-        
+
 		<div class="order-total review-order-row">
 			<div><?php esc_html_e('Total', 'woocommerce'); ?></div>
 			<?php wc_cart_totals_order_total_html(); ?>
 		</div>
-       
-		
+
+
 		<?php do_action('woocommerce_review_order_after_order_total'); ?>
 
 	</div>

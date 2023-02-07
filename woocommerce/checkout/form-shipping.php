@@ -19,10 +19,10 @@
 
 defined('ABSPATH') || exit;
 ?>
-<?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>    
+<?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>
 <div class="woocommerce-shipping-fields">
 	<?php if (true === WC()->cart->needs_shipping_address()) : ?>
-        <?php //You can change the title classes - not a problem ?>    
+        <?php //You can change the title classes - not a problem ?>
 		<div class="woocommerce-ap-custom form-title"><?php _e("Shipping Address", "artezpress"); ?></div>
         <?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>
 		<div class="radio-toggle">
@@ -31,7 +31,7 @@ defined('ABSPATH') || exit;
                 <label class="woocommerce-custom-form__label-for-radio" for="#"><?php _e('Shipping address is the same', 'artezpress'); ?></label>
 			</label>
 			<label class="woocommerce-form__label woocommerce-form__label-for-radio radio d-block">
-                <input id="ship-to-different-address-radio-yes" selected class="woocommerce-form__input woocommerce-form__input-radio input-radio" type="radio" name="ship_to_different_address_radio_toggle" value="1" <?php checked(apply_filters('woocommerce_ship_to_different_address_checked', 'shipping' === get_option('woocommerce_ship_to_destination') ? 1 : 0), 1); ?> /> 
+                <input id="ship-to-different-address-radio-yes" selected class="woocommerce-form__input woocommerce-form__input-radio input-radio" type="radio" name="ship_to_different_address_radio_toggle" value="1" <?php checked(apply_filters('woocommerce_ship_to_different_address_checked', 'shipping' === get_option('woocommerce_ship_to_destination') ? 1 : 0), 1); ?> />
                 <label class="woocommerce-custom-form__label-for-radio" for="#"><?php _e('Different shipping address', 'artezpress'); ?></label>
 			</label>
 			<span><input id="ship-to-different-address-checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" <?php checked(apply_filters('woocommerce_ship_to_different_address_checked', 'shipping' === get_option('woocommerce_ship_to_destination') ? 1 : 0), 1); ?> type="checkbox" name="ship_to_different_address" value="1" style="opacity:0;" /></span>
@@ -39,7 +39,7 @@ defined('ABSPATH') || exit;
 
         <?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>
 		<div class="shipping_address">
-            <?php //You can change the title classes - not a problem ?>    
+            <?php //You can change the title classes - not a problem ?>
 			<?php do_action('woocommerce_before_checkout_shipping_form', $checkout); ?>
             <?php //THIS IS FROM WOOCOMMERCE DANGER DANGER DO NOT CHANGE! ?>
 			<div class="woocommerce-shipping-fields__field-wrapper">

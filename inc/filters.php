@@ -54,7 +54,7 @@ $languages = array_unique($languages);
           </button>
           <div class="main-search__input">
             <span class="fake-typewriter__input"><?= _e('Search', 'artezpress') ?></span>
-            <span class="fake-typewriter__input js-fake-typewriter__input <?php if($current_lang === 'en'): echo 'js-en';  else: echo 'js-nl'; endif; ?>"></span>                
+            <span class="fake-typewriter__input js-fake-typewriter__input <?php if($current_lang === 'en'): echo 'js-en';  else: echo 'js-nl'; endif; ?>"></span>
           </div>
         </form>
 
