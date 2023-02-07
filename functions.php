@@ -80,7 +80,7 @@ function artezpress_style()
 	wp_enqueue_script('flickity-fade',  "https://unpkg.com/flickity-fade@1/flickity-fade.js", ['jquery'], null, true);
 	wp_enqueue_style('flickity-theme');
 
-    if (is_archive()):
+    if (is_shop()):
         wp_enqueue_script('typed',  get_theme_file_uri() . '/js/lib/typed/typed.min.js', ['jquery'], null, true);
         wp_enqueue_script('filters', get_theme_file_uri() . '/js/filters.js', [], null, true);
 	endif;

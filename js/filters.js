@@ -12,11 +12,15 @@ jQuery(document).ready(function ($) {
 
     // Get height of Search Bar and use as css variable for 'Book Archive' padding-top
     function getBarHeight() {
-        bookArchive.get(0).style.setProperty("--bar-height", (barHeight) + 'px');
+        if (bookArchive) {
+            bookArchive.get(0).style.setProperty("--bar-height", (barHeight) + 'px');
+        }
     }
 
     $(window).on("load resize", function (e) {
-        getBarHeight();
+        if (bookArchive) {
+            getBarHeight();
+        }
     });
 
     // when scrolling below the serach bar, hide and turn to fixed
@@ -125,7 +129,7 @@ jQuery(document).ready(function ($) {
             showCursor: false,
         });
     }
-    
+
 
     // remvoe and stop Typed on click
     typedContainer.click(function (e) {
