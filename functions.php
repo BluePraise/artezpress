@@ -880,8 +880,6 @@ remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 remove_action('wp_head', 'rel_canonical');
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
-
-
 if ( ! function_exists('ap_custom_post_type') ) {
 
 // Register Custom Post Type
@@ -891,37 +889,11 @@ function ap_author_custom_post_type() {
 		'name'                  => _x( 'Authors', 'Post Type General Name', 'artezpress' ),
 		'singular_name'         => _x( 'Author', 'Post Type Singular Name', 'artezpress' ),
 		'menu_name'             => _x( 'Authors', 'artezpress' ),
-		'name_admin_bar'        => _x( 'Authors', 'artezpress' ),
-		'archives'              => _x( 'authors', 'artezpress' ),
-		'attributes'            => _x( 'Author Attributes', 'artezpress' ),
-		'parent_item_colon'     => _x( 'Parent Item:', 'artezpress' ),
-		'all_items'             => _x( 'All Authors', 'artezpress' ),
-		'add_new_item'          => _x( 'Add New Author', 'artezpress' ),
-		'add_new'               => _x( 'Add New Author', 'artezpress' ),
-		'new_item'              => _x( 'New Author', 'artezpress' ),
-		'edit_item'             => _x( 'Edit Author', 'artezpress' ),
-		'update_item'           => _x( 'Update Author', 'artezpress' ),
-		'view_item'             => _x( 'View Author', 'artezpress' ),
-		'view_items'            => _x( 'View Items', 'artezpress' ),
-		'search_items'          => _x( 'Search Author', 'artezpress' ),
-		'not_found'             => _x( 'Not found', 'artezpress' ),
-		'not_found_in_trash'    => _x( 'Not found in Trash', 'artezpress' ),
-		'featured_image'        => _x( 'Featured Image', 'artezpress' ),
-		'set_featured_image'    => _x( 'Set featured image', 'artezpress' ),
-		'remove_featured_image' => _x( 'Remove featured image', 'artezpress' ),
-		'use_featured_image'    => _x( 'Use as featured image', 'artezpress' ),
-		'insert_into_item'      => _x( 'Insert into Author', 'artezpress' ),
-		'uploaded_to_this_item' => _x( 'Uploaded to this Authhor', 'artezpress' ),
-		'items_list'            => _x( 'Authors list', 'artezpress' ),
-		'items_list_navigation' => _x( 'Authors list navigation', 'artezpress' ),
-		'filter_items_list'     => _x( 'Filter Authors list', 'artezpress' ),
+		'name_admin_bar'        => _x( 'Authors', 'artezpress' )
 	);
 	$args = array(
-		'label'                 => $labels,
-		'description'           => _x( 'Authors of ArtEZ Press Books', 'artezpress' ),
+		"label" 				=> esc_html__( "authors", "artezpress" ),
 		'labels'                => $labels,
-		'supports'              => array( 'title'),
-		'taxonomies'            => array( 'category', 'author' ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
@@ -933,11 +905,11 @@ function ap_author_custom_post_type() {
 		'has_archive'           => true,
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
-		'rewrite'            	=> array( 'slug' => 'authors' ),
-		'capability_type'       => 'page',
+		"capability_type" 		=> "post",
+		"rewrite" 				=> [ "slug" => "authors", "with_front" => true ],
 	);
 	register_post_type( 'author', $args );
-
 }
 add_action( 'init', 'ap_author_custom_post_type', 0 );
+
 }

@@ -31,6 +31,27 @@
             "library": "all"
         },
         {
+            "key": "field_641c4b4afe5ef",
+            "label": "Author Last Name",
+            "name": "author_last_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Helps with sorting alphabetically",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "translations": "translate",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_63509e5a20844",
             "label": "Author Bio",
             "name": "author_bio",
@@ -149,6 +170,13 @@
                 "operator": "==",
                 "value": "author"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "default"
+            }
         ]
     ],
     "menu_order": 0,
@@ -172,5 +200,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1675789640
+    "modified": 1679575932
 }

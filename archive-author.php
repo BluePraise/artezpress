@@ -1,14 +1,26 @@
 <?php
+   /* Template Name: Author Overview */
     get_header();
+$args = array(
+    'post_type'         => 'author',
+    'post_status'       => 'publish',
+    'posts_per_page'    => -1,
+    'meta_key'          => 'author_last_name',
+    'orderby'           => 'meta_value',
+    'order'             => 'ASC',
+);
+$posts = new WP_Query( $args );
+
 ?>
 
 <main class="site-main page author-page" role="main">
 
-    <h2 class="page-title">Authors of ArtEZ Press</h2>
-      <?php if(have_posts): ?>
+   <?php if($posts -> have_posts()): ?>
+      <h2 class="page-title"><?php _e('Authors of ArtEZ Press', 'artezpress'); ?></h2>
 		<ul class="container-l grid">
          <?php
-               while ( have_posts() ): the_post();
+               while ( $posts -> have_posts() ):
+                     $posts->the_post();
                $author_image = get_field('author_image');
                $author_twitter = get_field('author_twitter');
                $author_instagram = get_field('author_instagram');
@@ -52,7 +64,7 @@
                  <?php endif; ?>
                </div>
             </li>
-         <?php endwhile; ?>
+         <?php endwhile; wp_reset_query(); ?>
 		</ul>
       <?php else: ?>
        <p>There are no authors.</p>
