@@ -11,17 +11,16 @@ if (is_product()) :
 	$single_product_text_color = get_field('text_color', $id);
 	$hex = $single_product_bg;
 	list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
-endif;
 ?>
-<?php if (is_product()) : ?>
-	<style>
-		body.single-product {
-			--book-background: <?php echo $r ?>, <?php echo $g ?>, <?php echo $b ?>;
-			background-color: rgb(<?php echo $r ?>, <?php echo $g ?>, <?php echo $b ?>);
-		}
-	</style>
+<style>
+	body.single-product {
+		--book-background: <?php echo $r ?>, <?php echo $g ?>, <?php echo $b ?>;
+		background-color: rgb(<?php echo $r ?>, <?php echo $g ?>, <?php echo $b ?>);
+	}
+</style>
 
 <?php endif; ?>
+
 <header class="main-menu-container fixed-bottom">
 	<?php if (!is_product()) : ?>
 		<div class="js-menu" style="display: none;">
