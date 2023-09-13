@@ -11,6 +11,6 @@
 
 Browser-sync: browser-sync https://artezpress.local:8890/ -w --files "**/*" --tunnel 'artezpress-peek'
 
-## Changelog as of 2021.12
-- Removed comments in script js 
-- Added link to coming soon slider
+## Changelog as of 2023-09-12
+- Added Essays section to Home Page. This is a copy of the Book section.
+Essays are products which given a category of 'essays' and are displayed on the home page.

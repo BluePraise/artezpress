@@ -691,8 +691,7 @@ function my_acf_admin_enqueue_scripts()
 
 // Ajax function for color extractor
 add_action('wp_ajax_extract_colors', 'extract_colors');
-function extract_colors()
-{
+function extract_colors() {
 
 	include_once("inc/colors.inc.php");
 	$ex = new GetMostCommonColors();
@@ -704,8 +703,7 @@ function extract_colors()
 	die();
 }
 
-function wpse39446_modify_featured_image_labels($labels)
-{
+function wpse39446_modify_featured_image_labels($labels) {
 	$labels->featured_image = __('Book Cover', 'artezpress');
 	$labels->set_featured_image = __('Set Book Cover', 'artezpress');
 	$labels->remove_featured_image = __('Remove Book Cover', 'artezpress');

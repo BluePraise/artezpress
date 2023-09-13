@@ -55,7 +55,7 @@ get_header(); ?>
             $book_obj           = get_sub_field('add_to_new');
             if ($book_obj):
             foreach ($book_obj as $b) :
-                $post_ex[] = $b; 
+                $post_ex[] = $b;
             endforeach;
             endif;
 
@@ -87,7 +87,7 @@ get_header(); ?>
 					),
            		),
 
- 				'tax_query'		=> array( 
+ 				'tax_query'		=> array(
 					 array(
                  		'taxonomy' => 'product_cat',
                  		'field'    => 'slug', // Or 'name' or 'term_id'
@@ -96,7 +96,7 @@ get_header(); ?>
              		)
          		)
  			);
-			 
+
 			$loop = new WP_Query($args);
 			if ($loop->have_posts()) {
 				while ($loop->have_posts()) : $loop->the_post();
@@ -110,11 +110,61 @@ get_header(); ?>
 		</div>
 		<!--/.products-->
 		<div class="excerpt-section__expand">
-            
+
 			<a class="btn excerpt-section__expand-btn black-on-white" href="<?php if($current_lang === 'en'): echo site_url("/books"); else:?> <?php echo site_url(); ?>/nl/boeken" <?php endif; ?>"><?php _e('See All Books', 'artezpress'); ?></a>
 		</div>
 
 	</section><!-- #main -->
+
+<?php
+		/**
+		 * ArtezPress Essays
+		 * If there is a product with the category 'essays' it will be displayed here
+		 * If more than one product is found, only the latest will be displayed
+		 * If there are no essays this whole section won't be displayed
+		 */
+		$args = array(
+			'orderby'         => 'date',
+			'order'           => 'DESC',
+			'posts_per_page'  => -1,  // -1 will get all the product. Specify positive integer value to get the number given number of product
+			'post_type'       => 'product',
+			'tax_query'		=> array(
+				array(
+					'taxonomy' => 'product_cat',
+					'field'    => 'slug', // Or 'name' or 'term_id'
+					'terms'    => array('essays'),
+					'operator' => 'IN', // Excluded
+				)
+			)
+		);
+		$loop = new WP_Query($args);
+		if ($loop->have_posts()) {
+?>
+	<section class="excerpt-section essays">
+		<h2 class="featured-title">ArtezPress Essays</h2>
+	<?php
+
+
+	?>
+
+		<div class="full-width products book-grid">
+			<?php
+
+							while ($loop->have_posts()) : $loop->the_post();
+								wc_get_template_part('content', 'product');
+							endwhile;
+			?>
+		</div><!--/.products-->
+	<?php $essays = get_term_by('slug', 'essays', 'product_cat');
+		  $essays_count = $essays->count;
+		if ($essays_count > 1):?>
+			<div class="excerpt-section__expand">
+				<a class="btn excerpt-section__expand-btn black-on-white" href="<?php if($current_lang === 'en'): echo site_url("/books"); else:?> <?php echo site_url(); ?>/nl/boeken" <?php endif; ?>"><?php _e('See All Essays', 'artezpress'); ?></a>
+			</div>
+
+		<?php endif;?>
+	</section><!--/.essays-->
+		<?php } wp_reset_postdata(); ?>
 
 	<section class="excerpt-section latest-news container">
 
@@ -139,7 +189,7 @@ get_header(); ?>
 	<?php } else {
 				echo __('<p>Currently there is no news.</p>', 'artezpress'); ?>
 		</div>
-		<!--/.new-grid-->
+		<!--/.news-grid-->
 	<?php
 			}
 			wp_reset_postdata();
