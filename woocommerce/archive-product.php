@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * The Template for displaying product archives, including the main shop page which is a post type archive
  *
@@ -14,10 +14,7 @@
  * @package WooCommerce\Templates
  * @version 3.4.0
  */
-
-
-
-get_header(); 
+get_header();
 get_template_part('inc/filters');
 ?>
 
@@ -48,16 +45,16 @@ get_template_part('inc/filters');
 
     if( have_rows('new_releases_row', 'option') ):
 
-      while( have_rows('new_releases_row', 'option') ): the_row(); 
+      while( have_rows('new_releases_row', 'option') ): the_row();
          $book_obj    = get_sub_field('add_to_new');
          if ($book_obj):
            foreach ($book_obj as $b) :
-              $post_ex[] = $b; 
+              $post_ex[] = $b;
            endforeach;
         endif;
-       endwhile; 
-      endif; 
-      
+       endwhile;
+      endif;
+
          $args = array(
            'orderby'         => 'date',
            'order'           => 'DESC',
@@ -84,7 +81,7 @@ get_template_part('inc/filters');
            ),
           ),
          );
-         
+
 
     $the_query = new WP_Query($args);
     if ($the_query->have_posts()) :
