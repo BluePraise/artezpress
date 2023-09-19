@@ -157,12 +157,17 @@ get_header(); ?>
 		</div><!--/.products-->
 	<?php $essays = get_term_by('slug', 'essays', 'product_cat');
 		  $essays_count = $essays->count;
+		// if more than 5 essays are found, display a button to see all essays
 		if ($essays_count > 1):?>
 			<div class="excerpt-section__expand">
-				<a class="btn excerpt-section__expand-btn black-on-white" href="<?php if($current_lang === 'en'): echo site_url("/books"); else:?> <?php echo site_url(); ?>/nl/boeken" <?php endif; ?>"><?php _e('See All Essays', 'artezpress'); ?></a>
+				<a class="btn excerpt-section__expand-btn black-on-white js-essays-filter"
+				   href="<?php if($current_lang === 'en'): echo site_url("/books"); else:?> <?php echo site_url(); ?>/nl/boeken" <?php endif; ?>">
+					<?php _e('See All Essays', 'artezpress'); ?>
+				</a>
 			</div>
 
 		<?php endif;?>
+
 	</section><!--/.essays-->
 		<?php } wp_reset_postdata(); ?>
 
@@ -177,9 +182,9 @@ get_header(); ?>
 			);
 			$loop = new WP_Query($args);
 			if ($loop->have_posts()) {
+
 				while ($loop->have_posts()) : $loop->the_post(); ?>
 					<?php get_template_part('inc/templateparts/news', 'excerpt'); ?>
-
 				<?php endwhile; ?>
 		</div>
 		<!--/.news-grid-->

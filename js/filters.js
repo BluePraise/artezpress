@@ -165,6 +165,7 @@ jQuery(document).ready(function ($) {
             freeScroll: true,
             groupCells: '80%',
             arrowShape: 'M66.97 100 16.97 50 66.97 0 72.69 5.72 28.41 50 72.69 94.28 66.97 100z',
+            hash: true
         });
     }
 
@@ -215,15 +216,16 @@ jQuery(document).ready(function ($) {
     var productList = $(".product");
     var filters = [];
 
-    $(".js-reset-filters").click(function (e) {
+
+    function resetFilters() {
         filters = [];
         productList.show();
 
         // reset all selected filters
         $('.tag-pill').removeClass('active');
-    });
+    }
 
-    $(".js-filter-item").click(function (e) {
+    function filterBookArchive(e) {
         e.preventDefault();
         var $this = $(this),
             $filter = $this.data("filter");
@@ -231,12 +233,10 @@ jQuery(document).ready(function ($) {
         $this.toggleClass("active");
         if (filters.indexOf($filter) === -1) {
             filters.push($filter);
-            console.log("filters = " + filters);
         } else {
             filters = filters.filter((f) => f !== $filter);
             productList.each(function () {
                 if ($(this).data("filters").indexOf($filter) !== -1) {
-                    console.log("filters 1 = " + $(this));
                     $(this).hide();
                 }
             });
@@ -250,17 +250,30 @@ jQuery(document).ready(function ($) {
             productList.each(function () {
                 var $this = $(this);
                 if ($this.data("filters").indexOf($filter) === -1) {
-                    console.log("filters 4 = " + $this);
                     if (filters.every((i) => !$this.data("filters").includes(i))) {
-                        console.log("filters 2 = " + $this);
                         $this.hide();
+                        console.log($this.data("filters"));
+                        // Add data("filters") to main.book-archive
+                        $('main.book-archive').attr('data-filters', $this.data("filters"));
                     }
                 } else {
-                    console.log("filters 3 = " + $this);
                     $this.show();
                 }
             });
         }
+    }
+    $(".js-reset-filters").click(function (e) {
+        e.preventDefault();
+        resetFilters();
+    });
+
+    // if main has data-filter attribute, add it to the filters array
+    if ($('main.book-archive').data("filters")) {
+        filterBookArchive();
+    }
+
+    $(".js-filter-item").click(function () {
+        filterBookArchive();
     });
 
 });
