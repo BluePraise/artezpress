@@ -359,7 +359,7 @@ function action_woocommerce_order_status_changed( $order_id, $old_status, $new_s
 		$order->update_status( 'processing' );
 	}
 }
-add_filter( 'woocommerce_payment_complete_order_status', 'action_woocommerce_order_status_changed', 10, 42);
+// add_filter( 'woocommerce_payment_complete_order_status', 'action_woocommerce_order_status_changed', 10, 42);
 
 
 /**
