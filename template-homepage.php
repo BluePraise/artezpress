@@ -132,7 +132,7 @@ get_header(); ?>
 				array(
 					'taxonomy' => 'product_cat',
 					'field'    => 'slug', // Or 'name' or 'term_id'
-					'terms'    => array('essays'),
+					'terms'    => array('essay'),
 					'operator' => 'IN', // Excluded
 				)
 			)
@@ -141,7 +141,7 @@ get_header(); ?>
 		if ($loop->have_posts()) {
 ?>
 	<section class="excerpt-section essays">
-		<h2 class="featured-title">ArtezPress Essays</h2>
+		<h2 class="featured-title">ArtezPress Essay Issues</h2>
 	<?php
 
 
