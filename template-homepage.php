@@ -132,7 +132,7 @@ get_header(); ?>
 				array(
 					'taxonomy' => 'product_cat',
 					'field'    => 'slug', // Or 'name' or 'term_id'
-					'terms'    => array('essay'),
+					'terms'    => array('essays'),
 					'operator' => 'IN', // Excluded
 				)
 			)
