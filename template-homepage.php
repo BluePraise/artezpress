@@ -141,7 +141,7 @@ get_header(); ?>
 		if ($loop->have_posts()) {
 ?>
 	<section class="excerpt-section essays">
-		<h2 class="featured-title">Artez Press Essay Issues</h2>
+		<h2 class="featured-title">ArtEZ Press Essay Issues</h2>
 	<?php
 
 
