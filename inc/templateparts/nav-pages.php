@@ -60,7 +60,7 @@
         </ul>
     </div>
     <div class="part-of">
-        ArtEZ Press is <?php _e('publisher of', 'artezpress'); ?> APRIA
+        ArtEZ Press is <?php _e('publisher of', 'artezpress'); ?> <a target="_blank" href="https://apria.artez.nl">APRIA</a>
     </div>
     <div class="part-of">
         ArtEZ Press <?php _e('is part of', 'artezpress'); ?> <br>
