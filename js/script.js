@@ -284,7 +284,7 @@ jQuery(document).ready(function ($) {
         $(".coming-soon-carousel").flickity({
             cellSelector: ".carousel-cell",
             imagesLoaded: true,
-            autoPlay: 11000,
+            autoPlay: 8000,
             fade: true,
             selectedAttraction: 1,
             friction: 1,
@@ -294,11 +294,53 @@ jQuery(document).ready(function ($) {
             on: {
                 ready: function () {
                     var $nav = $soon_carousel.find(".slider-nav__link");
+                    var $pagers = $(".coming-soon-carousel").find(".slider-nav__pager");
+                    var $selected_slide = $soon_carousel.find(".is-selected");
+                    var $slides = $(".coming-soon-carousel").find('.carousel-cell');
+                    
+                    sUrl = $selected_slide.data("url");
+                    $nav.attr("href", sUrl);
+
+                    if ($slides.length > 1) {
+                        // append a span to every nav pager.
+                        for (i = 0; i < $slides.length; i++) {
+                            $pagers.append("<span></span>");
+                            $pagers.find('span:first-child').addClass('is-active');
+                        }                    
+                    }
+
+                    $soon_carousel.on("select.flickity", function () {
+                        var $pager = $pagers.find("span");
+                        var $flkty = $(this).data('flickity');
+                        
+                        $pager.filter('.is-active').removeClass('is-active');
+                        $pager.eq($flkty.selectedIndex).addClass("is-active");
+                        // $pager.eq($flkty.prevSelectedIndex).removeClass('is-active');
+                    });
+
+                    $pagers.on('click', 'span', function() {
+                        var index = $(this).index();
+                        $(".coming-soon-carousel").flickity('select', index);
+                    });
+                },
+                change: function () {
+                        
+                    var $pagers = $(".oming-soon-carousel").find(".slider-nav__pager");
+                    var $nav = $soon_carousel.find(".slider-nav__link");
                     var $selected_slide = $soon_carousel.find(".is-selected");
                     
                     sUrl = $selected_slide.data("url");
                     $nav.attr("href", sUrl);
-                }
+                    
+                    
+                    $soon_carousel.on("scroll.flickity", function () {
+                        var $pager = $pagers.find("span");
+                        var $flkty = $(this).data('flickity');
+                            $pager.filter('.is-active').removeClass('is-active');
+                            $pager.eq($flkty.selectedIndex).addClass("is-active");
+                        }
+                    );
+                },
             }
         });
     }
