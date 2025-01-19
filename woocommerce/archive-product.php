@@ -30,8 +30,13 @@ get_template_part('inc/filters');
       return $where;
     }
     add_filter('posts_where', 'my_posts_where');
-    $current_lang_full = pll_current_language('name');
-    $current_lang      = pll_current_language();
+    // $current_lang_full = 'English';
+    $current_lang      = apply_filters( 'wpml_current_language', NULL );
+    if ($current_lang == 'en'){
+      $current_lang_full = 'English';
+    } else {
+      $current_lang_full = 'Nederlands';
+    }
     $ap_language       = get_field('ap_language');
     // FIXME I need to have a comparis with $current_lang_full
     if ($ap_language === "engelse" || $ap_language === "engelse "):

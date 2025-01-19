@@ -1,6 +1,6 @@
 <?php 
     get_header(); 
-    $current_lang           = pll_current_language();
+    $current_lang           = apply_filters( 'wpml_current_language', NULL );
 ?>
 
 <a class="go-back" href="<?php if($current_lang === 'en'): echo site_url("/news"); else:?> <?php echo site_url(); ?>/nl/nieuws" <?php endif; ?>" role="link">

@@ -25,7 +25,7 @@ $author 	 	 		= get_field('author');
 $language 	 	 		= get_field('language');
 $additional_editions	= get_field('additional_editions');
 $available 				= get_field('display_availability_block');
-$current_lang           = pll_current_language();
+$current_lang           = apply_filters( 'wpml_current_language', NULL );
 
 /**
  * Hook: woocommerce_before_single_product.
@@ -39,7 +39,7 @@ if (post_password_required()) {
 	return;
 }
 ?>
-<a class="go-back" href="<?php if($current_lang === 'en'): echo site_url("/books"); else:?> <?php echo site_url(); ?>/nl/boeken" <?php endif; ?>" role="link">
+<a class="go-back" href="<?php if($current_lang === 'en'): echo site_url("/en/books"); else:?> <?php echo site_url(); ?>/nl/boeken" <?php endif; ?>" role="link">
 	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
 		<defs>
 			<style>

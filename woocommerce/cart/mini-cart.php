@@ -63,7 +63,7 @@ $count = $woocommerce->cart->cart_contents_count;
             $edition 	= get_field('ap_language', $product_id);
             // if current language is dutch
             // if current language is english.
-            $current_lang      = pll_current_language();
+            $current_lang      = apply_filters( 'wpml_current_language', NULL );
             if ($edition == 'Nederlands' && $current_lang === 'en'):
                 $edition = 'Dutch';
             else:

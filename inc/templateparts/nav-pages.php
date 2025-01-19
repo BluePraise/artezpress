@@ -1,17 +1,17 @@
 <?php
     // Note for Maggie: the path construction needs to be: site_url/current_lang/page_name
     // Or use dynamic WP Navigation
-    $current_lang      = pll_current_language();
+    $current_lang      = apply_filters( 'wpml_current_language', NULL );
 ?>
 <div class="nav-column nav-column__main">
     <div class="search">
-        <a href="<?php echo site_url("/books"); ?>" title="Search ArtEZPress Books"><?php _e('Search', 'artezpress'); ?></a>
+        <a href="<?php echo site_url("/en/books"); ?>" title="Search ArtEZPress Books"><?php _e('Search', 'artezpress'); ?></a>
     </div>
     <ul class="page-list">
 
         <?php if($current_lang === 'en'):?>
             <li <?php if (is_front_page()): ?> class="<?= 'active'?>"<?php endif; ?>><a href="<?php echo site_url(); ?>" title="ArtEZPress"><?php _e('Home', 'artezpress'); ?></a></li>
-            <li <?php if (is_shop()): ?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url("/books"); ?>" title="ArtEZPress Books"><?php _e('Books', 'artezpress') ?></a></li>
+            <li <?php if (is_shop()): ?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url("/en/books"); ?>" title="ArtEZPress Books"><?php _e('Books', 'artezpress') ?></a></li>
             <li <?php if (is_page("essays")): ?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url("/essays"); ?>" title="ArtEZ Press Essays Issues"><?php _e('Essays', 'artezpress') ?></a></li>
             <li <?php if (is_page("for-authors")): ?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url("/for-authors"); ?>" title="ArtEZPress for Authors"><?php _e('For Authors', 'artezpress') ?></a></li>
             <li <?php if (is_archive("author") && !is_shop()): ?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url("authors"); ?>" title="ArtEZPress Authors"><?php _e('Authors', 'artezpress') ?></a></li>

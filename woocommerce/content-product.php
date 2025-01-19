@@ -26,7 +26,13 @@ $cats = implode(',', wc_get_product_taxonomy_class($product->get_category_ids(),
 $tags = implode(',', wc_get_product_taxonomy_class($product->get_tag_ids(), 'product_tag'));
 $design 	= get_field('design');
 $book_lang  = get_field('ap_language');
-$current_lang_full = pll_current_language('name');
+// $current_lang_full = 'English';
+$current_lang      = apply_filters( 'wpml_current_language', NULL );
+if ($current_lang == 'en'){
+	$current_lang_full = 'English';
+} else {
+	$current_lang_full = 'Nederlands';
+}
 $additional_editions = get_field('additional_editions');
 
 

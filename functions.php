@@ -762,7 +762,7 @@ add_filter('body_class', function ($classes) {
 		endif;
 	endif;
 
-    $current_lang = pll_current_language();
+    $current_lang = apply_filters( 'wpml_current_language', NULL );
     if ($current_lang === 'en') :
         $lang_class[] = 'lang-en';
         return $lang_class;
@@ -804,18 +804,18 @@ function ace_hide_shipping_title( $label ) {
 add_filter( 'woocommerce_cart_shipping_method_full_label', 'ace_hide_shipping_title' );
 
 // ALLOW TRANSLATION OF CUSTOM FIELDS AND OTHER PLUGIN DATA
-add_filter('pll_translate_post_meta', 'translate_post_meta', 10, 3);
+// add_filter('pll_translate_post_meta', 'translate_post_meta', 10, 3);
 
 // Allows plugins to copy taxonomy terms when a new post (or page) translation is created or synchronize
-function translate_post_meta($value, $key, $lang)
-{
-	if ('_thumbnail_id' === $key) {
-		$value = pll_get_post($value, $lang);
-	}
-	return $value;
-}
+// function translate_post_meta($value, $key, $lang)
+// {
+// 	if ('_thumbnail_id' === $key) {
+// 		$value = pll_get_post($value, $lang);
+// 	}
+// 	return $value;
+// }
 
-add_filter('pll_copy_taxonomies', 'copy_tax', 10, 2);
+// add_filter('pll_copy_taxonomies', 'copy_tax', 10, 2);
 
 function copy_tax($taxonomies, $sync)
 {

@@ -1,7 +1,7 @@
 <?php
 $authors = [];
 $years = [];
-$current_lang      = pll_current_language();
+$current_lang      = apply_filters( 'wpml_current_language', NULL );
 while (have_posts()) : the_post();
   global $product;
   if (strlen(get_field('author'))) {

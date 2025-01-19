@@ -49,8 +49,13 @@ get_header(); ?>
 				return $where;
 			}
 			add_filter('posts_where', 'my_posts_where');
-			$current_lang_full = pll_current_language('name');
-			$current_lang      = pll_current_language();
+			$current_lang      = apply_filters( 'wpml_current_language', NULL );
+			// $current_lang_full = 'English';
+			if ($current_lang == 'en'){
+				$current_lang_full = 'English';
+			} else {
+				$current_lang_full = 'Nederlands';
+			}
 			$ap_language       = get_field('ap_language');
             $book_obj           = get_sub_field('add_to_new');
             if ($book_obj):
@@ -111,7 +116,7 @@ get_header(); ?>
 		<!--/.products-->
 		<div class="excerpt-section__expand">
 
-			<a class="btn excerpt-section__expand-btn black-on-white" href="<?php if($current_lang === 'en'): echo site_url("/books"); else:?> <?php echo site_url(); ?>/nl/boeken" <?php endif; ?>"><?php _e('See All Books', 'artezpress'); ?></a>
+			<a class="btn excerpt-section__expand-btn black-on-white" href="<?php if($current_lang === 'en'): echo site_url("/en/books"); else:?> <?php echo site_url(); ?>/nl/boeken" <?php endif; ?>"><?php _e('See All Books', 'artezpress'); ?></a>
 		</div>
 
 	</section><!-- #main -->
@@ -161,7 +166,7 @@ get_header(); ?>
 		if ($essays_count > 1):?>
 			<div class="excerpt-section__expand">
 				<a class="btn excerpt-section__expand-btn black-on-white js-essays-filter"
-				   href="<?php if($current_lang === 'en'): echo site_url("/books"); else:?> <?php echo site_url(); ?>/nl/boeken" <?php endif; ?>">
+				   href="<?php if($current_lang === 'en'): echo site_url("/essays"); else:?> <?php echo site_url(); ?>/nl/essays" <?php endif; ?>">
 					<?php _e('See All Essays', 'artezpress'); ?>
 				</a>
 			</div>
