@@ -20,7 +20,7 @@
             <li <?php if (is_page("contact")):?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url("/contact"); ?>" title="Contact ArtEZPress">Contact</a></li>
         <?php else: ?>
             <li <?php if (is_front_page()): ?> class="<?= 'active'?>"<?php endif; ?>><a href="<?php echo site_url(); ?>/nl/" title="ArtEZPress"><?php _e('Home', 'artezpress'); ?></a></li>
-            <li <?php if (is_shop()): ?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url(); ?>/nl/boeken" title="ArtEZPress Boeken"><?php _e('Books', 'artezpress') ?></a></li>
+            <li <?php if (is_shop()): ?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url(); ?>/nl/books" title="ArtEZPress Boeken"><?php _e('Books', 'artezpress') ?></a></li>
             <li <?php if (is_page("essays")): ?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url("/nl/essays"); ?>" title="ArtEZ Press Essays Issues"><?php _e('Essays', 'artezpress') ?></a></li>
             <li <?php if (is_page("voor-auteurs")): ?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url("/voor-auteurs"); ?>" title="ArtEZPress voor Auteurs"><?php _e('Voor Auteurs', 'artezpress') ?></a></li>
             <li <?php if (is_archive("author") && !is_shop()): ?>class="<?= 'active';?>"<?php endif; ?>><a href="<?php echo site_url("nl/authors"); ?>" title="ArtEZPress Authors">Auteurs</a></li>

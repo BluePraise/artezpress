@@ -39,7 +39,7 @@ if (post_password_required()) {
 	return;
 }
 ?>
-<a class="go-back" href="<?php if($current_lang === 'en'): echo site_url("/en/books"); else:?> <?php echo site_url(); ?>/nl/boeken" <?php endif; ?>" role="link">
+<a class="go-back" href="<?php if($current_lang === 'en'): echo site_url("/en/books"); else:?> <?php echo site_url(); ?>/nl/books" <?php endif; ?>" role="link">
 	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
 		<defs>
 			<style>
